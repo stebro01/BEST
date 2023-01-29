@@ -1,7 +1,7 @@
 
 
 import {datenow_isostring} from 'src/tools/mydate'
-import { generateKeys, sign } from '../../../../survey/src/tools/hhash'
+import { generateKeys, sign } from 'src/tools/hhash'
 
 /**
  * 

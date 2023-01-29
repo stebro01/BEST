@@ -1,4 +1,4 @@
-import { verify } from "app/../../survey/src/tools/hhash"
+import { verify } from "src/tools/hhash"
 import { error_codes } from "./logger"
 /**
  * Testet, ob Daten in json.cda modifiziert wurden anhand der in json.signiture hinterlegten Signatur

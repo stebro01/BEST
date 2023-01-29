@@ -1,0 +1,239 @@
+{ 
+  "ENV": {
+    "APP_NAME": "surveyBEST",
+    "APP_VERSION": "v1.7",
+    "APP_UPDATED": "2023-01-27"
+  },
+  "title": "Willkommen",
+  "label": "bestQUEST",
+  "index": {
+    "btn_select": "zur Fragebogenauswahl",
+    "btn_preset": "zu den Vorlagen",
+    "text_select": "direkt einen Fragebogen auswählen und starten",
+    "text_preset": "vordefinierte Zusammenstellung von verschiedenen Fragebögen"
+  },
+  "email": {
+    "subject": "surveyBEST quests",
+    "body": "versende quests "
+  },
+  "error": {
+    "format_wrong": "Falsches Format!"
+  },
+  "settings": {
+    "font": {
+      "icon": "text_fields",
+      "label": "Schriftgröße",
+      "sample": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+    },
+    "export": {
+      "icon": "import_export",
+      "label": "Export - Format für Export festlegen",
+      "options":[
+          {"label": "html", "value": "html"},
+          {"label": "json", "value": "json"},
+          {"label": "CDA", "value": "CDA"}
+      ],
+      "description": {
+        "html": "Der Report wird als HTML gespeichert (kurze Version)",
+        "json": "Der Report wird als JSON Format gespeichert und ist komplett HL7-CDA-JSON kompatibel.",
+        "cda": "Der Report wird als JSON Format gespeichert und ist komplett HL7-CDA-JSON kompatibel."
+      }
+    },
+    "user": {
+      "icon": "account_circle",
+      "label": "Nutzerverwaltung und Sicherheit",
+      "uid_description": "Beim ersten Start der App werden automatisch eine UID sowie ein Paar von privaten/public Keys (RSA) erzeugt. Diese werden intern für die Signierung und Verschlüsselung verwendet. <br><b>Empfehlung:</b> Exportieren Sie diese Einstellungen mit der Schaltfläche NUTZER EXPORTIEREN!"
+    },
+    "questman": {
+      "icon": "summarize",
+      "label": "Fragebögen verwalten",
+      "description": "Fragebögen verwalten, löschen, importieren und neu erstellen",
+      "create": {
+        "label": "Fragebogen erstellen",
+        "description": "fülle alle Felder aus",
+        "please_fill": "bitte ausfüllen",
+        "general_information": "allgemeine Informationen",
+        "single_items": "einzelne Fragen",
+        "results": "Ergebnisse",
+        "results_details": "Auswertung und Evaluation"
+      },
+      "import": {
+        "description": "hier den Fragebogen einfügen"
+      }
+    },
+    "encryption": {
+      "icon": "enhanced_encryption",
+      "label": "Verschlüsseln (experimentell / in Entwicklung)",
+      "description": "Verwendet die internen Parameter/Funktionen zum Ver- und Entschlüsseln von Dokumenten"
+    }
+  },
+  "select_quest": {
+    "label": "Fragebogenauswahl",
+    "empty": "Wähle einen der verfügbaren Fragebögen aus. <br>Wähle mehrere aus, um eine neue Vorlage zu erstellen."
+  },
+  "quest": {
+    "label": "Fragebogen",
+    "pid": "PID",
+    "pid_hint": "bitte PID eingeben",
+    "check_failed": "Der Fragebogen ist noch nicht komplett! ",
+    "PID_missing": "PID fehlt ",
+    "please_complete": "bitte vervollständigen ",
+    "check_passed": "Fragebogen ist gültig ",
+    "export_success": "Speichern erfolgreich",
+    "import_success": "Import erfolgreich",
+    "import_failed": "Import fehlgeschlagen",
+    "export_failed": "Speichern fehlgeschlagen",
+    "not_found": "Fragebogen nicht vorhanden",
+    "presets": "Folgende Fragebögen werden ausgeführt",
+    "save_preset": "Preset speichern",
+    "finished": "Herzlichen Dank, daß Sie alle Frage beantwortet haben!",
+    "save_success": "erfolgreich gespeichert"
+  },
+  "btn": {
+    "close": {
+      "label": "schließen"
+    },
+    "up": {
+      "label": "hoch"
+    },
+    "toquest": "zum Fragebogen",
+    "back": {
+      "label": "zurück"
+    },
+    "save": {
+      "label": "speichern",
+      "icon": null
+    },
+    "submit": "speichern",
+    "reset": "zurücksetzen",
+    "reset_confirm": "Wirklich zurücksetzen?",
+    "yes": "Ja",
+    "no": "Nein",
+    "proceed": "weiter zum nächsten Fragebogen",
+    "dialog_chancel": "Wollen Sie wirklich abbrechen? (Form wird nicht gespeichert!,)",
+    "make_preset": "neue Vorlage",
+    "make_preset_protected": "geschütztes Preset erstellen",
+    "preset_save": "Preset lokal speichern",
+    "start_preset": "Fragebögen beginnen",
+    "finished": "weiter",
+    "select_all": {
+      "label": "alles auswählen",
+      "icon": "check_box"
+    },
+    "deselect": {
+      "label": "alles abwählen",
+      "icon": "check_box_outline_blank"
+    },
+    "import2": {
+      "label": "importieren",
+      "icon": "file_upload"
+    },
+    "deselect2": "abwählen",
+    "delete": {
+      "label": "löschen",
+      "icon": "delete"
+    },
+    "duplicate": {
+      "label": "duplizieren"
+    },
+    "import": "importieren",
+    "edit": "bearbeiten",
+    "create": "erzeugen",
+    "preview": {
+      "label": "Vorschau",
+      "icon": "preview"
+    },
+    "open": "Eintrag öffnen",
+    "export": {
+      "label_short": "exportieren",
+      "label": "Eintrag exportieren",
+      "encrypt": "verschlüsselt",
+      "icon": "file_download",
+      "icon2": "enhanced_encryption"
+    },
+    "export_cloud": "Eintrag nach Notion",
+    "preset_start": "Preset starten",
+    "preset_start_encrypted": "encryptionRoute erzeugen",
+    "confirm_start": "Wirlich starten?",
+    "confirm_delete": "Wirklich löschen?",
+    "selection_export": {
+      "label": "Auswahl exportieren",
+      "icon": "file_download"
+    },
+    "selection_delete": {
+      "label": "Auswahl löschen",
+      "icon": "delete"
+    },
+    "more_details": "mehr Details",
+    "confirm": {
+      "new_user": "Wirklich einen neuen User erzeugen? (Alle Keys werden gelöscht!)"
+    },
+    "user": {
+      "label_import": "Nutzer importieren",
+      "label_export": "Nutzer exportieren",
+      "label_new": "neuen Nutzer erzeugen"
+    }
+  },
+  "storage": {
+    "label": "Gespeicherte Fragebögen",
+    "no_entry": "Keine gespeicherten Fragebögen vorhanden",
+    "export_open": "export offen",
+    "export_finished": "✔",
+    "use_notion": "Notion verwenden",
+    "settings": "Einstellungen",
+    "user_profil": "Nutzerprofil",
+    "export_email": "Export-Email",
+    "import": {
+      "label": "Fragebogen importieren",
+      "info": "Bei verschlüsselten Dokumenten: Zum Importieren muss der korrekte PrivateKey in der Nutzerverwaltung hinterlegt sein.",
+      "fileselect": "Datei auswählen"
+    }
+  },
+  "essentialLinks": [{
+      "title": "Startseite",
+      "caption": "Herzlich Willkommen :-)",
+      "icon": "home",
+      "link": "/",
+      "name": "start"
+
+    },
+    {
+      "title": "Fragebogenauswahl",
+      "caption": "Hier gehts direkt zur Fragebogenauswahl",
+      "icon": "assignment",
+      "link": "select",
+      "name": "select"
+    },
+    {
+      "title": "Auswahl Vorlagen",
+      "caption": "Zusammenstellung von mehreren Fragebögen",
+      "icon": "archive",
+      "link": "store_preset",
+      "name": "store_preset"
+    },
+    {
+      "title": "Gespeicherte Fragebögen",
+      "caption": "hier werden ausgefüllte Fragebögen lokal gespeichert",
+      "icon": "inventory_2",
+      "link": "storage",
+      "name": "storage"
+    },
+    {
+      "title": "separator"
+    },
+    {
+      "title": "Einstellungen",
+      "caption": "Schriftgröße, Exportformat, Nutzerverwaltung etc.",
+      "icon": "settings",
+      "link": "settings",
+      "name": "settings"
+    },
+    {
+      "title": "Über diese App",
+      "caption": "Allgemeine Informationen und Disclaimer",
+      "icon": "info",
+      "link": "about",
+      "name": "about"
+    }
+  ]
+}

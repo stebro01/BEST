@@ -32,6 +32,8 @@
     "crypto-js": "^4.1.1",
     "fs": "0.0.1-security",
     "human-readable-ids": "^1.0.4",
+    "jsencrypt": "^3.3.1",
+    "jsrsasign": "^10.6.1",
     "path": "^0.12.7",
     "quasar": "^2.10.1",
     "sqlite3": "^5.1.2",
