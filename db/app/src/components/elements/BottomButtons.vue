@@ -1,5 +1,5 @@
 <template>
-    <div class="q-mb-lg text-center fixed-bottom my-transparent-bg q-gutter-x-md q-pa-sm">
+    <div class="q-gutter-x-md q-pa-xs text-center">
         <q-btn v-if="show_like" no-caps rounded @click="$emit('like')" class="my-bg" icon="star" align="around" >  <q-tooltip>{{ TEXT.tooltip.like }}</q-tooltip></q-btn>
         <q-btn v-if="show_edit" no-caps rounded @click="$emit('edit')" class="my-bg" icon="edit" align="around" >  <q-tooltip>{{ TEXT.tooltip.edit }}</q-tooltip></q-btn>
         <q-btn v-if="show_delete" no-caps rounded @click="$emit('delete')" class="my-bg" icon="delete" align="around"><q-tooltip>{{ TEXT.tooltip.delete }}</q-tooltip></q-btn>

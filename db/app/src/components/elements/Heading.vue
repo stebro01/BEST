@@ -1,8 +1,7 @@
 <template>
   <div>
     <PINNED_ELEMENTS />
-    <div class="fixed-top row justify-center q-pa-sm q-mt-xl my-transparent-bg">
-        <q-card class="my-card ">
+        <q-card class="my-card q-mt-sm ">
           <q-item>
             <q-item-section avatar>
                 <q-img :src="IMG" class="my-icon-size" />            </q-item-section>
@@ -13,7 +12,6 @@
           </q-item>
         </q-card>
       </div>
-    </div>
 </template>
 
 <script>

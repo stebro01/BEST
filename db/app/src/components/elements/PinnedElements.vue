@@ -1,5 +1,5 @@
 <template>
-   <div class="fixed-top q-mt-xl text-left z-max" style="z-index: 10">
+   <div class="fixed-top q-mt-xl q-ml-xl text-left z-max" style="z-index: 10">
       <q-fab
         v-if="$store.getters.PROVIDER_PINNED || $store.getters.PATIENT_PINNED"
         v-model="fab_model"

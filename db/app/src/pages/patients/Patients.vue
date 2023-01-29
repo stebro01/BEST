@@ -1,9 +1,13 @@
 <template>
-  <q-page class="column items-center text-center">
-    <HEADING :title="'Patienten'" :description="'verwalten und anzeigen'" :img="'patient-color-logo.png'"/>
-    <!-- results -->
-    <div class="q-mt-xl">
-      <q-table
+  <q-page class="">
+    <MainSlot>
+      <!-- HEADING -->
+      <template v-slot:header>
+          <HEADING :title="'Patienten'" :description="'verwalten und anzeigen'" :img="'patient-color-logo.png'"/>
+      </template>
+      <!-- MAIN -->
+      <template v-slot:main>
+        <q-table
         class="my-table q-mt-xl"
         :rows="results"
         :columns="columns"
@@ -43,12 +47,19 @@
           <FILTER_BOX :filter="filter" @update="filter = $event"/>
         </template>
         
-      </q-table>
-    </div>
-    <BOTTOM_BUTTONS v-if="SELECTION>0" 
+        </q-table>
+      </template>
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <BOTTOM_BUTTONS v-if="SELECTION>0" 
       :show_like="SELECTION === 1" :show_edit="SELECTION === 1" :show_delete="true"
       @like="likePatient()" @edit="editPatient()" @delete="deletePatient()"
     />
+
+      </template>
+
+    </MainSlot>
+    
 
   </q-page>
 </template>
@@ -58,10 +69,11 @@
 import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'Patients',
-  components: {HEADING, FILTER_BOX, BOTTOM_BUTTONS},
+  components: {HEADING, FILTER_BOX, BOTTOM_BUTTONS, MainSlot},
   data() {
     return {
       filter: null,

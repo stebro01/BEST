@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh lpR fFf">
     <!-- HEADER -->
     <q-header bordered class="bg-white text-primary non-selectable">
       <q-toolbar>
@@ -12,12 +12,56 @@
           <span class="text-caption">{{ $store.getters.ENV.app.version }}</span>
         </q-toolbar-title>
 
-        <q-btn v-if="showHomeButton" flat rounded class="absolute-top-right q-mt-sm" icon="home" @click="this.$router.push({name: 'Start'})"/>
+        <q-btn v-if="showHomeButton" flat rounded class="absolute-top-right q-mt-sm" icon="arrow_back_ios" @click="this.$router.go(-1)"/>
         <q-btn v-else flat rounded class="absolute-top-right q-mt-sm" icon="info" @click="this.$router.push({name: 'About'})"/>
 
-        <q-btn v-if="showHomeButton && $route.name.includes('_')" icon="arrow_back_ios" flat rounded class="absolute-top-right q-mt-sm" style="right: 50px" @click="this.$router.go(-1)"/>
       </q-toolbar>
     </q-header>
+
+    <!-- DRAWER -->
+ <!-- DRAWER -->
+ <q-drawer
+        show-if-above
+        :mini="true"
+        mini-to-overlay
+        :breakpoint="500"
+        bordered
+        class="bg-grey-9"
+      >
+      <div class="column fit q-pb-lg">
+        <div class="col-11">
+        <q-list padding>
+           <q-item v-for="(item, ind) in essentialLinks" :key="ind + 'link'" 
+            clickable v-ripple
+            @click="$router.push({name: item.link})"
+            >
+            <q-item-section avatar>
+                  <q-icon :name="item.icon" color="grey-4"/>
+                  <q-tooltip>{{ item.label }}</q-tooltip>
+                </q-item-section>
+           </q-item>
+
+           <q-separator/>
+           <q-space/>
+           
+          </q-list>
+        </div>
+        <div class="col-1">
+          <q-item clickable v-ripple @click="closeDB">
+            <q-item-section avatar>
+              <q-icon name="logout" color="grey-4" />
+              <q-tooltip>Logout</q-tooltip>
+            </q-item-section>
+           </q-item>
+        </div>
+
+
+      </div>
+        <!-- <q-scroll-area class="fit" :horizontal-thumb-style="{ opacity: 0 }"> -->
+
+          
+        <!-- </q-scroll-area> -->
+      </q-drawer>
 
 
     <!-- FOOTER -->
@@ -80,8 +124,14 @@ export default {
 
     data() {
     return {
-      leftDrawerOpen: false,
-      // essentialLinks: this.$store.getters.ENV.linksList
+      leftDrawerOpen: true,
+      essentialLinks: [
+        {label: 'Home', link: 'Index', icon: 'home'},
+        {label: 'Patients', link: 'Patients', icon: 'person'},
+        {label: 'Visiten', link: 'VisitsView', icon: 'event'},
+        {label: 'Abfragen', link: 'DBQueries', icon: 'assessment'},
+        {label: 'Settings', link: 'DBFunctions', icon: 'settings'}
+      ]
     }
   },
 
@@ -104,9 +154,10 @@ export default {
   },
 
   methods: {
-    logoutUser() {
+    closeDB() {
       if (!confirm(`Nutzer wirklich abmelden?`)) return
       this.$store.commit('USER_SET', undefined)
+      this.$store.commit('CONNECTED_SET', false)
       this.$router.push({name: 'Start'})
 
     }
