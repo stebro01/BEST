@@ -1,7 +1,7 @@
 
 
 import {datenow_isostring} from 'src/tools/mydate'
-import { generateKeys, sign } from 'src/tools/hhash'
+import { generateKeys, sign } from '../../../../survey3/src/tools/hhash'
 
 /**
  * 
@@ -75,7 +75,7 @@ export function exportCSVTable(data, concepts) {
 }
 
 
-import {template} from '../../../../survey/src/tools/CDA_template' 
+import {template} from '../../../../survey3/src/tools/CDA_template' 
 /**
  * @param {array of objects} data - list mit Ergebnissen der Abfrage von VIEW: patient_observations
  * @param {array of objects} concepts - ie: [{CONCEPT_CD: 'SCTID: 184099003',CONCEPT_NAME_CHAR: 'Date of birth',UNIT_CD: null,VALTYPE_CD: 'D'}]
