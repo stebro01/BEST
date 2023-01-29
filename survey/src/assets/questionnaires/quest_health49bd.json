@@ -1,0 +1,79 @@
+{
+    "title": "HEALTH-49 - BD",
+    "short_title": "health49_bd",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "225885004",
+        "display" : "Hamburger Module (HEALTH-49) - BD",
+        "version": "20211026"
+    },
+    "description": "Hamburger Module (HEALTH-49) - BD",
+    "manual": "",
+    "keywords": "Health_49bd",
+    "items": [
+        {
+            "label": "<b>B</b> Im Folgenden finden Sie einige Aussagen, mit denen man beschreiben kann, <b>wie man sich fühlt.</b> Bitte geben Sie an, wie oft Sie sich <b>in den letzen zwei Wochen</b> so gefühlt haben!",
+            "tag": "block_B",
+            "id": [1,2,3,4,5],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "nie", "value": 4},
+                    {"label": "selten", "value": 3},
+                    {"label": "gelegentlich", "value": 2},
+                    {"label": "oft", "value": 1},
+                    {"label": "immer", "value": 0}
+                ],
+                "questions": [
+                    {"id": 1, "label": "1 Ich fühle mich gelöst", "tag": "b1"},
+                    {"id": 2, "label": "2 Ich fühle mich wohl", "tag": "b2"},
+                    {"id": 3, "label": "3 Ich bin entspannt", "tag": "b3"},
+                    {"id": 4, "label": "4 Ich fühle mich ausgeruht", "tag": "b4"},
+                    {"id": 5, "label": "5 Ich kann genießen", "tag": "b5"}
+                ]
+            }
+        },
+        {
+            "label": "<b>D</b> Im Folgenden finden Sie Aussagen, die sich darauf beziehen, inwieweit <b>Sie sich</b> trotz ihrer körperlichen oder seelischen Beschwerden <b>in der Lage fühlen, Ihre Aufgaben zu erledigen, mit Belastungen umzugehen oder Dinge zu tun, die Ihnen wichtig sind.</b> Bitte geben Sie für die <b>letzten zwei Wochen</b> an, wie sehr die jeweilige Aussage <b>für Sie zutrifft</b>",
+            "tag": "block_D",
+            "id": [6,7,8,9,10],
+            "caption": "<b>Trotz meiner Beschwerden bin ich in der Lage...</b>",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "stimmt nicht", "value": 0},
+                    {"label": "stimmt wenig", "value": 1},
+                    {"label": "stimmt mittelmäßig", "value": 2},
+                    {"label": "stimmt ziemlich", "value": 3},
+                    {"label": "stimmt sehr", "value": 4}
+                ],
+                "questions": [
+                    {"id": 6, "label": "1 mit meinen Schwierigkeiten und Problemen gut umzugehen", "tag": "d1"},
+                    {"id": 7, "label": "2 meine persönlichen Ziele, die ich mir setze, zu erreichen", "tag": "d2"},
+                    {"id": 8, "label": "3 schwierige Probleme zu lösen", "tag": "d3"},
+                    {"id": 9, "label": "4 meinen normalen Lebensstil aufrechtzuerhalten", "tag": "d4"},
+                    {"id": 10, "label": "5 mir neue Fertigkeiten und Kompetenzen anzueignen", "tag": "d5"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,2,3,4,5], "value": [4,3,2,1,0], "score": [4,3,2,1,0]},
+            {"id": [6,7,8,9,10], "value": [0,1,2,3,4], "score": [4,3,2,1,0]}
+
+        ],
+        "domaine":[
+            {"label": "Total Sum", "id": [1,2,3,4,5,6,7,8,9,10], "method": "avg"},
+            {"label": "Teil B Sum", "id": [1,2,3,4,5], "method": "avg"},
+            {"label": "Teil D Sum", "id": [6,7,8,9,10], "method": "avg"}  
+        ]
+    }
+
+}

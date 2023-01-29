@@ -1,0 +1,8 @@
+﻿FIELD_NAME;PATIENT_NUM;ENCOUNTER_NUM;START_DATE;PROVIDER_ID;LOCATION_CD;LID: 63900-5;SCTID: 263495000;SCTID: 184099003;SCTID: 1148423001;LID: 2085-9
+VALTYPE_CD;numeric;numeric;date;text;text;numeric;text;date;numeric;numeric
+UNIT_CD;;;;;;years;;;;mmol/l
+NAME_CHAR;Patient;Visite;Datum;Untersucher;Ort;Age;Gender;Date of birth;MoCA -  Montreal Cognitive Assessment version 8.1 ;HDL-Cholesterin
+;1;1;2022-12-15;sb;ukj;45;Male;1960-01-02;27;4,50
+;1;2;2022-12-16;sb;ukj;;;;25;2,71
+;2;1;2022-12-17;sb;ukj;56;Female;1950-04-03;28;9,40
+;2;2;2022-12-18;sb;ukj;;;;27;10,11

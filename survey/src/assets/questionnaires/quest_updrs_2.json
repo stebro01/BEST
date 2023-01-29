@@ -1,0 +1,216 @@
+{
+    "title": "UPDRS II",
+    "short_title": "updrs_2",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "342061000000106",
+        "display" : "UPDRS II - Aktivitäten des täglichen Lebens (jeweils getrennt in on/off-Perioden ermitteln)",
+        "version": "20211028"
+    },
+    "description": "UPDRS II - Aktivitäten des täglichen Lebens (jeweils getrennt in on/off-Perioden ermitteln)",
+    "manual": "Bitte beantworten Sie folgenden Fragen",
+    "keywords": "parkinson updrs",
+    "items": [
+
+        {
+            "label": "5. Sprache",
+            "id": 5,
+            "coding": { "display" : "language", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Leicht beeinträchtigt. Keine Verständigungsschwierigkeiten.", "value": 1},
+                {"label": "Mäßig beeinträchtigt. Wird bisweilen gebeten, etwas zu wiederholen.", "value": 2},
+                {"label": "Stark beeinträchtigt. Wird häufig gebeten, etwas zu wiederholen.", "value": 3},
+                {"label": "Meistens unverständlich.", "value": 4}
+            ]
+        },
+        {
+            "label": "6. Speichelsekretion",
+            "id": 6,
+            "coding": { "display" : "salvia", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Gering, aber eindeutig vermehrter Speichel im Mund; nachts gelegentlich Speichelaustritt.", "value": 1},
+                {"label": "Mäßig vermehrte Speichelsekretion; eventuell minimaler Speichelaustritt", "value": 2},
+                {"label": "Deutlich vermehrte Speichelsekretion mit leichtem Speichelaustritt", "value": 3},
+                {"label": "Ausgeprägter Speichelaustritt, muss ständig Papiertuch oder Taschentuch benutzen", "value": 4}
+            ]
+        },
+        {
+            "label": "7. Schlucken",
+            "id": 7,
+            "coding": { "display" : "swallow", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Seltenes Würgen/Verschlucken.", "value": 1},
+                {"label": "Gelegentliches Würgen/Verschlucken.", "value": 2},
+                {"label": "Weiche Nahrung erforderlich.", "value": 3},
+                {"label": "Ernährung über Magensonde oder Gastrostomie erforderlich.", "value": 4}
+            ]
+        },
+        {
+            "label": "8. Handschrift",
+            "id": 8,
+            "coding": { "display" : "Handwriting", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Etwas langsam oder klein.", "value": 1},
+                {"label": "Mäßig langsam oder klein; sämtliche Wörter leserlich", "value": 2},
+                {"label": "Stark beeinträchtigt; nicht alle Wörter leserlich", "value": 3},
+                {"label": "Die Mehrzahl der Wörter ist unleserlich.", "value": 4}
+            ]
+        },
+        {
+            "label": "9. Speisen schneiden und mit Utensilien umgehen",
+            "id": 9,
+            "coding": { "display" : "food_handeling", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Etwas langsam und unbeholfen, aber keine Hilfe erforderlich", "value": 1},
+                {"label": "Kann die meisten Speisen schneiden, jedoch unbeholfen und langsam; etwas Hilfe erforderlich.", "value": 2},
+                {"label": "Speisen müssen von jemandem geschnitten werden, kann aber noch langsam essen.", "value": 3},
+                {"label": "Muss gefüttert werden.", "value": 4}
+            ]
+        },
+        {
+            "label": "10. Anziehen",
+            "id": 10,
+            "coding": { "display" : "dressing", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Etwas langsam, aber keine Hilfe erforderlich.", "value": 1},
+                {"label": "Gelegentliche Hilfe beim Knöpfen, beim Schlüpfen in die Ärmel.", "value": 2},
+                {"label": "Beträchtliche Hilfe erforderlich, kann aber manches alleine schaffen", "value": 3},
+                {"label": "Hilflos", "value": 4}
+            ]
+        },
+        {
+            "label": "11. Hygiene",
+            "id": 11,
+            "coding": { "display" : "hygiene", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Etwas langsam, aber keine Hilfe erforderlich.", "value": 1},
+                {"label": "Braucht beim Duschen und Baden Hilfe; oder bei Körperpflege sehr langsam.", "value": 2},
+                {"label": "Braucht beim Waschen, Zähnebürsten, Haarekämmen und beim Gang auf die Toilette Hilfe.", "value": 3},
+                {"label": "Foley-Katheter oder andere mechanische Hilfsmittel.", "value": 4}
+            ]
+        },
+        {
+            "label": "12. Umdrehen im Bett und Bettwäsche zurechtziehen",
+            "id": 12,
+            "coding": { "display" : "turning_bed", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Etwas langsam und unbeholfen, benötigt aber keine Hilfe.", "value": 1},
+                {"label": "Kann sich alleine, jedoch unter großen Schwierigkeiten, herumdrehen und die Bettwäsche zurechtziehen.", "value": 2},
+                {"label": "  Beginnt, kann sich aber nicht alleine im Bett umdrehen oder die Bettwäsche zurechtziehen.", "value": 3},
+                {"label": "Hilflos", "value": 4}
+            ]
+        },
+        {
+            "label": "13. Fallen (unabhängig von Starre)",
+            "id": 13,
+            "coding": { "display" : "falling", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Kein", "value": 0},
+                {"label": "Seltenes Fallen", "value": 1},
+                {"label": "Gelegentliches Fallen, weniger als einmal pro Tag.", "value": 2},
+                {"label": "Fällt durchschnittlich einmal pro Tag.", "value": 3},
+                {"label": "Fällt häufiger als einmal pro Tag.", "value": 4}
+            ]
+        },
+        {
+            "label": "14. Erstarren beim Gehen",
+            "id": 14,
+            "coding": { "display" : "freezing", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Kein", "value": 0},
+                {"label": "Seltenes Erstarren beim Gehen; eventuell verzögerter Start", "value": 1},
+                {"label": "Gelegentliches Erstarren beim Gehen.", "value": 2},
+                {"label": "Regelmäßiges Erstarren. Gelegentliches Fallen nach Erstarren.", "value": 3},
+                {"label": "Häufiges Fallen nach Erstarren.", "value": 4}
+            ]
+        },
+        {
+            "label": "15. Laufen",
+            "id": 15,
+            "coding": { "display" : "walking", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal", "value": 0},
+                {"label": "Leichte Schwierigkeiten. Eventuell fehlendes Mitschwingen der Arme, eventuell Neigung das Bein nachzuziehen.", "value": 1},
+                {"label": "Mäßige Schwierigkeiten, benötigt jedoch wenig oder keine Hilfe.", "value": 2},
+                {"label": "Schwere Gehstörung, benötigt Hilfe.", "value": 3},
+                {"label": "Kann selbst mit Hilfe nicht mehr gehen.", "value": 4}
+            ]
+        },
+        {
+            "label": "16. Tremor",
+            "id": 16,
+            "coding": { "display" : "tremor", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keiner.", "value": 0},
+                {"label": "Leicht und selten auftretend.", "value": 1},
+                {"label": "Mäßig; für den Patienten lästig.", "value": 2},
+                {"label": "Stark, bei zahlreichen Aktivitäten hinderlich.", "value": 3},
+                {"label": "Ausgeprägt; bei den meisten Aktivitäten hinderlich.", "value": 4}
+            ]
+        },
+        {
+            "label": "17 Sensorische Beschwerden infolge von Parkinsonismus",
+            "id": 17,
+            "coding": { "display" : "sensory_deficits", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keine.", "value": 0},
+                {"label": "Gelegentliches Taubheitsgefühl, Kribbeln oder leichte Schmerzen.", "value": 1},
+                {"label": "Häufiges Taubheitsgefühl, Kribbeln oder Schmerzen, nicht störend.", "value": 2},
+                {"label": "Häufig schmerzhafte Empfindungen.", "value": 3},
+                {"label": "Unerträgliche Schmerzen.", "value": 4}
+            ]
+        }
+        
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

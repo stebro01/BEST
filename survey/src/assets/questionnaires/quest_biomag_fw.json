@@ -1,0 +1,290 @@
+{
+    "title": "Fragebogen - Standard BIOMAG 1",
+    "short_title": "biomag_fw",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "444061006",
+        "display" : "Standard BIOMAG 1",
+        "version": "20211026"
+    },
+    "description": "Standardfragebogen v1 fw",
+    "manual": "<b>Sehr geehrte*r Studienteilnehmer*in,</b>: Wir danken Ihnen für die Teilnahme an unserer Untersuchung. Wir bitten Sie zunächst einige Fragen zu ihrem aktuellen Gesundheitsstand, beziehungsweise Vorerkrankungen zu beantworten. Gerne werden Sie bei unklar halten bei den Fragen durch unser Team unterstützt.",
+    "keywords": "biomag general",
+    "items": [
+        {
+            "label": "Geschlecht",
+            "coding": { "display" : "gender", "code" : "263495000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "m", "value": "m"},
+                {"label": "w", "value": "w"},
+                {"label": "d", "value": "d"}
+            ]
+        },
+        {
+            "label": "Gewicht (kg)",
+            "coding": { "display" : "weight", "code" : "27113001", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Körpergröße (cm)",
+            "coding": { "display" : "height", "code" : "50373000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Haben Sie Sehstörungen?",
+            "tag": "seeing_problems",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nein", "value": 0},
+                {"label": "Ja", "value": 1}
+            ]
+        },
+        {
+            "label": "Benötigen Sie eine Brille?",
+            "tag": "glasses",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nein", "value": 0},
+                {"label": "Ja", "value": 1}
+            ]
+        },
+        {
+            "label": "Sind Sie",
+            "coding": { "display" : "smoker", "code" : "77176002", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "gegenwärtiger Raucher?", "value": "smoker"},
+                {"label": "ehemaliger Raucher?", "value": "ex-smoker"},
+                {"label": "noch nie Raucher gewesen?", "value": "never-smoker"}
+            ]
+        },
+        {
+            "label": "Wie oft trinken Sie Alkohol?",
+            "tag": "alcohol_freq",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nie", "value": "never"},
+                {"label": "1/Monat", "value": "1_month"},
+                {"label": "2-3/Woche", "value": "2-3_week"},
+                {"label": "4 oder mehr als 4/Woche", "value": ">3_week"}
+            ]
+        },
+        {
+            "label": "Wenn Sie an einem Tag Alkohol trinken, wie viel Glas Akohol trinken Sie dann typischerweise?",
+            "caption": "Ein Glas Alkohol entspricht: 0,33 l Bier, 0,5 l Wein/Sekt oder 0,02 l Spirituosen",
+            "tag": "alcohol_amount",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "1", "value": "1"},
+                {"label": "2-3", "value": "2-3"},
+                {"label": "4-5", "value": "4-5"},
+                {"label": "6-7", "value": "6-7"},
+                {"label": ">7", "value": ">7"}
+            ]
+        },
+        {
+            "label": "Nehmen Sie Drogen (einschl. Cannabis)?",
+            "tag": "drugs",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nein", "value": 0},
+                {"label": "Ja", "value": 1}
+            ]
+        },
+        {
+            "label": "Wie häufig nutzen Sie Computer –, Konsolen – und Onlinespiele?",
+            "tag": "gaming",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Jeden / fast jeden Tag", "value": "daily"},
+                {"label": "Ein / mehrmals pro Woche", "value": "weekly"},
+                {"label": "seltener", "value": "rarely"},
+                {"label": "nie", "value": "never"}
+            ]
+        },
+        {
+            "label": "Hatten Sie schon einmal den Eindruck ein Problem mit Videospielen, Glücksspielen, Geldwetten oder Geldspielen zu haben?",
+            "tag": "gaming_2",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nein", "value": 0},
+                {"label": "Ja", "value": 1}
+            ]
+        },
+        {
+            "label": "Würden Sie von sich sagen, dass sie religiös oder eher nicht religiös sind?",
+            "caption": "1: nicht religiös / 10: sehr religös",
+            "tag": "religion",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "1", "value": 1},
+                {"label": "2", "value": 2},
+                {"label": "3", "value": 3},
+                {"label": "4", "value": 4},
+                {"label": "5", "value": 5},
+                {"label": "6", "value": 6},
+                {"label": "7", "value": 7},
+                {"label": "8", "value": 8},
+                {"label": "9", "value": 9},
+                {"label": "10", "value": 10}
+            ]
+        },
+        {
+            "label": "Sind bei Ihnen Gedächtnisstörungen bekannt?",
+            "tag": "memory_problems",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nein", "value": 0},
+                {"label": "Ja", "value": 1}
+            ]
+        },
+        {
+            "label": "Ist bei ihnen eine Depression bekannt?",
+            "tag": "depression",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Ja, aktuell bestehend", "value": "yes_active"},
+                {"label": "Depression in der Vergangenheit", "value": "yes_history"},
+                {"label": "Nein, nie", "value": "no"}
+            ]
+        },
+        {
+            "label": "Sind bei Ihnen andere psychische Erkrankungen bekannt?",
+            "tag": "psychic_history",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nein", "value": 0},
+                {"label": "Ja", "value": 1}
+            ]
+        },
+        {
+            "label": "Leben Sie alleine?",
+            "tag": "live_alone",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nein", "value": 0},
+                {"label": "Ja", "value": 1}
+            ]
+        },
+        {
+            "label": "Sind Sie",
+            "tag": "partnership",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Single", "value": "single"},
+                {"label": "In Partnerschaft", "value": "parntership"},
+                {"label": "Verheiratet", "value": "married"},
+                {"label": "Verwitwet", "value": "widow"}
+            ]
+        },
+        {
+            "label": "Treiben Sie Sport?",
+            "tag": "sport",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nie", "value": "no"},
+                {"label": "1h/Woche", "value": "1h_week"},
+                {"label": "1-3h/Woche", "value": "1-3h_week"},
+                {"label": ">3h/Woche", "value": ">3h_week"}
+            ]
+        },
+        {
+            "label": "Kennen Sie folgende Sorgen?",
+            "tag": "sorrow",
+            "value": [],
+            "type": "checkbox",
+            "inline": true,
+            "options": [
+                {"label": "Angst vor Verarmung", "value": "fear_poverty"},
+                {"label": "Geldsorgen", "value": "money_worries"},
+                {"label": "Einsamkeit", "value": "loneliness"},
+                {"label": "Keine Angaben", "value": "no_details"},
+                {"label": "Keine Sorgen", "value": "no"}
+            ]
+        },
+        {
+            "label": "Sind Sie aktuell berufstätig?",
+            "tag": "employed",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nein", "value": 0},
+                {"label": "Ja", "value": 1}
+            ]
+        },
+        {
+            "label": "Wenn nicht (berufsfähig), sind Sie",
+            "tag": "not_employed",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                {"label": "Im Ruhestand", "value": "retired"},
+                {"label": "Erwerbsunfähig", "value": "unable_to_work"},
+                {"label": "Arbeitssuchend", "value": "jobseeker"}
+            ]
+        },
+        {
+            "label": "Welchen Schulabschluss/welche Berufsqualifikationen haben Sie?",
+            "caption": "Bitte den höchsten Abschluss angeben",
+            "tag": "graduation",
+            "value": [],
+            "type": "checkbox",
+            "inline": true,
+            "options": [
+                {"label": "8. Klasse", "value": "8_class"},
+                {"label": "9. Klasse", "value": "9_class"},
+                {"label": "10. Klasse", "value": "10_class"},
+                {"label": "Abitur / Fachabitur", "value": "abitur"},
+                {"label": "abgeschl. Ausbildung", "value": "education"},
+                {"label": "Hochschulabschluss", "value": "studium"}
+            ]
+        }
+    
+    ],
+    "results": {
+    }
+
+}

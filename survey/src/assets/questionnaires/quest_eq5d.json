@@ -1,0 +1,29 @@
+{
+    "title": "EQ-5D",
+    "short_title": "eq5d",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "273725009",
+        "display" : "EQ-5D",
+        "version": "20211026"
+    },
+    "description": "Quality of Life Fragebogen",
+    "manual": "Wir möchten Sie bitten, auf dieser Skala ihren heutigen Gesundheitsstand auszuwählen. Um sie bei der Einschätzung, wie gut oder wie schlecht ihr Gesundheitsstandzustand ist, zu unterstützen, haben wir eine Skala bezeichnet, ähnlich einem Thermometer. Der am besten denkbare Gesundheitszustand ist mit 100 gekennzeichnet, der schlechteste mit 0",
+    "keywords": "quality, of, life, qol, health, qualität, lebensqualität",
+    "items": [
+        {
+            "label": "Heutiger Gesundheitszustand",
+            "coding": { "display" : "health_status", "code" : "406221003", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "slider",
+            "vertical": true,
+            "options": {
+                "top": {"value": 100, "label": "Bester denkbarer Gesundheitszustand"},
+                "bottom": {"value": 0, "label": "Schlechtest denkbarer Gesundheitszustand"},
+                "steps": 10
+            }
+        }
+    ],
+    "results": {
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "title": "DEX Selbstbeurteilung",
+    "short_title": "dex",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445813009",
+        "display" : "Dysexecutive Questionnaire (self)",
+        "version": "20211026"
+    },
+    "description": "Dysexecutive Questionnaire",
+    "manual": "",
+    "keywords": "dysexecutive, self, assessment, evaluation, executive",
+    "items": [ 	
+        {
+            "label": "Dieser Fragebogen beschreibt einige der Schwierigkeiten, die Patienten nach einer Gehirnverletzung haben können. Wir bitten Sie, sich die einzelnen Aussagen sorgfältig durchzulesen und anzugeben, wie oft Sie selbst diese Erfahrung machen. Bitte kreuzen Sie das entsprechende Kästchen an.",
+            "tag": "questions",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "nie", "value": 0},
+                    {"label": "selten", "value": 1},
+                    {"label": "manchmal", "value": 2},
+                    {"label": "oft", "value": 3},
+                    {"label": "sehr oft", "value": 4}
+                ],
+                "questions": [
+                    {"label": "1. Ich habe Probleme zu verstehen, was andere Personen mir sagen wollen, es sei denn, sie drücken sich klar und deutlich aus.", "tag": "1"},
+                    {"label": "2. Ich handle ohne nachzudenken und mache das erste, was mir in den Sinn kommt.", "tag": "2"},
+                    {"label": "3. Ich spreche über Dinge oder Begenheiten, die nicht wirklich passiert sind, von denen ich aber glaube, dass sie geschehen sind.", "tag": "3"},
+                    {"label": "4. Ich habe Schwierigkeiten, vorausschauend zu sein und für die Zukunft zu planen.", "tag": "4"},
+                    {"label": "5. Über bestimmte Dinge bin ich übermäßig erregt oder verärgert und neige dann dazu 'zu weit zu gehen'.", "tag": "5"},
+                    {"label": "6. Ich bringe Ereignisse durcheinander und verwechsle die richtige Reihenfolge der Geschehnisse.", "tag": "6"},
+                    {"label": "7. Ich habe Schwierigkeiten, das Ausmaß meiner Einschränkungen realistisch zu sehen und mache mir unrealistische Vorstellungen bezüglich der Zukunft.", "tag": "7"},
+                    {"label": "8. Ich bin lethargisch und kann mich für nichts begeistern.", "tag": "8"},
+                    {"label": "9. Ich mache oder sage peinliche Dinge, wenn ich mit anderen zusammen bin.", "tag": "9"},
+                    {"label": "10. Ich möchte gerne etwas tun, aber im nächsten Augenblick habe ich keine Lust mehr dazu.", "tag": "10"},
+                    {"label": "11. Ich habe Schwierigkeiten, Gefühle zu zeigen.", "tag": "11"},
+                    {"label": "12. Ich verliere schon bei Kleinigkeiten die Beherrschung.", "tag": "12"},
+                    {"label": "13. Es kümmert mich nicht, wie ich mich in bestimmten Situationen verhalten sollte.", "tag": "13"},
+                    {"label": "14. Ich finde es schwierig, damit aufzuhören, etwas wiederholt zu tun oder zu sagen.", "tag": "14"},
+                    {"label": "15. Ich neige dazu, unruhig zu sein, und kann nicht lange stillsitzen.", "tag": "15"},
+                    {"label": "16. Ich finde es schwierig, etwas nicht zu tun, obwohl ich genau weiß, dass ich es nicht tun sollte.", "tag": "16"},
+                    {"label": "17. Ich sage oder behaupte etwas, aber verhalte mich ganz anders.", "tag": "17"},
+                    {"label": "18. Ich kann nur schlecht bei der Sache bleiben und bin leicht ablenkbar.", "tag": "18"},
+                    {"label": "19. Ich habe Schwierigkeiten, Entscheidungen zu treffen oder zu entscheiden, was ich tun will.", "tag": "19"},
+                    {"label": "20. Es kümmert mich nicht oder es ist mir nicht bewusst, wie andere mein Verhalten empfinden.", "tag": "20"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

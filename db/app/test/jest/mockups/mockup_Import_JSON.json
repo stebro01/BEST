@@ -1,0 +1,103 @@
+{
+  "PATIENT_NUM": "1",
+  "VISITS": [
+    [{
+      "PATIENT_NUM": "1",
+      "ENCOUNTER_NUM": "1",
+      "START_DATE": "2022-12-15",
+      "PROVIDER_ID": "sb",
+      "LOCATION_CD": "ukj",
+      "NVAL_NUM": 45,
+      "VALTYPE_CD": "N",
+      "TVAL_CHAR": null,
+      "UNIT_CD": "years",
+      "CONCEPT_CD": "LID: 63900-5",
+      "CONCEPT_NAME_CHAR": "Age"
+    }, {
+      "PATIENT_NUM": "1",
+      "ENCOUNTER_NUM": "1",
+      "START_DATE": "2022-12-15",
+      "PROVIDER_ID": "sb",
+      "LOCATION_CD": "ukj",
+      "NVAL_NUM": null,
+      "VALTYPE_CD": "S",
+      "TVAL_CHAR": "SCTID: 248153007",
+      "UNIT_CD": null,
+      "CONCEPT_CD": "SCTID: 263495000",
+      "CONCEPT_NAME_CHAR": "Gender",
+      "TVAL_RESOLVED": "Male"
+    }, {
+      "PATIENT_NUM": "1",
+      "ENCOUNTER_NUM": "1",
+      "START_DATE": "2022-12-15",
+      "PROVIDER_ID": "sb",
+      "LOCATION_CD": "ukj",
+      "NVAL_NUM": null,
+      "VALTYPE_CD": "D",
+      "TVAL_CHAR": "1960-01-02",
+      "UNIT_CD": null,
+      "CONCEPT_CD": "SCTID: 184099003",
+      "CONCEPT_NAME_CHAR": "Date of birth"
+    }, {
+      "PATIENT_NUM": "1",
+      "ENCOUNTER_NUM": "1",
+      "START_DATE": "2022-12-15",
+      "PROVIDER_ID": "sb",
+      "LOCATION_CD": "ukj",
+      "NVAL_NUM": 27,
+      "VALTYPE_CD": "N",
+      "TVAL_CHAR": null,
+      "CONCEPT_CD": {
+        "value": "SCTID: 1148423001",
+        "label": "MoCA -  Montreal Cognitive Assessment version 8.1"
+      }
+    }, {
+      "PATIENT_NUM": "1",
+      "ENCOUNTER_NUM": "1",
+      "START_DATE": "2022-12-15",
+      "PROVIDER_ID": "sb",
+      "LOCATION_CD": "ukj",
+      "NVAL_NUM": 4.5,
+      "VALTYPE_CD": "N",
+      "TVAL_CHAR": null,
+      "UNIT_CD": "mmol/l",
+      "CONCEPT_CD": "LID: 2085-9",
+      "CONCEPT_NAME_CHAR": "HDL-Cholesterin"
+    }],
+    [{
+      "PATIENT_NUM": "1",
+      "ENCOUNTER_NUM": "2",
+      "START_DATE": "2022-12-16",
+      "PROVIDER_ID": "sb",
+      "LOCATION_CD": "ukj",
+      "NVAL_NUM": 25,
+      "VALTYPE_CD": "N",
+      "TVAL_CHAR": null,
+      "CONCEPT_CD": {
+        "value": "SCTID: 1148423001",
+        "label": "MoCA -  Montreal Cognitive Assessment version 8.1"
+      }
+    }, {
+      "PATIENT_NUM": "1",
+      "ENCOUNTER_NUM": "2",
+      "START_DATE": "2022-12-16",
+      "PROVIDER_ID": "sb",
+      "LOCATION_CD": "ukj",
+      "NVAL_NUM": 2.71,
+      "VALTYPE_CD": "N",
+      "TVAL_CHAR": null,
+      "UNIT_CD": "mmol/l",
+      "CONCEPT_CD": "LID: 2085-9",
+      "CONCEPT_NAME_CHAR": "HDL-Cholesterin"
+    }]
+  ],
+  "VISIT_INFO": [{
+    "START_DATE": "2022-12-15",
+    "LOCATION_CD": "ukj",
+    "PROVIDER_ID": "sb"
+  }, {
+    "START_DATE": "2022-12-16",
+    "LOCATION_CD": "ukj",
+    "PROVIDER_ID": "sb"
+  }]
+}

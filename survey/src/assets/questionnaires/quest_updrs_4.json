@@ -1,0 +1,174 @@
+{
+    "title": "UPDRS IV",
+    "short_title": "updrs_4",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "342061000000106",
+        "display" : "UPDRS IV - Komplikationen der Behandlung (in der vergangenen Woche)",
+        "version": "20211028"
+    },
+    "description": "UPDRS IV - Komplikationen der Behandlung (in der vergangenen Woche)",
+    "manual": "Bitte beantworten Sie folgenden Fragen",
+    "keywords": "parkinson updrs",
+    "items": [
+        {
+            "label": "Dyskinesien"
+        },
+
+        {
+            "label": "32. Dauer: Zu welcher Tageszeit treten die Dyskinesien auf? (Anamnestische Angaben)",
+            "id": 32,
+            "coding": { "display" : "dyskinesia_duration", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keine", "value": 0},
+                {"label": "1 - 25% des Tages.", "value": 1},
+                {"label": "26 - 50% des Tages.", "value": 2},
+                {"label": "51 - 75% des Tages.", "value": 3},
+                {"label": "76 - 100% des Tages.", "value": 4}
+            ]
+        },
+        {
+            "label": "33. Behinderung: Wie hinderlich sind die Dyskinesien? (Anamnestische Angaben; können durch Untersuchung in der Sprechstunde modifiziert werden.)",
+            "id": 34,
+            "coding": { "display" : "dyskinesia_limitations", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keine Behinderung", "value": 0},
+                {"label": "Leichte Behinderung.", "value": 1},
+                {"label": "Mäßige Behinderung.", "value": 2},
+                {"label": "Starke Behinderung.", "value": 3},
+                {"label": "Vollständige Behinderung", "value": 4}
+            ]
+        },
+        {
+            "label": "34. Schmerzhafte Dyskinesien: Wie schmerzhaft sind die Dyskinesien?",
+            "id": 34,
+            "coding": { "display" : "dyskinesia_pain", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keine schmerzhaften Dyskinesien.", "value": 0},
+                {"label": "Leicht.", "value": 1},
+                {"label": "Mäßig.", "value": 2},
+                {"label": "Stark.", "value": 3},
+                {"label": "Ausgeprägt.", "value": 4}
+            ]
+        },
+        {
+            "label": "35. Auftreten von Dystonie am frühen Morgen: (Anamnestische Angaben)",
+            "id": 35,
+            "coding": { "display" : "dyskinesia_morning", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Nein.", "value": 0},
+                {"label": "Ja.", "value": 1}
+            ]
+        },
+
+        {
+            "label": "Klinische Fluktuationen"
+        },
+        {
+            "label": "36. Gibt es nach einer Medikamenteneinnahme zeitlich vorhersagbare „Off“-Perioden?",
+            "id": 36,
+            "coding": { "display" : "off_predictible", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Nein.", "value": 0},
+                {"label": "Ja.", "value": 1}
+            ]
+        },
+        {
+            "label": "37. Gibt es zeitlich nicht vorhersagbare „Off“-Perioden ?",
+            "id": 37,
+            "coding": { "display" : "off_unpredictible", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Nein.", "value": 0},
+                {"label": "Ja.", "value": 1}
+            ]
+        },
+        {
+            "label": "38. Treten „Off“-Perioden plötzlich auf, z. B. innerhalb von wenigen Sekunden?",
+            "id": 38,
+            "coding": { "display" : "off_sudden", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Nein.", "value": 0},
+                {"label": "Ja.", "value": 1}
+            ]
+        },
+        {
+            "label": "39. Für welche Dauer befindet sich der Patient tagsüber durchschnittlich im „Off“-Stadium?",
+            "id": 39,
+            "coding": { "display" : "off_duration", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keine.", "value": 0},
+                {"label": "1 - 25% des Tages..", "value": 1},
+                {"label": "26 - 50% des Tages.", "value": 2},
+                {"label": "51 - 75% des Tages.", "value": 3},
+                {"label": "76 - 100% des Tages.", "value": 4}
+            ]
+        },
+
+        {
+            "label": "Anderweitige Komplikationen"
+        },
+        {
+            "label": "40. Leidet der Patient an Appetitlosigkeit, Übelkeit oder Erbrechen?",
+            "id": 40,
+            "coding": { "display" : "other_1", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Nein.", "value": 0},
+                {"label": "Ja.", "value": 1}
+            ]
+        }, {
+            "label": "41. Leidet der Patient an Schlafstörungen, z. B. Schlaflosigkeit oder Schläfrigkeit?",
+            "id": 41,
+            "coding": { "display" : "other_sleep", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Nein.", "value": 0},
+                {"label": "Ja.", "value": 1}
+            ]
+        }, {
+            "label": "42. Hat der Patient orthostatische Symptome?",
+            "id": 42,
+            "coding": { "display" : "other_orthostase", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Nein.", "value": 0},
+                {"label": "Ja.", "value": 1}
+            ]
+        }
+        
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

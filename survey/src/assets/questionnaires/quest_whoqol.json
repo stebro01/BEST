@@ -1,0 +1,366 @@
+{
+    "title": "WHOQOL-BREF",
+    "short_title": "whoqol",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "709503007",
+        "display" : "WHOQOL-BREF",
+        "version": "20111103"
+    },
+    "description": "World Health Organization - Qualitiy of Life BREF",
+    "manual": "",
+    "keywords": "quality, of, life, who, world, health, organization, brief, bref, short",
+    "items": [
+        {
+            "label": "Was ist Ihr Geschlecht?",
+            "id": 101,
+            "tag": "sex",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "männlich", "value": "m"},
+                {"label": "weiblich", "value": "w"},
+                {"label": "divers", "value": "d"}
+            ]
+        },
+        {
+            "label": "In welchem Jahr sind Sie geboren",
+            "id": 102,
+            "tag": "date_of_birth",
+            "value": null,
+            "type": "date_year",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Was ist Ihr höchster Schulabschluss?",
+            "id": 103,
+            "tag": "education",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "Kein Abschluss", "value": "1"},
+                {"label": "Hauptschule", "value": "2"},
+                {"label": "Mittlere Reife", "value": "3"},
+                {"label": "Fachhochschulreife", "value": "4"},
+                {"label": "Abitur", "value": "5"},
+                {"label": "Fachhochschule", "value": "6"},
+                {"label": "Universität", "value": "7"},
+                {"label": "Postgraduiert (Dr.)", "value": "8"}
+            ]
+        },
+        {
+            "label": "Was ist Ihr Familienstand?",
+            "id": 104,
+            "tag": "family_status",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "Allein lebend", "value": "1"},
+                {"label": "Getrennt lebend", "value": "2"},
+                {"label": "Verheiratet", "value": "3"},
+                {"label": "Geschieden", "value": "4"},
+                {"label": "Mit Partner lebend", "value": "5"},
+                {"label": "Verwitwet", "value": "6"}   
+            ]
+        },
+        {
+            "label": "Sind Sie gegenwärtig krank?",
+            "id": 105,
+            "tag": "ill",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "Ja", "value": "y"},
+                {"label": "Nein", "value": "n"}
+            ]
+        },
+        {
+            "label": "Wenn etwas mit Ihrer Gesundheit nicht in Ordnung ist, was glauben Sie was es ist?",
+            "id": 106,
+            "tag": "reason_ill",
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "<b>Krankheit/Gesundheitsprobleme</b> <br><br>Instruktionen <br>In diesem Fragebogen werden Sie danach gefragt, wie Sie Ihre Lebensqualität, Ihre Gesundheit und andere Bereiche Ihres Lebens beurteilen. <b>Bitte beantworten Sie alle Fragen.</b> Wenn Sie sich bei der Beantwortung einer Frage nicht sicher sind, wählen Sie bitte die Antwortkategorie, die Ihrer Meinung nach am ehesten zutrifft. Oft ist dies die Kategorie, die Ihnen als erstes in den Sinn kommt. <br>Bitte beantworten Sie alle Fragen auf Grundlage Ihrer eigenen Beurteilungskriterien, Hoffnungen, Vorlieben und Interessen. Bitte denken Sie bei der Beantwortung der Fragen an Ihr Leben <b>während der vergangenen zwei Wochen</b>. So könnte eine Frage zum Beispiel lauten:",
+            "type": "textbox"
+        },
+        {
+            "label": "",
+            "tag": "example",
+            "id": [107],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "force": false,
+            "ignore_for_result": true,
+            "options": {
+                "answers": [
+                    {"label": "Überhaupt nicht", "value": 1},
+                    {"label": "Eher nicht", "value": 2},
+                    {"label": "Halbwegs", "value": 3},
+                    {"label": "Überwiegend", "value": 4},
+                    {"label": "Völlig", "value": 5}
+                ],
+                "questions": [
+                    {"id": 107, "label": "Bekommen Sie von anderen Menschen die Unterstützung, die Sie brauchen?", "tag": "example1"}
+                ]
+            }
+        },
+        {
+            "label": "Bei dieser Frage sollen Sie das Feld ankreuzen, das am besten ausdrückt, in welchem Umfang Sie während der vergangenen zwei Wochen von anderen Menschen die Unterstützung erhalten haben die Sie brauchen. Wenn Sie während der vergangenen zwei Wochen von anderen Menschen überwiegend die Unterstützung erhalten haben die sie brauchen, kreuzen Sie das Feld mit der Zahl 4 an. <br>Wenn Sie während der letzten zwei Wochen von anderen Menschen die Unterstützung die Sie brauchen überhaupt nicht erhalten haben, kreuzen Sie das Feld mit der Zahl 1 an.",
+            "type": "textbox"
+        },
+        {
+            "label": "<b>Bitte lesen Sie jede Frage, überlegen Sie, wie Sie sich in den vergangenen zwei Wochen gefühlt haben, und kreuzen Sie die Zahl auf der Skala an, die für Sie am ehesten zutrifft.</b>",
+            "type": "textbox"
+        },
+        {
+            "label": "1. Wie würden Sie Ihre Lebensqualität beurteilen?",
+            "id": 1,
+            "tag": "q1",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "Sehr schlecht", "value": 1},
+                {"label": "Schlecht", "value": 2},
+                {"label": "Mittelmäßig", "value": 3},
+                {"label": "Gut", "value": 4},
+                {"label": "Sehr gut", "value": 5}
+            ]
+        },
+        {
+            "label": "2. Wie zufrieden Sind Sie mit Ihrer Gesundheit?",
+            "id": 2,
+            "tag": "q2",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "Sehr unzufrieden", "value": 1},
+                {"label": "Unzufrieden", "value": 2},
+                {"label": "Weder zufrieden noch unzufrieden", "value": 3},
+                {"label": "Zufrieden", "value": 4},
+                {"label": "Sehr zufrieden", "value": 5}
+            ]
+        },
+        {
+            "label": "In den folgenden Fragen geht es darum, <b>wie stark </b>Sie während der vergangenen zwei Wochen bestimmte Dinge erlebt haben.",
+            "tag": "block_1",
+            "id": [3,4,5,6],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "force": true,
+            "options": {
+                "answers": [
+                    {"label": "Überhaupt nicht", "value": 1},
+                    {"label": "Ein wenig", "value": 2},
+                    {"label": "Mittelmäßig", "value": 3},
+                    {"label": "Ziemlich", "value": 4},
+                    {"label": "Äußerst", "value": 5}
+                ],
+                "questions": [
+                    {"id": 3, "label": "3. Wie stark werden Sie durch Schmerzen daran gehindert, notwendige Dinge zu tun?", "tag": "q3"},
+                    {"id": 4, "label": "4. Wie sehr sind Sie auf medizinische Behandlung angewiesen, um das tägliche Leben zu meistern", "tag": "q4"},
+                    {"id": 5, "label": "5. Wie gut können Sie Ihr Leben genießen?", "tag": "q5"},
+                    {"id": 6, "label": "6. Betrachten SIe Ihr Leben als sinnvoll?", "tag": "q6"}
+                ]
+            }
+        },
+        {
+            "label": "",
+            "tag": "block_2",
+            "id": [7,8,9],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "force": true,
+            "options": {
+                "answers": [
+                    {"label": "Überhaupt nicht", "value": 1},
+                    {"label": "Ein wenig", "value": 2},
+                    {"label": "Mittelmäßig", "value": 3},
+                    {"label": "Ziemlich", "value": 4},
+                    {"label": "Äußerst", "value": 5}
+                ],
+                "questions": [
+                    {"id": 7, "label": "7. Wie gut können Sie sich konzentrieren?", "tag": "q7"},
+                    {"id": 8, "label": "8. Wie sicher fühlen Sie sich in Ihrem täglichen Leben?", "tag": "q8"},
+                    {"id": 9, "label": "9. Wie gesund sind die Umweltbedingungen in Ihrem Wohngebiet?", "tag": "q9"}
+                ]
+            }
+        },
+        {
+            "label": "In den folgenden Fragen geht es darum, in welchem Umfang Sie während der vergangenen zwei Wochen bestimmte Dinge erlebt haben oder in der Lage waren, bestimmte Dinge zu tun.",
+            "tag": "block_3",
+            "id": [10,11,12,13,14],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "force": true,
+            "options": {
+                "answers": [
+                    {"label": "Überhaupt nicht", "value": 1},
+                    {"label": "Eher nicht", "value": 2},
+                    {"label": "Halbwegs", "value": 3},
+                    {"label": "Überwiegend", "value": 4},
+                    {"label": "Völlig", "value": 5}
+                ],
+                "questions": [
+                    {"id": 10, "label": "10. Haben Sie genug Energie für das tägliche Leben?", "tag": "q10"},
+                    {"id": 11, "label": "11. Können Sie Ihr Aussehen akzeptieren?", "tag": "q11"},
+                    {"id": 12, "label": "12. Haben Sie genug Geld, um Ihre Bedürfnisse erfüllen zu können?", "tag": "q12"},
+                    {"id": 13, "label": "13. Haben Sie Zugang zu den Informationen, die Sie für das tägliche Leben brauchen?", "tag": "q13"},
+                    {"id": 14, "label": "14. Haben Sie ausreichend Möglichkeiten zu Freizeitaktivitäten?", "tag": "q14"}
+                ]
+            }
+        },
+        {
+            "label": "",
+            "tag": "block_4",
+            "id": [15],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "force": true,
+            "options": {
+                "answers": [
+                    {"label": "Sehr schlecht", "value": 1},
+                    {"label": "Schlecht", "value": 2},
+                    {"label": "Mittelmäßig", "value": 3},
+                    {"label": "Gut", "value": 4},
+                    {"label": "Sehr gut", "value": 5}
+                ],
+                "questions": [
+                    {"id": 15, "label": "15. Wie gut können Sie sich fortbewegen?", "tag": "q15"}
+                ]
+            }
+        },
+        {
+            "label": "In den folgenden Fragen geht es darum, wie <b>zufrieden, glücklich oder gut</b> Sie sich während der vergangenen zwei Wochen hinsichtlich verschiedener Aspekte Ihres Lebens gefühlt haben.",
+            "tag": "block_5",
+            "id": [16,17,18,19,20,21,22,23,24,25],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "force": true,
+            "options": {
+                "answers": [
+                    {"label": "Sehr unzufrieden", "value": 1},
+                    {"label": "Unzufrieden", "value": 2},
+                    {"label": "Weder zufrieden noch unzufrieden", "value": 3},
+                    {"label": "Zufrieden", "value": 4},
+                    {"label": "Sehr zufrieden", "value": 5}
+                ],
+                "questions": [
+                    {"id": 16, "label": "16. Wie zufrieden sind Sie mit Ihrem Schlaf?", "tag": "q16"},
+                    {"id": 17, "label": "17. Wie zufrieden sind Sie mit Ihrer Fähigkeit, alltägliche Dinge erledigen zu können?", "tag": "q17"},
+                    {"id": 18, "label": "18. Wie zufrieden sind Sie mit Ihrer Arbeitsfähigkeit?", "tag": "q18"},
+                    {"id": 19, "label": "19. Wie zufrieden sind Sie mit sich selbst?", "tag": "q19"},
+                    {"id": 20, "label": "20. Wie zufrieden sind Sie mit Ihren persönlichen Beziehungen?", "tag": "q20"},
+                    {"id": 21, "label": "21. Wie zufrieden sind Sie mit Ihrem Sexualleben?", "tag": "q21"},
+                    {"id": 22, "label": "22. Wie zufrieden sind Sie mit der Unterstützung durch Freunde?", "tag": "q22"},
+                    {"id": 23, "label": "23. Wie zufrieden sind Sie mit Ihren Wohnbedingungen?", "tag": "q23"},
+                    {"id": 24, "label": "24. Wie zufrieden sind Sie mit Ihren Möglichkeiten, Gesundheitsdienste in Anspruch nehmen zu können?", "tag": "q24"},
+                    {"id": 25, "label": "25. Wie zufrieden sind Sie mit den Beförderungsmitteln, die Ihnen zur Verfügung stehen?", "tag": "q25"}
+                ]
+            }
+        },
+        {
+            "label": "In der folgenden Frage geht es darum, <b>wie oft</b> sich während der vergangenen zwei Wochen bei Ihnen negative Gefühle eingestellt haben, wie zum Beispiel Angst oder Traurigkeit.",
+            "tag": "q26",
+            "id": [26],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "force": true,
+            "options": {
+                "answers": [
+                    {"label": "Niemals", "value": 1},
+                    {"label": "Nicht oft", "value": 2},
+                    {"label": "Zeitweilig", "value": 3},
+                    {"label": "Oftmals", "value": 4},
+                    {"label": "Immer", "value": 5}
+                ],
+                "questions": [
+                    {"id": 26, "label": "26. Wie häufig haben Sie negative Gefühle wie Traurigkeit, Verzweiflung, Angst oder Depression?", "tag": "q26"}
+                ]
+            }
+        },
+        {
+            "label": "Hat Ihnen jemand beim Ausfüllen dieses Fragebogens geholfen?",
+            "id": 108,
+            "tag": "help",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "Ja", "value": "y"},
+                {"label": "Nein", "value": "n"}
+            ]
+        },
+        {
+            "label": "Wie lange hat es gedauert, den Fragebogen auszufüllen?",
+            "id": 109,
+            "caption": "in Minuten",
+            "tag": "time",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Haben Sie irgendwelche Anmerkungen zu diesem Fragebogen?",
+            "id": 110,
+            "caption": "",
+            "tag": "feedback",
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        }
+    ],
+
+
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], "value": [1,2,3,4,5], "score": [1,2,3,4,5]},
+            {"id": [3,4,26], "value": [1,2,3,4,5], "score": [5,4,3,2,1]}
+        ],
+        "domaine":[
+            {"label": "Physische Gesundheit", "id": [3,4,10,15,16,17,18], "method": "avg_multiply", "value": 4},
+            {"label": "Psychologische Gesundheit", "id": [5,6,7,11,19,26], "method": "avg_multiply", "value": 4},
+            {"label": "Soziale Beziehungen", "id": [20,21,22], "method": "avg_multiply", "value": 4},
+            {"label": "Umwelt", "id": [8,9,12,13,14,23,24,25], "method": "avg_multiply", "value": 4},
+            {"label": "Score_physisch", "id": ["Physische Gesundheit"], "method": "sum_sub_multiply", "value": [4, 6.25]},
+            {"label": "Score_psychisch", "id": ["Psychologische Gesundheit"], "method": "sum_sub_multiply", "value": [4, 6.25]},
+            {"label": "Score_sozial", "id": ["Soziale Beziehungen"], "method": "sum_sub_multiply", "value": [4, 6.25]},
+            {"label": "Score_umwelt", "id": ["Umwelt"], "method": "sum_sub_multiply", "value": [4, 6.25]}         
+        ]
+    }
+
+}

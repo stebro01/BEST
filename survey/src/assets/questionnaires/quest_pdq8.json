@@ -1,0 +1,48 @@
+{
+    "title": "PDQ-8",
+    "short_title": "pdq8",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445536008",
+        "display" : "PDQ-8",
+        "version": "20220317"
+    },
+    "description": "Lebensqualität bei Parkinson",
+    "manual": "",
+    "keywords": "parkinson qualitiy of life",
+    "items": [
+    
+        {
+            "label": "Wie oft haben Sie <b>im letzten Monat</b> wegen Ihrer Parkinson-Erkrankung ...",
+            "tag": "",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "niemals", "value": 0},
+                    {"label": "selten", "value": 1},
+                    {"label": "manchmal", "value": 2},
+                    {"label": "häufig", "value": 3},
+                    {"label": "immer / überhaupt nicht", "value": 4}
+                ],
+                "questions": [
+                    {"label": "1. Probleme gehabt, sich in der Öffentlichkeit zu bewegen?", "tag": "mobility"},
+                    {"label": "2. Schwierigkeiten gehabt, sich selbst anzuziehen?", "tag": "adl"},
+                    {"label": "3. Sich niedergeschlagen oder deprimiert?", "tag": "emotion"},
+                    {"label": "4. Probleme im Verhältnis mit ihnen nahe stehenden Menschen gehabt?", "tag": "social"},
+                    {"label": "5. Probleme gehabt, sich zu konzentrieren (z.B. beim Lesen oder beim Fernsehen)?", "tag": "cognition"},
+                    {"label": "6. Sich außerstande gefühlt, mit anderen richtig zu kommunizieren?", "tag": "communication"},
+                    {"label": "7. Schmerzhafte Muskelkrämpfe gehabt?", "tag": "body"},
+                    {"label": "8. Sich in der Öffentlichkeit wegen ihrer Parkinson-Erkrankung geschämt?", "tag": "stigma"}
+
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

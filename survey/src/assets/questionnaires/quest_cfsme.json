@@ -1,0 +1,169 @@
+{
+    "title": "Kanadische Kriterien für CFS/ME",
+    "short_title": "cfsme",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "52702003",
+        "display" : "Kanadische Kriterien für CFS/ME",
+        "version": "20211026"
+    },
+    "description": "modifiziert nach Carruthers BM Myalgic encephalomyelitis: International Consensus Criteria 2003",
+    "manual": "Bitte kreuzen Sie die für Sie zutreffenden Symptome an.",
+    "ref": "https://cfc.charite.de/fileadmin/user_upload/microsites/kompetenzzentren/cfc/Landing_Page/Kanadische_Kriterien_Bell.pdf",
+    "keywords": "fatigue cfs covid",
+    "items": [
+        {
+            "label": "1. Erschöpfung/Fatigue und Zustandsverschlechterung nach Belastung",
+            "id": 1,
+            "coding": { "display" : "fatigue", "code" : "84229001", "system" : "http://snomed.info/sct"},
+            "value": [],
+            "type": "checkbox",
+            "inline": false,
+            "options": [
+                {"label": "deutliches Ausmaß einer neu aufgetretenen, anderweitig nicht erklärbaren körperlichen oder mentalen Erschöpfung, die zu einer erheblichen Reduktion des Aktivtätsniveaus führt", "value": "reduction_activity_level"},
+                {"label": "Erschöpfung, Verstärkung des schweren Krankheitsgefühls und/oder Schmerzen Belastung mit einer verzögerten Erholungsphase (mehr als 24 Stunden, kann Tage dauern)", "value": "delayed_recovery_phase"},
+                {"label": "Die Symptome können durch jede Art von nach körperlicher oder mentaler Anstrengung oder Stress verschlechtert werden", "value": "worsening_by_stress"}
+            ]
+        },
+        {
+            "label": "2. Schlafstörungen",
+            "id": 2,
+            "coding": { "display" : "sleep_difficulty", "code" : "441877007", "system" : "http://snomed.info/sct"},
+            "value": [],
+            "type": "checkbox",
+            "inline": false,
+            "options": [
+                {"label": "Einschlafstörungen", "value": "falling_asleep"},
+                {"label": "Durchschlafstörungen", "value": "sleeping_through"},
+                {"label": "Veränderter Tag-Nacht-Rhythmus", "value": "day_night_rhythm"},
+                {"label": "Schlaf führt zu keiner Erholung", "value": "no_recreation"}
+            ]
+        },
+        {
+            "label": "3. Schmerzen",
+            "id": 3,
+            "coding": { "display" : "pain", "code" : "22253000", "system" : "http://snomed.info/sct"},
+            "value": [],
+            "type": "checkbox",
+            "inline": false,
+            "options": [
+                {"label": "Gelenkschmerzen", "value": "joint_pain"},
+                {"label": "Muskelschmerzen", "value": "muscle_pain"},
+                {"label": "Kopfschmerzen", "value": "headache"}
+            ]
+        },
+        {
+            "label": "4. Neurologische/Kognitive Manifestation",
+            "id": 4,
+            "coding": { "display" : "neurological_cognitive_manifestation", "code" : "102957003", "system" : "http://snomed.info/sct"},
+            "value": [],
+            "type": "checkbox",
+            "inline": false,
+            "options": [
+                {"label": "Beeinträchtigung der Konzentrationsfähigkeit und des Kurzzeitgedächtnisses", "value": "impairement_concentrate_memory"},
+                {"label": "Schwierigkeiten mit der Informationsverarbeitung, der Kategorisierung, Wortfindungsstörungen Lesestörungen", "value": "difficulties_words_information"},
+                {"label": "Wahrnehmungs- und Sinnesstörungen", "value": "perceptual_sensory_disorders"},
+                {"label": "Desorientierung oder Verwirrung", "value": "disorientation"},
+                {"label": "Bewegungskoordinationsstörungen", "value": "movement_disorders"},
+                {"label": "Es kommt zu Überlastungserscheinungen (Rückfälle und/oder Ängste) durch: zu viele Informationen, zu viele Sinneseindrücke (zB Licht, Lärm) zu viel Stres", "value": "overload_symptoms"}
+            ]
+        },
+        {
+            "label": "5. Autonome Manifestation",
+            "id": 5,
+            "coding": { "display" : "autonomous_manifestation", "code" : "15241006", "system" : "http://snomed.info/sct"},
+            "value": [],
+            "type": "checkbox",
+            "inline": false,
+            "options": [
+                {"label": "Schnelle Lagewechsel (v.a. Liegen zum Stehen) führen zu Schwindel und/oder “Schwarzwerden vor Augen”", "value": "vertigo"},
+                {"label": "Bei Lagewechsel tritt Herzrasen auf (POTS)", "value": "herzrasen"},
+                {"label": "Schwindel und Benommenheit", "value": "dizziness"},
+                {"label": "Extreme Blässe", "value": "paleness"},
+                {"label": "Darmstörungen (diffuse Schmerzen, Brennen, Blähungen) oder", "value": "intestinal_symptoms"},
+                {"label": "Blasenstörungen", "value": "bladder_dysfunction"},
+                {"label": "Vasomotorische Instabilität (Instabilität des Gefäßtonus)", "value": "vasomotor_instability"},
+                {"label": "Atemstörungen", "value": "respiratory_disturbances"}
+            ]
+        },
+        {
+            "label": "6. Neuroendokrine Manifestation",
+            "id": 6,
+            "tag": "neuroendocrine_manifestation",
+            "value": [],
+            "type": "checkbox",
+            "inline": false,
+            "options": [
+                {"label": "Anpassung Köpertemperatur gestört", "value": "body_temperature"},
+                {"label": "Hitze wird nicht gut vertragen / Kälte wird nicht gut vertragen", "value": "sensitivity_heat_cold"},
+                {"label": "Appetitverlust oder Gesteigerter Appetit oder Gewichtszunahme oder Gewichtsabnahme", "value": "change_appetite_weight"},
+                {"label": "Niedrige Blutzuckerspiegel", "value": "blood_sugar"},
+                {"label": "Stress ist schlechter zu verarbeiten Stress führt zu einer Verstärkung der Erschöpfung und emotionaler Unsicherheit", "value": "stress"}
+            ]
+        },
+        {
+            "label": "7. Immunologische Manifestationen",
+            "id": 7,
+            "coding": { "display" : "immunologic_manifestations", "code" : "781474001", "system" : "http://snomed.info/sct"},
+            "value": [],
+            "type": "checkbox",
+            "inline": false,
+            "options": [
+                {"label": "Schmerzhafte Lymphknoten", "value": "painful_lymph_nodes"},
+                {"label": "Wiederkehrende Halsschmerzen", "value": "sore_throat"},
+                {"label": "Neue Allergien/ Bereits bestehende Allergien haben sich verändert", "value": "allergies"},
+                {"label": "Grippeähnliche Symptome oder allgemeines Krankheitsgefühl", "value": "flue_like_symptomes"},
+                {"label": "Überempfindlichkeit, Unverträglichkeit von Medikamenten und/oder Chemikalien", "value": "hypersensitivity"}
+            ]
+        },
+        {
+            "label": "Dauer der Beschwerden (Monate)",
+            "id": 8,
+            "coding": { "display" : "duration_month", "code" : "103335007", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        }
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,2,3,4,5,6,7], "method":"count"},
+            {"id": [8], "method":"raw"}
+        ],
+        "domaine":[
+            {"label": "fatigue", "id": [1], "method": "sum_range", "sum_range": [
+                {"value": [0, 2], "score": 0},
+                {"value": [3, 999], "score": 1}
+            ]},
+            {"label": "sleep", "id": [2], "method": "sum_range", "sum_range": [
+                {"value": [0, 0], "score": 0},
+                {"value": [1, 999], "score": 1}
+            ]},
+            {"label": "pain", "id": [3], "method": "sum_range", "sum_range": [
+                {"value": [0, 0], "score": 0},
+                {"value": [1, 999], "score": 1}
+            ]},
+            {"label": "neurologic_cognitive", "id": [4], "method": "sum_range", "sum_range": [
+                {"value": [0, 1], "score": 0},
+                {"value": [2, 999], "score": 1}
+            ]},
+            {"label": "others", "id": [5,6,7], "method": "sum_range", "sum_range": [
+                {"value": [0, 2], "score": 0},
+                {"value": [2, 999], "score": 1}
+            ]},
+            {"label": "duration", "id": [8], "method": "sum_range", "sum_range": [
+                {"value": [0, 5.9], "score": 0},
+                {"value": [6, 999], "score": 1}
+            ]},
+                
+            {"label": "sum", "id": ["fatigue","sleep", "pain", "neurologic_cognitive", "others", "duration"], "method": "sum"}
+        ],
+        "evaluation": [
+            {"range": [0,5], "label": "Kriterien für CFS/ME nicht erfüllt"},
+            {"range": [6,99], "label": "Kriterien für CFS/ME erfüllt"}
+        ]
+    }
+
+}

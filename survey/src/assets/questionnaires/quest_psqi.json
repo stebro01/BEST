@@ -1,0 +1,295 @@
+{
+    "title": "PSQI",
+    "short_title": "psqi",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "699200007",
+        "display" : "PSQI (Pittsburgh sleep quality index)",
+        "version": "20211026"
+    },
+    "description": "Schlafqualitäts-Fragebogen",
+    "manual": "",
+    "keywords": "schlaf sleep pittsburgh",
+    "items": [
+        {
+            "label": "Die folgenden Fragen beziehen sich auf Ihre üblichen Schlafgewohnheiten und zwar <b>nur während der letzten vier Wochen</b>. Ihre Antworten sollten möglichst genau sein und sich auf die Mehrzahl der Tage und Nächte während der letzten vier Wochen beziehen. Beantworten Sie bitte alle Fragen."
+        },
+        {
+            "label": "1. Wann sind Sie während der letzten vier Wochen gewöhnlich abends zu Bett gegangen?",
+            "tag": "1_sleep_time",
+            "caption": "übliche Uhrzeit:",
+            "value": null,
+            "type": "time",
+            "inline": true,
+            "id": 1
+        },
+        {
+            "label": "2. Wie lange hat es während der letzten vier Wochen gewöhnlich gedauert, bis Sie nachts eingeschlafen sind?",
+            "tag": "2_duration_fall_asleep",
+            "hint": "in Minuten:",
+            "value": null,
+            "type": "number",
+            "inline": true,
+            "id": 2
+        },
+        {
+            "label": "3. Wann sind Sie während der letzten vier Wochen gewöhnlich morgens aufgestanden?",
+            "tag": "3_wakeup_time",
+            "caption": "übliche Uhrzeit:",
+            "value": null,
+            "type": "time",
+            "inline": true,
+            "id": 3
+        },
+        {
+            "label": "1 und 3: Wieviele Stunden haben Sie insgesamt im Bett verbracht?",
+            "tag": "31_sleep_duration",
+            "hint": "in Stunden:",
+            "value": null,
+            "type": "number",
+            "inline": true,
+            "id": 31
+        },
+        {
+            "label": "4. Wieviele Stunden haben Sie während der letzten vier Wochen pro Nacht tatsächlich geschlafen? (Das muß nicht mit der Anzahl der Stunden, die Sie im Bett verbracht haben, übereinstimmen.)",
+            "tag": "4_effective_sleep_duration",
+            "hint": "Effektive Schlafzeit (Stunden) pro Nacht:",
+            "value": null,
+            "type": "number",
+            "inline": true,
+            "id": 4
+        },
+        {
+            "label": ""
+        },
+        {
+            "label": "Kreuzen Sie bitte für jede der folgenden Fragen die für Sie zutreffende Antwort an. Beantworten Sie bitte <b>alle</b> Fragen."
+        },
+        {
+            "label": "5. Wie oft haben Sie während der letzten vier Wochen schlecht geschlafen, ...",
+            "id": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 
+            "tag": "5_bad_sleep",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "longanswers": true,
+            "options": {
+                "answers": [
+                    {"label": "Während der letzten vier Wochen gar nicht", "value": 0},
+                    {"label": "Weniger als einmal pro Woche", "value": 1},
+                    {"label": "Einmal oder zweimal pro Woche", "value": 2},
+                    {"label": "Dreimal oder häufiger pro Woche", "value": 3}
+                ],
+                "questions": [
+                    {"id": 6, "label": "a) ... weil Sie nicht innerhalb von 30 Minuten einschlafen konnten?", "tag": "a"},
+                    {"id": 7, "label": "b) ... weil Sie mitten in der Nacht oder früh morgens aufgewacht sind?", "tag": "b"},
+                    {"id": 8, "label": "c) ... weil Sie aufstehen mussten, um zur Toilette zu gehen?", "tag": "c"},
+                    {"id": 9, "label": "d) ... weil Sie Beschwerden beim Atmen hatten?", "tag": "d"},
+                    {"id": 10, "label": "e) ... weil Sie husten mußten oder laut geschnarcht haben?", "tag": "e"},
+                    {"id": 11, "label": "f)  ... weil Ihnen zu kalt war?", "tag": "f"},
+                    {"id": 12, "label": "g) ... weil Ihnen zu warm war?", "tag": "g"},
+                    {"id": 13, "label": "h) ... weil Sie schlecht geträumt hatten?", "tag": "h"},
+                    {"id": 14, "label": "i) ... weil Sie Schmerzen hatten?", "tag": "i"},
+                    {"id": 15, "label": "j) ... aus anderen Gründen?", "tag": "j", "force": false}
+                ]
+            }
+        },
+        {
+            "label": "(Ergänzung 5j). Wenn Sie bei der letzten Frage andere Gründe angegeben haben, diese bitte beschreiben",
+            "tag": "5j_other_reasons",
+            "value": null,
+            "type": "text",
+            "inline": true,
+            "id": 0
+        },
+        {
+            "label": "6. Wie würden Sie insgesamt die Qualität Ihres Schlafes während der letzten vier Wochen beurteilen?",
+            "tag": "6_sleep_quality",
+            "id": 16,
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Sehr gut", "value": 0},
+                {"label": "Ziemlich gut", "value": 1},
+                {"label": "Ziemlich schlecht", "value": 2},
+                {"label": "Sehr schlecht", "value": 3}
+
+            ]
+        },
+        {
+            "label": "7. Wie oft haben Sie während der letzten vier Wochen Schlafmittel eingenommen (vom Arzt verschriebene oder frei verkäufliche)?",
+            "tag": "7_drugs",
+            "id": 17,
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Während der letzten vier Wochen gar nicht", "value": 0},
+                {"label": "Weniger als einmal pro Woche", "value": 1},
+                {"label": "Einmal oder zweimal pro Woche", "value": 2},
+                {"label": "Dreimal oder häufiger pro Woche", "value": 3}
+            ]
+        },
+        {
+            "label": "8. Wie oft hatten Sie während der letzten vier Wochen Schwierigkeiten wachzubleiben, etwa beim Autofahren, beim Essen oder bei gesellschaftlichen Anlässen? ",
+            "tag": "8_difficulties_stay_awake",
+            "id": 18,
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Während der letzten vier Wochen gar nicht", "value": 0},
+                {"label": "Weniger als einmal pro Woche", "value": 1},
+                {"label": "Einmal oder zweimal pro Woche", "value": 2},
+                {"label": "Dreimal oder häufiger pro Woche", "value": 3}
+            ]
+        },
+        {
+            "label": "9. Hatten Sie während der letzten vier Wochen Probleme, mit genügend Schwung die üblichen Alltagsaufgaben zu erledigen?",
+            "tag": "9_nomojo",
+            "id": 19,
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keine Probleme", "value": 0},
+                {"label": "Kaum Probleme", "value": 1},
+                {"label": "Etwas Probleme", "value": 2},
+                {"label": "Große Probleme", "value": 3}
+            ]
+        },
+        {
+            "label": "10. Schlafen Sie allein in Ihrem Zimmer?",
+            "tag": "10_sleep_habits",
+            "id": 20,
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ja", "value": 0},
+                {"label": "Ja, aber ein Partner/Mitbewohner schläft in einem anderen Zimmer", "value": 1},
+                {"label": "Nein, der Partner schläft im selben Zimmer, aber nicht im selben Bett", "value": 2},
+                {"label": "Nein, der Partner schläft im selben Bett", "value": 3}
+            ]
+        },
+        {
+            "label": "Machen Sie bitte noch folgende Angaben zu Ihrer Person:"
+        },
+        {
+            "label": "Alter",
+            "coding": { "display" : "age", "code" : "397669002", "system" : "http://snomed.info/sct"},
+            "hint": "Jahre:",
+            "value": null,
+            "type": "number",
+            "inline": true,
+            "id": 25
+        },
+        {
+            "label": "Körpergröße",
+            "coding": { "display" : "height", "code" : "50373000", "system" : "http://snomed.info/sct"},
+            "hint": "cm:",
+            "value": null,
+            "type": "number",
+            "inline": true,
+            "id": 26
+        },
+        {
+            "label": "Gewicht",
+            "coding": { "display" : "weight", "code" : "27113001", "system" : "http://snomed.info/sct"},
+            "hint": "kg:",
+            "value": null,
+            "type": "number",
+            "inline": true,
+            "id": 27
+        },
+        {
+            "label": "Geschlecht",
+            "id": 28,
+            "coding": { "display" : "gender", "code" : "263495000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "m", "value": "m"},
+                {"label": "w", "value": "w"},
+                {"label": "d", "value": "d"}
+            ]
+        },
+        {
+            "label": "Beruf",
+            "id": 29,
+            "coding": { "display" : "profession", "code" : "14679004", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": true,
+            "options": [
+                {"label": "Schüler/Student(in)", "value": "student"},
+                {"label": "Arbeiter(in)", "value": "worker"},
+                {"label": "Rentner(in)", "value": "pensioner"},
+                {"label": "selbständig", "value": "independent"},
+                {"label": "Angestellte(r)", "value": "employees"},
+                {"label": "arbeitslos/ Hausfrau(mann)", "value": "unemployed"}
+            ]
+        }
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,3], "method":"raw"},
+            {"id": [31], "value": 10, "method":"multiply"},
+            {"id": [6,7,8,9,10,11,12,13,14,15,16,17,18,19], "value": [0,1,2,3], "score": [0,1,2,3]},
+            {"id": [4], "method": "range", "range": [
+                {"value": [7, 999], "score": 0},
+                {"value": [6, 7], "score": 1},
+                {"value": [5, 6], "score": 2},
+                {"value": [0, 5], "score": 3}
+            ]},
+            {"id": [2], "method": "range", "range": [
+                {"value": [0, 15], "score": 0},
+                {"value": [16, 30], "score": 1},
+                {"value": [31, 60], "score": 2},
+                {"value": [61, 999], "score": 3}
+            ]}
+        ],
+        "domaine":[
+            {"label": "duration", "id": [4], "method": "sum"},
+            {"label": "disturbance", "id": [7,8,9,10,11,12,13,14,15], "method": "sum_range", "sum_range": [
+                {"value": [0, 0], "score": 0},
+                {"value": [1, 9], "score": 1},
+                {"value": [10, 18], "score": 2},
+                {"value": [19, 999], "score": 3}
+            ]},
+            {"label": "latency", "id": [6,2], "method": "sum_range", "sum_range": [
+                {"value": [0, 0], "score": 0},
+                {"value": [1, 2], "score": 1},
+                {"value": [3, 4], "score": 2},
+                {"value": [5, 6], "score": 3}
+            ]},
+            {"label": "day_dysfunction", "id": [18,19], "method": "sum_range", "sum_range": [
+                {"value": [0, 0], "score": 0},
+                {"value": [1, 2], "score": 1},
+                {"value": [3, 4], "score": 2},
+                {"value": [5, 6], "score": 3}
+            ]},
+            {"label": "efficiency", "id": [31], "method": "sum_range", "sum_range": [
+                {"value": [85, 999], "score": 0},
+                {"value": [75, 84.999999], "score": 1},
+                {"value": [65, 74.99999], "score": 2},
+                {"value": [0, 64.99999], "score": 3}
+            ]},
+            {"label": "quality", "id": [16], "method": "sum"},
+            {"label": "meds", "id": [17], "method": "sum"},
+                
+            {"label": "sum", "id": ["duration","disturbance", "latency", "day_dysfunction", "efficiency", "quality", "meds"], "method": "sum"}
+        ],
+        "evaluation": [
+            {"range": [0,5], "label": "gute Schlafqualität"},
+            {"range": [6,99], "label": "schlechte Schlafqualität"}
+        ]
+    }
+
+
+}

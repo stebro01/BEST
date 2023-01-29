@@ -1,0 +1,81 @@
+{
+    "title": "UPDRS I",
+    "short_title": "updrs_1",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "342061000000106",
+        "display" : "UPDRS I - Kognitive Funktionen, Verhalten und Stimmung",
+        "version": "20211028"
+    },
+    "description": "UPDRS I - Kognitive Funktionen, Verhalten und Stimmung",
+    "manual": "Bitte beantworten Sie folgenden Fragen",
+    "keywords": "parkinson updrs",
+    "items": [
+
+        {
+            "label": "1. Intellektuelle Einschränkung",
+            "id": 1,
+            "coding": { "display" : "Intellectual_limitation", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keine", "value": 0},
+                {"label": "Leicht. Vergesslichkeit mit teilweiser Erinnerung an Ereignisse und keine anderweitigen Schwierigkeiten.", "value": 1},
+                {"label": "Mäßiger Gedächtnisverlust mit Desorientierung und mäßigen Schwierigkeiten beim Meistern komplexer Probleme. Leichte, aber definitive Einschränkung zu Hause mit der Notwendigkeit einer gelegentlichen Hilfe.", "value": 2},
+                {"label": "Schwerer Gedächtnisverlust mit zeitlicher und häufig örtlicher Desorientierung. Schwere Einschränkung bei der Bewältigung von Problemen.", "value": 3},
+                {"label": "Schwerer Gedächtnisverlust, Orientierung nur zur Person erhalten. Kann keine Urteile fällen und keine Probleme lösen. Benötigt bei der persönlichen Pflege viel Hilfe. Kann nicht mehr alleine gelassen werden.", "value": 4}
+            ]
+        },
+        {
+            "label": "2. Denkstörungen (als Folge von Demenz oder Medikamenten-Intoxikationen)",
+            "id": 2,
+            "coding": { "display" : "Thinking_disorder", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Keine", "value": 0},
+                {"label": "Lebhafte Träume.", "value": 1},
+                {"label": "'Gutartige' Halluzinationen mit erhaltener Einsicht.", "value": 2},
+                {"label": "Gelegentliche bis häufige Halluzinationen und Wahnvorstellungen; keine Einsicht; könnte sich störend auf die täglichen Aktivitäten auswirken.", "value": 3},
+                {"label": "Persistierende Halluzinationen, Wahnvorstellungen oder floride Psychose. Kann sich nicht selbst versorgen.", "value": 4}
+            ]
+        },
+        {
+            "label": "3. Depression",
+            "id": 3,
+            "coding": { "display" : "Depression", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Nicht vorhanden.", "value": 0},
+                {"label": "Zeitweise Traurigkeit oder Schuldgefühl stärker als normal, niemals Tage oder Wochen anhaltend.", "value": 1},
+                {"label": "Anhaltende Depression (1 Woche oder länger).", "value": 2},
+                {"label": "Anhaltende Depression mit vegetativen Symptomen (Schlaflosigkeit, Appetitlosigkeit, Gewichtsabnahme, Verlust des Interesses).", "value": 3},
+                {"label": "Anhaltende Depression mit vegetativen Symptomen und Selbstmordgedanken oder -absichten.", "value": 4}
+            ]
+        },
+        {
+            "label": "4. Motivation/Initiative",
+            "id": 4,
+            "coding": { "display" : "Motivation", "code" : "0", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Normal.", "value": 0},
+                {"label": "Weniger energisch als sonst; stärker passiv.", "value": 1},
+                {"label": "Fehlende Initiative oder Desinteresse an nicht routinemäßigen Aktivitäten.", "value": 2},
+                {"label": "Fehlende Initiative oder Desinteresse an täglichen (routinemäßigen) Aktivitäten.", "value": 3},
+                {"label": "In sich gekehrt, völliges Fehlen von Motivation.", "value": 4}
+            ]
+        }
+        
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

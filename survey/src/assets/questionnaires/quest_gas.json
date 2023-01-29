@@ -1,0 +1,37 @@
+{
+    "title": "GAS",
+    "short_title": "gas",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "770551000",
+        "display" : "Goal Attainment Scaling",
+        "version": "20211026"
+    },
+    "description": "Goal Attainment Scaling",
+    "manual": "<b>Anleitung</b>: Goal Attainment Scaling ist ein Instrument zur Überprüfung selbst gesteckter Ziele. Es erfordert zunächst die Festlegung eines oder mehrerer konkreter und messbarer Ziele. Für jedes Ziel werden dann Indikatoren ausgewählt, mit deren Hilfe die Zielerreichung überprüft werden kann. Diese Indikatoren werden in eine 5-stufige Skala überführt, in deren Mitte das erwartete Ergebnis steht. Davon ausgehend werden je zwei Stufen nach oben („mehr als erwartet“ und „viel mehr als erwartet“) und zwei Stufen nach unten („weniger als erwartet“ und „viel weniger als erwartet“) gebildet. GAS ermöglicht damit eine klare Zieldefinition zu Beginn eines Projektes (Planungsqualität) sowie die (ggf. prozessbegleitende) Überprüfung der Zielerreichung (Prozess- und/oder Ergebnisqualität). ",
+    "keywords": "neuro general",
+    "ref": "https://www.lzg.nrw.de/_php/login/dl.php?u=/_media/pdf/evalua_tools/leitfaden_gas_endversion.pdf",
+    "items": [
+        
+        {
+            "label": "Das definierte Ziel wurde erreicht:",
+            "id": 1,
+            "coding": { "display" : "GAS", "code" : "770551000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "viel mehr als erwartet", "value": 2},
+                {"label": "mehr als erwartet", "value": 1},
+                {"label": "wie erwartet", "value": 2},
+                {"label": "weniger als erwartet", "value": -1},
+                {"label": "viel weniger als erwartet", "value": -2}
+            ]
+        }
+        
+    ],    
+    "results": {
+        "method": "sum"
+    }
+
+}

@@ -1,0 +1,427 @@
+{
+    "title": "MYMOP2-G (prä)",
+    "short_title": "mymop2g_pre",
+    "description": " MYMOP2 (Measure Yourself Outcome Profile) ",
+    "coding":
+    {
+        "system": "http://snomed.info/sct",
+        "code": "713048001",
+        "display": " MYMOP2 (Measure Yourself Outcome Profile) prä",
+        "version": "20211026"
+    },
+    "manual": "Der MYMOP2 (Measure Yourself Outcome Profile) wurde für die Primärversorgung entwickelt, um die aus Patientensicht führende Beschwerde im Verlauf zu erfassen. Die Beschwerde kann physischer, psychischer oder sozialer Natur sein. <br><b>Bitte machen Sie jeweils ein Kreuz (X) auf der für Sie zutreffenden Zahl:<b>",
+    "keywords": null,
+    "ref": "https://www.klinikum.uni-heidelberg.de/kliniken-institute/institute/abteilung-allgemeinmedizin-und-versorgungsforschung/forschung/instrumente/inventar-fuer-praxisforschung/mymop2",
+    "items":
+    [
+        {
+            "label": "<b>1.)</b> Wählen Sie bitte <b>ein oder zwei</b> Beschwerden (körperlich oder geistig), die Sie am meisten stören. Schreiben Sie diese in das dafür vorgesehene Feld. Überlegen Sie sich nun sorgfältig, wie ausgeprägt Sie jede Beschwerde in der vergangenen Woche empfunden haben und machen Sie ein Kreuz auf der dafür zutreffenden Zahl.",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Beschwerde 1",
+            "id": 1,
+            "coding":
+            {
+                "display": "Beschwerde_1",
+                "code": "409586006",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Bewertung Beschwerde 1",
+            "id": 2,
+            "coding":
+            {
+                "display": "eval_1",
+                "code": "409586006",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": true,
+            "options":
+            [
+                {
+                    "label": "0 (So gut, wie es nur sein könnte)",
+                    "value": "0"
+                },
+                {
+                    "label": "1",
+                    "value": "1"
+                },
+                {
+                    "label": "2",
+                    "value": "2"
+                },
+                {
+                    "label": "3",
+                    "value": "3"
+                },
+                {
+                    "label": "4",
+                    "value": "4"
+                },
+                {
+                    "label": "5",
+                    "value": "5"
+                },
+                {
+                    "label": "6 (So schlecht, wie es nur sein könnte)",
+                    "value": "6"
+                }
+            ]
+        },
+        {
+            "label": "Beschwerde 2",
+            "id": 3,
+            "coding":
+            {
+                "display": "Beschwerde_1",
+                "code": "409586006",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Bewertung Beschwerde 2",
+            "id": 4,
+            "coding":
+            {
+                "display": "eval_2",
+                "code": "409586006",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "0 (So gut, wie es nur sein könnte)",
+                    "value": "0"
+                },
+                {
+                    "label": "1",
+                    "value": "1"
+                },
+                {
+                    "label": "2",
+                    "value": "2"
+                },
+                {
+                    "label": "3",
+                    "value": "3"
+                },
+                {
+                    "label": "4",
+                    "value": "4"
+                },
+                {
+                    "label": "5",
+                    "value": "5"
+                },
+                {
+                    "label": "6 (So schlecht, wie es nur sein könnte)",
+                    "value": "6"
+                }
+            ]
+        },
+        {
+            "label": "",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "<b>2.)</b> Wählen Sie jetzt eine <b>Aktivität </b> (körperlich, sozial oder geistig), die Ihnen wichtig ist, und deren Ausübung durch Ihre Beschwerde(n) erschwert bzw. gänzlich eingeschränkt wird. Kreuzen Sie bitte an, wie ausgeprägt dies in der vergangenen Woche war.",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Aktivität",
+            "id": 5,
+            "coding":
+            {
+                "display": "activity",
+                "code": "257733005",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Bewertung Aktivität",
+            "id": 6,
+            "coding":
+            {
+                "display": "eval_activity",
+                "code": "257733005",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": true,
+            "options":
+            [
+                {
+                    "label": "0 (So gut, wie es nur sein könnte)",
+                    "value": "0"
+                },
+                {
+                    "label": "1",
+                    "value": "1"
+                },
+                {
+                    "label": "2",
+                    "value": "2"
+                },
+                {
+                    "label": "3",
+                    "value": "3"
+                },
+                {
+                    "label": "4",
+                    "value": "4"
+                },
+                {
+                    "label": "5",
+                    "value": "5"
+                },
+                {
+                    "label": "6 (So schlecht, wie es nur sein könnte)",
+                    "value": "6"
+                }
+            ]
+        },
+        {
+            "label": "",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "<b>3.) Allgemeines Wohlergehen:</b> <br>Wie würden Sie Ihr allgemeines Befinden in der vergangenen Woche bewerten?",
+            "id": 7,
+            "coding":
+            {
+                "display": "365275006",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": true,
+            "options":
+            [
+                {
+                    "label": "0 (So gut, wie es nur sein könnte)",
+                    "value": "0"
+                },
+                {
+                    "label": "1",
+                    "value": "1"
+                },
+                {
+                    "label": "2",
+                    "value": "2"
+                },
+                {
+                    "label": "3",
+                    "value": "3"
+                },
+                {
+                    "label": "4",
+                    "value": "4"
+                },
+                {
+                    "label": "5",
+                    "value": "5"
+                },
+                {
+                    "label": "6 (So schlecht, wie es nur sein könnte)",
+                    "value": "6"
+                }
+            ]
+        },
+        {
+            "label": "<b>4.) </b>Wie lange leiden Sie bereits unter <b>Beschwerde 1</b>, egal ob Sie durchgehend oder gelegentlich daran gelitten haben? Bitte kreuzen Sie an.",
+            "id": 8,
+            "coding":
+            {
+                "display": "duration",
+                "code": "103335007",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options":
+            [
+                {
+                    "label": "0-4 Wochen",
+                    "value": "0_4weeks"
+                },
+                {
+                    "label": "4-12 Wochen",
+                    "value": "4_12weeks"
+                },
+                {
+                    "label": "3 Monate - 1 Jahr",
+                    "value": "1year"
+                },
+                {
+                    "label": "1 - 5 Jahre",
+                    "value": "1_5years"
+                },
+                {
+                    "label": "über 5 Jahre",
+                    "value": "morethan5years"
+                }
+            ]
+        },
+        {
+            "label": "<b>5.)</b> Nehmen Sie <b>Medikamente</b> wegen dieser Beschwerden?",
+            "id": 9,
+            "coding":
+            {
+                "display": "Medikamenteneinnahme",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options":
+            [
+                {
+                    "label": "Ja",
+                    "value": "yes"
+                },
+                {
+                    "label": "Nein",
+                    "value": "no"
+                }
+            ]
+        },
+        {
+            "label": "Falls 5 mit JA beantwortet",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "5a) Bitte schreiben Sie die Namen der Medikamente auf und wie oft Sie diese pro Tag einnehmen:",
+            "id": 10,
+            "coding":
+            {
+                "display": "drug_name",
+                "code": "410942007",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "5b) Ist es wichtig für Sie, diese Medikamente zu reduzieren?",
+            "id": 11,
+            "coding":
+            {
+                "display": "drug_eval",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "nicht wichtig",
+                    "value": "nicht"
+                },
+                {
+                    "label": "ein bisschen wichtig",
+                    "value": "etwas"
+                },
+                {
+                    "label": "sehr wichtig",
+                    "value": "sehr"
+                },
+                {
+                    "label": "keine Angaben",
+                    "value": "k.A."
+                }
+            ]
+        },
+        {
+            "label": "Falls 5 mit NEIN beantwortet",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "5c) Wie wichtig ist es für Sie, auch in Zukunft keine Medikamente gegen diese Beschwerde(n) zu nehmen?",
+            "id": 12,
+            "coding":
+            {
+                "display": "nodrug_eval",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "nicht wichtig",
+                    "value": "nicht"
+                },
+                {
+                    "label": "ein bisschen wichtig",
+                    "value": "etwas"
+                },
+                {
+                    "label": "sehr wichtig",
+                    "value": "sehr"
+                },
+                {
+                    "label": "keine Angaben",
+                    "value": "k.A."
+                }
+            ]
+        }
+    ],
+    "results":
+    {
+    }
+}

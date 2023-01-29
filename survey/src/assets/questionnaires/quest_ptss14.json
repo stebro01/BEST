@@ -1,0 +1,75 @@
+{
+    "title": "PTSS-14",
+    "short_title": "ptss14",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445536008",
+        "display" : "Die posttraumatische Stressskala-14 (PTSS-14)",
+        "version": "20211026"
+    },
+    "description": "Die posttraumatische Stressskala-14 (PTSS-14)",
+    "manual": "",
+    "keywords": ": posttraumatic, traumatic, hospital, anxiety, depression, traumatisch, posttraumatisch, ptbs, ptsd, krankenhaus, angst",
+    "items": [
+    	{
+            "label": "A. Wenn ich zurückdenke an die Zeit meiner schweren Erkrankung und an meinen Aufenthalt im Krankenhaus, erinnere ich mich an:",
+            "tag": "block_A",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "Ja", "value": "yes"},
+                    {"label": "Nein", "value": "no"}
+                ],
+                "questions": [
+                    {"label": "Albträume", "tag": "a1"},
+                    {"label": "starke Angst-/Panikzustände", "tag": "a2"},
+                    {"label": "starke Schmerzen", "tag": "a3"},
+                    {"label": "Schwierigkeiten beim Atmen / Gefühle des Erstickens", "tag": "a4"}
+                ]
+            }
+        },
+        {
+            "label": "Zurzeit (das heißt in den letzten Tagen), leide ich unter:",
+            "tag": "block_B",
+            "caption": "Bitte wählen Sie einen Wert zwischen 1 (nie) und 7 (immer)!",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "rotate": false,
+            "options": {
+                "answers": [
+                    {"label": "1", "value": 1},
+                    {"label": "2", "value": 2},
+                    {"label": "3", "value": 3},
+                    {"label": "4", "value": 4},
+                    {"label": "5", "value": 5},
+                    {"label": "6", "value": 6},
+                    {"label": "7", "value": 7}
+                ],
+                "questions": [
+                    {"label": "1. Schlafstörungen", "tag": "1"},
+                    {"label": "2. Alpträumen", "tag": "2"},
+                    {"label": "3. Depressionen / ich fühlte mich niedergeschlagen / bedrückt", "tag": "3"},
+                    {"label": "4. Schreckhaftigkeit / ich bin leicht durch plötzliche Geräusche oder Bewegungen zu erschrecken", "tag": "4"},
+                    {"label": "5. dem Bedürfnis mich zurückzuziehen", "tag": "5"},
+                    {"label": "6. Reizbarkeit, was bedeutet, dass ich mich leicht aufrege, verärgert bin oder wütend werde", "tag": "6"},
+                    {"label": "7. häufigen Stimmungsschwankungen", "tag": "7"},
+                    {"label": "8. einem schlechten Gewissen, ich mache mir Vorwürfe, ich habe Schuldgefühle", "tag": "8"},
+                    {"label": "9. Angst vor Orten und Situationen, die mich an das Krankenhaus erinnern", "tag": "9"},
+                    {"label": "10. Muskelverspannungen", "tag": "10"},
+                    {"label": "11. erschütternden, ungewollten Gedanken, oder Vorstellungen von meiner Zeit im Krankenhaus", "tag": "11"},
+                    {"label": "12. einem Gefühl der Gleichgültigkeit und Abgestumpftheit (z.B. die Unfähigkeit zu weinen oder Zuneigung zu entwickeln", "tag": "12"},
+                    {"label": "13. der Vermeidung von Plätzen, Personen oder Situationen, die mich an das Krankenhaus erinnern", "tag": "13"},
+                    {"label": "14. dem Gefühl, als wenn meine Pläne oder Träume für die Zukunft nicht wahr werden würden", "tag": "14"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

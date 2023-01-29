@@ -1,0 +1,76 @@
+{
+    "title": "DEX Fremdbeurteilung weibliche Patientin",
+    "short_title": "dex_female",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445813009",
+        "display" : "Dysexecutive Questionnaire (female)",
+        "version": "20211026"
+    },
+    "description": "Dysexecutive Questionnaire",
+    "manual": "",
+    "keywords": "dysexecutive, thrid-party, assessment, female, patient, executive",
+    "items": [
+    	{
+            "label": "Name / Code des Patienten",
+            "caption": "",
+            "tag": "patient_code",
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true
+        },
+    	{
+            "label": "Ihre Beziehung zur Patientin",
+            "caption": "",
+            "tag": "relation",
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Dieser Fragebogen beschreibt einige der Schwierigkeiten, die Patienten nach einer Gehirnverletzung haben können. Wir bitten Sie, sich die einzelnen Aussagen sorgfältig durchzulesen und anzugeben, wie oft Sie diese Probleme bei der Patientin beobachten. Bitte kreuzen Sie das entsprechende Kästchen an.",
+            "tag": "questions",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "nie", "value": 0},
+                    {"label": "selten", "value": 1},
+                    {"label": "manchmal", "value": 2},
+                    {"label": "oft", "value": 3},
+                    {"label": "sehr oft", "value": 4}
+                ],
+                "questions": [
+                    {"label": "1. Sie hat Probleme zu verstehen, was andere Personen ihr sagen wollen, es sei denn, sie drücken sich klar und deutlich aus.", "tag": "1"},
+                    {"label": "2. Sie handelt ohne nachzudenken und macht das erste, was ihr in den Sinn kommt.", "tag": "2"},
+                    {"label": "3. Sie spricht über Dinge oder Begenheiten, die nicht wirklich passiert sind, von denen sie aber glaubt, dass sie geschehen sind.", "tag": "3"},
+                    {"label": "4. Sie hat Schwierigkeiten, vorausschauend zu sein und für die Zukunft zu planen.", "tag": "4"},
+                    {"label": "5. Über bestimmte Dinge ist sie übermäßig erregt oder verärgert und neigt dann dazu 'zu weit zu gehen'.", "tag": "5"},
+                    {"label": "6. Sie bringt Ereignisse durcheinander und verwechselt die richtige Reihenfolge der Geschehnisse.", "tag": "6"},
+                    {"label": "7. Sie hat Schwierigkeiten, das Ausmaß ihrer Einschränkungen realistisch zu sehen und macht sich unrealistische Vorstellungen bezüglich der Zukunft.", "tag": "7"},
+                    {"label": "8. Sie ist lethargisch und kann sich für nichts begeistern.", "tag": "8"},
+                    {"label": "9. Sie macht oder sagt peinliche Dinge, wenn sie mit anderen zusammen ist.", "tag": "9"},
+                    {"label": "10. Sie möchte gerne etwas tun, aber im nächsten Augenblick hat sie keine Lust mehr dazu.", "tag": "10"},
+                    {"label": "11. Sie hat Schwierigkeiten, Gefühle zu zeigen.", "tag": "11"},
+                    {"label": "12. Sie verliert schon bei Kleinigkeiten die Beherrschung.", "tag": "12"},
+                    {"label": "13. Es kümmert sie nicht, wie sie sich in bestimmten Situationen verhalten sollte.", "tag": "13"},
+                    {"label": "14. Sie findet es schwierig, damit aufzuhören, etwas wiederholt zu tun oder zu sagen.", "tag": "14"},
+                    {"label": "15. Sie neigt dazu, unruhig zu sein, und kann nicht lange stillsitzen.", "tag": "15"},
+                    {"label": "16. Sie findet es schwierig, etwas nicht zu tun, obwohl sie genau weiß, dass sie es nicht tun sollte.", "tag": "16"},
+                    {"label": "17. Sie sagt oder behauptet etwas, aber verhält sich ganz anders.", "tag": "17"},
+                    {"label": "18. Sie kann nur schlecht bei der Sache bleiben und ist leicht ablenkbar.", "tag": "18"},
+                    {"label": "19. Sie hat Schwierigkeiten, Entscheidungen zu treffen oder zu entscheiden, was sie tun will.", "tag": "19"},
+                    {"label": "20. Es kümmert sie nicht oder es ist ihr nicht bewusst, wie andere ihr Verhalten empfinden.", "tag": "20"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

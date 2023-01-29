@@ -1,0 +1,335 @@
+{
+    "title": "BDI 2",
+    "short_title": "bdi2",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "717268000",
+        "display" : "Becks depression inventar II",
+        "version": "20211026"
+    },
+    "description": "",
+    "manual": "<b>Anleitung</b>: Dieser Fragebogen enthält 21 Gruppen von Aussagen. Bitte lesen Sie jede dieser Gruppen von Aussagen sorgfältig durch und suchen Sie sich dann in jeder Gruppe <b>eine Aussage</b> heraus, die am besten beschreibt, wie Sie sich <b>in den letzten zwei Wochen, einschließlich heute, gefühlt haben</b>. Kreuzen Sie die Zahl neben der Aussage an, die Sie sich herausgesucht haben (0, 1, 2 oder 3). Falls in einer Gruppe mehrere Aussagen gleichermaßen auf Sie zutreffen, kreuzen Sie die Aussage mit der höheren Zahl an. Achten Sie bitte darauf, dass Sie in jeder Gruppe nicht mehr als eine Aussage ankreuzen, das gilt auch für Gruppe 16 (Veränderung der Schlafgewohnheiten) oder Gruppe 18 (Veränderungen des Appetits).",
+    "keywords": "psych depression",
+    "items": [
+
+        {
+            "label": "1. Traurigkeit",
+            "id": 1,
+            "coding": { "display" : "traurigkeit", "code" : "709516007", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich bin nicht traurig", "value": 0},
+                {"label": "Ich bin oft traurig", "value": 1},
+                {"label": "Ich bin ständig traurig", "value": 2},
+                {"label": "Ich bin so traurig oder unglücklich, dass ich es nicht aushalte", "value": 3}
+            ]
+        },
+        {
+            "label": "2. Pessimismus",
+            "id": 2,
+            "coding": { "display" : "pessimismus", "code" : "247799003", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich sehe nicht mutlos in die Zukunft", "value": 0},
+                {"label": "Ich sehe mutloser in die Zukunft als sonst", "value": 1},
+                {"label": "Ich bin mutlos und erwarte nicht, dass meine Situation besser wird", "value": 2},
+                {"label": "Ich glaube, dass meine Zukunft hoffnungslos ist und nur noch schlechter wird", "value": 3}
+            ]
+        },
+        {
+            "label": "3. Versagensgefühle",
+            "id": 3,
+            "coding": { "display" : "versagensgefuehle", "code" : "76797004", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich fühle mich nicht als Versager", "value": 0},
+                {"label": "Ich habe häufiger Versagensgefühle", "value": 1},
+                {"label": "Wenn ich zurückblicke, sehe ich eine Menge Fehlschläge", "value": 2},
+                {"label": "Ich habe das Gefühl, als Mensch ein völliger Versager zu sein", "value": 3}
+            ]
+        },
+        {
+            "label": "4. Verlust von Freude",
+            "id": 4,
+            "coding": { "display" : "verlustvonfreude", "code" : "28669007", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich kann die Dinge genauso gut genießen wie früher", "value": 0},
+                {"label": "Ich kann die Dinge nicht mehr so genießen wie früher", "value": 1},
+                {"label": "Dinge, die mir früher Freude gemacht haben, kann ich kaum mehr genießen", "value": 2},
+                {"label": "Dinge, die mir früher Freude gemacht haben, kann ich überhaupt nicht mehr genießen", "value": 3}
+            ]
+        },
+        {
+            "label": "5. Schuldgefühle",
+            "id": 5,
+            "coding": { "display" : "schuldgefuehle", "code" : "7571003", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich habe keine besonderen Schuldgefühle", "value": 0},
+                {"label": "Ich habe oft Schuldgefühle wegen Dingen, die ich getan habe oder hätte tun sollen", "value": 1},
+                {"label": "Ich habe die meiste Zeit Schuldgefühle", "value": 2},
+                {"label": "Ich habe ständig Schuldgefühle", "value": 3}
+            ]
+        },
+        {
+            "label": "6. Bestrafungsgefühle",
+            "id": 6,
+            "coding": { "display" : "bestrafungsgefuehle", "code" : "", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich habe nicht das Gefühl, für etwas bestraft zu sein", "value": 0},
+                {"label": "Ich habe das Gefühl, vielleicht bestraft zu werden", "value": 1},
+                {"label": "Ich erwarte, bestraft zu werden", "value": 2},
+                {"label": "Ich habe das Gefühl, bestraft zu sein", "value": 3}
+            ]
+        },
+        {
+            "label": "7. Selbstablehnung",
+            "id": 7,
+            "coding": { "display" : "selbstablehnung", "code" : "", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich halte von mir genauso viel wie immer", "value": 0},
+                {"label": "Ich habe Vertrauen in mich verloren", "value": 1},
+                {"label": "Ich bin von mir enttäuscht", "value": 2},
+                {"label": "Ich lehne mich völlig ab", "value": 3}
+            ]
+        },
+        {
+            "label": "8. Selbstvorwürfe",
+            "id": 8,
+            "coding": { "display" : "selbstvorwuerfe", "code" : "", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich kritisiere oder tadle mich nicht mehr als sonst", "value": 0},
+                {"label": "Ich bin mir gegenüber kritischer als sonst", "value": 1},
+                {"label": "Ich kritisiere mich für all meine Mängel", "value": 2},
+                {"label": "Ich gebe mir die Schuld für alles Schlimme, was passiert", "value": 3}
+            ]
+        },
+        {
+            "label": "9. Selbstmordgedanken",
+            "id": 9,
+            "coding": { "display" : "selbstmordgedanken", "code" : "6471006", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich denke nicht daran, mir etwas anzutun", "value": 0},
+                {"label": "Ich denke manchmal an Selbstmord, aber ich würde es nicht tun", "value": 1},
+                {"label": "Ich möchte mich am liebsten umbringen", "value": 2},
+                {"label": "Ich würde mich umbringen, wenn ich die Gelegenheit dazu hätte", "value": 3}
+            ]
+        },
+        {
+            "label": "10. Weinen",
+            "id": 10,
+            "coding": { "display" : "weinen", "code" : "271951008", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich weine nicht öfter als früher", "value": 0},
+                {"label": "Ich weine jetzt mehr als früher", "value": 1},
+                {"label": "Ich weine beim geringsten Anlass", "value": 2},
+                {"label": "Ich möchte gern weinen, aber ich kann nicht", "value": 3}
+            ]
+        },
+        {
+            "label": "11. Unruhe",
+            "id": 11,
+            "coding": { "display" : "unruhe", "code" : "162221009", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich bin nicht unruhiger als sonst", "value": 0},
+                {"label": "Ich bin unruhiger als sonst", "value": 1},
+                {"label": "Ich bin so unruhig, dass es mir schwer fällt, stillzusitzen", "value": 2},
+                {"label": "Ich bin so unruhig, dass ich mich ständig bewegen oder etwas tun muss", "value": 3}
+            ]
+        },
+        {
+            "label": "12. Interessenverlust",
+            "id": 12,
+            "coding": { "display" : "interessenverlust", "code" : "247753000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich habe das Interesse an anderen Menschen oder an Tätigkeiten nicht verloren", "value": 0},
+                {"label": "Ich habe weniger Interesse an anderen Menschen oder an Dingen als sonst", "value": 1},
+                {"label": "Ich habe das Interesse an anderen Menschen oder an Dingen zum größten Teil verloren", "value": 2},
+                {"label": "Es fällt mir schwer, mich überhaupt für irgend etwas zu interessieren", "value": 3}
+            ]
+        },
+        {
+            "label": "13. Entschlussunfähigkeit",
+            "id": 13,
+            "coding": { "display" : "entschlussunfaehigkeit", "code" : "247585004", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich bin so entschlussfreudig wie immer", "value": 0},
+                {"label": "Es fällt mir schwerer als sonst, Entscheidungen zu treffen", "value": 1},
+                {"label": "Es fällt mir sehr viel schwerer als sonst, Entscheidungen zu treffen", "value": 2},
+                {"label": "Ich habe Mühe, überhaupt Entscheidungen zu treffen", "value": 3}
+            ]
+        },
+        {
+            "label": "14. Wertlosigkeit",
+            "id": 14,
+            "coding": { "display" : "wertlosigkeit", "code" : "285277009", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich fühle mich nicht wertlos", "value": 0},
+                {"label": "Ich halte mich für weniger wertvoll und nützlich als sonst", "value": 1},
+                {"label": "Verglichen mit anderen Menschen fühle ich mich viel weniger wert", "value": 2},
+                {"label": "Ich fühle mich völlig wertlos", "value": 3}
+            ]
+        },
+        {
+            "label": "15. Energieverlust",
+            "id": 15,
+            "coding": { "display" : "energieverlust", "code" : "214264003", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich habe so viel Energie wie immer", "value": 0},
+                {"label": "Ich habe weniger Energie als sonst", "value": 1},
+                {"label": "Ich habe so wenig Energie, dass ich kaum noch etwas schaffe", "value": 2},
+                {"label": "Ich habe keine Energie mehr, um überhaupt noch etwas zu tun", "value": 3}
+            ]
+        },
+        {
+            "label": "16. Veränderungen der Schlafgewohnheiten",
+            "id": 16,
+            "coding": { "display" : "schlaf", "code" : "258158006", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Meine Schlafgewohnheiten haben sich nicht verändert", "value": 0},
+                {"label": "Ich schlafe etwas mehr als sonst", "value": 1},
+                {"label": "Ich schlafe etwas weniger als sonst", "value": -1},
+                {"label": "Ich schlafe viel mehr als sonst", "value": 2},
+                {"label": "Ich schlafe viel weniger als sonst", "value": -2},
+                {"label": "Ich schlafe fast den ganzen Tag", "value": 3},
+                {"label": "Ich wache 1-2 Stunden früher auf als gewöhnlich und kann nicht mehr einschlafen", "value": -3}
+            ]
+        },
+        {
+            "label": "17. Reizbarkeit",
+            "id": 17,
+            "coding": { "display" : "reizbarkeit", "code" : "55929007", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich bin nicht reizbarer als sonst", "value": 0},
+                {"label": "Ich bin reizbarer als sonst", "value": 1},
+                {"label": "Ich bin viel reizbarer als sonst", "value": 2},
+                {"label": "Ich fühle mich dauernd gereizt", "value": 3}
+            ]
+        },
+        {
+            "label": "18. Veränderungen des Appetits",
+            "id": 18,
+            "coding": { "display" : "appetits", "code" : "33911006", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Mein Appetit hat sich nicht verändert", "value": 0},
+                {"label": "Mein Appetit ist etwas schlechter als sonst", "value": 1},
+                {"label": "Mein Appetit ist etwas größer als sonst", "value": -1},
+                {"label": "Mein Appetit ist viel schlechter als sonst", "value": 2},
+                {"label": "Mein Appetit ist viel größer als sonst", "value": -2},
+                {"label": "Ich habe überhaupt keinen Appetit", "value": 3},
+                {"label": "Ich habe ständig Heißhunger", "value": -3}
+            ]
+        },
+        {
+            "label": "19. Konzentrationsschwierigkeiten",
+            "id": 19,
+            "coding": { "display" : "konzentrationsschwierigkeiten", "code" : "26329005", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich kann mich so gut konzentrieren wie immer", "value": 0},
+                {"label": "Ich kann mich nicht mehr so gut konzentrieren wie sonst", "value": 1},
+                {"label": "Es fällt mir schwer, mich längere Zeit auf irgend etwas zu konzentrieren", "value": 2},
+                {"label": "Ich kann mich überhaupt nicht mehr konzentrieren", "value": 3}
+            ]
+        },
+        {
+            "label": "Ermüdung oder Erschöpfung",
+            "id": 20,
+            "coding": { "display" : "ermuedung", "code" : "60119000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ich fühle mich nicht müder oder erschöpfter als sonst", "value": 0},
+                {"label": "Ich werde schneller müde oder erschöpft als sonst", "value": 1},
+                {"label": "Für viele Dinge, die ich üblicherweise tue, bin ich zu müde oder erschöpft", "value": 2},
+                {"label": "Ich bin so müde oder erschöpft, dass ich fast nichts mehr tun kann", "value": 3}
+            ]
+        },
+        {
+            "label": "Verlust an sexuellem Interesse",
+            "id": 21,
+            "coding": { "display" : "sex", "code" : "8357008", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Mein Interesse an Sexualität hat sich in letzter Zeit nicht verändert", "value": 0},
+                {"label": "Ich interessiere mich weniger für Sexualität als früher", "value": 1},
+                {"label": "Ich interessiere mich jetzt viel weniger für Sexualität", "value": 2},
+                {"label": "Ich habe das Interesse an Sexualität völlig verloren", "value": 3}
+            ]
+        }
+        
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21], "value": [0,1,2,3], "score": [0,1,2,3]},
+            {"id": [16,18], "value": [0,1,-1,2,-2,3,-3], "score": [0,1,1,2,2,3,3]}
+
+        ],
+        "domaine":[
+            {"label": "sum", "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], "method": "sum"}
+        ],
+        "evaluation": [
+            {"range": [0,12], "label": "klinisch unauffällig"},
+            {"range": [13,19], "label": "leichtes depressives Syndrom"},
+            {"range": [20,28], "label": "mittelgradiges depressives Syndrom"},
+            {"range": [29,99], "label": "schweres depressives Syndrom"}
+        ]
+    }
+
+}

@@ -1,0 +1,62 @@
+{
+    "title": "DNMSQuest",
+    "short_title": "dnmsquest",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "225398001",
+        "display" : "DNMSQuest",
+        "version": "20211026"
+    },
+    "description": "Dystonia Non-Motor Symptoms Questionnaire",
+    "keywords": "neurology, dystonia",
+    "manual": "",
+    "items": [
+        {
+            "label": "Eine Reihe von Problemen sind unten angeführt. Bitte kreuzen Sie das Feld <b>Ja</b> an, wenn Sie das beschriebene Symptom <b>während der letzten Monats</b> erlebt haben. Wenn bei Ihnen das jeweilige Problem im Laufe des letzten Monats nicht aufgetreten ist, kreuzen Sie bitte das Feld Nein an. Sie sollten auch dann Nein antworten, wenn Sie die Symptome in der Vergangenheit, aber nicht während des letzten Monats hatten.",
+            "tag": "items",
+            "id": [1,2,3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14], 
+            "caption": "Bitte beachten, füllen Sie alle Zeilen aus!",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "Ja", "value": "yes"},
+                    {"label": "Nein", "value": "no"}
+                ],
+                "questions": [
+                    {"id": 1, "label": "1. Fühlen Sie sich nicht erholt, obwohl Sie nachts schlafen?", "tag": "schlaf_nichterholsam"},
+                    {"id": 2, "label": "2. Haben Sie Probleme, ein- oder durchzuschlafen?", "tag": "probleme_durchschlafen"},
+                    {"id": 3, "label": "3. Leiden Sie unter Benommenheit oder Schwindel?", "tag": "benommenheit_schwindel"},
+                    {"id": 4, "label": "4. Schränken Müdigkeit oder Energiemangel ihre Tagesaktivität ein?", "tag": "energiemangel"},
+                    {"id": 5, "label": "5. Fühlen Sie sich ohne erkennbaren Grund nervös, besorgt oder ängstlich?", "tag": "aengstlich"},
+                    {"id": 6, "label": "6. Fühlen Sie sich traurig oder deprimiert?", "tag": "deprimiert"},
+                    {"id": 7, "label": "7. Leiden Sie unter einem Verlust an Selbstvertrauen aufgrund des Stigma durch die erkennbare (Hals-)Dystonie?", "tag": "verlust_selbstvertrauen"},
+                    {"id": 8, "label": "8. Sind Sie nicht mehr schwingungsfähig, d. h. ohne die normalen Höhen und Tiefen der Stimmungslage?", "tag": "nichtmehr_schwingungsfaehig"},
+                    {"id": 9, "label": "9. Haben Sie Probleme beim Essen, zum Beispiel beim Kauen oder schlucken?", "tag": "probleme_essen"},
+                    {"id": 10, "label": "10. Haben Sie in der Nähe der Körperregionen, in der sich ihre Dystonie zeigt, unangenehme Empfindungen wie Taubheit, Kribbeln oder Stechen?", "tag": "missempfindungen"},
+                    {"id": 11, "label": "11. Haben Sie Probleme beim Sprechen?", "tag": "probleme_sprechen"},
+                    {"id": 12, "label": "12. Beeinflusst ihre Dystonie Ihr Sehvermögen, beispielsweise wenn sich Ihr Kopf zur Seite dreht?", "tag": "sehvermoegen_gestoert"},
+                    {"id": 13, "label": "13. Leiden Sie unter Schmerzen (schmerzhafter Verspannung) im Bereich Ihrer Dystonie oder im Umfeld dieser Körperregion (ohne andere Gründe in dieser Körperregion für solche Schmerzen)?", "tag": "schmerzen_dystonie"},
+                    {"id": 14, "label": "14. Leiden Sie unter irgendwelchen Schwierigkeiten beim Gehen oder Gleichgewichtsproblemen?", "tag": "probleme_gleichgewicht"}
+                ]
+            }
+        }
+           
+    
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,2,3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14], "value": ["yes", "no"], "score": [1, 0]}
+        ],
+        "domaine":[
+            {"label": "sum", "id": [1,2,3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14], "method": "sum"}
+        ],
+        "evaluation": [
+            {"range": [0,4], "label": "normal"},
+            {"range": [5,99], "label": "relevante Belastung"}
+        ]
+    }
+
+}

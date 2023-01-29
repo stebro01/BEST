@@ -1,0 +1,65 @@
+{
+    "title": "GDS - Geriatrische Depressionsskala",
+    "short_title": "GDS",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445041007",
+        "display" : "Geriatrische Depressionsskala (short)",
+        "version": "20211026"
+    },
+    "description": "Geriatrische Depressionsskala - Kurzform",
+    "manual": "",
+    "keywords": "depression, old, older, elderly, geriatric, short, kurz",
+    "items": [
+    	{
+            "label": "Es folgt eine Liste mit Aussagen. Bitte geben Sie an, ob diese jeweils Ihren Zustand <b>innerhalb der letzten 7 Tage</b> beschreiben. Dabei gibt es keine richtigen oder falschen Antworten! Bitte beantworten Sie jede Frage.",
+            "tag": "questions",
+            "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "Ja", "value": 1},
+                    {"label": "Nein", "value": 2}
+                ],
+                "questions": [
+                    {"id": 1, "label": "1. Sind Sie grundsätzlich mit Ihrem Leben zufrieden?", "tag": "1"},
+                    {"id": 2, "label": "2. Haben Sie viele Ihrer Aktivitäten und Interessen aufgegeben?", "tag": "2"},
+                    {"id": 3, "label": "3. Haben Sie das Gefühl, Ihr Leben sei unausgefüllt?", "tag": "3"},
+                    {"id": 4, "label": "4. Ist Ihnen oft langweilig?", "tag": "4"},
+                    {"id": 5, "label": "5. Sind Sie die meiste Zeit guter Laune?", "tag": "5"},
+                    {"id": 6, "label": "6. Haben Sie Angst, dass Ihnen etwas Schlimmes zustoßen wird?", "tag": "6"},
+                    {"id": 7, "label": "7. Fühlen Sie sich die meiste Zeit glücklich?", "tag": "7"},
+                    {"id": 8, "label": "8. Fühlen Sie sich oft hilflos?", "tag": "8"},
+                    {"id": 9, "label": "9. Bleiben Sie lieber zu Hause, anstatt auszugehen und Neues zu unternehmen?", "tag": "9"},
+                    {"id": 10, "label": "10. Glauben Sie, mehr Probleme mit dem Gedächtnis zu haben als andere Menschen?", "tag": "10"},
+                    {"id": 11, "label": "11. Finden Sie, es sei schön jetzt zu leben?", "tag": "11"},
+                    {"id": 12, "label": "12. Kommen Sie sich in Ihrem jetzigen Zustand ziemlich wertlos vor?", "tag": "12"},
+                    {"id": 13, "label": "13. Fühlen Sie sich voller Energie?", "tag": "13"},
+                    {"id": 14, "label": "14. Finden Sie, dass Ihre Situation hoffnunglos ist?", "tag": "14"},
+                    {"id": 15, "label": "15. Glauben Sie, dass es den meisten Leuten besser geht als Ihnen?", "tag": "15"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,5,7,11,13], "value": [1,2], "score": [0,1]},
+            {"id": [2,3,4,6,8,9,10,12,14,15], "value": [1,2], "score": [1,0]}
+
+        ],
+        "domaine":[
+            {"label": "sum", "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "method": "sum"} 
+        ],
+        "evaluation": [
+            {"range": [0,5], "label": "Unauffällig"},
+            {"range": [6,10], "label": "Verdacht auf Depression"},
+            {"range": [11,15], "label": "Manifeste Depression"}
+
+        ]
+    }
+
+}

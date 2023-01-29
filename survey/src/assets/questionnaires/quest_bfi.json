@@ -1,0 +1,103 @@
+{
+    "title": "BFI",
+    "description": "",
+    "short_title": "bfi",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "709474002",
+        "display" : "BFI",
+        "version": "20211026"
+    },
+    "manual": "",
+    "keywords": "brief, fatigue, inventory, tired, tiredness, sleepy, müdigkeit, mattheit, schlaf",
+    "items": [
+        {
+            "label": "Im Laufe unseres Lebens haben die meisten von uns Zeiten, in denen sie sich sehr müde oder matt fühlen. Haben Sie sich in der letzten Woche ungewöhnlich matt gefühlt?",
+            "id": 1,
+            "tag": "tired",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "Ja", "value": "y"},
+                {"label": "Nein", "value": "n"}
+            ]
+        },
+        {
+            "label": "",
+            "id": [2,3,4],
+            "tag": "tired_now_24",
+            "caption": "<div class='text-right'>0 - keine Müdigkeit<br>10 - stärkste Müdigkeit</div>",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "rotate": false,
+            "options": {
+                "answers": [
+                    {"label": "0", "value": 0},
+                    {"label": "1", "value": 1},
+                    {"label": "2", "value": 2},
+                    {"label": "3", "value": 3},
+                    {"label": "4", "value": 4},
+                    {"label": "5", "value": 5},
+                    {"label": "6", "value": 6},
+                    {"label": "7", "value": 7},
+                    {"label": "8", "value": 8},
+                    {"label": "9", "value": 9},
+                    {"label": "10", "value": 10}
+                ],
+                "questions": [
+                    {"id": 2, "label": "Bitte geben Sie an, welche Ermüdung Sie <b>gerade jetzt</b> fühlen", "tag": "tired_now"},
+                    {"id": 3, "label": "<div class='q-mb-sm'>Bitte kreuzen Sie die Zahl an, die Ihre <b>übliche</b> Ermüdung (Müdigkeit, Mattigkeit) in den letzten 24 Stunden angibt</div>", "tag": "tired_24"},
+                    {"id": 4, "label": "Bitte kreuzen Sie die Zahl an, die Ihre <b>stärkste</b> Ermüdung (Müdigkeit, Mattigkeit) in den letzen 24 Stunden beschreibt", "tag": "tired_strong"}
+                ]
+            }
+        },
+        {
+            "label": "Bitte kreuzen Sie jeweils die Zahl an, die angibt, wie stark Ihre Ermüdung (Müdigkeit, Mattigkeit) Sie in den vergangenen 24 Stunden beeinträchtigt hat.",
+            "id": [5,6,7,8,9,10],
+            "tag": "impairment",
+            "caption": "<div class='text-right'>0 - keine Beeinträchtigung<br>10 - stärkste Beeinträchtigung</div>",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "rotate": false,
+            "options": {
+                "answers": [
+                    {"label": "0", "value": 0},
+                    {"label": "1", "value": 1},
+                    {"label": "2", "value": 2},
+                    {"label": "3", "value": 3},
+                    {"label": "4", "value": 4},
+                    {"label": "5", "value": 5},
+                    {"label": "6", "value": 6},
+                    {"label": "7", "value": 7},
+                    {"label": "8", "value": 8},
+                    {"label": "9", "value": 9},
+                    {"label": "10", "value": 10}
+                ],
+                "questions": [
+                    {"id": 5, "label": "Allgemeine Aktivitäten", "tag": "general"},
+                    {"id": 6, "label": "Stimmung", "tag": "mood"},
+                    {"id": 7, "label": "Gehvermögen", "tag": "walking"},
+                    {"id": 8, "label": "Normale Arbeit (sowohl ausserhalb des Hauses als auch Hausarbeit)", "tag": "work"},
+                    {"id": 9, "label": "Beziehungen zu anderen Menschen", "tag": "relationships"},
+                    {"id": 10, "label": "Lebensfreude", "tag": "joy"}
+                ]
+            }
+        }
+        
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [2,3,4,5,6,7,8,9,10], "value": [0,1,2,3,4,5,6,7,8,9,10], "score": [0,1,2,3,4,5,6,7,8,9,10]}
+
+        ],
+        "domaine":[
+            {"label": "Müdigkeit", "id": [2,3,4,5,6,7,8,9,10], "method": "avg"}
+        ]
+    }
+
+}

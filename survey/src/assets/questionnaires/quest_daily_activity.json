@@ -1,0 +1,54 @@
+{
+    "title": "Alltagsaktivitäten",
+    "description": "Fragebogen zu Alltagsaktivitäten",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "129025006",
+        "display" : "Alltagsaktivitäten",
+        "version": "20211026"
+    },
+    "manual": "",
+    "short_title": "daily_activity",
+    "keywords": "Alltagsaktivitäten",
+    "items": [
+        {
+            "label": "Wie oft haben Sie folgende Tätigkeiten in den letzten <b>6 Monaten</b> ausgeführt?",
+            "tag": "activities",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "Nie", "value": 0},
+                    {"label": "Manchmal", "value": 1},
+                    {"label": "Oft", "value": 2}
+                ],
+                "questions": [
+                    {"label": "Fernsehen oder Radiohören", "tag": "tv_radio"},
+                    {"label": "Kartenspielen oder Spielen anderer Spiele", "tag": "games"},
+                    {"label": "Lesen (Buch, Zeitung, Zeitschriften)", "tag": "reading"},
+                    {"label": "Vorträge oder Konzerte besuchen", "tag": "concerts"},
+                    {"label": "Ins Kino oder Theater gehen", "tag": "cinema_theatre"},
+                    {"label": "Reisen oder Ausflüge unternehmen", "tag": "travel"},
+                    {"label": "Spazierengehen oder Fahrradfahren", "tag": "walk_bike"},
+                    {"label": "An sportlichen Aktivitäten teilnehmen, tanzen, turnen", "tag": "sport"},
+                    {"label": "Im Garten arbeiten", "tag": "gardening"},
+                    {"label": "Zeit alleine verbringen", "tag": "alone"},
+                    {"label": "Künstlerischen oder handwerklichen Tätigkeiten nachgehen", "tag": "craft"},
+                    {"label": "Kochen oder Essen zubereiten als Hobby", "tag": "cooking"},
+                    {"label": "Dinge sammeln als Hobby", "tag": "collecting"},
+                    {"label": "Singen oder ein Musikinstrument spielen", "tag": "music"},
+                    {"label": "Freunde, Verwandte oder Nachbarn besuchen oder von diesen besucht werden", "tag": "visiting"},
+                    {"label": "Als Mitglied in einem ehrenamtlichen Verein oder einer Organisation teilnhemen", "tag": "volunteer"},
+                    {"label": "In die Kirche gehen oder an religiösen Aktivitäten teilnhemen", "tag": "religion"},
+                    {"label": "An anderen Tätigkeiten teilnehmen", "tag": "other_activities"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

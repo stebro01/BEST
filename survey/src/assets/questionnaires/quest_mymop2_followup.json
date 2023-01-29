@@ -1,0 +1,295 @@
+{
+  "title": "MYMOP2-G (post/follow up)",
+  "short_title": "mymop2g_followup",
+  "description": " MYMOP2 (Measure Yourself Outcome Profile) ",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "713048001",
+    "display": " MYMOP2 (Measure Yourself Outcome Profile) follow up",
+    "version": "20211026"
+  },
+  "manual": "Der MYMOP2 (Measure Yourself Outcome Profile) wurde für die Primärversorgung entwickelt, um die aus Patientensicht führende Beschwerde im Verlauf zu erfassen. Die Beschwerde kann physischer, psychischer oder sozialer Natur sein. <br><b>Bitte machen Sie jeweils ein Kreuz (X) auf der für Sie zutreffenden Zahl:<b>",
+  "keywords": null,
+  "ref": "https://www.klinikum.uni-heidelberg.de/kliniken-institute/institute/abteilung-allgemeinmedizin-und-versorgungsforschung/forschung/instrumente/inventar-fuer-praxisforschung/mymop2",
+  "items": [{
+    "label": "<b>1.)</b> Bitte überlegen Sie sich, wie ausgeprägt Ihre bei der ersten Erhebung genannten Beschwerde(n) <b>in der vergangenen Woche</b> waren und welchen Einfluss sie auf Ihre Aktivität hatte(n). Kreuzen Sie die dafür zutreffende Zahl an. Es geht dabei um <b>Ihre persönliche Einschätzung</b> und nicht um die von anderen!",
+    "value": null,
+    "type": "separator",
+    "inline": false,
+    "force": false
+  }, {
+    "label": "Beschwerde 1",
+    "id": 1,
+    "coding": {
+      "display": "Beschwerde_1",
+      "code": "302199004",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "text",
+    "inline": false,
+    "force": true
+  }, {
+    "label": "Bewertung Beschwerde 1",
+    "id": 2,
+    "coding": {
+      "display": "eval_1",
+      "code": "302199004",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "radio",
+    "inline": false,
+    "force": true,
+    "options": [{
+      "label": "0 (So gut, wie es nur sein könnte)",
+      "value": "0"
+    }, {
+      "label": "1",
+      "value": "1"
+    }, {
+      "label": "2",
+      "value": "2"
+    }, {
+      "label": "3",
+      "value": "3"
+    }, {
+      "label": "4",
+      "value": "4"
+    }, {
+      "label": "5",
+      "value": "5"
+    }, {
+      "label": "6 (So schlecht, wie es nur sein könnte)",
+      "value": "6"
+    }]
+  }, {
+    "label": "Beschwerde 2",
+    "id": 3,
+    "coding": {
+      "display": "Beschwerde_1",
+      "code": "409586006",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "text",
+    "inline": false,
+    "force": false
+  }, {
+    "label": "Bewertung Beschwerde 2",
+    "id": 4,
+    "coding": {
+      "display": "eval_2",
+      "code": "409586006",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "radio",
+    "inline": false,
+    "force": false,
+    "options": [{
+      "label": "0 (So gut, wie es nur sein könnte)",
+      "value": "0"
+    }, {
+      "label": "1",
+      "value": "1"
+    }, {
+      "label": "2",
+      "value": "2"
+    }, {
+      "label": "3",
+      "value": "3"
+    }, {
+      "label": "4",
+      "value": "4"
+    }, {
+      "label": "5",
+      "value": "5"
+    }, {
+      "label": "6 (So schlecht, wie es nur sein könnte)",
+      "value": "6"
+    }]
+  }, {
+    "label": "",
+    "value": null,
+    "type": "separator",
+    "inline": false,
+    "force": false
+  }, {
+    "label": "Aktivität",
+    "id": 5,
+    "coding": {
+      "display": "activity",
+      "code": "257733005",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "text",
+    "inline": false,
+    "force": true
+  }, {
+    "label": "Bewertung Aktivität",
+    "id": 6,
+    "coding": {
+      "display": "eval_activity",
+      "code": "257733005",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "radio",
+    "inline": false,
+    "force": true,
+    "options": [{
+      "label": "0 (So gut, wie es nur sein könnte)",
+      "value": "0"
+    }, {
+      "label": "1",
+      "value": "1"
+    }, {
+      "label": "2",
+      "value": "2"
+    }, {
+      "label": "3",
+      "value": "3"
+    }, {
+      "label": "4",
+      "value": "4"
+    }, {
+      "label": "5",
+      "value": "5"
+    }, {
+      "label": "6 (So schlecht, wie es nur sein könnte)",
+      "value": "6"
+    }]
+  }, {
+    "label": "<b>2.) Wie würden Sie Ihr allgemeines Befinden in </b>der vergangenen Woche</b> bewerten?",
+    "id": 7,
+    "coding": {
+      "display": "wellbeing",
+      "code": "365275006",
+      "system": "http://snomed.info/sct"
+    },
+    "value": "2",
+    "type": "radio",
+    "inline": false,
+    "force": true,
+    "options": [{
+      "label": "0 (So gut, wie es nur sein könnte)",
+      "value": "0"
+    }, {
+      "label": "1",
+      "value": "1"
+    }, {
+      "label": "2",
+      "value": "2"
+    }, {
+      "label": "3",
+      "value": "3"
+    }, {
+      "label": "4",
+      "value": "4"
+    }, {
+      "label": "5",
+      "value": "5"
+    }, {
+      "label": "6 (So schlecht, wie es nur sein könnte)",
+      "value": "6"
+    }]
+  }, {
+    "label": "<b>3.)</b> Falls eine neue wichtige Beschwerde bei Ihnen aufgetreten ist, beschreiben Sie diese bitte und kreuzen an, wie schlimm sie ist. Andernfalls lassen Sie die folgende Zeile bitte frei.",
+    "value": null,
+    "type": "separator",
+    "inline": false,
+    "force": false
+  }, {
+    "label": "Beschwerde 3",
+    "id": 8,
+    "coding": {
+      "display": "Beschwerde_3",
+      "code": "409586006",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "text",
+    "inline": false,
+    "force": false
+  }, {
+    "label": "Bewertung Beschwerde 3",
+    "id": 9,
+    "coding": {
+      "display": "eval_3",
+      "code": "409586006",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "radio",
+    "inline": false,
+    "force": true,
+    "options": [{
+      "label": "0 (So gut, wie es nur sein könnte)",
+      "value": "0"
+    }, {
+      "label": "1",
+      "value": "1"
+    }, {
+      "label": "2",
+      "value": "2"
+    }, {
+      "label": "3",
+      "value": "3"
+    }, {
+      "label": "4",
+      "value": "4"
+    }, {
+      "label": "5",
+      "value": "5"
+    }, {
+      "label": "6 (So schlecht, wie es nur sein könnte)",
+      "value": "6"
+    }]
+  }, {
+    "label": "<b>4.)</b> Nehmen Sie irgendwelche Medikamente gegen die <b>neu aufgetretene Beschwerde</b>?",
+    "id": 10,
+    "coding": {
+      "display": "new_drug",
+      "code": "410942007",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "radio",
+    "inline": false,
+    "force": false,
+    "options": [{
+      "label": "Ja",
+      "value": "yes"
+    }, {
+      "label": "Nein",
+      "value": "no"
+    }]
+  }, {
+    "label": "Falls ja (Frage 4), schreiben Sie bitte Namen und Dosierung des/der Medikament(e) auf:<br> Name / Dosierung / Häufigkeit <br>(z.B. Ibuprofen 400mg 1x/Tag)",
+    "id": 11,
+    "coding": {
+      "display": "new_drugs_text",
+      "code": "410942007",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "text",
+    "inline": false,
+    "force": false
+  }, {
+    "label": "<b>5.)</b> Es kann neben der Behandlung auch andere Dinge geben, die Ihre Beschwerden beeinflussen. Das können beispielsweise Veränderungen sein, die Sie selbst vorgenommen haben, oder Dinge, die in Ihrem Leben passiert sind. Wenn es so etwas bei Ihnen gibt, beschreiben Sie dies bitte hier.",
+    "id": 12,
+    "coding": {
+      "display": "einflussfaktoren",
+      "code": "302199004",
+      "system": "http://snomed.info/sct"
+    },
+    "value": null,
+    "type": "text",
+    "inline": false,
+    "force": false
+  }],
+  "results": {}
+}

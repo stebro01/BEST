@@ -1,0 +1,76 @@
+{
+    "title": "DEX Fremdbeurteilung männlicher Patient",
+    "short_title": "dex_male",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445813009",
+        "display" : "Dysexecutive Questionnaire (male)",
+        "version": "20211026"
+    },
+    "description": "Dysexecutive Questionnaire",
+    "manual": "",
+    "keywords": "dysexecutive, thrid-party, assessment, male, patient, executive",
+    "items": [
+    	{
+            "label": "Name / Code des Patienten",
+            "caption": "",
+            "tag": "patient_code",
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true
+        },
+    	{
+            "label": "Ihre Beziehung zum Patienten",
+            "caption": "",
+            "tag": "relation",
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Dieser Fragebogen beschreibt einige der Schwierigkeiten, die Patienten nach einer Gehirnverletzung haben können. Wir bitten Sie, sich die einzelnen Aussagen sorgfältig durchzulesen und anzugeben, wie oft Sie diese Probleme bei dem Patienten beobachten. Bitte kreuzen Sie das entsprechende Kästchen an.",
+            "tag": "questions",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "nie", "value": 0},
+                    {"label": "selten", "value": 1},
+                    {"label": "manchmal", "value": 2},
+                    {"label": "oft", "value": 3},
+                    {"label": "sehr oft", "value": 4}
+                ],
+                "questions": [
+                    {"label": "1. Er hat Probleme zu verstehen, was andere Personen ihm sagen wollen, es sei denn, sie drücken sich klar und deutlich aus.", "tag": "1"},
+                    {"label": "2. Er handelt ohne nachzudenken und macht das erste, was ihm in den Sinn kommt.", "tag": "2"},
+                    {"label": "3. Er spricht über Dinge oder Begenheiten, die nicht wirklich passiert sind, von denen er aber glaubt, dass sie geschehen sind.", "tag": "3"},
+                    {"label": "4. Er hat Schwierigkeiten, vorausschauend zu sein und für die Zukunft zu planen.", "tag": "4"},
+                    {"label": "5. Über bestimmte Dinge ist er übermäßig erregt oder verärgert und neigt dann dazu 'zu weit zu gehen'.", "tag": "5"},
+                    {"label": "6. Er bringt Ereignisse durcheinander und verwechselt die richtige Reihenfolge der Geschehnisse.", "tag": "6"},
+                    {"label": "7. Er hat Schwierigkeiten, das Ausmaß seiner Einschränkungen realistisch zu sehen und macht sich unrealistische Vorstellungen bezüglich der Zukunft.", "tag": "7"},
+                    {"label": "8. Er ist lethargisch und kann sich für nichts begeistern.", "tag": "8"},
+                    {"label": "9. Er macht oder sagt peinliche Dinge, wenn er mit anderen zusammen ist.", "tag": "9"},
+                    {"label": "10. Er möchte gerne etwas tun, aber im nächsten Augenblick hat er keine Lust mehr dazu.", "tag": "10"},
+                    {"label": "11. Er hat Schwierigkeiten, Gefühle zu zeigen.", "tag": "11"},
+                    {"label": "12. Er verliert schon bei Kleinigkeiten die Beherrschung.", "tag": "12"},
+                    {"label": "13. Es kümmert ihn nicht, wie er sich in bestimmten Situationen verhalten sollte.", "tag": "13"},
+                    {"label": "14. Er findet es schwierig, damit aufzuhören, etwas wiederholt zu tun oder zu sagen.", "tag": "14"},
+                    {"label": "15. Er neigt dazu, unruhig zu sein, und kann nicht lange stillsitzen.", "tag": "15"},
+                    {"label": "16. Er findet es schwierig, etwas nicht zu tun, obwohl er genau weiß, dass er es nicht tun sollte.", "tag": "16"},
+                    {"label": "17. Er sagt oder behauptet etwas, aber verhält sich ganz anders.", "tag": "17"},
+                    {"label": "18. Er kann nur schlecht bei der Sache bleiben und ist leicht ablenkbar.", "tag": "18"},
+                    {"label": "19. Er hat Schwierigkeiten, Entscheidungen zu treffen oder zu entscheiden, was er tun will.", "tag": "19"},
+                    {"label": "20. Es kümmert ihn nicht oder es ist ihm nicht bewusst, wie andere sein Verhalten empfinden.", "tag": "20"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

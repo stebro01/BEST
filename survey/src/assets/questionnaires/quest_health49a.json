@@ -1,0 +1,80 @@
+{
+    "title": "Health_49_A",
+    "short_title": "health49_a",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "225885004",
+        "display" : "Hamburger Module (HEALTH-49) - A",
+        "version": "20211026"
+    },
+    "description": "Hamburger Module (HEALTH-49) - A",
+    "manual": "",
+    "keywords": "health, hamburg, hamburger, depression, anxiety, pain, schmerz, angst",
+    "items": [
+        {
+            "label": "<b>A</b> Nachstehend finden Sie eine Liste von <b>Problemen und Beschwerden</b>. Bitte lesen Sie sich jede Frage sorgfältig durch und entscheiden Sie, wie sehr Sie <b>in den letzten zwei Wochen durch diese Beschwerden gestört oder belastet</b> worden sind. Machen Sie bitte hinter jeder Frage nur ein Kreuz in das Kästchen mit der für Sie am besten zutreffende Antwort. <br>Bitte beantworten Sie jede Frage!",
+            "tag": "block_A",
+            "caption": "<b>Wie sehr litten Sie in den letzten 2 Wochen unter ... ?",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "nicht", "value": 1},
+                    {"label": "wenig", "value": 2},
+                    {"label": "mittel", "value": 3},
+                    {"label": "ziemlich", "value": 4},
+                    {"label": "sehr", "value": 5}
+                ],
+                "questions": [
+                    {"label": "1 Angst oder Furch, alleine aus dem Haus zu gehen", "tag": "a1"},
+                    {"label": "2 Niedergeschlagenheit oder Traurigkeit", "tag": "a2"},
+                    {"label": "3 Rückenschmerzen", "tag": "a3"},
+                    {"label": "4 dem Gefühl, wertlos zu sein", "tag": "a4"},
+                    {"label": "5 Angst oder Furcht, sich in größere Menschenmengen zu begeben", "tag": "a5"},
+                    {"label": "6 Schuldgefühlen oder Selbstvorwürfen", "tag": "a6"},
+                    {"label": "7 Bauchschmerzen oder Verdauungsproblemen", "tag": "a7"},
+                    {"label": "8 Gedanken, dass Sie lieber tot wären oder Ihr Leben beenden möchten", "tag": "a8"},
+                    {"label": "9 einem Schwächegefühl in einzelnen Körperteilen", "tag": "a9"},
+                    {"label": "10 Angst oder Furcht vor offenen Plätzen oder auf die Straße zu gehen", "tag": "a10"},
+                    {"label": "11 fehlendem Interesse und geringer Freude an Ihren Tätigkeiten", "tag": "a11"},
+                    {"label": "12 einem Gefühl von Schwere in den Armen und Beinen", "tag": "a12"},
+                    {"label": "13 Schmerzen in Muskeln oder Gelenken", "tag": "a13"},
+                    {"label": "14 einem Gefühl der Hoffnungslosigkeit", "tag": "a14"},
+                    {"label": "15 Kopfschmerzen oder Gesichtsschmerzen", "tag": "a15"},
+                    {"label": "16 Angst oder Furch vor Fahrten in Bus, Straßenbahn, U-Bahn oder Zug", "tag": "a16"},
+                    {"label": "17 Taubheit oder Kribbeln in einzelnen Körperteilen", "tag": "a17"},
+                    {"label": "18 Angst oder Furcht vor geschlossenen Räumen (z.B. Fahrstuhl, Tunnel, Kino", "tag": "a18"}
+                ]
+            }
+        },
+        {
+            "label": "<b>B</b> Im Folgenden finden Sie einige Aussagen, mit denen man beschreiben kann, <b>wie man sich fühlt.</b> Bitte geben Sie an, wie oft Sie sich <b>in den letzen zwei Wochen</b> so gefühlt haben!",
+            "tag": "block_B",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "nie", "value": 1},
+                    {"label": "selten", "value": 2},
+                    {"label": "gelegentlich", "value": 3},
+                    {"label": "oft", "value": 4},
+                    {"label": "immer", "value": 5}
+                ],
+                "questions": [
+                    {"label": "1 Ich fühle mich gelöst", "tag": "b1"},
+                    {"label": "2 Ich fühle mich wohl", "tag": "b2"},
+                    {"label": "3 Ich bin entspannt", "tag": "b3"},
+                    {"label": "4 Ich fühle mich ausgeruht", "tag": "b4"},
+                    {"label": "5 Ich kann genießen", "tag": "b5"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

@@ -1,0 +1,611 @@
+{
+    "title": "MWT-B",
+    "short_title": "mwtb",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "273877007",
+        "display" : "Mehrfachwahl-Wortschatz-Intelligenztest B (MWT-B)",
+        "version": "20211026"
+    },
+    "description": "MWT-B",
+    "manual": "",
+    "keywords": ": intelligence, verbal, vocabulary, lexicon, kristallin, intelligenz, screening, wort, wortschatz",
+    "items": [
+    	{
+            "label": "Beruf",
+            "caption": "",
+            "coding": { "display" : "profession", "code" : "14679004", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Alter (Jahre)",
+            "coding": { "display" : "age", "code" : "397669002", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Geschlecht",
+            "coding": { "display" : "gender", "code" : "263495000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "männlich", "value": "m"},
+                {"label": "weiblich", "value": "w"},
+                {"label": "divers", "value": "d"}
+            ]
+        },
+        {
+        	"label": "<b>Anweisung:</b> <br>Sie sehen hier mehrere Reihen mit Wörtern. In jeder Reihe steht <b>höchstens ein Wort</b>, das Ihnen vielleicht bekannt ist. Wenn Sie es gefunden haben, kreuzen Sie es bitte an.",
+        	"type": "textbox"
+        },
+        {
+            "label": "",
+            "tag": "1.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Nale", "value": -1},
+                {"label": "Sahe", "value": -2},
+                {"label": "Nase", "value": 1},
+                {"label": "Nesa", "value": -3},
+                {"label": "Sehna", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "2.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Funktion", "value": 1},
+                {"label": "Kuntion", "value": -1},
+                {"label": "Finzahm", "value": -2},
+                {"label": "Tuntion", "value": -3},
+                {"label": "Tunkion", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "3.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Struk", "value": -1},
+                {"label": "Streik", "value": 1},
+                {"label": "Sturk", "value": -2},
+                {"label": "Strek", "value": -3},
+                {"label": "Kreik", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "4.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Kulinse", "value": -1},
+                {"label": "Kulerane", "value": -2},
+                {"label": "Kulisse", "value": 1},
+                {"label": "Klubihle", "value": -3},
+                {"label": "Kubistane", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "5.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Kenekel", "value": -1},
+                {"label": "Gesonk", "value": -2},
+                {"label": "Kelume", "value": -3},
+                {"label": "Gelenk", "value": 1},
+                {"label": "Gelerge", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "6.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "siziol", "value": -1},
+                {"label": "salzahl", "value": -2},
+                {"label": "sozihl", "value": -3},
+                {"label": "sziam", "value": -4},
+                {"label": "sozial", "value": 1}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "7.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Sympasie", "value": -1},
+                {"label": "Symmofeltrie", "value": -2},
+                {"label": "Symmantrie", "value": -3},
+                {"label": "Symphonie", "value": 1},
+                {"label": "Symplanie", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "8.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Umma", "value": -1},
+                {"label": "Pamme", "value": -2},
+                {"label": "Nelle", "value": -3},
+                {"label": "Ampe", "value": -4},
+                {"label": "Amme", "value": 1}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "9.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Krusse", "value": -1},
+                {"label": "Surke", "value": -2},
+                {"label": "Krustelle", "value": -3},
+                {"label": "Kruste", "value": 1},
+                {"label": "Struke", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "10.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Kirse", "value": -1},
+                {"label": "Sirke", "value": -2},
+                {"label": "Krise", "value": 1},
+                {"label": "Krospe", "value": -3},
+                {"label": "Serise", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "11.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Tinxur", "value": -1},
+                {"label": "Kukutur", "value": -2},
+                {"label": "Fraktan", "value": -3},
+                {"label": "Tinktur", "value": 1},
+                {"label": "Rimsuhr", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "12.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Unfision", "value": -1},
+                {"label": "Fudision", "value": -2},
+                {"label": "Infusion", "value": 1},
+                {"label": "Syntusion", "value": -3},
+                {"label": "Nuridion", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "13.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Feudasmsus", "value": -1},
+                {"label": "Fonderismus", "value": -2},
+                {"label": "Föderalismus", "value": 1},
+                {"label": "Födismus", "value": -3},
+                {"label": "Föderasmus", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "14.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Redor", "value": -1},
+                {"label": "Radium", "value": 1},
+                {"label": "Terion", "value": -2},
+                {"label": "Dramin", "value": -3},
+                {"label": "Orakium", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "15.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "kentern", "value": 1},
+                {"label": "knerte", "value": -1},
+                {"label": "kanzen", "value": -2},
+                {"label": "kretern", "value": -3},
+                {"label": "trekern", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "16.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Kantate", "value": 1},
+                {"label": "Rakante", "value": -1},
+                {"label": "Kenture", "value": -2},
+                {"label": "Krutehne", "value": -3},
+                {"label": "Kallara", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "17.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "schalieren", "value": -1},
+                {"label": "waschieren", "value": -2},
+                {"label": "wakieren", "value": -3},
+                {"label": "schackieren", "value": -4},
+                {"label": "kaschieren", "value": 1}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "18.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Tuhl", "value": -1},
+                {"label": "Lar", "value": -2},
+                {"label": "Lest", "value": -3},
+                {"label": "Dall", "value": -4},
+                {"label": "Lid", "value": 1}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "19.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Dissonanz", "value": 1},
+                {"label": "Diskrisanz", "value": -1},
+                {"label": "Distranz", "value": -2},
+                {"label": "Dinotanz", "value": -3},
+                {"label": "Siodenz", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "20.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Ferindo", "value": -1},
+                {"label": "Inferno", "value": 1},
+                {"label": "Orfina", "value": -2},
+                {"label": "Firanetto", "value": -3},
+                {"label": "Imfindo", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "21.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Rilkiase", "value": -1},
+                {"label": "Kilister", "value": -2},
+                {"label": "Riliker", "value": -3},
+                {"label": "Klistier", "value": 1},
+                {"label": "Linkure", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "22.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "kurinesisch", "value": -1},
+                {"label": "kulinarisch", "value": 1},
+                {"label": "kumenisch", "value": -2},
+                {"label": "kulissarisch", "value": -3},
+                {"label": "kannastrisch", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "23.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Rosto", "value": -1},
+                {"label": "Torso", "value": 1},
+                {"label": "Soro", "value": -2},
+                {"label": "Torgos", "value": -3},
+                {"label": "Tosor", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "24.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Kleiber", "value": 1},
+                {"label": "Beikel", "value": -1},
+                {"label": "Keibel", "value": -2},
+                {"label": "Reikler", "value": -3},
+                {"label": "Biekerl", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "25.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Ralke", "value": -1},
+                {"label": "Korre", "value": -2},
+                {"label": "Ruckse", "value": -3},
+                {"label": "Recke", "value": 1},
+                {"label": "Ulte", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "26.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Lamone", "value": -1},
+                {"label": "Talane", "value": -2},
+                {"label": "Matrone", "value": 1},
+                {"label": "Tarone", "value": -3},
+                {"label": "Malonte", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "27.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Tuma", "value": -1},
+                {"label": "Umat", "value": -2},
+                {"label": "Maut", "value": 1},
+                {"label": "Taum", "value": -3},
+                {"label": "Muta", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "28.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Sorekin", "value": -1},
+                {"label": "Sarowin", "value": -2},
+                {"label": "Rosakin", "value": -3},
+                {"label": "Narosin", "value": -4},
+                {"label": "Kerosin", "value": 1}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "29.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "beralen", "value": -1},
+                {"label": "gerältet", "value": -2},
+                {"label": "anälteren", "value": -3},
+                {"label": "untären", "value": -4},
+                {"label": "verbrämen", "value": 1}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "30.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Kapaun", "value": 1},
+                {"label": "Paukan", "value": -1},
+                {"label": "Naupack", "value": -2},
+                {"label": "Aupeck", "value": -3},
+                {"label": "Ankepran", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "31.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Sickaber", "value": -1},
+                {"label": "Bassiker", "value": -2},
+                {"label": "Kassiber", "value": 1},
+                {"label": "Sassiker", "value": -3},
+                {"label": "Askiber", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "32.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Pucker", "value": -1},
+                {"label": "Keuper", "value": 1},
+                {"label": "Eucker", "value": -2},
+                {"label": "Reuspeck", "value": -3},
+                {"label": "Urkane", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "33.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Spirine", "value": -1},
+                {"label": "Saprin", "value": -2},
+                {"label": "Parsin", "value": -3},
+                {"label": "Purin", "value": 1},
+                {"label": "Asprint", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "34.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Kulon", "value": -1},
+                {"label": "Solgun", "value": -2},
+                {"label": "Koskan", "value": -3},
+                {"label": "Soran", "value": -4},
+                {"label": "Klonus", "value": 1}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "35.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Adept", "value": 1},
+                {"label": "Padet", "value": -1},
+                {"label": "Edapt", "value": -2},
+                {"label": "Epatt", "value": -3},
+                {"label": "Taped", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "36.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Gindelat", "value": -1},
+                {"label": "Tingerat", "value": -2},
+                {"label": "Indigenat", "value": 1},
+                {"label": "Nitgesaar", "value": -3},
+                {"label": "Ringelaar", "value": -4}
+            ]
+        },
+        {
+            "label": "",
+            "tag": "37.",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": false,
+            "options": [
+                {"label": "Berkizia", "value": -1},
+                {"label": "Brekzie", "value": 1},
+                {"label": "Birakize", "value": -2},
+                {"label": "Brikazie", "value": -3},
+                {"label": "Bakiria", "value": -4}
+            ]
+        }
+    ],
+    "results": {
+        "method": "count_targets",
+        "targets": [
+            {"label": "correct", "value": 1, "score": 1}
+        ]
+    }
+
+}

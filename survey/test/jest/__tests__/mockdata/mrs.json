@@ -1,0 +1,37 @@
+{
+  "PID": "44",
+  "quest": {
+    "title": "MRS",
+    "description": "modified ranking scale",
+    "keywords": "neuro",
+    "manual": "<b>Anleitung</b>: keine besonderen Anweisungen ...",
+    "items": [{
+      "label": "MRS",
+      "tag": "mrs",
+      "value": 2,
+      "type": "radio",
+      "inline": false,
+      "options": [{
+        "label": "0 Keine Symptome",
+        "value": 0
+      }, {
+        "label": "1 Keine relevante Beeinträchtigung. Kann trotz geringer neurologischer Defizite uneingeschränkt Alltagsaktivitäten verrichten.",
+        "value": 1
+      }, {
+        "label": "2 Leichte Beeinträchtigung. Kann sich ohne Hilfe versorgen, ist aber im Alltag eingeschränkt.",
+        "value": 2
+      }, {
+        "label": "3 Mittelschwere Beeinträchtigung. Benötigt Hilfe im Alltag, kann aber ohne fremde Hilfe bzw. mit Hilfsmitteln (Gehstock, Rollator) gehen.",
+        "value": 3
+      }, {
+        "label": "4 Höhergradige Beeinträchtigung. Benötigt Hilfe bei der Körperpflege, kann nicht ohne Hilfe gehen.",
+        "value": 4
+      }, {
+        "label": "5 Schwere Behinderung. Bettlägerig, inkontinent, benötigt ständige pflegerische Hilfe.",
+        "value": 5
+      }],
+      "isvalid": true
+    }],
+    "results": {}
+  }
+}

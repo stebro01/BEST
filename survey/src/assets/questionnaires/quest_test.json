@@ -1,0 +1,105 @@
+{
+    "title": "TEST",
+    "short_title": "test",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445536008",
+        "display" : "Test score",
+        "version": "20211026"
+    },
+    "description": "Test score",
+    "manual": "<b>Anleitung</b>: Dieser Fragebogen enthält 21 Gruppen von Aussagen. Bitte lesen Sie jede dieser Gruppen von Aussagen sorgfältig durch und suchen Sie sich dann in jeder Gruppe <b>eine Aussage</b> heraus, die am besten beschreibt, wie Sie sich <b>in den letzten zwei Wochen, einschließlich heute, gefühlt haben</b>. Kreuzen Sie die Zahl neben der Aussage an, die Sie sich herausgesucht haben (0, 1, 2 oder 3). Falls in einer Gruppe mehrere Aussagen gleichermaßen auf Sie zutreffen, kreuzen Sie die Aussage mit der höheren Zahl an. Achten Sie bitte darauf, dass Sie in jeder Gruppe nicht mehr als eine Aussage ankreuzen, das gilt auch für Gruppe 16 (Veränderung der Schlafgewohnheiten) oder Gruppe 18 (Veränderungen des Appetits).",
+    "keywords": "test",
+    "items": [
+        {
+            "label": "Beruf",
+            "caption": "Anmerkung: einfach einen Beruf eingeben, Feld darf nicht leer sein!",
+            "coding": { "display" : "profession", "code" : "14679004", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Alter",
+            "caption": "Anmerkung: Feld darf leer sein.",
+            "coding": { "display" : "age", "code" : "397669002", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "0. Multiple",
+            "tag": "multiple",
+            "value": [],
+            "type": "checkbox",
+            "inline": false,
+            "options": [
+                {"label": "0 Ich bin nicht traurig", "value": 0},
+                {"label": "1 Ich bin oft traurig", "value": 1},
+                {"label": "2 Ich bin ständig traurig", "value": 2},
+                {"label": "3 Ich bin so traurig oder unglücklich, dass ich es nicht aushalte", "value": 3}
+
+            ]
+        },
+        {
+            "label": "1. Traurigkeit",
+            "tag": "traurigkeit",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Ich bin nicht traurig", "value": 0},
+                {"label": "1 Ich bin oft traurig", "value": 1},
+                {"label": "2 Ich bin ständig traurig", "value": 2},
+                {"label": "3 Ich bin so traurig oder unglücklich, dass ich es nicht aushalte", "value": 3}
+
+            ]
+        },
+        {
+            "label": "2. Pessimismus",
+            "tag": "pessimismus",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Ich sehe nicht mutlos in die Zukunft", "value": 0},
+                {"label": "1 Ich sehe mutloser in die Zukunft als sonst", "value": 1},
+                {"label": "2 Ich bin mutlos und erwarte nicht, dass meine Situation besser wird", "value": 2},
+                {"label": "3 Ich glaube, dass meine Zukunft hoffnungslos ist und nur noch schlechter wird", "value": 3}
+            ]
+        },
+        {
+            "label": "3. Versagensgefühle",
+            "tag": "versagensgefuehle",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Ich fühle mich nicht als Versager", "value": 0},
+                {"label": "1 Ich habe häufiger Versagensgefühle", "value": 1},
+                {"label": "2 Wenn ich zurückblicke, sehe ich eine Menge Fehlschläge", "value": 2},
+                {"label": "3 Ich habe das Gefühl, als Mensch ein völliger Versager zu sein", "value": 3}
+            ]
+        },
+        {
+            "label": "4. Verlust von Freude",
+            "tag": "verlustgefuehle",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Ich kann die Dinge genauso gut genießen wie früher", "value": 0},
+                {"label": "1 Ich kann die Dinge nicht mehr so genießen wie früher", "value": 1},
+                {"label": "2 Dinge, die mir früher Freude gemacht haben, kann ich kaum mehr genießen", "value": 2},
+                {"label": "3 Dinge, die mir früher Freude gemacht haben, kann ich überhaupt nicht mehr genießen", "value": 3}
+
+            ]
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

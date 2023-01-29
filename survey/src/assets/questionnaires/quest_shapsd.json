@@ -1,0 +1,101 @@
+{
+  "title": "SHAPS-D",
+  "short_title": "shaps_d",
+  "description": "In diesem Fragebogen soll eingeschätzt werden, inwieweit Ihnen etwas Freude bereiten kann.",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "273828004",
+    "display": "SHAPS-D"
+  },
+  "manual": "In diesem Fragebogen soll eingeschätzt werden, inwieweit Ihnen etwas Freude bereiten kann. Sie werden gebeten, sich bestimmte Situationen oder Dinge vorzustellen. Geben sie bitte an, ob Sie sich in der jeweiligen Situation freuen könnten. Die Aussagen beziehen sich auf heute und die letzten Tage. Es kommt nicht darauf an, dass Sie die jeweilige Situation tatsächlich erlebt haben. Kreuzen Sie jeweils ein Kästchen an, um zu zeigen, wie sehr Sie jeder Aussage zustimmen bzw. nicht zustimmen. Es ist wichtig, dass Sie jede Aussage sehr sorgfältig lesen.",
+  "keywords": "Depression, Anhedonie",
+  "ref": "https://www.thieme-connect.com/products/ejournals/pdf/10.1055/s-2007-995279.pdf",
+  "items": [{
+    "label": "Bitte beantworten Sie die folgenden Fragen:",
+    "id": "[1,2,3,4,5,6,7,8,9,10,11,12,13,14]",
+    "coding": {
+      "display": "Untersuchung",
+      "code": "302199004",
+      "system": "http://snomed.info/sct"
+    },
+    "value": [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    "type": "multiple_radio",
+    "inline": false,
+    "force": false,
+    "options": {
+      "answers": [{
+        "label": "Ich stimme überhaupt nicht zu",
+        "value": 1
+      }, {
+        "label": "Ich stimme nicht zu",
+        "value": 2
+      }, {
+        "label": "Ich stimme zu",
+        "value": 3
+      }, {
+        "label": "Ich stimme voll zu",
+        "value": 4
+      }],
+      "questions": [{
+        "label": "1. Meine Lieblingssendung im Fernsehen oder Radio würde mir Vergnügen bereiten.",
+        "tag": "a1",
+        "id": 1
+      }, {
+        "label": "2. Meine Hobbies und Freizeitaktivitäten würden mir Spaß machen.",
+        "tag": "a2",
+        "id": 2
+      }, {
+        "label": "3. Ich würde mich freuen, mit meiner Familie oder Freunden zu sein.",
+        "tag": "a3",
+        "id": 3
+      }, {
+        "label": "4. Ich könnte mein Lieblingsessen genießen.",
+        "tag": "a4",
+        "id": 4
+      }, {
+        "label": "5. Ich würde ein warmes Bad oder eine erfrischende Dusche genießen.",
+        "tag": "a5",
+        "id": 5
+      }, {
+        "label": "6. Ich würde den Duft von Blumen genißen, den Geruch einer frischen Meeresbrise oder den Duft von frisch gebackenem Brot.",
+        "tag": "a6",
+        "id": 6
+      }, {
+        "label": "7. Ich würde mich freuen, freundliche Gesichter um mich herum zu sehen.",
+        "tag": "a7",
+        "id": 7
+      }, {
+        "label": "8. Wenn ich mir Mühe mit meiner äußeren Erscheinung gebe, könnte ich mich über mein gutes Aussehen freuen.",
+        "tag": "a8",
+        "id": 8
+      }, {
+        "label": "9. Es würde mir Vergnügen bereiten, ein Buch, eine Zeitschrift oder eine Zeitung zu lesen.",
+        "tag": "a9",
+        "id": 9
+      }, {
+        "label": "10. Ich würde eine Tasse Tee, Kaffee oder mein Lieblingsgetränk genießen.",
+        "tag": "a10",
+        "id": 10
+      }, {
+        "label": "11. Ich würde mich über kleine Dinge freuen, z.B. über einen sonnigen Tag.",
+        "tag": "a11",
+        "id": 11
+      }, {
+        "label": "12. Ich könnte eine schöne Landschaft oder Aussicht genießen",
+        "tag": "a12",
+        "id": 12
+      }, {
+        "label": "13. Ich würde mich freuen, anderen zu helfen.",
+        "tag": "a13",
+        "id": 13
+      }, {
+        "label": "14. Ich würde mich über ein Lob von anderen freuen.",
+        "tag": "a14",
+        "id": 14
+      }]
+    }
+  }],
+  "results": {
+    "method": "sum"
+  }
+}

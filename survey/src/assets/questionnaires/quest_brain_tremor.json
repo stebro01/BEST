@@ -1,0 +1,64 @@
+{
+    "title": "Brain Tremorskala",
+    "short_title": "brain_tremor",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "404684003",
+        "display" : "Bain Tremorskala",
+        "version": "20220617"
+    },
+    "description": "semiquantitatives Messinstrument bei Patienten mit essentiellem Tremor",
+    "manual": "Die Bewegungsstörungen bei der Parkinson-Erkrankung sind gut bekannt. Es können aber manchmal auch andere Probleme auftreten, als Teil der Erkrankung oder deren Behandlung. Es ist wichtig, dass der Arzt über diese Probleme Bescheid weiß, v.a. wenn sie von Ihnen als störend empfunden werden.<br> Eine Reihe von Problemen ist unten aufgeführt. Bitte kreuzen Sie das Feld „Ja“ an, wenn Sie das beschriebene Symptom <b>während des letzten Monats</b> erlebt haben. Der Arzt oder die Kranken- schwester kann Ihnen Fragen stellen, um Ihnen bei der Entscheidung zu helfen. Wenn bei Ihnen das jeweilige Problem im Laufe des letzten Monats <b>nicht</b> aufgetreten ist, kreuzen Sie bitte das Feld „Nein“ an. Sie sollten auch dann „Nein“ antworten, wenn Sie die Symptome in der Vergangenheit, aber nicht während des letzten Monats hatten.",
+    "keywords": "tremor parkinson",
+    "items": [
+
+        {
+            "label": "Fragebogen zu QOL bei Tremor",
+            "tag": "questions",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "ohne Schwierigkeiten", "value": 1},
+                    {"label": "mit geringer Anstrengung", "value": 2},
+                    {"label": "mit großer Anstrengung", "value": 3},
+                    {"label": "kann nicht selbständig durchgeführt werden", "value": 4}
+                ],
+                "questions": [
+                    {"label": "1. Mit Messer und Gabel essen", "tag": "1"},
+                    {"label": "2. Suppe mit einem Löffel essen", "tag": "2"},
+                    {"label": "3. Tasse halten", "tag": "3"},
+                    {"label": "4. Milch aus einer Flasche gießen", "tag": "4"},
+                    {"label": "5. Teller abwaschen und -trocknen", "tag": "5"},
+                    {"label": "6. Zähneputzen", "tag": "6"},
+                    {"label": "7. Taschentuch zum Naseputzen benutzen", "tag": "7"},
+                    {"label": "8. Badewanne benutzen", "tag": "8"},
+                    {"label": "9. Toilette benutzen", "tag": "9"},
+                    {"label": "10. Gesicht und Hände waschen", "tag": "10"},
+                    {"label": "11. Schnürsenkel zubinden", "tag": "11"},
+                    {"label": "12. Knöpfe schließen", "tag": "12"},
+                    {"label": "13. Reißverschluss schließen", "tag": "13"},
+                    {"label": "14. Brief schreiben", "tag": "14"},
+                    {"label": "15. Brief in Umschlag stecken", "tag": "15"},
+                    {"label": "16. Zeitung halten und lesen", "tag": "16"},
+                    {"label": "17. Am Telefon wählen", "tag": "17"},
+                    {"label": "18. Sich am Telefon verständlich machen", "tag": "18"},
+                    {"label": "19. Fernsehen", "tag": "19"},
+                    {"label": "20. Wechselgeld in einem Geschäft aufheben", "tag": "20"},
+                    {"label": "21. Stecker in Steckdose stecken", "tag": "21"},
+                    {"label": "22. Haustür aufschließen", "tag": "22"},
+                    {"label": "23. Treppen auf- bzw. absteigen", "tag": "23"},
+                    {"label": "24. Aus einem Sessel aufstehen", "tag": "24"},
+                    {"label": "25. Volle Einkaufstüte tragen", "tag": "25"}
+                    
+                ]
+            }
+        }
+
+    ],
+    "results": {
+        "method": "sum"
+    }
+}

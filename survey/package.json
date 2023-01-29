@@ -1,0 +1,71 @@
+{
+  "name": "surveybest",
+  "version": "0.0.1",
+  "description": "online Fragebogen nach HL7 Standard",
+  "productName": "surveyBEST",
+  "author": "sb",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
+    "cy": "npm run test:e2e",
+    "icons": "icongenie generate -i ./public/icons/surveyBest_icon1024.png",
+    "build4ios": "quasar build -m ios --ide",
+    "test:unit": "jest --updateSnapshot",
+    "test:unit:ci": "jest --ci",
+    "test:unit:coverage": "jest --coverage",
+    "test:unit:watch": "jest --watch",
+    "test:unit:watchAll": "jest --watchAll",
+    "serve:test:coverage": "quasar serve test/jest/coverage/lcov-report/ --port 8788",
+    "concurrently:dev:jest": "concurrently \"quasar dev\" \"jest --watch\"",
+    "test:e2e": "cross-env E2E_TEST=true start-test \"quasar dev\" http-get://localhost:8080 \"cypress open\"",
+    "test:e2e:ci": "cross-env E2E_TEST=true start-test \"quasar dev\" http-get://localhost:8080 \"cypress run\""
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.4.0",
+    "@quasar/extras": "^1.12.5",
+    "axios": "^0.21.1",
+    "buffer": "^6.0.3",
+    "core-js": "^3.6.5",
+    "crypto-js": "^4.0.0",
+    "dateformat": "^4.5.1",
+    "jsencrypt": "^3.2.0",
+    "jsrsasign": "^10.3.0",
+    "quasar": "^1.18.5",
+    "quasar-dotenv": "^1.0.5",
+    "raw-loader": "^4.0.2",
+    "showdown": "^1.9.1"
+  },
+  "devDependencies": {
+    "@quasar/app": "^2.2.11",
+    "@quasar/quasar-app-extension-dotenv": "^1.1.0",
+    "@quasar/quasar-app-extension-testing": "^1.0.5",
+    "@quasar/quasar-app-extension-testing-e2e-cypress": "^3.1.2",
+    "@quasar/quasar-app-extension-testing-unit-jest": "^2.2.4",
+    "babel-eslint": "^10.0.1",
+    "cypress": "^7.7.0",
+    "devtron": "^1.4.0",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-vue": "^7.7.0",
+    "eslint-webpack-plugin": "^2.4.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

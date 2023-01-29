@@ -1,0 +1,40 @@
+{
+    "title": "Hoehn und Yahr - Skala",
+    "short_title": "hoehnyahr",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "404684003",
+        "display" : "Hoehn und Yahr - Skala",
+        "version": "20220315"
+    },
+    "description": "",
+    "manual": "Für die Erfassung der Krankheitsstadien bzw. der Schwere der Krankheit (Schweregrad) wird die nach den amerikanischen Parkinson-Experten benannte, modifizierte HOEHN-YAHR-Skala verwendet.",
+    "keywords": "parkinson",
+    "items": [
+
+        {
+            "label": "Vom Untersucher auszufüllen",
+            "coding": { "display" : "HoehnYahr", "code" : "263495000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": true,
+            "options": [
+                {"label": "Stadium 0 – Keine Anzeichen der Erkrankung", "value": 0},
+                {"label": "Stadium 1 – Einseitige Erkrankung", "value": 1},
+                {"label": "Stadium 1.5 – Einseitige Erkrankung und Beteiligung der Körperachse", "value": 1.5},
+                {"label": "Stadium 2 – Beidseitige Erkrankung ohne Gleichgewichtsstörung", "value": 2},
+                {"label": "Stadium 2.5 – Leichte beidseitige Erkrankung mit Ausgleich beim Zugtest", "value": 2.5},
+                {"label": "Stadium 3 – Leichte bis mäßige beidseitige Erkrankung – es besteht eine leichte Haltungsinstabilität, der Patient ist aber körperlich noch unabhängig", "value": 3},
+                {"label": "Stadium 4 – Starke Behinderung – der Patient kann aber noch ohne Hilfe laufen oder stehen", "value": 4},
+                {"label": "Stadium 5 – Der Patient ist ohne fremde Hilfe an den Rollstuhl gefesselt oder bettlägerig", "value": 5}
+            ]
+        }
+       
+        
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

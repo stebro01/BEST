@@ -1,0 +1,115 @@
+{
+    "title": "BSS",
+    "short_title": "bss",
+    "description": "Blepharospasm severity scale",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "225398001",
+        "display" : "Blepharospasm severity scale",
+        "version": "20211026"
+    },
+    "manual": "<b>Anleitung</b>: Von Untersucher auszufüllen.",
+    "keywords": "neuro dystonia",
+    "ref": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4878674/",
+    "items": [
+        {
+        	"label": "<b>Beurteilung der Intensität</b>",
+        	"type": "textbox"
+        },
+
+        {
+            "label": "A1) Art des Spasmus des Augenlids",
+            "id": 1,
+            "tag": "A1",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "kurz (< 3s)", "value": 1},
+                {"label": "lang (>= 3s) mit teilweisem Augenschluss", "value": 1},
+                {"label": "lang (>= 3s) mit komplettem Augenschluss", "value": 2}
+            ]
+        },
+        {
+            "label": "A2) Apraxie beim Augenöffnen",
+            "id": 2,
+            "tag": "A2",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ja", "value": 2},
+                {"label": "Nein", "value": 0}
+            ]
+        },
+        {
+            "label": "A3) Spasmus des M. oo während Schreiben",
+            "id": 3,
+            "tag": "A3",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Ja", "value": 1},
+                {"label": "Nein", "value": 0}
+            ]
+        },
+        {
+            "label": "A4) Durchschnittliche Dauer der Augenlid-Spasmen mit komplettem Lidschluss in Ruhe und mit geöffneten Augen über 2 Minuten",
+            "id": 4,
+            "tag": "A4",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "3-4s", "value": 1},
+                {"label": "4.1-5s", "value": 2},
+                {"label": "> 5s", "value": 3}
+            ]
+        },
+        {
+        	"label": "<b>Beurteilung der Frequenz</b>",
+        	"type": "textbox"
+        },
+        {
+            "label": "B1) Anzahl der 'blinks'/längeren Augenlid-Spasmen (in Ruhe, mit geöffneten Augen) innerhalb 2 Minuten",
+            "id": 5,
+            "tag": "B1",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "1-18", "value": 1},
+                {"label": "19-32", "value": 2},
+                {"label": ">32", "value": 3}
+            ]
+        },
+        {
+            "label": "B2) Anzahl langer Augennlid-Spasmen mit komplettem Lidschluss / min (bei Ruhe, mit geöffneten Augen, über 2 Minuten)",
+            "id": 6,
+            "tag": "B2",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "1-3/min", "value": 1},
+                {"label": "3.1 - 7/min", "value": 2},
+                {"label": ">7/min", "value": 3}
+            ]
+        }
+        
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,2,3,4,5,6], "value": [0,1,2,3], "score": [0,1,2,3]}
+
+        ],
+        "domaine":[
+            {"label": "Intensität", "id": [1,2,3,4], "method": "sum"},
+            {"label": "Frequenz", "id": [5,6], "method": "sum"},
+            {"label": "sum", "id": ["Frequenz","Intensität"], "method": "sum"}
+        ]
+    }
+
+}

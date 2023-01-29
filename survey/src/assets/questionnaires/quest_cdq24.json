@@ -1,0 +1,84 @@
+{
+    "title": "CDQ-24",
+    "short_title": "cdq24",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "225398001",
+        "display" : "CDQ-24",
+        "version": "20211026"
+    },
+    "description": "Craniocervical dystonia questionnaire",
+    "keywords": "neuro dystonia",
+    "ref": "https://jnnp.bmj.com/content/75/5/749",
+    "manual": "",
+    "items": [
+        {
+            "label": "Aufgrund der Dystonie, wie oft haben Sie in den letzten 2 Wochen folgendes erlebt:",
+            "tag": "1",
+            "id": [1,2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], 
+            "caption": "Bitte markieren Sie pro Frage eine Antwort und beantworten Sie jede Frage.",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "nie", "value": 0},
+                    {"label": "gelegentlich", "value": 1},
+                    {"label": "manchmal", "value": 2},
+                    {"label": "oft", "value": 3},
+                    {"label": "immer", "value": 4}
+                ],
+                "questions": [
+                    {"id": 1, "label": "Hatten Sie Probleme beim Lesen oder Fernsehen?", "tag": "reading_tv"},
+                    {"id": 2, "label": "War es für Sie schwierig, Dinge zu tun, die Sie gerne tun - zum Beispiel Freizeitaktivitäten?", "tag": "activities"},
+                    {"id": 3, "label": "Ist es für Sie schwierig gewesen, die Symptome der Dystonie zu kontrollieren, wenn Sie nervös waren oder unter Stress standen?", "tag": "control_symptoms"},
+                    {"id": 4, "label": "Haben Sie unter Schmerzen/einem brennenden Gefühl im Gesicht, im Kopf oder im Nackenbereich gelitten?", "tag": "pain_1"},
+                    {"id": 5, "label": "Wurden Sie durch Schmerzen oder ein ziehendes Gefühl am Einschlafen gehindert?", "tag": "pain_sleep"},
+                    {"id": 6, "label": "Ist es Ihnen schwergefallen, feine Arbeiten mit den Fingern auszuführen - z. B. Schreiben, Einfädeln einer Nadel?", "tag": "difficulties_finework"},
+                    {"id": 7, "label": "Haben Sie Situationen vermieden, in denen viele Menschen anwesend waren - zum Beispiel gesellschaftliche Veranstaltungen?", "tag": "avoid_social"},
+                    {"id": 8, "label": "Hat Ihre Dystonie dazu geführt, dass Sie sich in der Öffentlichkeit unwohl gefühlt haben?", "tag": "feel_uneasy"},
+                    {"id": 9, "label": "Hatten Sie das Bedürfnis, Ihre Dystonie vor anderen Menschen zu verbergen?", "tag": "conceal"},
+                    {"id": 10, "label": "Haben Sie sich Sorgen darüber gemacht, wie andere Menschen auf Sie reagieren?", "tag": "worried_reactions"},
+                    {"id": 11, "label": "Haben Sie sich Sorgen um Ihre Zukunft gemacht?", "tag": "worried_future"},
+                    {"id": 12, "label": "Haben Sie schon einmal Angst gehabt?", "tag": "felt_afraid"},
+                    {"id": 13, "label": "Haben Sie sich niedergeschlagen oder deprimiert gefühlt?", "tag": "depressed"},
+                    {"id": 14, "label": "Waren Sie schon einmal traurig oder den Tränen nahe?", "tag": "tears"},
+                    {"id": 15, "label": "Haben Sie sich geärgert oder verbittert gefühlt?", "tag": "bitter"},
+                    {"id": 16, "label": "Haben Sie sich aufgrund Ihrer Dystonie isoliert oder einsam gefühlt?", "tag": "lonely"},
+                    {"id": 17, "label": "Hatten Sie aufgrund Ihrer Dystonie Probleme mit engen Freunden oder Ihrer Familie?", "tag": "problems_family"},
+                    {"id": 18, "label": "Haben Sie sich bei neuen Menschen unsicher oder angespannt gefühlt?", "tag": "tense_newpeople"}
+                ]
+            }
+        },
+        {
+            "label": "",
+            "tag": "2",
+            "id": [19,20,21,22,23,24], 
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "gar nicht", "value": 0},
+                    {"label": "kaum", "value": 1},
+                    {"label": "etwas", "value": 2},
+                    {"label": "stark", "value": 3},
+                    {"label": "sehr stark", "value": 4}
+                ],
+                "questions": [
+                    {"id": 19, "label": "Ist es für Sie schwierig gewesen, den Anforderungen Ihres Berufs- oder Privatlebens gerecht zu werden?", "tag": "demands_job"},
+                    {"id": 20, "label": "Hatten Sie Schwierigkeiten als Autofahrer oder Fußgänger?", "tag": "difficulty_walk_drive"},
+                    {"id": 21, "label": "Haben Sie sich durch Schmerzen/ein brennendes Gefühl im Gesicht, Kopf oder Nackenbereich behindert gefühlt?", "tag": "pain_face_neck"},
+                    {"id": 22, "label": "Hatten Sie das Gefühl, dass Sie nicht gut aussehen?", "tag": "bad_look"},
+                    {"id": 23, "label": "Hat sich Ihre Dystonie negativ auf Ihr Familienleben ausgewirkt?", "tag": "negative_affect_family"},
+                    {"id": 24, "label": "Hat sich Ihre Dystonie negativ auf die Beziehung zu Ihrem Partner ausgewirkt?", "tag": "negative_affect_relation"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

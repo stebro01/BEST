@@ -1,0 +1,31 @@
+{
+    "Alter": {
+        "coding": { "display" : "age", "code" : "397669002", "system" : "http://snomed.info/sct"}
+    },
+    "Geburtsjahr": {
+        "coding": { "display" : "year_of_birth", "code" : "80904-6", "system" : "http://loinc.org"}
+    },
+    "Geburtsdatum": {
+        "coding": { "display" : "birth_date", "code" : "21112-8", "system" : "http://loinc.org"}
+    },
+    "Geschlecht": {
+        "coding": { "display" : "gender", "code" : "263495000", "system" : "http://snomed.info/sct"}
+    },
+    "Gewicht (kg)": {
+        "coding": { "display" : "weight", "code" : "27113001", "system" : "http://snomed.info/sct"}
+    },
+    "Körpergröße (cm)": {
+        "coding": { "display" : "height", "code" : "50373000", "system" : "http://snomed.info/sct"}
+    },
+    "Raucher": {
+        "coding": { "display" : "smoker", "code" : "77176002", "system" : "http://snomed.info/sct"}
+    },
+    "Gesundheitszustand": {
+        "coding": { "display" : "health_status", "code" : "406221003", "system" : "http://snomed.info/sct"}
+    },
+    "Beruf": {
+        "coding": { "display" : "profession", "code" : "14679004", "system" : "http://snomed.info/sct"}
+    }
+
+}
+

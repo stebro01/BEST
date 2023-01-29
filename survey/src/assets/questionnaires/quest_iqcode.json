@@ -1,0 +1,65 @@
+{
+    "title": "IQCODE",
+    "short_title": "iqcode",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "113024001",
+        "display" : "IQCODE",
+        "version": "20211026"
+    },
+    "description": "Fragebogen zur geistigen Leistungsfähigkeit für ältere Personen (Von der Bezugsperson auszufüllen)",
+    "manual": "Wir möchten Sie bitten, sich zu erinnern wie Frau/Herr ____ vor etwa zwei Jahren war, und zu vergleichen, wie sie/er heute ist. Die folgenden Fragen betreffen Situationen, in denen Frau/Herr _____ ihr/sein Gedächtnis oder ihre/seine Intelligenz anwenden muss. <br>Können Sie uns sagen, ob sie/er sich in diesen Situationen im Vergleich zu vor zwei Jahren verbessert oder verschlechtert hat oder unverändert geblieben ist? <br><br>Der Vergleich mit ihrem/seinen Verhalten vor zwei Jahren ist äusserst wichtig. Wenn Frau/Herr _______ zum Beispiel schon vor zwei Jahren nicht wusste, wie finanzielle Dinge geregelt werden, und es immer noch nicht weiß, sollte dies mit \"unverändert\" beantwortet werden. <br><br>Bitte notieren Sie die Veränderungen, die Sie beobachtet haben, indem Sie die zutreffende Antwort ankreuzen. <br>Falls Sie eine Situation nicht beantworten können, versuchen Sie, aufgrund ihrer Kenntnis von Frau/Herrn ________ bestmöglich eine Einschätzung abzugeben. <br>Zudem bitten wir Sie, ungeniert auch Kommentare resp. Bemerkungen in der Textbox am Ende des Fragebogens auszuführen.",
+    "keywords": "old, older, elderly, third-party, assessment, mental, performance, cognitive, functioning, function",
+    "items": [
+    	{
+            "label": "Geburtsjahr",
+            "coding": { "display" : "year_of_birth", "code" : "80904-6", "system" : "http://loinc.org"},
+            "value": null,
+            "type": "date_year",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": true
+        },
+        {
+            "label": "Ihre Beziehung zur Person",
+            "caption": "Partner/in, Tochter/Sohn, Freund/in, Nachbar/in, ...",
+            "tag": "relation",
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": true
+        },
+        {
+            "label": "Wie verhält sie/er sich in folgenden Situationen im Vergleich zu vor 2 Jahren:",
+            "tag": "",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "viel besser", "value": 1},
+                    {"label": "ein bisschen besser", "value": 2},
+                    {"label": "unverändert", "value": 3},
+                    {"label": "ein bisschen schlechter", "value": 4},
+                    {"label": "viel schlechter", "value": 5}
+                ],
+                "questions": [
+                    {"label": "1. Sich an Dinge erinnern, die Familienmitglieder und Freunde betreffend (z.B. Geburtstage, Adressen, Berufe).<p class='q-mb-sm'></p>", "tag": "familiaer_dinge"},
+                    {"label": "2. Sich an vor kurzem stattgefundene Ereignisse erinnern.", "tag": "ereignisse"},
+                    {"label": "3. Sich an vor einigen Tagen stattgefundene Unterhaltungen erinnern.", "tag": "unterhaltungen"},
+                    {"label": "4. Wissen, welcher Tag und Monat es ist.", "tag": "zeit"},
+                    {"label": "5. Sachen wiederfinden, die an einem anderen Ort als üblich aufbewahrt werden.", "tag": "dinge_wiederfinden"},
+                    {"label": "6. Neue Dinge im Allgemeinen zu lernen.", "tag": "neues_lernen"},
+                    {"label": "7. Finanzielle Dinge zu regeln wissen (Rente, Überweisungen, Bankgeschäfte, usw.).", "tag": "finanzielles"}
+
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "avg"
+    }
+
+}

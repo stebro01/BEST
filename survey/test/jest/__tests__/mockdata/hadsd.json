@@ -1,0 +1,340 @@
+{
+  "PID": "4",
+  "quest": {
+    "title": "HADS-D",
+    "description": "Hospital anxiety and depression",
+    "manual": "<b>Sehr geehrte Patientin, sehr geehrter Patient!</b> <br>Sie werden von uns wegen körperlichen Beschwerden untersucht und behandelt. Zur vollständigen Beurteilung Ihrer vermuteten oder bereits bekannten Erkrankung bitten wir Sie im vorliegenden Fragebogen um einige persönliche Angaben. Man weiß heute, dass körperliche Krankheit und seelisches Befinden oft eng zusammenhängen. Deshalb beziehen sich die Fragen ausdrücklich auf Ihre allgemeine und seelische Verfassung. Die Beantwortung ist selbstverständlich freiwillig. Wit bitten Sie jedoch, jede Frage zu beantworten, und zwar so, wi es für Sie persönlich <b>in der letzten Woche</b> am ehesten zutraf. Machen Sie bitte nur ein Kreuz pro Frage und lassen Sie bitte keine Frage aus! Überlegen Sie bitte nicht lange, sondern wählen Sie die Antwort aus, die Ihnen auf Anhieb am zutreffendsten erscheint! ALle Ihre Antworten unterliegen der ärztlichen Schweigepflicht.",
+    "keywords": "depression psych",
+    "items": [{
+      "label": "Geschlecht",
+      "tag": "sex",
+      "value": "d",
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [{
+        "label": "m",
+        "value": "m"
+      }, {
+        "label": "w",
+        "value": "w"
+      }, {
+        "label": "d",
+        "value": "d"
+      }],
+      "isvalid": true
+    }, {
+      "label": "Code-Nummer",
+      "tag": "code",
+      "value": "44",
+      "type": "number",
+      "inline": false,
+      "force": true,
+      "isvalid": true
+    }, {
+      "label": "<b>Ich fühle mich angespannt oder überreizt</b>",
+      "tag": "A1",
+      "value": 2,
+      "type": "radio",
+      "inline": false,
+      "subset": "A",
+      "options": [{
+        "label": "meistens",
+        "value": 3
+      }, {
+        "label": "oft",
+        "value": 2
+      }, {
+        "label": "von Zeit zu Zeit/gelegentlich",
+        "value": 1
+      }, {
+        "label": "überhaupt nicht",
+        "value": 0
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich kann mich heute noch so freuen wie früher</b>",
+      "tag": "D1",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "subset": "D",
+      "options": [{
+        "label": "ganz genau so",
+        "value": 0
+      }, {
+        "label": "nicht ganz so sehr",
+        "value": 1
+      }, {
+        "label": "nur noch ein wenig",
+        "value": 2
+      }, {
+        "label": "kaum oder gar nicht",
+        "value": 3
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Mich überkommt eine ängstliche Vorahnung, dass etwas Schreckliches passieren könnte</b>",
+      "tag": "A2",
+      "value": 3,
+      "type": "radio",
+      "inline": false,
+      "subset": "A",
+      "options": [{
+        "label": "ja, sehr stark",
+        "value": 3
+      }, {
+        "label": "ja, aber nicht allzu stark",
+        "value": 2
+      }, {
+        "label": "etwas, aber es macht mir keine Sorgen",
+        "value": 1
+      }, {
+        "label": "überhaupt nicht",
+        "value": 0
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich kann lachen und die lustige Seite der Dinge sehen</b>",
+      "tag": "D2",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "subset": "D",
+      "options": [{
+        "label": "ja, so viel wie immer",
+        "value": 0
+      }, {
+        "label": "nicht mehr ganz so viel",
+        "value": 1
+      }, {
+        "label": "inzwischen viel weniger",
+        "value": 2
+      }, {
+        "label": "überhaupt nicht",
+        "value": 3
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Mir gehen beunruhigende Gedanken durch den Kopf</b>",
+      "tag": "A3",
+      "value": 2,
+      "type": "radio",
+      "inline": false,
+      "subset": "A",
+      "options": [{
+        "label": "Einen Großteil der Zeit",
+        "value": 3
+      }, {
+        "label": "verhältnismäßig oft",
+        "value": 2
+      }, {
+        "label": "von Zeit zu Zeit, aber nicht allzu oft",
+        "value": 1
+      }, {
+        "label": "nur gelegentlich/nie",
+        "value": 0
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich fühle mich glücklich</b>",
+      "tag": "D3",
+      "value": 2,
+      "type": "radio",
+      "inline": false,
+      "subset": "D",
+      "options": [{
+        "label": "überhaupt nicht",
+        "value": 3
+      }, {
+        "label": "selten",
+        "value": 2
+      }, {
+        "label": "manchmal",
+        "value": 1
+      }, {
+        "label": "meistens",
+        "value": 0
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich kann behaglich dasitzen und mich entspannen</b>",
+      "tag": "A4",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "subset": "A",
+      "options": [{
+        "label": "ja, natürlich",
+        "value": 0
+      }, {
+        "label": "gewöhnlich schon",
+        "value": 1
+      }, {
+        "label": "nicht oft",
+        "value": 2
+      }, {
+        "label": "überhaupt nicht",
+        "value": 3
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich fühle mich in meinen Aktivitäten gebremst</b>",
+      "tag": "D4",
+      "value": 2,
+      "type": "radio",
+      "inline": false,
+      "subset": "D",
+      "options": [{
+        "label": "fast immer",
+        "value": 3
+      }, {
+        "label": "sehr oft",
+        "value": 2
+      }, {
+        "label": "manchmal",
+        "value": 1
+      }, {
+        "label": "überhaupt nicht",
+        "value": 0
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich habe manchmal ein ängstliches Gefühl in der Magengegend</b>",
+      "tag": "A5",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "subset": "A",
+      "options": [{
+        "label": "überhaupt nicht",
+        "value": 0
+      }, {
+        "label": "gelegentlich",
+        "value": 1
+      }, {
+        "label": "ziemlich oft",
+        "value": 2
+      }, {
+        "label": "sehr oft",
+        "value": 3
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich habe das Interesse an meiner äußeren Erscheinung verloren</b>",
+      "tag": "D5",
+      "value": 2,
+      "type": "radio",
+      "inline": false,
+      "subset": "D",
+      "options": [{
+        "label": "ja, stimmt genau",
+        "value": 3
+      }, {
+        "label": "ich kümmere mich nicht so sehr darum, wie ich sollte",
+        "value": 2
+      }, {
+        "label": "möglicherweise kümmere ich mich zu wenig darum",
+        "value": 1
+      }, {
+        "label": "ich kümmere mich so viel darum wie immer",
+        "value": 0
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich fühle mich rastlos, muss immer in Bewegung sein</b>",
+      "tag": "A6",
+      "value": 2,
+      "type": "radio",
+      "inline": false,
+      "subset": "A",
+      "options": [{
+        "label": "ja, tatsächlich sehr",
+        "value": 3
+      }, {
+        "label": "ziemlich",
+        "value": 2
+      }, {
+        "label": "nicht sehr",
+        "value": 1
+      }, {
+        "label": "überhaupt nicht",
+        "value": 0
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich blicke mit Freude in die Zukunft</b>",
+      "tag": "D6",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "subset": "D",
+      "options": [{
+        "label": "ja, sehr",
+        "value": 0
+      }, {
+        "label": "eher weniger als früher",
+        "value": 1
+      }, {
+        "label": "viel weniger als früher",
+        "value": 2
+      }, {
+        "label": "kaum bis gar nicht",
+        "value": 3
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Mich überkommt plötzlich ein panikartiger Zustand</b>",
+      "tag": "A7",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "subset": "A",
+      "options": [{
+        "label": "ja, tatsächlich sehr oft",
+        "value": 3
+      }, {
+        "label": "ziemlich oft",
+        "value": 2
+      }, {
+        "label": "nicht sehr oft",
+        "value": 1
+      }, {
+        "label": "überhaupt nicht",
+        "value": 0
+      }],
+      "isvalid": true
+    }, {
+      "label": "<b>Ich kann mich an einem guten Buch, einer Radio- oder Fernsehsendung erfreuen</b>",
+      "tag": "D7",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "subset": "D",
+      "options": [{
+        "label": "oft",
+        "value": 0
+      }, {
+        "label": "manchmal",
+        "value": 1
+      }, {
+        "label": "eher selten",
+        "value": 2
+      }, {
+        "label": "sehr selten",
+        "value": 3
+      }],
+      "isvalid": true
+    }],
+    "results": {
+      "method": "subsums",
+      "subsets": [{
+        "label": "Kategorie A",
+        "tag": "A"
+      }, {
+        "label": "Kategorie D",
+        "tag": "D"
+      }]
+    }
+  }
+}

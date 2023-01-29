@@ -1,0 +1,65 @@
+{
+    "title": "PHQ-9",
+    "short_title": "phq_9",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "720433000",
+        "display" : "PHQ-9 (Patient Health Questionnaire 9 Item score)",
+        "version": "20211026"
+    },
+    "description": "PHQ-9",
+    "manual": "",
+    "keywords": "depression, screening",
+    "items": [
+    	{
+            "label": "Geburtsdatum",
+            "coding": { "display" : "birth_date", "code" : "21112-8", "system" : "http://loinc.org"},
+            "value": null,
+            "type": "date",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": true
+        },
+        {
+            "label": "Wie oft fühlten Sie sich im Verlauf der <b>letzten 2 Wochen</b> durch die folgenden Beschwerden beeinträchtigt?",
+            "tag": "block_1",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "longanswers": true,
+            "options": {
+                "answers": [
+                    {"label": "Überhaupt nicht", "value": 0},
+                    {"label": "An einzelnen Tagen", "value": 1},
+                    {"label": "An mehr als der Hälfte der Tage", "value": 2},
+                    {"label": "Beinahe jeden Tag", "value": 3}
+                ],
+                "questions": [
+                    {"label": "1. Wenig Interesse oder Freude an Ihren Tätigkeiten", "tag": "1"},
+                    {"label": "2. Niedergeschlagenheit, Schwermut oder Hoffnungslosigkeit", "tag": "2"},
+                    {"label": "3. Schwierigkeiten ein- oder durchzuschlafen oder vermehrter Schlaf", "tag": "3"},
+                    {"label": "4. Müdigkeit oder Gefühl, keine Energie zu haben", "tag": "4"},
+                    {"label": "5. Verminderter Appetit oder übermäßiges Bedürfnis zu essen", "tag": "5"},
+                    {"label": "6. Schlechte Meinung von sich selbst; Gefühl, ein Versager zu sein oder die Familie enttäuscht zu haben", "tag": "6"},
+                    {"label": "7. Schwierigkeiten, sich auf etwas zu konzentrieren, z.B. beim Zeitungslesen oder Fernsehen", "tag": "7"},
+                    {"label": "8. Waren Ihre Bewegungen oder Ihre Sprache so verlangsamt, dass es auch anderen auffallen würde? Oder waren Sie im Gegenteil \"zappelig\" oder ruhelos und hatten dadurch einen stärkeren Bewegungsdrang als sonst?", "tag": "8"},
+                    {"label": "9. Gedanken, dass Sie lieber tot wären oder sich Leid zufügen möchten", "tag": "9"}
+                ]
+            }
+        }
+        
+    ],
+    "results": {
+        "method": "sum",
+        "evaluation": [
+            {"range": [0,4], "label": "gesund"},
+            {"range": [5,9], "label": "unauffällig"},
+            {"range": [10,14], "label": "'leichtgradige' Depression"},
+            {"range": [15,19], "label": "'mittelgradige' Depression"},
+            {"range": [20,27], "label": "'schwergradige' Depression"}
+
+        ]
+    }
+
+}

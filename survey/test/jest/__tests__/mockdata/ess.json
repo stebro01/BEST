@@ -1,0 +1,173 @@
+{
+  "PID": "tt",
+  "quest": {
+    "title": "ESS",
+    "description": "Epworth Sleepiness Scale",
+    "manual": "<b>Anleitung</b>: Die folgende Frage bezieht sich auf Ihr normales Alltagsleben in der letzten Zeit:<br><b>Für wie wahrscheinlich halten Sie es, daß Sie in einer der folgenden Situationen einnicken oder einschlafen würden, - sich also nicht nur müde fühlen?</b><br>Auch wenn Sie in der letzten Zeit einige dieser Situationen nicht erlebt haben, versuchen Sie sich trotzdem vorzustellen, wie sich diese Situationen auf Sie ausgewirkt hätten. <br>Benutzen Sie bitte die folgende Skala, um für jede Situation eine möglichst genaue<br>Einschätzung vorzunehmen und kreuzen Sie die entsprechende Zahl an:<br><br>1 = würde niemals einnicken<br>1 = geringe Wahrscheinlichkeit einzunicken<br>2 = mittlere Wahrscheinlichkeit einzunicken<br>5 = hohe Wahrscheinlichkeit einzunicken",
+    "keywords": "schlaf sleep",
+    "items": [{
+      "label": "Im Sitzen lesen",
+      "tag": "reading",
+      "value": 4,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "1",
+        "value": 1
+      }, {
+        "label": "2",
+        "value": 2
+      }, {
+        "label": "3",
+        "value": 3
+      }, {
+        "label": "4",
+        "value": 4
+      }],
+      "isvalid": true
+    }, {
+      "label": "Beim Fernsehen",
+      "tag": "watch_tv",
+      "value": 1,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "1",
+        "value": 1
+      }, {
+        "label": "2",
+        "value": 2
+      }, {
+        "label": "3",
+        "value": 3
+      }, {
+        "label": "4",
+        "value": 4
+      }],
+      "isvalid": true
+    }, {
+      "label": "Wenn Sie passiv zuhören, z.B. TV",
+      "tag": "listening_passiv",
+      "value": 1,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "1",
+        "value": 1
+      }, {
+        "label": "2",
+        "value": 2
+      }, {
+        "label": "3",
+        "value": 3
+      }, {
+        "label": "4",
+        "value": 4
+      }],
+      "isvalid": true
+    }, {
+      "label": "als Beifahrer im Auto",
+      "tag": "shotgun_car",
+      "value": 1,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "1",
+        "value": 1
+      }, {
+        "label": "2",
+        "value": 2
+      }, {
+        "label": "3",
+        "value": 3
+      }, {
+        "label": "4",
+        "value": 4
+      }],
+      "isvalid": true
+    }, {
+      "label": "Wenn Sie sich am Nachmittag hingelegt haben",
+      "tag": "sleep_midday",
+      "value": 1,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "1",
+        "value": 1
+      }, {
+        "label": "2",
+        "value": 2
+      }, {
+        "label": "3",
+        "value": 3
+      }, {
+        "label": "4",
+        "value": 4
+      }],
+      "isvalid": true
+    }, {
+      "label": "Während einer Unterhaltung",
+      "tag": "conversation",
+      "value": 2,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "1",
+        "value": 1
+      }, {
+        "label": "2",
+        "value": 2
+      }, {
+        "label": "3",
+        "value": 3
+      }, {
+        "label": "4",
+        "value": 4
+      }],
+      "isvalid": true
+    }, {
+      "label": "Wenn Sie nach dem Mittagessen ruhig dasitzen",
+      "tag": "after_lunch",
+      "value": 3,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "1",
+        "value": 1
+      }, {
+        "label": "2",
+        "value": 2
+      }, {
+        "label": "3",
+        "value": 3
+      }, {
+        "label": "4",
+        "value": 4
+      }],
+      "isvalid": true
+    }, {
+      "label": "Wenn Sie als Autofahrer verkehrsbedingt anhalten müssen",
+      "tag": "driving_car",
+      "value": 3,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "1",
+        "value": 1
+      }, {
+        "label": "2",
+        "value": 2
+      }, {
+        "label": "3",
+        "value": 3
+      }, {
+        "label": "4",
+        "value": 4
+      }],
+      "isvalid": true
+    }],
+    "results": {
+      "method": "sum"
+    }
+  }
+}

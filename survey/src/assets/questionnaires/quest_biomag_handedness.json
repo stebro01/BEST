@@ -1,0 +1,50 @@
+{
+    "title": "Händigkeit BIOMAG",
+    "short_title": "biomag_handedness",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "364940007",
+        "display" : "Händigkeit",
+        "version": "20211026"
+    },
+    "description": "Inventar f. Händigkeit",
+    "keywords": "biomag",
+    "manual": "",
+    "items": [
+        {
+            "label": "Welche <b>Hand verwenden Sie bevorzugt (X) und ausschließlich (XX)</b> bei der Tätigkeit: <br>nur wenn Sie beide Hände etwa gleichzeitig benutzen, wählen Sie bitte <b>Beide</b>",
+            "tag": "handedness",
+            "id": [1,2,3, 4, 5, 6, 7, 8, 9, 10], 
+            "caption": "Bitte beachten, füllen Sie alle Zeilen aus!",
+            "value": [],
+            "type": "multiple_radio",
+            "evaluation": "KÖFU",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "Links", "value": "left"},
+                    {"label": "Rechts", "value": "right"},
+                    {"label": "Beide", "value": "both"}
+                ],
+                "questions": [
+                    {"id": 1, "label": "... schreiben", "tag": "writing"},
+                    {"id": 2, "label": "... malen", "tag": "painting"},
+                    {"id": 3, "label": "... etwas werfen", "tag": "throwing"},
+                    {"id": 4, "label": "... eine Schere benutzen", "tag": "scissors"},
+                    {"id": 5, "label": "... sich die Zähne putzen", "tag": "brush_teeth"},
+                    {"id": 6, "label": "... ein Messer benutzen (ohne Gabel)", "tag": "use_knife"},
+                    {"id": 7, "label": "... einen Löffel benutzen", "tag": "use_spoon"},
+                    {"id": 8, "label": "... einen Besen benutzen (obere Hand am Stiel)", "tag": "use_broom"},
+                    {"id": 9, "label": "... ein Streichholz anzünden", "tag": "use_match"},
+                    {"id": 10, "label": "... eine Schachtel öffnen (Hand am Deckel)", "tag": "open_box"}
+                ]
+            }
+        }
+           
+    
+    ],
+    "results": {
+        "method": "count"
+    }
+
+}

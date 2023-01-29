@@ -1,0 +1,220 @@
+{
+    "title": "NIHSS",
+    "short_title": "nihs",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "450741005",
+        "display" : "NIHSS",
+        "version": "20211026"
+    },
+    "description": "National Institute of Health Stroke Scale",
+    "manual": "<b>Anleitung</b>: Der NIHSS dient der detaillierten neurologischen Analyse. Dabei kann der Score einerseits als Verlaufsparameter, andererseits aber auch zur Beurteilung einer möglichen Therapie von ischämischen Insulten beigezogen werden. Eine intraarterielle Lyse bei ischämischem Infarkt ist unter Erfüllung der übrigen Voraussetzungen und fehlenden Kontraindikationen bei einem NIHSS-Wert >6 und <22 indiziert.<br><br><b>Formel</b><br>Summe der Punkte aus den Fragen 1-11, wobei maximal 42 Punkte möglich sind.",
+    "keywords": "stroke, neuro, neurorehabilitation, reha, rehabilitation, ischemic, schlaganfall",
+    "items": [
+       
+        {
+            "label": "1a. Bewußtseinslage (Vigilanz)",
+            "tag": "vigilance",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Wach, unmittelbar antwortend", "value": 0},
+                {"label": "1 Benommen, aber durch geringe Stimulation zum Befolgen von Aufforderungen, Antworten oder Reaktionen zu bewegen", "value": 1},
+                {"label": "2 Somnolent, bedarf wiederholter Stimulation um aufmerksam zu sein, oder ist soporös und bedarf starker oder schmerzhafter Stimulation zum Erzielen von Bewegungen (keine Stereotypien)", "value": 2},
+                {"label": "3 Koma, antwortet nur mit motorischen oder vegetativen Reflexen oder reagiert gar nicht, ist schlaff und ohne Reflexe", "value": 3}
+            ]
+        },
+        {
+            "label": "1b. Orientierung",
+            "caption": "Frage nach Monat und Alter (Anmerkung: auch eindeutige nonverbale Antworten werden gewertet)",
+            "tag": "orientation",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Beantwortet beide Fragen richtig", "value": 0},
+                {"label": "1 Beantwortet eine Frage richtig", "value": 1},
+                {"label": "2 Beantwortet keine Frage richtig", "value": 2}
+            ]
+        },
+        {
+            "label": "1c. Befolgung von Aufforderungen",
+            "tag": "responding",
+            "caption": "Aufforderung die Augen und die nicht-paretische Hand zu öffnen und zu schließen",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 führt beide Aufgaben richtig aus", "value": 0},
+                {"label": "1 führt eine Aufgabe richtig aus", "value": 1},
+                {"label": "2 führt keine Aufgabe richtig aus", "value": 2}
+            ]
+        },
+        {
+            "label": "2. Blickbewegungen (Okulomotorik)",
+            "tag": "okulomotorik",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Normal", "value": 0},
+                {"label": "„Partielle Blickparese“ Dieser Punktwert wird vergeben, wenn die Blickrichtung von einem oder beiden Augen abnormal ist, jedoch keine forcierte Blickdeviation oder komplette Blickparese besteht)", "value": 1},
+                {"label": "2 forcierte Blickdeviation oder komplette Blickparese, die durch Ausführen des okulozephalen Reflexes nicht überwunden werden kann", "value": 2}
+            ]
+        },
+        {
+            "label": "3. Gesichtsfeld",
+            "tag": "vision",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 keine Einschränkung", "value": 0},
+                {"label": "1 partielle Hemianopsie (e. g. Quadrantenanopsie)", "value": 1},
+                {"label": "2 komplette Hemianopsie", "value": 2},
+                {"label": "3 bilaterale Hemianopsie (Blindheit oder kortikaler Blindheit)", "value": 3}
+            ]
+        },
+        {
+            "label": "4. Fazialisparese",
+            "tag": "facial",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 normale symmetrische Bewegungen", "value": 0},
+                {"label": "1 geringe Parese (abgeflachte Nasolabialfalte, Asymmetrie beim Lächeln", "value": 1},
+                {"label": "2 partielle Parese (vollständige oder fast vollständige Parese des unteren Gesichts)", "value": 2},
+                {"label": "3 vollständige Parese einer oder zwei Seiten (Fehlende Bewegungen ob. und unterer Teil des Gesichts)", "value": 3}
+            ]
+        },
+        {
+            "label": "5a. Motorik Arme / Links",
+            "caption": "Anmerkung: Amputation oder Gelenkversteifung angeben! Zählt Null Punkte!",
+            "tag": "motor_arm_left",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 kein Absinken, (Extremität wird über 10 Sek. in der 90 °(oder 45°) Position gehalten)", "value": 0},
+                {"label": "1 Absinken, (Extremität wird zunächst bei 90° (oder 45°) gehalten, sinkt aber vor Ablauf von 10 Sek. ab; das Bett (oder eine andere Unterlage) wird nicht berührt)", "value": 1},
+                {"label": "2 Anheben gegen Schwerkraft möglich; (Extremität kann die 90° (oder 45°) Position nicht erreichen od.halten, sinkt auf das Bett ab, kann gegen Schwerkraft angehoben werden", "value": 2},
+                {"label": "3 Kein (aktives) Anheben gegen die Schwerkraft, Extremität fällt", "value": 3},
+                {"label": "4 Keine Bewegung", "value": 4}
+            ]
+        },
+        {
+            "label": "5b. Motorik Arme / Rechts",
+            "caption": "Anmerkung: Amputation oder Gelenkversteifung angeben! Zählt Null Punkte!",
+            "tag": "motor_arm_right",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 kein Absinken, (Extremität wird über 10 Sek. in der 90 °(oder 45°) Position gehalten)", "value": 0},
+                {"label": "1 Absinken, (Extremität wird zunächst bei 90° (oder 45°) gehalten, sinkt aber vor Ablauf von 10 Sek. ab; das Bett (oder eine andere Unterlage) wird nicht berührt)", "value": 1},
+                {"label": "2 Anheben gegen Schwerkraft möglich; (Extremität kann die 90° (oder 45°) Position nicht erreichen od.halten, sinkt auf das Bett ab, kann gegen Schwerkraft angehoben werden", "value": 2},
+                {"label": "3 Kein (aktives) Anheben gegen die Schwerkraft, Extremität fällt", "value": 3},
+                {"label": "4 Keine Bewegung", "value": 4}
+            ]
+        },
+        {
+            "label": "6a. Motorik Beine / Links",
+            "caption": "Anmerkung: Amputation oder Gelenkversteifung angeben! Zählt Null Punkte!",
+            "tag": "motor_leg_left",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 kein Absinken, (Bein bleibt über 5 Sekunden in der 30° Position)", "value": 0},
+                {"label": "1 Absinken, (Bein sinkt am Ende der 5 Sekundenperiode, berührt das Bett jedoch nicht)", "value": 1},
+                {"label": "2 Aktive Bewegung gegen die Schwerkraft; (das Bein sinkt binnen 5 Sekunden auf das Bett ab, kann aber gegen die Schwerkraft gehoben werden)", "value": 2},
+                {"label": "3 Kein Anheben gegen die Schwerkraft, Bein fällt sofort auf das Bett", "value": 3},
+                {"label": "4 Keine Bewegung", "value": 4}
+            ]
+        },
+        {
+            "label": "6b. Motorik Beine / Rechts",
+            "caption": "Anmerkung: Amputation oder Gelenkversteifung angeben! Zählt Null Punkte!",
+            "tag": "motor_leg_right",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 kein Absinken, (Bein bleibt über 5 Sekunden in der 30° Position)", "value": 0},
+                {"label": "1 Absinken, (Bein sinkt am Ende der 5 Sekundenperiode, berührt das Bett jedoch nicht)", "value": 1},
+                {"label": "2 Aktive Bewegung gegen die Schwerkraft; (das Bein sinkt binnen 5 Sekunden auf das Bett ab, kann aber gegen die Schwerkraft gehoben werden)", "value": 2},
+                {"label": "3 Kein Anheben gegen die Schwerkraft, Bein fällt sofort auf das Bett", "value": 3},
+                {"label": "4 Keine Bewegung", "value": 4}
+            ]
+        },
+        {
+            "label": "7. Extremitätenataxie",
+            "caption": "Anmerkung: Wird bei Verständnisschwierigkeiten oder Plegie als fehlend gewertet!",
+            "tag": "ataxia",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 fehlend", "value": 0},
+                {"label": "1 in einer Extremität vorhanden", "value": 1},
+                {"label": "2 in zwei Extremitäten vorhanden", "value": 2}
+            ]
+        },
+        {
+            "label": "8. Sensibilität",
+            "tag": "sensibility",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Normal; kein Sensibilitätsverlust", "value": 0},
+                {"label": "1 Leichter bis mittelschwerer Sensibilitätsverlust; Patient empfindet Nadelstiche auf der betroffenen Seite als wenig scharf oder stumpf, oder es besteht ein Verlust des Oberflächenschmerzes für Nadelstiche, doch nimmt der Patient die Berührung wahr.", "value": 1},
+                {"label": "2 Schwerer bis vollständiger Sensibilitätsverlust; Patient nimmt die Berührung von Gesicht, Arm und Bein nicht wahr.", "value": 2}
+            ]
+        },
+        {
+            "label": "9. Sprache",
+            "tag": "speech",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Keine Aphasie; normal", "value": 0},
+                {"label": "1 Leichte bis mittelschwere Aphasie; deutliche Einschränkung der Wortflüssigkeit oder des Sprachverständnisses, keine relevante Einschränkung von Umfang oder Art des Ausdruckes. Die Einschränkung des Sprachvermögens und/oder des Sprachverständnisses macht die Unterhaltung über die vorgelegten Untersuchungsmaterialien jedoch schwierig bis unmöglich. Beispielsweise kann der Untersucher in einer Unterhaltung über die vorgelegten Materialien anhand der Antwort des Patienten ein Bild oder eine Wortkarte zuordnen.", "value": 1},
+                {"label": "2 Schwere Aphasie, die gesamte Kommunikation findet über fragmentierte Ausdrucksformen statt: Der Zuhörer muß das Gesagte in großem Umfang interpretieren, nachfragen oder erraten. Der Umfang an Informationen, der ausgetauscht werden kann, ist begrenzt; der Zuhörer trägt im wesentlichen die Kommunikation. Der Untersucher kann die vorgelegten Materialien anhand der Antworten des Patienten nicht zuordnen.", "value": 2},
+                {"label": "3 Stumm, globale Aphasie; keine verwertbare Sprachproduktion oder kein Sprachverständnis (auch bei Koma)", "value": 3}
+            ]
+        },
+        {
+            "label": "10. Dysarthrie",
+            "caption": "Intubation oder andere mechanische Behinderungen werden mit Null Punkten bewertet!",
+            "tag": "dysarthria",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Normal", "value": 0},
+                {"label": "1 Leicht bis mittelschwer, der Patient spricht zumindest einige Wörter verwaschen und kann, schlimmstenfalls, nur mit Schwierigkeiten verstanden werden", "value": 1},
+                {"label": "2 Schwer, die verwaschene Sprache des Patienten ist unverständlich und beruht nicht auf einer Aphasie oder übersteigt das auf eine Aphasie zurückzuführende Maß oder Patient ist stumm/anarthrisch", "value": 2}
+            ]
+        },
+        {
+            "label": "11. Auslöschung und Nichtbeachtung (Neglect)",
+            "caption": "Anmerkung: bei fehlender Beurteilbarkeit = 0",
+            "tag": "neglect",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "0 Keine Abnormalität", "value": 0},
+                {"label": "1 Visuelle, taktile, auditive oder personenbezogene Unaufmerksamkeit oder Auslöschung bei der Überprüfung von gleichzeitiger bilateraler Stimulation in einer der sensiblen Qualitäten", "value": 1},
+                {"label": "2 Schwere halbseitige Unaufmerksamkeit oder halbseitige Unaufmerksamkeit in mehr als einer Qualität. Kein Erkennen der eigenen Hand oder Orientierung nur zu einer Seite des Raums.", "value": 2}
+            ]
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "title": "Big-Five-Inventory",
+    "short_title": "bfi10",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445536008",
+        "display" : "BFI-10",
+        "version": "20211026"
+    },
+    "description": "Brief personality questionnaire, big five",
+    "manual": "",
+    "keywords": "Persönlichkeit, personality, questionnaire",
+    "items": [
+        {
+            "label": "Inwieweit treffen die folgenden Aussagen auf Sie zu?",
+            "tag": "Q1",
+            "id": [1,2,3,4,5,6,7,8,9,10],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "Trifft überhaupt nicht zu", "value": 1},
+                    {"label": "Trifft eher nicht zu", "value": 2},
+                    {"label": "Weder noch", "value": 3},
+                    {"label": "Eher zutreffend", "value": 4},
+                    {"label": "Trifft voll und ganz zu", "value": 5}
+                ],
+                "questions": [
+                    {"id": 1, "label": "1. Ich bin eher zurückhaltend, reserviert.", "tag": "1"},
+                    {"id": 2, "label": "2. Ich schenke anderen leicht Vertrauen, glaube an das Gute im Menschen.", "tag": "2"},
+                    {"id": 3, "label": "3. Ich bin bequem, neige zur Faulheit.", "tag": "3"},
+                    {"id": 4, "label": "4. Ich bin entspannt, lasse mich durch Stress nicht aus der Ruhe bringen.", "tag": "4"},
+                    {"id": 5, "label": "5. Ich habe nur wenig künstlerisches Interesse.", "tag": "5"},
+                    {"id": 6, "label": "6. Ich gehe aus mir heraus, bin gesellig.", "tag": "6"},
+                    {"id": 7, "label": "7. Ich neige dazu, andere zu kritisieren.", "tag": "7"},
+                    {"id": 8, "label": "8. Ich erledige Aufgaben gründlich.", "tag": "8"},
+                    {"id": 9, "label": "9. Ich werde leicht nervös und unsicher.", "tag": "9"},
+                    {"id": 10, "label": "10. Ich habe eine aktive Vorstellungskraft, bin fantasievoll.", "tag": "10"}
+                ]         
+            }
+        }
+    ],
+
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [2,6,8,9,10], "value": [1,2,3,4,5], "score": [1,2,3,4,5]},
+            {"id": [1,3,4,5,7], "value": [1,2,3,4,5], "score": [5,4,3,2,1]}
+        ],
+        "domaine":[
+            {"label": "Extraversion", "id": [1,6], "method": "avg"},
+            {"label": "Neurotizismus", "id": [4,9], "method": "avg"},
+            {"label": "Offenheit", "id": [5,10], "method": "avg"},
+            {"label": "Gewissenhaftigkeit", "id": [3,8], "method": "avg"},
+            {"label": "Verträglichkeit", "id": [2,7], "method": "avg"}    
+        ]
+    }
+
+}

@@ -1,0 +1,25 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "recurseDepth": 10,
+    "source": {
+        "include": ["src", "test/cypress/integration", "test/jest/__tests__"],
+        "exclude": ["node_modules"],
+        "excludePattern": "node_modules",
+        "includePattern": ".\\.(js|vue)$"
+    },
+    "plugins": [
+        "plugins/markdown", "node_modules/jsdoc-vuejs"
+    ],
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true
+    },
+    "opts": {
+        "destination": "docs",
+        "recurse": true,
+        "readme": "README.md"
+    }
+}

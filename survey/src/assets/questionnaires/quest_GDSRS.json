@@ -1,0 +1,58 @@
+{
+    "title": "GDS (RS)",
+    "short_title": "gds_dystonia",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "225398001",
+        "display" : "Global Dystonia Severity Rating Scale (GDS)",
+        "version": "20211026"
+    },
+    "description": "Global Dystonia Severity Rating Scale",
+    "keywords": "neurology, dystonia",
+    "manual": "",
+    "items": [
+        {
+            "label": "Die Global Dystonia Severity Rating Scale (GDS) dient als Instrument zur Beurteilung des Dystonie-Schweregrades. Die GDS ist eine globale Skala, die auf 10 Körperregionen angewendet wird. <br>Der globale Score ist ein Gesamtscore für jede Körperregion, einschließlich separater Bewertungen für die rechte und linke Extremität (proximal und distal). Der Gesamtscore ist die Summe der Scores für alle Körperregionen. Es gibt keine modifizierenden Bewertungen oder Gewichtungsfaktoren im GDS. Die maximale Gesamtpunktzahl des GDS beträgt 140.<br>Der Untersucher bewertet den Patienten im Verhältnis zu allen Patienten. Ändert sich die Dystonie während der Untersuchung, wird das Rating für die maximale Dystonie festgehalten. <br>Zehn Körperbereiche werden getestet: 1) Augen und Obergesicht, 2) Untergesicht, 3) Kiefer und Zunge, 4) Kehlkopf, 5) Hals, 6) rechte und linke Schulter und proximaler Arm, 7) rechter und linker distaler Arm und Hand einschließlich Ellenbogen, 8) rechtes und linkes Becken und Oberschenkel, 9) rechtes und linkes distales Bein und Fuß, und 10) Rumpf.<br><br> Jeder Körperbereich wird von 0 bis 10 bewertet:<br> <ul><li>0 Keine Dystonie in diesem Körperbereich</li><li>1 vorhanden Minimale Dystonie</li><li>5 Mäßige Dystonie</li><li>10 Schwerste Dystonie</li></ul>",
+            "tag": "items",
+            "id": [1,2,3, 4, 5, 6, 7, 8, 9, 10], 
+            "caption": "Bitte beachten, füllen Sie alle Zeilen aus!",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "0", "value": 0},
+                    {"label": "1", "value": 1},
+                    {"label": "2", "value": 2},
+                    {"label": "3", "value": 3},
+                    {"label": "4", "value": 4},
+                    {"label": "5", "value": 5},
+                    {"label": "6", "value": 6},
+                    {"label": "7", "value": 7},
+                    {"label": "8", "value": 8},
+                    {"label": "9", "value": 9},
+                    {"label": "10", "value": 10}
+                ],
+                "questions": [
+                    {"id": 1, "label": "1. Augen und oberes Gesicht", "tag": "eyes_upperface"},
+                    {"id": 2, "label": "2. Unteres Gesicht?", "tag": "lowerface"},
+                    {"id": 3, "label": "3. Kiefer und Zunge", "tag": "jawandtongue"},
+                    {"id": 4, "label": "4. Kehlkopf", "tag": "larynx"},
+                    {"id": 5, "label": "5. Hals", "tag": "neck"},
+                    {"id": 61, "label": "6a. Schulter und proximaler Arm (Rechts)", "tag": "prox_arm_right"},
+                    {"id": 62, "label": "6b. Schulter und proximaler Arm (Links)", "tag": "prox_arm_left"},
+                    {"id": 71, "label": "7a. Distaler Arm und Hand einschließlich Ellenbogen (Rechts)?", "tag": "dist_arm_right"},
+                    {"id": 72, "label": "7b. Distaler Arm und Hand einschließlich Ellenbogen (Links)?", "tag": "dist_arm_left"},
+                    {"id": 81, "label": "8a. Becken und proximales Bein (Rechts)", "tag": "prox_leg_right"},
+                    {"id": 82, "label": "8b. Becken und proximales Bein (Links)", "tag": "prox_leg_left"},
+                    {"id": 91, "label": "9a. Distales Bein und Fuß einschließlich Knie (Rechts)", "tag": "distal_leg_right"},
+                    {"id": 92, "label": "9b. Distales Bein und Fuß einschließlich Knie (Links)", "tag": "distal_leg_left"},
+                    {"id": 10, "label": "10. Rumpf", "tag": "trunk"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+}

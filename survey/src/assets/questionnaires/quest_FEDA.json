@@ -1,0 +1,66 @@
+{
+    "title": "FEDA (AK Aufmerksamkeit und Gedächtnis)",
+    "short_title": "feda",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "311474001",
+        "display" : "FEDA (AK Aufmerksamkeit und Gedächtnis)",
+        "version": "20211026"
+    },
+    "description": "",
+    "manual": "Der folgende Fragebogen enthält Fragestellungen über Schwierigkeiten in alltäglichen Situationen. Zu jeder Feststellung sollen Sie angeben, wie häufig diese für Sie zutrifft: sehr häufig - häufig - manchmal - selten - nie.",
+    "keywords": "attention, memory, daily",
+    "items": [
+        {
+            "label": "Bitte geben Sie zu jeder Feststellung eine Antwort. Schreiben Sie Ihren Eindruck ohne langes Grübeln hin. Entscheidend ist, wie Sie die Situation erleben.",
+            "tag": "",
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "sehr häufig", "value": 4},
+                    {"label": "häufig", "value": 3},
+                    {"label": "manchmal", "value": 2},
+                    {"label": "selten", "value": 1},
+                    {"label": "nie", "value": 0}
+                ],
+                "questions": [
+                    {"label": "1. Es fällt mir schwer, bei Filmen oder anderen Sendungen im Fernsehen die Zusammenhänge zu verstehen.", "tag": "1"},
+                    {"label": "2. Es fällt mir auf, dass ich für alltägliche Verrichtungen wie Waschen und Anziehen sehr viel Zeit brauche.", "tag": "2"},
+                    {"label": "3. Es kommt vor, dass mich nicht einmal meine Hobbies interessieren", "tag": "3"},
+                    {"label": "4. Es fällt mir schwer, mich zu konzentrieren, wenn um mich herum zuviel los ist.", "tag": "4"},
+                    {"label": "5. Bei Gesprächen mit Bekannten bekomme ich nicht alles mit, weil diese so schnell sprechen.", "tag": "5"},
+                    {"label": "6. Auch Dinge, die mir Freude machen, lasse ich einfach bleiben.", "tag": "6"},
+                    {"label": "7. Es kommt vor, dass ich plötzlich nicht mehr weiß, was ich gerade tun wollte.", "tag": "7"},
+                    {"label": "8. Alltäglichkeiten wie Kochen, Waschen, Haarewaschen oder ähnliches strengen mich sehr an.", "tag": "8"},
+                    {"label": "9. Mir fehlt die Energie, selbst Aufgaben zu erledigen, die ich unbedingt tun muss.", "tag": "9"},
+                    {"label": "10. Ich brauche doppelt soviel Zeit wie andere, um eine Aufgabe zu erledigen.", "tag": "10"},
+                    {"label": "11. Es fällt mir schwer, meine Gedanken beisammen zu halten.", "tag": "11"},
+                    {"label": "12. Auch Dinge, die ich in meiner Freizeit gerne tue, strengen mich an.", "tag": "12"},
+                    {"label": "13. Wenn ich die Zeitung oder ein Buch lese, geschieht es, dass ich gar nicht merke, was ich lese.", "tag": "13"},
+                    {"label": "14. Es fällt mir schwer, mit Arbeiten rechtzeitig fertig zu werden.", "tag": "14"},
+                    {"label": "15. Schon ein Geräusch, kann mich beim Lesen so stören, dass ich den Faden verliere.", "tag": "15"},
+                    {"label": "16. Selbst leichte Arbeiten muss ich unterbrechen, um mich auszuruhen.", "tag": "16"},
+                    {"label": "17. Im Straßenverkehr fühle ich mich überfordert, weil alles so schnell geht.", "tag": "17"},
+                    {"label": "18. Ich brauche ziemlich lange, bis ich einen Artikel in einer Zeitung gelesen und verstanden habe.", "tag": "18"},
+                    {"label": "19. Ich kann mich zu nichts aufraffen, obwohl sehr viel zu tun wäre.", "tag": "19"},
+                    {"label": "20. Zum Ausfüllen von Formularen - z.B. einer Überweisung - muss ich lange überlegen.", "tag": "20"},
+                    {"label": "21. Meine Familie oder meine Bekannten beklagen sich, dass ich zerstreut sei.", "tag": "21"},
+                    {"label": "22. Ich habe das Gefühl, dass mich alltägliche Arbeiten sehr anstrengen.", "tag": "22"},
+                    {"label": "23. Ich habe zu nichts Lust.", "tag": "23"},
+                    {"label": "24. Es kommt vor, dass ich ganze Absätze zweimal lesen muss, um sie zu verstehen.", "tag": "24"},
+                    {"label": "25. Ich verliere den Gesprächsfaden, wenn um mich herum zuviel andere Dinge passieren.", "tag": "25"},
+                    {"label": "26. Ich habe große Schwierigkeiten, in meiner Freizeit etwas mit mir anzufangen.", "tag": "26"},
+                    {"label": "27. Es macht mir Mühe, beim Lesen lange Sätze zu verstehen.", "tag": "27"}
+
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+
+}

@@ -1,0 +1,450 @@
+{
+    "title": "PAQ 50plus",
+    "short_title": "paq_50plus",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "398636004",
+        "display" : "PAQ 50plus (Physical activity)",
+        "version": "20211026"
+    },
+    "description": "",
+    "manual": "Die folgenden Fragen beziehen sich auf eine Ihren normalen Alltag entsprechende Woche innerhalb des letzten Monats. Bitte denken Sie also nicht ausschließlich and die letzte Woche, sondern an eine durchschnittliche Woche im letzten Monat. Bitte beantworten Sie jede Frage. Bei Optionen, die nicht auf Sie zutreffen, geben Sie einfach \"0\" an.",
+    "keywords": "daily psych alltag",
+    "items": [
+        {
+        	"label": "<b>Hausarbeit</b> <br>Wie viele Stunden pro Woche haben Sie im <b>letzten Monat</b>...",
+        	"type": "textbox"
+        },
+        {
+            "label": "...eingekauft (z.B. Lebensmittel oder Kleidung)",
+            "id": 1,
+            "caption": "Stunden/Woche",
+            "tag": "shopping",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...gekocht, Essen serviert, Geschirr gespült?",
+            "id": 2,
+            "caption": "Stunden/Woche",
+            "tag": "cooking",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...leichte Hausarbeiten getätigt? (z.B. Aufräumen, Staub wischen, Wäsche waschen, Bügeln)",
+            "id": 3,
+            "caption": "Stunden/Woche",
+            "tag": "easy_chores",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...schwere Hausarbeiten getätigt? (z.B. Kehren, Fenster putzen, Staub saugen, Boden schrubben)",
+            "id": 4,
+            "caption": "Stunden/Woche",
+            "tag": "hard_chores",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...leichte Reparaturarbeiten durchgeführt? (z.B. kleinere Reparaturen, Streichen im Haus, Tapezieren)",
+            "id": 5,
+            "caption": "Stunden/Woche",
+            "tag": "easy_repair",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...schwere Reparaturarbeiten durchgeführt? (z.B. Teppichboden legen, Tischlern/Schreinern, Auto waschen)",
+            "id": 6,
+            "caption": "Stunden/Woche",
+            "tag": "hard_repair",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...andere Hausarbeiten erledigt, die nicht genannt waren",
+            "id": 7,
+            "caption": "Bitte angeben welche, sowie Stunden/Woche",
+            "tag": "other_chores",
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+        	"label": "<b>Gartenarbeit</b> <br>Wie viele Stunden pro Woche haben Sie im <b>letzten Monat</b>...",
+        	"type": "textbox"
+        },
+        {
+            "label": "...im Garten gearbeitet? (z.B. Pflanzen, Unkraut jäten, Grabpflege)",
+            "id": 8,
+            "caption": "Stunden/Woche",
+            "tag": "gardening",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Rasen gemäht? (z.B. mit dem Handrasenmäher oder der Sense)",
+            "id": 9,
+            "caption": "Stunden/Woche",
+            "tag": "mowing",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Wege frei gemacht? (z.B. Schnee schippen, Kehren, Laub zusammenrechen)",
+            "id": 10,
+            "caption": "Stunden/Woche",
+            "tag": "clear_way",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...andere Gartenarbeiten erledigt, die nicht genannt waren?",
+            "id": 11,
+            "caption": "Bitte angeben welche, sowie Stunden/Woche",
+            "tag": "other_garden",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+        	"label": "<b>Freizeit</b> <br>Wie viele Stunden pro Woche haben Sie <b>letzten Monat</b>...",
+        	"type": "textbox"
+        },
+        {
+            "label": "...Spaziergänge in einem gemütlichen Tempo unternommen?",
+            "id": 12,
+            "caption": "Stunden/Woche",
+            "tag": "walk",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...getanzt? (z.B. Walzer, Cha Cha, Rumba)",
+            "id": 13,
+            "caption": "Stunden/Woche",
+            "tag": "dance",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...gekegelt oder Boccia gespielt?",
+            "id": 14,
+            "caption": "Stunden/Woche",
+            "tag": "boccia",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Golf gespielt (von Loch zu Loch zu Fuß gehen)?",
+            "id": 15,
+            "caption": "Stunden/Woche",
+            "tag": "golf",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...andere Freizeitaktivitäten ausgeübt, die nicht genannt waren?",
+            "id": 16,
+            "caption": "Bitte angeben welche, sowie Stunden/Woche",
+            "tag": "other_activities",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+        	"label": "<b>Sport</b> <br>Wie viele Stunden pro Woche haben Sie <b>letzten Monat</b> die Sportart ... ausgeübt?",
+        	"type": "textbox"
+        },
+        {
+            "label": "...schnelles Gehen (oder Walking, mit ca. 5-6 km/h)",
+            "id": 17,
+            "caption": "Stunden/Woche",
+            "tag": "fastwalk",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Nordic Walking oder Wandern (querfeldein)",
+            "id": 18,
+            "caption": "Stunden/Woche",
+            "tag": "hiking",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Jogging (mit ca. 8km/h oder 7,5 min/km)",
+            "id": 19,
+            "caption": "Stunden/Woche",
+            "tag": "jogging",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Fahrrad fahren (mit ca. 20 km/h)",
+            "id": 20,
+            "caption": "Stunden/Woche",
+            "tag": "bike",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Gymnastik (z.B. Rücken- oder Bauchmuskelübungen)",
+            "id": 21,
+            "caption": "Stunden/Woche",
+            "tag": "gymnastics",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Aerobic",
+            "id": 22,
+            "caption": "Stunden/Woche",
+            "tag": "aerobics",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Tennis (Doppel oder Einzel)",
+            "id": 23,
+            "caption": "Stunden/Woche",
+            "tag": "tennis",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "...Skilanglauf (mit ca. 6-8 km/h)",
+            "id": 24,
+            "caption": "Stunden/Woche",
+            "tag": "langlauf",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Haben Sie im letzten Monat im Fitness-Studio trainiert? (Ergometer, Crosstrainer)",
+            "id": 25,
+            "caption": "Stunden/Woche",
+            "tag": "fitness_gym",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Haben Sie im letzten Monat andere Sportarten ausgebübt, die nicht genannt waren?",
+            "id": 26,
+            "caption": "Bitte angeben welche, sowie Stunden/Woche",
+            "tag": "sport_other",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Unter körperlich-sportlichen Aktivitäten versteht man geplante, regelmäßige Aktivitäten, die einen ins Schwitzen und außer Atem bringen und das Herz schneller schlagen lassen. Dazu zählen auch sportliche Wettkämpfe, jedoch keine Denksportarten oder Billiard. Beispiele für körperlich-sportliche Aktivitäten sind: schnelles Gehen, Joggen, Fahrrad fahren, Wandern, Gymnastik, Training im Fitness-Studio, Tennis oder Skilanglauf. Um als Sportler zu gelten, muss man solche Aktivitäten mindestens zwei- bis dreimal pro Woche für jeweils mindestens 30 Minuten ausüben. <br>Würden Sie sich nach dieser Definition als Sportler/in bezeichnen?",
+            "id": 27,
+            "tag": "athlete",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "ignore_for_result": true,
+            "options": [
+                {"label": "Ja", "value": "yes"},
+                {"label": "Nein", "value": "no"}
+            ]
+        },
+        {
+        	"label": "<b>Beruf</b> <br>Sind Sie im <b>letzten Monat</b> einer bezahlten oder freiwilligen Berufstätigkeit nachgegangen? Dies betrifft auch die Pflege und Beaufsichtigung von kleinen Kindern, älteren oder behinderten Personen. <br>Wenn ja, in welche der folgenden vier Kategorien passt die von Ihnen ausgeübte Tätigkeit am besten? <br>Wie viele Stunden pro Woche haben Sie im letzten Monat mit dieser Tätigkeit verbracht? Bitte wählen Sie aus den nachfolgenden vier Fragen zum Beruf diejenige aus, die Ihre Tätigkeit am besten beschreibt und geben Sie nur bei dieser an, wie viele Stunden/Woche Sie diese ausgeübt haben. Lassen Sie die Felder bei den anderen Optionen einfach leer.",
+        	"type": "textbox"
+        },
+        {
+            "label": "1. Tätigkeit, die hauptsächlich im Sitzen stattfindet mit leichten Armbewegungen (z.B. Schreibkraft, Uhrmacher oder Busfahrer)",
+            "id": 28,
+            "caption": "Stunden/Woche",
+            "tag": "sitting_job",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "2. Tätigkeit im Sitzen oder Stehen mit etwas Gehen (z.B. Kassierer, Büroangestellter, Arbeit mit leichten Maschinen und Werkzeugen oder Bäcker)",
+            "id": 29,
+            "caption": "Stunden/Woche",
+            "tag": "sitting_walking_job",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "3. Tätigkeit im Stehen oder Gehen, mit Handhabung von Materialien, die weniger als 25kg wiegen (z.B. Postbote, Kellner, Putzkraft, Pflege von älteren oder behinderten Erwachsenen, Spielen mit Kindern)",
+            "id": 30,
+            "caption": "Stunden/Woche",
+            "tag": "<25kg_job",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "4. Tätigkeit im Gehen und schwere manuelle Arbeit, mit Handhabung von Materialien, die mehr als 25kg wiegen (z.B. Forstarbeiter, Bergmann, Stahlarbeiter oder Arbeit mit schweren Maschinen und Werkzeugen)",
+            "id": 31,
+            "caption": "Stunden/Woche",
+            "tag": ">25kg_job",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Wie viele Stockwerke steigen Sie täglich hoch? (in Beruf und Privatleben)",
+            "id": 32,
+            "caption": "",
+            "tag": "levels",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": true
+        },
+        {
+            "label": "Wie oft tun Sie dies täglich?",
+            "id": 33,
+            "caption": "",
+            "tag": "how_often_levels",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": true
+        },
+        {
+        	"label": "<b>Angaben zu Ihrer Person</b>",
+        	"type": "textbox"
+        },
+        {
+            "label": "Alter",
+            "id": 34,
+            "caption": "",
+            "tag": "age",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": true
+        },
+        {
+            "label": "Geschlecht",
+            "id": 35,
+            "tag": "sex",
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "ignore_for_result": true,
+            "options": [
+                {"label": "m", "value": "m"},
+                {"label": "w", "value": "w"},
+                {"label": "d", "value": "d"}
+            ]
+        },
+        {
+            "label": "Körpergröße (in cm)",
+            "id": 36,
+            "tag": "height",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": true
+        },
+        {
+            "label": "Körpergewicht (in kg)",
+            "id": 37,
+            "tag": "weight",
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": true
+        }
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [28], "value": 1.7, "method": "multiply"},
+            {"id": [1,29], "value": 2.3, "method": "multiply"},
+            {"id": [2], "value": 2.4, "method": "multiply"},
+            {"id": [3], "value": 2.5, "method": "multiply"},
+            {"id": [5,13,14], "value": 3.0, "method": "multiply"},
+            {"id": [12,21], "value": 3.5, "method": "multiply"},
+            {"id": [30], "value": 3.8, "method": "multiply"},
+            {"id": [4], "value": 4.0, "method": "multiply"},
+            {"id": [8,15], "value": 4.5, "method": "multiply"},
+            {"id": [10], "value": 4.7, "method": "multiply"},
+            {"id": [17], "value": 5.0, "method": "multiply"},
+            {"id": [6], "value": 5.1, "method": "multiply"},
+            {"id": [9], "value": 5.2, "method": "multiply"},
+            {"id": [18], "value": 6.0, "method": "multiply"},
+            {"id": [22], "value": 6.5, "method": "multiply"},
+            {"id": [23], "value": 7.0, "method": "multiply"},
+            {"id": [31], "value": 7.1, "method": "multiply"},
+            {"id": [19,20,24,25], "value": 8.0, "method": "multiply"},
+            {"id": [37], "value": 1, "method": "multiply"}
+        ],
+        "domaine":[
+            {"label": "Aktivitätsniveau", "id": [1,2,3,4,5,6,8,9,10,12,13,14,15,17,18,19,20,21,22,23,24,25,28,29,30,31], "method": "sum"},
+            {"label": "Energieverbrauch", "id": ["Aktivitätsniveau",37], "method": "multiply"}
+        ]
+    }
+
+}
