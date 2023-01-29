@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "survey": "cd survey && quasar dev",
+    "db": "cd db/app && npm run dev",
+    "doc": "cd manual && sh make_html.sh",
+    "doc2pdf": "cd manual && sh make_pdf.sh"
+  }
+}
