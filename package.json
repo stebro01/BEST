@@ -1,8 +1,15 @@
 {
   "scripts": {
-    "survey": "cd survey && quasar dev",
+    "survey": "cd survey3 && quasar dev",
     "db": "cd db/app && npm run dev",
     "doc": "cd manual && sh make_html.sh",
     "doc2pdf": "cd manual && sh make_pdf.sh"
-  }
+  },
+  "name": "BEST",
+  "version": "1.0.0",
+  "description": "surveyBEST und dbBEST",
+  "main": "index.js",
+  "repository": "git@github.com:stebro01/BEST.git",
+  "author": "ste <ste>",
+  "license": "MIT"
 }
