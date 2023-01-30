@@ -5,10 +5,19 @@
       <template v-slot:header>
           <HEADING :title="'Patienten'" :description="'verwalten und anzeigen'" :img="'patient-color-logo.png'"/>
       </template>
+
+      <!-- OPTIONS -->
+      <template v-slot:options_left>
+        <q-btn icon="add" class="bg-black text-white" no-caps rounded label="neuer Patient" @click="newPatient()" />
+      </template>
+      <template v-slot:options_right>
+          <FILTER_BOX :filter="filter" @update="filter = $event"/>
+        </template>
+        
       <!-- MAIN -->
       <template v-slot:main>
         <q-table
-        class="my-table q-mt-xl"
+        class="my-table"
         :rows="results"
         :columns="columns"
         :filter="filter"
@@ -38,14 +47,6 @@
               </q-td>
             </q-tr>
         </template>
-
-      
-      <!-- TOP -->
-      <template v-slot:top>
-          <q-btn icon="add" class="bg-black text-white" no-caps rounded label="neuer Patient" @click="newPatient()" />
-          <q-space />
-          <FILTER_BOX :filter="filter" @update="filter = $event"/>
-        </template>
         
         </q-table>
       </template>
@@ -60,7 +61,6 @@
 
     </MainSlot>
     
-
   </q-page>
 </template>
 

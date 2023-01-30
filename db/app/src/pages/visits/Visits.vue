@@ -1,90 +1,86 @@
 <template>
-  <q-page class="column items-center">
-    <HEADING :title="TEXT.title" :img="'visit-color-logo.png'"/>
-
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
-      <!-- PROVIDER_PINNED -->
-    <div class="q-mt-xl">
-      <div v-if="($store.getters.PROVIDER_PINNED === undefined)" class="col q-mt-xl">
-        <q-card class="my-card ">
-          <q-item>
-            <q-item-section avatar>
-                <img src="~assets/provider-color-logo.png" class="my-icon-size">            </q-item-section>
-            <q-item-section>
-              <q-item-label class="text-h6">Untersucher wählen</q-item-label>
-            </q-item-section>
-          </q-item>
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :img="'visit-color-logo.png'" />
+      </template>
+      <!-- MAIN -->
+      <template v-slot:main>
 
-          <q-separator class="q-mx-sm" />
+        <div v-if="($store.getters.PROVIDER_PINNED === undefined)" class="">
+          <q-card class="my-card ">
+            <q-item>
+              <q-item-section avatar>
+                <img src="~assets/provider-color-logo.png" class="my-icon-size"> </q-item-section>
+              <q-item-section>
+                <q-item-label class="text-h6">Untersucher wählen</q-item-label>
+              </q-item-section>
+            </q-item>
 
-          <q-card-section>
-           <q-select v-model=provider_id :options="provider_options">
+            <q-separator class="q-mx-sm" />
 
-           </q-select>
-          </q-card-section>
-        </q-card>
-      </div>
+            <q-card-section>
+              <q-select v-model=provider_id :options="provider_options">
 
-      <!-- SELECT PATIENT -->
-      <div v-if="($store.getters.PATIENT_PINNED === undefined)" class="col q-mt-xl">
-        <q-card class="my-card">
-          <q-item>
-            <q-item-section avatar>
-                <img src="~assets/patient-color-logo.png" class="my-icon-size">            </q-item-section>
-            <q-item-section>
-              <q-item-label class="text-h6">Patienten auswählen</q-item-label>
-            </q-item-section>
-          </q-item>
+              </q-select>
+            </q-card-section>
+          </q-card>
+        </div>
 
-          <q-separator class="q-mx-sm" />
+        <!-- SELECT PATIENT -->
+        <div v-if="($store.getters.PATIENT_PINNED === undefined)" class="q-mt-md">
+          <q-card class="my-card">
+            <q-item>
+              <q-item-section avatar>
+                <img src="~assets/patient-color-logo.png" class="my-icon-size"> </q-item-section>
+              <q-item-section>
+                <q-item-label class="text-h6">Patienten auswählen</q-item-label>
+              </q-item-section>
+            </q-item>
 
-          <q-card-section>
-            <q-form @submit="selectPatient(PATIENT)" class="row justify-center" >
-              <!-- PATIENT_CD -->
-              <q-input
-                dense  lazy-rules style="width: 250px"
-                v-model="PATIENT.PATIENT_CD" type="text"
-                input-class="text-center"
-                label="Patient-ID (PATIENT_CD)"
-              >
-                <template v-slot:append>
-                  <q-icon name="close" @click="PATIENT.PATIENT_CD = null" />
-                </template>
-              </q-input>
+            <q-separator class="q-mx-sm" />
 
-              <!-- PATIENT_NUM -->
-              <q-input
-                dense  lazy-rules style="width: 250px"
-                v-model="PATIENT.PATIENT_NUM" type="number"
-                input-class="text-center"
-                label="lfd. Nummer (PATIENT_NUM)"
-              >
-                <template v-slot:append>
-                  <q-icon name="close" @click="PATIENT.PATIENT_NUM = null" />
-                </template>
-              </q-input>
-              <!-- BUTTONS -->
+            <q-card-section>
+              <q-form @submit="selectPatient(PATIENT)" class="row justify-center">
+                <!-- PATIENT_CD -->
+                <q-input dense lazy-rules style="width: 250px" v-model="PATIENT.PATIENT_CD" type="text"
+                  input-class="text-center" label="Patient-ID (PATIENT_CD)">
+                  <template v-slot:append>
+                    <q-icon name="close" @click="PATIENT.PATIENT_CD = null" />
+                  </template>
+                </q-input>
+
+                <!-- PATIENT_NUM -->
+                <q-input dense lazy-rules style="width: 250px" v-model="PATIENT.PATIENT_NUM" type="number"
+                  input-class="text-center" label="lfd. Nummer (PATIENT_NUM)">
+                  <template v-slot:append>
+                    <q-icon name="close" @click="PATIENT.PATIENT_NUM = null" />
+                  </template>
+                </q-input>
+                <!-- BUTTONS -->
                 <div class="absolute-bottom-right">
                   <q-btn flat round icon="search" type="submit" />
                 </div>
 
-                
-            </q-form>
-          </q-card-section>
-        </q-card>
-      </div>
 
-    </div>
+              </q-form>
+            </q-card-section>
+          </q-card>
+        </div>
 
-      <!-- PATIENT SELECT -->
-      <q-dialog v-model="select_patient_dialog">
+      </template>
+
+    </MainSlot>
+    <!-- PATIENT SELECT -->
+    <q-dialog v-model="select_patient_dialog">
       <q-card class="my-card">
         <q-card-section>
           <div class="text-h6">Patienten</div>
         </q-card-section>
 
-        <SELECT_LIST_CARD_SECTION :list="select_patient_list" @save="patientSelectedFromDialog($event)"/>
-        
+        <SELECT_LIST_CARD_SECTION :list="select_patient_list" @save="patientSelectedFromDialog($event)" />
+
 
         <q-card-actions align="right">
           <q-btn no-caps rounded flat :label="$store.getters.TEXT.btn.close" color="primary" v-close-popup />
@@ -92,7 +88,7 @@
       </q-card>
     </q-dialog>
 
-    
+
   </q-page>
 </template>
 
@@ -100,6 +96,8 @@
 // import myMixins from 'src/mixins/modes'
 import HEADING from 'src/components/elements/Heading.vue'
 import SELECT_LIST_CARD_SECTION from 'src/components/elements/SelectListCardSection.vue'
+import MainSlot from 'src/components/MainSlot.vue'
+
 // import {get_date_from_timeStamp} from 'src/classes/sqltools.js'
 
 export default {
@@ -115,7 +113,7 @@ export default {
     }
   },
 
-  components: {HEADING, SELECT_LIST_CARD_SECTION },
+  components: {HEADING, SELECT_LIST_CARD_SECTION, MainSlot },
   // mixins: [myMixins], //imports: searchPatient & deleteItem
 
   mounted() {

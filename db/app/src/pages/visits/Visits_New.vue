@@ -1,15 +1,18 @@
 <template>
-  <q-page class="column items-center text-center">
-
-      <!-- HEADING -->
+  <q-page>
+    <MainSlot>
+       <!-- HEADING -->
+       <template v-slot:header>
       <HEADING :title="TEXT.title" :description="TEXT.description" :img="'visit-color-logo.png'"/>
+       </template>
 
       <!-- VISITE -->
-      <div class="col q-mt-xl" v-if="visit">
+      <!-- MAIN -->
+      <template v-slot:main v-if="visit">
         <VISIT_EDIT_CARD :item='visit' @close="$router.go(-1)" :mode="'new'"/>
-      </div>
+      </template>
         
-       
+    </MainSlot>    
 
   </q-page>
 </template>
@@ -18,6 +21,8 @@
 // import myMixins from 'src/mixins/modes'
 import VISIT_EDIT_CARD from 'src/components/visits/VisitEdit_Card.vue'
 import HEADING from 'src/components/elements/Heading.vue'
+import MainSlot from 'src/components/MainSlot.vue'
+
 import {datenow_isostring} from 'src/tools/mydate'
 
 export default {
@@ -29,7 +34,7 @@ export default {
     }
   },
 
-  components: {VISIT_EDIT_CARD, HEADING },
+  components: {VISIT_EDIT_CARD, HEADING, MainSlot },
   // mixins: [myMixins], //imports: searchPatient & deleteItem
 
   mounted() {

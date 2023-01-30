@@ -1,23 +1,30 @@
 <template>
-  <q-page class="column items-center text-center">
+  <q-page>
+    <MainSlot>
+      <!-- HEADING -->
+      <template v-slot:header>
     <HEADING :title="TEXT.title" :description="TEXT.description" :img="'observation-logo.png'"/>
-    
-    <div class="col q-mt-xl q-pb-xl">
+    </template>
+
+     <!-- MAIN -->
+     <template v-slot:main>
       <OBSERVATION_EDIT_CARD v-if="formData" :item="formData" @close="closeObservation()"/>
-    </div>  
+    </template>
+
+  </MainSlot>
   </q-page>
 </template>
 
 <script>
 import HEADING from 'src/components/elements/Heading.vue'
 import OBSERVATION_EDIT_CARD from 'src/components/ObservationEdit_Card.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 import {datenow_isostring} from 'src/tools/mydate'
-
 
 export default {
   name: 'Observation_New',
 
-  components: {HEADING, OBSERVATION_EDIT_CARD },
+  components: {HEADING, OBSERVATION_EDIT_CARD, MainSlot },
 
   data() {
     return {

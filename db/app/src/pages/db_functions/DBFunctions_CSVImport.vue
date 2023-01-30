@@ -1,7 +1,13 @@
 <template>
-  <q-page class="column items-center q-pb-lg">
-      <!-- HEADING -->
+  <q-page>
+    <MainSlot :no_options="true">
+     <!-- HEADING -->
+     <template v-slot:header>
       <HEADING :title="$store.getters.TEXT.page.observation_import.title" :img="'csv-import-logo.png'"/>
+      </template>
+
+      <!-- MAIN -->
+      <template v-slot:main>
       <div class="col q-mt-xl">
         
         <div class="q-mt-xl text-center">
@@ -88,6 +94,9 @@
 
         
       </div>
+
+      </template>
+    </MainSlot>
   </q-page>
 </template>
 
@@ -99,13 +108,15 @@ import OBSERVATION_TABLE_EDIT from 'src/components/ObservationTable_edit.vue'
 import EDIT_ICON from 'src/components/elements/EditIcon.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import SELECT_FILE from 'src/components/elements/SelectFile.vue'
+import MainSlot from 'src/components/MainSlot.vue'
+
 
 import {beautify_data} from 'src/tools/formatdata'
 
 export default {
   name: 'DBFunctions_CSVImport',
 
-  components: { HEADING, HELP_CSV_IMPORT, OBSERVATION_TABLE_SHORT, HELP_CSV_IMPORT, OBSERVATION_TABLE_EDIT, EDIT_ICON, SELECT_FILE },
+  components: { HEADING, HELP_CSV_IMPORT, OBSERVATION_TABLE_SHORT, HELP_CSV_IMPORT, OBSERVATION_TABLE_EDIT, EDIT_ICON, SELECT_FILE, MainSlot },
 
   data() {
     return {

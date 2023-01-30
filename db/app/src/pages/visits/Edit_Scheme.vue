@@ -1,14 +1,17 @@
 <template>
-  <q-page class="column items-center q-pb-xl">
-    <HEADING :title="'Scheme hinzufügen'" :img="'general_icon.png'"/>
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
-    <div class="q-mt-xl  justify-center">
+      <template v-slot:header>
+    <HEADING :title="'Scheme hinzufügen'" :img="'general_icon.png'"/>
+    </template>
+       <!-- MAIN -->
+       <template v-slot:main>
         <!-- ALLGEMEIN -->
-        <div class="col-12 q-mt-xl q-pa-md justify-center">
           <OBSERVATION_TABLE_SHORT @changed="(localGlobalData = $event); changeDetected = true"/>
-        </div>
 
-        <div v-if="!active_scheme.resolved" class="col-12 justify-center">
+
+        <div v-if="!active_scheme.resolved" >
           <!-- AUSWAHL BUTTON -->
           <q-btn-dropdown
             no-caps
@@ -34,23 +37,27 @@
         </div>
 
       <!-- ANZEIGE INHALT -->
-      <div v-if="active_scheme.resolved">
+      <div v-if="active_scheme.resolved" class="q-mt-md">
     
         <!-- ITEMS -->
-        <div class="col-12 q-pa-md justify-center">
           <SCHEME_TABLE_NEW :scheme="active_scheme" @changed="(localFormData = $event); changeDetected = true"/>
-        </div>
+
       </div>
 
 
+      
+    </template>
+
+     <!-- FOOTER -->
+     <template v-slot:footer>
       <BOTTOM_BUTTONS 
         :show_save="(changeDetected && localFormData.length > 0 && localGlobalData)"  @save="saveScheme()"
         :show_back="true" @back="$router.go(-1)"
 
       />
-
-    </div>
+      </template>
     
+  </MainSlot>
   </q-page>
 </template>
 
@@ -58,6 +65,7 @@
 import HEADING from 'src/components/elements/Heading.vue'
 import OBSERVATION_TABLE_SHORT from 'src/components/ObservationTable_short.vue'
 import SCHEME_TABLE_NEW from 'src/components/SchemeTableNew.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 
@@ -67,7 +75,7 @@ import myMixins from 'src/mixins/modes_VisitCard'
 export default {
   name: 'SchemeEdit',
 
-  components: {HEADING, OBSERVATION_TABLE_SHORT, BOTTOM_BUTTONS, SCHEME_TABLE_NEW },
+  components: {HEADING, OBSERVATION_TABLE_SHORT, BOTTOM_BUTTONS, SCHEME_TABLE_NEW, MainSlot },
 
   mixins: [myMixins], //imports: searchPatient & deleteItem
 

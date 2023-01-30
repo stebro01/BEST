@@ -1,38 +1,38 @@
 <template>
-  <q-page class="column items-center text-center">
-    <HEADING :title="TEXT.title" :description="TEXT.description" :img="'observation-logo.png'"/>
-    
-    <div class="col q-mt-xl q-pb-xl">
-      <OBSERVATION_TABLE_EDIT v-if="formData" 
-        class="q-mt-xl"
-        :input_data="formData" 
-        @changed="dataChanged($event)"
-      />
-    </div>  
+  <q-page>
+    <MainSlot>
+      <!-- HEADING -->
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :description="TEXT.description" :img="'observation-logo.png'" />
+      </template>
 
-    <!-- BOTTOMS -->
-    <BOTTOM_BUTTON 
-      :show_back="true" @back="closeObservation()"
-      :show_save="data_changed" @save="saveChangedData()"
-    />
+      <!-- MAIN -->
+      <template v-slot:main>
+        <OBSERVATION_TABLE_EDIT v-if="formData" :input_data="formData" @changed="dataChanged($event)" />
+      </template>
 
-<!-- ENDE -->
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <BOTTOM_BUTTON :show_back="true" @back="closeObservation()" :show_save="data_changed"
+          @save="saveChangedData()" />
+      </template>
 
+      <!-- ENDE -->
+    </MainSlot>
   </q-page>
 </template>
-
-
-
 
 <script>
 import HEADING from 'src/components/elements/Heading.vue'
 import OBSERVATION_TABLE_EDIT from 'src/components/ObservationTable_edit.vue'
 import BOTTOM_BUTTON from 'src/components/elements/BottomButtons.vue'
+import MainSlot from 'src/components/MainSlot.vue'
+
 import {beautify_data} from 'src/tools/formatdata'
 export default {
   name: 'Observation_Edit',
 
-  components: {HEADING, OBSERVATION_TABLE_EDIT, BOTTOM_BUTTON },
+  components: {HEADING, OBSERVATION_TABLE_EDIT, BOTTOM_BUTTON, MainSlot },
 
   data() {
     return {

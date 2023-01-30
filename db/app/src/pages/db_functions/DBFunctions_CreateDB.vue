@@ -1,25 +1,36 @@
 <template>
-  <q-page class="column items-center">
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
-      <HEADING :title="TEXT.title" :img="'reset-db-logo.png'"/>
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :img="'reset-db-logo.png'" />
+      </template>
 
+      <!-- MAIN -->
+      <template v-slot:main>
+        <div v-if="!new_db" class="absolute-center text-center">
+          <div class="q-pa-lg">
+            <q-input v-model="path" dense hint="Zielverzeichnis auswählen" />
+          </div>
+          <q-btn v-if="path" class="my-btn" no-caps rounded color="black" @click="createDB()">{{
+            TEXT.btn_create
+          }}</q-btn>
 
-     <div v-if="!new_db" class="absolute-center text-center">
-        <div class="q-pa-lg">
-          <q-input v-model="path" dense hint="Zielverzeichnis auswählen"/>
+          <q-banner class="bg-grey-3 q-mt-lg"><span v-html="TEXT.info_create"></span></q-banner>
         </div>
-        <q-btn v-if="path" class="my-btn" no-caps rounded color="black" @click="createDB()">{{ TEXT.btn_create }}</q-btn>
-
-        <q-banner class="bg-grey-3 q-mt-lg" ><span v-html="TEXT.info_create"></span></q-banner>
-      </div>
-      <div v-else class="absolute-center text-center">
-        <q-banner class="bg-green-3 q-mt-lg" ><span v-html="TEXT.info_success"></span></q-banner>
-        <q-chip>{{ new_db }}</q-chip>
-        <div>
-          <q-btn class="my-btn q-mt-lg" rounded no-caps @click="connectNewDB()">{{ $store.getters.TEXT.btn.connect }}</q-btn>
+        <div v-else class="absolute-center text-center">
+          <q-banner class="bg-green-3 q-mt-lg"><span v-html="TEXT.info_success"></span></q-banner>
+          <q-chip>{{ new_db }}</q-chip>
+          <div>
+            <q-btn class="my-btn q-mt-lg" rounded no-caps @click="connectNewDB()">{{
+              $store.getters.TEXT.btn.connect
+            }}</q-btn>
+          </div>
         </div>
-      </div>
-        
+      </template>
+
+    </MainSlot>
+
   </q-page>
 </template>
 
@@ -27,11 +38,12 @@
 
 // import {splitVisits, beautify_data} from 'src/tools/formatdata'
 import HEADING from 'src/components/elements/Heading.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'DBFunctions_ResetDB',
 
-  components: { HEADING },
+  components: { HEADING, MainSlot },
 
   data() {
     return {

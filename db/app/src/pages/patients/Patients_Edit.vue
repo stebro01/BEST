@@ -1,10 +1,15 @@
 <template>
-  <q-page class="column items-center text-center">
-
+  <q-page>
+    <MainSlot :no_options="true">
+       <!-- HEADING -->
+       <template v-slot:header>
     <HEADING :title="'Patient'" :description="'bearbeiten'" :img="'patient-color-logo.png'"/>
-    <!-- results -->
-    <div v-if="patient !== undefined" class="q-my-xl">
-      <q-markup-table flat bordered dense class="my-table q-mt-xl">
+    </template>
+
+    <!-- MAIN -->
+      <template v-slot:main>
+    <div v-if="patient !== undefined" >
+      <q-markup-table flat bordered dense class="my-table">
       
       <tbody class="">
           <tr v-for="(el, ind) in Object.keys(PATIENT_DATA)" :key="ind+ 'patient'">
@@ -95,10 +100,17 @@
     </div>
 
     </div>
+    </template>
+
+    <!-- FOOTER -->
+    <template v-slot:footer>
     <BOTTOM_BUTTONS  
       :show_save="change_detected" :show_back="true"
       @save="saveEntry()" @back="$router.go(-1)"
     />
+    </template>
+
+  </MainSlot>
   </q-page>
 </template>
 
@@ -108,10 +120,11 @@ import {SCHEME_PATIENT_DIMENSION} from 'src/classes/Scheme_patient_dimension'
 import {beautify_data} from 'src/tools/formatdata'
 import HEADING from 'src/components/elements/Heading.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'Patients_Edit',
-  components: {BOTTOM_BUTTONS, HEADING},
+  components: {BOTTOM_BUTTONS, HEADING, MainSlot},
   data() {
     return {
       patient: [],

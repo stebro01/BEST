@@ -1,35 +1,45 @@
 <template>
   <q-page class="">
+
     <div v-if="!$store.getters.ELECTRON_MODE" class="flex flex-center">
       Zugriff auf das lokale Dateisystem nur als Electron/App möglich
     </div>
+    <MainSlot v-else>
+      <template v-slot:header>
+        <div class="text-h6">DB laden</div>
+      </template>
 
-    <div v-else class="column items-center q-mt-xl text-center" style="height: 80vh">
-      <div v-if="!FNAME" class="col-10">
-        <q-file  v-model="filename" label="wähle DB aus" input-class="text-center" accept=".db"  style="position: relative; top: 50%"/>
-      </div>
-
-      <div v-else class="col-10" >
-        <div style="position: relative; top: 50%">
-          <div>
-            <q-chip v-if="FNAME" removable @remove="clearFNAME()" color="primary" text-color="white" icon="file">
-              {{ FNAME.name }}
-            </q-chip>
+      <template v-slot:main>
+        <div class="column items-center" style="height: 50vh">
+          <div v-if="!FNAME" class="col-5">
+            <q-file v-model="filename" label="wähle DB aus" input-class="text-center" accept=".db"
+              style="position: relative; top: 50%" />
           </div>
-          <div>
 
-            <q-btn class="q-mt-lg my-list-btn" rounded no-caps @click="loadDB">lade DB</q-btn>
+          <div v-else class="col-5 text-center">
+            <div style="position: relative; top: 50%">
+              <div>
+                <q-chip v-if="FNAME" removable @remove="clearFNAME()" color="primary" text-color="white" icon="file">
+                  {{ FNAME.name }}
+                </q-chip>
+              </div>
+              <div>
+
+                <q-btn class="q-mt-lg my-list-btn" rounded no-caps @click="loadDB">lade DB</q-btn>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-5">
+            <q-btn style="top: 50%" flat rounded no-caps class="my-btn"
+              @click="$router.push({ name: 'DBFunctions_CreateDB' })">neue DB
+              anlegen</q-btn>
           </div>
         </div>
-      </div>
 
-      <div class="col-2">
-        <q-btn style="top: 50%" flat rounded no-caps class="my-btn" @click="$router.push({ name: 'DBFunctions_CreateDB' })">neue DB
-          anlegen</q-btn>
-      </div>
-    </div>
+      </template>
 
-
+    </MainSlot>
 
   </q-page>
 </template>
@@ -37,9 +47,12 @@
 <script>
 
 import { Notify } from 'quasar'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'SelectDB',
+
+  components: {MainSlot},
 
   data() {
     return {

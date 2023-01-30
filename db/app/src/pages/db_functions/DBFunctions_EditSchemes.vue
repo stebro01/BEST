@@ -1,78 +1,67 @@
 <template>
-  <q-page class="column items-center q-pb-xl">
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
-        <HEADING :title="TEXT.title" :img="'concept-import-logo.png'"/>
-
-     <div class="q-mt-xl">
-      <q-table
-        class="my-table q-mt-xl"
-        :rows="SCHEMES"
-        row-key="CODE_CD"
-        :columns="columns"
-        dense
-        :rows-per-page-options="[10, 25, 50, 100]"
-        :filter="filter"
-        v-model:expanded="expanded"
-      >
-
-        <template v-slot:top-right>
-          <FILTER_BOX :filter="filter" @update="filter = $event"/>
-        </template>
-        <template v-slot:header="props">
-        <q-tr :props="props">
-          <q-th auto-width />
-
-          <q-th
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-          >
-            {{ col.label }}
-          </q-th>
-        </q-tr>
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :img="'concept-import-logo.png'" />
       </template>
 
-      <template v-slot:body="props">
-        <q-tr :props="props">
-          <q-td auto-width>
-            <q-toggle v-model="props.expand" checked-icon="add" unchecked-icon="remove" />
-          </q-td>
-
-          <q-td
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-          >
-            {{ col.value }}
-          </q-td>
-        </q-tr>
-        <q-tr v-show="props.expand" :props="props">
-          <q-td colspan="100%">
-            <div class="text-left text-bold"> {{ props.row.LOOKUP_JSON.title }}</div>
-            <div class="text-left text-caption"> {{ props.row.LOOKUP_JSON.description }}</div>
-            <q-list dense>
-              <q-item v-for="(item, ind) in props.row.LOOKUP_JSON.data" :key="ind + 'scheme'" dense>
-                <q-item-section>
-                  {{ item }}
-                </q-item-section>
-              </q-item>
-            </q-list>
-            
-          </q-td>
-        </q-tr>
+      <template v-slot:options_right>
+        <FILTER_BOX :filter="filter" @update="filter = $event" />
       </template>
 
-      </q-table>
+      <!-- MAIN -->
+      <template v-slot:main>
+        <q-table class="my-table" :rows="SCHEMES" row-key="CODE_CD" :columns="columns" dense
+          :rows-per-page-options="[10, 25, 50, 100]" :filter="filter" v-model:expanded="expanded">
+          <template v-slot:header="props">
+            <q-tr :props="props">
+              <q-th auto-width />
 
-      </div>
+              <q-th v-for="col in props.cols" :key="col.name" :props="props">
+                {{ col.label }}
+              </q-th>
+            </q-tr>
+          </template>
 
-      <BOTTOM_BUTTONS v-if="SCHEMES" 
-        :show_edit="expanded.length === 1" :show_delete="expanded.length > 0"  :show_add="expanded.length === 0"
-        @edit="editData(expanded[0])"
-        @delete="deleteData(expanded)"
-        @add="addData()"
-      />
-        
+          <template v-slot:body="props">
+            <q-tr :props="props">
+              <q-td auto-width>
+                <q-toggle v-model="props.expand" checked-icon="add" unchecked-icon="remove" />
+              </q-td>
+
+              <q-td v-for="col in props.cols" :key="col.name" :props="props">
+                {{ col.value }}
+              </q-td>
+            </q-tr>
+            <q-tr v-show="props.expand" :props="props">
+              <q-td colspan="100%">
+                <div class="text-left text-bold"> {{ props.row.LOOKUP_JSON.title }}</div>
+                <div class="text-left text-caption"> {{ props.row.LOOKUP_JSON.description }}</div>
+                <q-list dense>
+                  <q-item v-for="(item, ind) in props.row.LOOKUP_JSON.data" :key="ind + 'scheme'" dense>
+                    <q-item-section>
+                      {{ item }}
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+
+              </q-td>
+            </q-tr>
+          </template>
+
+        </q-table>
+
+      </template>
+
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <BOTTOM_BUTTONS v-if="SCHEMES" :show_edit="expanded.length === 1" :show_delete="expanded.length > 0"
+          :show_add="expanded.length === 0" @edit="editData(expanded[0])" @delete="deleteData(expanded)"
+          @add="addData()" />
+      </template>
+
+    </MainSlot>
   </q-page>
 </template>
 
@@ -82,11 +71,13 @@
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
+import MainSlot from 'src/components/MainSlot.vue'
+
 import { unstringify } from 'src/classes/sqltools'
 export default {
   name: 'DBFunctions_EditSchemes',
 
-  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX },
+  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, MainSlot },
 
   data() {
     return {

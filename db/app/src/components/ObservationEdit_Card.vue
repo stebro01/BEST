@@ -1,7 +1,7 @@
 <template>
         <!-- results -->
-    <div v-if="obs !== undefined" class="q-mt-xl">
-      <q-markup-table flat bordered dense class="my-table q-mt-lg">
+    <div v-if="obs !== undefined" >
+      <q-markup-table flat bordered dense class="my-table">
       <thead >
         <tr >
           <th class="text-center">ID</th>

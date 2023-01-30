@@ -1,14 +1,22 @@
 <template>
-  <q-page class="column items-center">
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
-      <HEADING :title="TEXT.title" :img="'reset-db-logo.png'"/>
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :img="'reset-db-logo.png'" />
+      </template>
 
-     <div class="absolute-center text-center">
-        <q-btn class="my-btn" no-caps rounded color="black" @click="resetDB()">{{ TEXT.btn_reset }}</q-btn>
+      <!-- MAIN -->
+      <template v-slot:main>
+        <div class="absolute-center text-center">
+          <q-btn class="my-btn" no-caps rounded color="black" @click="resetDB()">{{ TEXT.btn_reset }}</q-btn>
 
-        <q-banner class="bg-grey-3 q-mt-lg" ><span v-html="TEXT.info_reset"></span></q-banner>
-      </div>
-        
+          <q-banner class="bg-grey-3 q-mt-lg"><span v-html="TEXT.info_reset"></span></q-banner>
+        </div>
+      </template>
+
+    </MainSlot>
+
   </q-page>
 </template>
 
@@ -16,11 +24,12 @@
 
 // import {splitVisits, beautify_data} from 'src/tools/formatdata'
 import HEADING from 'src/components/elements/Heading.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'DBFunctions_ResetDB',
 
-  components: { HEADING },
+  components: { HEADING, MainSlot },
 
   data() {
     return {

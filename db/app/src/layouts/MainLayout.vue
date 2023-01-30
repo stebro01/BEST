@@ -75,15 +75,9 @@
           <span v-if="$store.getters.USER">
             <q-icon name="account_circle" > </q-icon>
             {{ $store.getters.USER.USER_CD }}
-            <q-icon name="close" class="cursor-pointer" @click="logoutUser()">
-              <q-tooltip>Abmeldung</q-tooltip>
-            </q-icon>
+           
           </span>
-          <span v-else>
-            <q-icon name="no_accounts" class="cursor-pointer" @click="$router.push({name: 'LoginUser'})">
-              <q-tooltip>Anmeldung</q-tooltip>
-            </q-icon>
-          </span>
+          
         </q-badge>
         <!-- CONNECTION BADGE -->
         <q-badge v-if="this.$store.getters.SETTINGS" class="text-grey-8" style="z-index: 10"

@@ -1,26 +1,33 @@
 <template>
-  <q-page class="column items-center">
-   
-    <HEADING :title="TEXT.title"  :img="'login-logo.png'"/>
+  <q-page>
+    <MainSlot>
+      <!-- HEADING -->
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :img="'login-logo.png'" />
+      </template>
 
-    <div class="absolute-center">
-      <q-banner class="bg-red">Zugriff nur für ADMIN</q-banner>
-      <div class="q-mt-lg text-center">
-        <q-btn no-caps rounded class="my-btn" @click="relogin()">{{ TEXT.btn_relogin }}</q-btn>
-      </div>
-    </div>
-
+      <!-- MAIN -->
+      <template v-slot:main>
+        <div class="absolute-center">
+          <q-banner class="bg-red">Zugriff nur für ADMIN</q-banner>
+          <div class="q-mt-lg text-center">
+            <q-btn no-caps rounded class="my-btn" @click="relogin()">{{ TEXT.btn_relogin }}</q-btn>
+          </div>
+        </div>
+      </template>
+    </MainSlot>
   </q-page>
 </template>
 
 <script>
 
 import HEADING from 'src/components/elements/Heading.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'OnlyAdmin',
 
-  components: {HEADING },
+  components: {HEADING, MainSlot },
 
   data() {
     return {

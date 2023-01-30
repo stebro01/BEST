@@ -1,10 +1,14 @@
 <template>
-  <q-page class="column items-center q-pb-xl">
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
+      <template v-slot:header>
         <HEADING :title="TEXT.title" :img="'concept-import-logo.png'"/>
+</template>
 
-    <div class="q-mt-xl">
-      <q-card class="q-mt-xl my-card shadow-1">
+         <!-- MAIN -->
+      <template v-slot:main>
+      <q-card class="my-card shadow-1">
        
         <q-card-section>
           <div class="row q-gutter-y-sm">
@@ -39,14 +43,18 @@
         </q-card-actions>
         
     </q-card>
-    </div>
+    </template>
 
+    <!-- FOOTER -->
+    <template v-slot:footer>
       <BOTTOM_BUTTONS 
         :show_back="true" :show_save="FORM_VALID"
         @back="$router.push({name: 'DBFunctions_EditSchemes'})"
         @save="saveScheme(formData)"
-
       />
+      </template>
+    
+    </MainSlot>
 
       <q-dialog v-model="show_select_concept" style="max-height: 100%">
       <CONCEPT_SELECT v-if="show_select_concept"
@@ -62,11 +70,13 @@
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import CONCEPT_SELECT from 'src/components/elements/ConceptSelect.vue'
+import MainSlot from 'src/components/MainSlot.vue'
+
 import { stringify } from 'src/classes/sqltools'
 export default {
   name: 'DBFunctions_EditSchemes_New',
 
-  components: { BOTTOM_BUTTONS, HEADING, CONCEPT_SELECT },
+  components: { BOTTOM_BUTTONS, HEADING, CONCEPT_SELECT, MainSlot },
 
   data() {
     return {

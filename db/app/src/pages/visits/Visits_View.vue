@@ -1,53 +1,48 @@
 <template>
-  <q-page class="column items-center">
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
-      <HEADING :title="TEXT.title" :description="TEXT.description" :img="'visit-color-logo.png'"/>
-      <!-- PROVIDER_PINNED -->
-      
-    <div class="q-mt-xl q-pb-xl" v-if="PATIENT_PINNED">
-      <q-table v-if="this.rows"
-        :rows="rows"
-        :columns="columns"
-        row-key="OBSERVATION_ID"
-        class="q-mt-xl cursor-pointer my-table"
-        :filter="filter"
-        :rows-per-page-options="rowsperpage"
-        dense
-        selection="multiple"
-        v-model:selected="selected"
-      >
-
-      <template v-slot:top>
-        <VISIT_TAB v-if="PATIENT_PINNED" :PATIENT="PATIENT_PINNED" @clicked="visitTabClicked($event)"/>
-        <div class="full-width ">
-        <div class="float float-right">
-          <FILTER_BOX :filter="filter" @update="filter = $event"/>
-        </div>
-      </div>
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :description="TEXT.description" :img="'visit-color-logo.png'" />
       </template>
 
+      <!-- Options -->
+      <template v-slot:options_right>
+        <FILTER_BOX :filter="filter" @update="filter = $event" />
+      </template>
 
-      <!-- ENDE TABLE -->
-      <!-- BUTTONS -->
-
-      </q-table>
+      <!-- MAIN -->
+      <template v-slot:main>
         
-    <div class=" text-center text-caption q-mt-xs">Zum Hinzufügen von Observations eine Visite auswählen</div>
-  </div>   
-  
-    <BOTTOM_BUTTONS 
-      :show_add="selected.length === 0 && $store.getters.VISIT_PINNED"
-      :show_add_playlist="selected.length === 0 && $store.getters.VISIT_PINNED"
-      :show_import="selected.length === 0"
-      :show_edit="selected.length > 0"
-      :show_delete="selected.length > 0"
+        <div v-if="PATIENT_PINNED">
+          <q-table v-if="this.rows" :rows="rows" :columns="columns" row-key="OBSERVATION_ID"
+            class="cursor-pointer my-table" :filter="filter" :rows-per-page-options="rowsperpage" dense
+            selection="multiple" v-model:selected="selected">
 
-      @add="$router.push({name: 'Observation_New'})"
-      @add_playlist="$router.push({name: 'Scheme_Edit'})"
-      @edit="editSelection()"
-      @delete="deleteSelection()"
-      @import="$router.push({name: 'Observation_Import'})"
-    />
+            <template v-slot:top>
+              <VISIT_TAB v-if="PATIENT_PINNED" :PATIENT="PATIENT_PINNED" @clicked="visitTabClicked($event)" />
+
+            </template>
+
+
+            <!-- ENDE TABLE -->
+            <!-- BUTTONS -->
+
+          </q-table>
+
+          <div class=" text-center text-caption q-mt-xs">Zum Hinzufügen von Observations eine Visite auswählen</div>
+        </div>
+
+      </template>
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <BOTTOM_BUTTONS :show_add="selected.length === 0 && $store.getters.VISIT_PINNED"
+          :show_add_playlist="selected.length === 0 && $store.getters.VISIT_PINNED" :show_import="selected.length === 0"
+          :show_edit="selected.length > 0" :show_delete="selected.length > 0"
+          @add="$router.push({ name: 'Observation_New' })" @add_playlist="$router.push({ name: 'Scheme_Edit' })"
+          @edit="editSelection()" @delete="deleteSelection()" @import="$router.push({ name: 'Observation_Import' })" />
+      </template>
+    </MainSlot>
   </q-page>
 </template>
 
@@ -57,6 +52,7 @@ import { beautify_data } from 'src/tools/formatdata'
 import VISIT_TAB from 'src/components/visits/VisitTab.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 
 // import {get_date_from_timeStamp} from 'src/classes/sqltools.js'
@@ -64,7 +60,7 @@ import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 export default {
   name: 'Visits_ViewAllObservations',
 
-  components: { BOTTOM_BUTTONS, HEADING, VISIT_TAB, FILTER_BOX },
+  components: { BOTTOM_BUTTONS, HEADING, VISIT_TAB, FILTER_BOX, MainSlot },
 
   data() {
     return {

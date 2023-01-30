@@ -1,8 +1,14 @@
 <template>
-  <q-page class="column items-center text-center q-mt-xl">
+  <q-page >
+    <MainSlot>
+      <!-- HEADING -->
+      <template v-slot:header>
     <HEADING :title="TEXT.title" :description="TEXT.description" :img="'general_icon.png'"/>
-    
-    <div class="q-mt-xl text-center">
+        </template>
+
+<!-- MAIN -->
+<template v-slot:main class="row items-center">
+    <div class="col-12" v-if="!patient_data">
           <q-tabs style="z-index: 10"
               v-model="selected_import_method"
             >
@@ -14,17 +20,17 @@
     </div>
 
     <!-- SELECT FILE -->
-    <div v-if="!patient_data">
+    <div v-if="!patient_data" class="text-center">
       <SELECT_FILE :accept="ACCEPT_FILETYPE" :label="`${TEXT.select_file} (${ACCEPT_FILETYPE})`" @save="importData($event, selected_import_method)"/>
 
       <div v-if="selected_import_method === 'csv'">
-        <q-icon name="info" class="q-mt-lg" size="md" @click="show_csv_help = true"/>
+        <q-icon name="info" class="q-mt-sm" size="md" @click="show_csv_help = true"/>
       </div>
     </div>
 
     <!-- VORSCHAU -->
     <div v-if="patient_data" class="column items-center">
-      <q-card  class="my-card q-mt-xl text-center"> 
+      <q-card  class="my-card text-center"> 
           <q-card-section>
             <q-banner dense inline-actions class="bg-green-3">Daten gefunden
               <template v-slot:action>
@@ -70,8 +76,8 @@
             
       </div>
 
-    <!-- <div class="q-mt-lg"><q-btn class="my-btn" flat rounded>speichern</q-btn></div> -->
-
+    </template>
+    </MainSlot>
 
     <!-- HELP DIALOGS -->
     <HELP_CSV_IMPORT  :active="show_csv_help" @close="show_csv_help = false" />
@@ -103,11 +109,12 @@ import HEADING from 'src/components/elements/Heading.vue'
 import SELECT_FILE from 'src/components/elements/SelectFile.vue'
 import PREVIEW_IMPORT from 'src/components/elements/PreviewImport.vue'
 import HELP_CSV_IMPORT from 'src/components/Help_CSV_Import.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'ImportObservation',
 
-  components: {HEADING, HELP_CSV_IMPORT, SELECT_FILE, PREVIEW_IMPORT },
+  components: {HEADING, HELP_CSV_IMPORT, SELECT_FILE, PREVIEW_IMPORT, MainSlot },
 
   data() {
     return {

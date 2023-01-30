@@ -1,57 +1,44 @@
 <template>
-  <q-page class="column items-center">
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
-        <HEADING :title="TEXT.title" :img="'concept-import-logo.png'"/>
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :img="'concept-import-logo.png'" />
+      </template>
+
+      <template v-slot:options_right>
+      <FILTER_BOX :filter="filter" @update="filter = $event" />
+      </template>
 
       <!-- ADMIN -->
-     <div class="q-mt-xl">
-      <q-table
-        class="my-table q-mt-xl"
-        :rows="USER"
-        :columns="columns"
-        row-key="USER_ID"
-        dense
-        :rows-per-page-options="[10, 25, 50, 100]"
-        :filter="filter"
-        selection="multiple"
-        v-model:selected="selected"
-      >
+      <!-- MAIN -->
+      <template v-slot:main>
+        <q-table class="my-table q-mt-xl" :rows="USER" :columns="columns" row-key="USER_ID" dense
+          :rows-per-page-options="[10, 25, 50, 100]" :filter="filter" selection="multiple" v-model:selected="selected">
+        </q-table>
+      </template>
 
-        <template v-slot:top-right>
-          <div>
-          <div>
-            <FILTER_BOX :filter="filter" @update="filter = $event"/>
-        </div>
-         
-        </div>
-        </template>
-      </q-table>
-      </div>
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <BOTTOM_BUTTONS :show_edit="selected.length === 1" :show_delete="selected.length > 0"
+          :show_add="selected.length === 0" @edit="editUser(selected[0])" @delete="delectUser(selected)"
+          @add="addUser()" />
+      </template>
 
-      <BOTTOM_BUTTONS 
-        :show_edit="selected.length === 1" :show_delete="selected.length > 0"
-        :show_add="selected.length === 0"
-        @edit="editUser(selected[0])"
-        @delete="delectUser(selected)"
-        @add="addUser()"
-      />
+    </MainSlot>
 
-  <DIALOG_USER_ADD v-if="show_add_user" :active="show_add_user" :mode="'add'"
-    @close="show_add_user = false"
-    @save="submitAddUser($event)"
-  />
+    <DIALOG_USER_ADD v-if="show_add_user" :active="show_add_user" :mode="'add'" @close="show_add_user = false"
+      @save="submitAddUser($event)" />
 
-  <DIALOG_USER_ADD v-if="show_edit_user" :active="show_edit_user" :mode="'edit'" :USER_ID="selected[0].USER_ID"
-    @close="show_edit_user = false"
-    @save="submitUpdateUser($event)"
-  />
+    <DIALOG_USER_ADD v-if="show_edit_user" :active="show_edit_user" :mode="'edit'" :USER_ID="selected[0].USER_ID"
+      @close="show_edit_user = false" @save="submitUpdateUser($event)" />
 
   </q-page>
 </template>
 
 <script>
 
-
+import MainSlot from 'src/components/MainSlot.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
@@ -60,7 +47,7 @@ import DIALOG_USER_ADD from 'src/components/user_management/Dialog_UserAdd.vue'
 export default {
   name: 'DBFunctions_ManageUsers',
 
-  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, DIALOG_USER_ADD },
+  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, DIALOG_USER_ADD, MainSlot },
 
   data() {
     return {

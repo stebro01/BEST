@@ -1,9 +1,13 @@
 <template>
-  <q-page class="column items-center">
-   
-    <HEADING :title="TEXT.title" :description="TEXT.description" :img="'login-logo.png'"/>
+  <q-page class="">
+    <MainSlot>
+      <!-- HEADING -->
+      <template v-slot:header>
+      <HEADING :title="TEXT.title" :description="TEXT.description" :img="'login-logo.png'"/>
+      </template>
 
-    <div class="absolute-center">
+       <!-- MAIN -->
+       <template v-slot:main>
       <q-card class="shadow-1 my-card">
         <q-card-section>
           <q-form dense @submit="loginUser(formData)">
@@ -31,15 +35,11 @@
         </q-form>
         </q-card-section>
       </q-card>
+      </template>
 
-    </div>
+    </MainSlot>
+   
 
-        <!-- LOGOUT BUTTON -->
-        <div class="fixed-top-right q-mt-xl q-mr-md z-max">
-          <q-btn v-show="$store.getters.CONNECTED" class="q-mt-xl" rounded color="black"  icon="logout" @click="closeDB()">
-            <q-tooltip>Verbindung zur DB beenden. </q-tooltip>
-              </q-btn>
-      </div>
 
   </q-page>
 </template>
@@ -47,11 +47,12 @@
 <script>
 
 import HEADING from 'src/components/elements/Heading.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'LoginUser',
 
-  components: {HEADING },
+  components: {HEADING, MainSlot },
 
   data() {
     return {

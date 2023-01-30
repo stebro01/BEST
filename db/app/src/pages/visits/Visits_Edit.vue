@@ -1,18 +1,18 @@
 <template>
-  <q-page class="column items-center text-center">
-    
+  <q-page>
+    <MainSlot>
 
       <!-- HEADING -->
-      <HEADING :title="TEXT.title" :description="TEXT.description" :img="'visit-color-logo.png'"/>
+      <template v-slot:header>
+        <HEADING :title="TEXT.title" :description="TEXT.description" :img="'visit-color-logo.png'" />
+      </template>
 
-
-      <!-- VISITE -->
-      <div class="col q-mt-xl">
+      <!-- MAIN -->
+      <template v-slot:main>
         <VISIT_EDIT_CARD :item='$store.state.VISIT_PINNED' @close="$router.go(-1)" />
-        </div>
-        
+      </template>
 
-    <!-- VISIT CARD -->
+    </MainSlot>
 
   </q-page>
 </template>
@@ -21,7 +21,7 @@
 // import myMixins from 'src/mixins/modes'
 import VISIT_EDIT_CARD from 'src/components/visits/VisitEdit_Card.vue'
 import HEADING from 'src/components/elements/Heading.vue'
-// import {get_date_from_timeStamp} from 'src/classes/sqltools.js'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'Visits_Edit',
@@ -32,7 +32,7 @@ export default {
     }
   },
 
-  components: {VISIT_EDIT_CARD, HEADING },
+  components: {VISIT_EDIT_CARD, HEADING, MainSlot },
   // mixins: [myMixins], //imports: searchPatient & deleteItem
 
   mounted() {

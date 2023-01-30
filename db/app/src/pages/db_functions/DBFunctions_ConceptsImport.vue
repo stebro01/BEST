@@ -1,15 +1,17 @@
 <template>
-  <q-page class="column items-center">
-      <!-- HEADING UND IMPORT SCHALFLÄCHE-->
-      <HEADING :title="$store.getters.TEXT.page.concept_import.title" :img="'concept-import-logo.png'"/>
+  <q-page>
+    <MainSlot>
+      <!-- HEADING -->
+      <template v-slot:header>
+        <HEADING :title="$store.getters.TEXT.page.concept_import.title" :img="'concept-import-logo.png'" />
+      </template>
 
-
-      <div class="q-mt-xl">
-        <q-card class="my-card q-mt-xl">
-
+      <!-- MAIN -->
+      <template v-slot:main>
+        <q-card class="my-card">
           <q-separator v-if="!preview_data" class="q-mx-sm" />
           <q-card-section v-if="!preview_data" class="q-pa-md">
-            <q-file  v-model="csv_file" label="Datei auswählen (.csv)" accept=".csv">
+            <q-file v-model="csv_file" label="Datei auswählen (.csv)" accept=".csv">
               <template v-slot:prepend>
                 <q-icon name="attach_file" />
               </template>
@@ -21,110 +23,106 @@
 
           <q-separator v-if="csv_file && !preview_data" class="q-mx-sm" />
           <q-card-actions v-if="!preview_data" class="q-pa-md row justify-center">
-            <q-btn v-if="csv_file" flat rounded icon="upload_file" class="my-btn" @click="importData(csv_file)">Laden <q-tooltip>Lädt die Daten, standardisiertes Format notwendig</q-tooltip></q-btn>
+            <q-btn v-if="csv_file" flat rounded icon="upload_file" class="my-btn" @click="importData(csv_file)">Laden
+              <q-tooltip>Lädt die Daten, standardisiertes Format notwendig</q-tooltip></q-btn>
           </q-card-actions>
 
         </q-card>
-      </div>
 
-      <!-- VORSCHAU DER DATEN -->
-      <div v-if="preview_data && modus === 'preview'" class="q-my-xl text-center">
-        <q-banner v-if="show_banner" class="bg-red-3 q-ma-md" dense inline-actions>{{$store.getters.TEXT.page.concept_import.info_banner}}
-          <template v-slot:action>
-            <q-btn round flat color="black" icon="close" @click="show_banner = false"/>
-          </template>
-        </q-banner>
-        <q-btn @click="writeToDB()" class="q-mb-lg" no-caps rounded color="black">{{$store.getters.TEXT.page.concept_import.btn_import}}</q-btn>
-        <q-table
-          :title="`${$store.getters.TEXT.page.concept_import.table_title} ${preview_data.length} `"
-          :rows="preview_data" class="my-table"
-          :rows-per-page-options="ROWSPERPAGE"
-          :filter="filter"
-          dense
-          row-key="CONCEPT_PATH"
-          selection="multiple"
-          v-model:selected="selected"
-        >
+        <!-- VORSCHAU DER DATEN -->
+        <div v-if="preview_data && modus === 'preview'" class="text-center">
+          <q-banner v-if="show_banner" class="bg-red-3 q-ma-md" dense
+            inline-actions>{{ $store.getters.TEXT.page.concept_import.info_banner }}
+            <template v-slot:action>
+              <q-btn round flat color="black" icon="close" @click="show_banner = false" />
+            </template>
+          </q-banner>
+          <q-btn @click="writeToDB()" class="q-mb-lg" no-caps rounded
+            color="black">{{ $store.getters.TEXT.page.concept_import.btn_import }}</q-btn>
+          <q-table :title="`${$store.getters.TEXT.page.concept_import.table_title} ${preview_data.length} `"
+            :rows="preview_data" class="my-table" :rows-per-page-options="ROWSPERPAGE" :filter="filter" dense
+            row-key="CONCEPT_PATH" selection="multiple" v-model:selected="selected">
 
-        <template v-slot:top-right>
-          <div>
-            <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
-              <template v-slot:append>
-                <q-icon name="search" />
-              </template>
-              <template v-slot:prepend>
-                <q-icon name="clear" @click="filter = undefined" />
-              </template>
-            </q-input>
+            <template v-slot:top-right>
+              <div>
+                <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+                  <template v-slot:append>
+                    <q-icon name="search" />
+                  </template>
+                  <template v-slot:prepend>
+                    <q-icon name="clear" @click="filter = undefined" />
+                  </template>
+                </q-input>
+              </div>
+            </template>
+
+          </q-table>
+
+          <div class="q-mt-md q-gutter-lg">
+            <q-btn v-if="selected.length === 1" icon="edit" rounded
+              @click="editEntry()">{{ $store.getters.TEXT.btn.selection.edit }}</q-btn>
+            <q-btn v-if="selected.length > 0" icon="delete" rounded
+              @click="deleteSelection()">{{ $store.getters.TEXT.btn.selection.remove }}</q-btn>
+          </div>
         </div>
-        </template>
 
-        </q-table>
+        <!-- ANZEIGE ERGEBNIS IMPORT -->
+        <div v-else-if="modus === 'import_finshed'" class="q-my-xl text-center">
+          <div class="q-gutter-lg q-mb-lg">
+            <q-btn no-caps rounded class="my-btn" @click="$router.go(-1)">{{ $store.getters.TEXT.btn.back }}</q-btn>
+          </div>
+          <q-table :title="$store.getters.TEXT.page.concept_import.table_title_imported" :rows="imported_data"
+            :columns="columns_imported" row-key="CONCEPT_PATH" dense :rows-per-page-options="ROWSPERPAGE">
+            <template v-slot:body="props">
+              <q-tr :props="props">
+                <q-td key="status" :props="props">
+                  <span v-if="props.row.status">✅</span>
+                  <span v-else>❌ <q-tooltip>{{ props.row.error }}</q-tooltip></span>
+                </q-td>
+                <q-td key="CONCEPT_CD" :props="props">
+                  {{ props.row.CONCEPT_CD }}
+                </q-td>
+                <q-td key="CONCEPT_PATH" :props="props">
+                  {{ props.row.CONCEPT_PATH }}
+                </q-td>
+                <q-td key="NAME_CHAR" :props="props">
+                  {{ props.row.NAME_CHAR }}
+                </q-td>
+              </q-tr>
+            </template>
 
-        <div class="q-mt-md q-gutter-lg">
-          <q-btn v-if="selected.length === 1" icon="edit" rounded @click="editEntry()">{{$store.getters.TEXT.btn.selection.edit}}</q-btn>
-          <q-btn v-if="selected.length> 0" icon="delete" rounded @click="deleteSelection()">{{$store.getters.TEXT.btn.selection.remove}}</q-btn>
+          </q-table>
         </div>
-      </div>
 
-      <!-- ANZEIGE ERGEBNIS IMPORT -->
-      <div v-else-if="modus==='import_finshed'" class="q-my-xl text-center">
-        <div class="q-gutter-lg q-mb-lg">
-          <q-btn no-caps rounded class="my-btn" @click="$router.go(-1)">{{$store.getters.TEXT.btn.back}}</q-btn>
-        </div>
-        <q-table
-          :title="$store.getters.TEXT.page.concept_import.table_title_imported"
-          :rows="imported_data"
-          :columns="columns_imported"
-          row-key="CONCEPT_PATH"
-          dense
-          :rows-per-page-options="ROWSPERPAGE"
-        >
-        <template v-slot:body="props">
-          <q-tr :props="props">
-            <q-td key="status" :props="props">
-              <span v-if="props.row.status">✅</span>
-              <span v-else>❌ <q-tooltip>{{props.row.error}}</q-tooltip></span>
-            </q-td>
-            <q-td key="CONCEPT_CD" :props="props">
-              {{ props.row.CONCEPT_CD }}
-            </q-td>
-            <q-td key="CONCEPT_PATH" :props="props">
-              {{ props.row.CONCEPT_PATH }}
-            </q-td>
-            <q-td key="NAME_CHAR" :props="props">
-              {{ props.row.NAME_CHAR }}
-            </q-td>
-          </q-tr>
-        </template>
+      </template>
+    </MainSlot>
 
-        </q-table>
-      </div>
-
-      
-      <!-- EDIT MODAL -->
-      <q-dialog v-model="show_edit_modal">
+    <!-- EDIT MODAL -->
+    <q-dialog v-model="show_edit_modal">
       <q-card>
         <q-card-section>
-          <div class="text-h6">{{$store.getters.TEXT.dialog.concept_edit.title}}</div>
-          <div class="text-caption">{{$store.getters.TEXT.dialog.concept_edit.description}}</div>
+          <div class="text-h6">{{ $store.getters.TEXT.dialog.concept_edit.title }}</div>
+          <div class="text-caption">{{ $store.getters.TEXT.dialog.concept_edit.description }}</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none" v-if="edit_data">
           <q-form>
-              <q-input dense v-model="edit_data.CONCEPT_PATH" hint="CONCEPT_PATH"/>
-              <q-input dense v-model="edit_data.CONCEPT_CD" hint="CONCEPT_CD"/>
-              <q-input dense v-model="edit_data.NAME_CHAR" hint="NAME_CHAR"/>
-              <q-select dense v-model="edit_data.VALTYPE_CD" hint="NAME_CHAR" :options="VALTYPE_OPTIONS" @blur="VALTYPE_CD_SELECTED(edit_data.VALTYPE_CD)"/>
+            <q-input dense v-model="edit_data.CONCEPT_PATH" hint="CONCEPT_PATH" />
+            <q-input dense v-model="edit_data.CONCEPT_CD" hint="CONCEPT_CD" />
+            <q-input dense v-model="edit_data.NAME_CHAR" hint="NAME_CHAR" />
+            <q-select dense v-model="edit_data.VALTYPE_CD" hint="NAME_CHAR" :options="VALTYPE_OPTIONS"
+              @blur="VALTYPE_CD_SELECTED(edit_data.VALTYPE_CD)" />
           </q-form>
         </q-card-section>
         <q-card-section v-else class="text-caption">
-          {{$store.getters.TEXT.alerts.no_data}}
+          {{ $store.getters.TEXT.alerts.no_data }}
         </q-card-section>
 
         <q-card-actions align="between">
-          <q-btn class="my-btn" no-caps flat rounded :label="$store.getters.TEXT.btn.close" color="primary" v-close-popup />
-          <q-btn class="my-btn" no-caps flat rounded :label="$store.getters.TEXT.btn.ok" color="primary" @click="updateConcept(edit_data)" />
+          <q-btn class="my-btn" no-caps flat rounded :label="$store.getters.TEXT.btn.close" color="primary"
+            v-close-popup />
+          <q-btn class="my-btn" no-caps flat rounded :label="$store.getters.TEXT.btn.ok" color="primary"
+            @click="updateConcept(edit_data)" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -135,12 +133,12 @@
 
 import {importConceptFromCSV, VALTYPE_CD_LIST} from 'src/tools/formatdata'
 import HEADING from 'src/components/elements/Heading.vue'
-
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'DBFunctions_ConceptsImport',
 
-  components: {HEADING},
+  components: {HEADING, MainSlot},
 
   data() {
     return {
