@@ -44,13 +44,13 @@ function prepare_evaluation(cda, data) {
   // check successfull ...
   const evaluation = {
     title: "Evaluation Section",
-    code: {
+    code: [{
       coding: [{
         system: "http://snomed.info/sct",
         code: "129265001",
         display: "Evaluation"
       }]
-    },
+    }],
     text: {
       status: 'generated',
       div: ''
@@ -75,13 +75,13 @@ function prepare_results(cda, data) {
   // check successfull ...
   const results = {
     title: "Results Section",
-    code: {
+    code: [{
       coding: [{
         system: "http://snomed.info/sct",
         code: "423100009",
         display: "Results"
       }]
-    },
+    }],
     text: {
       status: 'generated',
       div: ''
@@ -97,10 +97,12 @@ function prepare_results(cda, data) {
   data.quest.results.forEach(item => {
     let entry = {
       title: item.label,
-      code: {code: [{code: '782487009', display: item.label, system: "http://snomed.info/sct"}]},
+      code: [{coding: [{code: '782487009', display: item.label, system: "http://snomed.info/sct"}]}],
       value: item.value,
       text: {status: 'generated', div: ''}
     }
+    if (item.coding) entry.code = [{coding: [item.coding]}]
+    
     entry.text.div = `<table><tbody><tr><td>${entry.title}</td></tr><tr><td>${entry.value}</td></tr></tbody></table>`
 
     div_header += `<td>${entry.title}</td>`
@@ -119,27 +121,22 @@ function prepare_results(cda, data) {
 function prepare_findings(cda, data) {
   const findings = {
     title: "Findings Section",
-    code: {
+    code: [{
       coding: [{
         system: "http://snomed.info/sct",
         code: "260245000",
         display: "Findings"
       }]
-    },
+    }],
     text: {
       status: 'generated',
       div: ''
     },
     entry: []
   }
-  // eventually update the coding
-  if (data.quest.coding !== undefined) {
-    findings.code.coding[0] = {
-      system: data.quest.coding.system,
-      code: data.quest.coding.code,
-      display: data.quest.coding.display
-    }
-  }
+  // eventually update the code[0].coding[0] = {system, code, display}
+  if (data.quest.coding !== undefined) findings.code[0].coding[0] = data.quest.coding
+  
   // now fill the entries
   var div = '<table id="section_findings"><tbody>'
   var div_header = ''
@@ -147,7 +144,7 @@ function prepare_findings(cda, data) {
   data.quest.items.forEach(item => {
     let entry = {
       title: item.label,
-      code: {code: [item.coding]},
+      code: [{coding: [item.coding]}], //code[0].coding[0] = {system, code, display}
       value: extract_value(item.value),
       text: {status: 'generated', div: ''}
     }

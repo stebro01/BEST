@@ -2,10 +2,10 @@
     "title": "UPDRS III",
     "short_title": "updrs_3",
     "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "342061000000106",
+        "system" : "LOINC",
+        "code" : "LID: 77720-1",
         "display" : "UPDRS III - Motorische Untersuchung",
-        "version": "20211028"
+        "version": "20230126"
     },
     "description": "UPDRS III - Motorische Untersuchung",
     "manual": "Bitte beantworten Sie folgenden Fragen",
@@ -346,7 +346,8 @@
         
     ],
     "results": {
-        "method": "sum"
+        "method": "sum",
+        "coding": { "display" : "UPDRS III - Motor", "code" : "LID: 77720-1", "system" : "LOINC"}
     }
 
 }

@@ -1,0 +1,475 @@
+{
+  "PID": "1",
+  "quest": {
+    "title": "SF-36",
+    "description": "SF-36",
+    "manual": "<b>Anleitung</b>: In diesem Fragebogen geht es um ihre Beurteilung ihres Gesundheitszustandes während der letzten 14 Tage. Der Bogen ermöglicht es, im Zeitverlauf nachzuvollziehen, wie <b>Sie sich fühlen</b> und wie <b>Sie im Alltag zurecht kommen</b>. Bitte beantworten Sie jede der folgenden Fragen, in dem sie bei den Antwort Möglichkeiten die Zahl ankreuzen, die am besten auf sie zutrifft. <br><b>Bitte kreuzen Sie die Reihe ein Kästchen an!</b>",
+    "keywords": "life lebensquälität",
+    "items": [{
+      "label": "1. Wie würden Sie Ihren Gesundheitszustand im Allgemeinen beschreiben?",
+      "id": 1,
+      "tag": "1_in_general",
+      "value": 1,
+      "type": "radio",
+      "inline": true,
+      "evaluation": "AGES",
+      "options": [{
+        "label": "Ausgezeichnet",
+        "value": 1
+      }, {
+        "label": "Sehr gut",
+        "value": 2
+      }, {
+        "label": "Gut",
+        "value": 3
+      }, {
+        "label": "Weniger gut",
+        "value": 4
+      }, {
+        "label": "Schlecht",
+        "value": 5
+      }],
+      "isvalid": true
+    }, {
+      "label": "2. Im Vergleich zum vergangenen Jahr, wie würden Sie ihren derzeitigen Gesundheitszustand beschreiben?",
+      "id": 2,
+      "tag": "2_health_recent",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "options": [{
+        "label": "Derzeit viel besser als vor einem Jahr",
+        "value": 1
+      }, {
+        "label": "Derzeit etwas besser als vor einem Jahr",
+        "value": 2
+      }, {
+        "label": "Etwa so wie vor einem Jahr",
+        "value": 3
+      }, {
+        "label": "Derzeit etwas schlechter als vor einem Jahr",
+        "value": 4
+      }, {
+        "label": "Derzeit viel schlechter als vor einem Jahr",
+        "value": 5
+      }],
+      "isvalid": true
+    }, {
+      "label": "3. Im folgenden sind einige Tätigkeiten beschrieben, die sie vielleicht an einem normalen Tag ausüben. Sind sie durch ihren derzeitigen Gesundheitszustand bei diesen Tätigkeiten eingeschränkt? Wenn ja, wie stark?",
+      "tag": "3_activities",
+      "id": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "caption": "Bitte beachten, füllen Sie alle Zeilen aus!",
+      "value": [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+      "type": "multiple_radio",
+      "evaluation": "KÖFU",
+      "inline": true,
+      "options": {
+        "answers": [{
+          "label": "Ja, stark eingeschränkt",
+          "value": 1
+        }, {
+          "label": "Ja, etwas eingeschränkt",
+          "value": 2
+        }, {
+          "label": "Nein, überhaupt nicht eingeschränkt",
+          "value": 3
+        }],
+        "questions": [{
+          "id": 3,
+          "label": "a) anstrengende Tätigkeiten, z.B. Schnell laufen",
+          "tag": "a"
+        }, {
+          "id": 4,
+          "label": "b) mittelschwere Tätigkeiten",
+          "tag": "b"
+        }, {
+          "id": 5,
+          "label": "c) Einkaufstaschen heben oder tragen",
+          "tag": "c"
+        }, {
+          "id": 6,
+          "label": "d) Mehrere Treppenabsätze steigen",
+          "tag": "d"
+        }, {
+          "id": 7,
+          "label": "e) Einen Treppenabsatz steigen",
+          "tag": "e"
+        }, {
+          "id": 8,
+          "label": "f) Sich beugen, knien, bücken",
+          "tag": "f"
+        }, {
+          "id": 9,
+          "label": "g) Mehr als 1 km zu Fuß gehen",
+          "tag": "g"
+        }, {
+          "id": 10,
+          "label": "h) Mehrere Straßenkreuzungen weit zu Fuß gehen",
+          "tag": "h"
+        }, {
+          "id": 11,
+          "label": "i) Eine Straßenkreuzung weit zu Fuß gehen",
+          "tag": "i"
+        }, {
+          "id": 12,
+          "label": "j) Sich baden oder anziehen",
+          "tag": "j"
+        }]
+      },
+      "isvalid": true
+    }, {
+      "label": "4. Hatten Sie in den vergangenen vier Wochen aufgrund ihrer körperlichen Gesundheit irgendwelche Schwierigkeiten bei der Arbeit oder anderen alltäglichen Tätigkeiten im Beruf beziehungsweise zu Hause?",
+      "tag": "4_difficulties",
+      "id": [13, 14, 15, 16],
+      "caption": "Bitte beachten, füllen Sie alle Zeilen aus!",
+      "value": [2, 2, 2, 2],
+      "type": "multiple_radio",
+      "evaluation": "KÖRO",
+      "inline": true,
+      "options": {
+        "answers": [{
+          "label": "Ja",
+          "value": 1
+        }, {
+          "label": "Nein",
+          "value": 2
+        }],
+        "questions": [{
+          "id": 13,
+          "label": "a) Ich konnte nicht so lange wie üblich tätig sein",
+          "tag": "a"
+        }, {
+          "id": 14,
+          "label": "b) Ich habe weniger geschafft als ich wollte",
+          "tag": "b"
+        }, {
+          "id": 15,
+          "label": "c) Ich konnte nur bestimmte Dinge tun",
+          "tag": "c"
+        }, {
+          "id": 16,
+          "label": "d) Ich hatte Schwierigkeiten bei der Ausführung",
+          "tag": "d"
+        }]
+      },
+      "isvalid": true
+    }, {
+      "label": "5. Hatten Sie in den vergangenen vier Wochen aufgrund seelischer Probleme irgendwelche Schwierigkeiten bei der Arbeit oder anderen alltäglichen Tätigkeiten im Beruf beziehungsweise zu Hause (zum Beispiel weil sie sich niedergeschlagen oder ängstlich fühlen)?",
+      "tag": "5_seelisches",
+      "id": [17, 18, 19],
+      "caption": "Bitte beachten, füllen Sie alle Zeilen aus!",
+      "value": [2, 2, 2],
+      "evaluation": "EMRO",
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [{
+          "label": "Ja",
+          "value": 1
+        }, {
+          "label": "Nein",
+          "value": 2
+        }],
+        "questions": [{
+          "id": 17,
+          "label": "a) Ich konnte nicht so lange wie üblich tätig sein",
+          "tag": "a"
+        }, {
+          "id": 18,
+          "label": "b) Ich habe weniger geschafft als ich wollte",
+          "tag": "b"
+        }, {
+          "id": 19,
+          "label": "c) Ich konnte nicht so sorgfältig wie üblich arbeiten",
+          "tag": "c"
+        }]
+      },
+      "isvalid": true
+    }, {
+      "label": "6. Wie sehr haben ihre körperliche Gesundheit oder seelischen Probleme in den vergangenen vier Wochen ihre normalen Kontakte zu Familien Angehörigen, Freunden, Nachbarn oder zum Bekanntenkreis beeinträchtigt?",
+      "tag": "6_contacts",
+      "id": 20,
+      "value": 1,
+      "type": "radio",
+      "evaluation": "SOFU",
+      "inline": true,
+      "options": [{
+        "label": "Überhaupt nicht",
+        "value": 1
+      }, {
+        "label": "Etwas",
+        "value": 2
+      }, {
+        "label": "Mäßig",
+        "value": 3
+      }, {
+        "label": "Ziemlich",
+        "value": 4
+      }, {
+        "label": "Sehr",
+        "value": 5
+      }],
+      "isvalid": true
+    }, {
+      "label": "7. Wie stark waren ihre Schmerzen in den vergangenen vier Wochen",
+      "tag": "7_pain",
+      "id": 21,
+      "evaluation": "SCHM",
+      "value": 1,
+      "type": "radio",
+      "inline": false,
+      "options": [{
+        "label": "Keine Schmerzen",
+        "value": 1
+      }, {
+        "label": "Sehr leichte Schmerzen",
+        "value": 2
+      }, {
+        "label": "Leichte Schmerzen",
+        "value": 3
+      }, {
+        "label": "Mässige Schmerzen",
+        "value": 4
+      }, {
+        "label": "Starke Schmerzen",
+        "value": 5
+      }, {
+        "label": "Sehr starke Schmerzen",
+        "value": 6
+      }],
+      "isvalid": true
+    }, {
+      "label": "8. In wie weit haben die Schmerzen Sie in den vergangenen vier Wochen bei der Ausübung ihrer Alltagstätigkeiten zu Hause und im Beruf behindert?",
+      "id": 22,
+      "tag": "8_pain_2",
+      "evaluation": "SCHM",
+      "value": 1,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "Überhaupt nicht",
+        "value": 1
+      }, {
+        "label": "Etwas",
+        "value": 2
+      }, {
+        "label": "Mäßig",
+        "value": 3
+      }, {
+        "label": "Ziemlich",
+        "value": 4
+      }, {
+        "label": "Sehr",
+        "value": 5
+      }],
+      "isvalid": true
+    }, {
+      "label": "9. In diesen Fragen geht es darum, wie sie sich fühlen und wie es Ihnen in den vergangenen vier Wochen gegangen ist. . Wie oft waren Sie in den vergangenen vier Wochen…",
+      "tag": "9_last4weeks",
+      "id": [23, 24, 25, 26, 27, 28, 29, 30, 31],
+      "caption": "Bitte kreuzen Sie in jeder Zeile den Wert an, der ihrem Befinden am ehesten entspricht)",
+      "value": [1, 6, 6, 1, 1, 6, 6, 1, 6],
+      "evaluation": "VITA",
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [{
+          "label": "Immer",
+          "value": 1
+        }, {
+          "label": "Meistens",
+          "value": 2
+        }, {
+          "label": "Ziemlich oft",
+          "value": 3
+        }, {
+          "label": "Manchmal",
+          "value": 4
+        }, {
+          "label": "Selten",
+          "value": 5
+        }, {
+          "label": "Nie",
+          "value": 6
+        }],
+        "questions": [{
+          "id": 23,
+          "label": "a) ... voller Schwung",
+          "tag": "a"
+        }, {
+          "id": 24,
+          "label": "b) ... sehr nervös",
+          "tag": "b"
+        }, {
+          "id": 25,
+          "label": "c) ... So niedergeschlagen, dass sie nichts aufheitern konnte",
+          "tag": "c"
+        }, {
+          "id": 26,
+          "label": "d) ... ruhig und gelassen",
+          "tag": "d"
+        }, {
+          "id": 27,
+          "label": "e) ... voller Energie",
+          "tag": "e"
+        }, {
+          "id": 28,
+          "label": "f) ... entmutigt und traurig",
+          "tag": "f"
+        }, {
+          "id": 29,
+          "label": "g) ... erschöpft",
+          "tag": "g"
+        }, {
+          "id": 30,
+          "label": "h) ... glücklich",
+          "tag": "h"
+        }, {
+          "id": 31,
+          "label": "i) ... müde",
+          "tag": "i"
+        }]
+      },
+      "isvalid": true
+    }, {
+      "label": "10. Wie häufig haben ihre körperliche Gesundheit oder seelischen Probleme in den vergangenen vier Wochen ihren Kontakt zu anderen für Menschen (Besuch bei Freunden, Verwandten und so weiter) beeinträchtigt?",
+      "id": 32,
+      "tag": "10_health_contact",
+      "evaluation": "SOFU",
+      "value": 5,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "Immer",
+        "value": 1
+      }, {
+        "label": "Meistens",
+        "value": 2
+      }, {
+        "label": "Manchmal",
+        "value": 3
+      }, {
+        "label": "Selten",
+        "value": 4
+      }, {
+        "label": "Nie",
+        "value": 5
+      }],
+      "isvalid": true
+    }, {
+      "label": "11. Inwieweit trifft jede der folgenden Aussagen auf sie zu?",
+      "tag": "11_aussagen",
+      "id": [33, 34, 35, 36],
+      "evaluation": "AGES",
+      "caption": "Die Aussage trifft ...",
+      "value": [5, 1, 5, 1],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [{
+          "label": "ganz zu",
+          "value": 1
+        }, {
+          "label": "überwiegend zu",
+          "value": 2
+        }, {
+          "label": "weiss nicht",
+          "value": 3
+        }, {
+          "label": "weitgehend nicht zu",
+          "value": 4
+        }, {
+          "label": "überhaupt nicht zu",
+          "value": 5
+        }],
+        "questions": [{
+          "id": 33,
+          "label": "a) Ich scheine etwas leichter als andere krank zu werden",
+          "tag": "a"
+        }, {
+          "id": 34,
+          "label": "b) Ich bin genauso gesund wie alle anderen, die ich kenne",
+          "tag": "b"
+        }, {
+          "id": 35,
+          "label": "c) Ich erwarte, dass meine Gesundheit nachlässt",
+          "tag": "c"
+        }, {
+          "id": 36,
+          "label": "d) Ich erfreue mich ausgezeichneter Gesundheit",
+          "tag": "d"
+        }]
+      },
+      "isvalid": true
+    }, {
+      "label": "12. Wie würden Sie Ihren derzeitigen Gesundheitszustand beschreiben?",
+      "id": 37,
+      "tag": "12_self_health",
+      "value": 1,
+      "type": "radio",
+      "inline": true,
+      "options": [{
+        "label": "Sehr gut",
+        "value": 1
+      }, {
+        "label": "gut",
+        "value": 2
+      }, {
+        "label": "Mittelmäßig",
+        "value": 3
+      }, {
+        "label": "Schlecht",
+        "value": 4
+      }, {
+        "label": "Sehr schlecht",
+        "value": 5
+      }],
+      "isvalid": true
+    }],
+    "results": {
+      "method": "ids",
+      "scoring": [
+        {"id": [13,14,15,16,17,18,19], "value": [1,2], "score": [0, 100]},
+        {"id": [3,4,5,6,7,8,9,10,11,12], "value": [1,2,3], "score": [0,50,100]},
+        {"id": [1,2,20,22,34,36], "value": [1,2,3,4,5], "score": [100, 75, 50, 25, 0]},
+        {"id": [32,33,35], "value": [1,2,3,4,5], "score": [0,25,50,75,100]},
+        {"id": [21,23,26,27,30], "value": [1,2,3,4,5,6], "score": [100,80,60,40,20,0]},
+        {"id": [24,25,28,29,31], "value": [1,2,3,4,5,6], "score": [0,20,30,60,80,100]}
+
+    ],
+      "domaine": [{
+        "label": "Physical functioning",
+        "id": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "method": "avg"
+      }, {
+        "label": "Role limitations due to physical health",
+        "id": [13, 14, 15, 16],
+        "method": "avg"
+      }, {
+        "label": "Role limitations due to emotional problems",
+        "id": [17, 18, 19],
+        "method": "avg"
+      }, {
+        "label": "Energy/fatigue",
+        "id": [23, 27, 29, 31],
+        "method": "avg"
+      }, {
+        "label": "Emotional well-being",
+        "id": [24, 25, 26, 28, 30],
+        "method": "avg"
+      }, {
+        "label": "Social functioning",
+        "id": [20, 32],
+        "method": "avg"
+      }, {
+        "label": "Pain",
+        "id": [21, 22],
+        "method": "avg"
+      }, {
+        "label": "General health",
+        "id": [1, 33, 34, 35, 36],
+        "method": "avg"
+      }]
+    }
+  }
+}

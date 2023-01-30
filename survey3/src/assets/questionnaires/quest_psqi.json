@@ -5,7 +5,7 @@
         "system" : "http://snomed.info/sct",
         "code" : "699200007",
         "display" : "PSQI (Pittsburgh sleep quality index)",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "Schlafqualitäts-Fragebogen",
     "manual": "",
@@ -283,7 +283,8 @@
             {"label": "quality", "id": [16], "method": "sum"},
             {"label": "meds", "id": [17], "method": "sum"},
                 
-            {"label": "sum", "id": ["duration","disturbance", "latency", "day_dysfunction", "efficiency", "quality", "meds"], "method": "sum"}
+            {"label": "sum", "id": ["duration","disturbance", "latency", "day_dysfunction", "efficiency", "quality", "meds"], "method": "sum",
+            "coding": { "display" : "PSQI (Pittsburgh sleep quality index)", "code" : "SCTID: 699200007", "system" : "http://snomed.info/sct"}}
         ],
         "evaluation": [
             {"range": [0,5], "label": "gute Schlafqualität"},

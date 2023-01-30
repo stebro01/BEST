@@ -3,9 +3,9 @@
     "short_title": "phq_9",
     "coding" : {
         "system" : "http://snomed.info/sct",
-        "code" : "720433000",
+        "code" : "SCTID: 720433000",
         "display" : "PHQ-9 (Patient Health Questionnaire 9 Item score)",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "PHQ-9",
     "manual": "",
@@ -52,6 +52,7 @@
     ],
     "results": {
         "method": "sum",
+        "coding": { "display" : "PHQ-9 (Patient Health Questionnaire Nine Item score)", "code" : "SCTID: 720433000", "system" : "http://snomed.info/sct"},
         "evaluation": [
             {"range": [0,4], "label": "gesund"},
             {"range": [5,9], "label": "unauffällig"},

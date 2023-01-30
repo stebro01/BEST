@@ -5,7 +5,7 @@
         "system" : "http://snomed.info/sct",
         "code" : "404684003",
         "display" : "NMS Quest",
-        "version": "20220315"
+        "version": "20230126"
     },
     "description": "",
     "manual": "Die Bewegungsstörungen bei der Parkinson-Erkrankung sind gut bekannt. Es können aber manchmal auch andere Probleme auftreten, als Teil der Erkrankung oder deren Behandlung. Es ist wichtig, dass der Arzt über diese Probleme Bescheid weiß, v.a. wenn sie von Ihnen als störend empfunden werden.<br> Eine Reihe von Problemen ist unten aufgeführt. Bitte kreuzen Sie das Feld „Ja“ an, wenn Sie das beschriebene Symptom <b>während des letzten Monats</b> erlebt haben. Der Arzt oder die Kranken- schwester kann Ihnen Fragen stellen, um Ihnen bei der Entscheidung zu helfen. Wenn bei Ihnen das jeweilige Problem im Laufe des letzten Monats <b>nicht</b> aufgetreten ist, kreuzen Sie bitte das Feld „Nein“ an. Sie sollten auch dann „Nein“ antworten, wenn Sie die Symptome in der Vergangenheit, aber nicht während des letzten Monats hatten.",
@@ -63,7 +63,8 @@
 
     ],
     "results": {
-        "method": "sum"
+        "method": "sum",
+        "coding": { "display" : "NMS Quest - Parkinson", "code" : "CUSTOM: SCORES\\NMSQUEST", "system" : "CUSTOM"}
     }
 
 }

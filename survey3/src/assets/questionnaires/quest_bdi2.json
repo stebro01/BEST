@@ -3,9 +3,9 @@
     "short_title": "bdi2",
     "coding" : {
         "system" : "http://snomed.info/sct",
-        "code" : "717268000",
+        "code" : "SCTID: 717268000",
         "display" : "Becks depression inventar II",
-        "version": "20211026"
+        "version": "20230124"
     },
     "description": "",
     "manual": "<b>Anleitung</b>: Dieser Fragebogen enthält 21 Gruppen von Aussagen. Bitte lesen Sie jede dieser Gruppen von Aussagen sorgfältig durch und suchen Sie sich dann in jeder Gruppe <b>eine Aussage</b> heraus, die am besten beschreibt, wie Sie sich <b>in den letzten zwei Wochen, einschließlich heute, gefühlt haben</b>. Kreuzen Sie die Zahl neben der Aussage an, die Sie sich herausgesucht haben (0, 1, 2 oder 3). Falls in einer Gruppe mehrere Aussagen gleichermaßen auf Sie zutreffen, kreuzen Sie die Aussage mit der höheren Zahl an. Achten Sie bitte darauf, dass Sie in jeder Gruppe nicht mehr als eine Aussage ankreuzen, das gilt auch für Gruppe 16 (Veränderung der Schlafgewohnheiten) oder Gruppe 18 (Veränderungen des Appetits).",
@@ -322,7 +322,9 @@
 
         ],
         "domaine":[
-            {"label": "sum", "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], "method": "sum"}
+            {"label": "sum", "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21], "method": "sum",
+                "coding": { "display" : "BDI-II", "code" : "SCTID: 717268000", "system" : "http://snomed.info/sct"}
+            }
         ],
         "evaluation": [
             {"range": [0,12], "label": "klinisch unauffällig"},

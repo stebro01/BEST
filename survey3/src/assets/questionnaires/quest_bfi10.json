@@ -2,10 +2,10 @@
     "title": "Big-Five-Inventory",
     "short_title": "bfi10",
     "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "445536008",
-        "display" : "BFI-10",
-        "version": "20211026"
+        "system" : "CUSTOM",
+        "code" : "CUSTOM: NP\\BFI10",
+        "display" : "BFI-10 (Big Five Inventory)",
+        "version": "20230126"
     },
     "description": "Brief personality questionnaire, big five",
     "manual": "",
@@ -50,11 +50,11 @@
             {"id": [1,3,4,5,7], "value": [1,2,3,4,5], "score": [5,4,3,2,1]}
         ],
         "domaine":[
-            {"label": "Extraversion", "id": [1,6], "method": "avg"},
-            {"label": "Neurotizismus", "id": [4,9], "method": "avg"},
-            {"label": "Offenheit", "id": [5,10], "method": "avg"},
-            {"label": "Gewissenhaftigkeit", "id": [3,8], "method": "avg"},
-            {"label": "Verträglichkeit", "id": [2,7], "method": "avg"}    
+            {"label": "Extraversion", "id": [1,6], "method": "avg", "coding": { "display" : "BFI-10 Extraversion", "code" : "CUSTOM: NP\\BFI10\\E", "system" : "CUSTOM"}},
+            {"label": "Neurotizismus", "id": [4,9], "method": "avg", "coding": { "display" : "BFI-10 Neurotizismus", "code" : "CUSTOM: NP\\BFI10\\N", "system" : "CUSTOM"} },
+            {"label": "Offenheit", "id": [5,10], "method": "avg", "coding": { "display" : "BFI-10 Offenheit", "code" : "CUSTOM: NP\\BFI10\\O", "system" : "CUSTOM"}},
+            {"label": "Gewissenhaftigkeit", "id": [3,8], "method": "avg", "coding": { "display" : "BFI-10 Gewissenhaftigkeit", "code" : "CUSTOM: NP\\BFI10\\G", "system" : "CUSTOM"}},
+            {"label": "Verträglichkeit", "id": [2,7], "method": "avg", "coding": { "display" : "BFI-10 Verträglichkeit", "code" : "CUSTOM: NP\\BFI10\\V", "system" : "CUSTOM"}}    
         ]
     }
 

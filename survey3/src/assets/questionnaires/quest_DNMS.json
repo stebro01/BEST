@@ -2,10 +2,10 @@
     "title": "DNMSQuest",
     "short_title": "dnmsquest",
     "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "225398001",
+        "system" : "CUSTOM",
+        "code" : "CUSTOM: SCORES\\DNMSQUEST",
         "display" : "DNMSQuest",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "Dystonia Non-Motor Symptoms Questionnaire",
     "keywords": "neurology, dystonia",
@@ -51,7 +51,10 @@
             {"id": [1,2,3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14], "value": ["yes", "no"], "score": [1, 0]}
         ],
         "domaine":[
-            {"label": "sum", "id": [1,2,3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14], "method": "sum"}
+            {
+                "label": "sum", "id": [1,2,3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14], "method": "sum",
+                "coding": { "display" : "DNMSQuest", "code" : "CUSTOM: SCORES\\DNMSQUEST", "system" : "http://snomed.info/sct"}
+            }
         ],
         "evaluation": [
             {"range": [0,4], "label": "normal"},

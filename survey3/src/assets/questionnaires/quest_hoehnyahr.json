@@ -5,7 +5,7 @@
         "system" : "http://snomed.info/sct",
         "code" : "404684003",
         "display" : "Hoehn und Yahr - Skala",
-        "version": "20220315"
+        "version": "20230126"
     },
     "description": "",
     "manual": "Für die Erfassung der Krankheitsstadien bzw. der Schwere der Krankheit (Schweregrad) wird die nach den amerikanischen Parkinson-Experten benannte, modifizierte HOEHN-YAHR-Skala verwendet.",
@@ -34,7 +34,8 @@
         
     ],
     "results": {
-        "method": "sum"
+        "method": "sum",
+        "coding": { "display" : "Hoehn and Yahr Scale score", "code" : "SCTID: 716138005", "system" : "SNOMED-CT"}
     }
 
 }

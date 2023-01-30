@@ -1,8 +1,8 @@
 // KLASSE ZUR VERWALTUNG DER QUESTS > einschl. Durchlaufen von Presets etc.
 import {QUESTS} from 'src/assets/questionnaires/list_quest'
-// import Vue from 'vue'
+
 import {log} from 'src/tools/Logger'
-// import {uuidv4} from './hhash'
+
 
 // USAGE:
 // IMPORT
@@ -368,18 +368,17 @@ function RANDOMWORD() {
 // CALC RESULTS
 function calc_results(data, methods) {
     if (methods.method === undefined) return {}
-
     switch (methods.method) {
         case 'sum':            
-            return calc_simple_sum(data.items)
+            return calc_simple_sum(data.items, methods)
             break
 
         case 'avg':            
-            return calc_simple_avg(data.items)
+            return calc_simple_avg(data.items, methods)
             break
 
         case 'count': 
-            return calc_count(data.items)
+            return calc_count(data.items, methods)
             break
 
         case 'count_targets': 
@@ -399,16 +398,18 @@ function calc_results(data, methods) {
 }
 
 // CALC SUMS
-function calc_simple_sum(items) {
+function calc_simple_sum(items, methods) {
     var sum = 0
     items.forEach(item => {
         if (typeof item.value === 'number' && item.ignore_for_result !== true) sum+= item.value
     })
-    return [{'label': 'sum', 'value': sum}]
+    const RESULT = {'label': 'sum', 'value': sum}
+    if (methods.coding) RESULT.coding = methods.coding
+    return [RESULT]
 }
 
 // CALC AVG
-function calc_simple_avg(items) {
+function calc_simple_avg(items, methods) {
     var sum = 0
     var count = 0
     items.forEach(item => {
@@ -417,12 +418,14 @@ function calc_simple_avg(items) {
             count++
         }
     })
-    return [{'label': 'avg', 'value': Math.round(100*sum/count)/100}]
+    const RESULT = {'label': 'avg', 'value': Math.round(100*sum/count)/100}
+    if (methods.coding) RESULT.coding = methods.coding
+    return [RESULT]
 }
 
 // CALC COUNT
 
-function calc_count(items) {
+function calc_count(items, methods) {
     // ERZEUGE LISTE MIT ALLEN ANTWORTEN / VALUES
     const answers = [];
     items.forEach(item => {
@@ -456,6 +459,7 @@ function calc_count(items) {
             total: total
         })
     })
+    
     return results
 }
 
@@ -485,7 +489,7 @@ function calc_ids(items, method) {
             value: 0
         }
         val.value = Math.round(getDomaineScore(VALUES, sub, results)*100)/100
-
+        if (sub.coding) val.coding = sub.coding
         // PUSH RESULT
         results.push(val)
     })

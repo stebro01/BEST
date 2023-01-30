@@ -3,9 +3,9 @@
     "short_title": "hads_d",
     "coding" : {
         "system" : "http://snomed.info/sct",
-        "code" : "273524006",
+        "code" : "SCTID: 273524006",
         "display" : "Hospital anxiety and depression  (HADS-D)",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "Hospital anxiety and depression",
     "manual": "<b>Sehr geehrte Patientin, sehr geehrter Patient!</b> <br>Sie werden von uns wegen körperlichen Beschwerden untersucht und behandelt. Zur vollständigen Beurteilung Ihrer vermuteten oder bereits bekannten Erkrankung bitten wir Sie im vorliegenden Fragebogen um einige persönliche Angaben. Man weiß heute, dass körperliche Krankheit und seelisches Befinden oft eng zusammenhängen. Deshalb beziehen sich die Fragen ausdrücklich auf Ihre allgemeine und seelische Verfassung. Die Beantwortung ist selbstverständlich freiwillig. Wit bitten Sie jedoch, jede Frage zu beantworten, und zwar so, wie es für Sie persönlich <b>in der letzten Woche</b> am ehesten zutraf. Machen Sie bitte nur ein Kreuz pro Frage und lassen Sie bitte keine Frage aus! Überlegen Sie bitte nicht lange, sondern wählen Sie die Antwort aus, die Ihnen auf Anhieb am zutreffendsten erscheint! Alle Ihre Antworten unterliegen der ärztlichen Schweigepflicht.",
@@ -229,8 +229,10 @@
             {"id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14], "value": [0,1,2,3], "score": [0,1,2,3]}
         ],
         "domaine":[
-            {"label": "Kategorie A", "id": [1,3,5,7,9,11,12 ], "method": "sum"},
-            {"label": "Kategorie D", "id": [2,4, 6,8,10,13,14], "method": "sum"}
+            {"label": "Kategorie A", "id": [1,3,5,7,9,11,12 ], "method": "sum",
+            "coding": { "display" : "HADS-D: anxiety score", "code" : "CUSTOM: NP\\HADSD\\ANXIETY", "system" : "CUSTOM"}},
+            {"label": "Kategorie D", "id": [2,4, 6,8,10,13,14], "method": "sum",
+            "coding": { "display" : "HADS-D: depression score", "code" : "CUSTOM: NP\\HADSD\\DEPRESSION", "system" : "CUSTOM"}}
         ]
     }
 }

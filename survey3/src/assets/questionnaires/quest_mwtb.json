@@ -2,10 +2,10 @@
     "title": "MWT-B",
     "short_title": "mwtb",
     "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "273877007",
+        "system" : "CUSTOM",
+        "code" : "CUSTOM: NP\\MWTB",
         "display" : "Mehrfachwahl-Wortschatz-Intelligenztest B (MWT-B)",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "MWT-B",
     "manual": "",
@@ -14,7 +14,7 @@
     	{
             "label": "Beruf",
             "caption": "",
-            "coding": { "display" : "profession", "code" : "14679004", "system" : "http://snomed.info/sct"},
+            "coding": { "display" : "Employment", "code" : "LID: 99222-2T", "system" : "LOINC"},
             "value": null,
             "type": "text",
             "inline": false,
@@ -22,7 +22,7 @@
         },
         {
             "label": "Alter (Jahre)",
-            "coding": { "display" : "age", "code" : "397669002", "system" : "http://snomed.info/sct"},
+            "coding": { "display" : "age", "code" : "LID: 63900-5", "system" : "LOINC"},
             "value": null,
             "type": "number",
             "inline": false,
@@ -30,15 +30,15 @@
         },
         {
             "label": "Geschlecht",
-            "coding": { "display" : "gender", "code" : "263495000", "system" : "http://snomed.info/sct"},
+            "coding": { "display" : "gender", "code" : "SCTID: 263495000", "system" : "LOINC"},
             "value": null,
             "type": "radio",
             "inline": true,
             "force": true,
             "options": [
-                {"label": "männlich", "value": "m"},
-                {"label": "weiblich", "value": "w"},
-                {"label": "divers", "value": "d"}
+                {"label": "männlich", "value": "Male"},
+                {"label": "weiblich", "value": "Female"},
+                {"label": "divers", "value": "Intersex"}
             ]
         },
         {
@@ -605,7 +605,8 @@
         "method": "count_targets",
         "targets": [
             {"label": "correct", "value": 1, "score": 1}
-        ]
+        ],
+        "coding": { "display" : "MWT-B Rohwert", "code" : "CUSTOM: NP\\MWTB\\RAW", "system" : "CUSTOM"}
     }
 
 }

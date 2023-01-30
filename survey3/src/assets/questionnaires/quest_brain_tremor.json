@@ -1,11 +1,11 @@
 {
-    "title": "Brain Tremorskala",
+    "title": "Baain Tremorskala",
     "short_title": "brain_tremor",
     "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "404684003",
+        "system" : "CUSTOM",
+        "code" : "CUSTOM: FINDING\\BAIN_TREMOR",
         "display" : "Bain Tremorskala",
-        "version": "20220617"
+        "version": "20230126"
     },
     "description": "semiquantitatives Messinstrument bei Patienten mit essentiellem Tremor",
     "manual": "Die Bewegungsstörungen bei der Parkinson-Erkrankung sind gut bekannt. Es können aber manchmal auch andere Probleme auftreten, als Teil der Erkrankung oder deren Behandlung. Es ist wichtig, dass der Arzt über diese Probleme Bescheid weiß, v.a. wenn sie von Ihnen als störend empfunden werden.<br> Eine Reihe von Problemen ist unten aufgeführt. Bitte kreuzen Sie das Feld „Ja“ an, wenn Sie das beschriebene Symptom <b>während des letzten Monats</b> erlebt haben. Der Arzt oder die Kranken- schwester kann Ihnen Fragen stellen, um Ihnen bei der Entscheidung zu helfen. Wenn bei Ihnen das jeweilige Problem im Laufe des letzten Monats <b>nicht</b> aufgetreten ist, kreuzen Sie bitte das Feld „Nein“ an. Sie sollten auch dann „Nein“ antworten, wenn Sie die Symptome in der Vergangenheit, aber nicht während des letzten Monats hatten.",
@@ -59,6 +59,7 @@
 
     ],
     "results": {
-        "method": "sum"
+        "method": "sum",
+        "coding": { "display" : "Bain Tremorskala", "code" : "CUSTOM: SCORES\\BAIN_TREMOR", "system" : "CUSTOM"}
     }
 }

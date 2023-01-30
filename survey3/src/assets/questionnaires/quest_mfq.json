@@ -5,7 +5,7 @@
         "system" : "http://snomed.info/sct",
         "code" : "445536008",
         "display" : "MFQ - Fragebogen zur Gedächtnisfunktion",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "",
     "manual": "Die ist ein Fragebogen darüber, wie Sie sich an Informationen erinnern. Es gibt keine richtigen oder falschen Antworten. Kreuzen Sie eine Zahl zwischen 1 und 7 an, die Ihr Urteil über Ihr Gedächtnis am besten zeigt. Denken Sie sorgfältig über Ihre Antworten nach und versuchen Sie, so realistisch wie möglich zu sein, wenn Sie sie abgeben. Beantworten Sie bitte alle Fragen.",
@@ -15,7 +15,7 @@
             "label": "1. Wie würden Sie Ihr Gedächtnis in Bezug auf die Art von Problemen, die Sie haben, bewerten?",
             "tag": "Allgemeine_Bewertung",
             "caption": "von  \"1\" = große Probleme bis \"7\" = keine Probleme",
-            "id": [1],
+            "id": 1,
             "value": null,
             "type": "radio",
             "inline": true,
@@ -257,14 +257,24 @@
             {"id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64], "value": [1,2,3,4,5,6,7], "score": [1,2,3,4,5,6,7]}
         ],
         "domaine":[
-            {"label": "Generell", "id": [1], "method": "sum"},
-            {"label": "Rückblickende_Funktion", "id": [2,3,4,5,6], "method": "sum"},
-            {"label": "Häufigkeit_des_Vergessens", "id": [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24], "method": "sum"},
-            {"label": "Lesen", "id": [25,26,27,28,29], "method": "sum"},
-            {"label": "Zeitungslesen", "id": [30,31,32,33,34], "method": "sum"},
-            {"label": "Ereignisse", "id": [35,36,37,38], "method": "sum"},
-            {"label": "Ernsthaftigkeit", "id": [39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56], "method": "sum"},
-            {"label": "Techniken", "id": [57,58,59,60,61,62,63,64], "method": "sum"}   
+            {  
+                "label": "Generell", "id": [1], "method": "sum",
+                "coding": { "display" : "MFQ - Subscore 1 (subjective complaint)", "code" : "CUSTOM: NP\\MFQ\\1", "system" : "CUSTOM"}
+            },
+            {"label": "Rückblickende_Funktion", "id": [2,3,4,5,6], "method": "sum",
+            "coding": { "display" : "MFQ - Subscore 2", "code" : "CUSTOM: NP\\MFQ\\2", "system" : "CUSTOM"}},
+            {"label": "Häufigkeit_des_Vergessens", "id": [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24], "method": "sum",
+            "coding": { "display" : "MFQ - Subscore 3", "code" : "CUSTOM: NP\\MFQ\\3", "system" : "CUSTOM"}},
+            {"label": "Lesen", "id": [25,26,27,28,29], "method": "sum",
+            "coding": { "display" : "MFQ - Subscore 4", "code" : "CUSTOM: NP\\MFQ\\4", "system" : "CUSTOM"}},
+            {"label": "Zeitungslesen", "id": [30,31,32,33,34], "method": "sum",
+            "coding": { "display" : "MFQ - Subscore 5", "code" : "CUSTOM: NP\\MFQ\\5", "system" : "CUSTOM"}},
+            {"label": "Ereignisse", "id": [35,36,37,38], "method": "sum",
+            "coding": { "display" : "MFQ - Subscore 6", "code" : "CUSTOM: NP\\MFQ\\6", "system" : "CUSTOM"}},
+            {"label": "Ernsthaftigkeit", "id": [39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56], "method": "sum",
+            "coding": { "display" : "MFQ - Subscore 7", "code" : "CUSTOM: NP\\MFQ\\7", "system" : "CUSTOM"}},
+            {"label": "Techniken", "id": [57,58,59,60,61,62,63,64], "method": "sum",
+            "coding": { "display" : "MFQ - Subscore 8", "code" : "CUSTOM: NP\\MFQ\\8", "system" : "CUSTOM"}}   
         ]
     }
 

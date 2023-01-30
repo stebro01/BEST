@@ -3,9 +3,9 @@
     "short_title": "mrs",
     "coding" : {
         "system" : "http://snomed.info/sct",
-        "code" : "840318003",
+        "code" : "SCTID: 840318003",
         "display" : "Modified Rankin Scale (mRS)",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "Modified Rankin Scale (mRS)",
     "keywords": "neuro",
@@ -29,7 +29,8 @@
         }
     ],
     "results": {
-        "method": "sum"
+        "method": "sum",
+        "coding": { "display" : "mRS", "code" : "SCTID: 1255866005", "system" : "http://snomed.info/sct"}
     }
 
 }

@@ -5,7 +5,7 @@
         "system" : "http://snomed.info/sct",
         "code" : "445536008",
         "display" : "ECOG",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "",
     "manual": "",
@@ -179,7 +179,8 @@
             {"id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39], "value": [0,1,2,3,"kA"], "score": [0,1,2,3,4,0]}
         ],
         "domaine":[
-            {"label": "Total Score", "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39], "method": "sum"},
+            {"label": "Total Score", "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39], "method": "sum",
+            "coding": { "display" : "ECOG - Total Score", "code" : "CUSTOM: NP\\ECOG\\TOTALSCORE", "system" : "CUSTOM"}},
             {"label": "Gedächtnis", "id": [1,2,3,4,5,6,7,8], "method": "sum"},
             {"label": "Sprache", "id": [9,10,11,12,13,14,15,16,16,17], "method": "sum"},
             {"label": "Visuell-räumliche Wahrnehmungsfähigkeiten", "id": [18,19,20,21,22,23,24], "method": "sum"},

@@ -3,9 +3,9 @@
     "description": "sf36",
     "coding" : {
         "system" : "http://snomed.info/sct",
-        "code" : "770636004",
+        "code" : "SCTID: 770636004",
         "display" : "SF-36",
-        "version": "20211026"
+        "version": "20230126"
     },
     "short_title": "sf36",
     "manual": "<b>Anleitung</b>: In diesem Fragebogen geht es um Ihre Beurteilung Ihres Gesundheitszustandes während der letzten 14 Tage. Der Bogen ermöglicht es, im Zeitverlauf nachzuvollziehen, wie <b>Sie sich fühlen</b> und wie <b>Sie im Alltag zurecht kommen</b>. Bitte beantworten Sie jede der folgenden Fragen, in dem Sie bei den Antwortmöglichkeiten die Zahl ankreuzen, die am besten auf Sie zutrifft. <br><b>Bitte kreuzen Sie in jeder  Reihe ein Kästchen an!</b>",
@@ -259,15 +259,24 @@
 
         ],
         "domaine":[
-            {"label": "Physical functioning", "id": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "method": "avg"},
-            {"label": "Role limitations due to physical health", "id": [13, 14, 15, 16], "method": "avg"},
-            {"label": "Role limitations due to emotional problems", "id": [17, 18, 19], "method": "avg"},
-            {"label": "Energy/fatigue", "id": [23, 27, 29, 31], "method": "avg"},
-            {"label": "Emotional well-being", "id": [24, 25, 26, 28, 30], "method": "avg"},
-            {"label": "Social functioning", "id": [20, 32], "method": "avg"},
-            {"label": "Pain", "id": [21, 22], "method": "avg"},
-            {"label": "General health", "id": [1, 33, 34, 35, 36], "method": "avg"},
-            {"label": "Health change", "id": [2], "method": "avg"}    
+            {"label": "Physical functioning", "id": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: Physical functioning", "code" : "SCTID: 770636004/pf", "system" : "CUSTOM"}},
+            {"label": "Role limitations due to physical health", "id": [13, 14, 15, 16], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: limitations/health", "code" : "SCTID: 770636004/lh", "system" : "CUSTOM"}},
+            {"label": "Role limitations due to emotional problems", "id": [17, 18, 19], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: limitations/emotional problems", "code" : "SCTID: 770636004/le", "system" : "CUSTOM"}},
+            {"label": "Energy/fatigue", "id": [23, 27, 29, 31], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: energy/fatigue", "code" : "SCTID: 770636004/ef", "system" : "CUSTOM"}},
+            {"label": "Emotional well-being", "id": [24, 25, 26, 28, 30], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: Emotional well-beeing", "code" : "SCTID: 770636004/ewb", "system" : "CUSTOM"}},
+            {"label": "Social functioning", "id": [20, 32], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: social functioning", "code" : "SCTID: 770636004/sf", "system" : "CUSTOM"}},
+            {"label": "Pain", "id": [21, 22], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: Pain", "code" : "SCTID: 770636004/pain", "system" : "CUSTOM"}},
+            {"label": "General health", "id": [1, 33, 34, 35, 36], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: General health", "code" : "SCTID: 770636004/gh", "system" : "CUSTOM"}},
+            {"label": "Health change", "id": [2], "method": "avg",
+            "coding": { "display" : "SF-36 Subscore: Health change", "code" : "SCTID: 770636004/hc", "system" : "CUSTOM"}}    
         ]
     }
 

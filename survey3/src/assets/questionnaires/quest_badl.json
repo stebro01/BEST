@@ -5,7 +5,7 @@
         "system" : "http://snomed.info/sct",
         "code" : "273534002",
         "display" : "Bayer-ADL-Skala",
-        "version": "20211026"
+        "version": "20230126"
     },
     "description": "Skala zur Einschätzung der Alltagskompetenz - Fremdeinschätzung",
     "manual": "In den folgenden Fragen geht es um Alltagsaktivitäten, mit denen die Person, über die Sie befragt werden, möglicherweise Schwierigkeiten hat. Bitte geben Sie an, wie oft Schwierigkeiten auftreten, indem Sie die entsprechende Zahl ankreuzen. Je größer die Zahl ist, um so mehr Schwierigkeiten hat die Person mit der betreffenden Aktivität. Wenn nie Schwierigkeiten auftreten, markieren Sie bitte die 1, wenn immer Schwierigkeiten auftreten, die 10. Wenn eine Frage aus irgendeinem Grund auf die Person nicht zutrifft, kreuzen Sie bitte E (entfällt) an. Wenn Sie sich nicht sicher sind, kreuzen Sie bitte WN (weiß nicht) an. Wenn Sie Probleme haben, eine Frage zu verstehen, bitten Sie um Hilfe.",
@@ -99,7 +99,9 @@
             {"id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], "value": [1,2,3,4,5,6,7,8,9,10,-1,-2], "score": [1,2,3,4,5,6,7,8,9,10,0,0]}
         ],
         "domaine":[
-            {"label": "avg", "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], "method": "avg", "ignore_zeros": true}   
+            {"label": "avg", "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], "method": "avg", "ignore_zeros": true,
+            "coding": { "display" : "B-ADL / Gesamtscore", "code" : "CUSTOM: NP\\BADL", "system" : "CUSTOM"}
+            }   
         ]
     }
 
