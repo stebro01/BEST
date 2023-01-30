@@ -1,5 +1,5 @@
 <template>
-   <div class="fixed-top q-mt-xl q-ml-xl text-left z-max" style="z-index: 10">
+   <div class="z-top" >
       <q-fab
         v-if="$store.getters.PROVIDER_PINNED || $store.getters.PATIENT_PINNED"
         v-model="fab_model"
@@ -7,12 +7,12 @@
         external-label
         flat
         vertical-actions-align="left"
-        class="text-black bg-white q-mt-md"
+        class="text-black my-visit-color"
         icon="more_vert"
         active-icon="more_horiz"
         direction="down"
         :hide-label="hideLabels"
-        
+        square
       >
         <span v-for="(item, ind) in BUTTON_ROW" :key="ind + 'btn'">
         <q-fab v-if="item.data"

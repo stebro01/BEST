@@ -1,100 +1,103 @@
 <template>
   <q-page>
     <MainSlot :no_options="true">
-     <!-- HEADING -->
-     <template v-slot:header>
-      <HEADING :title="$store.getters.TEXT.page.observation_import.title" :img="'csv-import-logo.png'"/>
+      <!-- HEADING -->
+      <template v-slot:header>
+        <HEADING :title="$store.getters.TEXT.page.observation_import.title" :img="'csv-import-logo.png'" />
       </template>
 
       <!-- MAIN -->
       <template v-slot:main>
-      <div class="col q-mt-xl">
-        
-        <div class="q-mt-xl text-center">
-          <q-tabs
-              v-model="tab"
-            >
-              <q-tab name="csv"  label="CSV import" />
-              <q-tab name="hl7"  label="HL7 import" @click="$router.push({name: 'DBFunctions_HL7Import'})"/>
+        <div class="row">
 
-          </q-tabs>
-        </div>
-        <!-- SELECT FILE -->
-        <div v-if="!patients && !show_nothing_found_banner">
-          <SELECT_FILE :accept="'.csv'" :label="'CSV Datei auswählen (.csv)'" @save="importData($event)"/>
-        </div>
-        
-      </div>
-
-      <!-- INFO  -->
-      <div v-if="!patients && !show_nothing_found_banner && !show_loading_spinner" class="col"><q-icon class="cursor-pointer" name="info" size="lg" @click="show_info = true"/></div>
-      <HELP_CSV_IMPORT :active="show_info" :no_limit="true" @close="show_info = false"/>
-
-      <!-- LOADING BANNER -->
-      <div v-if="show_loading_spinner">
-          <q-spinner
-            color="primary"
-            size="3em"
-            :thickness="10"
-          />
-      </div>
-
-      <!-- BANNER NICHTS GEFUNDEN -->
-      <div v-if="show_nothing_found_banner" class="col">
-      <q-banner  class="bg-red-3 q-ma-md" dense inline-actions>{{$store.getters.TEXT.page.observation_import.banner_nothing_found}}
-          <template v-slot:action>
-            <q-btn round flat color="black" icon="close" @click="show_nothing_found_banner = false; patient = undefined"/>
-          </template>
-      </q-banner>
-      </div>
-      <!-- ERGEBNISSE ANZEIGEN -->
-      <div class="col my-list-item q-pb-xl" v-if="patients">
-        <q-banner v-if="show_banner" class="bg-red-3 q-ma-md" dense inline-actions>{{$store.getters.TEXT.page.concept_import.info_banner}}
-          <template v-slot:action>
-            <q-btn round flat color="black" icon="close" @click="show_banner = false"/>
-          </template>
-        </q-banner>
-        <q-list dense v-for="(item, ind) in patients" :key="ind+'elemente'" class="q-my-lg ">
-          <q-expansion-item
-            expand-separator
-            icon="perm_identity"
-            :label="`ID: ${item.PATIENT_CD}`"
-            :caption="`num: ${item.PATIENT_NUM}`"
-          >
-          <q-card>
-            <q-card-section class="text-h4 bg-grey-3">
-              Patient: {{item.PATIENT_NUM}}
-              <span class="q-ml-lg text-caption">
-                ID: {{item.PATIENT_CD}}
-                <EDIT_ICON />
-                <q-popup-edit v-model="item.PATIENT_CD" auto-save buttons v-slot="scope">
-                  <q-input v-model="scope.value" dense  type="text" @keyup.enter="scope.set" @blur="patient_cd_changed(scope.value, item)"/>
-                </q-popup-edit>
-            </span>
-            </q-card-section>
-           
-            <q-card-section v-for="(visite, ind_visite) in item.VISITS" :key="ind_visite + 'visite'" class="q-pa-none q-mb-md bg-grey-3">
-                <OBSERVATION_TABLE_SHORT :title="`Visite ${ind_visite+1}`" :input_data="item.VISIT_INFO[ind_visite]" @changed="(item.VISIT_INFO[ind_visite] = $event);" />
-                <OBSERVATION_TABLE_EDIT :input_data=" visite" @changed="item.VISITS[ind_visite] = $event"/>
-            </q-card-section>            
-          
-         </q-card>
-          </q-expansion-item>
-        </q-list>
-
-        <div class="fixed-bottom text-center q-mb-lg my-transparent-bg">
-          <div>
-            <q-checkbox disable v-model="options_import.new_patient" label="Probanden/Patienten als NEU hinzufügen" />
+          <div class="col-12">
+            <q-tabs v-model="tab">
+              <q-tab name="csv" label="CSV import" />
+              <q-tab name="hl7" label="HL7 import" @click="$router.push({ name: 'DBFunctions_HL7Import' })" />
+            </q-tabs>
           </div>
-          <div class=" q-gutter-md">
-            <q-btn icon="add_circle" no-caps  rounded class="my-btn" @click="addImportToDB()" label="hinzufügen" />
-            <q-btn icon="close" no-caps  rounded class="my-btn" @click="patients = undefined; show_nothing_found_banner = false" label="abbrechen"/>
+          <!-- SELECT FILE -->
+          <SELECT_FILE v-if="!patients && !show_nothing_found_banner" class="col-12" :accept="'.csv'"
+            :label="'CSV Datei auswählen (.csv)'" @save="importData($event)" />
+
+          <!-- INFO  -->
+          <div v-if="!patients && !show_nothing_found_banner && !show_loading_spinner" class="col-12 text-center">
+            <q-icon class="cursor-pointer" name="info" size="lg" @click="show_info = true" />
           </div>
+          <HELP_CSV_IMPORT :active="show_info" :no_limit="true" @close="show_info = false" />
+
+          <!-- BANNER NICHTS GEFUNDEN -->
+          <div v-if="show_nothing_found_banner" class="col-12">
+            <q-banner class="bg-red-3 q-ma-md" dense inline-actions>{{
+              $store.getters.TEXT.page.observation_import.banner_nothing_found
+            }}
+              <template v-slot:action>
+                <q-btn round flat color="black" icon="close"
+                  @click="show_nothing_found_banner = false; patient = undefined" />
+              </template>
+            </q-banner>
+          </div>
+          <!-- ERGEBNISSE ANZEIGEN -->
+          <div class="col-12 row justify-center my-list-item q-pb-xl" v-if="patients">
+            <q-banner v-if="show_banner" class="bg-red-3 q-ma-md" dense inline-actions>{{
+              $store.getters.TEXT.page.concept_import.info_banner
+            }}
+              <template v-slot:action>
+                <q-btn round flat color="black" icon="close" @click="show_banner = false" />
+              </template>
+            </q-banner>
+            <q-list dense v-for="(item, ind) in patients" :key="ind + 'elemente'" class="q-my-md ">
+              <q-expansion-item expand-separator icon="perm_identity" :label="`ID: ${item.PATIENT_CD}`"
+                :caption="`num: ${item.PATIENT_NUM}`" class="bg-accent q-ma-xs">
+                <q-card>
+                  <q-card-section class="text-h4 bg-grey-3">
+                    Patient: {{ item.PATIENT_NUM }}
+                    <span class="q-ml-lg text-caption">
+                      ID: {{ item.PATIENT_CD }}
+                      <EDIT_ICON />
+                      <q-popup-edit v-model="item.PATIENT_CD" auto-save buttons v-slot="scope">
+                        <q-input v-model="scope.value" dense type="text" @keyup.enter="scope.set"
+                          @blur="patient_cd_changed(scope.value, item)" />
+                      </q-popup-edit>
+                    </span>
+                  </q-card-section>
+
+                  <q-card-section v-for="(visite, ind_visite) in item.VISITS" :key="ind_visite + 'visite'"
+                    class="q-pa-none q-mb-md bg-grey-3">
+                    <OBSERVATION_TABLE_SHORT :title="`Visite ${ind_visite + 1}`"
+                      :input_data="item.VISIT_INFO[ind_visite]" @changed="(item.VISIT_INFO[ind_visite] = $event);" />
+                    <OBSERVATION_TABLE_EDIT :input_data="visite" @changed="item.VISITS[ind_visite] = $event" />
+                  </q-card-section>
+
+                </q-card>
+              </q-expansion-item>
+            </q-list>
+
+
+          </div>
+
         </div>
 
-        
-      </div>
+      </template>
 
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <!-- LOADING BANNER -->
+        <div v-if="show_loading_spinner" class="col-12">
+          <q-spinner color="primary" size="3em" :thickness="10" />
+        </div>
+
+        <!-- BUTTONS  -->
+        <div class="text-center" v-if="patients">
+          <div class=" q-gutter-md" style="position: relative">
+            <q-btn icon="add_circle" no-caps rounded class="my-btn" @click="addImportToDB()" label="hinzufügen" />
+            <q-btn icon="close" no-caps rounded class="my-btn"
+              @click="patients = undefined; show_nothing_found_banner = false" label="abbrechen" />
+
+            <q-checkbox style="position: absolute; top: -40px; right: 50%" disable v-model="options_import.new_patient"
+              label="Probanden/Patienten als NEU hinzufügen" />
+          </div>
+        </div>
       </template>
     </MainSlot>
   </q-page>

@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <MainSlot>
+    <MainSlot :no_footer="true" :no_options="true">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="TEXT.title" :img="'login-logo.png'" />

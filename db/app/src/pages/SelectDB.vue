@@ -4,7 +4,7 @@
     <div v-if="!$store.getters.ELECTRON_MODE" class="flex flex-center">
       Zugriff auf das lokale Dateisystem nur als Electron/App möglich
     </div>
-    <MainSlot v-else>
+    <MainSlot v-else :no_footer="true">
       <template v-slot:header>
         <div class="text-h6">DB laden</div>
       </template>

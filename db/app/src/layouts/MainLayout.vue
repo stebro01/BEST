@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <q-header bordered class="bg-white text-primary non-selectable">
       <q-toolbar>
-
+        <PINNED_ELEMENTS/>
         <q-toolbar-title class="text-center">
           <q-avatar>
             <q-icon name="poll" />
@@ -34,13 +34,13 @@
            <q-item v-for="(item, ind) in essentialLinks" :key="ind + 'link'" 
             clickable v-ripple
             @click="$router.push({name: item.link})"
+            :class="{'bg-dark': $route.path.indexOf(item.path) > -1}"
             >
             <q-item-section avatar>
                   <q-icon :name="item.icon" color="grey-4"/>
                   <q-tooltip>{{ item.label }}</q-tooltip>
                 </q-item-section>
            </q-item>
-
            <q-separator/>
            <q-space/>
            
@@ -108,23 +108,22 @@
 
 <script>
 
+import PINNED_ELEMENTS from 'src/components/elements/PinnedElements.vue'
 
 export default {
   name: 'MainLayout',
 
-  components: {
-    // EssentialLink
-  },
+  components: {PINNED_ELEMENTS},
 
     data() {
     return {
       leftDrawerOpen: true,
       essentialLinks: [
-        {label: 'Home', link: 'Index', icon: 'home'},
-        {label: 'Patients', link: 'Patients', icon: 'person'},
-        {label: 'Visiten', link: 'VisitsView', icon: 'event'},
-        {label: 'Abfragen', link: 'DBQueries', icon: 'assessment'},
-        {label: 'Settings', link: 'DBFunctions', icon: 'settings'}
+        {label: 'Home', link: 'Index', icon: 'home', path: '/overview'},
+        {label: 'Patients', link: 'Patients', icon: 'person', path: '/patients'},
+        {label: 'Visiten', link: 'VisitsView', icon: 'event', path: '/visits'},
+        {label: 'Abfragen', link: 'DBQueries', icon: 'assessment', path: '/db_queries'},
+        {label: 'Settings', link: 'DBFunctions', icon: 'settings', path: '/db_functions'}
       ]
     }
   },

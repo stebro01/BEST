@@ -1,6 +1,6 @@
 <template>
   <q-page class=" non-selectable">
-    <MainSlot>
+    <MainSlot :no_options="true" :no_footer="true">
       <template v-slot:header>
         <div class="col text-h6 text-center">
           Über diese App

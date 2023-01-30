@@ -1,6 +1,6 @@
 <template>
   <q-page class="text-center non-selectable">
-    <MainSlot>
+    <MainSlot :no_footer="true">
       <template v-slot:header>
         <div class="col-12 text-caption q-mt-sm" style="line-height: 1em">
           <span> {{ getaquote.quote }}</span>
@@ -14,6 +14,7 @@
             <q-item v-for="(item, ind) in SELECTION" :key="ind + 'item'" 
               clickable v-ripple
               @click="$router.push({name: item.link})"
+              class="bg-accent q-ma-xs"
             >
               <q-item-section avatar>
                 <q-img class="rounded-borders my-icon-size" :src="item.img" />

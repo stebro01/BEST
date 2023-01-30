@@ -1,81 +1,88 @@
 <template>
-  <q-page class="column items-center q-pb-lg">
+  <q-page>
+    <MainSlot :no_footer="true" :no_options="true">
+
       <!-- HEADING -->
-      <HEADING :title="$store.getters.TEXT.page.observation_import.title" :img="'csv-import-logo.png'" style="z-index: 100"/>
-      <div class="col q-mt-xl">
-        <div class="q-mt-xl text-center">
-          <q-tabs style="z-index: 10"
-              v-model="tab"
-            >
-              <q-tab name="csv"  label="CSV import" @click="$router.push({name: 'DBFunctions_CSVImport'})"/>
-              <q-tab name="hl7"  label="HL7 import" />
+      <template v-slot:header>
+        <HEADING :title="$store.getters.TEXT.page.observation_import.title" :img="'csv-import-logo.png'"
+          style="z-index: 100" />
+      </template>
 
-          </q-tabs>
+      <!-- MAIN -->
+      <template v-slot:main>
+        <div class="row text-center">
+          <div class="col-12">
+            <q-tabs style="z-index: 10" v-model="tab">
+              <q-tab name="csv" label="CSV import" @click="$router.push({ name: 'DBFunctions_CSVImport' })" />
+              <q-tab name="hl7" label="HL7 import" />
+
+            </q-tabs>
+          </div>
+
+          <!-- SELECT FILE -->
+          <SELECT_FILE v-if="!patient_data && !show_nothing_found_banner" class="col-12" :accept="'.json'"
+            :label="'HL7JSON Datei auswählen (.json)'" @save="importData($event)" />
+
+
+          <!-- qergebnisse        -->
+          <div v-if="patient_data" class="col-12 column items-center">
+            <q-card class="my-card q-mt-xl text-center">
+              <q-card-section>
+                <q-banner dense inline-actions class="bg-green-3">Daten gefunden
+                  <template v-slot:action>
+                    <q-btn round flat color="black" icon="close" @click="patient_data = undefined" />
+                  </template>
+                </q-banner>
+                <q-banner v-if="patient_exists" class="bg-red-1">
+                  <span class="text-caption">
+                    Patient mit dieser PATIENT_CD existiert schon in der DB! Wenn die Daten dennoch gespeichert werden,
+                    werden sie hinzugefügt.
+                  </span>
+                </q-banner>
+              </q-card-section>
+              <q-card-section v-if="patient_data.PATIENT">
+                PATIENT_CD: {{ patient_data.PATIENT.PATIENT_CD }} <q-btn class="q-ml-md" round flat icon="search"
+                  @click="show_change_patient = true"><q-tooltip>Den Eintrag einem anderen Patienten
+                    zuordnen</q-tooltip></q-btn>
+              </q-card-section>
+              <q-card-section>
+                Visiten: {{ patient_data.VISITS.length }}
+              </q-card-section>
+
+              <q-card-actions align="center">
+                <q-btn class="my-btn" rounded no-caps @click="saveToDB(patient_data)">in DB speichern</q-btn>
+              </q-card-actions>
+            </q-card>
+
+
+            <!-- VORSCHAU -->
+            <PREVIEW_IMPORT v-if="patient_data" :patient_data="patient_data" />
+
+          </div>
+
         </div>
 
-        <!-- SELECT FILE -->
-        <div v-if="!patient_data && !show_nothing_found_banner">
-          <SELECT_FILE :accept="'.json'" :label="'HL7JSON Datei auswählen (.json)'" @save="importData($event)"/>
+        <!-- LOADING BANNER -->
+        <div v-if="show_loading_spinner">
+          <q-spinner color="primary" size="3em" :thickness="10" />
         </div>
 
-
-        <!-- qergebnisse        -->
-        <div v-if="patient_data" class="column items-center">
-        <q-card  class="my-card q-mt-xl text-center"> 
-          <q-card-section>
-            <q-banner dense inline-actions class="bg-green-3">Daten gefunden
-              <template v-slot:action>
-                <q-btn round flat color="black" icon="close" @click="patient_data = undefined"/>
-              </template>
-            </q-banner>
-            <q-banner v-if="patient_exists" class="bg-red-1"> 
-              <span class="text-caption">
-              Patient mit dieser PATIENT_CD existiert schon in der DB! Wenn die Daten dennoch gespeichert werden, werden sie hinzugefügt.
-              </span>  
-            </q-banner>
-          </q-card-section>
-          <q-card-section v-if="patient_data.PATIENT">
-            PATIENT_CD: {{ patient_data.PATIENT.PATIENT_CD }} <q-btn class="q-ml-md" round flat icon="search" @click="show_change_patient = true"><q-tooltip>Den Eintrag einem anderen Patienten zuordnen</q-tooltip></q-btn>
-          </q-card-section>
-          <q-card-section>
-            Visiten: {{ patient_data.VISITS.length }}
-          </q-card-section>
-
-          <q-card-actions align="center">
-            <q-btn class="my-btn" rounded no-caps @click="saveToDB(patient_data)">in DB speichern</q-btn>
-          </q-card-actions>
-        </q-card>
-
-        
-          <!-- VORSCHAU -->
-          <PREVIEW_IMPORT v-if="patient_data" :patient_data="patient_data"/>
-         
-        </div>
-      </div>
-
-
-
-      <!-- LOADING BANNER -->
-      <div v-if="show_loading_spinner">
-          <q-spinner
-            color="primary"
-            size="3em"
-            :thickness="10"
-          />
-      </div>
-
-      <!-- BANNER NICHTS GEFUNDEN -->
-      <div v-if="show_nothing_found_banner" class="col">
-        <q-banner  class="bg-red-3 q-ma-md" dense inline-actions>{{$store.getters.TEXT.page.observation_import.banner_nothing_found}}
+        <!-- BANNER NICHTS GEFUNDEN -->
+        <div v-if="show_nothing_found_banner" class="col">
+          <q-banner class="bg-red-3 q-ma-md" dense
+            inline-actions>{{ $store.getters.TEXT.page.observation_import.banner_nothing_found }}
             <template v-slot:action>
-              <q-btn round flat color="black" icon="close" @click="show_nothing_found_banner = false; patient = undefined"/>
+              <q-btn round flat color="black" icon="close"
+                @click="show_nothing_found_banner = false; patient = undefined" />
             </template>
-        </q-banner>
-      </div>
+          </q-banner>
+        </div>
+      </template>
 
-      <!-- ERGEBNISSE ANZEIGEN -->
-      
-      <DIALOG_SELECT_PATIENT v-if="show_change_patient" :active="show_change_patient" @close="show_change_patient = false" @save="changePatient($event)"/>
+    </MainSlot>
+
+    <DIALOG_SELECT_PATIENT v-if="show_change_patient" :active="show_change_patient" @close="show_change_patient = false"
+      @save="changePatient($event)" />
 
 
   </q-page>
@@ -87,11 +94,12 @@ import HEADING from 'src/components/elements/Heading.vue'
 import DIALOG_SELECT_PATIENT from 'src/components/Dialog_SelectPatient.vue'
 import SELECT_FILE from 'src/components/elements/SelectFile.vue'
 import PREVIEW_IMPORT from 'src/components/elements/PreviewImport.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 export default {
   name: 'DBFunctions_HL7Import',
 
-  components: { HEADING, DIALOG_SELECT_PATIENT, SELECT_FILE, PREVIEW_IMPORT},
+  components: { HEADING, DIALOG_SELECT_PATIENT, SELECT_FILE, PREVIEW_IMPORT, MainSlot},
 
   data() {
     return {

@@ -1,9 +1,13 @@
 <template>
-  <q-page class="column items-center">
-    <HEADING :title="TEXT.title" :description="TEXT.description" :img="'db-queries-logo.png'"/>
+  <q-page>
+    <MainSlot>
       <!-- HEADING -->
-      <div class="col q-mt-xl">
-        
+      <template v-slot:header>
+    <HEADING :title="TEXT.title" :description="TEXT.description" :img="'db-queries-logo.png'"/>
+    </template>
+      
+    <!-- MAIN -->
+    <template v-slot:main>       
         <q-table
         class="my-table q-mt-xl"
         :rows="results"
@@ -45,13 +49,17 @@
         </template>
         
       </q-table>
-        
-      </div>
+    </template>
 
+      <!-- FOOTER -->
+      <template v-slot:footer>
       <BOTTOM_BUTTONS v-if="SELECTION > 0"
         :show_export="true"
         @export="exportPatients()"
       />
+      </template>
+
+    </MainSlot>
 
       <!-- DIALOG FOR EXPORT -->
       <q-dialog v-model="show_query_concepts_dialog">
@@ -86,6 +94,7 @@
 import HEADING from 'src/components/elements/Heading.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
+import MainSlot from 'src/components/MainSlot.vue'
 
 import { exportFile } from 'quasar'
 
@@ -119,7 +128,7 @@ export default {
     }
   },
 
-  components: { HEADING, BOTTOM_BUTTONS, FILTER_BOX },
+  components: { HEADING, BOTTOM_BUTTONS, FILTER_BOX, MainSlot },
 
   mounted() {
     this.loadPatient()

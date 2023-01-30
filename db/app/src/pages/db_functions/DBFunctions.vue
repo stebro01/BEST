@@ -1,6 +1,6 @@
 <template>
   <q-page >
-    <MainSlot>
+    <MainSlot :no_footer="true">
        <!-- HEADING -->
        <template v-slot:header>
     <HEADING :title="'Funktion wählen'" :img="'provider-color-logo.png'"/>

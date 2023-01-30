@@ -1,6 +1,5 @@
 <template>
   <div>
-    <PINNED_ELEMENTS />
         <q-card class="my-card q-mt-sm ">
           <q-item>
             <q-item-section avatar>
@@ -15,13 +14,12 @@
 </template>
 
 <script>
-import PINNED_ELEMENTS from 'src/components/elements/PinnedElements.vue'
 export default {
   name: 'Heading',
 
   props: ['title', 'img', 'description'],
 
-  components: { PINNED_ELEMENTS },
+  components: {  },
 
   data() {
     return {
