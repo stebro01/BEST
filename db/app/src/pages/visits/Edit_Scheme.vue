@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <MainSlot>
+    <MainSlot :no_options="true">
       <!-- HEADING -->
       <template v-slot:header>
     <HEADING :title="'Scheme hinzufügen'" :img="'general_icon.png'"/>
