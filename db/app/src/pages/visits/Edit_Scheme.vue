@@ -3,61 +3,50 @@
     <MainSlot :no_options="true">
       <!-- HEADING -->
       <template v-slot:header>
-    <HEADING :title="'Scheme hinzufügen'" :img="'general_icon.png'"/>
-    </template>
-       <!-- MAIN -->
-       <template v-slot:main>
+        <HEADING :title="'Scheme hinzufügen'" :img="'general_icon.png'" />
+      </template>
+      <!-- MAIN -->
+      <template v-slot:main>
         <!-- ALLGEMEIN -->
-          <OBSERVATION_TABLE_SHORT @changed="(localGlobalData = $event); changeDetected = true"/>
+        <OBSERVATION_TABLE_SHORT @changed="(localGlobalData = $event); changeDetected = true" />
 
-
-        <div v-if="!active_scheme.resolved" >
+        <div v-if="!active_scheme.resolved">
           <!-- AUSWAHL BUTTON -->
-          <q-btn-dropdown
-            no-caps
-            icon="folder"
-            label="Scheme auswählen"
-            class="my-list-item my-observation-color"
-          >
+          <q-btn-dropdown no-caps icon="folder" label="Scheme auswählen" class="my-list-item my-observation-color">
             <q-list>
-              <q-item v-for="(opt, opt_index) in option_schemes" :key="opt_index+'opt'" clickable v-close-popup @click="onSelectScheme(opt)">
+              <q-item v-for="(opt, opt_index) in option_schemes" :key="opt_index + 'opt'" clickable v-close-popup
+                @click="onSelectScheme(opt)">
                 <q-item-section avatar>
                   <q-avatar icon="folder" color="primary" text-color="white" />
                 </q-item-section>
                 <q-item-section>
-                  <q-item-label>{{opt.CODE_CD}}</q-item-label>
-                  <q-item-label caption>{{opt.NAME_CHAR}}</q-item-label>
+                  <q-item-label>{{ opt.CODE_CD }}</q-item-label>
+                  <q-item-label caption>{{ opt.NAME_CHAR }}</q-item-label>
                 </q-item-section>
                 <q-item-section side>
                   <q-icon name="info" color="amber" />
                 </q-item-section>
               </q-item>
-              </q-list>
-            </q-btn-dropdown>
+            </q-list>
+          </q-btn-dropdown>
         </div>
 
-      <!-- ANZEIGE INHALT -->
-      <div v-if="active_scheme.resolved" class="q-mt-md">
-    
-        <!-- ITEMS -->
-          <SCHEME_TABLE_NEW :scheme="active_scheme" @changed="(localFormData = $event); changeDetected = true"/>
+        <!-- ANZEIGE INHALT -->
+        <div v-if="active_scheme.resolved" class="q-mt-md">
 
-      </div>
+          <!-- ITEMS -->
+          <SCHEME_TABLE_NEW :scheme="active_scheme" @changed="(localFormData = $event); changeDetected = true" />
 
-
-      
-    </template>
-
-     <!-- FOOTER -->
-     <template v-slot:footer>
-      <BOTTOM_BUTTONS 
-        :show_save="(changeDetected && localFormData.length > 0 && localGlobalData)"  @save="saveScheme()"
-        :show_back="true" @back="$router.go(-1)"
-
-      />
+        </div>
       </template>
-    
-  </MainSlot>
+
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <BOTTOM_BUTTONS :show_save="(changeDetected && localFormData.length > 0 && localGlobalData)"
+          @save="saveScheme()" :show_back="true" @back="$router.go(-1)" />
+      </template>
+
+    </MainSlot>
   </q-page>
 </template>
 
