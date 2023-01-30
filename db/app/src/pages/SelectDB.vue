@@ -16,25 +16,25 @@
               style="position: relative; top: 50%" />
           </div>
 
-          <div v-else class="col-5 text-center">
-            <div style="position: relative; top: 50%">
-              <div>
+          <div v-else class="col-12 text-center">
+            <div class="row q-gutter-y-xl">
+              <div class="col-12">
                 <q-chip v-if="FNAME" removable @remove="clearFNAME()" color="primary" text-color="white" icon="file">
                   {{ FNAME.name }}
                 </q-chip>
               </div>
-              <div>
 
-                <q-btn class="q-mt-lg my-list-btn" rounded no-caps @click="loadDB">lade DB</q-btn>
+              <q-btn class="col-12 my-list-btn" rounded no-caps @click="loadDB">lade DB</q-btn>
+
+              <div class="col-12">
+                <q-btn flat rounded no-caps class="my-btn q-mt-xl"
+                  @click="$router.push({ name: 'DBFunctions_CreateDB' })">neue DB
+                  anlegen</q-btn>
               </div>
             </div>
           </div>
 
-          <div class="col-5">
-            <q-btn style="top: 50%" flat rounded no-caps class="my-btn"
-              @click="$router.push({ name: 'DBFunctions_CreateDB' })">neue DB
-              anlegen</q-btn>
-          </div>
+
         </div>
 
       </template>

@@ -35,7 +35,7 @@ export async function importHL7toObject(cda, VIEW_CONCEPT) {
     var CONCEPT_LIST = _get_concept_list(OBSERVATIONS)
     CONCEPT_LIST = await _db_query_concepts(CONCEPT_LIST, VIEW_CONCEPT)
     OBSERVATIONS = await _db_resolve_observations(OBSERVATIONS, CONCEPT_LIST, VIEW_CONCEPT)
-
+    console.log(OBSERVATIONS)
     return {PATIENT, VISITS, OBSERVATIONS}
 }
 
@@ -205,8 +205,10 @@ function _get_concept_list(OBSERVATIONS) {
     const LIST = []
     OBSERVATIONS.forEach(obs => {
         obs.forEach(val => {
-            let obj = LIST.find(el => el.CONCEPT_CD === val.CONCEPT_CD)
-            if (!obj) LIST.push({CONCEPT_CD: val.CONCEPT_CD})
+            if (val.CONCEPT_CD) {
+                let obj = LIST.find(el => el.CONCEPT_CD === val.CONCEPT_CD)
+                if (!obj) LIST.push({CONCEPT_CD: val.CONCEPT_CD})
+            }
         })
     })
 
@@ -253,8 +255,10 @@ async function _db_resolve_observations(OBSERVATIONS, CONCEPT_LIST, VIEW_CONCEPT
                     } 
                     else observation.TVAL_CHAR = 'SCTID: 373067005'
                 }
-                else if (obj.VALTYPE_CD === 'S') observation.TVAL_CHAR = await _db_resolve_selections(observation, CONCEPT_LIST, VIEW_CONCEPT)
-
+                else if (obj.VALTYPE_CD === 'S') {
+                    observation.TVAL_CHAR = await _db_resolve_selections(observation, CONCEPT_LIST, VIEW_CONCEPT)
+                }
+                
                 //for debbugging
                 if (obj.VALTYPE_CD === 'S' || obj.VALTYPE_CD === 'F') observation.TVAL_RESOLVED = observation.VALUE
 
@@ -273,9 +277,9 @@ async function _db_resolve_observations(OBSERVATIONS, CONCEPT_LIST, VIEW_CONCEPT
 async function _db_resolve_selections(observation, CONCEPT_LIST, VIEW_CONCEPT) {
     var VALUE = observation.VALUE
     if (VALUE === undefined || VALUE === null) return null
-    
     //first find entry in the CONCEPT_LIST
-    let obj = CONCEPT_LIST.find(el => el.NAME_CHAR.toLowerCase() === VALUE.toLowerCase())
+    let obj = CONCEPT_LIST.find(el => el.NAME_CHAR && el.NAME_CHAR.toLowerCase() === VALUE.toLowerCase())
+    
     if (!obj) {
         let res = await VIEW_CONCEPT.read({NAME_CHAR: VALUE})
         if (res.status && res.data.length > 0) {

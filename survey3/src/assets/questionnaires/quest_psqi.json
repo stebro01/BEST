@@ -178,7 +178,7 @@
         },
         {
             "label": "Alter",
-            "coding": { "display" : "age", "code" : "397669002", "system" : "http://snomed.info/sct"},
+            "coding": { "display" : "age", "code" : "LID: 63900-5", "system" : "LOINC"},
             "hint": "Jahre:",
             "value": null,
             "type": "number",
@@ -187,7 +187,7 @@
         },
         {
             "label": "Körpergröße",
-            "coding": { "display" : "height", "code" : "50373000", "system" : "http://snomed.info/sct"},
+            "coding": { "display" : "height", "code" : "SCTID: 1153637007", "system" : "http://snomed.info/sct"},
             "hint": "cm:",
             "value": null,
             "type": "number",
@@ -196,7 +196,7 @@
         },
         {
             "label": "Gewicht",
-            "coding": { "display" : "weight", "code" : "27113001", "system" : "http://snomed.info/sct"},
+            "coding": { "display" : "weight", "code" : "SCTID: 27113001", "system" : "http://snomed.info/sct"},
             "hint": "kg:",
             "value": null,
             "type": "number",
@@ -206,15 +206,15 @@
         {
             "label": "Geschlecht",
             "id": 28,
-            "coding": { "display" : "gender", "code" : "263495000", "system" : "http://snomed.info/sct"},
+            "coding": { "display" : "gender", "code" : "SCTID: 263495000", "system" : "http://snomed.info/sct"},
             "value": null,
             "type": "radio",
             "inline": true,
             "force": true,
             "options": [
-                {"label": "m", "value": "m"},
-                {"label": "w", "value": "w"},
-                {"label": "d", "value": "d"}
+                {"label": "m", "value": "Male"},
+                {"label": "w", "value": "Female"},
+                {"label": "d", "value": "Intersex"}
             ]
         },
         {

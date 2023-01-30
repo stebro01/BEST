@@ -14,7 +14,7 @@
             <q-item v-for="(item, ind) in SELECTION" :key="ind + 'item'" 
               clickable v-ripple
               @click="$router.push({name: item.link})"
-              class="bg-accent q-ma-xs"
+              class="bg-accent q-ma-xs my-item"
             >
               <q-item-section avatar>
                 <q-img class="rounded-borders my-icon-size" :src="item.img" />

@@ -213,6 +213,7 @@ get summary() {
     result.items = [],
     // loop through items: 
     this.activeQuest.value.items.forEach(item => {
+        
         if (item.value !== undefined && item.value !== null) {
             if (item.type === 'multiple_radio' && Array.isArray(item.value)) {
                 for (let i = 0; i < item.value.length; i++) {
@@ -490,6 +491,7 @@ function calc_ids(items, method) {
         }
         val.value = Math.round(getDomaineScore(VALUES, sub, results)*100)/100
         if (sub.coding) val.coding = sub.coding
+        // console.log(val)
         // PUSH RESULT
         results.push(val)
     })

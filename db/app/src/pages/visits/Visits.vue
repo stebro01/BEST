@@ -7,9 +7,9 @@
       </template>
       <!-- MAIN -->
       <template v-slot:main>
-
-        <div v-if="($store.getters.PROVIDER_PINNED === undefined)" class="">
-          <q-card class="my-card ">
+        <div class="row justify-center q-gutter-xl">
+        <!-- UNTERSUCHER -->
+          <q-card v-if="($store.getters.PROVIDER_PINNED === undefined)" class="my-card ">
             <q-item>
               <q-item-section avatar>
                 <img src="~assets/provider-color-logo.png" class="my-icon-size"> </q-item-section>
@@ -26,11 +26,9 @@
               </q-select>
             </q-card-section>
           </q-card>
-        </div>
 
         <!-- SELECT PATIENT -->
-        <div v-if="($store.getters.PATIENT_PINNED === undefined)" class="q-mt-md">
-          <q-card class="my-card">
+          <q-card v-if="($store.getters.PATIENT_PINNED === undefined)" class="my-card">
             <q-item>
               <q-item-section avatar>
                 <img src="~assets/patient-color-logo.png" class="my-icon-size"> </q-item-section>
@@ -67,7 +65,7 @@
               </q-form>
             </q-card-section>
           </q-card>
-        </div>
+      </div>
 
       </template>
 
