@@ -1,0 +1,100 @@
+{
+    "title": "CAIDE",
+    "short_title": "caide",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "445536008",
+        "display" : "CAIDE Dementia Risk Score",
+        "version": "20230201"
+    },
+    "description": "CAIDE Dementia Risk Score in the FINGER trial",
+    "keywords": "dementia, Demenz, risk, Risiko",
+    "items": [
+       
+        {
+            "label": "Alter",
+            "tag": "age",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "< 47 Jahre", "value": 0},
+                {"label": "47 - 53 Jahre", "value": 3},
+                {"label": "> 53 Jahre", "value": 4}
+                
+                
+            ]
+        },
+        {
+            "label": "Geschlecht",
+            "tag": "sex",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "Frau", "value": 0},
+                {"label": "Man", "value": 1}                
+            ]
+        },
+        {
+            "label": "Ausbildung",
+            "tag": "education",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "≥ 10 Jahre", "value": 0},
+                {"label": "7-9 Jahre", "value": 2},
+                {"label": "0-6 Jahre", "value": 3}
+            ]
+        },
+        {
+            "label": "Systolischer Blutdruck",
+            "tag": "systolic_blood_pressure",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "≤ 140 mmHg", "value": 0},
+                {"label": "> 140 mmHg", "value": 2}
+            ]
+        },
+        {
+            "label": "BMI",
+            "tag": "bmi",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "≤ 30 kg/m2", "value": 0},
+                {"label": "> 30 kg/m2", "value": 2}
+            ]
+        },
+        {
+            "label": "Serum total Cholesterin",
+            "tag": "serum_total_cholesterin",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "≤ 6,5 mmol/l", "value": 0},
+                {"label": "> 6,5 mmol/l", "value": 2}
+            ]
+        },
+        {
+            "label": "Körperliche Aktivität",
+            "tag": "physical_activity",
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "options": [
+                {"label": "weniger als 2 x wöchentlich 20-30min Sport (Schwitzen)", "value": 0},
+                {"label": "≥ 2 x wöchentlich Sport", "value": 1}
+            ]
+        }
+    ],
+    "results": {
+        "method": "sum",
+        "coding": { "display" : "CAIDE", "code" : "CUSTOM: SCORES\\BAIN_CAIDE", "system" : "CUSTOM"}
+    }
+}

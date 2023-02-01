@@ -159,7 +159,7 @@ export default {
           quest_label = this.FILTERED_LIST[i];
         }
       this.$router.push(
-        `quest/${encodeURIComponent(
+        `/quest/${encodeURIComponent(
           JSON.stringify({ presets: quest_label, mode: "single" })
         )}`
       );

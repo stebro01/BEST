@@ -1,13 +1,11 @@
 <template>
-  <div class="q-pb-xl">
-
+  <div class="q-pb-xl" style="width: 80vw">
+   
+    <q-scroll-area style="width: 100%; height: 50vh"> 
     <!-- <div>{{ scheme }}</div> -->
-    <q-splitter v-model="splitterModel" style="height: 400px; max-width: 800px; position: relative;" >
-      <div class="absolute" style="bottom: -40px; left: 50%">
-          <q-btn icon="arrow_back_ios" flat rounded :disable="ACTIVE_INDEX === -1" @click="selectTab(-1)" />
-          <q-btn icon="arrow_forward_ios" flat rounded :disable="ACTIVE_INDEX >= formData.length - 1"
-            @click="selectTab(1)" />
-        </div>
+
+    <q-splitter v-model="splitterModel" style="height: 50vh; width: 100%;" >
+
       <template v-slot:before>
         <div class="q-pa-md" v-if="formData.length > 0 && LEFT_TREE">
           <q-tree dense :nodes="LEFT_TREE" node-key="label" selected-color="green" v-model:selected="selected"
@@ -20,10 +18,14 @@
             <div class="absolute-full flex flex-center"> <q-badge color="transparent" text-color="black"
                 :label="`${GET_CHECKED_DATA_COUNT} / ${formData.length} ausgefüllt`" /></div>
           </q-linear-progress>
-
+          <span class="absolute-top-right q-mt-md z-top">{{ ACTIVE_POSITION_STRING }}</span>
+          <div class="absolute-bottom-right z-top" >
+          <q-btn icon="arrow_back_ios" flat rounded :disable="ACTIVE_INDEX === -1" @click="selectTab(-1)" />
+          <q-btn icon="arrow_forward_ios" flat rounded :disable="ACTIVE_INDEX >= formData.length - 1"
+            @click="selectTab(1)" />
+      </div>
         </div>
-        <span class="float-right">{{ ACTIVE_POSITION_STRING }}</span>
-
+       
 
 
         <q-tab-panels v-if="selected" v-model="selected" animated transition-prev="jump-up" transition-next="jump-up">
@@ -72,7 +74,7 @@
       </template>
     </q-splitter>
 
-
+  </q-scroll-area>
   </div>
 </template>
 

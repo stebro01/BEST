@@ -8,7 +8,15 @@
 
      <!-- MAIN -->
      <template v-slot:main>
-      <OBSERVATION_EDIT_CARD v-if="formData" :item="formData" @close="closeObservation()"/>
+      <OBSERVATION_EDIT_CARD v-if="formData" :item="formData" @close="closeObservation()" @change="updateData($event)"/>
+    </template>
+
+    <template v-slot:footer>
+          <!-- BUTTONS -->
+    <BOTTOM_BUTTONS 
+      :show_back="true" @back="closeObservation()"
+      :show_save="data_changed === true" @save="saveData()"
+    />  
     </template>
 
   </MainSlot>
@@ -19,17 +27,21 @@
 import HEADING from 'src/components/elements/Heading.vue'
 import OBSERVATION_EDIT_CARD from 'src/components/ObservationEdit_Card.vue'
 import MainSlot from 'src/components/MainSlot.vue'
+import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
+import {beautify_data} from 'src/tools/formatdata.js'
+
+
 import {datenow_isostring} from 'src/tools/mydate'
 
 export default {
   name: 'Observation_New',
 
-  components: {HEADING, OBSERVATION_EDIT_CARD, MainSlot },
+  components: {HEADING, OBSERVATION_EDIT_CARD, MainSlot, BOTTOM_BUTTONS },
 
   data() {
     return {
       formData: undefined,
-      // changeDetected: false,
+      data_changed: false
     }
   },
 
@@ -66,13 +78,53 @@ export default {
         PROVIDER_ID: this.$store.getters.PROVIDER_PINNED.PROVIDER_ID || undefined,
         LOCATION_CD: this.VISIT_PINNED.LOCATION_CD || undefined
       }
-      console.log(this.formData)
-      // this.changeDetected = false
+      
     }, 
+
+    saveData() {
+        const data = beautify_data(this.formData)
+        if (data.OBSERVATION_ID) {
+          const where = {OBSERVATION_ID: data.OBSERVATION_ID}
+          delete data.OBSERVATION_ID
+          this.$store.dispatch('updateDB', {query_string: {where: where, set: data}, table:"OBSERVATION_FACT"})
+          .then(res => {
+            this.$q.notify('Speichern erfolgreich')
+            this.data_changed = false
+          }).catch(err => this.$q.notify(err))
+        } else {
+          this.$store.dispatch('addDB', {query_string: data, table:"OBSERVATION_FACT"})
+          .then(res => {
+            this.formData.OBSERVATION_ID = res.OBSERVATION_ID
+            this.$emit('updateData', res)
+            this.$q.notify('Speichern erfolgreich')
+          })
+          .catch(err => this.$q.notify(err))
+          this.data_changed = false
+        }
+      },
 
     closeObservation() {
       this.$store.commit('OBSERVATION_PINNED_SET', undefined)
       this.$router.push({name: 'VisitsView'})
+    },
+
+    updateData(data) {
+      // console.log(data)
+      this.data_changed = false
+      this.formData = data
+      if (!this.formData) return
+      if (this.formData.CONCEPT_CD === undefined || this.formData.CONCEPT_CD === "") return false
+      if (this.formData.START_DATE === undefined || this.formData.START_DATE === "") return false
+      if (this.formData.PROVIDER_ID === undefined || this.formData.PROVIDER_ID === "") return false
+      if (this.formData.LOCATION_CD === undefined || this.formData.LOCATION_CD === "") return false
+      if (this.formData.VALTYPE_CD === undefined || this.formData.VALTYPE_CD === "") return false
+      if (this.formData.VALTYPE_CD === 'N') {
+        if (this.formData.NVAL_NUM === null || this.formData.NVAL_NUM === undefined) return false
+      }
+      else if (['S', 'T', 'F'].includes(this.formData.VALTYPE_CD)) {
+        if (this.formData.TVAL_CHAR === null || this.formData.TVAL_CHAR === undefined) return false
+      }
+      this.data_changed = true
     }
    
   }

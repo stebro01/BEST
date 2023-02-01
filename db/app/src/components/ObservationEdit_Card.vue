@@ -1,175 +1,127 @@
 <template>
         <!-- results -->
-    <div v-if="obs !== undefined" >
-      <q-markup-table flat bordered dense class="my-table">
-      <thead >
-        <tr >
-          <th class="text-center">ID</th>
-          <th class="text-center">{{obs.OBSERVATION_ID}}</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody class="text-weight-regular">
-         <!-- DATUM -->
-        <tr>
-          <td class="text-center">Datum</td>
-          <td class="bg-grey-3 text-center">{{obs.START_DATE}}</td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-                 <q-popup-edit v-model="obs.START_DATE" buttons v-slot="scope">
-                  <q-input v-model="scope.value" dense autofocus counter type="date" @keyup.enter="scope.set" @change="dataChanged()"/>
-                </q-popup-edit>
-          </td>
-        </tr>
-        <!-- ENDDATUM -->
-        <tr>
-          <td class="text-center">Ende</td>
-          <td class="bg-grey-3 text-center">{{obs.END_DATE}}</td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-                 <q-popup-edit v-model="obs.END_DATE" buttons v-slot="scope">
-                  <q-input v-model="scope.value" dense autofocus counter type="date" @keyup.enter="scope.set" @change="dataChanged()"/>
-                </q-popup-edit>
-          </td>
-        </tr>
 
-        <!-- LOCATION_CD -->
-        <tr>
-          <td class="text-center">Ort</td>
-          <td class="bg-grey-3 text-center"><VALUE_ITEM :item="obs.LOCATION_CD"/></td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-            <q-popup-edit v-model="obs.LOCATION_CD" buttons v-slot="scope">
-              <q-select dense v-model="scope.value" :options="options_location" @blur="dataChanged()" @change="dataChanged()"/>
-            </q-popup-edit>
-          </td>
-        </tr>
+    <div class="col-12 row justify-center" v-if="obs !== undefined">
+    <q-card class="my-card">
+      <q-card-section class="text-h6">Neue Untersuchung hinzufügen</q-card-section>
+      <q-card-section>
+        <q-markup-table  flat bordered>
+          <tbody>
+            <!-- DATUM -->
+            <tr>
+              <td>Datum:</td>
+              <td colspan="2">von: <q-btn :class="{'bg-red-3': obs.START_DATE === undefined || obs.START_DATE === ''}">{{ obs.START_DATE }}
+              <q-popup-edit v-model="obs.START_DATE" auto-save v-slot="scope">
+                <q-input v-model="scope.value" type="date" dense autofocus counter @keyup.enter="scope.set" @blur="dataChanged()"/>
+              </q-popup-edit>
+            </q-btn>
+              bis: <q-btn>{{ obs.END_DATE }}
+              <q-popup-edit v-model="obs.END_DATE" auto-save v-slot="scope">
+                <q-input v-model="scope.value" type="date" dense autofocus counter @keyup.enter="scope.set" @blur="dataChanged()"/>
+              </q-popup-edit>
+            </q-btn></td>
+            </tr>
+            <!-- Untersucher -->
+            <tr>
+              <td>Untersucher</td>
+              <td class="text-center" colspan="2">
+                <span v-if="obs.PROVIDER_ID">
+                <VALUE_ITEM  :item="obs.PROVIDER_ID" />
+                <q-btn round flat size="xs" icon="clear" @click="obs.PROVIDER_ID = undefined; dataChanged()"/>
+              </span>
+                <span v-else>
+                <q-btn :class="{'bg-red-3': obs.PROVIDER_ID === undefined || obs.PROVIDER_ID === ''}" @click="show_provider_dialog=true">...</q-btn>
+              </span>
+              </td>
+            </tr>
+             <!-- Ort -->
+             <tr>
+              <td>Ort</td>
+              <td class="text-center" colspan="2">
+                <span v-if="obs.LOCATION_CD">
+                <VALUE_ITEM  :item="obs.LOCATION_CD" />
+                <q-btn round flat size="xs" icon="clear" @click="obs.LOCATION_CD = undefined; dataChanged()"/>
+              </span>
+                <span v-else>
+                <q-btn :class="{'bg-red-3': obs.LOCATION_CD === undefined || obs.LOCATION_CD === ''}" @click="show_location_dialog=true">...</q-btn>
+              </span>
+                
+                </td>
+            </tr>
+            <!-- Untersuchung -->
+            <tr>
+              <td>Untersuchung</td>
+              <td class="text-center" colspan="2">
+                <span v-if="obs.CONCEPT_CD">
+                <VALUE_ITEM  :item="obs.CONCEPT_CD" />
+                <q-btn v-if="obs.CONCEPT_CD" round flat size="xs" icon="clear" @click=" obs.CONCEPT_CD = undefined; obs.UNIT_CD = undefined; obs.TVAL_CHAR = undefined; obs.NVAL_NUM = undefined; obs.VALTYPE_CD = undefined; options_concept_selection = []; dataChanged();"/>
+              </span>
+                <span v-else>
+                <q-btn :class="{'bg-red-3': obs.CONCEPT_CD === undefined || obs.CONCEPT_CD === ''}" @click="showConceptDialog('CONCEPT_DIMENSION')">...</q-btn>
+              </span>
+                                
+              </td>
+            </tr>
+            <!-- WERT -->
+            <tr v-if="obs.CONCEPT_CD">
+              <td>Wert</td>
+              <td v-if="obs.VALTYPE_CD === 'N'" colspan="2"><q-input dense v-model="obs.NVAL_NUM" type="number" @blur="dataChanged()"/>{{ obs.UNIT_CD }}</td>
+              <td v-else-if="obs.VALTYPE_CD === 'T'" colspan="2"><q-input dense v-model="obs.TVAL_CHAR" @blur="dataChanged()" />{{ obs.UNIT_CD }}</td>
+              <td v-else-if="options_concept_selection">
+                <q-option-group
+                  v-model="obs.TVAL_CHAR"
+                  :options="options_concept_selection"
+                  @update:model-value="dataChanged()"
+                />
+              </td>
+            </tr>
+            <!-- BESCHREIBUNG -->
+            <tr >
+              <td>Beschreibung</td>
+              <td colspan="2"><q-input dense v-model="obs.OBSERVATION_BLOB" @blur="dataChanged()"></q-input></td>
+            </tr>
+          </tbody>
+        </q-markup-table>
+        </q-card-section>
+       
+    </q-card>
+  
 
-        <!-- PROVIDER_ID -->
-        <tr>
-          <td class="text-center">Untersucher</td>
-          <td class="bg-grey-3 text-center"><VALUE_ITEM :item="obs.PROVIDER_ID" /></td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-            <q-popup-edit v-model="obs.PROVIDER_ID" buttons v-slot="scope">
-              <q-select dense v-model="scope.value" :options="options_provider" @blur="dataChanged()" @change="dataChanged()"/>
-            </q-popup-edit>
-          </td>
-        </tr>
-        
-        <!-- Kategorie -->
-        <tr>
-          <td class="text-center">Kategorie</td>
-          <td class="bg-grey-3 text-center">{{obs.CATEGORY_CHAR}}</td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-            <q-popup-edit v-model="obs.CATEGORY_CHAR" buttons v-slot="scope">
-              <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" @change="dataChanged()"/>
-            </q-popup-edit>
-          </td>
-        </tr>
-
-        <!-- BESCHREIBUNG -->
-        <tr >
-          <td class="text-center">Beschreibung</td>
-          <td class="bg-grey-3 text-center overflow-hidden" style="max-width: 300px">{{obs.OBSERVATION_BLOB}}</td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-            <q-popup-edit v-model="obs.OBSERVATION_BLOB" buttons v-slot="scope">
-              <q-input v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set" @change="dataChanged()"/>
-            </q-popup-edit>
-          </td>
-        </tr>
-
-        <!-- Konzept -->
-        <tr>
-          <td class="text-center">Konzept</td>
-          <td class="bg-blue-2 text-center"><VALUE_ITEM :item="obs.CONCEPT_CD" /></td>
-          <td class="cursor-pointer" @click="showConceptDialog('CONCEPT_DIMENSION')"><q-icon size="xs" name="edit" /></td>
-        </tr>
-
-        <!-- MODIFIER_CD -->
-        <tr v-if="obs.CONCEPT_CD === undefined || obs.CONCEPT_CD === null">
-          <td class="text-center">Modifier</td>
-          <td class="bg-blue-2 text-center"><VALUE_ITEM :item="obs.MODIFIER_CD" /></td>
-          <td class="cursor-pointer" @click="showConceptDialog('MODIFIER_DIMENSION')"><q-icon size="xs" name="edit" /></td>
-        </tr>
-
-        <!-- TVAL_CHAR => SELECTION -->
-        <tr v-if="obs.VALTYPE_CD === 'S' || obs.VALTYPE_CD === 'F'">
-          <td class="text-center">Wert (Type: {{obs.VALTYPE_CD}})</td>
-          <td td class="text-center overflow-hidden" style="max-width: 300px" :class="{'bg-red-1': obs.TVAL_CHAR === null }"><VALUE_ITEM :item="obs.TVAL_CHAR"/></td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-            <q-popup-edit v-model="obs.TVAL_CHAR" buttons v-slot="scope">
-              <q-select dense v-model="scope.value" :options="options_concept_selection" @blur="dataChanged()" @change="dataChanged()"/>
-            </q-popup-edit>
-          </td>
-        </tr>
-
-        <!-- TVAL_CHAR => Text -->
-        <tr v-if="obs.VALTYPE_CD === 'T'">
-          <td class="text-center">Wert (Type: {{obs.VALTYPE_CD}})</td>
-          <td class="bg-grey-2 text-center"><VALUE_ITEM :item="obs.TVAL_CHAR"/></td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-            <q-popup-edit v-model="obs.TVAL_CHAR" buttons v-slot="scope">
-              <q-input v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set" @change="dataChanged()"/>
-            </q-popup-edit>
-          </td>
-        </tr>
-
-        <!-- TVAL_CHAR => Date -->
-        <tr v-if="obs.VALTYPE_CD === 'D'">
-          <td class="text-center">Wert (Type: {{obs.VALTYPE_CD}})</td>
-          <td class="bg-grey-2 text-center"><VALUE_ITEM :item="obs.TVAL_CHAR"/></td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-            <q-popup-edit v-model="obs.TVAL_CHAR" buttons v-slot="scope">
-              <q-input v-model="scope.value" dense autofocus counter type="date" @keyup.enter="scope.set" @change="dataChanged()"/>
-            </q-popup-edit>
-          </td>
-        </tr>
-
-        <!-- NVAL_NUM -->
-        <tr v-if="obs.VALTYPE_CD === 'N' || obs.CATEGORY_CHAR === 'quest_surveyBEST'">
-          <td class="text-center">Wert (Zahl)</td>
-          <td class="text-center" :class="{'bg-red-1': obs.NVAL_NUM === null }">{{obs.NVAL_NUM}} {{obs.UNIT_CD}}</td>
-          <td class="cursor-pointer"><q-icon size="xs" name="edit" />
-            <q-popup-edit v-model="obs.NVAL_NUM" buttons v-slot="scope">
-              <q-input v-model="scope.value" dense autofocus counter type="number" @keyup.enter="scope.set" @change="dataChanged()"/>
-            </q-popup-edit>
-          </td>
-        </tr>
-         
-      </tbody>
-    </q-markup-table>
+   
 
     <!-- CONCEPT DIALOG -->
     <q-dialog v-model="show_concept_dialog" style="max-height: 100%">
       <CONCEPT_SELECTION @close="(show_concept_dialog = false); show_concept_dialog_table = undefined" @clear="clearConcept()" @clicked="conceptSelected($event)" :table="show_concept_dialog_table" :CONCEPT_CD="obs.CONCEPT_CD"/>>
     </q-dialog>
 
+    <!-- DIALOG LOCATION -->
+    <SELECT_LIST v-if="show_location_dialog" :active="show_location_dialog" @close="show_location_dialog = false" :title="'Ort auswählen'" :list="options_location" @save="selectLocation($event)"/>
+    <SELECT_LIST v-if="show_provider_dialog" :active="show_provider_dialog" @close="show_provider_dialog = false" :title="'Untersucher auswählen'" :list="options_provider" @save="selectProvider($event)"/>
+
     <!-- SURVEY -->
     <div v-if="obs && obs.CATEGORY_CHAR==='quest_surveyBEST'">
       <q-markup-table flat bordered dense class="my-table" v-html="obs.TVAL_CHAR"></q-markup-table>
     </div>
 
-    <!-- BUTTONS -->
-    <BOTTOM_BUTTONS 
-      :show_back="true" @back="$emit('close')"
-      :show_save="data_changed === true" @save="saveData()"
-    />
 
-  </div>   
+
+  </div>
 
 </template>
 
 
 <script>
 
-import {beautify_data} from 'src/tools/formatdata.js'
 import VALUE_ITEM from 'src/components/elements/ValueItem.vue'
 import CONCEPT_SELECTION from 'src/components/elements/ConceptSelect.vue'
-import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
+import SELECT_LIST from 'src/components/elements/SelectList.vue'
 
 export default {
     name: 'ObservationEditCard',
 
     props: ['item', 'import_mode'],
 
-    components: {VALUE_ITEM, CONCEPT_SELECTION, BOTTOM_BUTTONS},
+    components: {VALUE_ITEM, CONCEPT_SELECTION, SELECT_LIST},
 
     data() {
     return {
@@ -179,7 +131,9 @@ export default {
       options_provider: [],
       options_concept_selection: [],
       show_concept_dialog: false,
-      show_concept_dialog_table: undefined
+      show_concept_dialog_table: undefined,
+      show_location_dialog: false,
+      show_provider_dialog: false
     }},
 
     mounted() {
@@ -190,15 +144,7 @@ export default {
       
       
     },
-
-    watch: {
-      item(val) {
-        if (this.import_mode) {
-          this.obs = val
-          return
-        }
-      }
-    },  
+ 
 
     computed: {
      
@@ -206,7 +152,7 @@ export default {
 
     methods: {
       dataChanged() {
-        this.data_changed = true
+        this.$emit('change', this.obs)
       },
 
       loadData() {
@@ -240,28 +186,6 @@ export default {
       showConceptDialog(modus) {
         this.show_concept_dialog = true
         this.show_concept_dialog_table = modus
-      },
-
-      saveData() {
-        const data = beautify_data(this.obs)
-        if (data.OBSERVATION_ID) {
-          const where = {OBSERVATION_ID: data.OBSERVATION_ID}
-          delete data.OBSERVATION_ID
-          this.$store.dispatch('updateDB', {query_string: {where: where, set: data}, table:"OBSERVATION_FACT"})
-          .then(res => {
-            this.$q.notify('Speichern erfolgreich')
-            this.data_changed = false
-          }).catch(err => this.$q.notify(err))
-        } else {
-          this.$store.dispatch('addDB', {query_string: data, table:"OBSERVATION_FACT"})
-          .then(res => {
-            this.obs.OBSERVATION_ID = res.OBSERVATION_ID
-            this.$emit('updateData', res)
-            this.$q.notify('Speichern erfolgreich')
-          })
-          .catch(err => this.$q.notify(err))
-          this.data_changed = false
-        }
       },
 
       loadConceptSelection() {
@@ -303,20 +227,29 @@ export default {
           this.obs.SOURCESYSTEM_CD = item.SOURCESYSTEM_CD
           this.obs.TVAL_CHAR = null
           this.obs.NVAL_NUM = null
-        } else if (item.MODIFIER_CD) {
-          this.obs.MODIFIER_CD =  {value: item.MODIFIER_CD, label: item.NAME_CHAR}
-          this.obs.CONCEPT_CD = null
-          this.obs.VALTYPE_CD = item.VALTYPE_CD
-          this.obs.UNIT_CD = item.UNIT_CD
-          this.obs.SOURCESYSTEM_CD = item.SOURCESYSTEM_CD
-          this.obs.TVAL_CHAR = null
-          this.obs.NVAL_NUM = null
-        }
+          this.dataChanged()
+        } 
         else this.$q.notify('unexpected result')
 
         if (this.obs.VALTYPE_CD) this.loadConceptSelection()
         this.data_changed = true
       },
+
+      selectLocation(item) {
+        if (item) {
+          this.obs.LOCATION_CD = item
+          this.dataChanged()
+        }
+        this.show_location_dialog = false
+      },
+
+      selectProvider(item) {
+        if (item) {
+          this.obs.PROVIDER_ID = item
+          this.dataChanged()
+        }
+        this.show_provider_dialog = false
+      }
 
 
       /**

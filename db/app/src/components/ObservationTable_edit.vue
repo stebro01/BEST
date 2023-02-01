@@ -74,11 +74,17 @@
               <q-icon v-else name="block"/>
             </td>
             <!-- OBSERVATION -->
-            <td class="my-cell-entry">{{item.OBSERVATION_BLOB}} <EDIT_ICON class="absolute-right q-mt-sm"/>
+            <td class="my-cell-entry">
+              <span v-if="item.OBSERVATION_BLOB && item.OBSERVATION_BLOB.indexOf('resourceType') > 0">
+                surveyBEST <q-icon name="preview" class="cursor-pointer" @click="previewSurveyBest(item.OBSERVATION_BLOB)"/>
+              </span>
+              <span v-else>
+              {{item.OBSERVATION_BLOB}} <EDIT_ICON class="absolute-right q-mt-sm"/>
               <q-popup-edit v-model="item.OBSERVATION_BLOB" auto-save v-slot="scope">
                 <q-input v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set" @blur="dataChanged()" @change="dataChanged()"/>
               </q-popup-edit>
               <q-tooltip v-if="item.OBSERVATION_BLOB && item.OBSERVATION_BLOB.length > 20">{{item.OBSERVATION_BLOB}}</q-tooltip>
+            </span>
             </td>
           </tr>
         </tbody>
@@ -90,9 +96,22 @@
         </span>
       </div>
 
-      <!-- CONCEPT DIALOG -->
+    <!-- CONCEPT DIALOG -->
     <q-dialog v-model="show_concept_dialog" style="max-height: 100%">
       <CONCEPT_SELECTION @close="(show_concept_dialog = false); edit_concept = undefined" @clear="clearConcept()" @clicked="conceptSelected($event)" :table="edit_concept.table" :CONCEPT_CD="edit_concept.item.CONCEPT_CD"/>>
+    </q-dialog>
+
+    <!-- preview_survey_best_show DIALOG -->
+    <q-dialog v-model="preview_survey_best_show" style="max-height: 100%">
+      <q-card>
+        <q-btn class="absolute-top-right z-max" flat  icon="close" @click="preview_survey_best_show = false; preview_survey_best_item = undefined"/>
+        <q-card-section class="my-card">
+          <q-scroll-area style="height:75vh; width: 100vw;">
+          <div v-html="preview_survey_best_item">
+        </div>
+        </q-scroll-area>
+        </q-card-section>
+      </q-card>
     </q-dialog>
   </div>
 </template>
@@ -119,7 +138,10 @@ export default {
         label: null,
         show_concept_dialog: false,
         edit_concept: undefined,
-        show_import_details: false
+        show_import_details: false,
+        preview_survey_best_show: false,
+        preview_survey_best_item: undefined,
+        
       }
     },
 
@@ -176,6 +198,15 @@ export default {
         //reset the form
         this.edit_concept = undefined
         this.show_concept_dialog = false
+      },
+
+      previewSurveyBest(val) {
+        this.preview_survey_best_show = true
+        val = val.replace(/'/g, '"')
+        val = val.replace(/\\"/g, '\'')
+        val = val.replace(/\\/g, '_')   
+        val = JSON.parse(val)     
+        if (val.text)this.preview_survey_best_item = val.text.div
       }
     
     }

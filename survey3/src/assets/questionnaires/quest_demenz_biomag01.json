@@ -1,0 +1,384 @@
+{
+    "title": "Screening Neurodegeneration 01",
+    "short_title": "Fragebogen für ein standardisiertes Gespräch bei V.a. ND",
+    "description": null,
+    "coding":
+    {
+        "system": "http://snomed.info/sct",
+        "code": "225398001",
+        "display": "Demenz Screening - BIOMAG"
+    },
+    "manual": null,
+    "keywords": "dementia, screening, Demenz",
+    "ref": null,
+    "items":
+    [
+        {"label":"Alter","id":16,"coding":{"display":"Alter","code":"302199004","system":"http://snomed.info/sct"},"value":null,"type":"number","inline":false,"force":false},
+        {
+            "label": "Einweiser",
+            "id": 1,
+            "coding":
+            {
+                "display": "einweiser",
+                "code": "SCTID: 716757008",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": false
+        },
+        {
+            "label": "Grund der Vorstellung",
+            "id": 2,
+            "coding":
+            {
+                "display": "grund_vorstellung",
+                "code": "SCTID: 40274000",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": true,
+            "ignore_for_result": false
+        },
+        {
+            "label": "Vorerkrankungen",
+            "id": 3,
+            "coding":
+            {
+                "display": "Vorerkrankungen",
+                "code": "SCTID: 102478008",
+                "system": "http://snomed.info/sct"
+            },
+            "value":
+            [],
+            "type": "checkbox",
+            "inline": false,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "Diabetes mellitus 2",
+                    "value": "Diabetes mellitus 2"
+                },
+                {
+                    "label": "Bluthochdruck",
+                    "value": "Hypertensive disorder, systemic arterial (disorder)"
+                },
+                {
+                    "label": "Schlaganfall",
+                    "value": "stroke"
+                },
+                {
+                    "label": "Psychiatrische Vorerkrankung",
+                    "value": "History of psychiatric disorder"
+                }
+            ]
+        },
+        {
+            "label": "Sonstige Vorerkrankungen",
+            "id": 4,
+            "coding":
+            {
+                "display": "vorerkrankung_sonstige",
+                "code": "SCTID: 102478008",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Geschlecht",
+            "coding": { "display" : "gender", "code" : "SCTID: 263495000", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "radio",
+            "inline": true,
+            "force": true,
+            "options": [
+                {"label": "m", "value": "Male"},
+                {"label": "w", "value": "Female"},
+                {"label": "d", "value": "Intersex"}
+            ]
+        },
+        {
+            "label": "Gewicht (kg)",
+            "coding": { "display" : "weight", "code" : "SCTID: 27113001", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Körpergröße (cm)",
+            "coding": { "display" : "height", "code" : "SCTID: 1153637007", "system" : "http://snomed.info/sct"},
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": true
+        },
+        {
+            "label": "Wie oft trinken Sie Alkohol?",
+            "tag": "alcohol_freq",
+            "value": null,
+            "coding": { "display" : "Finding relating to alcohol drinking behavior (finding)", "code" : "SCTID: 228273003", "system" : "http://snomed.info/sct"},
+            "type": "radio",
+            "inline": true,
+            "options": [
+                {"label": "Nie", "value": "never alcohol"},
+                {"label": "1/Monat", "value": "1_month"},
+                {"label": "2-3/Woche", "value": "2-3_week"},
+                {"label": "4 oder mehr als 4/Woche", "value": ">3_week"}
+            ]
+        },
+        {
+            "label": "Aktuelle Beschwerden",
+            "id": 5,
+            "coding":
+            {
+                "display": "aktuelle_beschwerden",
+                "code": "SCTID: 418799008",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Medikamente (Welche / Dosierung)",
+            "id": 6,
+            "coding":
+            {
+                "display": "medicament",
+                "code": "SCTID: 513881000000106",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Untersuchungsbefund (neurologisch)",
+            "id": 7,
+            "coding":
+            {
+                "display": "neurologischer_befund",
+                "code": "SCTID: 84728005",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Stürze",
+            "id": 8,
+            "coding":
+            {
+                "display": "sturz",
+                "code": "SCTID: 298346008",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "Nie",
+                    "value": "0"
+                },
+                {
+                    "label": "1 x letztes Jahr",
+                    "value": "1xjahr"
+                },
+                {
+                    "label": "1 x Monat",
+                    "value": "1xmonat"
+                },
+                {
+                    "label": "häufiger",
+                    "value": "oft"
+                }
+            ]
+        },
+        {
+            "label": "Schlaf (Beschreiben)",
+            "id": 9,
+            "coding":
+            {
+                "display": "schlaf",
+                "code": "SCTID: 248254009",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Gedächtnis",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "3 Begriffe",
+            "id": 10,
+            "coding":
+            {
+                "display": "memory_1",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value":
+            [],
+            "type": "checkbox",
+            "inline": false,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "Apfel",
+                    "value": 1
+                },
+                {
+                    "label": "Fahrrad",
+                    "value": 2
+                },
+                {
+                    "label": "Pferd",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "label": "Rechnen: 15 * 7",
+            "id": 11,
+            "coding":
+            {
+                "display": "rechnen",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "Korrekt",
+                    "value": "ja"
+                },
+                {
+                    "label": "Nein",
+                    "value": "nein"
+                }
+            ]
+        },
+        {
+            "label": "Sprichwort: Der Apfel fällt nicht weit vom Stamm (erklären lassen)",
+            "id": 12,
+            "coding":
+            {
+                "display": "Sprichwort",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "Korrekt",
+                    "value": "ja"
+                },
+                {
+                    "label": "Nein",
+                    "value": "nein"
+                }
+            ]
+        },
+        {
+            "label": "3 Begriffe",
+            "id": 13,
+            "coding":
+            {
+                "display": "memory_2",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value":
+            [],
+            "type": "checkbox",
+            "inline": false,
+            "force": false,
+            "options":
+            [
+                {
+                    "label": "Apfel",
+                    "value": 1
+                },
+                {
+                    "label": "Fahrrad",
+                    "value": 2
+                },
+                {
+                    "label": "Pferd",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "label": "Abschluss",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Einschätzung",
+            "id": 14,
+            "coding":
+            {
+                "display": "einschätzung",
+                "code": "SCTID: 47965005",
+                "system": "http://snomed.info/sct"
+            },
+            "value": "sdfeasasfe",
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "Prozedere / Empfehlungen",
+            "id": 15,
+            "coding":
+            {
+                "display": "Empfehlungen",
+                "code": "SCTID: 304541006",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        }
+    ],
+    "results":
+    {
+        
+    }
+}

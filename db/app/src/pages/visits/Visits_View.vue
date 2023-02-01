@@ -25,9 +25,6 @@
             </template>
 
 
-            <!-- ENDE TABLE -->
-            <!-- BUTTONS -->
-
           </q-table>
 
           <div class=" text-center text-caption q-mt-xs">Zum Hinzufügen von Observations eine Visite auswählen</div>
@@ -71,13 +68,13 @@ export default {
       observations: [],
       columns: [
         // {name: 'OBSERVATION_ID', field: 'OBSERVATION_ID', label: 'ID', sortable: true, align: 'center'},
-        {name: 'ENCOUNTER_NUM', field: 'ENCOUNTER_NUM', label: 'Visite', sortable: true, align: 'center'},
+        // {name: 'ENCOUNTER_NUM', field: 'ENCOUNTER_NUM', label: 'Visite', sortable: true, align: 'center'},
         // {name: 'PATIENT_NUM', field: 'name', label: 'Patient'},
         // {name: 'CATEGORY_CHAR', field: 'CATEGORY_CHAR', label: 'Kategorie', style: 'max-width: 40px; overflow: hidden', sortable: true, align: 'center'},
         {name: 'CONCEPT_CD', field: 'CONCEPT_CD', label: 'Concept', sortable: true, align: 'left', style: 'max-width: 150px; overflow: hidden'},
-        {name: 'START_DATE', field: 'START_DATE', label: 'Datum', sortable: true, align: 'center'},
+        {name: 'START_DATE', field: 'START_DATE', label: 'Datum', sortable: true, align: 'center', style: 'max-width: 50px; overflow: hidden'},
         {name: 'VALTYPE_CD', field: 'VALTYPE_CD', label: 'Typ', align: 'center'},
-        {name: 'TVAL_CHAR', field: 'TVAL_CHAR', label: 'Wert', align: 'center', style: 'max-width: 50px; overflow: hidden'},
+        {name: 'TVAL_CHAR', field: 'TVAL_CHAR', label: 'Wert', align: 'center', style: 'max-width: 200px; overflow: hidden'},
         // {name: 'NVAL_NUM', field: 'NVAL_NUM', label: 'Wert(N)', align: 'center'},
         {name: 'UNIT_CD', field: 'UNIT_CD', label: 'Einheit', align: 'center'},
         {name: 'OBSERVATION_BLOB', field: 'OBSERVATION_BLOB', label: 'Beschr.', style: 'max-width: 100px', align: 'center'},
@@ -137,6 +134,7 @@ export default {
           if (r.CONCEPT_NAME_CHAR) r.CONCEPT_CD = r.CONCEPT_NAME_CHAR
           if (r.TVAL_RESOLVED) r.TVAL_CHAR = r.TVAL_RESOLVED
           if (r.NVAL_NUM) r.TVAL_CHAR = r.NVAL_NUM
+          if (r.OBSERVATION_BLOB && r.OBSERVATION_BLOB.indexOf('resourceType') > 0) r.OBSERVATION_BLOB = 'surveyBEST'
         })
       })
     },

@@ -54,12 +54,9 @@
               </q-card-actions>
             </q-card>
 
-
             <!-- VORSCHAU -->
             <PREVIEW_IMPORT v-if="patient_data" :patient_data="patient_data" />
-
           </div>
-
         </div>
 
         <!-- LOADING BANNER -->
@@ -68,7 +65,7 @@
         </div>
 
         <!-- BANNER NICHTS GEFUNDEN -->
-        <div v-if="show_nothing_found_banner" class="col">
+        <div v-if="show_nothing_found_banner" class="col-12">
           <q-banner class="bg-red-3 q-ma-md" dense
             inline-actions>{{ $store.getters.TEXT.page.observation_import.banner_nothing_found }}
             <template v-slot:action>
