@@ -27,24 +27,26 @@
           <template v-slot:body="props">
             <q-tr :props="props">
               <q-td auto-width>
-                <q-toggle v-model="props.expand" checked-icon="add" unchecked-icon="remove" />
+                <q-toggle v-model="props.expand" checked-icon="add" unchecked-icon="remove" @update:model-value="edit_mode = false"/>
               </q-td>
 
               <q-td v-for="col in props.cols" :key="col.name" :props="props">
                 {{ col.value }}
               </q-td>
             </q-tr>
-            <q-tr v-show="props.expand" :props="props">
+            <q-tr v-if="props.expand" :props="props">
               <q-td colspan="100%">
                 <div class="text-left text-bold"> {{ props.row.LOOKUP_JSON.title }}</div>
                 <div class="text-left text-caption"> {{ props.row.LOOKUP_JSON.description }}</div>
-                <q-list dense>
-                  <q-item v-for="(item, ind) in props.row.LOOKUP_JSON.data" :key="ind + 'scheme'" dense>
-                    <q-item-section>
-                      {{ item }}
-                    </q-item-section>
-                  </q-item>
-                </q-list>
+                <div class="row q-gutter-md" :class="{'justify-between': props.row.LOOKUP_JSON.data.length > 4}">
+                  <q-card v-for="(item, ind) in props.row.LOOKUP_JSON.data" :key="ind + 'scheme'" dense>
+                    <q-card-section>
+                      <q-item-label><RESOLVE_CONCEPT :item="item.CONCEPT_CD"/></q-item-label>
+                      <q-item-label caption>{{ item.CONCEPT_CD }}</q-item-label>
+                     
+                    </q-card-section>
+                  </q-card>
+                </div>
 
               </q-td>
             </q-tr>
@@ -72,12 +74,13 @@ import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import MainSlot from 'src/components/MainSlot.vue'
+import RESOLVE_CONCEPT from 'src/components/elements/ResolveConcept.vue'
 
 import { unstringify } from 'src/classes/sqltools'
 export default {
   name: 'DBFunctions_EditSchemes',
 
-  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, MainSlot },
+  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, MainSlot, RESOLVE_CONCEPT },
 
   data() {
     return {
@@ -87,7 +90,7 @@ export default {
       columns: [
       { name: 'CODE_CD',required: true,label: 'ID',align: 'center',field: 'CODE_CD',sortable: true},
       { name: 'NAME_CHAR',required: true,label: 'Bez.',align: 'left',field: 'NAME_CHAR',sortable: true},
-      ]
+      ],
     }
   },
 
@@ -124,9 +127,7 @@ export default {
     },
 
     editData(val) {
-      console.log(val)
-      this.$q.notify(this.$store.getters.TEXT.msg.comming_soon)
-      this.expanded = []
+      this.$router.push({name: 'DBFunctions_EditSchemes_Edit', params: {id: val}})
     },
 
     deleteData(val) {

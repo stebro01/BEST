@@ -44,12 +44,14 @@
       <BOTTOM_BUTTONS v-if="selected.length > 0" 
         :show_edit="selected.length === 1" :show_delete="true" :show_export="true"
         @edit="editConcept(selected[0])"
-        @delete="exportConcept(selected)"
-        @export="deleteConcept(selected)"
+        @delete="deleteConcept(selected)"
+        @export="exportConcept(selected)"
       />
       </template>
-        
     </MainSlot>
+
+    <!-- EDIT CONCEPT -->
+    <EDIT_CONCEPT v-if="show_edit_concept" :item="selected[0]" :active="show_edit_concept" @close="show_edit_concept = false; selected = []" @save="updateCONCEPT($event)"/>
   </q-page>
 </template>
 
@@ -60,24 +62,25 @@ import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import MainSlot from 'src/components/MainSlot.vue'
+import EDIT_CONCEPT from 'src/components/elements/EditConcept.vue'
 
 export default {
   name: 'DBFunctions_EditConcepts',
 
-  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, MainSlot },
+  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, MainSlot, EDIT_CONCEPT },
 
   data() {
     return {
       CONCEPTS: [],
       filter: undefined,
       filter_options: {T: true, N: true, S: true, F: true, A: false},
-      selected: []
+      selected: [],
+      show_edit_concept: false
     }
   },
 
   mounted() {
-    this.$store.dispatch('searchDB', { query_string: {CONCEPT_PATH: '\\', _like: true}, table: "CONCEPT_DIMENSION"})
-    .then(res => this.formatConceptResult(res))
+   this.loadData()
   },
 
   watch: {
@@ -100,6 +103,11 @@ export default {
   },
 
   methods: {
+    loadData() {
+      this.$store.dispatch('searchDB', { query_string: {CONCEPT_PATH: '\\', _like: true}, table: "CONCEPT_DIMENSION"})
+    .then(res => this.formatConceptResult(res))
+    },
+
     formatConceptResult(res) {
       this.CONCEPTS = res
     },
@@ -108,13 +116,53 @@ export default {
       this.selected = []
     },
 
-    editConcept(val) {
-      this.$q.notify(this.$store.getters.TEXT.msg.comming_soon)
-      this.selected = []
+    editConcept() {
+      this.show_edit_concept = true
     },
 
-    deleteConcept(val) {
-      this.$q.notify(this.$store.getters.TEXT.msg.comming_soon)
+    updateCONCEPT(val) {
+      if (!val) return
+      console.log(val)
+      this.$store.dispatch('searchDB', {query_string: {CONCEPT_CD: val.CONCEPT_CD}, table: 'CONCEPT_DIMENSION'})
+      .then(res_concept => {
+        if (res_concept.length > 0) {
+          // updating
+          var WHERE = {CONCEPT_CD: val.CONCEPT_CD}
+          var SET = val
+          delete SET.CONCEPT_CD
+          this.$store.dispatch('updateDB', {query_string: {where: WHERE, set: SET}, table: 'CONCEPT_DIMENSION'})
+          .then(res_update => {
+            this.$q.notify(res_update)
+            this.loadData()
+            this.show_edit_concept = false
+            this.selected = []
+          })
+        } else {
+          // neuen Eintrag
+          this.$store.dispatch('addDB', {query_string: val, table: 'CONCEPT_DIMENSION'})
+          .then(res => {
+            
+            if (confirm(`PRIMARY_KEY: CONCEPT_CD wurde geändert und ein neuer Datensatz wude angelegt.\nSoll der ursprüngliche Datensatz gelöscht werden?`)) {
+              this.$store.dispatch('deleteDB', {query_string: {CONCEPT_CD: this.selected[0].CONCEPT_CD}, table: 'CONCEPT_DIMENSION'})
+              .then(res => this.loadData())
+            } else this.loadData()
+            
+            this.show_edit_concept = false
+            this.selected = []
+          })
+        }
+      })
+    },  
+
+    async deleteConcept(val) {
+      if (!val) return
+      
+      if (!confirm(`Sollen ${val.length} Einträge wirklich gelöscht werden?\nDieser Schritt kann nicht rückgängig gemacht werden!`)) return
+      for (let item of val) {
+        await this.$store.dispatch('deleteDB', {query_string: {CONCEPT_CD: item.CONCEPT_CD}, table: 'CONCEPT_DIMENSION'})
+      }
+      this.loadData()
+
       this.selected = []
     },
 

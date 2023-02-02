@@ -1,6 +1,7 @@
 <template>
     <q-dialog v-model="ACTIVE">
       <q-card v-if="list">
+        <q-btn icon="close" class="absolute-top-right z-top" flat round @click="$emit('close')"/>
         <q-card-section>{{ title }}</q-card-section>
         <q-card-section>
           <q-list>

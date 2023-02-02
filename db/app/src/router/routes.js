@@ -48,6 +48,7 @@ const routes = [
       { path: 'db_functions/hl7import', name: 'DBFunctions_HL7Import', component: () => import('src/pages/db_functions/DBFunctions_HL7Import.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_functions/schemes', name: 'DBFunctions_EditSchemes', component: () => import('src/pages/db_functions/DBFunctions_EditSchemes.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
       { path: 'db_functions/schemes/new', name: 'DBFunctions_EditSchemes_New', component: () => import('src/pages/db_functions/DBFunctions_EditSchemes_New.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
+      { path: 'db_functions/schemes/edit/:id', name: 'DBFunctions_EditSchemes_Edit', component: () => import('src/pages/db_functions/DBFunctions_EditSchemes_Edit.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
       { path: 'db_functions/concepts', name: 'DBFunctions_EditConcepts', component: () => import('src/pages/db_functions/DBFunctions_EditConcepts.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
       { path: 'db_functions/concepts/import', name: 'DBFunctions_ImportConcepts', component: () => import('src/pages/db_functions/DBFunctions_ConceptsImport.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
       { path: 'db_functions/reset_db', name: 'DBFunctions_ResetDB', component: () => import('src/pages/db_functions/DBFunctions_ResetDB.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },

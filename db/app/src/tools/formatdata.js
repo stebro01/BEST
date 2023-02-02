@@ -253,6 +253,7 @@ export function importConceptFromCSV(txt) {
                     CC[f] = c[f].trim()
                 }
             })
+            // console.log(CC)
             beautify_CONCEPT_CD(CC)
             beautify_CONCEPT_PATH(CC)
             beautify_VALTYPE(CC)
@@ -276,6 +277,7 @@ export function importConceptFromCSV(txt) {
     }
 
     function beautify_CONCEPT_CD(CC) {
+        if (CC.CONCEPT_PATH.indexOf('\\CONCEPT') >  -1) return
         //FORMAT: 'SCTID: 2343'
         var CONCEPT_CD = CC.CONCEPT_CD
         //1 check position of ':'
@@ -283,6 +285,7 @@ export function importConceptFromCSV(txt) {
             if (CONCEPT_CD.indexOf(':') < 0 && CC>SOURCESYSTEM_CD) {
                 if (CC.SOURCESYSTEM_CD.toLowerCase() === 'snomed-ct') CC.CONCEPT_CD = `SCTID: ${CONCEPT_CD}`
                 else if (CC.SOURCESYSTEM_CD.toLowerCase() === 'loinc') CC.CONCEPT_CD = `LID: ${CONCEPT_CD}`
+                else if (CC.SOURCESYSTEM_CD.toLowerCase() === 'custom') CC.CONCEPT_CD = `CUSTOM: ${CONCEPT_CD}`
             } else if (CONCEPT_CD.indexOf(':') > 0 && CONCEPT_CD.indexOf(': ') < 0) {
                 let split = CONCEPT_CD.split(':')
                 CC.CONCEPT_CD = `${split[0].trim()}: ${split[1].trim()}`

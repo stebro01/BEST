@@ -141,7 +141,7 @@ export default {
     this.$store.commit('ELECTRON_SET', this.$q.platform.is.electron )
 
     if (this.$store.getters.SETTINGS) this.$store.dispatch('connectDB')
-    .then(() => {this.$store.dispatch('loginUser', {USER_CD: 'db', PASSWORD_CHAR: '123'})})
+    .then(() => {this.$store.dispatch('loginUser', {USER_CD: 'admin', PASSWORD_CHAR: '12345'})})
     .catch(err => {})
     
   },
