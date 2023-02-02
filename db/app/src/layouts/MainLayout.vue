@@ -140,9 +140,17 @@ export default {
     //detect the platform on first start
     this.$store.commit('ELECTRON_SET', this.$q.platform.is.electron )
 
-    if (this.$store.getters.SETTINGS) this.$store.dispatch('connectDB')
-    .then(() => {this.$store.dispatch('loginUser', {USER_CD: 'admin', PASSWORD_CHAR: '12345'})})
-    .catch(err => {})
+    if (this.$store.getters.ENV.app.autologin) {
+      if (this.$store.getters.SETTINGS) this.$store.dispatch('connectDB')
+      .then(() => {
+        this.$store.dispatch('loginUser', {USER_CD: this.$store.getters.ENV.app.autologin_data.name, PASSWORD_CHAR: this.$store.getters.ENV.app.autologin_data.password})
+       .then(() => {
+        this.$router.push({name: 'Start'})
+       })
+      })
+      .catch(err => {})
+    }
+
     
   },
 
