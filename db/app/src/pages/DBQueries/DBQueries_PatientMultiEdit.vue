@@ -315,7 +315,6 @@ export default {
               let SET = JSON.parse(JSON.stringify(obs))
               delete SET.OBSERVATION_ID
               let res_obs_update = await this.$store.dispatch('updateDB', {query_string: {where: WHERE, set: SET}, table: 'OBSERVATION_FACT'})
-              console.log(res_obs_update)
             }
           } else if (obs._deleted === true) {
             if (obs.OBSERVATION_ID) await this.$store.dispatch('deleteDB', {query_string: {OBSERVATION_ID: obs.OBSERVATION_ID}, table: 'OBSERVATION_FACT'})

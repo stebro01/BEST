@@ -16,7 +16,7 @@
                 <td class="text-center">{{ OBSERVATION.ENCOUNTER_NUM }}</td>
               </tr>
               <tr>
-                <td>Datumd</td>
+                <td>Datum</td>
                 <td><q-input dense v-model="OBSERVATION.START_DATE" type="date" filled input-class="text-center" /></td>
               </tr>
               <tr>
