@@ -9,8 +9,8 @@ import { View_User} from 'src/classes/View_User'
 import { View_user_patient_lookup } from 'src/classes/View_User_Patient_Lookup'
 
 // SOME ACTION IMPORTS
-import {getGender, getConceptBy_CONCEPT_CD, getConceptList, getLookupBy_CODE_CD, getProviderBy_PROVIDER_ID, getCodeLookupList, resetDB, getAnswers, saveVisitObservation_to_Patient, createDB, getDistinctPatientList} from './actions/db_queries'
-export {getGender, getConceptBy_CONCEPT_CD, getConceptList, getLookupBy_CODE_CD, getProviderBy_PROVIDER_ID, getCodeLookupList, resetDB, getAnswers, saveVisitObservation_to_Patient, createDB, getDistinctPatientList}
+import {getGender, getConceptBy_CONCEPT_CD, getConceptList, getLookupBy_CODE_CD, getProviderBy_PROVIDER_ID, getCodeLookupList, resetDB, getAnswers, getAnswersForObservation, saveVisitObservation_to_Patient, createDB, getDistinctPatientList} from './actions/db_queries'
+export {getGender, getConceptBy_CONCEPT_CD, getConceptList, getLookupBy_CODE_CD, getProviderBy_PROVIDER_ID, getCodeLookupList, resetDB, getAnswers, getAnswersForObservation, saveVisitObservation_to_Patient, createDB, getDistinctPatientList}
 
 import { addUser, deleteUser, updateUser, loginUser } from './actions/user_queries'
 export { addUser, deleteUser, updateUser, loginUser }

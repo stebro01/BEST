@@ -43,6 +43,7 @@ const routes = [
       { path: 'visits/observation/import', name: 'Observation_Import', component: () => import('src/pages/visits/Edit_Import.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_queries', name: 'DBQueries', component: () => import('src/pages/DBQueries/DBQueries.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_queries/patient/csv_export', name: 'DBQueries_PatientCSVExport', component: () => import('src/pages/DBQueries/DBQueries_PatientCSVExport.vue'), beforeEnter: beforeEnterFuncAll },
+      { path: 'db_queries/patient/multiedit', name: 'DBQueries_PatientMultiEdit', component: () => import('src/pages/DBQueries/DBQueries_PatientMultiEdit.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_functions', name: 'DBFunctions', component: () => import('src/pages/db_functions/DBFunctions.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_functions/csvimport', name: 'DBFunctions_CSVImport', component: () => import('src/pages/db_functions/DBFunctions_CSVImport.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_functions/hl7import', name: 'DBFunctions_HL7Import', component: () => import('src/pages/db_functions/DBFunctions_HL7Import.vue'), beforeEnter: beforeEnterFuncAll },

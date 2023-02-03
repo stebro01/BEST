@@ -38,7 +38,7 @@ export const getGender = async ({commit, state}) => {
  * this.$store.dispatch('getConceptList', '\\SNOMED-CT\\363787003\\278844005\\263495000\\LA').then(res => {...})
  */
  export const getConceptList = async ({commit, state}, path) => {
-    commit('LOG', {method: 'action/db_queries -> getConceptList'})
+    commit('LOG', {method: 'action/db_queries -> getConceptList', data: path})
     const CONCEPT = new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
     const payload = {
         query_string: {CONCEPT_PATH: path, _like: true}, 
@@ -63,6 +63,16 @@ export const getAnswers = async ({commit, state}, obj) => {
     return getConceptList({commit, state}, CONCEPT_PATH)
 }
 
+export const getAnswersForObservation = async ({commit, state}, obs) => {
+    if (obs.VALTYPE_CD === 'F') {
+        return getAnswers({commit, state}, obs)
+      } else if (obs.VALTYPE_CD === 'S') {
+        let res_concept = await getConceptBy_CONCEPT_CD({commit, state}, obs.CONCEPT_CD)
+        let res_s = await getAnswers({commit, state}, {CONCEPT_PATH: res_concept.path, VALTYPE_CD: 'S'})
+        return res_s
+      } else return undefined
+}
+
 /**
 * @param {string}
 * @returns PROMISE mit dem gefunden koncept: {value, label}
@@ -78,7 +88,7 @@ export const  getConceptBy_CONCEPT_CD = async ({commit, state}, value) => {
 
    return new Promise((res, rej) => {
        CONCEPT.read(payload.query_string).then(query => {
-           if (query.status && query.data.length > 0) res({label: query.data[0].NAME_CHAR, value: query.data[0].CONCEPT_CD})
+           if (query.status && query.data.length > 0) res({label: query.data[0].NAME_CHAR, value: query.data[0].CONCEPT_CD, path: query.data[0].CONCEPT_PATH})
            else res(value)
        })
    })

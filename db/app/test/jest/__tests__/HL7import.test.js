@@ -12,7 +12,8 @@
  */
 
 const fs = require("fs");
-const hl7_json = JSON.parse(fs.readFileSync("/Users/ste/MyProjects/dbBEST/app/test/jest/mockups/hl7/patient_10019815_2023-01-22_HL7.json", 'utf-8'))
+const path = require("path")
+const hl7_json = JSON.parse(fs.readFileSync(path.join(global.MOCKUP_PATH, "/hl7/patient_10019815_2023-01-22_HL7.json"), 'utf-8'))
 const dbman = require('../../../src-electron/dbman')
 
 const db_fn = global.DB_TEST_PATH

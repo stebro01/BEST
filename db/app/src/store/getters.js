@@ -59,3 +59,7 @@ export function OBSERVATION_PINNED(state) {
 export function ELECTRON_MODE(state) {
     return state.IS_ELECTRON
 }
+
+export function SESSION_MULTIEDIT(state) {
+    return state.SESSION_MULTIEDIT
+}

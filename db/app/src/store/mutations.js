@@ -62,3 +62,18 @@ export function LOG ({}, payload) {
 export function ERROR ({}, payload) {
     error(payload)
 }
+
+export function SESSION_MULTI_EDIT_CLEAR(state) {
+    localStorage.setItem('dbBEST_multiedit_session', null)
+    state.SESSION_MULTIEDIT = undefined
+}
+
+export function SESSION_MULTI_EDIT_SET({}, payload) {
+    localStorage.setItem('dbBEST_multiedit_session', JSON.stringify(payload))
+}
+
+export function SESSION_MULTI_EDIT_LOAD(state) {
+    var item = localStorage.getItem('dbBEST_multiedit_session')
+    if (!item) state.SESSION_MULTIEDIT = undefined
+    else state.SESSION_MULTIEDIT = JSON.parse(item)
+}
