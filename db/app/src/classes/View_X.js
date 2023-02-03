@@ -114,11 +114,14 @@ export class View_X {
         const sql_query = this._SCHEME.create(payload)
         if (sql_query.error) return sql_query
         //weiter
-        this._DB_MAN.connect(this._DB_FILENAME)
-        const result = await this._DB_MAN.run(sql_query.query)
-        this._DB_MAN.close()
-
-        return {status: true, error: undefined, data: {[this._SCHEME._PRIMARY_KEY]: result.data}}
+        try {
+            this._DB_MAN.connect(this._DB_FILENAME)
+            const result = await this._DB_MAN.run(sql_query.query)
+            this._DB_MAN.close()
+            return {status: true, error: undefined, data: {[this._SCHEME._PRIMARY_KEY]: result.data}}
+        } catch(err) {
+            return {status: false, error: err}
+        }
     }
 
     /**
