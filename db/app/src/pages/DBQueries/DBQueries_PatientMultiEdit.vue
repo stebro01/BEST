@@ -52,7 +52,7 @@
 
         <!-- PATIENTS -->
         <div>
-          <q-table title="Patienten" :rows="PATIENTS" :columns="columns" row-key="PATIENT_CD"
+          <q-table title="Patienten" :rows="PATIENTS_DATA" :columns="columns" row-key="PATIENT_CD"
             v-model:expanded="expanded" class="my-list-item" :filter="filter">
             <template v-slot:top-right>
               <FILTER_BOX :filter="filter" @update="filter = $event" />
@@ -216,7 +216,15 @@ export default {
   },
 
   computed: {
+    PATIENTS_DATA() {
+      if (this.PATIENTS.length === 0) return this.PATIENTS
+      this.PATIENTS.forEach(item => {
+        if (item.OBSERVATIONS && item.OBSERVATIONS.lenght > 0) item.OBSERVATIONS = item.OBSERVATIONS.sort((a,b) => (a.START_DATE > b.START_DATE) ? 1 : ((b.START_DATE > a.START_DATE) ? -1 : 0))
 
+      })
+
+      return this.PATIENTS
+    }
     
   },
 
@@ -405,10 +413,12 @@ export default {
         if (val.OBSERVATION.OBSERVATION_BLOB) obj_obs.OBSERVATION_BLOB = val.OBSERVATION.OBSERVATION_BLOB
         if (val.OBSERVATION.LOCATION_CD) obj_obs.LOCATION_CD = val.OBSERVATION.LOCATION_CD
         if (val.OBSERVATION.START_DATE) obj_obs.START_DATE = val.OBSERVATION.START_DATE
+        if (val.OBSERVATION.ENCOUNTER_NUM) obj_obs.ENCOUNTER_NUM = val.OBSERVATION.ENCOUNTER_NUM
         obj_obs._changed = true
       }
     }
     
+    console.log(obj_patient)
     this.show_edit_observation_dialog = false
     this.show_edit_observation_item = undefined
     this.something_changed = true
