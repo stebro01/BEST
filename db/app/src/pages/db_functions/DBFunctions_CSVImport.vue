@@ -168,45 +168,44 @@ export default {
 
 
     // import the data
-    addImportToDB() {
+    async addImportToDB() {
       this.$store.commit('LOG', {method: 'DBFunctions_CSVImport/addImportToDb', message: 'importiere Daten'})
       const INFO = [{field: 'AGE_IN_YEARS', value: 'LID: 63900-5'}, {field: 'BIRTH_DATE', value: 'SCTID: 184099003'}, {field: 'SEX_CD', value: 'SCTID: 263495000'}]
       // LOOPE durch alle Patienten
       const PATIENT_IDS = []
-      Object.keys(this.patients).forEach(p => {
+      for (let p of Object.keys(this.patients)) {
         let patient = this.patients[p]
         //durchsuche die Observations nach Daten, um den Patienten zu befüllen
         const PATIENT = this.fillPatientData(patient, INFO)
 
         // TODO addDB >> PATIENT >> get ID
-        this.$store.dispatch('addDB', {query_string: PATIENT, table: "PATIENT_DIMENSION"})
-        .then(res_patient => {
+        let res_patient = await this.$store.dispatch('addDB', {query_string: PATIENT, table: "PATIENT_DIMENSION"})
           // LOOP THROUGH ALL VISITS
           PATIENT_IDS.push(res_patient)
           for (let i = 0; i < patient.VISIT_INFO.length; i++) {
             let VISIT = patient.VISIT_INFO[i]
             VISIT.PATIENT_NUM = res_patient.PATIENT_NUM
             let OBSERVATIONS = patient.VISITS[i]
-            this.$store.dispatch('addDB', {query_string: VISIT, table: "VISIT_DIMENSION"})
-            .then(res_visit => {
-              OBSERVATIONS.forEach(obs => {
+            let res_visit = await this.$store.dispatch('addDB', {query_string: VISIT, table: "VISIT_DIMENSION"})
+            
+            for (let obs of OBSERVATIONS) {
                 delete obs._CHECK
                 let OBS = beautify_data(obs)
                 OBS.PATIENT_NUM = res_patient.PATIENT_NUM
                 OBS.ENCOUNTER_NUM = res_visit.ENCOUNTER_NUM
-                this.$store.dispatch('addDB', {query_string: OBS, table: "OBSERVATION_FACT"})
-              })
-            }).catch(err => this.$q.notify(err))
+                await this.$store.dispatch('addDB', {query_string: OBS, table: "OBSERVATION_FACT"})
+              }
           }
-        }).catch(err => this.$q.notify({message: err, timeout: 5000}))
-        .finally(() => {
-          if (PATIENT_IDS.length >= Object.keys(this.patients).length) {
+
+        }
+
+        // FINALY
+        if (PATIENT_IDS.length >= Object.keys(this.patients).length) {
             this.$q.notify(`Erfolgreich: ${PATIENT_IDS.length} Probanden/Patienten hinzugefügt: ${JSON.stringify(PATIENT_IDS)}`)
             this.patients = undefined
             this.csv_file = undefined
-          }
-        })
-      })
+        }
+
     },
 
     //loops through the observations and tries to fill the PATIENT_DIMENSINO
