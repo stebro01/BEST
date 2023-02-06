@@ -50,6 +50,7 @@
     "@vue/compiler-sfc": "^3.2.41",
     "@vue/test-utils": "^2.2.0",
     "electron": "^15.5.7",
+    "electron-builder": "^22.14.13",
     "electron-packager": "^15.5.2",
     "electron-rebuild": "^3.2.9",
     "eslint": "^7.14.0",
