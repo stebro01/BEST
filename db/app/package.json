@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "ELECTRON_DISABLE_SECURITY_WARNINGS=true quasar dev -m electron -t mat",
     "build": "quasar build -m electron -t mat",
+    "build_dmg": "electron-installer-dmg ./dist/electron/dbBEST-darwin-arm64/dbBEST.app dbBEST --out=./dist", 
     "build4win": "quasar build --mode electron --target win32 ",
     "cy": "npm run test:e2e",
     "icons": "icongenie generate -i ./public/icons/favicon.png",
@@ -51,6 +52,7 @@
     "@vue/test-utils": "^2.2.0",
     "electron": "^15.5.7",
     "electron-builder": "^22.14.13",
+    "electron-installer-dmg": "^4.0.0",
     "electron-packager": "^15.5.2",
     "electron-rebuild": "^3.2.9",
     "eslint": "^7.14.0",
