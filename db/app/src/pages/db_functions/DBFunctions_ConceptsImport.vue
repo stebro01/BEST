@@ -3,7 +3,7 @@
     <MainSlot>
       <!-- HEADING -->
       <template v-slot:header>
-        <HEADING :title="$store.getters.TEXT.page.concept_import.title" :img="'concept-import-logo.png'" />
+        <HEADING :title="$store.getters.TEXT.page.concept_import.title" :img="'concept-import-logo.png'" :icon="'file_download'"/>
       </template>
 
       <!-- MAIN -->

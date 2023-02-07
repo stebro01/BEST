@@ -3,7 +3,7 @@
     <MainSlot>
      <!-- HEADING -->
      <template v-slot:header>
-        <HEADING :title="'Locations und Provider bearbeiten'" :img="'concept-import-logo.png'"/>
+        <HEADING :title="'Locations und Provider bearbeiten'" :img="'concept-import-logo.png'" :icon="'person_pin'"/>
       </template>
 
       <!-- OPTIONS -->

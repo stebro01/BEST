@@ -3,7 +3,7 @@
     <MainSlot>
       <!-- HEADING -->
       <template v-slot:header>
-          <HEADING :title="'Patienten'" :description="'verwalten und anzeigen'" :img="'patient-color-logo.png'"/>
+          <HEADING :title="'Patienten'" :description="'verwalten und anzeigen'" :img="'patient-color-logo.png'" :icon="'person'"/>
       </template>
 
       <!-- OPTIONS -->

@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <q-header bordered class="bg-white text-primary non-selectable">
       <q-toolbar>
-        <PINNED_ELEMENTS/>
+        <PINNED_ELEMENTS :drawer_open="leftDrawerOpen" @clicked="changeDrawer($event)"/>
         <q-toolbar-title class="text-center">
           <q-avatar>
             <q-icon name="poll" />
@@ -117,14 +117,8 @@ export default {
 
     data() {
     return {
-      leftDrawerOpen: true,
-      essentialLinks: [
-        {label: 'Home', link: 'Index', icon: 'home', path: '/overview'},
-        {label: 'Patients', link: 'Patients', icon: 'person', path: '/patients'},
-        {label: 'Visiten', link: 'VisitsView', icon: 'event', path: '/visits'},
-        {label: 'Abfragen', link: 'DBQueries', icon: 'assessment', path: '/db_queries'},
-        {label: 'Settings', link: 'DBFunctions', icon: 'settings', path: '/db_functions'}
-      ]
+      leftDrawerOpen: false,
+      essentialLinks: this.$store.getters.ENV.essentialLinks
     }
   },
 
@@ -161,6 +155,10 @@ export default {
       this.$store.commit('CONNECTED_SET', false)
       this.$router.push({name: 'Start'})
 
+    },
+
+    changeDrawer(val) {
+      this.leftDrawerOpen = val
     }
 
   }

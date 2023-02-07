@@ -3,7 +3,7 @@
     <MainSlot :no_options="true">
       <!-- HEADING -->
       <template v-slot:header>
-        <HEADING :title="'Scheme hinzufügen'" :img="'general_icon.png'" />
+        <HEADING :title="'Scheme hinzufügen'" :img="'general_icon.png'" :icon="'event'"/>
       </template>
       <!-- MAIN -->
       <template v-slot:main>

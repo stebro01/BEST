@@ -2,7 +2,7 @@
    <div class="z-top" >
       <q-fab
         v-if="$store.getters.PROVIDER_PINNED || $store.getters.PATIENT_PINNED"
-        v-model="fab_model"
+        v-model="DRAWER"
         label="Actions"
         external-label
         flat
@@ -19,7 +19,7 @@
           :class="item.class" class="q-ml-xs q-mb-sm" round flat padding="xs"
           @click="onClick(item.code)" :icon="item.icon"  
         >
-          <q-chip :class="item.class" class="q-px-lg" removable @remove="chipRemove(item.code)" text-color="white" icon="face">
+          <q-chip :class="item.class" class="q-px-lg" removable @remove="chipRemove(item.code)" text-color="white" :icon="item.icon">
             <div class="q-px-md text-center"><div class="my-small-text">{{ item.label }}</div> {{item.data[item.field]}}</div>
           </q-chip>          
         </q-fab>
@@ -34,12 +34,11 @@
 export default {
     name: 'PinnedElements',
 
-    props: ['show_scheme_chip', 'show_import_chip', 'show_observations'],
+    props: ['show_scheme_chip', 'show_import_chip', 'show_observations', 'drawer_open'],
 
     data() {
     return {
-      hideLabels: true,
-      fab_model: true
+      hideLabels: true
     }
   },
 
@@ -47,13 +46,22 @@ export default {
       BUTTON_ROW() {
         const data = [
           {code:'provider', label: 'Provider', class: 'my-provider-color', icon: 'face', data: this.$store.getters.PROVIDER_PINNED, field: 'NAME_CHAR' },
-          {code:'patient', label: 'Aktiver Patient', class: 'my-patient-color', icon: 'personal_injury', data: this.$store.getters.PATIENT_PINNED, field: 'PATIENT_CD' },
+          {code:'patient', label: 'Aktiver Patient', class: 'my-patient-color', icon: 'person', data: this.$store.getters.PATIENT_PINNED, field: 'PATIENT_CD' },
           {code:'visit', label: 'Visite', class: 'my-visit-color', icon: 'event', data: this.$store.getters.VISIT_PINNED, field: 'START_DATE' },
-          {code:'observation', label: 'Observation', class: 'my-observation-color', icon: 'event', data: this.$store.getters.OBSERVATION_PINNED, field: undefined }
+          {code:'observation', label: 'Observation', class: 'my-observation-color', icon: 'fact_check', data: this.$store.getters.OBSERVATION_PINNED, field: undefined }
 
         ]
 
         return data
+      },
+
+      DRAWER: {
+        get() {
+          return this.drawer_open === true
+        },
+        set(val) {
+          this.$emit('clicked', val)
+        }
       }
     },
 

@@ -16,9 +16,8 @@
               @click="$router.push({name: item.link})"
               class="bg-accent q-ma-xs my-item"
             >
-              <q-item-section avatar>
-                <q-img class="rounded-borders my-icon-size" :src="item.img" />
-              </q-item-section>
+              <q-item-section avatar><q-icon :name="item.icon" size="md"/></q-item-section>
+              
               <q-item-section>
                 <q-item-label>
                   {{ item.title }}
@@ -27,6 +26,9 @@
                   {{ item.description }}
                 </q-item-label>
 
+              </q-item-section>
+              <q-item-section side>
+                <q-img class="rounded-borders my-icon-size" :src="item.img" />
               </q-item-section>
             </q-item>
           </q-list>

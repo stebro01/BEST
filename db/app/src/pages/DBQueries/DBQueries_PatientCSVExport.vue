@@ -3,7 +3,7 @@
     <MainSlot>
       <!-- HEADING -->
       <template v-slot:header>
-    <HEADING :title="TEXT.title" :description="TEXT.description" :img="'db-queries-logo.png'"/>
+    <HEADING :title="TEXT.title" :description="TEXT.description" :img="'db-queries-logo.png'" :icon="'assessment'"/>
     </template>
       
     <!-- MAIN -->

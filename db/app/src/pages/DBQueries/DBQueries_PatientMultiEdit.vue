@@ -3,7 +3,7 @@
     <MainSlot>
       <!-- HEADING -->
       <template v-slot:header>
-        <HEADING :title="'Patient MultiEdit'" :description="'Mehrere Patienten / Eigenschaften bearbeiten'"
+        <HEADING :title="'Patient MultiEdit'" :description="'Mehrere Patienten / Eigenschaften bearbeiten'" :icon="'assessment'"
           :img="'db-queries-logo.png'" />
       </template>
 

@@ -3,7 +3,7 @@
     <MainSlot :no_options="true">
       <!-- HEADING -->
       <template v-slot:header>
-        <HEADING :title="$store.getters.TEXT.page.observation_import.title" :img="'csv-import-logo.png'" />
+        <HEADING :title="$store.getters.TEXT.page.observation_import.title" :img="'csv-import-logo.png'" :icon="'file_download'"/>
       </template>
 
       <!-- MAIN -->

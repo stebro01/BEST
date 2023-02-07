@@ -3,7 +3,7 @@
     <MainSlot>
       <!-- HEADING -->
       <template v-slot:header>
-    <HEADING :title="TEXT.title" :description="TEXT.description" :img="'general_icon.png'"/>
+    <HEADING :title="TEXT.title" :description="TEXT.description" :img="'general_icon.png'" :icon="'event'"/>
         </template>
 
 <!-- MAIN -->

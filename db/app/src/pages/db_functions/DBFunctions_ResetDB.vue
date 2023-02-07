@@ -3,7 +3,7 @@
     <MainSlot :no_footer="true" :no_options="true">
       <!-- HEADING -->
       <template v-slot:header>
-        <HEADING :title="TEXT.title" :img="'reset-db-logo.png'" />
+        <HEADING :title="TEXT.title" :img="'reset-db-logo.png'" :icon="'restart_alt'"/>
       </template>
 
       <!-- MAIN -->
