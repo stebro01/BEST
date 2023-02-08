@@ -10,6 +10,9 @@
     "build": "quasar build -m electron",
     "build_sign": "electron-osx-sign ./dist/electron/dbNew-darwin-arm64/dbNew.app --type=development",
     "build_dmg": "electron-installer-dmg ./dist/electron/dbNew-darwin-arm64/dbNew.app dbBEST --out=./dist --overwrite",
+    "build4win": "quasar build --mode electron --target win32 ",
+    "icons": "icongenie generate -i ./public/icons/favicon.png",
+    "doc": "jsdoc -r -c jsdoc.conf.json",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0"
