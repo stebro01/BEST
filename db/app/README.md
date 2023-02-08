@@ -17,6 +17,13 @@ npm run dev
 npm run build
 ```
 
+#### for macOS:
+- quasar.conf.js >> muss auf "packager" gestellt sein!!
+- ```npm run build```
+- ```npm run build_sign```   (dafuer muss XCODE installiert sein und ein Develp. Account angemeldet)
+- ```npm run build_dmg```
+
+
 ### Cypress starten
 ```bash
 npm run cy
