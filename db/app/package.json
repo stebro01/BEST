@@ -27,11 +27,9 @@
     "test:component:ci": "cross-env NODE_ENV=test cypress run --component"
   },
   "dependencies": {
-    "@electron/osx-sign": "^1.0.4",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "crypto-js": "^4.1.1",
-    "electron-installer-dmg": "^4.0.0",
     "human-readable-ids": "^1.0.4",
     "jsrsasign": "^10.6.1",
     "quasar": "^2.6.0",
@@ -42,6 +40,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
+    "@electron/osx-sign": "^1.0.4",
     "@quasar/app-webpack": "^3.0.0",
     "@quasar/quasar-app-extension-testing": "^2.0.6",
     "@quasar/quasar-app-extension-testing-e2e-cypress": "^5.0.0-beta.11",
@@ -50,6 +49,7 @@
     "cypress": "^12.2.0",
     "electron": "^23.0.0",
     "electron-builder": "^22.14.13",
+    "electron-installer-dmg": "^4.0.0",
     "electron-packager": "^15.5.2",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",
