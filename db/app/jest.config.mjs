@@ -1,6 +1,5 @@
 /** @type {import('jest').Config} */
 export default {
-  setupFilesAfterEnv: ['<rootDir>jest.setup.js'],
   preset: '@quasar/quasar-app-extension-testing-unit-jest',
   // collectCoverage: true,
   // coverageThreshold: {
@@ -14,6 +13,9 @@ export default {
   transform: {
     '.*\\.js$': 'babel-jest',
   },
+
+  // ADDEB BY SB
+  setupFilesAfterEnv: ['<rootDir>jest.setup.js'],
   globals: {
     __DEV__: true,
     // TODO: Remove if resolved natively

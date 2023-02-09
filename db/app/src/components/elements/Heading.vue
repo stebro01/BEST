@@ -1,13 +1,15 @@
 <template>
   <div>
-    <q-card class="my-card q-mt-sm ">
+    <q-card class="my-card q-mt-sm">
       <q-item>
         <q-item-section avatar>
           <q-icon :name="ICON" size="md" />
         </q-item-section>
         <q-item-section>
           <q-item-label class="text-h6 text-center">{{ title }}</q-item-label>
-          <q-item-label v-if="description" class="text-caption text-center">{{ description }}</q-item-label>
+          <q-item-label v-if="description" class="text-caption text-center">{{
+            description
+          }}</q-item-label>
         </q-item-section>
         <q-item-section avatar>
           <q-img :src="IMG" class="my-icon-size" />
@@ -19,32 +21,24 @@
 
 <script>
 export default {
-  name: 'Heading',
+  name: "HeadingElements",
 
-  props: ['title', 'img', 'description', 'icon'],
+  props: ["title", "img", "description", "icon"],
 
-  components: {  },
+  components: {},
 
   data() {
-    return {
-
-    }
+    return {};
   },
 
   computed: {
     IMG() {
-      return this.img
+      return this.img;
     },
     ICON() {
-      if (this.icon) return this.icon
-      else return 'settings'
-    }
-  }
-
-
-
-
-
-
-}
+      if (this.icon) return this.icon;
+      else return "settings";
+    },
+  },
+};
 </script>

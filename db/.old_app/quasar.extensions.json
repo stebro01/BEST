@@ -1,0 +1,18 @@
+{
+  "@quasar/testing": {
+    "harnesses": [
+      "unit-jest@alpha",
+      "e2e-cypress@beta"
+    ]
+  },
+  "@quasar/testing-unit-jest": {
+    "options": [
+      "scripts"
+    ]
+  },
+  "@quasar/testing-e2e-cypress": {
+    "options": [
+      "scripts"
+    ]
+  }
+}

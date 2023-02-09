@@ -1,8 +1,5 @@
 const {log, error} = require('src/tools/logger')
 
-export function SETTINGS_INIT (state) {
-    state.SETTINGS.init()
-}
 
 export function USER_SET (state, payload) {
     state.USER = payload

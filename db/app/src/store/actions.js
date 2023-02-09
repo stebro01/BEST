@@ -21,13 +21,15 @@ export { exportObservationsCSV, exportObservationsHL7 }
 import {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST } from './actions/import_data'
 export {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST }
 
-/**
- * Initialisieren von Settings.js
- * @method
- */
- export function initSettings ({commit}) {
-    commit('SETTINGS_INIT')
-}
+
+
+
+export function initApp ({commit}, payload) {
+    commit('LOG', {method: 'action -> initApp'})
+  
+    // set PLATFORM
+    commit('ELECTRON_SET', payload.electron )
+  }
 
 /**
  * @description setzt die Einstellung zurück

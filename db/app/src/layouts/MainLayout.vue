@@ -131,8 +131,7 @@ export default {
 
   mounted() {
     this.$store.commit('LOG', {method: 'MainLayout', message: 'mounted'})
-    //detect the platform on first start
-    this.$store.commit('ELECTRON_SET', this.$q.platform.is.electron )
+    
 
     if (this.$store.getters.ENV.app.autologin) {
       if (this.$store.getters.SETTINGS) this.$store.dispatch('connectDB')
