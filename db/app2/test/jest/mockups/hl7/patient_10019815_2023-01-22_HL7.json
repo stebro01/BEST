@@ -1,0 +1,3822 @@
+{
+  "cda": {
+    "resourceType": "Composition",
+    "id": "dbBEST",
+    "meta": {
+      "versionId": "v20230121",
+      "lastUpdated": "2023-01-15",
+      "source": "https://github.com/stebro01/dbBEST.git",
+      "profile": []
+    },
+    "language": "de-DE",
+    "text": {
+      "status": "generated",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n<h1>Export von dbBEST (v20230121) - Klinische Beobachtungen)</h1>\n<table id=\"summary_table\" >\n<tbody>\n<tr><td>Visiten:</td><td></td></tr>\n<tr><td>code:</td><td>308335008</td></tr>\n<tr><td>system:</td><td>http://snomed.info/sct</td></tr>\n</tbody>\n</table>\n<br>\n<table id=\"description_table\">\n<tbody>\n<tr><td>Document-ID:</td><td>urn:uuid:895f6f22-f7d6-4feb-90d4-dbfd49b5471e</td></tr>\n<tr><td>date:</td><td>2023-01-22</td></tr>\n<tr><td>ressource:</td><td>https://github.com/stebro01/dbBEST.git_v20230121_2023-01-15</td></tr>\n</tbody>\n</table>\n<br>\n<table id=\"subjects_table\">\n<tbody>\n<tr><td>Subject:</td><td>10019815</td></tr>\n<tr><td>Investigator:</td><td>undefined</td></tr>\n<tr><td>start time:</td><td>2018-12-04</td></tr>\n<tr><td>end time:</td><td>undefined</td></tr>\n</tbody>\n</table>\n<h2>Visiten</h2>\n<h3>Visite: 1</h3>\n<table id=\"visite_1\">\n<tr><td>start time</td><td>Age</td><td>Date of birth</td><td>Gender</td><td>Occupation</td><td>Maritual status</td><td>Duration of fromal education</td><td>Lives alone (finding)</td><td>Primary Diagnosis</td><td>Progredienz zu Demenz</td><td>Family History of dementia </td><td>Pre-existing conditions</td><td>Heart disease</td><td>Hypertensive disorder, systemic arterial (disorder)</td><td>Diabetes mellitus 2</td><td>Tabacco Smoking status</td><td>Depression (disorder)</td><td>History of Alcohol use</td><td>Blood pressure systolic</td><td>Blood pressure diastolic</td><td>Heart rate</td><td>Cerebrospinal fluid examination</td><td>Cerebrospinal fluid specimen (specimen)</td><td>Tau-Protein (Mass/Volume) in Cerebral spinal fluid</td><td>Amyloid beta 42 peptide (Mass/Volume) in cerebral spinal fluid</td><td>Phosphorylated tau 181 (Mass/Volume) in cerebral spinal fluid by Immunoassay</td><td>Laboratory test</td><td>Leukocytes (#/Volume) in Blood</td><td>Hemoglobin (Mass/Volume) in Blood</td><td>Erythrocytes (#/Volume) in Blood</td><td>Hematocrit (Volume Fraction) of Blood</td><td>Platelets (#/volume) in Blood</td><td>INR in Blood by Coagulation assay</td><td>aPTT in Blood by C.A</td><td>LDL-Cholesterin (Moles/Volume) in Serum or Plasma</td><td>kreatinin (Mass/Voloume) in Blood</td><td>HDL-Cholesterin (Moles/Volume) in Serum or Plasma</td><td>Cobalamin (Vitamin B12) (Moles/volume) in serum or plasma</td><td>Folsäure</td><td>Befund MRT Schädel / cMRT</td><td>Doppler ultrasound</td><td>MRI of brain</td><td>ACE-III</td><td>ACE-III Memory</td><td>ACE-III Attention</td><td>ACE-III Exekutiv/ Fluency</td><td>ACE-III language</td><td>ACE-III visospatial</td><td>MMSE Total Score</td><td>Hospital Anxiety and Depression scale: anxiety score (observable entity)</td><td>Hospital Anxiety and Depression scale: depression score (observable entity)</td><td>MOCA Total Score</td></tr>\n<tr><td>2018-12-04</td><td>79</td><td>1939-02-01</td><td>Male</td><td>1300-1560</td><td>divorced</td><td>12</td><td>No</td><td>ICD10:F06.7</td><td>No</td><td>No</td><td>TIA mit Schwindel, absolute Arrhytmie bei Vorhofflimmern, Polyneuropathie beinbetont, Carpaltunnel Syndrom, Tasaltunnelsyndrom rechts, Sakkulusfunktionsstörung links, paroxysmaler Lagerungsschwindel, arterielle Hypertonie, Hyperlipidämie, Myookardhinterwandsinfakt (STENT), Schlafapnoe, Prostatahyperplasie, chronische Niereninsuffizienz Grad II, Spinalkanalstenose</td><td>Yes</td><td>Yes</td><td>No</td><td>null</td><td>No</td><td>null</td><td>135</td><td>96</td><td>64</td><td>Yes</td><td>null</td><td>987.9</td><td>415.8</td><td>109.7</td><td>Yes</td><td>6.1</td><td>9.1</td><td>4.8</td><td>0.43</td><td>178</td><td>1.2</td><td>29.5</td><td>2.17</td><td>74</td><td>null</td><td>148</td><td>7.3</td><td>geringe Hirnvolution und mäßiggradige mikroangiopathische Marklagerveränderungen</td><td>No</td><td>MRI of brain abnormal</td><td>91</td><td>25</td><td>16</td><td>10</td><td>26</td><td>14</td><td>27</td><td>6</td><td>8</td><td>22</td></tr>\n</table>\n<h3>Visite: 2</h3>\n<table id=\"visite_2\">\n<tr><td>start time</td><td>Date of birth</td><td>Age</td><td>Gender</td><td>Maritual status</td><td>Primary Diagnosis</td><td>Duration of fromal education</td><td>Lives alone (finding)</td><td>Family History of dementia </td><td>Hypertensive disorder, systemic arterial (disorder)</td><td>Progredienz zu Demenz</td><td>Heart disease</td><td>Diabetes mellitus 2</td><td>Depression (disorder)</td><td>Tabacco Smoking status</td><td>Einnahme Demenz Medikament</td><td>Current medication, Name</td><td>Current medication Dose</td><td>Cerebrospinal fluid examination</td><td>Laboratory test</td><td>Erythrocytes (#/Volume) in Blood</td><td>Hemoglobin (Mass/Volume) in Blood</td><td>Leukocytes (#/Volume) in Blood</td><td>Hematocrit (Volume Fraction) of Blood</td><td>Platelets (#/volume) in Blood</td><td>INR in Blood by Coagulation assay</td><td>LDL-Cholesterin (Moles/Volume) in Serum or Plasma</td><td>aPTT in Blood by C.A</td><td>HDL-Cholesterin (Moles/Volume) in Serum or Plasma</td><td>Triglyceride (Moles/Volume) in Blood</td><td>Cobalamin (Vitamin B12) (Moles/volume) in serum or plasma</td><td>Phosphat (Mol/volume) in Serum or Plasma</td><td>Folsäure</td><td>TPO-AK (Thyreoperoxidase-Antikörper)</td><td>olfaction test</td><td>Doppler ultrasound</td><td>Lachs / Gesamtscore</td><td>Barthel index</td></tr>\n<tr><td>2019-02-04</td><td>1939-02-01</td><td>80</td><td>Male</td><td>divorced</td><td>ICD10:F06.7</td><td>12</td><td>No</td><td>No</td><td>Yes</td><td>No</td><td>Yes</td><td>No</td><td>No</td><td>null</td><td>Yes</td><td>Donepezil</td><td>5</td><td>No</td><td>Yes</td><td>4.5</td><td>null</td><td>7.3</td><td>0.4</td><td>173</td><td>1.2</td><td>1.62</td><td>null</td><td>null</td><td>1.59</td><td>177</td><td>0.78</td><td>5.6</td><td>28.3</td><td>Anosmie ( Loss of sense of smell (finding))</td><td>No</td><td>13</td><td>100</td></tr>\n</table>\n<h3>Visite: 3</h3>\n<table id=\"visite_3\">\n<tr><td>start time</td><td>Date of birth</td><td>Age</td><td>Duration of fromal education</td><td>Maritual status</td><td>Lives alone (finding)</td><td>Gender</td><td>Progredienz zu Demenz</td><td>Primary Diagnosis</td><td>Family History of dementia </td><td>Heart disease</td><td>Diabetes mellitus 2</td><td>Hypertensive disorder, systemic arterial (disorder)</td><td>Tabacco Smoking status</td><td>Depression (disorder)</td><td>Einnahme Demenz Medikament</td><td>Current medication, Name</td><td>Current medication Dose</td><td>Cerebrospinal fluid examination</td><td>ACE-III Attention</td><td>Laboratory test</td><td>ACE-III</td><td>ACE-III Memory</td><td>ACE-III Exekutiv/ Fluency</td><td>ACE-III language</td><td>ACE-III visospatial</td><td>MMSE Total Score</td><td>Hospital Anxiety and Depression scale: anxiety score (observable entity)</td><td>Hospital Anxiety and Depression scale: depression score (observable entity)</td><td>IQCODE / Gesamtscore</td></tr>\n<tr><td>2020-09-22</td><td>1939-02-01</td><td>81</td><td>12</td><td>divorced</td><td>No</td><td>Male</td><td>No</td><td>ICD10:F06.7</td><td>No</td><td>Yes</td><td>No</td><td>Yes</td><td>null</td><td>No</td><td>Yes</td><td>Donepezil</td><td>5</td><td>No</td><td>18</td><td>No</td><td>89</td><td>23</td><td>9</td><td>25</td><td>14</td><td>29</td><td>9</td><td>9</td><td>3.43</td></tr>\n</table>\n<h3>Visite: 4</h3>\n<table id=\"visite_4\">\n<tr><td>start time</td><td>Gender</td><td>Maritual status</td><td>Date of birth</td><td>Age</td><td>Duration of fromal education</td><td>Lives alone (finding)</td><td>Primary Diagnosis</td><td>Progredienz zu Demenz</td><td>Family History of dementia </td><td>Heart disease</td><td>Hypertensive disorder, systemic arterial (disorder)</td><td>Diabetes mellitus 2</td><td>Depression (disorder)</td><td>Tabacco Smoking status</td><td>Einnahme Demenz Medikament</td><td>Current medication, Name</td><td>Current medication Dose</td><td>Laboratory test</td><td>Cerebrospinal fluid examination</td><td>ACE-III</td><td>ACE-III Attention</td><td>ACE-III language</td><td>ACE-III Exekutiv/ Fluency</td><td>ACE-III Memory</td><td>ACE-III visospatial</td><td>MMSE Total Score</td><td>Hospital Anxiety and Depression scale: depression score (observable entity)</td><td>Hospital Anxiety and Depression scale: anxiety score (observable entity)</td></tr>\n<tr><td>2021-09-01</td><td>Male</td><td>divorced</td><td>1939-02-01</td><td>82</td><td>12</td><td>No</td><td>ICD10:F06.7</td><td>No</td><td>No</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td><td>null</td><td>Yes</td><td>Donepezil</td><td>5</td><td>No</td><td>No</td><td>82</td><td>17</td><td>26</td><td>9</td><td>17</td><td>13</td><td>27</td><td>7</td><td>7</td></tr>\n</table>\n<h3>Visite: 5</h3>\n<table id=\"visite_5\">\n<tr><td>start time</td><td>Age</td><td>Date of birth</td><td>Gender</td><td>Maritual status</td><td>Duration of fromal education</td><td>Lives alone (finding)</td><td>Primary Diagnosis</td><td>Progredienz zu Demenz</td><td>Schweregrad der Demenz</td><td>Form der Demenz</td><td>Family History of dementia </td><td>Heart disease</td><td>Hypertensive disorder, systemic arterial (disorder)</td><td>Pre-existing conditions</td><td>Depression (disorder)</td><td>Diabetes mellitus 2</td><td>Tabacco Smoking status</td><td>Einnahme Demenz Medikament</td><td>Current medication, Name</td><td>Current medication Dose</td><td>Cerebrospinal fluid examination</td><td>Laboratory test</td><td>Erythrocytes (#/Volume) in Blood</td><td>Leukocytes (#/Volume) in Blood</td><td>Hemoglobin (Mass/Volume) in Blood</td><td>Hematocrit (Volume Fraction) of Blood</td><td>Platelets (#/volume) in Blood</td><td>INR in Blood by Coagulation assay</td><td>aPTT in Blood by C.A</td><td>kreatinin (Mass/Voloume) in Blood</td><td>Urea (Moles/volume) in Serum or Plasma</td><td>C-reaktives Protein Moles/Volume in serum or Plasma: 76485-2</td><td>Natrium (mole/volume) in Blood</td><td>Kalium</td><td>ACE-III</td><td>ACE-III Attention</td><td>ACE-III Memory</td><td>ACE-III Exekutiv/ Fluency</td><td>ACE-III visospatial</td><td>ACE-III language</td><td>MMSE Total Score</td><td>Hospital Anxiety and Depression scale: depression score (observable entity)</td><td>B-ADL / Gesamtscore</td><td>Hospital Anxiety and Depression scale: anxiety score (observable entity)</td><td>IQCODE / Gesamtscore</td></tr>\n<tr><td>2022-09-06</td><td>83</td><td>1939-02-01</td><td>Male</td><td>divorced</td><td>12</td><td>No</td><td>ICD10:F06.7</td><td>Yes</td><td>mild to moderate</td><td>Demenz mit kortikaler Akzentuierung a.e. Alzheimer-Demenz</td><td>No</td><td>Yes</td><td>Yes</td><td>STEMI der Vorderwand, Covid. Fatigue-Symptomatik</td><td>No</td><td>No</td><td>null</td><td>Yes</td><td>Donepezil</td><td>5</td><td>No</td><td>Yes</td><td>null</td><td>5.9</td><td>null</td><td>0.38</td><td>171</td><td>1.2</td><td>null</td><td>100</td><td>null</td><td>0.6</td><td>140</td><td>null</td><td>73</td><td>16</td><td>10</td><td>8</td><td>13</td><td>26</td><td>26</td><td>9</td><td>5.68</td><td>4</td><td>4.86</td></tr>\n</table>\n</div>"
+    },
+    "identifier": {
+      "system": "urn:undefined",
+      "value": "urn:uuid:895f6f22-f7d6-4feb-90d4-dbfd49b5471e"
+    },
+    "status": "preliminary",
+    "type": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": 404684003,
+          "display": "Klinische Beobachtungen"
+        }
+      ]
+    },
+    "subject": {
+      "display": "10019815",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": 422549004,
+            "display": "Patient Code"
+          }
+        ]
+      }
+    },
+    "date": "2023-01-22",
+    "author": [{ "display": "dbBEST" }],
+    "title": "Export von dbBEST (v20230121) - Klinische Beobachtungen)",
+    "attester": [{ "mode": "legal", "time": "2018-12-04", "party": {} }],
+    "custodian": {},
+    "event": [
+      {
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 1"
+              }
+            ]
+          }
+        ],
+        "period": { "start": "2018-12-04" }
+      },
+      {
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 2"
+              }
+            ]
+          }
+        ],
+        "period": { "start": "2019-02-04" }
+      },
+      {
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 3"
+              }
+            ]
+          }
+        ],
+        "period": { "start": "2020-09-22" }
+      },
+      {
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 4"
+              }
+            ]
+          }
+        ],
+        "period": { "start": "2021-09-01" }
+      },
+      {
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 5"
+              }
+            ]
+          }
+        ],
+        "period": { "start": "2022-09-06" }
+      }
+    ],
+    "section": [
+      {
+        "title": "Visite: 1",
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 1"
+              }
+            ]
+          }
+        ],
+        "text": { "status": "generated", "div": "<h1>Visite: 1</h1>" },
+        "entry": [
+          {
+            "title": "Age",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 63900-5",
+                    "display": "Age"
+                  }
+                ]
+              }
+            ],
+            "value": 79,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Age</td></tr><tr><td>79</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Date of birth",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 184099003",
+                    "display": "Date of birth"
+                  }
+                ]
+              }
+            ],
+            "value": "1939-02-01",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Date of birth</td></tr><tr><td>1939-02-01</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Gender",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 263495000",
+                    "display": "Gender"
+                  }
+                ]
+              }
+            ],
+            "value": "Male",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Gender</td></tr><tr><td>Male</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Occupation",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 74287-4",
+                    "display": "Occupation"
+                  }
+                ]
+              }
+            ],
+            "value": "1300-1560",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Occupation</td></tr><tr><td>1300-1560</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Maritual status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 45404-1",
+                    "display": "Maritual status"
+                  }
+                ]
+              }
+            ],
+            "value": "divorced",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Maritual status</td></tr><tr><td>divorced</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Duration of fromal education",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 224288002",
+                    "display": "Duration of fromal education"
+                  }
+                ]
+              }
+            ],
+            "value": 12,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Duration of fromal education</td></tr><tr><td>12</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Lives alone (finding)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 105529008",
+                    "display": "Lives alone (finding)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Lives alone (finding)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Primary Diagnosis",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18630-4",
+                    "display": "Primary Diagnosis"
+                  }
+                ]
+              }
+            ],
+            "value": "ICD10:F06.7",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Primary Diagnosis</td></tr><tr><td>ICD10:F06.7</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Progredienz zu Demenz",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: PROGRESSION_DEMENTIA",
+                    "display": "Progredienz zu Demenz"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Progredienz zu Demenz</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Family History of dementia ",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 394877006",
+                    "display": "Family History of dementia "
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Family History of dementia </td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Pre-existing conditions",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 102478008",
+                    "display": "Pre-existing conditions"
+                  }
+                ]
+              }
+            ],
+            "value": "TIA mit Schwindel, absolute Arrhytmie bei Vorhofflimmern, Polyneuropathie beinbetont, Carpaltunnel Syndrom, Tasaltunnelsyndrom rechts, Sakkulusfunktionsstörung links, paroxysmaler Lagerungsschwindel, arterielle Hypertonie, Hyperlipidämie, Myookardhinterwandsinfakt (STENT), Schlafapnoe, Prostatahyperplasie, chronische Niereninsuffizienz Grad II, Spinalkanalstenose",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Pre-existing conditions</td></tr><tr><td>TIA mit Schwindel, absolute Arrhytmie bei Vorhofflimmern, Polyneuropathie beinbetont, Carpaltunnel Syndrom, Tasaltunnelsyndrom rechts, Sakkulusfunktionsstörung links, paroxysmaler Lagerungsschwindel, arterielle Hypertonie, Hyperlipidämie, Myookardhinterwandsinfakt (STENT), Schlafapnoe, Prostatahyperplasie, chronische Niereninsuffizienz Grad II, Spinalkanalstenose</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Heart disease",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 56265001",
+                    "display": "Heart disease"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Heart disease</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hypertensive disorder, systemic arterial (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 38341003",
+                    "display": "Hypertensive disorder, systemic arterial (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hypertensive disorder, systemic arterial (disorder)</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Diabetes mellitus 2",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 44054006",
+                    "display": "Diabetes mellitus 2"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Diabetes mellitus 2</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Tabacco Smoking status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72166-2",
+                    "display": "Tabacco Smoking status"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Tabacco Smoking status</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Depression (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 35489007",
+                    "display": "Depression (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Depression (disorder)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "History of Alcohol use",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 11331-6",
+                    "display": "History of Alcohol use"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>History of Alcohol use</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Blood pressure systolic",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 8480-6",
+                    "display": "Blood pressure systolic"
+                  }
+                ]
+              }
+            ],
+            "value": 135,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Blood pressure systolic</td></tr><tr><td>135</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Blood pressure diastolic",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 8462-4",
+                    "display": "Blood pressure diastolic"
+                  }
+                ]
+              }
+            ],
+            "value": 96,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Blood pressure diastolic</td></tr><tr><td>96</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Heart rate",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 8867-4",
+                    "display": "Heart rate"
+                  }
+                ]
+              }
+            ],
+            "value": 64,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Heart rate</td></tr><tr><td>64</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Cerebrospinal fluid examination",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 167699000",
+                    "display": "Cerebrospinal fluid examination"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Cerebrospinal fluid examination</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Cerebrospinal fluid specimen (specimen)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 258450006",
+                    "display": "Cerebrospinal fluid specimen (specimen)"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Cerebrospinal fluid specimen (specimen)</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Tau-Protein (Mass/Volume) in Cerebral spinal fluid",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 30160-6",
+                    "display": "Tau-Protein (Mass/Volume) in Cerebral spinal fluid"
+                  }
+                ]
+              }
+            ],
+            "value": 987.9,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Tau-Protein (Mass/Volume) in Cerebral spinal fluid</td></tr><tr><td>987.9</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Amyloid beta 42 peptide (Mass/Volume) in cerebral spinal fluid",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 33203-1",
+                    "display": "Amyloid beta 42 peptide (Mass/Volume) in cerebral spinal fluid"
+                  }
+                ]
+              }
+            ],
+            "value": 415.8,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Amyloid beta 42 peptide (Mass/Volume) in cerebral spinal fluid</td></tr><tr><td>415.8</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Phosphorylated tau 181 (Mass/Volume) in cerebral spinal fluid by Immunoassay",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72260-3",
+                    "display": "Phosphorylated tau 181 (Mass/Volume) in cerebral spinal fluid by Immunoassay"
+                  }
+                ]
+              }
+            ],
+            "value": 109.7,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Phosphorylated tau 181 (Mass/Volume) in cerebral spinal fluid by Immunoassay</td></tr><tr><td>109.7</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Laboratory test",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 15220000",
+                    "display": "Laboratory test"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Laboratory test</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Leukocytes (#/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26464-8",
+                    "display": "Leukocytes (#/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 6.1,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Leukocytes (#/Volume) in Blood</td></tr><tr><td>6.1</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hemoglobin (Mass/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 718-7",
+                    "display": "Hemoglobin (Mass/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 9.1,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hemoglobin (Mass/Volume) in Blood</td></tr><tr><td>9.1</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Erythrocytes (#/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26453-1",
+                    "display": "Erythrocytes (#/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 4.8,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Erythrocytes (#/Volume) in Blood</td></tr><tr><td>4.8</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hematocrit (Volume Fraction) of Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 20570-8",
+                    "display": "Hematocrit (Volume Fraction) of Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 0.43,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hematocrit (Volume Fraction) of Blood</td></tr><tr><td>0.43</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Platelets (#/volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26515-7",
+                    "display": "Platelets (#/volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 178,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Platelets (#/volume) in Blood</td></tr><tr><td>178</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "INR in Blood by Coagulation assay",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 34714-6",
+                    "display": "INR in Blood by Coagulation assay"
+                  }
+                ]
+              }
+            ],
+            "value": 1.2,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>INR in Blood by Coagulation assay</td></tr><tr><td>1.2</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "aPTT in Blood by C.A",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 3173-2",
+                    "display": "aPTT in Blood by C.A"
+                  }
+                ]
+              }
+            ],
+            "value": 29.5,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>aPTT in Blood by C.A</td></tr><tr><td>29.5</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "LDL-Cholesterin (Moles/Volume) in Serum or Plasma",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 22748-8",
+                    "display": "LDL-Cholesterin (Moles/Volume) in Serum or Plasma"
+                  }
+                ]
+              }
+            ],
+            "value": 2.17,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>LDL-Cholesterin (Moles/Volume) in Serum or Plasma</td></tr><tr><td>2.17</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "kreatinin (Mass/Voloume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 38483-4",
+                    "display": "kreatinin (Mass/Voloume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 74,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>kreatinin (Mass/Voloume) in Blood</td></tr><tr><td>74</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "HDL-Cholesterin (Moles/Volume) in Serum or Plasma",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 14646-4",
+                    "display": "HDL-Cholesterin (Moles/Volume) in Serum or Plasma"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>HDL-Cholesterin (Moles/Volume) in Serum or Plasma</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Cobalamin (Vitamin B12) (Moles/volume) in serum or plasma",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 14685-2",
+                    "display": "Cobalamin (Vitamin B12) (Moles/volume) in serum or plasma"
+                  }
+                ]
+              }
+            ],
+            "value": 148,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Cobalamin (Vitamin B12) (Moles/volume) in serum or plasma</td></tr><tr><td>148</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Folsäure",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 63718003",
+                    "display": "Folsäure"
+                  }
+                ]
+              }
+            ],
+            "value": 7.3,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Folsäure</td></tr><tr><td>7.3</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Befund MRT Schädel / cMRT",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: MRI\\BRAIN\\FINDINGS",
+                    "display": "Befund MRT Schädel / cMRT"
+                  }
+                ]
+              }
+            ],
+            "value": "geringe Hirnvolution und mäßiggradige mikroangiopathische Marklagerveränderungen",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Befund MRT Schädel / cMRT</td></tr><tr><td>geringe Hirnvolution und mäßiggradige mikroangiopathische Marklagerveränderungen</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Doppler ultrasound",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 765172009",
+                    "display": "Doppler ultrasound"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Doppler ultrasound</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "MRI of brain",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 816077007",
+                    "display": "MRI of brain"
+                  }
+                ]
+              }
+            ],
+            "value": "MRI of brain abnormal",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>MRI of brain</td></tr><tr><td>MRI of brain abnormal</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 445412006",
+                    "display": "ACE-III"
+                  }
+                ]
+              }
+            ],
+            "value": 91,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III</td></tr><tr><td>91</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Memory",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473313006",
+                    "display": "ACE-III Memory"
+                  }
+                ]
+              }
+            ],
+            "value": 25,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Memory</td></tr><tr><td>25</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Attention",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473312001",
+                    "display": "ACE-III Attention"
+                  }
+                ]
+              }
+            ],
+            "value": 16,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Attention</td></tr><tr><td>16</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Exekutiv/ Fluency",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473315004",
+                    "display": "ACE-III Exekutiv/ Fluency"
+                  }
+                ]
+              }
+            ],
+            "value": 10,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Exekutiv/ Fluency</td></tr><tr><td>10</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III language",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473311008",
+                    "display": "ACE-III language"
+                  }
+                ]
+              }
+            ],
+            "value": 26,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III language</td></tr><tr><td>26</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III visospatial",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473314000",
+                    "display": "ACE-III visospatial"
+                  }
+                ]
+              }
+            ],
+            "value": 14,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III visospatial</td></tr><tr><td>14</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "MMSE Total Score",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72106-8",
+                    "display": "MMSE Total Score"
+                  }
+                ]
+              }
+            ],
+            "value": 27,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>MMSE Total Score</td></tr><tr><td>27</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hospital Anxiety and Depression scale: anxiety score (observable entity)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 401319005",
+                    "display": "Hospital Anxiety and Depression scale: anxiety score (observable entity)"
+                  }
+                ]
+              }
+            ],
+            "value": 6,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hospital Anxiety and Depression scale: anxiety score (observable entity)</td></tr><tr><td>6</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hospital Anxiety and Depression scale: depression score (observable entity)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 401320004",
+                    "display": "Hospital Anxiety and Depression scale: depression score (observable entity)"
+                  }
+                ]
+              }
+            ],
+            "value": 8,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hospital Anxiety and Depression scale: depression score (observable entity)</td></tr><tr><td>8</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "MOCA Total Score",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72172-0",
+                    "display": "MOCA Total Score"
+                  }
+                ]
+              }
+            ],
+            "value": 22,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>MOCA Total Score</td></tr><tr><td>22</td></tr></tbody></table>"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Visite: 2",
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 2"
+              }
+            ]
+          }
+        ],
+        "text": { "status": "generated", "div": "<h1>Visite: 2</h1>" },
+        "entry": [
+          {
+            "title": "Date of birth",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 184099003",
+                    "display": "Date of birth"
+                  }
+                ]
+              }
+            ],
+            "value": "1939-02-01",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Date of birth</td></tr><tr><td>1939-02-01</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Age",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 63900-5",
+                    "display": "Age"
+                  }
+                ]
+              }
+            ],
+            "value": 80,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Age</td></tr><tr><td>80</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Gender",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 263495000",
+                    "display": "Gender"
+                  }
+                ]
+              }
+            ],
+            "value": "Male",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Gender</td></tr><tr><td>Male</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Maritual status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 45404-1",
+                    "display": "Maritual status"
+                  }
+                ]
+              }
+            ],
+            "value": "divorced",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Maritual status</td></tr><tr><td>divorced</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Primary Diagnosis",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18630-4",
+                    "display": "Primary Diagnosis"
+                  }
+                ]
+              }
+            ],
+            "value": "ICD10:F06.7",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Primary Diagnosis</td></tr><tr><td>ICD10:F06.7</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Duration of fromal education",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 224288002",
+                    "display": "Duration of fromal education"
+                  }
+                ]
+              }
+            ],
+            "value": 12,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Duration of fromal education</td></tr><tr><td>12</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Lives alone (finding)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 105529008",
+                    "display": "Lives alone (finding)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Lives alone (finding)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Family History of dementia ",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 394877006",
+                    "display": "Family History of dementia "
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Family History of dementia </td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hypertensive disorder, systemic arterial (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 38341003",
+                    "display": "Hypertensive disorder, systemic arterial (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hypertensive disorder, systemic arterial (disorder)</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Progredienz zu Demenz",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: PROGRESSION_DEMENTIA",
+                    "display": "Progredienz zu Demenz"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Progredienz zu Demenz</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Heart disease",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 56265001",
+                    "display": "Heart disease"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Heart disease</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Diabetes mellitus 2",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 44054006",
+                    "display": "Diabetes mellitus 2"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Diabetes mellitus 2</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Depression (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 35489007",
+                    "display": "Depression (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Depression (disorder)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Tabacco Smoking status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72166-2",
+                    "display": "Tabacco Smoking status"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Tabacco Smoking status</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Einnahme Demenz Medikament",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: DRUGINTAKE",
+                    "display": "Einnahme Demenz Medikament"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Einnahme Demenz Medikament</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Current medication, Name",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 52418-1",
+                    "display": "Current medication, Name"
+                  }
+                ]
+              }
+            ],
+            "value": "Donepezil",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Current medication, Name</td></tr><tr><td>Donepezil</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Current medication Dose",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18607-2",
+                    "display": "Current medication Dose"
+                  }
+                ]
+              }
+            ],
+            "value": 5,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Current medication Dose</td></tr><tr><td>5</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Cerebrospinal fluid examination",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 167699000",
+                    "display": "Cerebrospinal fluid examination"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Cerebrospinal fluid examination</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Laboratory test",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 15220000",
+                    "display": "Laboratory test"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Laboratory test</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Erythrocytes (#/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26453-1",
+                    "display": "Erythrocytes (#/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 4.5,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Erythrocytes (#/Volume) in Blood</td></tr><tr><td>4.5</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hemoglobin (Mass/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 718-7",
+                    "display": "Hemoglobin (Mass/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hemoglobin (Mass/Volume) in Blood</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Leukocytes (#/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26464-8",
+                    "display": "Leukocytes (#/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 7.3,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Leukocytes (#/Volume) in Blood</td></tr><tr><td>7.3</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hematocrit (Volume Fraction) of Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 20570-8",
+                    "display": "Hematocrit (Volume Fraction) of Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 0.4,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hematocrit (Volume Fraction) of Blood</td></tr><tr><td>0.4</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Platelets (#/volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26515-7",
+                    "display": "Platelets (#/volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 173,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Platelets (#/volume) in Blood</td></tr><tr><td>173</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "INR in Blood by Coagulation assay",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 34714-6",
+                    "display": "INR in Blood by Coagulation assay"
+                  }
+                ]
+              }
+            ],
+            "value": 1.2,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>INR in Blood by Coagulation assay</td></tr><tr><td>1.2</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "LDL-Cholesterin (Moles/Volume) in Serum or Plasma",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 22748-8",
+                    "display": "LDL-Cholesterin (Moles/Volume) in Serum or Plasma"
+                  }
+                ]
+              }
+            ],
+            "value": 1.62,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>LDL-Cholesterin (Moles/Volume) in Serum or Plasma</td></tr><tr><td>1.62</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "aPTT in Blood by C.A",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 3173-2",
+                    "display": "aPTT in Blood by C.A"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>aPTT in Blood by C.A</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "HDL-Cholesterin (Moles/Volume) in Serum or Plasma",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 14646-4",
+                    "display": "HDL-Cholesterin (Moles/Volume) in Serum or Plasma"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>HDL-Cholesterin (Moles/Volume) in Serum or Plasma</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Triglyceride (Moles/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 14927-8",
+                    "display": "Triglyceride (Moles/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 1.59,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Triglyceride (Moles/Volume) in Blood</td></tr><tr><td>1.59</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Cobalamin (Vitamin B12) (Moles/volume) in serum or plasma",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 14685-2",
+                    "display": "Cobalamin (Vitamin B12) (Moles/volume) in serum or plasma"
+                  }
+                ]
+              }
+            ],
+            "value": 177,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Cobalamin (Vitamin B12) (Moles/volume) in serum or plasma</td></tr><tr><td>177</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Phosphat (Mol/volume) in Serum or Plasma",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 14879-1",
+                    "display": "Phosphat (Mol/volume) in Serum or Plasma"
+                  }
+                ]
+              }
+            ],
+            "value": 0.78,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Phosphat (Mol/volume) in Serum or Plasma</td></tr><tr><td>0.78</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Folsäure",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 63718003",
+                    "display": "Folsäure"
+                  }
+                ]
+              }
+            ],
+            "value": 5.6,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Folsäure</td></tr><tr><td>5.6</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "TPO-AK (Thyreoperoxidase-Antikörper)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: LP40001-7",
+                    "display": "TPO-AK (Thyreoperoxidase-Antikörper)"
+                  }
+                ]
+              }
+            ],
+            "value": 28.3,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>TPO-AK (Thyreoperoxidase-Antikörper)</td></tr><tr><td>28.3</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "olfaction test",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 252559003",
+                    "display": "olfaction test"
+                  }
+                ]
+              }
+            ],
+            "value": "Anosmie ( Loss of sense of smell (finding))",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>olfaction test</td></tr><tr><td>Anosmie ( Loss of sense of smell (finding))</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Doppler ultrasound",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 765172009",
+                    "display": "Doppler ultrasound"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Doppler ultrasound</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Lachs / Gesamtscore",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: NP\\LACHS",
+                    "display": "Lachs / Gesamtscore"
+                  }
+                ]
+              }
+            ],
+            "value": "13",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Lachs / Gesamtscore</td></tr><tr><td>13</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Barthel index",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 273302005",
+                    "display": "Barthel index"
+                  }
+                ]
+              }
+            ],
+            "value": 100,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Barthel index</td></tr><tr><td>100</td></tr></tbody></table>"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Visite: 3",
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 3"
+              }
+            ]
+          }
+        ],
+        "text": { "status": "generated", "div": "<h1>Visite: 3</h1>" },
+        "entry": [
+          {
+            "title": "Date of birth",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 184099003",
+                    "display": "Date of birth"
+                  }
+                ]
+              }
+            ],
+            "value": "1939-02-01",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Date of birth</td></tr><tr><td>1939-02-01</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Age",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 63900-5",
+                    "display": "Age"
+                  }
+                ]
+              }
+            ],
+            "value": 81,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Age</td></tr><tr><td>81</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Duration of fromal education",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 224288002",
+                    "display": "Duration of fromal education"
+                  }
+                ]
+              }
+            ],
+            "value": 12,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Duration of fromal education</td></tr><tr><td>12</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Maritual status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 45404-1",
+                    "display": "Maritual status"
+                  }
+                ]
+              }
+            ],
+            "value": "divorced",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Maritual status</td></tr><tr><td>divorced</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Lives alone (finding)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 105529008",
+                    "display": "Lives alone (finding)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Lives alone (finding)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Gender",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 263495000",
+                    "display": "Gender"
+                  }
+                ]
+              }
+            ],
+            "value": "Male",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Gender</td></tr><tr><td>Male</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Progredienz zu Demenz",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: PROGRESSION_DEMENTIA",
+                    "display": "Progredienz zu Demenz"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Progredienz zu Demenz</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Primary Diagnosis",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18630-4",
+                    "display": "Primary Diagnosis"
+                  }
+                ]
+              }
+            ],
+            "value": "ICD10:F06.7",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Primary Diagnosis</td></tr><tr><td>ICD10:F06.7</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Family History of dementia ",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 394877006",
+                    "display": "Family History of dementia "
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Family History of dementia </td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Heart disease",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 56265001",
+                    "display": "Heart disease"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Heart disease</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Diabetes mellitus 2",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 44054006",
+                    "display": "Diabetes mellitus 2"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Diabetes mellitus 2</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hypertensive disorder, systemic arterial (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 38341003",
+                    "display": "Hypertensive disorder, systemic arterial (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hypertensive disorder, systemic arterial (disorder)</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Tabacco Smoking status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72166-2",
+                    "display": "Tabacco Smoking status"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Tabacco Smoking status</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Depression (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 35489007",
+                    "display": "Depression (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Depression (disorder)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Einnahme Demenz Medikament",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: DRUGINTAKE",
+                    "display": "Einnahme Demenz Medikament"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Einnahme Demenz Medikament</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Current medication, Name",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 52418-1",
+                    "display": "Current medication, Name"
+                  }
+                ]
+              }
+            ],
+            "value": "Donepezil",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Current medication, Name</td></tr><tr><td>Donepezil</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Current medication Dose",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18607-2",
+                    "display": "Current medication Dose"
+                  }
+                ]
+              }
+            ],
+            "value": 5,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Current medication Dose</td></tr><tr><td>5</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Cerebrospinal fluid examination",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 167699000",
+                    "display": "Cerebrospinal fluid examination"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Cerebrospinal fluid examination</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Attention",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473312001",
+                    "display": "ACE-III Attention"
+                  }
+                ]
+              }
+            ],
+            "value": 18,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Attention</td></tr><tr><td>18</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Laboratory test",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 15220000",
+                    "display": "Laboratory test"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Laboratory test</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 445412006",
+                    "display": "ACE-III"
+                  }
+                ]
+              }
+            ],
+            "value": 89,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III</td></tr><tr><td>89</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Memory",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473313006",
+                    "display": "ACE-III Memory"
+                  }
+                ]
+              }
+            ],
+            "value": 23,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Memory</td></tr><tr><td>23</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Exekutiv/ Fluency",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473315004",
+                    "display": "ACE-III Exekutiv/ Fluency"
+                  }
+                ]
+              }
+            ],
+            "value": 9,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Exekutiv/ Fluency</td></tr><tr><td>9</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III language",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473311008",
+                    "display": "ACE-III language"
+                  }
+                ]
+              }
+            ],
+            "value": 25,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III language</td></tr><tr><td>25</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III visospatial",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473314000",
+                    "display": "ACE-III visospatial"
+                  }
+                ]
+              }
+            ],
+            "value": 14,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III visospatial</td></tr><tr><td>14</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "MMSE Total Score",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72106-8",
+                    "display": "MMSE Total Score"
+                  }
+                ]
+              }
+            ],
+            "value": 29,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>MMSE Total Score</td></tr><tr><td>29</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hospital Anxiety and Depression scale: anxiety score (observable entity)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 401319005",
+                    "display": "Hospital Anxiety and Depression scale: anxiety score (observable entity)"
+                  }
+                ]
+              }
+            ],
+            "value": 9,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hospital Anxiety and Depression scale: anxiety score (observable entity)</td></tr><tr><td>9</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hospital Anxiety and Depression scale: depression score (observable entity)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 401320004",
+                    "display": "Hospital Anxiety and Depression scale: depression score (observable entity)"
+                  }
+                ]
+              }
+            ],
+            "value": 9,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hospital Anxiety and Depression scale: depression score (observable entity)</td></tr><tr><td>9</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "IQCODE / Gesamtscore",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: NP\\IQCODE",
+                    "display": "IQCODE / Gesamtscore"
+                  }
+                ]
+              }
+            ],
+            "value": 3.43,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>IQCODE / Gesamtscore</td></tr><tr><td>3.43</td></tr></tbody></table>"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Visite: 4",
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 4"
+              }
+            ]
+          }
+        ],
+        "text": { "status": "generated", "div": "<h1>Visite: 4</h1>" },
+        "entry": [
+          {
+            "title": "Gender",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 263495000",
+                    "display": "Gender"
+                  }
+                ]
+              }
+            ],
+            "value": "Male",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Gender</td></tr><tr><td>Male</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Maritual status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 45404-1",
+                    "display": "Maritual status"
+                  }
+                ]
+              }
+            ],
+            "value": "divorced",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Maritual status</td></tr><tr><td>divorced</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Date of birth",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 184099003",
+                    "display": "Date of birth"
+                  }
+                ]
+              }
+            ],
+            "value": "1939-02-01",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Date of birth</td></tr><tr><td>1939-02-01</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Age",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 63900-5",
+                    "display": "Age"
+                  }
+                ]
+              }
+            ],
+            "value": 82,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Age</td></tr><tr><td>82</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Duration of fromal education",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 224288002",
+                    "display": "Duration of fromal education"
+                  }
+                ]
+              }
+            ],
+            "value": 12,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Duration of fromal education</td></tr><tr><td>12</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Lives alone (finding)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 105529008",
+                    "display": "Lives alone (finding)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Lives alone (finding)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Primary Diagnosis",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18630-4",
+                    "display": "Primary Diagnosis"
+                  }
+                ]
+              }
+            ],
+            "value": "ICD10:F06.7",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Primary Diagnosis</td></tr><tr><td>ICD10:F06.7</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Progredienz zu Demenz",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: PROGRESSION_DEMENTIA",
+                    "display": "Progredienz zu Demenz"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Progredienz zu Demenz</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Family History of dementia ",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 394877006",
+                    "display": "Family History of dementia "
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Family History of dementia </td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Heart disease",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 56265001",
+                    "display": "Heart disease"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Heart disease</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hypertensive disorder, systemic arterial (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 38341003",
+                    "display": "Hypertensive disorder, systemic arterial (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hypertensive disorder, systemic arterial (disorder)</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Diabetes mellitus 2",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 44054006",
+                    "display": "Diabetes mellitus 2"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Diabetes mellitus 2</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Depression (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 35489007",
+                    "display": "Depression (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Depression (disorder)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Tabacco Smoking status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72166-2",
+                    "display": "Tabacco Smoking status"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Tabacco Smoking status</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Einnahme Demenz Medikament",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: DRUGINTAKE",
+                    "display": "Einnahme Demenz Medikament"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Einnahme Demenz Medikament</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Current medication, Name",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 52418-1",
+                    "display": "Current medication, Name"
+                  }
+                ]
+              }
+            ],
+            "value": "Donepezil",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Current medication, Name</td></tr><tr><td>Donepezil</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Current medication Dose",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18607-2",
+                    "display": "Current medication Dose"
+                  }
+                ]
+              }
+            ],
+            "value": 5,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Current medication Dose</td></tr><tr><td>5</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Laboratory test",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 15220000",
+                    "display": "Laboratory test"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Laboratory test</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Cerebrospinal fluid examination",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 167699000",
+                    "display": "Cerebrospinal fluid examination"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Cerebrospinal fluid examination</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 445412006",
+                    "display": "ACE-III"
+                  }
+                ]
+              }
+            ],
+            "value": 82,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III</td></tr><tr><td>82</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Attention",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473312001",
+                    "display": "ACE-III Attention"
+                  }
+                ]
+              }
+            ],
+            "value": 17,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Attention</td></tr><tr><td>17</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III language",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473311008",
+                    "display": "ACE-III language"
+                  }
+                ]
+              }
+            ],
+            "value": 26,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III language</td></tr><tr><td>26</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Exekutiv/ Fluency",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473315004",
+                    "display": "ACE-III Exekutiv/ Fluency"
+                  }
+                ]
+              }
+            ],
+            "value": 9,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Exekutiv/ Fluency</td></tr><tr><td>9</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Memory",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473313006",
+                    "display": "ACE-III Memory"
+                  }
+                ]
+              }
+            ],
+            "value": 17,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Memory</td></tr><tr><td>17</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III visospatial",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473314000",
+                    "display": "ACE-III visospatial"
+                  }
+                ]
+              }
+            ],
+            "value": 13,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III visospatial</td></tr><tr><td>13</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "MMSE Total Score",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72106-8",
+                    "display": "MMSE Total Score"
+                  }
+                ]
+              }
+            ],
+            "value": 27,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>MMSE Total Score</td></tr><tr><td>27</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hospital Anxiety and Depression scale: depression score (observable entity)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 401320004",
+                    "display": "Hospital Anxiety and Depression scale: depression score (observable entity)"
+                  }
+                ]
+              }
+            ],
+            "value": 7,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hospital Anxiety and Depression scale: depression score (observable entity)</td></tr><tr><td>7</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hospital Anxiety and Depression scale: anxiety score (observable entity)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 401319005",
+                    "display": "Hospital Anxiety and Depression scale: anxiety score (observable entity)"
+                  }
+                ]
+              }
+            ],
+            "value": 7,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hospital Anxiety and Depression scale: anxiety score (observable entity)</td></tr><tr><td>7</td></tr></tbody></table>"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Visite: 5",
+        "code": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": 308335008,
+                "display": "Visite: 5"
+              }
+            ]
+          }
+        ],
+        "text": { "status": "generated", "div": "<h1>Visite: 5</h1>" },
+        "entry": [
+          {
+            "title": "Age",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 63900-5",
+                    "display": "Age"
+                  }
+                ]
+              }
+            ],
+            "value": 83,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Age</td></tr><tr><td>83</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Date of birth",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 184099003",
+                    "display": "Date of birth"
+                  }
+                ]
+              }
+            ],
+            "value": "1939-02-01",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Date of birth</td></tr><tr><td>1939-02-01</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Gender",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 263495000",
+                    "display": "Gender"
+                  }
+                ]
+              }
+            ],
+            "value": "Male",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Gender</td></tr><tr><td>Male</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Maritual status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 45404-1",
+                    "display": "Maritual status"
+                  }
+                ]
+              }
+            ],
+            "value": "divorced",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Maritual status</td></tr><tr><td>divorced</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Duration of fromal education",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 224288002",
+                    "display": "Duration of fromal education"
+                  }
+                ]
+              }
+            ],
+            "value": 12,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Duration of fromal education</td></tr><tr><td>12</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Lives alone (finding)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 105529008",
+                    "display": "Lives alone (finding)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Lives alone (finding)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Primary Diagnosis",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18630-4",
+                    "display": "Primary Diagnosis"
+                  }
+                ]
+              }
+            ],
+            "value": "ICD10:F06.7",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Primary Diagnosis</td></tr><tr><td>ICD10:F06.7</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Progredienz zu Demenz",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: PROGRESSION_DEMENTIA",
+                    "display": "Progredienz zu Demenz"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Progredienz zu Demenz</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Schweregrad der Demenz",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: DIAGNOSIS_DEMENTIA",
+                    "display": "Schweregrad der Demenz"
+                  }
+                ]
+              }
+            ],
+            "value": "mild to moderate",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Schweregrad der Demenz</td></tr><tr><td>mild to moderate</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Form der Demenz",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 52448006",
+                    "display": "Form der Demenz"
+                  }
+                ]
+              }
+            ],
+            "value": "Demenz mit kortikaler Akzentuierung a.e. Alzheimer-Demenz",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Form der Demenz</td></tr><tr><td>Demenz mit kortikaler Akzentuierung a.e. Alzheimer-Demenz</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Family History of dementia ",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 394877006",
+                    "display": "Family History of dementia "
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Family History of dementia </td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Heart disease",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 56265001",
+                    "display": "Heart disease"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Heart disease</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hypertensive disorder, systemic arterial (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 38341003",
+                    "display": "Hypertensive disorder, systemic arterial (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hypertensive disorder, systemic arterial (disorder)</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Pre-existing conditions",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 102478008",
+                    "display": "Pre-existing conditions"
+                  }
+                ]
+              }
+            ],
+            "value": "STEMI der Vorderwand, Covid. Fatigue-Symptomatik",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Pre-existing conditions</td></tr><tr><td>STEMI der Vorderwand, Covid. Fatigue-Symptomatik</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Depression (disorder)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 35489007",
+                    "display": "Depression (disorder)"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Depression (disorder)</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Diabetes mellitus 2",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 44054006",
+                    "display": "Diabetes mellitus 2"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Diabetes mellitus 2</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Tabacco Smoking status",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72166-2",
+                    "display": "Tabacco Smoking status"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Tabacco Smoking status</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Einnahme Demenz Medikament",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: DRUGINTAKE",
+                    "display": "Einnahme Demenz Medikament"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Einnahme Demenz Medikament</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Current medication, Name",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 52418-1",
+                    "display": "Current medication, Name"
+                  }
+                ]
+              }
+            ],
+            "value": "Donepezil",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Current medication, Name</td></tr><tr><td>Donepezil</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Current medication Dose",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 18607-2",
+                    "display": "Current medication Dose"
+                  }
+                ]
+              }
+            ],
+            "value": 5,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Current medication Dose</td></tr><tr><td>5</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Cerebrospinal fluid examination",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 167699000",
+                    "display": "Cerebrospinal fluid examination"
+                  }
+                ]
+              }
+            ],
+            "value": "No",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Cerebrospinal fluid examination</td></tr><tr><td>No</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Laboratory test",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 15220000",
+                    "display": "Laboratory test"
+                  }
+                ]
+              }
+            ],
+            "value": "Yes",
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Laboratory test</td></tr><tr><td>Yes</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Erythrocytes (#/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26453-1",
+                    "display": "Erythrocytes (#/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Erythrocytes (#/Volume) in Blood</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Leukocytes (#/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26464-8",
+                    "display": "Leukocytes (#/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 5.9,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Leukocytes (#/Volume) in Blood</td></tr><tr><td>5.9</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hemoglobin (Mass/Volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 718-7",
+                    "display": "Hemoglobin (Mass/Volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hemoglobin (Mass/Volume) in Blood</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hematocrit (Volume Fraction) of Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 20570-8",
+                    "display": "Hematocrit (Volume Fraction) of Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 0.38,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hematocrit (Volume Fraction) of Blood</td></tr><tr><td>0.38</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Platelets (#/volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 26515-7",
+                    "display": "Platelets (#/volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 171,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Platelets (#/volume) in Blood</td></tr><tr><td>171</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "INR in Blood by Coagulation assay",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 34714-6",
+                    "display": "INR in Blood by Coagulation assay"
+                  }
+                ]
+              }
+            ],
+            "value": 1.2,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>INR in Blood by Coagulation assay</td></tr><tr><td>1.2</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "aPTT in Blood by C.A",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 3173-2",
+                    "display": "aPTT in Blood by C.A"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>aPTT in Blood by C.A</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "kreatinin (Mass/Voloume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 38483-4",
+                    "display": "kreatinin (Mass/Voloume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 100,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>kreatinin (Mass/Voloume) in Blood</td></tr><tr><td>100</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Urea (Moles/volume) in Serum or Plasma",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 22664-7",
+                    "display": "Urea (Moles/volume) in Serum or Plasma"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Urea (Moles/volume) in Serum or Plasma</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "C-reaktives Protein Moles/Volume in serum or Plasma: 76485-2",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 76485-2",
+                    "display": "C-reaktives Protein Moles/Volume in serum or Plasma: 76485-2"
+                  }
+                ]
+              }
+            ],
+            "value": 0.6,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>C-reaktives Protein Moles/Volume in serum or Plasma: 76485-2</td></tr><tr><td>0.6</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Natrium (mole/volume) in Blood",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 2947-0",
+                    "display": "Natrium (mole/volume) in Blood"
+                  }
+                ]
+              }
+            ],
+            "value": 140,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Natrium (mole/volume) in Blood</td></tr><tr><td>140</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Kalium",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 6298-4",
+                    "display": "Kalium"
+                  }
+                ]
+              }
+            ],
+            "value": null,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Kalium</td></tr><tr><td>null</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 445412006",
+                    "display": "ACE-III"
+                  }
+                ]
+              }
+            ],
+            "value": 73,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III</td></tr><tr><td>73</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Attention",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473312001",
+                    "display": "ACE-III Attention"
+                  }
+                ]
+              }
+            ],
+            "value": 16,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Attention</td></tr><tr><td>16</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Memory",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473313006",
+                    "display": "ACE-III Memory"
+                  }
+                ]
+              }
+            ],
+            "value": 10,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Memory</td></tr><tr><td>10</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III Exekutiv/ Fluency",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473315004",
+                    "display": "ACE-III Exekutiv/ Fluency"
+                  }
+                ]
+              }
+            ],
+            "value": 8,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III Exekutiv/ Fluency</td></tr><tr><td>8</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III visospatial",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473314000",
+                    "display": "ACE-III visospatial"
+                  }
+                ]
+              }
+            ],
+            "value": 13,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III visospatial</td></tr><tr><td>13</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "ACE-III language",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 473311008",
+                    "display": "ACE-III language"
+                  }
+                ]
+              }
+            ],
+            "value": 26,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>ACE-III language</td></tr><tr><td>26</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "MMSE Total Score",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "LID: 72106-8",
+                    "display": "MMSE Total Score"
+                  }
+                ]
+              }
+            ],
+            "value": 26,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>MMSE Total Score</td></tr><tr><td>26</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hospital Anxiety and Depression scale: depression score (observable entity)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 401320004",
+                    "display": "Hospital Anxiety and Depression scale: depression score (observable entity)"
+                  }
+                ]
+              }
+            ],
+            "value": 9,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hospital Anxiety and Depression scale: depression score (observable entity)</td></tr><tr><td>9</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "B-ADL / Gesamtscore",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: NP\\BADL",
+                    "display": "B-ADL / Gesamtscore"
+                  }
+                ]
+              }
+            ],
+            "value": 5.68,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>B-ADL / Gesamtscore</td></tr><tr><td>5.68</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "Hospital Anxiety and Depression scale: anxiety score (observable entity)",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "SCTID: 401319005",
+                    "display": "Hospital Anxiety and Depression scale: anxiety score (observable entity)"
+                  }
+                ]
+              }
+            ],
+            "value": 4,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>Hospital Anxiety and Depression scale: anxiety score (observable entity)</td></tr><tr><td>4</td></tr></tbody></table>"
+            }
+          },
+          {
+            "title": "IQCODE / Gesamtscore",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "CUSTOM: NP\\IQCODE",
+                    "display": "IQCODE / Gesamtscore"
+                  }
+                ]
+              }
+            ],
+            "value": 4.86,
+            "text": {
+              "status": "generated",
+              "div": "<table><tbody><tr><td>IQCODE / Gesamtscore</td></tr><tr><td>4.86</td></tr></tbody></table>"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "hash": {
+    "signature": "e6T44RhYQRxYwenZ12ZgY2MJvXig/nGS0T/vtgAPrjaRKFzq5UUexMzny6tFQDi7LEN6uhm4TW7ct39PsRnnQw==",
+    "method": "SHA256",
+    "publicKey": "-----BEGIN PUBLIC KEY-----\r\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALSy+Tp6xsDUZrNFCSejzQJjQZXh1YJ9\r\n35azedwO8r/4cWSbyWcSKH+zyDGruk97d1CFqIWTPZC82ras7y3LYP0CAwEAAQ==\r\n-----END PUBLIC KEY-----\r\n"
+  }
+}
