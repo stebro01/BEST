@@ -1,0 +1,14 @@
+{
+  "name": "cql",
+  "version": "1.0.0",
+  "description": "CQL Execution",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cql-execution": "^2.4.4"
+  }
+}
