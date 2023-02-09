@@ -9,22 +9,23 @@ const psource = new cql.PatientSource([
   {
     id: '1',
     recordType: 'Patient',
-    name: 'John Smith',
-    gender: 'M',
-    birthDate: '1980-02-17T06:15',
-    age: -10
+    type: "age", 
+    value: -10
 
   },
   {
     id: '2',
     recordType: 'Patient',
-    name: 'Sally Smith',
-    gender: 'F',
-    birthDate: '2007-08-02T11:47',
-    age: 20
+    type: "age", 
+    value: 300
+  },
+  {
+    id: '3',
+    recordType: 'Patient',
+    type: "age", 
+    value: 45
   }
 ]);
 
 const result = executor.exec(psource);
 console.log(result.patientResults)
-console.log(JSON.stringify(result, undefined, 2));
