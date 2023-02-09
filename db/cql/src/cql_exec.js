@@ -27,5 +27,13 @@ const psource = new cql.PatientSource([
   }
 ]);
 
-const result = executor.exec(psource);
-console.log(result.patientResults)
+const res = executor.exec(psource);
+const result = []
+for (let key of Object.keys(res.patientResults)) {
+  let tmp = res.patientResults[key]
+  result.push({...tmp.Patient.json, check: tmp.check })
+  
+}
+
+console.log(result)
+

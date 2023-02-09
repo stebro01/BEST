@@ -40,7 +40,7 @@
           }
         },
         {
-          "name": "age_check",
+          "name": "check",
           "context": "Patient",
           "accessLevel": "Public",
           "expression": {
