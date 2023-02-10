@@ -1,0 +1,291 @@
+{
+    "library": {
+        "annotation": [
+            {
+                "translatorOptions": "",
+                "type": "CqlToElmInfo"
+            }
+        ],
+        "identifier": {
+            "id": "Math",
+            "version": "1"
+        },
+        "schemaIdentifier": {
+            "id": "urn:hl7-org:elm",
+            "version": "r1"
+        },
+        "usings": {
+            "def": [
+                {
+                    "localIdentifier": "System",
+                    "uri": "urn:hl7-org:elm-types:r1"
+                }
+            ]
+        },
+        "parameters": {
+            "def": [
+                {
+                    "name": "A",
+                    "accessLevel": "Public",
+                    "default": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                        "value": "10.0",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "B",
+                    "accessLevel": "Public",
+                    "default": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}Decimal",
+                        "value": "5.0",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "datum",
+                    "accessLevel": "Public",
+                    "default": {
+                        "type": "Date",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2020",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        }
+                    }
+                },
+                {
+                    "name": "text",
+                    "accessLevel": "Public",
+                    "default": {
+                        "valueType": "{urn:hl7-org:elm-types:r1}String",
+                        "value": "",
+                        "type": "Literal"
+                    }
+                },
+                {
+                    "name": "defTime",
+                    "accessLevel": "Public",
+                    "default": {
+                        "type": "Date",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2020",
+                            "type": "Literal"
+                        },
+                        "month": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "1",
+                            "type": "Literal"
+                        },
+                        "day": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "2",
+                            "type": "Literal"
+                        }
+                    }
+                }
+            ]
+        },
+        "contexts": {
+            "def": [
+                {
+                    "name": "Unfiltered"
+                }
+            ]
+        },
+        "statements": {
+            "def": [
+                {
+                    "name": "Add",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Add",
+                        "operand": [
+                            {
+                                "name": "A",
+                                "type": "ParameterRef"
+                            },
+                            {
+                                "name": "B",
+                                "type": "ParameterRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Subtract",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Subtract",
+                        "operand": [
+                            {
+                                "name": "A",
+                                "type": "ParameterRef"
+                            },
+                            {
+                                "name": "B",
+                                "type": "ParameterRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Multiply",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Multiply",
+                        "operand": [
+                            {
+                                "name": "A",
+                                "type": "ParameterRef"
+                            },
+                            {
+                                "name": "B",
+                                "type": "ParameterRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Divide",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Divide",
+                        "operand": [
+                            {
+                                "name": "A",
+                                "type": "ParameterRef"
+                            },
+                            {
+                                "name": "B",
+                                "type": "ParameterRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "TimeOverload",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "ToString",
+                        "operand": {
+                            "type": "Date",
+                            "year": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2020",
+                                "type": "Literal"
+                            },
+                            "month": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "1",
+                                "type": "Literal"
+                            },
+                            "day": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                                "value": "2",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Length",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Length",
+                        "operand": {
+                            "name": "text",
+                            "type": "ParameterRef"
+                        }
+                    }
+                },
+                {
+                    "name": "Split",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Length",
+                        "operand": {
+                            "type": "Split",
+                            "stringToSplit": {
+                                "name": "text",
+                                "type": "ParameterRef"
+                            },
+                            "separator": {
+                                "valueType": "{urn:hl7-org:elm-types:r1}String",
+                                "value": "-",
+                                "type": "Literal"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Date",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "datum",
+                        "type": "ParameterRef"
+                    }
+                },
+                {
+                    "name": "DEFTIME",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "name": "defTime",
+                        "type": "ParameterRef"
+                    }
+                },
+                {
+                    "name": "DateNow",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Greater",
+                        "operand": [
+                            {
+                                "name": "datum",
+                                "type": "ParameterRef"
+                            },
+                            {
+                                "name": "defTime",
+                                "type": "ParameterRef"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "SO",
+                    "context": "Unfiltered",
+                    "accessLevel": "Public",
+                    "expression": {
+                        "type": "Date",
+                        "year": {
+                            "valueType": "{urn:hl7-org:elm-types:r1}Integer",
+                            "value": "202",
+                            "type": "Literal"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
