@@ -133,7 +133,7 @@ export default {
         this.rows.forEach(r => {
           if (r.CONCEPT_NAME_CHAR) r.CONCEPT_CD = r.CONCEPT_NAME_CHAR
           if (r.TVAL_RESOLVED) r.TVAL_CHAR = r.TVAL_RESOLVED
-          if (r.NVAL_NUM) r.TVAL_CHAR = r.NVAL_NUM
+          if (r.NVAL_NUM || r.NVAL_NUM === 0) r.TVAL_CHAR = r.NVAL_NUM
           if (r.OBSERVATION_BLOB && r.OBSERVATION_BLOB.indexOf('resourceType') > 0) r.OBSERVATION_BLOB = 'surveyBEST'
         })
       })

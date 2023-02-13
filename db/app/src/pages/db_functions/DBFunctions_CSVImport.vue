@@ -156,6 +156,7 @@ export default {
       this.$store.dispatch('importObjectsFromCSVFile', file.path)
       .then(res => {
         this.show_loading_spinner = false
+        console.log(res["1"].VISITS[0][6])
         if (res) this.patients = res
         else this.show_nothing_found_banner = true
       }).catch(err => {

@@ -70,7 +70,6 @@ function prepare_CONCEPT_LIST(observation) {
 function resolve_OBSERVATIONS(observation, CONCEPT_LIST)  {
     observation.forEach(obs => {
         if (obs.CONCEPT_CD) {
-            
           let value = undefined
           if (obs.CONCEPT_CD.value) value = obs.CONCEPT_CD.value
           else value = obs.CONCEPT_CD
@@ -82,9 +81,9 @@ function resolve_OBSERVATIONS(observation, CONCEPT_LIST)  {
                 obs.VALTYPE_CD = obj.VALTYPE_CD
                 //CHANGE OF VALTYPE: > F
                 if (obj.VALTYPE_CD === 'F') {
-                if (obs.NVAL_NUM === 0) { obs.TVAL_CHAR = 'SCTID: 373067005'; obs.TVAL_RESOLVED = 'No' }
-                else if (obs.NVAL_NUM === 1) { obs.TVAL_CHAR = 'SCTID: 373066001'; obs.TVAL_RESOLVED = 'Yes' }
-                obs.NVAL_NUM = undefined
+                    if (obs.NVAL_NUM === 0 || (obs.TVAL_CHAR && typeof(obs.TVAL_CHAR) === 'string' && obs.TVAL_CHAR.toLowerCase() === 'no')) { obs.TVAL_CHAR = 'SCTID: 373067005'; obs.TVAL_RESOLVED = 'No' }
+                    else if (obs.NVAL_NUM === 1) { obs.TVAL_CHAR = 'SCTID: 373066001'; obs.TVAL_RESOLVED = 'Yes' }
+                    obs.NVAL_NUM = undefined
                 }
                 // CHANGE: > S 
                 else if (obj.VALTYPE_CD === 'S') {
@@ -101,6 +100,18 @@ function resolve_OBSERVATIONS(observation, CONCEPT_LIST)  {
                 }
                 
                 
+                }
+            } else {
+                if (obs.VALTYPE_CD === 'F') {
+                    if (obs.TVAL_CHAR) {
+                        if (typeof(obs.TVAL_CHAR) === 'string') {
+                            if (obs.TVAL_CHAR.toLowerCase() === 'no') { obs.TVAL_CHAR = 'SCTID: 373067005'; obs.TVAL_RESOLVED = 'No' }
+                            else if (obs.TVAL_CHAR.toLowerCase() === 'yes') { obs.TVAL_CHAR = 'SCTID: 373066001'; obs.TVAL_RESOLVED = 'Yes' }
+                        }
+                    } else if (obs.NVAL_NUM === 1 || obs.NVAL_NUM === 0) {
+                        if (obs.NVAL_NUM === 1) { obs.TVAL_CHAR = 'SCTID: 373066001'; obs.TVAL_RESOLVED = 'Yes' }
+                        else { obs.TVAL_CHAR = 'SCTID: 373067005'; obs.TVAL_RESOLVED = 'No' }
+                    }
                 }
             }
           }

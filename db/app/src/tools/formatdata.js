@@ -140,6 +140,14 @@ export function importCSV(text) {
                     obs.CONCEPT_CD = {value: F, label: NAME_CHAR[F]}
                     somethin_found = true
                 }
+                else if (VALTYPE_CD[F] === 'finding') {
+                    obs.NVAL_NUM = null
+                    obs.VALTYPE_CD = 'F'
+                    obs.TVAL_CHAR = json[i][F]
+                    obs.UNIT_CD = null
+                    obs.CONCEPT_CD = {value: F, label: NAME_CHAR[F]}
+                    somethin_found = true
+                }
                 if (somethin_found) OBSERVATION.push(JSON.parse(JSON.stringify(obs)))
 
             }
