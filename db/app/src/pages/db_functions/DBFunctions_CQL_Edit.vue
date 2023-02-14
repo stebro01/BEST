@@ -43,6 +43,8 @@
 
           </q-card>
 
+          <div class="col-12 text-center" v-if="selected.length > 0"><q-btn @click="execCQL()" rounded class="my-btn">Ausführen</q-btn></div>
+
         </div>
 
         <!-- CQL QUERY API -->
@@ -86,7 +88,7 @@ export default {
         // { name: 'CQL_CHAR', align: 'center', label: 'cql', field: 'CQL_CHAR', style: 'max-width: 100px; overflow: hidden', sortable: true },
         // { name: 'JSON_CHAR', align: 'center', label: 'eml/json', field: 'JSON_CHAR', style: 'max-width: 100px; overflow: hidden', sortable: true },
     ], 
-      parameter_value: '{\n"A": 10,\n"B": 20\n} ',
+      parameter_value: JSON.stringify({ "A": 10, "B": 20, text: '2020-12-22', datum: '2007-08-02T11:47' }),
       parameter_mode: 'CQL_CHAR'
 
     }
@@ -111,7 +113,17 @@ export default {
     async loadData() {
       const res = await this.$store.dispatch('searchDB', {table: 'CQL_FACT', query_string: {'CODE_CD': '%', _like: true}})
       this.localData = res
+    },
+
+    async execCQL() {
+      const parameters = JSON.parse(this.parameter_value)
+      const lib = JSON.parse(this.selected[0].JSON_CHAR)
+      
+      const res = await this.$store.dispatch('execCQL', {parameters, lib})
+      console.log(res)
     }
+
+    //ende methods
   }
 
 }

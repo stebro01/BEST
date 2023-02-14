@@ -29,6 +29,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
+    "cql-execution": "^2.4.4",
     "crypto-js": "^4.1.1",
     "human-readable-ids": "^1.0.4",
     "jsrsasign": "^10.6.1",
