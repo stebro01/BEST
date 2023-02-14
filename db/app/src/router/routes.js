@@ -56,6 +56,8 @@ const routes = [
       { path: 'db_functions/create_db', name: 'DBFunctions_CreateDB', component: () => import('src/pages/db_functions/DBFunctions_CreateDB.vue')},
       { path: 'db_functions/manage_users', name: 'DBFunctions_ManageUsers', component: () => import('src/pages/db_functions/DBFunctions_ManageUsers.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
       { path: 'db_functions/provider&locations', name: 'DBFunctions_EditLocationProvider', component: () => import('src/pages/db_functions/DBFunctions_EditLocationProvider.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
+      { path: 'db_functions/cql', name: 'DBFunctions_CQL_Edit', component: () => import('src/pages/db_functions/DBFunctions_CQL_Edit.vue'), beforeEnter: beforeEnterFuncAll },
+
       { path: 'selectdb', name: 'selectDB', component: () => import('pages/SelectDB.vue') },
       { path: 'about', name: 'About', component: () => import('pages/About.vue') }
     ]
