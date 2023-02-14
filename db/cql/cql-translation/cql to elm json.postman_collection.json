@@ -1,0 +1,49 @@
+{
+	"info": {
+		"_postman_id": "4dcd5c26-8826-476d-be81-96c9211c2296",
+		"name": "cql to elm json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9857524"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/cql/translator",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/cql",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/elm+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "library Math version '1'\n\nparameter A default 10.0\nparameter B default 5.0\nparameter text default ''\n\ncontext Unfiltered\n\ndefine Add      : A + B\ndefine Subtract : A - B\ndefine Multiply : A * B\ndefine Divide   : A / B\n\ndefine TimeOverload: ToString(@T12:30:00.000)\ndefine Length: Length(text)\ndefine Split: Length(Split(text, '-'))\ndefine Exists: Exists(text)\n\n",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cql/translator",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cql",
+						"translator"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
