@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "localhost:8080/cql/translator",
+			"name": "localhost:8082/cql/translator",
 			"request": {
 				"method": "POST",
 				"header": [

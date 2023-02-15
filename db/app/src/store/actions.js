@@ -22,8 +22,8 @@ export { exportObservationsCSV, exportObservationsHL7 }
 import {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST } from './actions/import_data'
 export {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST }
 
-import { execCQL } from './actions/cql_functions'
-export { execCQL }
+import { execCQL, query_CQLAPI } from './actions/cql_functions'
+export { execCQL, query_CQLAPI }
 
 
 export function initApp ({commit}, payload) {
