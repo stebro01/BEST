@@ -1,4 +1,5 @@
 const cql = require("cql-execution");
+var axios = require('axios');
 
 /**
  * Führt eine CQL Aktion aus
@@ -20,7 +21,39 @@ export function exec(payload) {
 
     // PARAMETER!!!
     const executor = new cql.Executor(lib, codeService, payload.parameters);
-    const res = executor.exec(patientSource, executionDateTime);
-    return {status: true, data: res}
+    try {
+        const res = executor.exec(patientSource, executionDateTime);
+        return {status: true, data: res}
+    } catch(err) {
+        return {status: false, error: err}
+    }
 }
 
+export async function query_api(payload) {
+    if (!payload || !payload.cql) return {status: false, error: 'invalid payload'}
+    
+
+    var data = payload.cql
+
+
+    var config = {
+        method: 'post',
+      maxBodyLength: Infinity,
+        url: 'http://localhost:8082/cql/translator',
+        headers: { 
+          'Content-Type': 'application/cql', 
+          'Accept': 'application/elm+json'
+        },
+        data : data
+      };
+
+      try {
+        const res = await axios(config)
+        return {status: true, data: res.data}
+        }
+        catch (err) {
+            return {status: false, error: err}
+        }
+
+
+}
