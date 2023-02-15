@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <MainSlot>
+    <MainSlot :no_footer="true">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="TEXT.title" :description="TEXT.description" :img="'concept-import-logo.png'" :icon="'rule'" />
@@ -19,15 +19,11 @@
             v-model:selected="selected">
 
           </q-table>
-          <div v-if="selected.length > 0" class=" col-12 text-center q-mt-md">
-            CQL_ID: {{ selected[0].CQL_ID }}
-          </div>
-
 
           <!-- CQL BUILD RULE -->
           <div class="col-12 q-mt-md row justify-center">
             <q-card class="">
-              <q-card-section>Erstelle/Bearbeite eine CQL Regel <q-icon class="float-right cursor-pointer" size="sm"
+              <q-card-section>Erstelle/Bearbeite eine CQL Regel <span v-if="selected.length > 0">: CQL_ID = {{ selected[0].CQL_ID }}</span><q-icon class="float-right cursor-pointer" size="sm"
                   name="info" @click="show_info = true" /></q-card-section>
               <q-card-section v-if="selected.length > 0" class="text-center">
                 <q-btn v-if="selected.length > 0" class="absolute-top-right q-mt-xs q-mr-xs" round icon="refresh"
@@ -57,7 +53,7 @@
                   </q-btn>
 
                 </q-card-actions>
-                <q-card-section>
+                <q-card-section v-if="selected.length > 0">
                   <div class="text-center text-caption">Parameter</div>
                   <q-markup-table dense>
                     <thead>
@@ -65,7 +61,7 @@
                         <td>Nr.</td>
                         <td>Wert</td>
                         <td>Typ</td>
-                        <td style="max-width: 100px">Ergebniss CQL</td>
+                        <td style="max-width: 100px">Ergebnis CQL</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -84,9 +80,12 @@
                               </q-item>
                             </q-list>
                           </q-btn-dropdown></td>
-                        <td style="max-width: 100px; overflow: hidden">{{ item.result }} <q-tooltip v-if="item.result">{{
-                          item.result
-                        }}</q-tooltip></td>
+                        <td style="max-width: 100px; overflow: hidden" class="text-center"><span v-if="item.result">
+                          <span v-if="item.result.check">✅</span><span v-else>❌</span>
+                           <q-tooltip >{{
+                          item.result.data
+                        }}</q-tooltip>
+                        </span></td>
                       </tr>
                     </tbody>
 
@@ -176,7 +175,9 @@ export default {
   },
 
   watch: {
-
+    selected(val) {
+      this.resetParam()
+    }
 
   },
 
@@ -205,14 +206,27 @@ export default {
       })
       this.selected = []
     },
+    resetParam() {
+      this.parameter_value.forEach(p => p.result = undefined)
+    },
 
     async execCQL() {
 
       const lib = JSON.parse(this.selected[0].JSON_CHAR)
       for (let item of this.parameter_value) {
         let res = await this.$store.dispatch('execCQL', { parameters: { VALUE: item.value }, lib })
-        if (!res.status) item.result = res.error
-        else item.result = res.data.unfilteredResults
+        item.result = {}
+        if (!res.status) {
+          item.result.data = res.error
+          item.result.check = false
+        }
+        else {
+          item.result.data = res.data.unfilteredResults
+          item.result.check = true
+          Object.keys(item.result.data).forEach(k => {
+            if (item.result.data[k] === false) item.result.check = false
+          })
+        }
       }
 
       return
@@ -231,6 +245,7 @@ export default {
         this.selected[0].JSON_CHAR = JSON.stringify(res.data)
         this.selected[0]._changed = true
         this.$q.notify('JSON/EML wurde geupdated.')
+        this.resetParam()
       } else this.$q.notify('JSON/EML ist unverändert.')
     },
 
