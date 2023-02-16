@@ -55,3 +55,23 @@ export function stringify(obj) {
     str = str.replace(/'/g, '"')
     return str.substring(1, str.length -1)
 }
+
+export function stringify_char(str) {
+    str = str.replace(/\n/g, '\\n')
+    return str
+  }
+
+export function unstringify_char(str) {
+    str = str.replace(/\\n/g, '\n')
+    return str
+  }
+
+export function stringify_json(str) {
+    str = str.replace(/"/g, "'")
+    return str
+  }
+
+export function unstringify_json(str) {
+    str = str.replace(/'/g, '"')
+    return str
+  }

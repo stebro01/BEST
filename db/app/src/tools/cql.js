@@ -7,7 +7,8 @@ var axios = require('axios');
  * const parameters = { "A": 10, "B": 20, text: '2020-12-22', datum: '2007-08-02T11:47' }
  * const lib = require('cql_lib.json')
  * var res = exec({parameters: parameters, lib: lib})
- *
+ *  @returns {object} - {status: true | false, data: {check: true | false, data: {Ergebnis des CQL EXEC}}}
+ *  ie: {"status":true,"data":{"check":true,"data":{"STRING":true,"SPLIT":true,"SPLIT_1":true,"SPLIT_2":true,"SPLIT_3":true}}}
  */
 export function exec(payload) {
     if (!payload || !payload.lib || !payload.parameters) return {status: false, error: 'invalid payload'}
@@ -23,12 +24,26 @@ export function exec(payload) {
     const executor = new cql.Executor(lib, codeService, payload.parameters);
     try {
         const res = executor.exec(patientSource, executionDateTime);
-        return {status: true, data: res}
+        if (res && Object.keys(res.unfilteredResults).length > 0) {
+          var data = res.unfilteredResults
+          var check = true
+            Object.keys(data).forEach(k => {
+            if (data[k] === false) check = false
+          })
+          return {status: true, data: {check, data}}
+        }
+        else return {status: true, data: {data: res, check: false}}
     } catch(err) {
         return {status: false, error: err}
     }
 }
 
+/**
+ * Fragt die cql-translate API an >> hierfür muss der Docker in ./cql/cql-translate gestartet sein und die API unter http://localhost:8082/cql/translator erreichbar sein
+ * Ein Beispiel eines POST-Request ist in ./cql/cql-translation/cql to elm json.postman_collection.json hinterlegt
+ * @param {object} payload - payload.cql = CQL Statement als String
+ * @returns {object} JSON Object als Ergebnis der API Anfrage
+ */
 export async function query_api(payload) {
     if (!payload || !payload.cql) return {status: false, error: 'invalid payload'}
     

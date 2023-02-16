@@ -144,6 +144,8 @@
 import HEADING from 'src/components/elements/Heading.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
+import {stringify_char, stringify_json, unstringify_char, unstringify_json} from 'src/classes/sqltools'
+
 export default {
   name: 'DBFunctions_CQL_Edit',
 
@@ -201,8 +203,8 @@ export default {
       const res = await this.$store.dispatch('searchDB', { table: 'CQL_FACT', query_string: { 'CODE_CD': '%', _like: true } })
       this.localData = res
       this.localData.forEach(d => {
-        if (d.CQL_CHAR) d.CQL_CHAR = this.unstringify_char(d.CQL_CHAR)
-        if (d.JSON_CHAR) d.JSON_CHAR = this.unstringify_json(d.JSON_CHAR)
+        if (d.CQL_CHAR) d.CQL_CHAR = unstringify_char(d.CQL_CHAR)
+        if (d.JSON_CHAR) d.JSON_CHAR = unstringify_json(d.JSON_CHAR)
       })
       this.selected = []
     },
@@ -221,11 +223,8 @@ export default {
           item.result.check = false
         }
         else {
-          item.result.data = res.data.unfilteredResults
-          item.result.check = true
-          Object.keys(item.result.data).forEach(k => {
-            if (item.result.data[k] === false) item.result.check = false
-          })
+          item.result = res.data
+          console.log(JSON.stringify(res))
         }
       }
 
@@ -254,7 +253,7 @@ export default {
       for (let item of this.localData) {
         if (item._changed === true) {
           let WHERE = { CQL_ID: item.CQL_ID }
-          let SET = { CODE_CD: item.CODE_CD, NAME_CHAR: item.NAME_CHAR, CQL_CHAR: this.stringify_char(item.CQL_CHAR), JSON_CHAR: this.stringify_json(item.JSON_CHAR), CQL_BLOB: item.CQL_BLOB }
+          let SET = { CODE_CD: item.CODE_CD, NAME_CHAR: item.NAME_CHAR, CQL_CHAR: stringify_char(item.CQL_CHAR), JSON_CHAR: stringify_json(item.JSON_CHAR), CQL_BLOB: item.CQL_BLOB }
           console.log(SET)
           let res = await this.$store.dispatch('updateDB', { table: 'CQL_FACT', query_string: { set: SET, where: WHERE } })
         }
@@ -262,25 +261,6 @@ export default {
       }
 
       this.$q.notify('Speichern erfolgreich')
-    },
-
-    stringify_char(str) {
-      str = str.replace(/\n/g, '\\n')
-      return str
-    },
-
-    unstringify_char(str) {
-      str = str.replace(/\\n/g, '\n')
-      return str
-    },
-
-    stringify_json(str) {
-      str = str.replace(/"/g, "'")
-      return str
-    },
-    unstringify_json(str) {
-      str = str.replace(/'/g, '"')
-      return str
     },
 
     //ende methods
