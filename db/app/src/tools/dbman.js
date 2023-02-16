@@ -159,9 +159,6 @@ const resetDB = async (PATH, resetDatabase) => {
 }
 
 
-
-
-
 // EXPORT THE MODULES
 exports.connect = connect;
 exports.close = close;
