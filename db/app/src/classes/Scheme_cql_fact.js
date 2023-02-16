@@ -18,7 +18,7 @@ class Scheme_cql_fact extends Scheme_X {
     _TABLE_NAME = 'CQL_FACT'
     _CLASS_NAME = 'Scheme_cql_fact'
     _PRIMARY_KEY = 'CQL_ID'
-    _UNIQUE = ['CQL_ID']
+    _UNIQUE = []
     _NOT_NULL = []
     _FIELDS = {
         "CQL_ID": dtypes.numeric, 
