@@ -18,6 +18,7 @@ class Scheme_concept_cql_lookup extends Scheme_X {
     _TABLE_NAME = 'CONCEPT_CQL_LOOKUP'
     _CLASS_NAME = 'Scheme_concept_cql_lookup'
     _PRIMARY_KEY = 'CONCEPT_CQL_ID'
+    _VIEW_NAME = 'cql_concept_list'
     _UNIQUE = []
     _NOT_NULL = []
     _FIELDS = {

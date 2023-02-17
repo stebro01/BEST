@@ -2,7 +2,7 @@
  
 
     <!-- CQL BUILD RULE -->
-    <div class="col-12 q-mt-md row justify-center" v-if="localData">
+    <div class="row justify-center" v-if="localData">
       <q-card class="q-mb-xl">
         <q-card-section>Erstelle/Bearbeite eine CQL Regel <span >: CQL_ID = {{ localData.CQL_ID }}</span></q-card-section>
         <q-card-section  class="text-center">

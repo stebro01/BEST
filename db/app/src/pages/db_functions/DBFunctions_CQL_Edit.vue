@@ -19,9 +19,17 @@
             v-model:selected="selected">
           </q-table>
 
+          <!-- CQL OPTION -->
+          <div class="col-12 text-center q-my-sm" v-if="selected.length > 0">
+          <q-btn-toggle
+            v-model="show_mode"
+            toggle-color="primary"
+            :options="show_mode_options"
+          />
+        </div>
           <!-- CQL BUILD RULE -->
-          <CARD_CQL_RULES v-if="selected.length > 0" :selected_data="selected[0]" @changed="updateCQL_Data($event)"/>
-          
+          <CARD_CQL_RULES v-if="selected.length > 0 && show_mode === 'RULES'" :selected_data="selected[0]" @changed="updateCQL_Data($event)"/>
+          <CARD_CQL_CONCEPTS v-else-if="selected.length > 0 && show_mode === 'CONCEPTS'" :selected_data="selected[0]"/>
           <div v-else class="col-12 text-center">
             <q-icon class="text-center cursor-pointer q-mt-lg" size="sm"
             name="info" @click="show_info = true" />
@@ -60,13 +68,14 @@ import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import DIALOG_CQL_EDIT from 'src/components/cql/Dialog_EditCQL.vue'
 import DIALOG_INFO_CQL from 'src/components/cql/Dialog_InfoCQL.vue'
 import CARD_CQL_RULES from 'src/components/cql/Card_CQL_rules.vue'
+import CARD_CQL_CONCEPTS from 'src/components/cql/Card_CQL_concepts.vue'
 
 import {stringify_char, stringify_json, unstringify_char, unstringify_json} from 'src/classes/sqltools'
 
 export default {
   name: 'DBFunctions_CQL_Edit',
 
-  components: { HEADING, MainSlot, FILTER_BOX, BOTTOM_BUTTONS, DIALOG_CQL_EDIT, DIALOG_INFO_CQL, CARD_CQL_RULES },
+  components: { HEADING, MainSlot, FILTER_BOX, BOTTOM_BUTTONS, DIALOG_CQL_EDIT, DIALOG_INFO_CQL, CARD_CQL_RULES, CARD_CQL_CONCEPTS },
 
   data() {
     return {
@@ -76,6 +85,8 @@ export default {
       show_info: false,
       show_new: false,
       show_edit: false,
+      show_mode: 'RULES',
+      show_mode_options: [{label: "CQL-Regeln", value: 'RULES'}, {label: 'Concepts', value: 'CONCEPTS'}],
       columns: [
         { name: 'CQL_ID', align: 'center', label: 'ID', field: 'CQL_ID', sortable: true },
         { name: 'CODE_CD', align: 'center', label: 'Code', field: 'CODE_CD', sortable: true },

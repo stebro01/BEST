@@ -68,15 +68,21 @@ export async function resetDatabase(dbman, readFile, PATH ) {
     })
     await Promise.all(promises)
     
-    // VIEW
+    
+    // VIEW patient_observations
     await dbman.run('DROP VIEW IF EXISTS patient_observations')
     const VIEW_patient_observations = readFile(PATH.VIEW_patient_observations, 'utf-8')
     await dbman.run(VIEW_patient_observations)
 
-    // VIEW
+    // VIEW patient_list
     await dbman.run('DROP VIEW IF EXISTS patient_list')
     const VIEW_patient_list = readFile(PATH.VIEW_patient_list, 'utf-8')
     await dbman.run(VIEW_patient_list)
+
+    // VIEW cql_concept_list
+    await dbman.run('DROP VIEW IF EXISTS cql_concept_list')
+    const VIEW_cql_concept_list = readFile(PATH.VIEW_cql_concept_list, 'utf-8')
+    await dbman.run(VIEW_cql_concept_list)
 
     // TRIGGER
     await dbman.run('DROP TRIGGER IF EXISTS delete_patient_cascade')
