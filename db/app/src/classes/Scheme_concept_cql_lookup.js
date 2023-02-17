@@ -1,5 +1,5 @@
 /**
- * @description Klasse um den Table CQL_FACT zu beschreiben und Querys zu erstellen
+ * @description Klasse um den Table Scheme_concept_cql_lookup zu beschreiben und Querys zu erstellen
  * inheritance from Scheme_X.js
  * Funktionen: 
  * - init() => erzeugt den Table
@@ -13,23 +13,21 @@ import {Scheme_X} from './Scheme_X'
 import {dtypes} from './more/dtypes'
 import {SQLite_QUERY} from './more/sql_queries'
 
-class Scheme_cql_fact extends Scheme_X {
+class Scheme_concept_cql_lookup extends Scheme_X {
 
-    _TABLE_NAME = 'CQL_FACT'
-    _CLASS_NAME = 'Scheme_cql_fact'
-    _PRIMARY_KEY = 'CQL_ID'
+    _TABLE_NAME = 'CONCEPT_CQL_LOOKUP'
+    _CLASS_NAME = 'Scheme_concept_cql_lookup'
+    _PRIMARY_KEY = 'CONCEPT_CQL_ID'
     _UNIQUE = []
     _NOT_NULL = []
     _FIELDS = {
+        "CONCEPT_CQL_ID": dtypes.numeric, 
+        "CONCEPT_CD": dtypes.string, 
         "CQL_ID": dtypes.numeric, 
-        "CODE_CD": dtypes.string, 
         "NAME_CHAR": dtypes.string, 
-        "CQL_BLOB":  dtypes.blob, 
-        "CQL_CHAR": dtypes.blob,
-        "JSON_CHAR": dtypes.blob, 
+        "RULE_BLOB":  dtypes.blob, 
         "DOWNLOAD_DATE": dtypes.date, 
         "IMPORT_DATE": dtypes.date, 
-        "SOURCESYSTEM_CD": dtypes.string, 
         "UPLOAD_ID": dtypes.numeric
     }
 
@@ -37,4 +35,4 @@ class Scheme_cql_fact extends Scheme_X {
 
 }
 
-export const SCHEME_CQL_FACT = new Scheme_cql_fact()
+export const SCHEME_CONCEPT_CQL_LOOKUP = new Scheme_concept_cql_lookup()

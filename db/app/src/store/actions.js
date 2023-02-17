@@ -8,6 +8,7 @@ import { View_Code_Lookup } from 'src/classes/View_Code_Lookup'
 import { View_User} from 'src/classes/View_User'
 import { View_user_patient_lookup } from 'src/classes/View_User_Patient_Lookup'
 import { View_cql } from 'src/classes/View_CQL'
+import { View_Concept_CQL_Lookup } from 'src/classes/View_Concept_CQL_Lookup'
 
 // SOME ACTION IMPORTS
 import {getGender, getConceptBy_CONCEPT_CD, getConceptList, getLookupBy_CODE_CD, getProviderBy_PROVIDER_ID, getCodeLookupList, resetDB, getAnswers, getAnswersForObservation, saveVisitObservation_to_Patient, createDB, getDistinctPatientList} from './actions/db_queries'
@@ -320,6 +321,7 @@ function getTable(table, state) {
         return new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
     } else if (table === 'CQL_FACT') {
         return new View_cql(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+    } else if (table === 'CONCEPT_CQL_LOOKUP') {
+        return new View_Concept_CQL_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
     } else return undefined
 }
-
