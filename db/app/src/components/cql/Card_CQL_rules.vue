@@ -4,7 +4,7 @@
     <!-- CQL BUILD RULE -->
     <div class="row justify-center" v-if="localData">
       <q-card class="q-mb-xl">
-        <q-card-section>Erstelle/Bearbeite eine CQL Regel <span >: CQL_ID = {{ localData.CQL_ID }}</span></q-card-section>
+        <q-card-section class="q-pa-none text-center text-caption bg-grey-3">Erstelle/Bearbeite eine CQL Regel <span >: CQL_ID = {{ localData.CQL_ID }}</span></q-card-section>
         <q-card-section  class="text-center">
           <q-btn  v-if="localData._changed || !localData.JSON_CHAR" class="absolute-top-right q-mt-xs q-mr-xs" round icon="refresh"
             @click="queryAPI()"><q-tooltip>API (localhost:8082) abfragen und aus CQL -> JSON
@@ -15,7 +15,7 @@
             <q-btn push label="JSON/EML" :class="{ 'bg-grey-3': parameter_mode === 'JSON_CHAR' }"
               @click="parameter_mode = 'JSON_CHAR'" />
           </q-btn-group>
-          <div><q-input v-model="localData[parameter_mode]" type="textarea" filled
+          <div><q-input v-model="localData[parameter_mode]" type="textarea" filled input-class="my-code"
               :readonly="parameter_mode === 'JSON_CHAR'" lazy-rules @blur="localData._changed = true; this.$emit('changed', localData)"></q-input>
           </div>
         </q-card-section>
@@ -23,15 +23,15 @@
 
         <q-separator />
         <!-- DATEN TESTEN -->
-        <div class="bg-grey-1">
+        <div class="">
           <q-card-actions align="center">
             <q-btn  @click="execCQL()" rounded class="my-btn" no-caps>Ausführen
               <q-tooltip>Test die CQL Regel (JSON/EML) anhand der Parameter und gibt das Ergebnis aus.</q-tooltip>
             </q-btn>
 
           </q-card-actions>
-          <q-card-section>
-            <div class="text-center text-caption">Parameter</div>
+          <q-card-section class="q-pa-none">
+            <div class="text-center text-caption bg-grey-3">Parameter</div>
             <q-markup-table dense>
               <thead>
                 <tr>

@@ -91,6 +91,9 @@ export async function resetDatabase(dbman, readFile, PATH ) {
     await dbman.run('DROP TRIGGER IF EXISTS delete_visit_cascade')
     const TRIGGER_delete_visit_cascade = readFile(PATH.TRIGGER_delete_visit_cascade, 'utf-8')
     await dbman.run(TRIGGER_delete_visit_cascade)
+    await dbman.run('DROP TRIGGER IF EXISTS delete_concept_cql_lookup')
+    const TRIGGER_delete_concept_cql_lookup = readFile(PATH.TRIGGER_delete_concept_cql_lookup, 'utf-8')
+    await dbman.run(TRIGGER_delete_concept_cql_lookup)
 
     return true
 

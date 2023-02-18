@@ -1,22 +1,27 @@
 <template>
   <q-page>
-    <MainSlot >
+    <MainSlot :no_footer="this.SOMETHING_CHANGED !== true" :no_options="true">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="TEXT.title" :description="TEXT.description" :img="'concept-import-logo.png'" :icon="'rule'" />
       </template>
 
-      <!-- OPTIONS -->
-      <template v-slot:options_right>
-        <FILTER_BOX :filter="filter" @update="filter = $event" />
-      </template>
-
       <!-- MAIN -->
       <template v-slot:main>
         <!-- TABLE -->
-        <div class="row justify-center ">
+        <div class="row  q-mt-md justify-center ">
           <q-table :rows="localData" :columns="columns" :filter="filter" row-key="CQL_ID" selection="single"
             v-model:selected="selected">
+            <!-- OPTIONS -->
+            <template v-slot:top>
+              <BOTTOM_DROPDOWN 
+                :show_add="selected.length === 0" @add="show_new = true"
+                :show_remove="selected.length > 0" @remove="delectCQL(selected[0])"
+                :show_edit="selected.length > 0" @edit="show_edit = true"
+              />
+              <q-space />
+              <FILTER_BOX :filter="filter" @update="filter = $event" />
+            </template>
           </q-table>
 
           <!-- CQL OPTION -->
@@ -39,14 +44,12 @@
 
       <!-- FOOTER -->
       <template v-slot:footer>
-        <BOTTOM_BUTTONS v-if="!SOMETHING_CHANGED" :show_delete="selected.length > 0" :show_edit="selected.length > 0"
-          :show_add="selected.length === 0"  @delete="delectCQL(selected[0])"
-          @add="show_new = true" @edit="show_edit = true" />
-        <div v-else class="text-center q-gutter-md">
-          <q-btn @click="loadData()" rounded class="my-btn" no-caps>zurücksetzen</q-btn>
-          <q-btn @click="save_UpdatedCQL_Data()" rounded class="my-btn" no-caps>speichern</q-btn>
-        </div>
+        <BOTTOM_BUTTONS 
+          :show_save="true" @save="this.save_UpdatedCQL_Data()"
+          :show_back="true" @back="this.loadData()"
+        />
       </template>
+
     </MainSlot>
 
     <!-- SOME MODALS / DIALOGE -->
@@ -64,18 +67,19 @@
 import HEADING from 'src/components/elements/Heading.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
-import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import DIALOG_CQL_EDIT from 'src/components/cql/Dialog_EditCQL.vue'
 import DIALOG_INFO_CQL from 'src/components/cql/Dialog_InfoCQL.vue'
 import CARD_CQL_RULES from 'src/components/cql/Card_CQL_rules.vue'
 import CARD_CQL_CONCEPTS from 'src/components/cql/Card_CQL_concepts.vue'
+import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
+import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 
 import {stringify_char, stringify_json, unstringify_char, unstringify_json} from 'src/classes/sqltools'
 
 export default {
   name: 'DBFunctions_CQL_Edit',
 
-  components: { HEADING, MainSlot, FILTER_BOX, BOTTOM_BUTTONS, DIALOG_CQL_EDIT, DIALOG_INFO_CQL, CARD_CQL_RULES, CARD_CQL_CONCEPTS },
+  components: { BOTTOM_BUTTONS, HEADING, MainSlot, FILTER_BOX, DIALOG_CQL_EDIT, DIALOG_INFO_CQL, CARD_CQL_RULES, CARD_CQL_CONCEPTS, BOTTOM_DROPDOWN },
 
   data() {
     return {
@@ -140,11 +144,8 @@ export default {
     async save_UpdatedCQL_Data() {      
       for (let item of this.localData) {
         if (item._changed === true) {
-          console.log(item)
           let WHERE = { CQL_ID: item.CQL_ID }
           let SET = { CQL_CHAR: stringify_char(item.CQL_CHAR), JSON_CHAR: stringify_json(item.JSON_CHAR) }
-
-          console.log(SET)
           let res = await this.$store.dispatch('updateDB', { table: 'CQL_FACT', query_string: { set: SET, where: WHERE } })
         }
         item._changed = false

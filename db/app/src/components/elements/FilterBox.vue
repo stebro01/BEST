@@ -1,10 +1,10 @@
 <template>
-    <q-input  dense debounce="300" color="primary" v-model="FILTER" input-class="text-center">
+    <q-input dense debounce="300" color="primary" v-model="FILTER" input-class="text-center">
         <template v-slot:append>
-              <q-icon name="search" />
+              <q-icon name="search" size="xs"/>
         </template>
         <template v-slot:prepend>
-          <q-icon name="clear" @click="FILTER = undefined" />
+          <q-icon name="clear" @click="FILTER = undefined" size="xs" class="cursor-pointer"/>
         </template>
     </q-input>
 </template>
