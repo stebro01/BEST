@@ -114,7 +114,8 @@ export default {
         this.formData = []
         this.options = []
         this.scheme.resolved.forEach(el => {
-          if (el.NAME_CHAR) this.formData.push({CONCEPT_CD: el.CONCEPT_CD, MODIFIER_CD: el.MODIFIER_CD, NAME_CHAR: el.NAME_CHAR, VALTYPE_CD: el.VALTYPE_CD, UNIT_CD: el.UNIT_CD, TVAL_CHAR: null, NVAL_NUM: null, OBSERVATION_BLOB: null})
+          if (el.OBSERVATION_ID) this.formData.push({...el, check: true}) //übernehme den kompletten Eintrag, wenn bereits eine Observation ID vorhanden ist
+          else if (el.NAME_CHAR) this.formData.push({CONCEPT_CD: el.CONCEPT_CD, MODIFIER_CD: el.MODIFIER_CD, NAME_CHAR: el.NAME_CHAR, VALTYPE_CD: el.VALTYPE_CD, UNIT_CD: el.UNIT_CD, TVAL_CHAR: null, NVAL_NUM: null, OBSERVATION_BLOB: null})
           // PREPARE OPTIONS
           if (!el.selection) this.options.push({})
           else {

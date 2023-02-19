@@ -13,10 +13,22 @@
         <q-item-section>edit</q-item-section>
       </q-item>
 
+       <!-- PLAYIST BUTTON -->
+       <q-item v-if="show_play_playlist" clickable v-close-popup @click="$emit('playlist_play')">
+        <q-item-section avatar><q-icon name="playlist_play" /></q-item-section>
+        <q-item-section>Scheme beginnen / wieder aufnehmen</q-item-section>
+      </q-item>
+
       <!-- REMOVE BUTTON -->
       <q-item v-if="show_remove" clickable v-close-popup @click="$emit('remove')">
         <q-item-section avatar><q-icon name="delete" /></q-item-section>
         <q-item-section>remove</q-item-section>
+      </q-item>
+
+      <!-- IMPORT BUTTON -->
+      <q-item v-if="show_import" clickable v-close-popup @click="$emit('import')">
+        <q-item-section avatar><q-icon name="file_upload" /></q-item-section>
+        <q-item-section>Daten importieren</q-item-section>
       </q-item>
 
     </q-list>
@@ -27,7 +39,7 @@
 export default {
   name: 'BottomDropDown',
 
-  props: ['show_add', 'show_remove', 'show_edit'],
+  props: ['show_add', 'show_remove', 'show_edit', 'show_import', 'show_play_playlist'],
 
   components: {},
 

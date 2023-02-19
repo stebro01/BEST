@@ -1,43 +1,46 @@
 <template>
   <q-page>
-    <MainSlot>
+    <MainSlot :no_options="true" :no_footer="true">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="TEXT.title" :description="TEXT.description" :img="'visit-color-logo.png'" :icon="'event'"/>
       </template>
 
-      <!-- Options -->
-      <template v-slot:options_right>
-        <FILTER_BOX :filter="filter" @update="filter = $event" />
-      </template>
 
       <!-- MAIN -->
       <template v-slot:main>
         
         <div v-if="PATIENT_PINNED">
+          <div class="justify-center">
+            <div class="col-12">
+              <VISIT_TAB v-if="PATIENT_PINNED" :PATIENT="PATIENT_PINNED" @clicked="visitTabClicked($event)" />
+            </div>
+            <div class="col-12 ">
           <q-table v-if="this.rows" :rows="rows" :columns="columns" row-key="OBSERVATION_ID"
             class="cursor-pointer my-table" :filter="filter" :rows-per-page-options="rowsperpage" dense
             selection="multiple" v-model:selected="selected">
 
             <template v-slot:top>
-              <VISIT_TAB v-if="PATIENT_PINNED" :PATIENT="PATIENT_PINNED" @clicked="visitTabClicked($event)" />
-
+              <!-- BUTTONS -->
+              <BOTTOM_DROPDOWN 
+                :show_import="selected.length === 0" @import="$router.push({ name: 'Observation_Import' })" 
+                :show_add="selected.length === 0 && $store.getters.VISIT_PINNED" @add="$router.push({ name: 'Observation_New' })"
+                :show_play_playlist="$store.getters.VISIT_PINNED && selected.length === 0 && rows && rows.length > 0" @playlist_play="$router.push({ name: 'Scheme_Continue' })"
+                :show_edit="selected.length > 0" :show_delete="selected.length > 0" @edit="editSelection()" @delete="deleteSelection()"
+                :show_remove="selected.length > 0" @remove="deleteSelection()"
+              />
+              <q-space />
+              <!-- FILTERBOX -->
+              <FILTER_BOX :filter="filter" @update="filter = $event" />
             </template>
 
-
           </q-table>
-
-          <div class=" text-center text-caption q-mt-xs">Zum Hinzufügen von Observations eine Visite auswählen</div>
         </div>
 
-      </template>
-      <!-- FOOTER -->
-      <template v-slot:footer>
-        <BOTTOM_BUTTONS :show_add="selected.length === 0 && $store.getters.VISIT_PINNED"
-          :show_add_playlist="selected.length === 0 && $store.getters.VISIT_PINNED" :show_import="selected.length === 0"
-          :show_edit="selected.length > 0" :show_delete="selected.length > 0"
-          @add="$router.push({ name: 'Observation_New' })" @add_playlist="$router.push({ name: 'Scheme_Edit' })"
-          @edit="editSelection()" @delete="deleteSelection()" @import="$router.push({ name: 'Observation_Import' })" />
+          <div class="col-12 text-center text-caption q-mt-xs">Zum Hinzufügen von Observations eine Visite auswählen</div>
+        </div>
+        </div>
+
       </template>
     </MainSlot>
   </q-page>
@@ -47,17 +50,16 @@
 import HEADING from 'src/components/elements/Heading.vue'
 import { beautify_data } from 'src/tools/formatdata'
 import VISIT_TAB from 'src/components/visits/VisitTab.vue'
-import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import MainSlot from 'src/components/MainSlot.vue'
-
+import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
 
 // import {get_date_from_timeStamp} from 'src/classes/sqltools.js'
 
 export default {
   name: 'Visits_ViewAllObservations',
 
-  components: { BOTTOM_BUTTONS, HEADING, VISIT_TAB, FILTER_BOX, MainSlot },
+  components: { BOTTOM_DROPDOWN, HEADING, VISIT_TAB, FILTER_BOX, MainSlot },
 
   data() {
     return {

@@ -1,12 +1,18 @@
 <template>
     <q-toolbar v-if="VISITS.length >= 0" class="bg-orange-1 shadow-1 my-list-item">
-        <q-toolbar-title class="text-subtitle2">
-            Visiten
-        </q-toolbar-title>
         <q-tabs v-model="tab" inline-label outside-arrows mobile-arrows active-color="primary" indicator-color="primary"
-            style="width: 75%" dense>
-            <q-tab :class="{ 'my-visit-color': tab === 'all' }" style="max-width: 100px" name="all" icon="apps"
-                @click="tabClicked('all')" no-caps>Alle</q-tab>
+            style="width: 90%" dense >
+            <q-tab :class="{ 'my-visit-color': tab === 'all' }" style="max-width: 100px" name="all" 
+                @click="tabClicked('all')" no-caps> 
+                <q-item >
+                    <q-item-section side class="q-pr-xs"><q-icon name="apps"/></q-item-section>
+                    <q-item-section>
+                        <q-item-label>Alle</q-item-label>
+                        <q-item-label>Visiten</q-item-label>
+
+                    </q-item-section>
+                </q-item>
+            </q-tab>
             <q-tab v-for="(visit, ind_visit) in VISITS" :key="ind_visit + 'VISIT'"
                 :name="`visite_${visit.ENCOUNTER_NUM}`" @click="tabClicked(visit)" no-caps style="max-width: 110px">
                 <q-item class="shadow-1" style="max-width: 110px">
@@ -43,12 +49,10 @@
         </q-tabs>
 
         <q-space />
-        <q-tabs class="full-height">
-            <q-tab style="max-width: 40px" @click="$router.push({ name: 'Visits_New' })"><q-icon name="add"
-                    size="sm" /><q-tooltip>Neue Visite anlegen</q-tooltip></q-tab>
-        </q-tabs>
-        <q-separator v-if="tab !== 'all'" vertical inset />
-        <q-fab v-if="tab !== 'all'" icon="more_vert" direction="down" flat>
+        <q-btn v-if="tab === 'all'" round flat icon="add" @click="$router.push({ name: 'Visits_New' })"><q-tooltip>Neue Visite anlegen</q-tooltip></q-btn>
+        <q-fab v-else icon="more_vert" direction="down" flat>
+            <q-fab-action color="orange-3" text-color="black" @click="$router.push({ name: 'Visits_New' })"
+                icon="add"><q-tooltip>Neue Visite anlegen</q-tooltip></q-fab-action>
             <q-fab-action color="orange-3" text-color="black" @click="$router.push({ name: 'Visits_Edit' })"
                 icon="edit"><q-tooltip>Visite bearbeiten</q-tooltip></q-fab-action>
             <q-fab-action color="orange-3" text-color="black" @click="deleteVisite(tab)" icon="delete"><q-tooltip>Visite

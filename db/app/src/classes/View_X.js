@@ -144,7 +144,6 @@ export class View_X {
         //jetzt erzeuge die QUERY
         const sql_query = this._SCHEME.update(payload)
         if (sql_query.error) return sql_query
-console.log(sql_query)
         //weiter
         this._DB_MAN.connect(this._DB_FILENAME)
         const result = await this._DB_MAN.run(sql_query.query)

@@ -1,6 +1,6 @@
 <template>
   <q-page class="">
-    <MainSlot>
+    <MainSlot :no_options="true" :no_footer="true">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING
@@ -9,21 +9,6 @@
           :img="'patient-color-logo.png'"
           :icon="'person'"
         />
-      </template>
-
-      <!-- OPTIONS -->
-      <template v-slot:options_left>
-        <q-btn
-          icon="add"
-          class="bg-black text-white"
-          no-caps
-          rounded
-          label="neuer Patient"
-          @click="newPatient()"
-        />
-      </template>
-      <template v-slot:options_right>
-        <FILTER_BOX :filter="filter" @update="filter = $event" />
       </template>
 
       <!-- MAIN -->
@@ -37,7 +22,37 @@
           dense
           row-key="PATIENT_NUM"
         >
+
+        <template v-slot:top>
+              <!-- BUTTONS -->
+              <BOTTOM_DROPDOWN 
+                :show_add="true" @add="newPatient()"
+                :show_edit="SELECTION === 1" @edit="editPatient()"
+                :show_remove="SELECTION > 0" @remove="deletePatient()"
+              />
+              <q-space />
+              <!-- FILTERBOX -->
+              <FILTER_BOX :filter="filter" @update="filter = $event" />
+            </template>
+
           <!-- PROPS -->
+          <template v-slot:header="props">
+        <q-tr :props="props">
+          <q-th auto-width class="cursor-pointer">
+              <q-icon v-if="SELECTION === 0" name="check_box_outline_blank" size="sm" @click="setSelection(true)"/>
+              <q-icon v-else name="indeterminate_check_box" size="sm" @click="setSelection(false)"/>
+          </q-th>
+          <q-th
+            v-for="col in props.cols"
+            :key="col.name"
+            :props="props"
+          >
+            {{ col.label }}
+          </q-th>
+          <q-th auto-width />
+        </q-tr>
+      </template>
+
           <template v-slot:body="props">
             <q-tr
               :props="props"
@@ -71,22 +86,12 @@
                   <div>Religion: {{ props.row.RELIGION_RESOLVED }}</div>
                 </q-tooltip>
               </q-td>
+              <q-td @click="visitePatient(props.row)"><q-btn icon="event" flat dense> <q-tooltip>Visten öffnen</q-tooltip> </q-btn></q-td>
             </q-tr>
           </template>
         </q-table>
       </template>
-      <!-- FOOTER -->
-      <template v-slot:footer>
-        <BOTTOM_BUTTONS
-          v-if="SELECTION > 0"
-          :show_like="SELECTION === 1"
-          :show_edit="SELECTION === 1"
-          :show_delete="true"
-          @like="likePatient()"
-          @edit="editPatient()"
-          @delete="deletePatient()"
-        />
-      </template>
+
     </MainSlot>
   </q-page>
 </template>
@@ -94,12 +99,12 @@
 <script>
 import HEADING from "src/components/elements/Heading.vue";
 import FILTER_BOX from "src/components/elements/FilterBox.vue";
-import BOTTOM_BUTTONS from "src/components/elements/BottomButtons.vue";
 import MainSlot from "src/components/MainSlot.vue";
+import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
 
 export default {
   name: "PatientsPage",
-  components: { HEADING, FILTER_BOX, BOTTOM_BUTTONS, MainSlot },
+  components: { HEADING, FILTER_BOX, MainSlot, BOTTOM_DROPDOWN },
   data() {
     return {
       filter: null,
@@ -201,6 +206,11 @@ export default {
         });
     },
 
+    setSelection(val) {
+      const keys = Object.keys(this.selected);
+      keys.forEach((el) => this.selected[el].selected = val);
+    },
+
     newPatient() {
       this.$store
         .dispatch("addDB", {
@@ -217,19 +227,17 @@ export default {
         .catch((err) => this.$q.notify("Etwas ging schief: " + err));
     },
 
-    likePatient() {
-      const keys = Object.keys(this.selected);
-      const PATIENT_NUM = this.getSelected_PATIENT_NUM();
+    visitePatient(PATIENT) {
+      console.log(PATIENT)
       this.$store
         .dispatch("searchDB", {
-          query_string: { PATIENT_NUM: PATIENT_NUM },
+          query_string: { PATIENT_NUM: PATIENT.PATIENT_NUM },
           table: "PATIENT_DIMENSION",
         })
         .then((res) => {
           this.$store.commit("PATIENT_PINNED_SET", res[0]);
           this.$store.commit("VISIT_PINNED_SET", undefined);
           this.$store.commit("OBSERVATION_PINNED_SET", undefined);
-          this.selected[PATIENT_NUM].selected = false;
           this.$router.push({ name: "Visits" });
         });
     },

@@ -10,7 +10,7 @@
         <q-btn v-if="show_back" icon="undo" class="my-bg" rounded @click="$emit('back')"><q-tooltip>{{ TEXT.tooltip.back }}</q-tooltip></q-btn>
 
         <q-btn v-if="show_add" icon="add" class="my-bg" rounded @click="$emit('add')"><q-tooltip>Neuen Eintrag erstellen</q-tooltip></q-btn>
-        <q-btn v-if="show_add_playlist" icon="playlist_add" class="my-bg" rounded @click="$emit('add_playlist')"><q-tooltip>Komplettes Scheme erstellen</q-tooltip></q-btn>
+        <q-btn v-if="show_play_playlist" icon="playlist_play" class="my-bg" rounded @click="$emit('playlist_play')"><q-tooltip>Scheme beginnen / wieder aufnehmen </q-tooltip></q-btn>
         <q-btn v-if="show_import" icon="file_upload" class="my-bg" rounded @click="$emit('import')"><q-tooltip>Daten importierenn</q-tooltip></q-btn>
     </div>
 </template>
@@ -19,7 +19,7 @@
 export default {
   name: 'BottomButtons',
 
-  props: ['show_add', 'show_add_playlist', 'show_import', 'show_save', 'show_back', 'show_like', 'show_edit', 'show_export', 'show_delete', 'show_execute'],
+  props: ['show_add', 'show_play_playlist', 'show_import', 'show_save', 'show_back', 'show_like', 'show_edit', 'show_export', 'show_delete', 'show_execute'],
 
   components: {  },
 
