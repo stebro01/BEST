@@ -2,20 +2,18 @@
     <q-toolbar v-if="VISITS.length >= 0" class="bg-orange-1 shadow-1 my-list-item">
         <q-tabs v-model="tab" inline-label outside-arrows mobile-arrows active-color="primary" indicator-color="primary"
             style="width: 90%" dense class="bg-orange-1">
-            <q-tab class="shadow-1 q-pa-xs"  name="all" 
-                @click="tabClicked('all')" no-caps style="max-width: 80px"> 
+            <q-tab class="shadow-1 q-pa-xs" name="all" @click="tabClicked('all')" no-caps style="max-width: 80px">
                 <q-item class="shadow-1 fit">
                     <q-icon name="apps" size="md" class="q-mt-md"></q-icon>
-                    <q-chip v-if="tab === 'all'" class="my-visit-color  absolute-top z-top" style="top: -10px" size="xs">
+                    <q-chip v-if="tab === 'all'" class="my-visit-color  absolute-top z-top" style="top: -10px"
+                        size="xs">
                         alle Visiten
                     </q-chip>
                     <q-chip v-else color="orange-2" class="absolute-top z-top" style="top: -10px" size="xs">
-                    alle Visiten </q-chip>
+                        alle Visiten </q-chip>
                 </q-item>
-
-                
             </q-tab>
-            <q-tab v-for="(visit, ind_visit) in VISITS" :key="ind_visit + 'VISIT'"  class="bg-orange-1 q-pa-xs"
+            <q-tab v-for="(visit, ind_visit) in VISITS" :key="ind_visit + 'VISIT'" class="bg-orange-1 q-pa-xs"
                 :name="`visite_${visit.ENCOUNTER_NUM}`" @click="tabClicked(visit)" no-caps style="max-width: 110px">
                 <q-item class="shadow-1" style="max-width: 110px">
                     <q-item-section class="q-mt-xs">
@@ -46,12 +44,12 @@
                     </div>
                 </q-tooltip>
             </q-tab>
-
-
         </q-tabs>
-
+        <!-- SPACE -->
         <q-space />
-        <q-btn v-if="tab === 'all'" round flat icon="add" @click="$router.push({ name: 'Visits_New' })"><q-tooltip>Neue Visite anlegen</q-tooltip></q-btn>
+        <!-- BTNS -->
+        <q-btn v-if="tab === 'all'" round flat icon="add" @click="$router.push({ name: 'Visits_New' })"><q-tooltip>Neue
+                Visite anlegen</q-tooltip></q-btn>
         <q-fab v-else icon="more_vert" direction="down" flat>
             <q-fab-action color="orange-3" text-color="black" @click="$router.push({ name: 'Visits_New' })"
                 icon="add"><q-tooltip>Neue Visite anlegen</q-tooltip></q-fab-action>
@@ -60,7 +58,6 @@
             <q-fab-action color="orange-3" text-color="black" @click="deleteVisite(tab)" icon="delete"><q-tooltip>Visite
                     löschen</q-tooltip></q-fab-action>
         </q-fab>
-
     </q-toolbar>
 </template>
 
@@ -86,9 +83,9 @@ export default {
         if (this.PATIENT_NUM) this.loadVisits()
     },
 
-    watch:{
+    watch: {
         ACTIVE_VISIT(val) {
-            if (val === undefined)  {
+            if (val === undefined) {
                 //visite wurde abgewählt, sende Event 'all' an Parent 
                 this.tab = 'all'
                 return this.tabClicked('all')
@@ -112,14 +109,14 @@ export default {
 
         loadVisits() {
             //load visits
-            this.$store.dispatch('searchDB', { query_string: {PATIENT_NUM:this.PATIENT_NUM}, table: "VISIT_DIMENSION"})
-            .then(res => {
-                this.VISITS = []
-                res.forEach(r => {
-                    if (r.VISIT_BLOB !== '<SYSTEM>') this.VISITS.push(r)
+            this.$store.dispatch('searchDB', { query_string: { PATIENT_NUM: this.PATIENT_NUM }, table: "VISIT_DIMENSION" })
+                .then(res => {
+                    this.VISITS = []
+                    res.forEach(r => {
+                        if (r.VISIT_BLOB !== '<SYSTEM>') this.VISITS.push(r)
+                    })
+                    if (this.$store.getters.VISIT_PINNED) this.tab = `visite_${this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM}`
                 })
-                if (this.$store.getters.VISIT_PINNED) this.tab = `visite_${this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM}`
-            })
         },
 
         deleteVisite(item) {
@@ -127,20 +124,20 @@ export default {
             const a = item.split('_')
             if (a.length < 2) return
             const ENCOUNTER_NUM = parseInt(a[1])
-            if (!confirm(`Soll Visite <<${ENCOUNTER_NUM}>> wirklich gelöscht werden? Wichtig: Alle zugehörigen Observations werden auch gelöscht.`)) return    
-            this.$store.dispatch('deleteDB', {query_string: {ENCOUNTER_NUM: ENCOUNTER_NUM}, table: "VISIT_DIMENSION"})
-            .then(() => {
-                this.$store.dispatch('deleteDB', {query_string: {ENCOUNTER_NUM: ENCOUNTER_NUM, _force: true}, table: "OBSERVATION_FACT"})
+            if (!confirm(`Soll Visite <<${ENCOUNTER_NUM}>> wirklich gelöscht werden? Wichtig: Alle zugehörigen Observations werden auch gelöscht.`)) return
+            this.$store.dispatch('deleteDB', { query_string: { ENCOUNTER_NUM: ENCOUNTER_NUM }, table: "VISIT_DIMENSION" })
                 .then(() => {
-                    this.$q.notify('erfolgreich')
-                    this.$store.commit('VISIT_PINNED_SET', undefined)
-                    this.tabClicked('all')
-                    this.loadVisits()
-                })
-                .catch(e => this.$q.notify(e))
-                
-   
-            }).catch(err => this.$q.notify(err))
+                    this.$store.dispatch('deleteDB', { query_string: { ENCOUNTER_NUM: ENCOUNTER_NUM, _force: true }, table: "OBSERVATION_FACT" })
+                        .then(() => {
+                            this.$q.notify('erfolgreich')
+                            this.$store.commit('VISIT_PINNED_SET', undefined)
+                            this.tabClicked('all')
+                            this.loadVisits()
+                        })
+                        .catch(e => this.$q.notify(e))
+
+
+                }).catch(err => this.$q.notify(err))
         },
 
 

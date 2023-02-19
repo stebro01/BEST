@@ -13,27 +13,23 @@
         <div v-if="!active_scheme.resolved">
           <!-- AUSWAHL BUTTON -->
           <q-card class="my-list-item">
-            <q-card-section >
+            <q-card-section>
               <q-table dense :rows="option_schemes" :columns="option_columns" title="Scheme auswählen">
                 <!-- OPTIONS -->
-            <template v-slot:top-right>
-              <FILTER_BOX :filter="filter" @update="filter = $event" />
-            </template>
+                <template v-slot:top-right>
+                  <FILTER_BOX :filter="filter" @update="filter = $event" />
+                </template>
 
-            <template v-slot:body="props">
-              <q-tr :props="props" class="cursor-pointer" @click="onSelectScheme(props.row)" >
-                <q-td
-                v-for="col in props.cols"
-                :key="col.name"
-                :props="props"
-                >
-                {{ col.value }}
-              </q-td>
-              <q-td auto-width >
-                <q-btn size="sm" round flat dense icon="folder" />
-              </q-td>
-            </q-tr>
-            </template>
+                <template v-slot:body="props">
+                  <q-tr :props="props" class="cursor-pointer" @click="onSelectScheme(props.row)">
+                    <q-td v-for="col in props.cols" :key="col.name" :props="props">
+                      {{ col.value }}
+                    </q-td>
+                    <q-td auto-width>
+                      <q-btn size="sm" round flat dense icon="folder" />
+                    </q-td>
+                  </q-tr>
+                </template>
               </q-table>
             </q-card-section>
           </q-card>
@@ -80,8 +76,8 @@ export default {
       localFormData: [],
       filter: null,
       option_columns: [
-        {name: 'CODE_CD', field: 'CODE_CD', label: 'ID', sortable: true, align: 'left', style: 'max-width: 150px; overflow: hidden'},
-        {name: 'NAME_CHAR', field: 'NAME_CHAR', label: 'Beschr.', sortable: true, align: 'left', style: 'max-width: 250px; overflow: hidden'},
+        { name: 'CODE_CD', field: 'CODE_CD', label: 'ID', sortable: true, align: 'left', style: 'max-width: 150px; overflow: hidden' },
+        { name: 'NAME_CHAR', field: 'NAME_CHAR', label: 'Beschr.', sortable: true, align: 'left', style: 'max-width: 250px; overflow: hidden' },
       ]
 
     }
@@ -224,30 +220,30 @@ export default {
 
       const errors = []
       try {
-      for (let data of DATA_CLEAN) {
-        if (!data.OBSERVATION_ID) {
-          let res = await this.$store.dispatch('addDB', { query_string: data, table: "OBSERVATION_FACT" })
-          // update jetzt die daten
-          let obj = this.localFormData.find(el => el.CONCEPT_CD === data.CONCEPT_CD)
-          obj.OBSERVATION_ID = res.OBSERVATION_ID
-          
+        for (let data of DATA_CLEAN) {
+          if (!data.OBSERVATION_ID) {
+            let res = await this.$store.dispatch('addDB', { query_string: data, table: "OBSERVATION_FACT" })
+            // update jetzt die daten
+            let obj = this.localFormData.find(el => el.CONCEPT_CD === data.CONCEPT_CD)
+            obj.OBSERVATION_ID = res.OBSERVATION_ID
 
+
+          }
+          else {
+            // update
+            let WHERE = { OBSERVATION_ID: data.OBSERVATION_ID }
+            let SET = data
+            delete SET.OBSERVATION_ID
+            let res = await this.$store.dispatch('updateDB', { table: 'OBSERVATION_FACT', query_string: { where: WHERE, set: SET } })
+          }
         }
-        else {
-          // update
-          let WHERE = {OBSERVATION_ID: data.OBSERVATION_ID}
-          let SET = data
-          delete SET.OBSERVATION_ID
-          let res = await this.$store.dispatch('updateDB', { table: 'OBSERVATION_FACT', query_string: { where: WHERE, set: SET } })
-        }
-      }
-      this.$q.notify('Aktion erfolgreich')
-      this.changeDetected = false
+        this.$q.notify('Aktion erfolgreich')
+        this.changeDetected = false
       } catch (err) {
         console.error(err)
         this.$q.notify(err.message)
       }
-      
+
     },
 
     _get_value(val) {

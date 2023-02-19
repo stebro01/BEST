@@ -3,77 +3,48 @@
     <MainSlot :no_options="true" :no_footer="true">
       <!-- HEADING -->
       <template v-slot:header>
-        <HEADING
-          :title="'Patienten'"
-          :description="'verwalten und anzeigen'"
-          :img="'patient-color-logo.png'"
-          :icon="'person'"
-        />
+        <HEADING :title="'Patienten'" :description="'verwalten und anzeigen'" :img="'patient-color-logo.png'"
+          :icon="'person'" />
       </template>
 
       <!-- MAIN -->
       <template v-slot:main>
-        <q-table
-          class="my-table"
-          :rows="results"
-          :columns="columns"
-          :filter="filter"
-          selection="single"
-          dense
-          row-key="PATIENT_NUM"
-        >
+        <q-table class="my-table" :rows="results" :columns="columns" :filter="filter" selection="single" dense
+          row-key="PATIENT_NUM">
 
-        <template v-slot:top>
-              <!-- BUTTONS -->
-              <BOTTOM_DROPDOWN 
-                :show_add="true" @add="newPatient()"
-                :show_edit="SELECTION === 1" @edit="editPatient()"
-                :show_remove="SELECTION > 0" @remove="deletePatient()"
-              />
-              <q-space />
-              <!-- FILTERBOX -->
-              <FILTER_BOX :filter="filter" @update="filter = $event" />
-            </template>
+          <template v-slot:top>
+            <!-- BUTTONS -->
+            <BOTTOM_DROPDOWN :show_add="true" @add="newPatient()" :show_edit="SELECTION === 1" @edit="editPatient()"
+              :show_remove="SELECTION > 0" @remove="deletePatient()" />
+            <q-space />
+            <!-- FILTERBOX -->
+            <FILTER_BOX :filter="filter" @update="filter = $event" />
+          </template>
 
           <!-- PROPS -->
           <template v-slot:header="props">
-        <q-tr :props="props">
-          <q-th auto-width class="cursor-pointer">
-              <q-icon v-if="SELECTION === 0" name="check_box_outline_blank" size="sm" @click="setSelection(true)"/>
-              <q-icon v-else name="indeterminate_check_box" size="sm" @click="setSelection(false)"/>
-          </q-th>
-          <q-th
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-          >
-            {{ col.label }}
-          </q-th>
-          <q-th auto-width />
-        </q-tr>
-      </template>
+            <q-tr :props="props">
+              <q-th auto-width class="cursor-pointer">
+                <q-icon v-if="SELECTION === 0" name="check_box_outline_blank" size="sm" @click="setSelection(true)" />
+                <q-icon v-else name="indeterminate_check_box" size="sm" @click="setSelection(false)" />
+              </q-th>
+              <q-th v-for="col in props.cols" :key="col.name" :props="props">
+                {{ col.label }}
+              </q-th>
+              <q-th auto-width />
+            </q-tr>
+          </template>
 
           <template v-slot:body="props">
-            <q-tr
-              :props="props"
-              @click="
-                selected[props.row.PATIENT_NUM].selected =
-                  !selected[props.row.PATIENT_NUM].selected
-              "
-              class="cursor-pointer"
-            >
+            <q-tr :props="props" @click="
+              selected[props.row.PATIENT_NUM].selected =
+              !selected[props.row.PATIENT_NUM].selected
+            " class="cursor-pointer">
               <q-td>
-                <q-checkbox
-                  v-model="selected[props.row.PATIENT_NUM].selected"
-                />
+                <q-checkbox v-model="selected[props.row.PATIENT_NUM].selected" />
               </q-td>
-              <q-td
-                v-for="el in Object.keys(results[0])"
-                :key="el"
-                :props="props"
-                class="text-center"
-                style="overflow: hidden; white-space: nowrap"
-              >
+              <q-td v-for="el in Object.keys(results[0])" :key="el" :props="props" class="text-center"
+                style="overflow: hidden; white-space: nowrap">
                 <!-- ANZEIGE IM TABLE -->
                 {{ props.row[el] }}
                 <q-tooltip v-if="el === 'PATIENT_CD'">
@@ -86,7 +57,8 @@
                   <div>Religion: {{ props.row.RELIGION_RESOLVED }}</div>
                 </q-tooltip>
               </q-td>
-              <q-td @click="visitePatient(props.row)"><q-btn icon="event" flat dense> <q-tooltip>Visten öffnen</q-tooltip> </q-btn></q-td>
+              <q-td @click="visitePatient(props.row)"><q-btn icon="event" flat dense> <q-tooltip>Visten
+                    öffnen</q-tooltip> </q-btn></q-td>
             </q-tr>
           </template>
         </q-table>
@@ -284,7 +256,7 @@ export default {
           if (
             this.$store.getters.PATIENT_PINNED &&
             this.selected[el].PATIENT_NUM ===
-              this.$store.getters.PATIENT_PINNED.PATIENT_NUM
+            this.$store.getters.PATIENT_PINNED.PATIENT_NUM
           ) {
             this.$store.commit("PATIENT_PINNED_SET", undefined);
             this.$store.commit("VISIT_PINNED_SET", undefined);
@@ -294,7 +266,7 @@ export default {
       });
 
       Promise.all(promises)
-        .then((res) => {})
+        .then((res) => { })
         .catch((err) => this.$q.notify(err))
         .finally(() => {
           this.loadPatient();
