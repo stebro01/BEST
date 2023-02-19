@@ -200,7 +200,6 @@ export default {
     },
 
     visitePatient(PATIENT) {
-      console.log(PATIENT)
       this.$store
         .dispatch("searchDB", {
           query_string: { PATIENT_NUM: PATIENT.PATIENT_NUM },
