@@ -20,7 +20,18 @@
           @click="onClick(item.code)" :icon="item.icon"  
         >
           <q-chip :class="item.class" class="q-px-lg" removable @remove="chipRemove(item.code)" text-color="white" :icon="item.icon">
-            <div class="q-px-md text-center"><div class="my-small-text">{{ item.label }}</div> {{item.data[item.field]}}</div>
+            <div class="q-px-md text-center">
+              <div class="my-small-text">{{ item.label }}</div> 
+              <div v-if="item.code === 'patient'" class="cursor-pointer" @click="gotoPatient(item.data)">
+                {{item.data[item.field]}}
+              </div>
+              <div v-else-if="item.code === 'visit'" class="cursor-pointer" @click="$router.push({name: 'VisitsView'})">
+                {{item.data[item.field]}}
+              </div>
+              <div v-else>{{item.data[item.field]}}</div>
+              
+              
+            </div>
           </q-chip>          
         </q-fab>
         </span>
@@ -101,7 +112,13 @@ export default {
             break
         }
         // 
+      },
+
+      gotoPatient(PATIENT) {
+        this.$router.push({ name: "Patients_Edit", params: { PATIENT_NUM: PATIENT.PATIENT_NUM }});
       }
+
+      // ENDE
     }
 
 

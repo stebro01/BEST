@@ -1,19 +1,21 @@
 <template>
     <q-toolbar v-if="VISITS.length >= 0" class="bg-orange-1 shadow-1 my-list-item">
         <q-tabs v-model="tab" inline-label outside-arrows mobile-arrows active-color="primary" indicator-color="primary"
-            style="width: 90%" dense >
-            <q-tab :class="{ 'my-visit-color': tab === 'all' }" style="max-width: 100px" name="all" 
-                @click="tabClicked('all')" no-caps> 
-                <q-item >
-                    <q-item-section side class="q-pr-xs"><q-icon name="apps"/></q-item-section>
-                    <q-item-section>
-                        <q-item-label>Alle</q-item-label>
-                        <q-item-label>Visiten</q-item-label>
-
-                    </q-item-section>
+            style="width: 90%" dense class="bg-orange-1">
+            <q-tab class="shadow-1 q-pa-xs"  name="all" 
+                @click="tabClicked('all')" no-caps style="max-width: 80px"> 
+                <q-item class="shadow-1 fit">
+                    <q-icon name="apps" size="md" class="q-mt-md"></q-icon>
+                    <q-chip v-if="tab === 'all'" class="my-visit-color  absolute-top z-top" style="top: -10px" size="xs">
+                        alle Visiten
+                    </q-chip>
+                    <q-chip v-else color="orange-2" class="absolute-top z-top" style="top: -10px" size="xs">
+                    alle Visiten </q-chip>
                 </q-item>
+
+                
             </q-tab>
-            <q-tab v-for="(visit, ind_visit) in VISITS" :key="ind_visit + 'VISIT'"
+            <q-tab v-for="(visit, ind_visit) in VISITS" :key="ind_visit + 'VISIT'"  class="bg-orange-1 q-pa-xs"
                 :name="`visite_${visit.ENCOUNTER_NUM}`" @click="tabClicked(visit)" no-caps style="max-width: 110px">
                 <q-item class="shadow-1" style="max-width: 110px">
                     <q-item-section class="q-mt-xs">
