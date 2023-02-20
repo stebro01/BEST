@@ -1,0 +1,462 @@
+{
+    "title": "TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale",
+    "short_title": "twstrs",
+    "description": "Toronto Western Spasmodic Torticollis Rating Scale (TWSTRS)",
+    "coding": {
+        "system": "http://snomed.info/sct",
+        "code": "225398001",
+        "display": "TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale"
+    },
+    "manual": null,
+    "keywords": "dystonia, dystonie, torticollis",
+    "ref": "https://www.ncbi.nlm.nih.gov/books/NBK535053/",
+    "items": [
+        {
+            "label": "I Schweregrad (max. 35; Summe A-F)",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "A.) Maximale Deviation: Bewertung des maximalen Umfangs der Deviation durch Aufforderung des Patienten nicht gegen die abnorme Haltung zu arbeiten; Falls der Grad der Deviation zwischen zwei Scorepunkten liegt den höheren Grad wählen.",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "1.) Kopfrotation (Kopfdrehnung nach rechts oder links)",
+            "id": 1,
+            "coding": {
+                "display": "Kopfrotation",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "nicht vorhanden", "value": 0},
+                { "label": "leicht (1°-22°)", "value": 1 },
+                { "label": "mild (23°-45°)", "value": 2},
+                { "label": "mäßig (46°-67°)", "value": 3 },
+                { "label": "schwer (68°-90°)", "value": 4}
+            ]
+        },
+        {
+            "label": "2.) Laterocollis (Seitneige nach rechts oder links, Ausschluss der Schulterelevation).",
+            "id": 2,
+            "coding": {
+                "display": "Laterocollis",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "nicht vorhanden", "value": 0},
+                { "label": "mild (1°-15°)", "value": 1 },
+                { "label": "mäßig (16°-35°)", "value": 2},
+                { "label": "schwer (>35°)", "value": 3 }            ]
+        },
+        {
+            "label": "3.) Anterocollis/Retrocollis (a oder b)",
+            "id": 3,
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "3a) Antecollis",
+            "id": 31,
+            "coding": {
+                "display": "Antecollis",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "nicht vorhanden", "value": 0},
+                { "label": "gering (gering ausgeprägtes Abfallen des Kinns)", "value": 1 },
+                { "label": "mäßig (Kinn bis Hälfte zum Sternum)", "value": 2},
+                { "label": "schwer (Kinn am Sternum)", "value": 3 }            ]
+        },{
+            "label": "3b) Retrocollis",
+            "id": 32,
+            "coding": {
+                "display": "Retrocollis",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "nicht vorhanden", "value": 0},
+                { "label": "gering (gering ausgeprägte Anhebung des Kinns)", "value": 1 },
+                { "label": "mäßig (Kinn bis Hälfte zum Sternum)", "value": 2},
+                { "label": "schwer (Kopf maximal dorsal)", "value": 3 }            ]
+        },{
+            "label": "4) Lateral Shift (nach rechts oder links)",
+            "id": 4,
+            "coding": {
+                "display": "Lateral Shift",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "nicht vorhanden", "value": 0},
+                { "label": "vorhanden", "value": 1 }
+            ]
+        },
+        {
+            "label": "5) Sagittaler Shift (nach rechts oder links)",
+            "id": 5,
+            "coding": {
+                "display": "Sagittaler Shift",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "nicht vorhanden", "value": 0},
+                { "label": "vorhanden", "value": 1 }
+            ]
+        },
+        {
+            "label": "B) Zeitfaktor: Beurteilung des Zeitanteils und Ausprägung der Deviation, abgeschätzt durch den Verlauf der Untersuchung nach Beurteilung der max. Deviation (exklusive der Aufforderung nicht gegen die abnorme Haltung zu arbeiten)",
+            "id": 6,
+            "coding": {
+                "display": "Zeitfaktor_Deviation",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "Deviation nicht vorhanden", "value": 0},
+                { "label": "gelegentliche Deviation (<25% der Zeit) mit einer submaximalen Deviation", "value": 1 },
+                { "label": "gelegentliche Deviation (<25% der Zeit) mit der maximalen Deviation oder intermittierend (25%-50% der Zeit) mit einer submaximalen Deviation", "value": 2 },
+                { "label": "intermittierende Deviation (25%-50% der Zeit) mit der maximalen Deviation oder häufige Deviation (50%-75% der Zeit) mit einer submaximalen Deviation", "value": 3 },
+                { "label": "häufige Deviation (50%-75% der Zeit) mit der maximalen Deviation oder konstante Deviation (> 75% der Zeit) mit einer submaximalen Deviation", "value": 4 },
+                { "label": "konstante Deviation (> 75% der Zeit) mit der maximalen Deviation", "value": 5 }
+            ]
+        },
+        {
+            "label": "C) Effekt der antagonistischen Geste/Tricks",
+            "id": 7,
+            "coding": {
+                "display": "Effekt der Geste",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "komplette oder partielle Verbesserung durch ein oder mehrerer Gesten/Tricks", "value": 0},
+                { "label": "partielle oder nur limitierte Verbesserung durch Gesten/Tricks", "value": 1 },
+                { "label": "geringe oder keine Verbesserung durch Gesten/Tricks", "value": 2 }
+            ]
+        },
+        {
+            "label": "D) Schulter in elevations/anteriorer Fehlstellung",
+            "id": 8,
+            "coding": {
+                "display": "Effekt der Geste",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "nicht vorhanden", "value": 0},
+                { "label": "mild (1/3 des möglichen Bewegungsumfangs) und intermittierend oder konstant", "value": 1 },
+                { "label": "mäßig (1/3-2/3 des möglichen Bewegungsumfangs) und konstant (>75% der Zeit) oder schwer (>2/3 des möglichen Bewegungsumfangs) und intermittierend", "value": 2 },
+                { "label": "schwer und konstant", "value": 3 }
+            ]
+        },
+        {
+            "label": "E) Aktive Beweglichkeit (ohne Gebrauch von antagonistischen Gesten). Falls die Limitation in mehr als einer Ebene vorhanden ist, die Bewegungsebene mit der höchsten Ausprägung wählen",
+            "id": 9,
+            "coding": {
+                "display": "Effekt der Geste",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "vollständige Bewegung in die Gegenrichtung der Dystonie möglich", "value": 0},
+                { "label": "Bewegung über die Mittellinie in die Gegenrichtung der Dystonie möglich", "value": 1 },
+                { "label": "Bewegung bis zur Mittellinie in die Gegenrichtung der Dystonie möglich", "value": 2 },
+                { "label": "Bewegung in die Gegenrichtung der Dystonie erreicht nicht die Mittellinie", "value": 3 },
+                { "label": "kaum Bewegungen in die Gegenrichtung der Dystonie möglich", "value": 4 }
+            ]
+        },
+        {
+            "label": "F) Zeit (bis zu 60s) in der der Patient in der Lage ist mit einer Abweichung von bis zu 10° die Neutralposition ohne antagonistische Geste/Tricks zu halten (das Mittel aus zwei Versuchen).",
+            "id": 10,
+            "coding": {
+                "display": "Effekt der Geste",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": ">60 Sek", "value": 0},
+                { "label": "46-60 Sek", "value": 1 },
+                { "label": "31-45 Sek", "value": 2 },
+                { "label": "16-30 Sek", "value": 3 },
+                { "label": "<15 Sek", "value": 4 }
+            ]
+        },
+        {
+            "label": "II Aktivitätseinschränkung (max. 30, Summe aus A-F)",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "A) Arbeit (Beruf oder Hausarbeiten / Haushaltsarbeiten)",
+            "id": 11,
+            "coding": {
+                "display": "Arbeit",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "nicht schwierig", "value": 0},
+                { "label": "normale Arbeitserwartungen mit befriedigenden Leistungen bei normalem Arbeitsaufwand, jedoch mit einigen Beeinträchtigungen durch den Torticollis", "value": 1 },
+                { "label": "die meisten Aktivitäten sind unbeeinträchtigt durchführbar, ausgewählte Aktivitäten sehr schwierig und beeinträchtigt, aber immer noch mit einer befriedigenden Leistung durchführbar", "value": 2 },
+                { "label": "Arbeiten unter dem Niveau des normalen Arbeitsaufwandes, meiste Aktivitäten beeinträchtigt, jedoch alle durchführbar mit nicht mehr befriedigenden Leistungen in einigen Aktivitäten", "value": 3 },
+                { "label": "nicht imstande, ehrenamtlichen oder gewinnbringenden Arbeiten nachzugehen, jedoch immer noch in der Lage häuslichen Verpflichtungen befriedigend nachzugehen", "value": 4 },
+                { "label": "geringfügig bis nicht in der Lage, häuslichen Verpflichtungen nachzugehen", "value": 5 }
+            ]
+        },
+        {
+            "label": "B) Aktivitäten des täglichen Lebens (Essen, Anziehen oder Hygiene, inklusive Waschen, Rasieren, Schminken etc.).",
+            "id": 12,
+            "coding": {
+                "display": "ADL",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "keine Probleme mit jeglichen Aktivitäten", "value": 0},
+                { "label": "alle Aktivitäten unbeeinträchtigt, jedoch einige Einschränkungen durch den  Torticollis", "value": 1 },
+                { "label": "die meisten Aktivitäten sind unbeeinträchtigt, ausgewählte Aktivitäten sind sehr schwierig, aber immer noch durchführbar mit Hilfe einfacher Gesten/Tricks", "value": 2 },
+                { "label": "die meisten Aktivitäten sind erschwert und mühsam durchführbar, aber immer noch möglich, evtl. mit „extremen“ Gesten/Tricks.", "value": 3 },
+                { "label": "alle Aktivitäten beeinträchtigt, manche unmöglich oder nur mit Hilfe durchführbar", "value": 4 },
+                { "label": "abhängig von anderen in den meisten Aufgaben der Selbstpflege", "value": 5 }
+            ]
+        },
+        {
+            "label": "C) Autofahren",
+            "id": 13,
+            "coding": {
+                "display": "Autofahren",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "keine Schwierigkeiten (oder nie Auto gefahren).", "value": 0},
+                { "label": "unbeeinträchtigte Fähigkeit Auto zu fahren, aber Störung durch Dystonie", "value": 1 },
+                { "label": "unbeeinträchtigte Fähigkeit Auto zu fahren, jedoch durch Anwenden von Gesten (einschließlich Berühren oder Halten des Gesichts oder Halten des Kopfes entgegen der Dystonie), um Dystonie zu kontrollieren.", "value": 2 },
+                { "label": "nur kurze Distanzen fahrbar", "value": 3 },
+                { "label": "normalerweise Autofahren nicht möglich", "value": 4 },
+                { "label": "Unfähigkeit Auto zu fahren und auch als Beifahrer bei langen Strecken Autofahren nicht möglich", "value": 5 }
+            ]
+        },
+        {
+            "label": "D) Lesen",
+            "id": 14,
+            "coding": {
+                "display": "Lesen",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "keine Schwierigkeiten", "value": 0},
+                { "label": "unbeeinträchtigte Fähigkeit zu lesen in normaler Sitzposition, aber Störung durch Dystonie", "value": 1 },
+                { "label": "unbeeinträchtigte Fähigkeit zu lesen in normaler Sitzposition, jedoch nur durch Anwendung von Gesten, um Dystonie zu kontrollieren", "value": 2 },
+                { "label": "unbeeinträchtigte Fähigkeit zu lesen, es benötigt jedoch umfassende Maßnahmen, um die Dystonie zu kontrollieren oder ist nur fähig in einer nicht sitzenden Position zu lesen (liegend etc.).", "value": 3 },
+                { "label": "beeinträchtigte Fähigkeit zu lesen trotz Gesten", "value": 4 },
+                { "label": "unfähig mehr als ein paar Sätze zu lesen durch Dystonie", "value": 5 }
+            ]
+        },
+        {
+            "label": "E) Fernsehen",
+            "id": 15,
+            "coding": {
+                "display": "Fernsehen",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "keine Schwierigkeiten", "value": 0},
+                { "label": "unbeeinträchtigte Fähigkeit fernzusehen in einer normalen sitzenden Position, aber Störung durch Dystonie", "value": 1 },
+                { "label": "unbeeinträchtigte Fähigkeit fernzusehen in einer normalen sitzenden Position, jedoch nur durch Anwendung von Gesten, um Dystonie zu kontrollieren", "value": 2 },
+                { "label": "unbeeinträchtigte Fähigkeit fernzusehen, es benötigt jedoch umfassende Maßnahmen, um die Dystonie zu kontrollieren oder ist nur fähig in einer nicht sitzenden Position fernzusehen (liegend etc.).", "value": 3 },
+                { "label": "beeinträchtigte Fähigkeit fernzusehen trotz Gesten", "value": 4 },
+                { "label": "unfähig mehr als ein paar Minuten fernzusehen", "value": 5 }
+            ]
+        },
+        {
+            "label": "F) Aktivitäten außerhalb der Wohnung (Einkaufen, Spazieren, Kino, Essengehen und andere Freizeitaktivitäten).",
+            "id": 16,
+            "coding": {
+                "display": "Ausserhalb der Wohnung",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "keine Schwierigkeiten", "value": 0},
+                { "label": "unbeeinträchtigte Aktivitäten, aber Störung durch Dystonie", "value": 1 },
+                { "label": "unbeeinträchtigte Aktivitäten, jedoch benötigt es einfache Gesten, um dies durchzuführen", "value": 2 },
+                { "label": "Aktivitäten nur durch Mithilfe anderer durchführbar durch Dystonie", "value": 3 },
+                { "label": "beeinträchtige Aktivitäten außerhalb der Wohnung, einige Aktivitäten unmöglich oder aufgegeben durch Dystonie", "value": 4 },
+                { "label": "selten auch bei verpflichteten Aktivitäten außerhalb der Wohnung", "value": 5 }
+            ]
+        },
+        {
+            "label": "III Schmerz (max. 20, Summe aus A-C)",
+            "value": null,
+            "type": "separator",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "A) Schmerzgrad: Bewertung des Schweregrades der Nackenschmerzen durch die cervicale Dystonie innerhalb der letzten Woche auf einer Skala von 0-10, wobei 0 kein Schmerz und 10 den schlimmsten vorstellbaren Schmerz wiederspiegelt", 
+            "value": [],
+            "id": [17,18,19],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "kein Schmerz", "value": 0},
+                    {"label": "", "value": 2},
+                    {"label": "", "value": 3},
+                    {"label": "", "value": 4},
+                    {"label": "", "value": 5},
+                    {"label": "", "value": 6},
+                    {"label": "", "value": 7},
+                    {"label": "", "value": 8},
+                    {"label": "", "value": 9},
+                    {"label": "schlimmster Schmerz", "value": 10}
+                ],
+                "questions": [
+                    {"label": "Bester Wert", "tag": "familiaer_dinge", "id": 17},
+                    {"label": "Schlechtester Wert", "tag": "ereignisse", "id": 18},
+                    {"label": "Normaler Wert", "tag": "unterhaltungen", "id": 19}
+                ]
+            }
+        },
+        {
+            "label": "B) Schmerzdauer",
+            "id": 20,
+            "coding": {
+                "display": "Schmerz",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "keine", "value": 0},
+                { "label": "präsent in <10% der Zeit", "value": 1 },
+                { "label": "präsent in 10% - 25% der Zeit", "value": 2 },
+                { "label": "präsent in 26% - 50% der Zeit", "value": 3 },
+                { "label": "präsent in 51‘% - 75% der Zeit", "value": 4 },
+                { "label": "präsent in >75% der Zeit", "value": 5 }
+            ]
+        },{
+            "label": "C) Beeinträchtigung durch den Schmerz",
+            "id": 21,
+            "coding": {
+                "display": "Beeinträchtigung",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                { "label": "keine Beeinträchtigung oder Behinderung durch den Schmerz", "value": 0},
+                { "label": "Schmerz ist ziemlich störend, jedoch nicht beeinträchtigend.", "value": 1 },
+                { "label": "Schmerz ist definitiv beeinträchtigend für bestimmte Aufgaben, jedoch nicht der Hauptgrund für die meisten Beeinträchtigungen.", "value": 2 },
+                { "label": "Schmerz ist der Grund für manche (weniger als die Hälfte), jedoch nicht alle Beeinträchtigungen", "value": 3 },
+                { "label": "Schmerz ist der Hauptgrund für Schwierigkeiten bei Aktivitäten; abgesehen davon ist die abnorme Kopfposition auch ein Grund für manche (weniger als die Hälfte) Beeinträchtigungen.", "value": 4 },
+                { "label": "Schmerz ist der Hauptgrund für die Beeinträchtigungen, ohne Schmerz könnten die meisten beeinträchtigten Aktivitäten ziemlich befriedigend ausgeübt werden trotz abnormer Kopfposition.", "value": 5 }
+            ]
+        }
+    ],
+    "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [1,2,31,32,4,5,6,7,8,9,10,11,12,13,14,15,16,20,21], "method":"raw"},
+            {"id": [17,18,19], "method": "calc", "value": "(A[0] + A[1] + A[2] * 2) / 4", "label": "Schmerzgrad"}
+        ],
+        "domaine":[
+            {"label": "I_Schweregrad", "id": [1,2,31,32,4,5,6,7,8,9,10], "method": "sum"},
+            {"label": "II_Aktivitaetseinschraenkung", "id": [11,12,13,14,15,16], "method": "sum"},
+            {"label": "III_Schmerz ", "id": [20,21, "Schmerzgrad"], "method": "sum"},
+            {"label": "sum", "id": ["I_Schweregrad","II_Aktivitaetseinschraenkung", "III_Schmerz"], "method": "sum",
+            "coding": { "display" : "TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale", "code" : "SCTID: 225398001", "system" : "http://snomed.info/sct"}}
+        ]
+    }
+}

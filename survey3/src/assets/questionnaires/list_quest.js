@@ -50,6 +50,7 @@ const quest = [
   "sf36",
   "shapsd",
   "sus",
+  "twstrs",
   "updrs_1",
   "updrs_2",
   "updrs_3",
