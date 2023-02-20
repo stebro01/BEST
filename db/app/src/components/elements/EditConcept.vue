@@ -30,7 +30,7 @@
             <tr>
               <td>CONCEPT_CD</td>
               <td class="bg-grey-2 row">
-                <div class="col relative-position"><span class="absolute-center">{{ localData.SOURCESYSTEM_CD }}:</span>
+                <div class="col relative-position"><span class="absolute-center"><span v-if="localData.SOURCESYSTEM_CD=== 'SNOMED-CT'">SCTID</span><span v-else>{{ localData.SOURCESYSTEM_CD }}</span>:</span>
                 </div>
                 <div class="col-8"><q-input dense v-model="localData.CONCEPT_CD" @blur="something_changed = true" /></div>
               </td>
@@ -250,7 +250,8 @@ export default {
       result.UPDATE_DATE = datenow_isostring()
       result.CONCEPT_PATH = `${result.CONCEPT_PATH}\\${result.CONCEPT_CD}`
       result.CONCEPT_PATH = result.CONCEPT_PATH.replace(/\\\\/g,'\\');
-      result.CONCEPT_CD = `${result.SOURCESYSTEM_CD}: ${result.CONCEPT_CD }`
+      if (result.SOURCESYSTEM_CD !== 'SNOMED-CT') result.CONCEPT_CD = `${result.SOURCESYSTEM_CD}: ${result.CONCEPT_CD }`
+      else result.CONCEPT_CD = `SCTID: ${result.CONCEPT_CD }`
       Object.keys(result).forEach(r => {
         if (result[r] === null || result[r] === 'null') result[r] = 'NULL'
       })
