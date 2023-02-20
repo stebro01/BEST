@@ -67,6 +67,16 @@ export async function resetDatabase(dbman, readFile, PATH ) {
         promises.push(dbman.run(sql_query.query))
     })
     await Promise.all(promises)
+
+    // CQL_FACT
+    const CQL_FACT = readFile(PATH.CQL_FACT, 'utf-8')
+    const IMPORTED_CQL_FACT = csvJSON(CQL_FACT, ';')
+    promises = []
+    IMPORTED_CQL_FACT.forEach(item => {
+        let sql_query = SCHEMES.SCHEME_CQL_FACT.create(item)
+        promises.push(dbman.run(sql_query.query))
+    })
+    await Promise.all(promises)
     
     
     // VIEW patient_observations

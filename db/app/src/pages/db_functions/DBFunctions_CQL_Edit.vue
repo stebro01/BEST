@@ -10,7 +10,7 @@
       <template v-slot:main>
         <!-- TABLE -->
         <div class="row  q-mt-md justify-center ">
-          <q-table :rows="localData" :columns="columns" :filter="filter" row-key="CQL_ID" selection="single"
+          <q-table dense :rows="localData" :columns="columns" :filter="filter" row-key="CQL_ID" selection="single"
             v-model:selected="selected">
             <!-- OPTIONS -->
             <template v-slot:top>

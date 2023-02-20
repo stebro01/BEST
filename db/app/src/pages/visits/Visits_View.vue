@@ -77,7 +77,7 @@ export default {
         // {name: 'VALTYPE_CD', field: 'VALTYPE_CD', label: 'Typ', align: 'center'},
         {name: 'TVAL_CHAR', field: 'TVAL_CHAR', label: 'Wert', align: 'center', style: 'max-width: 200px; overflow: hidden'},
         // {name: 'NVAL_NUM', field: 'NVAL_NUM', label: 'Wert(N)', align: 'center'},
-        {name: 'UNIT_CD', field: 'UNIT_CD', label: 'Einheit', align: 'center'},
+        {name: 'UNIT_CD', field: 'UNIT_CD', label: 'Einheit', align: 'center', style: 'max-width: 50px; overflow: hidden'},
         {name: 'OBSERVATION_BLOB', field: 'OBSERVATION_BLOB', label: 'Beschr.', style: 'max-width: 100px', align: 'center'},
         {name: 'START_DATE', field: 'START_DATE', label: 'Datum', sortable: true, align: 'center', style: 'max-width: 50px; overflow: hidden'},
       ],
@@ -135,6 +135,7 @@ export default {
         this.rows.forEach(r => {
           if (r.CONCEPT_NAME_CHAR) r.CONCEPT_CD = r.CONCEPT_NAME_CHAR
           if (r.TVAL_RESOLVED) r.TVAL_CHAR = r.TVAL_RESOLVED
+          if (r.UNIT_RESOLVED) r.UNIT_CD = r.UNIT_RESOLVED
           if (r.NVAL_NUM || r.NVAL_NUM === 0) r.TVAL_CHAR = r.NVAL_NUM
           if (r.OBSERVATION_BLOB && r.OBSERVATION_BLOB.indexOf('resourceType') > 0) r.OBSERVATION_BLOB = 'surveyBEST'
         })
