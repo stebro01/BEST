@@ -240,13 +240,15 @@ export const  resetDB = async ({commit, state}, payload) => {
     commit('LOG', {method: 'ImportObservation->getDistinctPatientList', data: payload})
     if (!payload || payload.length < 1) throw(error_codes.invalid_payload)
 
-    var SQL_STATEMENT = 'SELECT DISTINCT patient_observations.CONCEPT_CD as CONCEPT_CD, patient_observations.CONCEPT_NAME_CHAR as CONCEPT_NAME_CHAR FROM patient_observations WHERE'
+    var SQL_STATEMENT = 'SELECT DISTINCT patient_observations.CONCEPT_CD as CONCEPT_CD, patient_observations.CONCEPT_NAME_CHAR as CONCEPT_NAME_CHAR, CONCEPT_DIMENSION.CONCEPT_PATH as CONCEPT_PATH FROM patient_observations  LEFT JOIN CONCEPT_DIMENSION ON CONCEPT_DIMENSION.CONCEPT_CD = patient_observations.CONCEPT_CD WHERE'
     let cc = 0
     payload.forEach( p => {        
         cc++
         if (cc === 1) SQL_STATEMENT = SQL_STATEMENT + ` patient_observations.PATIENT_NUM=${p.PATIENT_NUM}`
         else  SQL_STATEMENT = SQL_STATEMENT + ` OR patient_observations.PATIENT_NUM=${p.PATIENT_NUM}`
     })
+
+    SQL_STATEMENT += ' ORDER BY CONCEPT_PATH'
 
     const VIEW_OBSERVATION = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
     const res = await VIEW_OBSERVATION.run_query(SQL_STATEMENT)

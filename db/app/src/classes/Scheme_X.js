@@ -120,6 +120,9 @@ export class Scheme_X {
             TABLE_NAME = this._VIEW_NAME
             if (payload.USER_ID) EL += ` AND \"USER_ID\" = ${payload.USER_ID}` //ADDED FOR USER_MANAGEMENT
         }
+
+        if (payload._sort) EL += ` ORDER BY \"${payload._sort}\"`
+
         if (EL === '') return {query: undefined, error: error_codes.invalid_payload}
         return {query: `SELECT * from ${TABLE_NAME} WHERE ${EL}`, error: undefined}
 

@@ -159,7 +159,7 @@ export default {
   methods: {
     loadPatient() {
       //load patients
-      this.$store.dispatch('searchDB', { query_string: { PATIENT_NUM: 0, _greater: true, _view: true }, table: 'PATIENT_DIMENSION' })
+      this.$store.dispatch('searchDB', { query_string: { PATIENT_NUM: 0, _greater: true, _view: true, _sort: 'PATIENT_CD' }, table: 'PATIENT_DIMENSION' })
         .then(res => {
           this.results = res
           this.results.forEach(e => {
@@ -185,7 +185,7 @@ export default {
       const keys = Object.keys(this.selected)
       var PATIENTS = []
       keys.forEach(el => {
-        if (this.selected[el].selected) PATIENTS.push({PATIENT_NUM : this.selected[el].PATIENT_NUM})
+        if (this.selected[el].selected) PATIENTS.push({PATIENT_NUM : this.selected[el].PATIENT_NUM, PATIENT_CD: this.selected[el].PATIENT_CD})
       })
       return PATIENTS
     },

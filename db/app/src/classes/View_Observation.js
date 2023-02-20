@@ -113,9 +113,22 @@ export class View_Observation extends View_X {
                 //build a list of all concepts
                 let obj = concepts.find(el => el.CONCEPT_CD === d.CONCEPT_CD)
                 let include_concept = EXCLUDE_CONCEPTS.find(el => el.CONCEPT_CD === d.CONCEPT_CD)
-                if (!obj && (EXCLUDE_CONCEPTS.length === 0 || include_concept)) concepts.push({CONCEPT_CD: d.CONCEPT_CD, CONCEPT_NAME_CHAR: d.CONCEPT_NAME_CHAR, UNIT_CD: d.UNIT_CD, VALTYPE_CD: d.VALTYPE_CD})
+                if (!obj && (EXCLUDE_CONCEPTS.length === 0 || include_concept)) {
+                    if (include_concept) concepts.push({CONCEPT_CD: d.CONCEPT_CD, CONCEPT_NAME_CHAR: d.CONCEPT_NAME_CHAR, UNIT_CD: d.UNIT_CD, VALTYPE_CD: d.VALTYPE_CD, CONCEPT_PATH: include_concept.CONCEPT_PATH})
+                    else concepts.push({CONCEPT_CD: d.CONCEPT_CD, CONCEPT_NAME_CHAR: d.CONCEPT_NAME_CHAR, UNIT_CD: d.UNIT_CD, VALTYPE_CD: d.VALTYPE_CD})
+                }
             })
         }
+
+        // SORTY BY CONCEPT_PATH
+        concepts = concepts.sort((a, b) => {
+            const nameA = a.CONCEPT_PATH.toUpperCase();
+            const nameB = b.CONCEPT_PATH.toUpperCase();
+            if (nameA < nameB) return -1
+            if (nameA > nameB) return 1
+            return 0;
+          });
+
         // console.log('DATEN:', data)
         var DATA = undefined
         if (mode === supported_modes.csv) DATA = exportCSVTable(data, concepts)
