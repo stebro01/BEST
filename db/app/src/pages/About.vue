@@ -17,7 +17,7 @@
           </div>
 
           <div>
-            <span class="text-h6">Verwendete Ressourcen:</span>
+            <div class="text-h6 q-mt-md">Verwendete Ressourcen:</div>
             <q-list dense style="max-width: 600px">
               <q-item v-for="(item, ind) in RESSOURCES" :key="ind + 'feature'">
                 <q-item-section side class="cursor-pointer">
@@ -33,7 +33,7 @@
               </q-item>
             </q-list>
           </div>
-          <span class="text-h6">Features</span>
+          <div class="text-h6 q-mt-md">Features</div>
           <div>
             <q-list dense style="max-width: 600px">
               <q-item v-for="(item, ind) in FEATURES" :key="ind + 'feature'">
@@ -43,6 +43,20 @@
                 </q-item-section>
                 <q-item-section>
                   {{ item.label }}
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
+
+          <div class="text-h6 q-mt-md">Changes</div>
+          <div>
+            <q-list dense style="max-width: 600px">
+              <q-item v-for="(item, ind) in CHANGELOG" :key="ind + 'feature'">
+                <q-item-section side>
+                  <q-icon name="info" />
+                </q-item-section>
+                <q-item-section>
+                  {{ item.value }}: {{ item.label }}
                 </q-item-section>
               </q-item>
             </q-list>
@@ -74,6 +88,10 @@ export default {
 
     RESSOURCES() {
       return this.$store.getters.ENV.ressources;
+    },
+
+    CHANGELOG() {
+      return this.$store.getters.ENV.app.changelog;
     },
   },
 

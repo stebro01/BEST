@@ -31,7 +31,8 @@ export function exportCSVTable(data, concepts) {
   //third LINE: VALTYPE_CD
   var thirdline = ['UNIT_CD', '', '', '', '', '', '', '']
   for (let c of concepts) {
-    if (c.UNIT_CD) thirdline.push(c.UNIT_CD)
+    if (c.UNIT_RESOLVED) thirdline.push(c.UNIT_RESOLVED)
+    else if (c.UNIT_CD) thirdline.push(c.UNIT_CD)
     else thirdline.push('')
   }
   DATA.push(thirdline.join(';'))
