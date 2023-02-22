@@ -31,6 +31,12 @@
         <q-item-section>Daten importieren</q-item-section>
       </q-item>
 
+      <!-- EXPORT BUTTON -->
+      <q-item v-if="show_export" clickable v-close-popup @click="$emit('export')">
+        <q-item-section avatar><q-icon name="file_download" /></q-item-section>
+        <q-item-section>Daten exportieren</q-item-section>
+      </q-item>
+
     </q-list>
   </q-btn-dropdown>
 </template>
@@ -39,7 +45,7 @@
 export default {
   name: 'BottomDropDown',
 
-  props: ['show_add', 'show_remove', 'show_edit', 'show_import', 'show_play_playlist'],
+  props: ['show_add', 'show_remove', 'show_edit', 'show_import', 'show_export', 'show_play_playlist'],
 
   components: {},
 

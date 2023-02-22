@@ -28,6 +28,11 @@ export default {
       results: null
     }
   },
+
+  mounted() {
+    console.log(this.QUEST.cda.text.div)
+  },  
+
   watch: {
     state(val) {
       if (val === false) this.$emit('closeClick')
@@ -68,9 +73,15 @@ export default {
 
 .my-table >>> td {
   border: 0.8px solid grey;
-
 }
 
-  
+
+.my-table >>> table {
+  table-layout: auto;
+  width: 100%; 
+  overflow: auto;
+  /* word-wrap: break-word; */
+  ;
+}
 
 </style>

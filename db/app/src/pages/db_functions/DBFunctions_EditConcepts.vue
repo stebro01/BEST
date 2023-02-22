@@ -1,28 +1,11 @@
 <template>
   <q-page>
-    <MainSlot>
+    <MainSlot :no_options="true" :no_footer="true">
      <!-- HEADING -->
      <template v-slot:header>
         <HEADING :title="$store.getters.TEXT.page.concept_edit.title" :img="'concept-import-logo.png'" :icon="'format_list_bulleted'"/>
       </template>
 
-      <!-- OPTIONS -->
-      <template v-slot:options_left>
-        <q-btn icon="add" no-caps class="my-btn" rounded align="around" @click="$router.push({name: 'DBFunctions_ImportConcepts'})">import <q-tooltip>Importiert Konzepte von einem CSV / Excel-File</q-tooltip></q-btn>
-      </template>
-      <template v-slot:options_right>
-        <div style="position: relative">
-            <FILTER_BOX :filter="filter" @update="filter = $event"/>
-          <div class="q-gutter-xs z-top" style="position: absolute; right: 0px"> 
-            <q-checkbox dense v-model="filter_options.T" label="T" @blur="valtypeSelected('T')"/>
-            <q-checkbox dense v-model="filter_options.N" label="N" @blur="valtypeSelected('N')" />
-            <q-checkbox dense v-model="filter_options.S" label="S" @blur="valtypeSelected('S')" />
-            <q-checkbox dense v-model="filter_options.F" label="F" @blur="valtypeSelected('F')"/>
-            <q-checkbox dense v-model="filter_options.A" label="A" @blur="valtypeSelected('A')"/>
-            <q-tooltip>VALTYPE_CD: T-Text, N-Number, S-Selection, F-Finding, A-Answer</q-tooltip>
-          </div>
-        </div>
-        </template>
       <!-- MAIN -->
       <template v-slot:main>
       <q-table
@@ -35,30 +18,44 @@
         selection="multiple"
         v-model:selected="selected"
       >
+         <!-- OPTIONS -->
+         <template v-slot:top>
+              <BOTTOM_DROPDOWN 
+                :show_import="true" @import="$router.push({name: 'DBFunctions_ImportConcepts'})"
+                :show_add="selected.length === 0" @add="showAddDialog()"
+                :show_edit="selected.length === 1" @edit="editConcept(selected[0])"
+                :show_remove="selected.length > 0" @remove="deleteConcept(selected)"
+                :show_export="selected.length > 0" @export="exportConcept(selected)"
+              />
+              <q-space />
+              <div style="position: relative; width: 200px; height: 60px">
+            <FILTER_BOX :filter="filter" @update="filter = $event"/>
+          <div class="q-gutter-xs z-top" style="position: absolute; right: 0px"> 
+            <q-checkbox dense v-model="filter_options.T" label="T" @blur="valtypeSelected('T')"/>
+            <q-checkbox dense v-model="filter_options.N" label="N" @blur="valtypeSelected('N')" />
+            <q-checkbox dense v-model="filter_options.S" label="S" @blur="valtypeSelected('S')" />
+            <q-checkbox dense v-model="filter_options.F" label="F" @blur="valtypeSelected('F')"/>
+            <q-checkbox dense v-model="filter_options.A" label="A" @blur="valtypeSelected('A')"/>
+            <q-tooltip>VALTYPE_CD: T-Text, N-Number, S-Selection, F-Finding, A-Answer</q-tooltip>
+          </div>
+        </div>
+            </template>
       
       </q-table>
       </template>
 
-      <!-- FOOTER -->
-      <template v-slot:footer>
-      <BOTTOM_BUTTONS v-if="selected.length > 0" 
-        :show_edit="selected.length === 1" :show_delete="true" :show_export="true"
-        @edit="editConcept(selected[0])"
-        @delete="deleteConcept(selected)"
-        @export="exportConcept(selected)"
-      />
-      </template>
     </MainSlot>
 
     <!-- EDIT CONCEPT -->
     <EDIT_CONCEPT v-if="show_edit_concept" :item="selected[0]" :active="show_edit_concept" @close="show_edit_concept = false; selected = []" @save="updateCONCEPT($event)"/>
+    <!--  ADD CONCEPT -->
+    <EDIT_CONCEPT v-if="show_add_concept" :item="show_add_concept_data" :active="show_add_concept" @close="saveNewConcept(undefined)" @save="saveNewConcept($event)"/>
   </q-page>
 </template>
 
 <script>
 
-
-import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
+import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import MainSlot from 'src/components/MainSlot.vue'
@@ -67,7 +64,7 @@ import EDIT_CONCEPT from 'src/components/elements/EditConcept.vue'
 export default {
   name: 'DBFunctions_EditConcepts',
 
-  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, MainSlot, EDIT_CONCEPT },
+  components: { BOTTOM_DROPDOWN, HEADING, FILTER_BOX, MainSlot, EDIT_CONCEPT },
 
   data() {
     return {
@@ -75,7 +72,9 @@ export default {
       filter: undefined,
       filter_options: {T: true, N: true, S: true, F: true, A: false},
       selected: [],
-      show_edit_concept: false
+      show_edit_concept: false,
+      show_add_concept: false,
+      show_add_concept_data: {}
     }
   },
 
@@ -120,9 +119,40 @@ export default {
       this.show_edit_concept = true
     },
 
+    showAddDialog() {
+      this.show_add_concept_data = {}
+      this.show_add_concept = true
+    },
+
+    async saveNewConcept(val) {
+      if (!val) {this.show_add_concept = false; this.show_add_concept_data = {}; return}
+      const CHECK_DATA = ["SOURCESYSTEM_CD", "VALTYPE_CD", "NAME_CHAR"]
+      const empty_fields = []
+      CHECK_DATA.forEach(f => {
+        if (!val[f]) empty_fields.push(f)
+      })
+      if (val.CONCEPT_CD.includes('undefined')) empty_fields.push('CONCEPT_CD')
+      if (empty_fields.length > 0) return this.$q.notify(`Felder fehlen noch: ${empty_fields}`)
+
+      const res_concept = await this.$store.dispatch('searchDB', {query_string: {CONCEPT_CD: val.CONCEPT_CD}, table: 'CONCEPT_DIMENSION'})
+      if (res_concept.length > 0) return this.$q.notify(`CONCEPT_CD: <<${val.CONCEPT_CD}>> existiert schon`)
+      // else
+      const res_add_concept = await this.$store.dispatch('addDB', {table: 'CONCEPT_DIMENSION', query_string: val})
+      if (res_add_concept) {
+        if (res_add_concept.CONCEPT_CD === undefined) return this.$q.notify('Etwas ging schief. DB nicht erreichbar')
+        else {
+          this.$q.notify('Aktion erfolgreich')
+          this.loadData()
+        }
+      }
+
+      // ENDE
+      this.show_add_concept = false; this.show_add_concept_data = {}; 
+      return
+    },
+
     updateCONCEPT(val) {
       if (!val) return
-      console.log(val)
       this.$store.dispatch('searchDB', {query_string: {CONCEPT_CD: val.CONCEPT_CD}, table: 'CONCEPT_DIMENSION'})
       .then(res_concept => {
         if (res_concept.length > 0) {

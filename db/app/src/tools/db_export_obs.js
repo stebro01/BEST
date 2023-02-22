@@ -48,10 +48,13 @@ export function exportCSVTable(data, concepts) {
   const PATIENTS = Array.from(new Set(data.map(item => item.PATIENT_NUM)))
   for (let PATIENT_NUM of PATIENTS) {
     let DATA_PATIENT = data.filter(el => el.PATIENT_NUM === PATIENT_NUM)
+    
     // SORT BY DATE
     DATA_PATIENT = DATA_PATIENT.sort((a, b) => {
-      const nameA = a.START_DATE.toUpperCase();
-      const nameB = b.START_DATE.toUpperCase();
+      var nameA = ''
+      var nameB = ''
+      if (a.START_DATE) nameA = a.START_DATE.toUpperCase()
+      if (b.START_DATE) nameB = b.START_DATE.toUpperCase()
     
       if (nameA < nameB) {
         return -1;
@@ -62,6 +65,7 @@ export function exportCSVTable(data, concepts) {
       return 0;
     });
 
+    DATA_PATIENT = DATA_PATIENT.filter(el => el.PROVIDER_ID !== '<SYSTEM>')
     let VISTS_PATIENT = Array.from(new Set(DATA_PATIENT.map(item => item.ENCOUNTER_NUM)))
     // console.log('bearbeite: PATIENT_NUM = ', PATIENT_NUM)
     for (let ENCOUNTER_NUM of VISTS_PATIENT) {
@@ -85,6 +89,8 @@ export function exportCSVTable(data, concepts) {
       })
       DATA.push(ACTIVE_LINE.join(';'))
     }
+
+    
   }
 
   return DATA.join('\n')

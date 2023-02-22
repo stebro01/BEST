@@ -65,6 +65,7 @@ export default {
       const status = this.QUESTMAN.next()
       if (!status) return
     },
+    
     gotoselect() {
       this.$router.push('/select')
     },

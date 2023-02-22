@@ -62,6 +62,8 @@
                 class="row justify-center"
               >
                 <!-- PATIENT_CD -->
+
+                <div class="row">
                 <q-input
                   dense
                   lazy-rules
@@ -75,25 +77,19 @@
                     <q-icon name="close" @click="PATIENT.PATIENT_CD = null" />
                   </template>
                 </q-input>
+                  <div class="float float-right">
+                    <q-btn flat round icon="search" type="submit" />
+                  </div>
+
+              </div>
 
                 <!-- PATIENT_NUM -->
-                <q-input
-                  dense
-                  lazy-rules
-                  style="width: 250px"
-                  v-model="PATIENT.PATIENT_NUM"
-                  type="number"
-                  input-class="text-center"
-                  label="lfd. Nummer (PATIENT_NUM)"
-                >
-                  <template v-slot:append>
-                    <q-icon name="close" @click="PATIENT.PATIENT_NUM = null" />
-                  </template>
-                </q-input>
-                <!-- BUTTONS -->
-                <div class="absolute-bottom-right">
-                  <q-btn flat round icon="search" type="submit" />
+                
+                <div>
+                  <q-btn rounded no-caps class="q-mt-md" @click="showAllPatients()">Alle Patienten anzeigen </q-btn>
                 </div>
+                <!-- BUTTONS -->
+               
               </q-form>
             </q-card-section>
           </q-card>
@@ -187,12 +183,16 @@ export default {
 
   methods: {
     //select a Patient
+    showAllPatients() {
+      this.selectPatient({PATIENT_NUM: 0})
+    },
+
     selectPatient(PATIENT) {
       if (!PATIENT) return;
       var query_string = undefined;
       if (PATIENT.PATIENT_CD)
         query_string = { PATIENT_CD: PATIENT.PATIENT_CD, _like: true };
-      else if (PATIENT.PATIENT_NUM) {
+      else if (PATIENT.PATIENT_NUM > -1) {
         query_string = { PATIENT_NUM: PATIENT.PATIENT_NUM };
         if (PATIENT.PATIENT_NUM == 0)
           query_string = { ...query_string, _greater: true, _view: true };

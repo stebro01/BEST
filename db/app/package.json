@@ -31,6 +31,7 @@
     "core-js": "^3.6.5",
     "cql-execution": "^2.4.4",
     "crypto-js": "^4.1.1",
+    "html2pdf.js": "^0.10.1",
     "human-readable-ids": "^1.0.4",
     "jsrsasign": "^10.6.1",
     "quasar": "^2.6.0",

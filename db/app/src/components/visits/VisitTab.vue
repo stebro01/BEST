@@ -1,8 +1,8 @@
 <template>
     <q-toolbar v-if="VISITS.length >= 0" class="bg-orange-1 shadow-1 my-list-item">
         <q-tabs v-model="tab" inline-label outside-arrows mobile-arrows active-color="primary" indicator-color="primary"
-            style="width: 90%" dense class="bg-orange-1">
-            <q-tab class="shadow-1 q-pa-xs" name="all" @click="tabClicked('all')" no-caps style="max-width: 80px">
+            style="width: 90%; height: 70px;" dense class="bg-orange-1">
+            <q-tab class="shadow-1 q-pa-xs" name="all" @click="tabClicked('all')" no-caps style="max-width: 80px; height: 65px">
                 <q-item class="shadow-1 fit">
                     <q-icon name="apps" size="md" class="q-mt-md"></q-icon>
                     <q-chip v-if="tab === 'all'" class="my-visit-color  absolute-top z-top" style="top: -10px"
@@ -14,14 +14,13 @@
                 </q-item>
             </q-tab>
             <q-tab v-for="(visit, ind_visit) in VISITS" :key="ind_visit + 'VISIT'" class="bg-orange-1 q-pa-xs"
-                :name="`visite_${visit.ENCOUNTER_NUM}`" @click="tabClicked(visit)" no-caps style="max-width: 110px">
+                :name="`visite_${visit.ENCOUNTER_NUM}`" @click="tabClicked(visit)" no-caps style="max-width: 110px; height: 65px">
                 <q-item class="shadow-1" style="max-width: 110px">
                     <q-item-section class="q-mt-xs">
                         <q-item-label caption>
                             <RESOLVE_CONCEPT :item="visit.ACTIVE_STATUS_CD" /> <span>.</span>
                         </q-item-label>
                         <q-item-label style="overflow: hidden"> {{ visit.START_DATE }}</q-item-label>
-                        <q-item-label caption>(ID {{ visit.ENCOUNTER_NUM }})</q-item-label>
                         <q-chip v-if="tab === `visite_${visit.ENCOUNTER_NUM}`"
                             class="my-visit-color q-px-md absolute-top z-top" style="top: -10px" size="xs">Visiten-Tab:
                             {{ ind_visit + 1}}</q-chip>
@@ -109,7 +108,7 @@ export default {
 
         loadVisits() {
             //load visits
-            this.$store.dispatch('searchDB', { query_string: { PATIENT_NUM: this.PATIENT_NUM }, table: "VISIT_DIMENSION" })
+            this.$store.dispatch('searchDB', { query_string: { PATIENT_NUM: this.PATIENT_NUM, _sort: "START_DATE" }, table: "VISIT_DIMENSION" })
                 .then(res => {
                     this.VISITS = []
                     res.forEach(r => {

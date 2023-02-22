@@ -4,7 +4,7 @@
     "description": "Toronto Western Spasmodic Torticollis Rating Scale (TWSTRS)",
     "coding": {
         "system": "http://snomed.info/sct",
-        "code": "225398001",
+        "code": "SCTID: 225398001",
         "display": "TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale"
     },
     "manual": null,
@@ -420,7 +420,7 @@
                 { "label": "präsent in <10% der Zeit", "value": 1 },
                 { "label": "präsent in 10% - 25% der Zeit", "value": 2 },
                 { "label": "präsent in 26% - 50% der Zeit", "value": 3 },
-                { "label": "präsent in 51‘% - 75% der Zeit", "value": 4 },
+                { "label": "präsent in 51% - 75% der Zeit", "value": 4 },
                 { "label": "präsent in >75% der Zeit", "value": 5 }
             ]
         },{
@@ -456,7 +456,7 @@
             {"label": "II_Aktivitaetseinschraenkung", "id": [11,12,13,14,15,16], "method": "sum"},
             {"label": "III_Schmerz ", "id": [20,21, "Schmerzgrad"], "method": "sum"},
             {"label": "sum", "id": ["I_Schweregrad","II_Aktivitaetseinschraenkung", "III_Schmerz"], "method": "sum",
-            "coding": { "display" : "TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale", "code" : "SCTID: 225398001", "system" : "http://snomed.info/sct"}}
+            "coding": { "display" : "TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale", "code" : "CUSTOM: TWSTRS", "system" : "CUSTOM"}}
         ]
     }
 }

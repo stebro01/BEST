@@ -20,16 +20,20 @@
              
             </td>
             <td class="text-center bg-grey-3" >
-              <span v-if="PATIENT_DATA[el] && PATIENT_DATA[el].label">{{PATIENT_DATA[el].label}}</span>
+              <!-- TEXTEDIT -->
+              <span dense v-if="['PATIENT_BLOB'].includes(el)">
+                  <q-input input-class="text-caption" input-style="height:50px" filled dense v-model="this.patient[el]"  type="textarea" lazy-rules @blur="dataChanged()"></q-input>
+               </span>
+              <span v-else-if="PATIENT_DATA[el] && PATIENT_DATA[el].label">{{PATIENT_DATA[el].label}}</span>
               <span v-else>{{PATIENT_DATA[el]}}</span>
             </td>
 
             <!-- EDIT -->
             <td>
-               <!-- TEXTEDIT -->
-              <span v-if="['PATIENT_BLOB', 'STATECITYZIP_PATH', 'PATIENT_CD'].includes(el)" class="cursor-pointer"><q-icon class="q-ml-sm" size="xs" name="edit" />
+               
+              <span v-if="['STATECITYZIP_PATH', 'PATIENT_CD'].includes(el)" class="cursor-pointer"><q-icon class="q-ml-sm" size="xs" name="edit" />
                  <q-popup-edit v-model="this.patient[el]" buttons v-slot="scope">
-                  <q-input v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set" @change="dataChanged()"/>
+                  <q-input  v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set" @change="dataChanged()"/>
                 </q-popup-edit>
               </span>
               <!-- NUMBER -->
@@ -61,7 +65,7 @@
     </q-markup-table>
 
     <div class="q-mt-xl">
-          <q-btn-dropdown v-if="MORE_PROPS && MORE_PROPS.length > 0" color="primary" label="Mehr Eigenschaften">
+          <q-btn-dropdown v-if="MORE_PROPS && MORE_PROPS.length > 0" no-caps color="primary" label="Patientensensible Daten">
           <q-list>
             <q-item v-for="(el, ind) in MORE_PROPS" :key="ind+'props'"
               clickable v-close-popup @click="onMorePropsClick(el)">
@@ -131,7 +135,7 @@ export default {
       options: {},
       change_detected: false, 
       SCHEME_PATIENT_DIMENSION: SCHEME_PATIENT_DIMENSION,
-      RELABEL: {PATIENT_CD: 'Code', SEX_CD: 'Geschlecht', BIRTH_DATE: 'Geb.Datum', DEATH_DATE: 'Todesdatum', VITAL_STATUS_CD: 'Vitalstatus', AGE_IN_YEARS: 'Alter', LANGUAGE_CD: 'Sprache', RACE_CD: 'Ethnische Herkunft', MARITAL_STATUS_CD: 'Status', RELIGION_CD: 'Religion', STATECITYZIP_PATH: 'PLZ', PATIENT_BLOB: 'Beschreibung', SOURCESYSTEM_CD: 'Codierung'},
+      RELABEL: {PATIENT_CD: 'Code', SEX_CD: 'Geschlecht', BIRTH_DATE: 'Geb.Datum', DEATH_DATE: 'Todesdatum', VITAL_STATUS_CD: 'Vitalstatus', AGE_IN_YEARS: 'Alter', LANGUAGE_CD: 'Muttersprache', RACE_CD: 'Ethnische Herkunft', MARITAL_STATUS_CD: 'Status', RELIGION_CD: 'Religion', STATECITYZIP_PATH: 'PLZ', PATIENT_BLOB: 'Beschreibung', SOURCESYSTEM_CD: 'Codierung'},
       MORE_PROPS: [{label: 'Name', value: 'SCTID: 371484003', data: undefined}, {label: 'Adresse', value: 'SCTID: 397635003', data: undefined}, {label: 'Hospital ID', value: 'SCTID: 184107009', data: undefined}],
       MORE_PROPS_SELECTED: [], 
       HIDDEN_ENCOUNTER: undefined

@@ -2,6 +2,7 @@
     <q-page data-cy="page_finished" class="flex flex-center column">
         <div class="text-h6 text-center q-pa-xl">
             VIELEN DANK, dass Sie an dem Fragebogen teilgenommen haben.
+            <q-icon class="cursor-pointer" color="grey-8" name="list_alt" @click="$router.push({name: 'storage'})"><q-tooltip>Zu den gespeicherten Fragebogendaten wechseln</q-tooltip></q-icon>
         </div>
 
         <div v-if="$store.state.EXPORT_DATA.length>0">
@@ -44,7 +45,7 @@ export default {
     },
 
     mounted() {
-        // 
+        console.log(this.$store.state.EXPORT_DATA)
     },
     
     components: {BACKBUTTON},

@@ -123,6 +123,7 @@ export class View_Observation extends View_X {
             })
         }
 
+
         // SORTY BY CONCEPT_PATH
         concepts = concepts.sort((a, b) => {
             const nameA = a.CONCEPT_PATH.toUpperCase();
@@ -137,7 +138,6 @@ export class View_Observation extends View_X {
         if (mode === supported_modes.csv) DATA = exportCSVTable(data, concepts)
         else if (mode === supported_modes.hl7) DATA = exportHL7JSON(data, concepts, meta)
         else return {error: error_codes.invalid_payload, status: false}
-
         return {status: true, data: DATA}
     }
 

@@ -10,7 +10,7 @@ import { View_Observation } from 'src/classes/View_Observation'
  */
 export const  exportObservationsCSV = async ({commit, state}, payload) => {
     if (!payload || !payload.PATIENTS) return {status: false, error: error_codes.invalid_payload}
-    commit('LOG', {method: 'exportObservationsCSV', data: payload.PATIENTS})
+    commit('LOG', {method: 'exportObservationsCSV', data: `${payload.PATIENTS.length} subjects`})
     
     const VIEW_OBSERVATION = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
     const res = await VIEW_OBSERVATION.export(payload, 'csv')
