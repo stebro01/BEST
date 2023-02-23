@@ -16,7 +16,7 @@
        
           <div class="row">
         <q-card v-for="(item, ind) in PREVIEW_DATA" :key="ind + 'visitscontent'" 
-          class="overflow-hidden"
+          class="overflow-hidden" :class="{'html2pdf__page-break': ind + 1 < PREVIEW_DATA.length}" 
           >
           <!-- INFO -->
           <q-card-section class="text-h5">
@@ -26,7 +26,7 @@
           <q-card-section>
             <div class="row q-gutter-xs">
               <q-card v-for="(obs, ind_obs) in item.observation" :key="ind_obs + '_' + ind + 'obs'"
-                dense class="q-pa-xs"
+                dense class="q-pa-xs "
               >
                 <q-card-section class="q-pa-none text-bold">{{obs.CONCEPT_NAME_CHAR}}</q-card-section>
                 <q-card-section  class="q-pa-none">
@@ -39,9 +39,12 @@
           </q-card-section>
           
           <!-- SURVEYS -->
-          <q-card-section v-if="item.surveybest.length > 0">
+          <q-card-section v-if="item.surveybest.length > 0" >
+            <div class="html2pdf__page-break"></div>
             <div v-for="(item_survey, ind_survey) in item.surveybest" :key="ind + '_' + ind_survey + 'surv'">
-              <SURVEY_BEST_PREVIEW v-if="true" :item="item_survey.OBSERVATION_BLOB" :mode="'multiple'"/>
+              <SURVEY_BEST_PREVIEW v-if="true" :item="item_survey.OBSERVATION_BLOB" :mode="'multiple'"
+              :class="{'html2pdf__page-break': ind_survey+1 < item.surveybest.length}"
+              />
             </div>
           </q-card-section>
 
