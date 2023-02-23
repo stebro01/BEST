@@ -8,7 +8,16 @@
 
       <!-- MAIN -->
       <template v-slot:main>
-        <OBSERVATION_TABLE_EDIT v-if="formData" :input_data="formData" @changed="dataChanged($event)" />
+        <OBSERVATION_TABLE_EDIT v-if="formData" :input_data="formData" @changed="dataChanged($event)" @previewSurvey="previewSurveyBest($event)"/>
+        
+        <q-btn v-if="!show_print_view" class="q-mt-xl" rounded @click="show_print_view = true">Druck-version</q-btn>
+        <PRINT_PREVIEW v-else :formData="formData" @close="show_print_view = false"/>
+
+        <!-- PREVIEW SURVEYBEST -->
+        <SURVEY_BEST_PREVIEW v-if="preview_survey_best_show" :item="preview_survey_best_item"
+      @close="preview_survey_best_item = false; preview_survey_best_show = false" />
+
+
       </template>
 
       <!-- FOOTER -->
@@ -27,17 +36,22 @@ import HEADING from 'src/components/elements/Heading.vue'
 import OBSERVATION_TABLE_EDIT from 'src/components/ObservationTable_edit.vue'
 import BOTTOM_BUTTON from 'src/components/elements/BottomButtons.vue'
 import MainSlot from 'src/components/MainSlot.vue'
+import PRINT_PREVIEW from 'src/components/visits/PrintPreview.vue'
+import SURVEY_BEST_PREVIEW from 'src/components/visits/SurveyBestPreview.vue'
 
 import {beautify_data} from 'src/tools/formatdata'
 export default {
   name: 'Observation_Edit',
 
-  components: {HEADING, OBSERVATION_TABLE_EDIT, BOTTOM_BUTTON, MainSlot },
+  components: {HEADING, OBSERVATION_TABLE_EDIT, BOTTOM_BUTTON, MainSlot, PRINT_PREVIEW, SURVEY_BEST_PREVIEW},
 
   data() {
     return {
       formData: undefined,
       data_changed: false,
+      show_print_view: false, 
+      preview_survey_best_show: false,
+      preview_survey_best_item: undefined
     }
   },
 
@@ -100,6 +114,14 @@ export default {
       Promise.all(promise).then(() => {
         this.data_changed = false
         this.$q.notify(this.$store.getters.TEXT.msg.save_successful)
+      })
+    },
+
+    previewSurveyBest(val) {
+      this.preview_survey_best_show = false
+      this.$nextTick(() => {
+        this.preview_survey_best_item = val;
+        this.preview_survey_best_show = true
       })
     }
    
