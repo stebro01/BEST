@@ -25,6 +25,7 @@ const error = (arg) => {
 const error_codes = {
     no_payload: 'no payload',
     invalid_payload: 'invalid payload',
+    ivalid_type: 'invalid data type', 
     instance_invalid: 'instance was not instanciated correctly',
     query_was_empty: 'query gave no result',
     query_more_than_one_result: 'a query gave more than one result, unique result was expected',

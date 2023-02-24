@@ -29,7 +29,7 @@
         class="bg-grey-9"
       >
       <div class="column fit q-pb-lg">
-        <div class="col-11">
+        <div class="col-10">
         <q-list padding>
            <q-item v-for="(item, ind) in essentialLinks" :key="ind + 'link'" 
             clickable v-ripple
@@ -47,6 +47,17 @@
           </q-list>
         </div>
         <div class="col-1">
+          
+          <q-item clickable v-ripple @click="$router.push({name: 'Notes'})">
+            <q-item-section avatar>
+              <q-icon name="message" color="grey-4" />
+              <q-tooltip>Notizen und Feedback</q-tooltip>
+            </q-item-section>
+           </q-item>
+        </div>
+
+        <div class="col-1">
+          
           <q-item clickable v-ripple @click="closeDB">
             <q-item-section avatar>
               <q-icon name="logout" color="grey-4" />
