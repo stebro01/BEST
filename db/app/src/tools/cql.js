@@ -3,7 +3,10 @@ var axios = require('axios');
 const {dtypes} = require('src/classes/more/dtypes')
 const {error_codes} = require('src/tools/logger')
 import { unstringify_json } from "src/classes/sqltools";
+
+
 /**
+ * TESTED BY: CQL.test.js
  * Führt eine CQL Aktion aus
  * @param {object} payload - {lib, parameters}
  * const parameters = { "A": 10, "B": 20, text: '2020-12-22', datum: '2007-08-02T11:47' }
@@ -77,25 +80,70 @@ export async function query_api(payload) {
 }
 
 /**
- * 
- * @param {object} - {data, VIEW_CQL}
+ * TESTED BY: CQL.test.js
+ * @param {object} - {data, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP}
  * @returns {object} - {status: true | false, data: [] | error: ''}
  */
 export async function checkRule(payload) {
-  if (!payload || !payload.VIEW_CQL || !payload.data) return { status: false, error: 'invalid payload' }
+  if (!payload || !payload.VIEW_CQL || !payload.VIEW_CONCEPT_CQL_LOOKUP || !payload.data) return { status: false, error: 'invalid payload' }
 
   //first check the data-type
   const data = payload.data
   const VIEW_CQL = payload.VIEW_CQL
-  const CHECKS = []
+  const VIEW_CONCEPT_CQL_LOOKUP = payload.VIEW_CONCEPT_CQL_LOOKUP
+
+  //check data type
+  const CHECKS = {check: true, data: []}
   if (payload.data.type) {
     let res = await _check_type_cql(data, VIEW_CQL)
-    if (!res.status) return res
-    CHECKS.push(res.data)
+    if (!res.status) CHECKS.data.push({check: false, data: res})
+    else CHECKS.data.push(res.data) 
   }
 
-  return {status: CHECKS.find(el => el.check === false) === undefined, data: CHECKS}
+  //check concept
+  if (payload.data.CONCEPT_CD) {
+    let res = await _check_concept_cql(data, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP)
+    if (!res.status) CHECKS.data.push({check: false, data: res.error})
+    else {
+      for (let dd of res.data) CHECKS.data.push(dd)
+      }
+  }
 
+  // collect results
+  CHECKS.check = CHECKS.data.find(el => el.check === false) === undefined
+  return {status: CHECKS.check, data: CHECKS.data}
+
+}
+
+/**
+ * 
+ * @param {object} data 
+ * @param {isntance of VIEW_CQL} VIEW_CQL 
+ * @param {isntance of VIEW_CONCEPT_CQL_LOOKUP} VIEW_CONCEPT_CQL_LOOKUP 
+* @returns {object}, ie: { status: true, data: { check: true, data: { TEXT: true } } }
+ * @exampe _check_type_cql({type: 'string', value: '123', CONCEPT_CD: 'LID: 72172-0'}, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP)
+ * sample outputs:
+ * -  {"status":true,"data":[{"check":true,"data":{"RANGE":true}}]}
+ * -  {"status":true,"data":[{"check":false,"data":{"RANGE":false}}]}
+ */
+async function _check_concept_cql(data, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP) {
+  if (data.CONCEPT_CD === undefined) return {status: false, error: error_codes.ivalid_type}
+
+  //first find the rules
+  let res_rules = await VIEW_CONCEPT_CQL_LOOKUP.read({CONCEPT_CD: data.CONCEPT_CD})
+  const CHECK = []
+  if (res_rules.status && res_rules.data.length > 0) {
+    for (let rule of res_rules.data) {
+      let res_cql = await VIEW_CQL.read({CQL_ID: rule.CQL_ID})
+      if (res_cql.status && res_cql.data.length > 0) {
+        let JSON_CHAR = JSON.parse(unstringify_json(res_cql.data[0].JSON_CHAR))
+        let res = exec({lib: JSON_CHAR, parameters: {VALUE: data.value}})
+        if (res.status) CHECK.push(res.data)
+      }
+    }
+  } 
+ 
+  return {status: true, data: CHECK}
 }
 
 /**
@@ -104,6 +152,9 @@ export async function checkRule(payload) {
  * @param {isntance of VIEW_CQL} VIEW_CQL 
  * @returns {object}, ie: { status: true, data: { check: true, data: { TEXT: true } } }
  * @exampe _check_type_cql({type: 'string', value: '123'}, VIEW_CQL)
+ * //sample outputs:
+ * - { status: true, data: { check: true, data: { NUMBER: true } } }
+ * - { status: false, error: "Passed in parameter 'VALUE' is wrong type" }
  */
 async function _check_type_cql(data, VIEW_CQL) {
   if (data.type === undefined || dtypes[data.type] === undefined) return {status: false, error: error_codes.ivalid_type}
@@ -118,8 +169,9 @@ async function _check_type_cql(data, VIEW_CQL) {
 }
 
 /**
- * 
+ * TESTED BY: CQL.test.js
  * @param {object} payload = {VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP}
+ * @returns {object} - {status: true | false, data: []}
  */
 export async function exportCQL(payload) {
   if (!payload || !payload.VIEW_CQL || !payload.VIEW_CONCEPT_CQL_LOOKUP) return { status: false, error: 'invalid payload' }
@@ -147,4 +199,37 @@ export async function exportCQL(payload) {
   }
 
   return {status: true, data: CQL_DATA}
+}
+
+
+/**
+ * TESTED BY: CQL.test.js
+ * @param {object} payload = {IMPORT_DATA, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP}
+ * @returns {object} - {status: true | false, data: [{CODE_CD, data, status}, ..]} 
+ */
+export async function importCQL(payload) {
+  if (!payload || !payload.data || !payload.VIEW_CQL || !payload.VIEW_CONCEPT_CQL_LOOKUP) return { status: false, error: 'invalid payload' }
+  if (typeof(payload.data) !== 'object') return { status: false, error: 'invalid payload' }
+
+  const VIEW_CQL = payload.VIEW_CQL
+  const VIEW_CONCEPT_CQL_LOOKUP = payload.VIEW_CONCEPT_CQL_LOOKUP
+
+  //loop through the data and add the rules
+  const DATA = []
+  for (let cql of payload.data) {
+    //first check, if ID exists
+    let res_cql = await VIEW_CQL.read({CODE_CD: cql.CODE_CD})
+    if (res_cql.status && res_cql.data.length === 0) {
+      let res_add = await VIEW_CQL.create(cql)
+      if (res_add.status && res_add.data) {
+        //now add the Lookups
+        for (let cc of cql.CONCEPT_CD) {
+          await VIEW_CONCEPT_CQL_LOOKUP.create({CQL_ID: cql.CQL_ID, CONCEPT_CD: cc})
+        }
+        DATA.push({CODE_CD: cql.CODE_CD, data: 'added', status: true})
+      }
+    } else DATA.push({CODE_CD: cql.CODE_CD, data: 'already in use', status: false})
+  }
+  //finished
+  return {status: true, data: DATA}
 }

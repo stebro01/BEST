@@ -9,7 +9,7 @@
  * npm run test:unit test/jest/__tests__/CQL.test.js 
  */
 
-import { exec, checkRule, exportCQL } from "src/tools/cql"
+import { exec, checkRule, exportCQL, importCQL} from "src/tools/cql"
 const path = require("path")
 const fs = require("fs");
 
@@ -31,17 +31,17 @@ describe('Teste CQL Funktionen', () => {
     
   })
 
-  // it (`Importiere ein Testfile > Observations.csv`, () => {
-  //   const payload = {
-  //     parameters: { "A": 10, "B": 20, text: '2020-12-22', datum: '2007-08-02T11:47' },
-  //     lib: cql_date
-  //   }
-  //   var res = exec(payload)
-  //   expect(res.status).toBe(true)
-  //   expect(res.data.check).toBeDefined()
+  it (`Importiere ein Testfile > Observations.csv`, () => {
+    const payload = {
+      parameters: { "A": 10, "B": 20, text: '2020-12-22', datum: '2007-08-02T11:47' },
+      lib: cql_date
+    }
+    var res = exec(payload)
+    expect(res.status).toBe(true)
+    expect(res.data.check).toBeDefined()
     
-  //   // console.log(res.data.unfilteredResults)
-  // })
+    // console.log(res.data.unfilteredResults)
+  })
 
     it (`Erzeuge einen Export als JSON`, async () => {
     
@@ -56,27 +56,70 @@ describe('Teste CQL Funktionen', () => {
 
   })
 
+  it (`Erzeuge einen Import als JSON`, async () => {
+    // LOAD DATA
+    const fn = path.join(global.MOCKUP_PATH, 'cql', 'cql_import.json')
+    console.log('reading data from Disk: ' + fn)
+    const CQL_DATA = JSON.parse(await fs.readFileSync(fn,  'utf-8'))
+    expect(CQL_DATA).toBeDefined()
+    expect(CQL_DATA.length).toBeGreaterThan(2)
+
+    //remove data, if existant
+    for (let cql of CQL_DATA) {
+      await VIEW_CQL.delete({CODE_CD: cql.CODE_CD, _force: true})
+    }
+
+    //do the import
+    var res = await importCQL({data: CQL_DATA, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP})
+    expect(res.status).toBe(true)
+    expect(res.data).toBeDefined()
+    expect(res.data.length).toBeGreaterThan(4)
+    for (let d of res.data) {
+      expect(d.status).toBeTruthy()
+    }
+
+    //
+
+  })
 
 
-  // it (`Überprüfe einen Datensatz entsprechend seines types und einer definierten Regel in CQL_FACT`, async () => {
-  //     const DATA = [
-  //       {type: dtypes.numeric, value: 123, expected: true},
-  //       {type: dtypes.date, value: '2022-01-11', expected: true},
-  //       {type: dtypes.string, value: 'haloo', expected: true},
-  //       {type: dtypes.blob, value: 'hallo', expected: true},
-  //       {type: dtypes.numeric, value: '123', expected: false},
-  //       {type: dtypes.date, value: '2022-1-11', expected: false},
-  //       {type: dtypes.string, value: 123, expected: false},
-  //       {type: dtypes.blob, value: 123, expected: false},
-  //     ]
 
-  //     for (let data of DATA) {        
-  //       let res = await checkRule({data, VIEW_CQL})
-  //       expect(res).toBeDefined()
-  //       expect(res.status).toBe(data.expected)
-  //     }
+  it (`Überprüfe einen Datensatz entsprechend seines types und einer definierten Regel in CQL_FACT`, async () => {
+      const DATA = [
+        {type: dtypes.numeric, value: 123, expected: true},
+        {type: dtypes.date, value: '2022-01-11', expected: true},
+        {type: dtypes.string, value: 'haloo', expected: true},
+        {type: dtypes.blob, value: 'hallo', expected: true},
+        {type: dtypes.numeric, value: '123', expected: false},
+        {type: dtypes.date, value: '2022-1-11', expected: false},
+        {type: dtypes.string, value: 123, expected: false},
+        {type: dtypes.blob, value: 123, expected: false},
+      ]
 
-  // })
+      for (let data of DATA) {        
+        let res = await checkRule({data, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP: {}})
+        expect(res).toBeDefined()
+        expect(res.status).toBe(data.expected)
+      }
+
+  })
+
+  it (`Überprüfe einen Datensatz entsprechend seines types und seiner CONCEPT_CD in CQL_FACT`, async () => {
+    const DATA = [
+      {type: dtypes.numeric, value: 4, CONCEPT_CD: 'LID: 72172-0', expected: true},
+      {type: dtypes.numeric, value: -1, CONCEPT_CD: 'LID: 72172-0', expected: false},
+      {type: dtypes.numeric, value: 46, CONCEPT_CD: 'LID: 72172-0', expected: false},
+      {type: dtypes.numeric, value: '4', CONCEPT_CD: 'LID: 72172-0', expected: false},
+    ]
+
+    for (let data of DATA) {        
+      let res = await checkRule({data, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP})
+      console.log('TestResult: ', JSON.stringify(res))
+      expect(res).toBeDefined()
+      expect(res.status).toBe(data.expected)
+    }
+
+})
 
 })
 
