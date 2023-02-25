@@ -37,33 +37,36 @@
             <q-tooltip v-else-if="item.VALTYPE_CD === 'F'">Finding (Merkmal vorhanden: yes, no, unknown)</q-tooltip>
           </td>
           <!-- VALUE -->
-          <td v-if="item.VALTYPE_CD === 'N'">{{ item.NVAL_NUM }}
+          <td >
+            <CQL_CHECK :value=item.check />
+            <span v-if="item.VALTYPE_CD === 'N'">{{ item.NVAL_NUM }}
             <EDIT_ICON class="absolute-right q-mt-sm" />
-            <q-popup-edit v-model="item.NVAL_NUM" auto-save v-slot="scope">
+            <q-popup-edit v-model="item.NVAL_NUM" buttons v-slot="scope">
               <q-input v-model="scope.value" dense autofocus counter type="number" @keyup.enter="scope.set"
-                @change="dataChanged()" />
+                @change="dataChanged(ind, $event)" />
             </q-popup-edit>
-          </td>
-          <td v-else-if="item.VALTYPE_CD === 'D'">{{ item.TVAL_CHAR }}
+            </span>
+          <span v-else-if="item.VALTYPE_CD === 'D'">{{ item.TVAL_CHAR }}
             <EDIT_ICON class="absolute-right q-mt-sm" />
-            <q-popup-edit v-model="item.TVAL_CHAR" auto-save v-slot="scope">
+            <q-popup-edit v-model="item.TVAL_CHAR" buttons v-slot="scope">
               <q-input v-model="scope.value" dense autofocus counter type="date" @keyup.enter="scope.set"
-                @change="dataChanged()" />
+                @change="dataChanged(ind)" />
             </q-popup-edit>
-          </td>
-          <td v-else-if="item.VALTYPE_CD === 'S' || item.VALTYPE_CD === 'F'" style="max-width: 200px; overflow: hidden">
+          </span>
+          <span v-else-if="item.VALTYPE_CD === 'S' || item.VALTYPE_CD === 'F'" style="max-width: 200px; overflow: hidden">
             <VALUE_ITEM :value="item.TVAL_CHAR" :label="item.TVAL_RESOLVED" />
             <EDIT_ICON class="absolute-right q-mt-sm" />
             <POPUP_CONCEPT v-if="item" :item="item" :value_string="'TVAL_RESOLVED'" :concept_string="'CONCEPT_CD'"
-              @update="item.TVAL_CHAR = $event.value; item.TVAL_RESOLVED = $event.label; dataChanged()" />
+              @update="item.TVAL_CHAR = $event.value; item.TVAL_RESOLVED = $event.label; dataChanged(ind)" />
 
-          </td>
-          <td v-else style="max-width: 200px; overflow: hidden">{{ item.TVAL_CHAR }}
+          </span>
+          <span v-else style="max-width: 100px; overflow: hidden">{{ item.TVAL_CHAR }}
             <EDIT_ICON class="absolute-right q-mt-sm" />
-            <q-popup-edit v-model="item.TVAL_CHAR" auto-save v-slot="scope">
+            <q-popup-edit v-model="item.TVAL_CHAR" buttons="" v-slot="scope">
               <q-input v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set"
-                @change="dataChanged()" />
+                @change="dataChanged(ind, $event)" />
             </q-popup-edit>
+          </span>
           </td>
           <!-- UNIT_CD -->
           <td>
@@ -71,7 +74,7 @@
               <EDIT_ICON class="absolute-right q-mt-sm" />
               <q-popup-edit v-model="item.UNIT_CD" auto-save v-slot="scope">
                 <q-input v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set"
-                  @change="dataChanged()" />
+                  @change="dataChanged(ind, scope.value)" />
               </q-popup-edit>
             </span>
             <q-icon v-else name="block" />
@@ -118,13 +121,14 @@ import VALUE_ITEM from 'src/components/elements/ValueItem.vue'
 import EDIT_ICON from 'src/components/elements/EditIcon.vue'
 import CONCEPT_SELECTION from 'src/components/elements/ConceptSelect.vue'
 import POPUP_CONCEPT from 'src/components/elements/PopupConcept.vue'
+import CQL_CHECK from "./cql/CQLCheck.vue";
 
 export default {
   name: 'ObservationTable',
 
   props: ['input_data', 'title'],
 
-  components: { VALUE_ITEM, EDIT_ICON, CONCEPT_SELECTION, POPUP_CONCEPT,  },
+  components: { VALUE_ITEM, EDIT_ICON, CONCEPT_SELECTION, POPUP_CONCEPT, CQL_CHECK },
 
   data() {
     return {
@@ -146,7 +150,7 @@ export default {
 
     if (this.input_data) {
       this.formData = JSON.parse(JSON.stringify(this.input_data))
-
+      for (let i = 0; i < this.formData.length; i++) this.checkData(i)
     }
 
   },
@@ -160,8 +164,20 @@ export default {
   },
 
   methods: {
-    dataChanged() {
+    dataChanged(ind, val) {
       this.$emit('changed', this.formData)
+      if (ind !== undefined) this.checkData(ind, val)
+    },
+
+    async checkData(ind, val) {
+      if (val !== undefined) { //das ist etwas eckig, aber durch den Popup-Proxy muss ich die Aenderung des Feldes manuell weiterreichen
+        if (this.formData[ind].VALTYPE_CD === 'N') {
+          if (typeof(val) === 'string') val = parseInt(val)
+          this.formData[ind].NVAL_NUM = val
+        }
+        else this.formData[ind].TVAL_CHAR = val
+      }
+      this.formData[ind].check = await this.$store.dispatch('checkCQLRule', this.formData[ind])
     },
 
     editConcept(item, ind) {

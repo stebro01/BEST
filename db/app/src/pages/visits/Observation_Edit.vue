@@ -95,15 +95,12 @@ export default {
     },
 
     dataChanged(data) {
-      console.log(data)
       this.formData = data
       this.data_changed = true
     },
 
     saveChangedData() {
       const promise = []
-      console.log(this.formData)
-
       
       this.formData.forEach(data => {
         let OBSERVATION = beautify_data(data)

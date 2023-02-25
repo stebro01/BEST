@@ -1,4 +1,4 @@
-import { exec, query_api, checkRule } from "src/tools/cql"
+import { exec, query_api, checkRule, exportCQL, importCQL } from "src/tools/cql"
 import { dtypes } from "src/classes/more/dtypes";
 import {getTable} from 'src/store/actions'
 
@@ -17,7 +17,7 @@ export const query_CQLAPI = async ({commit}, payload) =>  {
 }
 
 export const checkCQLRule = async ({commit, state}, payload) =>  {
-    commit('LOG', {method: 'action/checkRule', data: payload})
+    commit('LOG', {method: 'action/checkRule'})
 
     const data = {type: undefined, value: undefined, CONCEPT_CD: payload.CONCEPT_CD}
       if (typeof(data.CONCEPT_CD) === 'object') data.CONCEPT_CD = data.CONCEPT_CD.value
@@ -38,5 +38,34 @@ export const checkCQLRule = async ({commit, state}, payload) =>  {
     const VIEW_CONCEPT_CQL_LOOKUP = getTable('CONCEPT_CQL_LOOKUP', state)
     // check the rule
     const res = await checkRule({data, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP})
+    return res
+}
+
+export const cql_export = async ({commit, state}) =>  {
+    commit('LOG', {method: 'action/exportCQL'})
+
+    const VIEW_CQL = getTable('CQL_FACT', state)
+    const VIEW_CONCEPT_CQL_LOOKUP = getTable('CONCEPT_CQL_LOOKUP', state)
+
+    const res = await exportCQL({VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP})
+    return res
+}
+
+export const cql_import = async({commit, state}, filePath) => {
+    commit('LOG', {method: 'action/cql_import'})
+
+    // READ THE DATA
+    try {
+        const txt = window.electron.readFile(filePath, 'utf8')
+        var JSON_DATA = JSON.parse(txt)
+    } catch(err ) {
+        return {status: false, error: err.message}
+    }
+    if (!Array.isArray(JSON_DATA)) return {status: false, error: 'invalid format'}
+    //prepare the VIEWS
+    const VIEW_CQL = getTable('CQL_FACT', state)
+    const VIEW_CONCEPT_CQL_LOOKUP = getTable('CONCEPT_CQL_LOOKUP', state)
+    // do the import
+    var res = await importCQL({data: JSON_DATA, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP})
     return res
 }

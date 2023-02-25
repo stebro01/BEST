@@ -25,6 +25,8 @@
         <q-item-section>remove</q-item-section>
       </q-item>
 
+      <q-separator v-if="show_import || show_export"/>
+
       <!-- IMPORT BUTTON -->
       <q-item v-if="show_import" clickable v-close-popup @click="$emit('import')">
         <q-item-section avatar><q-icon name="file_upload" /></q-item-section>
