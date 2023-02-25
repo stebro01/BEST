@@ -9,7 +9,7 @@
           @reset="resetForm()"
           class="q-gutter-md"
         >
-          <q-input dense v-model="concept_search_string" input-class="text-center" filled type="search" label="Search" :rules="[val => (val && val.length > 0) || 'Please type something']">
+          <q-input autofocus dense v-model="concept_search_string" input-class="text-center" filled type="search" label="Search" :rules="[val => (val && val.length > 0) || 'Please type something']">
             
             <template v-slot:append>
               <q-btn icon="search" flat @click="submitSearchForm(concept_search_string, concept_search_group, concept_search)"/>
@@ -62,6 +62,7 @@
             </q-item>
             </q-scroll-area>
           </q-list>
+          <div v-if="(search_results && search_results.length>0)" class="text-center text-caption">Doppelclick zur Auswahl</div>
       </q-card-section>
       <!-- ACTIONS -->
       <q-separator />

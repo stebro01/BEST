@@ -25,8 +25,8 @@ export { exportObservationsCSV, exportObservationsHL7 }
 import {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST } from './actions/import_data'
 export {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST }
 
-import { execCQL, query_CQLAPI } from './actions/cql_functions'
-export { execCQL, query_CQLAPI }
+import { execCQL, query_CQLAPI, checkCQLRule } from './actions/cql_functions'
+export { execCQL, query_CQLAPI, checkCQLRule }
 
 
 export function initApp ({commit}, payload) {
@@ -304,7 +304,7 @@ export function findPath ({commit, state}, payload) {
 
 
 // ie: const TABLE = getTable('PATIENT_DIMENSION', state)
-function getTable(table, state) {
+export function getTable(table, state) {
     if (table === 'PATIENT_DIMENSION') {
         return new View_Patient(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
     } else if (table === 'VISIT_DIMENSION') {

@@ -1,11 +1,8 @@
-<template>
-  <!-- results -->
+<template><!-- results -->
 
   <div class="col-12 row justify-center" v-if="obs !== undefined">
     <q-card class="my-card">
-      <q-card-section class="text-h6"
-        >Neue Untersuchung hinzufügen</q-card-section
-      >
+      <q-card-section class="text-h6">Neue Untersuchung hinzufügen</q-card-section>
       <q-card-section>
         <q-markup-table flat bordered>
           <tbody>
@@ -14,41 +11,20 @@
               <td>Datum:</td>
               <td colspan="2">
                 von:
-                <q-btn
-                  :class="{
-                    'bg-red-3':
-                      obs.START_DATE === undefined || obs.START_DATE === '',
-                  }"
-                  >{{ obs.START_DATE }}
-                  <q-popup-edit
-                    v-model="obs.START_DATE"
-                    auto-save
-                    v-slot="scope"
-                  >
-                    <q-input
-                      v-model="scope.value"
-                      type="date"
-                      dense
-                      autofocus
-                      counter
-                      @keyup.enter="scope.set"
-                      @blur="dataChanged()"
-                    />
+                <q-btn :class="{
+                  'bg-red-3':
+                    obs.START_DATE === undefined || obs.START_DATE === '',
+                }">{{ obs.START_DATE }}
+                  <q-popup-edit v-model="obs.START_DATE" auto-save v-slot="scope">
+                    <q-input v-model="scope.value" type="date" dense autofocus counter @keyup.enter="scope.set"
+                      @blur="dataChanged()" />
                   </q-popup-edit>
                 </q-btn>
                 bis:
-                <q-btn
-                  >{{ obs.END_DATE }}
+                <q-btn>{{ obs.END_DATE }}
                   <q-popup-edit v-model="obs.END_DATE" auto-save v-slot="scope">
-                    <q-input
-                      v-model="scope.value"
-                      type="date"
-                      dense
-                      autofocus
-                      counter
-                      @keyup.enter="scope.set"
-                      @blur="dataChanged()"
-                    />
+                    <q-input v-model="scope.value" type="date" dense autofocus counter @keyup.enter="scope.set"
+                      @blur="dataChanged()" />
                   </q-popup-edit>
                 </q-btn>
               </td>
@@ -59,26 +35,16 @@
               <td class="text-center" colspan="2">
                 <span v-if="obs.PROVIDER_ID">
                   <VALUE_ITEM :item="obs.PROVIDER_ID" />
-                  <q-btn
-                    round
-                    flat
-                    size="xs"
-                    icon="clear"
-                    @click="
-                      obs.PROVIDER_ID = undefined;
-                      dataChanged();
-                    "
-                  />
+                  <q-btn round flat size="xs" icon="clear" @click="
+                    obs.PROVIDER_ID = undefined;
+                  dataChanged();
+                                        " />
                 </span>
                 <span v-else>
-                  <q-btn
-                    :class="{
-                      'bg-red-3':
-                        obs.PROVIDER_ID === undefined || obs.PROVIDER_ID === '',
-                    }"
-                    @click="show_provider_dialog = true"
-                    >...</q-btn
-                  >
+                  <q-btn :class="{
+                    'bg-red-3':
+                      obs.PROVIDER_ID === undefined || obs.PROVIDER_ID === '',
+                  }" @click="show_provider_dialog = true">...</q-btn>
                 </span>
               </td>
             </tr>
@@ -88,26 +54,16 @@
               <td class="text-center" colspan="2">
                 <span v-if="obs.LOCATION_CD">
                   <VALUE_ITEM :item="obs.LOCATION_CD" />
-                  <q-btn
-                    round
-                    flat
-                    size="xs"
-                    icon="clear"
-                    @click="
-                      obs.LOCATION_CD = undefined;
-                      dataChanged();
-                    "
-                  />
+                  <q-btn round flat size="xs" icon="clear" @click="
+                    obs.LOCATION_CD = undefined;
+                  dataChanged();
+                                        " />
                 </span>
                 <span v-else>
-                  <q-btn
-                    :class="{
-                      'bg-red-3':
-                        obs.LOCATION_CD === undefined || obs.LOCATION_CD === '',
-                    }"
-                    @click="show_location_dialog = true"
-                    >...</q-btn
-                  >
+                  <q-btn :class="{
+                    'bg-red-3':
+                      obs.LOCATION_CD === undefined || obs.LOCATION_CD === '',
+                  }" @click="show_location_dialog = true">...</q-btn>
                 </span>
               </td>
             </tr>
@@ -117,70 +73,46 @@
               <td class="text-center" colspan="2">
                 <span v-if="obs.CONCEPT_CD">
                   <VALUE_ITEM :item="obs.CONCEPT_CD" />
-                  <q-btn
-                    v-if="obs.CONCEPT_CD"
-                    round
-                    flat
-                    size="xs"
-                    icon="clear"
-                    @click="
-                      obs.CONCEPT_CD = undefined;
-                      obs.UNIT_CD = undefined;
-                      obs.TVAL_CHAR = undefined;
-                      obs.NVAL_NUM = undefined;
-                      obs.VALTYPE_CD = undefined;
-                      options_concept_selection = [];
-                      dataChanged();
-                    "
-                  />
+                  <q-btn v-if="obs.CONCEPT_CD" round flat size="xs" icon="clear" @click="
+                    obs.CONCEPT_CD = undefined;
+                  obs.UNIT_CD = undefined;
+                  obs.TVAL_CHAR = undefined;
+                  obs.NVAL_NUM = undefined;
+                  obs.VALTYPE_CD = undefined;
+                  options_concept_selection = [];
+                  dataChanged();
+                                        " />
                 </span>
                 <span v-else>
-                  <q-btn
-                    :class="{
-                      'bg-red-3':
-                        obs.CONCEPT_CD === undefined || obs.CONCEPT_CD === '',
-                    }"
-                    @click="showConceptDialog('CONCEPT_DIMENSION')"
-                    >...</q-btn
-                  >
+                  <q-btn :class="{
+                    'bg-red-3':
+                      obs.CONCEPT_CD === undefined || obs.CONCEPT_CD === '',
+                  }" @click="showConceptDialog('CONCEPT_DIMENSION')">...</q-btn>
                 </span>
               </td>
             </tr>
             <!-- WERT -->
             <tr v-if="obs.CONCEPT_CD">
-              <td>Wert</td>
+              <td >Wert <CQL_CHECK :value="cql_check" /></td>
               <td v-if="obs.VALTYPE_CD === 'N'" colspan="2">
-                <q-input
-                  dense
-                  v-model="obs.NVAL_NUM"
-                  type="number"
-                  @blur="dataChanged()"
-                />{{ obs.UNIT_CD }}
+                <q-input dense v-model.number="obs.NVAL_NUM" type="number" @change="checkRule(obs)" @blur="dataChanged()" input-class="text-center"/>{{ obs.UNIT_CD }}
+              </td>
+              <td v-else-if="obs.VALTYPE_CD === 'D'" colspan="2">
+                <q-input type="date" dense v-model="obs.TVAL_CHAR" @change="checkRule(obs)" @blur="dataChanged()" />{{ obs.UNIT_CD }}
               </td>
               <td v-else-if="obs.VALTYPE_CD === 'T'" colspan="2">
-                <q-input
-                  dense
-                  v-model="obs.TVAL_CHAR"
-                  @blur="dataChanged()"
-                />{{ obs.UNIT_CD }}
+                <q-input dense v-model="obs.TVAL_CHAR" @change="checkRule(obs)" @blur="dataChanged()" />{{ obs.UNIT_CD }}
               </td>
               <td v-else-if="options_concept_selection">
-                <q-option-group
-                  v-model="obs.TVAL_CHAR"
-                  :options="options_concept_selection"
-                  @update:model-value="dataChanged()"
-                />
-              </td>
+                <q-option-group v-model="obs.TVAL_CHAR" :options="options_concept_selection"
+                  @update:model-value="dataChanged()" />
+              </td> 
             </tr>
             <!-- BESCHREIBUNG -->
             <tr>
               <td>Beschreibung</td>
               <td colspan="2">
-                <q-input
-                  dense
-                  v-model="obs.OBSERVATION_BLOB"
-                  @blur="dataChanged()"
-                ></q-input>
+                <q-input dense v-model="obs.OBSERVATION_BLOB" @blur="dataChanged()"></q-input>
               </td>
             </tr>
           </tbody>
@@ -190,45 +122,28 @@
 
     <!-- CONCEPT DIALOG -->
     <q-dialog v-model="show_concept_dialog" style="max-height: 100%">
-      <CONCEPT_SELECTION
-        @close="
-          show_concept_dialog = false;
-          show_concept_dialog_table = undefined;
-        "
-        @clear="clearConcept()"
-        @clicked="conceptSelected($event)"
-        :table="show_concept_dialog_table"
-        :CONCEPT_CD="obs.CONCEPT_CD"
-      />>
+      <CONCEPT_SELECTION @close="
+        show_concept_dialog = false;
+      show_concept_dialog_table = undefined;
+                " @clear="clearConcept()" @clicked="conceptSelected($event)" :table="show_concept_dialog_table"
+        :CONCEPT_CD="obs.CONCEPT_CD" />>
     </q-dialog>
 
     <!-- DIALOG LOCATION -->
-    <SELECT_LIST
-      v-if="show_location_dialog"
-      :active="show_location_dialog"
-      @close="show_location_dialog = false"
-      :title="'Ort auswählen'"
-      :list="options_location"
-      @save="selectLocation($event)"
-    />
-    <SELECT_LIST
-      v-if="show_provider_dialog"
-      :active="show_provider_dialog"
-      @close="show_provider_dialog = false"
-      :title="'Untersucher auswählen'"
-      :list="options_provider"
-      @save="selectProvider($event)"
-    />
+    <SELECT_LIST v-if="show_location_dialog" :active="show_location_dialog" @close="show_location_dialog = false"
+      :title="'Ort auswählen'" :list="options_location" @save="selectLocation($event)" />
+    <SELECT_LIST v-if="show_provider_dialog" :active="show_provider_dialog" @close="show_provider_dialog = false"
+      :title="'Untersucher auswählen'" :list="options_provider" @save="selectProvider($event)" />
 
     <!-- SURVEY -->
     <div v-if="obs && obs.CATEGORY_CHAR === 'quest_surveyBEST'">
       <!-- <q-markup-table
-        flat
-        bordered
-        dense
-        class="my-table"
-        v-html="obs.TVAL_CHAR"
-      ></q-markup-table> -->
+          flat
+          bordered
+          dense
+          class="my-table"
+          v-html="obs.TVAL_CHAR"
+        ></q-markup-table> -->
     </div>
   </div>
 </template>
@@ -237,18 +152,20 @@
 import VALUE_ITEM from "src/components/elements/ValueItem.vue";
 import CONCEPT_SELECTION from "src/components/elements/ConceptSelect.vue";
 import SELECT_LIST from "src/components/elements/SelectList.vue";
+import CQL_CHECK from "./cql/CQLCheck.vue";
 
 export default {
   name: "ObservationEditCard",
 
   props: ["item", "import_mode"],
 
-  components: { VALUE_ITEM, CONCEPT_SELECTION, SELECT_LIST },
+  components: { VALUE_ITEM, CONCEPT_SELECTION, SELECT_LIST, CQL_CHECK },
 
   data() {
     return {
       obs: undefined,
       data_changed: false,
+      cql_check: undefined,
       options_location: [],
       options_provider: [],
       options_concept_selection: [],
@@ -389,6 +306,7 @@ export default {
 
       if (this.obs.VALTYPE_CD) this.loadConceptSelection();
       this.data_changed = true;
+      this.cql_check = undefined
     },
 
     selectLocation(item) {
@@ -406,6 +324,11 @@ export default {
       }
       this.show_provider_dialog = false;
     },
+
+    // CHECK THE CQL RULE
+    async checkRule(val) {     
+      this.cql_check = await this.$store.dispatch('checkCQLRule', val)
+    }
 
     /**
      * IMPORTED from MIXINS
