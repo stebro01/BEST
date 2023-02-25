@@ -116,3 +116,35 @@ async function _check_type_cql(data, VIEW_CQL) {
   return res_cql
   
 }
+
+/**
+ * 
+ * @param {object} payload = {VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP}
+ */
+export async function exportCQL(payload) {
+  if (!payload || !payload.VIEW_CQL || !payload.VIEW_CONCEPT_CQL_LOOKUP) return { status: false, error: 'invalid payload' }
+
+  const VIEW_CQL = payload.VIEW_CQL
+  const VIEW_CONCEPT_CQL_LOOKUP = payload.VIEW_CONCEPT_CQL_LOOKUP
+
+  // FIRST GENERATE A LIST OF ALL THE DATA
+  const res_cql = await VIEW_CQL.read({CQL_ID: 0, _greater: true})
+  if (!res_cql.status) return {status: false, error: error_codes.query_was_empty}
+  const CQL_DATA = res_cql.data
+
+  // laufe jetzt durch die DATEN und sammle die Concepts ein
+  for (let cql of CQL_DATA) {
+    let CONCEPT_CD = []
+    let res_concepts = await VIEW_CONCEPT_CQL_LOOKUP.read({CQL_ID: cql.CQL_ID})
+    if (res_concepts.status && res_concepts.data.length > 0) {
+      for (let concept of res_concepts.data) {
+        CONCEPT_CD.push(concept.CONCEPT_CD)
+      }
+    }
+
+    // add the data
+    cql.CONCEPT_CD = CONCEPT_CD
+  }
+
+  return {status: true, data: CQL_DATA}
+}
