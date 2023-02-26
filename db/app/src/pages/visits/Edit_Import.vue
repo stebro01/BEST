@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { exportFile } from 'quasar' //for DEBUGGING
+// import { exportFile } from 'quasar' //for DEBUGGING
 
 import HEADING from "src/components/elements/Heading.vue";
 import MainSlot from "src/components/MainSlot.vue";

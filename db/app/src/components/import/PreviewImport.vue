@@ -11,7 +11,7 @@
       @remove="removeItem($event)"
     />
     <div v-if="!data_checked" class="col-12 q-mb-lg text-center">
-      <q-btn v-if="doing_check === false" no-caps rounded class="q-mt-md" @click="checkCQL(patient_data)">Daten mit CQL überprüfen</q-btn>
+      <q-btn v-if="doing_check === false" no-caps rounded class="q-mt-md" @click="checkCQL_single(patient_data)">Daten mit CQL überprüfen</q-btn>
       <q-spinner v-else size="md" ></q-spinner>
     </div>
   </div>
@@ -21,11 +21,14 @@
 
 import PREVIEW_IMPORT_INFO from './PreviewImportInfo.vue'
 import PREVIEW_IMPORT_DATA from './PreviewImportData.vue'
+import modes_import from 'src/mixins/modes_import'
 
 export default {
   name: 'PreviewImport',
 
   components: { PREVIEW_IMPORT_DATA, PREVIEW_IMPORT_INFO },
+
+  mixins: [modes_import],
 
   props: ['imported_data'],
 
@@ -52,61 +55,13 @@ export default {
   },
 
   methods: {
-    async checkCQL(data) {
-      //checke die Visiten
+    async checkCQL_single(data) {
       this.doing_check = true
-      const ERRORS = {
-        visits: 0, 
-        observations: 0,
-        total_checks: 0
-      }
 
-      for (let visit of data.VISITS) {
-        //CHECK START_DATE
-        visit._check = undefined
-        let tmp = {VALTYPE_CD: 'D', TVAL_CHAR: visit.START_DATE}
-        visit._check = this.updateCheck(visit._check, await this.$store.dispatch('checkCQLRule', tmp), ERRORS)
-        
-        //count errors
-        if (!visit._check.status) ERRORS.visits ++
-      }
-
-      //checke die Observations
-      for (let OBS of data.OBSERVATIONS) {
-        for (let obs_key of Object.keys(OBS)) {
-          let obs = OBS[obs_key]
-          let CHECK = undefined
-          if (typeof(obs.ENCOUNTER_NUM) === 'string') obs.ENCOUNTER_NUM = parseInt(obs.ENCOUNTER_NUM)
-          if (typeof(obs.PATIENT_NUM) === 'string') obs.PATIENT_NUM = parseInt(obs.PATIENT_NUM)
-          // CHECKE DIE REGEL
-          CHECK = this.updateCheck(CHECK, await this.$store.dispatch('checkCQLRule', obs), ERRORS)
-          //checke noch das START_DATE
-          let tmp = {VALTYPE_CD: 'D', TVAL_CHAR: obs.START_DATE}
-          CHECK = this.updateCheck(CHECK, await this.$store.dispatch('checkCQLRule', tmp), ERRORS, 'START_DATE')
-
-          //count errors
-          if (!CHECK.status) ERRORS.observations ++         
-          if (typeof(obs.CONCEPT_CD) === 'object') ERRORS.observations++
-          obs._check = CHECK
-        }
-      }   
-      
-      //errors:
-      this.$q.notify(`${ERRORS.total_checks} Checks erfolgt: Fehler gefunden: Visiten ${ERRORS.visits} und Observations ${ERRORS.observations}`)
-      this.total_errors_found = ERRORS.observations + ERRORS.visits
-      this.doing_check = false
-      this.data_checked = true
-    },
-
-    updateCheck(CHECK, check, ERRORS, info) {
-      ERRORS.total_checks ++
-      if (!CHECK) return {status: check.status, data: [check]}
-      //else
-      if (check.status === false) CHECK.status = false
-      if (!info) CHECK.data.push(check)
-      else CHECK.data.push({...check, info: info})
-      return CHECK
-
+      const ERRORS = await this.checkCQL(data)
+      this.total_errors_found = ERRORS.total_errors_found
+        this.doing_check = false
+        this.data_checked = true
     },
 
     removeItem(item) {
@@ -114,7 +69,7 @@ export default {
       if (item.visit !== undefined) {
         if (!item.observation) {
           this.patient_data.VISITS.splice(item.visit,1)
-          console.log(this.patient_data.VISITS, item)
+          this.patient_data.OBSERVATIONS.splice(item.visit,1)
         }
 
       }

@@ -29,6 +29,8 @@ import SELECT_FILE from "src/components/elements/SelectFile.vue";
 export default {
   name: 'SelectImport',
 
+  props: ['mode'],
+
   components: {HELP_CSV_IMPORT, SELECT_FILE},
 
   data() {
@@ -74,8 +76,19 @@ export default {
         .then((patients) => {
           if (!patients) return this.$q.notify("Daten sind nicht kompatible");
           const keys = Object.keys(patients);
-          this.$q.notify('Mehr als ein Patient wurde gefunden, verwende nur den ersten ... ')
-          this._csv_data(patients[keys[0]])
+          
+          
+          if (this.mode !== 'multiple') {
+            this.$q.notify('Mehr als ein Patient wurde gefunden, verwende nur den ersten ... ')
+            let DATA = this._csv_data(patients[keys[0]])
+            this.previewData(DATA)
+          } else {
+            // multilpe
+            let DATA = []
+            keys.forEach(k => DATA.push(this._csv_data(patients[k])))
+            this.previewData(DATA)
+          }
+
         });
 
       return;
@@ -94,9 +107,7 @@ export default {
         if (!v.SOURCESYSTEM_CD) v.SOURCESYSTEM_CD = "SNOMED-CT";
         v.ENCOUNTER_NUM = cc;
       });
-      // console.log(DATA)
-      this.previewData(DATA)
-
+      return DATA
     },
 
     async importSURVEY(filePath) {
@@ -107,7 +118,8 @@ export default {
       if (!DATA || !DATA.PATIENT)
         return this.$q.notify("Daten konnten nicht geladen werden");
       // else
-      this.previewData(DATA)
+      if (!this.mode === 'multiple') this.previewData(DATA)
+      else this.previewData([DATA])
     },
 
     previewData(DATA) {
