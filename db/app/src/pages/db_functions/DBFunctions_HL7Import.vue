@@ -90,7 +90,7 @@
 import HEADING from 'src/components/elements/Heading.vue'
 import DIALOG_SELECT_PATIENT from 'src/components/Dialog_SelectPatient.vue'
 import SELECT_FILE from 'src/components/elements/SelectFile.vue'
-import PREVIEW_IMPORT from 'src/components/elements/PreviewImport.vue'
+import PREVIEW_IMPORT from 'src/components/import/PreviewImportData.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 
 export default {

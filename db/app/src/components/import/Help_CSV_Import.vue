@@ -1,6 +1,7 @@
 <template>
   <q-dialog v-model="isactive">
         <q-card>
+            <q-btn class="absolute-top-right z-top" icon="close" round flat @click="$emit('close')"/>
             <q-card-section class="text-subtitle2">
                 Hilfe zum CSV Import
             </q-card-section>
@@ -92,9 +93,8 @@
 
             </q-card-section>
             <q-separator />
-            <q-card-actions class="justify-between">
-                <q-btn @click="$emit('close')" icon="close" flat rounded />
-                <q-btn @click="exporData()" flat rounded>Export</q-btn>
+            <q-card-actions align="center">
+                <q-btn @click="exporData()" class="my-btn" flat no-caps rounded>Tabelle exportieren</q-btn>
             </q-card-actions>
         </q-card>  
 

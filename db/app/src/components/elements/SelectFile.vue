@@ -36,6 +36,12 @@ export default {
     }
   },
 
+  watch: {
+    accept(val) {
+      if (val) this.file_to_read = undefined
+    }
+  },
+
   computed: {
 
   }

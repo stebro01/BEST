@@ -105,7 +105,7 @@
 
 <script>
 
-import HELP_CSV_IMPORT from 'src/components/Help_CSV_Import.vue'
+import HELP_CSV_IMPORT from 'src/components/import/Help_CSV_Import.vue'
 import OBSERVATION_TABLE_SHORT from 'src/components/ObservationTable_short.vue'
 import OBSERVATION_TABLE_EDIT from 'src/components/ObservationTable_edit.vue'
 import EDIT_ICON from 'src/components/elements/EditIcon.vue'

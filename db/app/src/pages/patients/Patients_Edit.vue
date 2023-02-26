@@ -8,7 +8,7 @@
 
     <!-- MAIN -->
       <template v-slot:main>
-    <div v-if="patient !== undefined" >
+    <div v-if="patient !== undefined" class="q-py-lg">
       <q-markup-table flat bordered dense class="my-table">
       
       <tbody class="">
@@ -19,7 +19,7 @@
               <span v-else>{{el}}</span>
              
             </td>
-            <td class="text-center bg-grey-3" >
+            <td class="text-center bg-grey-2" >
               <!-- TEXTEDIT -->
               <span dense v-if="['PATIENT_BLOB'].includes(el)">
                   <q-input input-class="text-caption" input-style="height:50px" filled dense v-model="this.patient[el]"  type="textarea" lazy-rules @blur="dataChanged()"></q-input>

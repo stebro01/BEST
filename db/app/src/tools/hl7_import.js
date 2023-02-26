@@ -41,7 +41,6 @@ export async function importHL7toObject(cda, VIEW_CONCEPT) {
   var CONCEPT_LIST = _get_concept_list(OBSERVATIONS)
   CONCEPT_LIST = await _db_query_concepts(CONCEPT_LIST, VIEW_CONCEPT)
   OBSERVATIONS = await _db_resolve_observations(OBSERVATIONS, CONCEPT_LIST, VIEW_CONCEPT)
-  console.log(OBSERVATIONS)
   return {
     PATIENT,
     VISITS,
