@@ -17,7 +17,7 @@
 
 
     <!-- PREVIEW PATIENT DATA -->
-    <div class="col-12 text-center" v-if="SELECTED_PATIENT">
+    <div class="col-12 row text-center justify-center" v-if="SELECTED_PATIENT">
       <PREVIEW_IMPORT_DATA :patient_data="SELECTED_PATIENT" :total_errors_found="SELECTED_PATIENT._ERRORS.total_errors_found"
         @remove="removeItem($event)"
       />
@@ -134,7 +134,7 @@ export default {
       }
 
       if (ERRORS.length === 0) {
-        this.$q.notify({message: `${DATA.length} Patient(en) erfolgreich hinzugefügt`, color: 'purple',})
+        this.$q.notify({message: `${DATA.length} Patient(en) erfolgreich hinzugefügt`, color: 'green', timeout: 2000})
         this.$emit('close')
       } else {
         this.$q.notify(`Fehler sind aufgetreten: ${ERRORS.length}`)
