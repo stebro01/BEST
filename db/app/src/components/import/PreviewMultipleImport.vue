@@ -65,6 +65,7 @@ export default {
         tmp.CHECK = 'n.a.'
         this.patient_list.push(tmp)
       })
+      
     }
 
   },

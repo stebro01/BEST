@@ -118,8 +118,8 @@ export default {
       if (!DATA || !DATA.PATIENT)
         return this.$q.notify("Daten konnten nicht geladen werden");
       // else
-      if (!this.mode === 'multiple') this.previewData(DATA)
-      else this.previewData([DATA])
+      if (this.mode === 'multiple') this.previewData([DATA])
+      else this.previewData(DATA)
     },
 
     previewData(DATA) {

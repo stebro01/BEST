@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <MainSlot :no_footer="this.SOMETHING_CHANGED !== true" :no_options="true">
+    <MainSlot :no_footer="SOMETHING_CHANGED !== true" :no_options="true">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="TEXT.title" :description="TEXT.description" :img="'concept-import-logo.png'" :icon="'rule'" />
@@ -40,7 +40,7 @@
 
       <!-- FOOTER -->
       <template v-slot:footer>
-        <BOTTOM_BUTTONS :show_save="true" @save="this.save_UpdatedCQL_Data()" :show_back="true" @back="this.loadData()" />
+        <BOTTOM_BUTTONS :show_save="SOMETHING_CHANGED" @save="this.save_UpdatedCQL_Data()" :show_back="true" @back="this.loadData()" />
       </template>
 
     </MainSlot>
@@ -135,7 +135,7 @@ export default {
     updateCQL_Data(val) {
       if (!val || !this.selected[0]) return false
       let ind = this.localData.findIndex(el => el.CQL_ID === val.CQL_ID)
-      if (ind) {
+      if (ind !== undefined) {
         this.localData[ind].JSON_CHAR = val.JSON_CHAR || ''
         this.localData[ind].CQL_CHAR = val.CQL_CHAR || ''
         this.localData[ind]._changed = true
