@@ -12,11 +12,13 @@
  */
 
 
-import {importCSV, importSurveyBest, splitVisits, importConceptFromCSV} from "src/tools/formatdata"
+import {importCSV, importSurveyBest, splitVisits, importConceptFromCSV, parse_date} from "src/tools/formatdata"
 const fs = require("fs");
-const csv = fs.readFileSync("/Users/ste/MyProjects/dbBEST/app/test/jest/mockups/TEMPLATE_CSV.csv", 'utf-8')
-const html = fs.readFileSync("/Users/ste/MyProjects/dbBEST/app/test/jest/mockups/quest_bdi2_PID_DEMO_UID_2af92e62-e8f8-4e9d-9b54-b16bb627a1b5.html", 'utf-8')
-const concept_csv = fs.readFileSync("/Users/ste/MyProjects/dbBEST/dbase/CONCEPTS_DATA_2023sb.csv", 'utf-8')
+const path = require("path")
+
+const csv = fs.readFileSync(path.join(global.MOCKUP_PATH, "/TEMPLATE_CSV.csv"), 'utf-8')
+const html = fs.readFileSync(path.join(global.MOCKUP_PATH, "/surveyBEST/quest_bdi2.html"), 'utf-8')
+const concept_csv = fs.readFileSync(path.join(global.MOCKUP_PATH, "/formdata/CONCEPT_DIMENSION.csv"), 'utf-8')
 
 describe('Teste formatdata', () => {
 
@@ -50,7 +52,7 @@ describe('Teste formatdata', () => {
     const obs = importSurveyBest(html)
     expect(obs).toBeDefined()
     check_obs([obs])
-    expect(obs.NVAL_NUM).toBe(29)
+    expect(obs.NVAL_NUM).toBe(32)
   })
 
   it ('importConcept: Lese ein CONCEPT.csv ein und stelle es in einem TABLE dar',  () => {
@@ -61,6 +63,23 @@ describe('Teste formatdata', () => {
       expect(c.CONCEPT_CD).toBeDefined()
       expect(c.CONCEPT_PATH).toBeDefined()
     })
+  })
+
+  it ('parse_date: verschiedenen Datumsformate werden korrekt umgesetzt',  () => {
+    const DATES = [
+      {value: '2022-12-02', expected: '2022-12-02'},
+      {value: '2021-07-20T21:30:12:00', expected: '2021-07-20'},
+      {value: '01.02.2023', expected: '2023-02-01'},
+      {value: '01.02.23', expected: '2023-02-01'},
+      {value: '01/02/2023', expected: '2023-02-01'},
+      {value: '01/02/23', expected: '2023-02-01'},
+    ]
+
+    for (let date of DATES) {
+      let new_date = parse_date(date.value)
+      expect(new_date).toBe(date.expected)
+    }
+    
   })
 
 

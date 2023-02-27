@@ -359,9 +359,40 @@ function parse_int(value) {
 
 /**
  * @param {string} value 
- * @returns {string} date
+ * @returns {string} date - YYYY-MM-DD
+ * 
+ * //* tested by: formatdata.test.js
  */
-function parse_date(value) {
-    // todo: hier könnte man noch etwas am Datum arbeiten
+export function parse_date(value) {
+    //check for multiple dataformats
+    //SPLIT WITH '-'
+    const d1 = value.split('-')
+    if (d1.length === 3) {
+        // 1) YYYY-MM-DD
+        if (d1[0].length === 4 && d1[1].length === 2 && d1[2].length === 3) return value
+        // 2) YYYY-MM-DDTHH:...
+        else if (d1[0].length === 4 && d1[1].length === 2) {
+            let tmp_split = d1[2].split('T')
+            if (tmp_split.length > 1 && tmp_split[0].length === 2) return `${d1[0]}-${d1[1]}-${tmp_split[0]}`
+        }
+    }
+    // SPLIT WITH '.'
+    const d2 = value.split('.')
+    if (d2.length === 3) {
+        if (d2[0].length === 2 && d2[1].length === 2) {
+            if (d2[2].length === 4) return `${d2[2]}-${d2[1]}-${d2[0]}`
+            else if (d2[2].length === 2) return `20${d2[2]}-${d2[1]}-${d2[0]}`
+        }
+    }
+
+    // SPLIT WITH '/'
+    const d3 = value.split('/')
+    if (d3.length === 3) {
+        if (d3[0].length === 2 && d3[1].length === 2) {
+            if (d3[2].length === 4) return `${d3[2]}-${d3[1]}-${d3[0]}`
+            else if (d3[2].length === 2) return `20${d3[2]}-${d3[1]}-${d3[0]}`
+        }
+    }
+
     return value
 }

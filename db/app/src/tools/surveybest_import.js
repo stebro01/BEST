@@ -1,5 +1,5 @@
 import { error_codes } from "./logger"
-
+import { parse_date } from "./formatdata"
 import {importHL7toObject} from './hl7_import'
 import { stringify } from "src/classes/sqltools"
 
@@ -26,18 +26,14 @@ function _extract_html(txt) {
     if (!start || !ende) return {status: false, error: error_codes.invalid_html_object}
     //else
     try {
-
-    
-    var SCRIPT = txt.substring(start + 8, ende).trim()
-    var CDA = SCRIPT.substring(SCRIPT.indexOf('CDA=')+4).trim()
-    var JSON_DATA = JSON.parse(CDA)
-    if (JSON_DATA.cda) return {status: true, data: JSON_DATA}
-    else return {status: false, error: error_codes.invalid_html_object}
-    
+        var SCRIPT = txt.substring(start + 8, ende).trim()
+        var CDA = SCRIPT.substring(SCRIPT.indexOf('CDA=')+4).trim()
+        var JSON_DATA = JSON.parse(CDA)
+        if (JSON_DATA.cda) return {status: true, data: JSON_DATA}
+        else return {status: false, error: error_codes.invalid_html_object}
     } catch(err) {
         return {status: false, error: error_codes.invalid_html_object}
-    }
-    
+    }   
 }
 
 function _extract_json(txt) {
@@ -77,7 +73,10 @@ export async function importCDAtoObject(DATA, VIEW_CONCEPT) {
     OBS.push(await _prepare_surveybest_observation(cda, VIEW_CONCEPT))
     res.OBSERVATIONS.forEach(obs => {
         if (obs.length > 0) obs.forEach(o => {
-            if (o.VALTYPE_CD) OBS.push(o) //VALTYPE_CD entsteht, wenn die CONCEPT_CD korrekt in der DB gefunden wurde
+            if (o.VALTYPE_CD) {
+                if (!o.START_DATE) o.START_DATE = OBS[0].START_DATE //verwende das Startdate der ersten Observation
+                OBS.push(o) //VALTYPE_CD entsteht, wenn die CONCEPT_CD korrekt in der DB gefunden wurde
+            }
         })
     })
     RESULT.OBSERVATIONS = [OBS]
@@ -101,8 +100,8 @@ async function _prepare_surveybest_observation(cda, VIEW_CONCEPT) {
         OBSERVATION_BLOB: stringify(cda),
         CONCEPT_CD: cda.event[0].code[0].coding[0].code,
         TVAL_CHAR: cda.event[0].code[0].coding[0].display,
-        START_DATE: cda.event[0].period.start,
-        END_DATE: cda.event[0].period.end,
+        START_DATE: parse_date(cda.event[0].period.start),
+        END_DATE: parse_date(cda.event[0].period.end),
         CONCEPT_NAME_CHAR: 'surveyBEST (CDA document)'
     }
 
