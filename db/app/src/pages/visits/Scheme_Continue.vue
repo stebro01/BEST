@@ -96,14 +96,12 @@ export default {
     if (this.VISIT.LOCATION_CD) this.localGlobalData.LOCATION_CD = this.VISIT.LOCATION_CD
     if (this.VISIT.START_DATE) this.localGlobalData.START_DATE = this.VISIT.START_DATE
     if (this.VISIT.END_DATE) this.localGlobalData.END_DATE = this.VISIT.END_DATE
-
   },
 
   computed: {
     SCHEME() {
       if (!this.active_scheme) return undefined
       const json = this.active_scheme.LOOKUP_BLOB.replace(/'/g, "\"")
-
       return JSON.parse(json)
     },
 
@@ -122,9 +120,7 @@ export default {
         //fill data
         let resolved_obs = await this.loadObservations(this.$store.getters.VISIT_PINNED, res)
         this.active_scheme = { scheme: el, resolved: resolved_obs }
-
       }
-
     },
 
     async loadObservations(VISIT, RESOLVED) {
@@ -145,9 +141,7 @@ export default {
         //wird auf jeden fall zur Ausgabe hinzugefuegt!
         OBSERVATIONS.push(r)
       }
-
       return OBSERVATIONS
-
     },
 
     //this will merge the data
@@ -205,7 +199,6 @@ export default {
               DATA_CLEAN.push(temp2)
             })
           }
-
         }
       })
 
@@ -226,8 +219,6 @@ export default {
             // update jetzt die daten
             let obj = this.localFormData.find(el => el.CONCEPT_CD === data.CONCEPT_CD)
             obj.OBSERVATION_ID = res.OBSERVATION_ID
-
-
           }
           else {
             // update
