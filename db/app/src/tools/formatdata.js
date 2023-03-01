@@ -364,6 +364,7 @@ function parse_int(value) {
  * //* tested by: formatdata.test.js
  */
 export function parse_date(value) {
+    if (!value || typeof(value) !== 'string') return undefined
     //check for multiple dataformats
     //SPLIT WITH '-'
     const d1 = value.split('-')

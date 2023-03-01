@@ -6,6 +6,8 @@ import {
   sign
 } from '../../EXTERN/hhash'
 
+import { dtypes } from 'src/classes/more/dtypes'
+
 /**
  * 
  * @param {array of objects} data - list mit Ergebnissen der Abfrage von VIEW: patient_observations
@@ -19,13 +21,13 @@ export function exportCSVTable(data, concepts) {
   for (let c of concepts) firstline.push(c.CONCEPT_CD)
   DATA.push(firstline.join(';'))
   //seconde LINE: VALTYPE_CD
-  var secondline = ['VALTYPE_CD', 'numeric', 'numeric', 'numeric', 'date', 'date', 'text', 'text']
+  var secondline = ['VALTYPE_CD', dtypes.numeric, dtypes.numeric, dtypes.numeric, dtypes.date, dtypes.date, dtypes.text, dtypes.text]
   for (let c of concepts) {
-    if (c.VALTYPE_CD === 'T') secondline.push('text')
-    else if (c.VALTYPE_CD === 'D') secondline.push('date')
-    else if (c.VALTYPE_CD === 'N') secondline.push('numeric')
-    else if (c.VALTYPE_CD === 'F') secondline.push('numeric')
-    else secondline.push('text')
+    if (c.VALTYPE_CD === 'T') secondline.push(dtypes.text)
+    else if (c.VALTYPE_CD === 'D') secondline.push(dtypes.date)
+    else if (c.VALTYPE_CD === 'N') secondline.push(dtypes.numeric)
+    else if (c.VALTYPE_CD === 'F') secondline.push(dtypes.finding)
+    else secondline.push(dtypes.text)
   }
   DATA.push(secondline.join(';'))
   //third LINE: VALTYPE_CD

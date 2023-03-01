@@ -1,1 +1,1 @@
-export const dtypes = {string: 'string', numeric: 'numeric', blob: 'blob', date: 'date'}
+export const dtypes = {string: 'string', numeric: 'numeric', blob: 'blob', date: 'date', text: 'text', finding: 'finding'}
