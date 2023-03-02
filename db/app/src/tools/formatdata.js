@@ -105,8 +105,8 @@ export function importCSV(text) {
             PATIENT_NUM: json[i].PATIENT_NUM,
             PATIENT_CD: json[i].PATIENT_CD,
             ENCOUNTER_NUM: json[i].ENCOUNTER_NUM,
-            START_DATE: json[i].START_DATE,
-            END_DATE: json[i].END_DATE,
+            START_DATE: parse_date(json[i].START_DATE),
+            END_DATE: parse_date(json[i].END_DATE),
             PROVIDER_ID: json[i].PROVIDER_ID,
             LOCATION_CD: json[i].LOCATION_CD
         }
