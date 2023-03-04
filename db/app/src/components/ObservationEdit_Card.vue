@@ -278,8 +278,6 @@ export default {
     clearConcept() {
       if (this.show_concept_dialog_table === "CONCEPT_DIMENSION")
         this.obs.CONCEPT_CD = null;
-      if (this.show_concept_dialog_table === "MODIFIER_DIMENSION")
-        this.obs.MODIFIER_CD = null;
       this.obs.VALTYPE_CD = null;
       this.obs.NVAL_NUM = null;
       this.obs.TVAL_CHAR = null;
@@ -295,7 +293,6 @@ export default {
 
       if (item.CONCEPT_CD) {
         this.obs.CONCEPT_CD = { value: item.CONCEPT_CD, label: item.NAME_CHAR };
-        this.obs.MODIFIER_CD = null;
         this.obs.VALTYPE_CD = item.VALTYPE_CD;
         this.obs.UNIT_CD = item.UNIT_CD;
         this.obs.SOURCESYSTEM_CD = item.SOURCESYSTEM_CD;

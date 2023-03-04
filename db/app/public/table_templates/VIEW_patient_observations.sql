@@ -1,4 +1,3 @@
-DROP VIEW "main"."patient_observations";
 CREATE VIEW patient_observations
 AS
 

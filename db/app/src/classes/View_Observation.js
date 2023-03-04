@@ -12,7 +12,6 @@
 import {View_X} from './View_X'
 
 import { SCHEME_CONCEPT_DIMENSION } from './Scheme_concept_dimension'
-import { SCHEME_MODIFIER_DIMENSION } from './Scheme_modifier_dimension'
 import { SCHEME_OBSERVATION_FACT } from './Scheme_observation_fact'
 import { SCHEME_CODE_LOOKUP } from './Scheme_code_lookup'
 
@@ -151,7 +150,6 @@ export class View_Observation extends View_X {
         // prepare the query
         var sql_query = undefined
         if (payload.CONCEPT_CD) sql_query = SCHEME_CONCEPT_DIMENSION.read({CONCEPT_CD: payload.CONCEPT_CD})
-        else if (payload.MODIFIER_CD) sql_query = SCHEME_MODIFIER_DIMENSION.read({MODIFIER_CD: payload.MODIFIER_CD})
         // query empty? could not query the db
         if (sql_query === undefined) return Object.assign({}, payload, {error: error_codes.could_not_resolve_concept})
         // else

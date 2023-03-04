@@ -12,7 +12,7 @@
  */
 
 const fs = require("fs");
-const dbman = require('../../../src-electron/dbman')
+const dbman = require('src/tools/dbman')
 import path from 'path'
 import { resetDatabase } from 'src/tools/db_functions';
 
@@ -24,6 +24,8 @@ import { prepare_path } from "src/tools/prepare_sql_template_path";
 
 describe('Teste RESET DB Funktion', () => {
   const db_fn = global.DB_TEST_PATH
+  console.log(db_fn)
+
 
   beforeAll(() => {
     // erzeuge eine leere neue DB
@@ -51,9 +53,8 @@ describe('Teste RESET DB Funktion', () => {
   })
 
   it (`Fülle jetzt die ganze DB`, async() => {
-    const publicFolder = '/Users/ste/MyProjects/dbBEST/app/public'
+    const publicFolder = '/Users/ste/MyProjects/BEST/db/app/public'
     const PATH = prepare_path(TEMPLATES, publicFolder, path)
-    
     dbman.connect(db_fn)
 
     const status = await dbman.resetDB(PATH, resetDatabase)

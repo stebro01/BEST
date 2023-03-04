@@ -17,7 +17,6 @@
 // schemes
 import {SCHEME_CODE_LOOKUP} from '../../../src/classes/Scheme_code_lookup'
 import { SCHEME_CONCEPT_DIMENSION } from 'src/classes/Scheme_concept_dimension';
-import { SCHEME_MODIFIER_DIMENSION } from 'src/classes/Scheme_modifier_dimension';
 import { SCHEME_PATIENT_DIMENSION } from 'src/classes/Scheme_patient_dimension';
 import { SCHEME_VISIT_DIMENSION } from 'src/classes/Scheme_visit_dimension';
 import { SCHEME_PROVIDER_DIMENSION } from 'src/classes/Scheme_provider_dimension';
@@ -42,12 +41,6 @@ describe('Teste Scheme SQL Statements', () => {
     
   })
 
-  it ('Teste SCHEME_MODIFIER_DIMENSION', () => {
-    //teste SQLite
-    const sqlite_query = SCHEME_MODIFIER_DIMENSION.init()
-    expect(sqlite_query.query).toBe(SQLite_QUERY['MODIFIER_DIMENSION'])
-    
-  })
 
   it ('Teste SCHEME_PATIENT_DIMENSION', () => {
     //teste SQLite

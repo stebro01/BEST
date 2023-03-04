@@ -17,14 +17,13 @@ const dbman = require('../../../src-electron/dbman')
 // schemes
 import {SCHEME_CODE_LOOKUP} from '../../../src/classes/Scheme_code_lookup'
 import { SCHEME_CONCEPT_DIMENSION } from 'src/classes/Scheme_concept_dimension';
-import { SCHEME_MODIFIER_DIMENSION } from 'src/classes/Scheme_modifier_dimension';
 import { SCHEME_PATIENT_DIMENSION } from 'src/classes/Scheme_patient_dimension';
 import { SCHEME_VISIT_DIMENSION } from 'src/classes/Scheme_visit_dimension';
 import { SCHEME_PROVIDER_DIMENSION } from 'src/classes/Scheme_provider_dimension';
 import { SCHEME_OBSERVATION_FACT } from 'src/classes/Scheme_observation_fact';
 
 // MOCKUP DATA
-import {MOCKUP_CODE_LOOKUP, MOCKUP_CONCEPT_DIMENSION, MOCKUP_MODIFIER_DIMENSION, MOCKUP_PROVIDER_DIMENSION, MOCKUP_PATIENT_DIMENSION, MOCKUP_VISIT_DIMENSION, MOCKUP_OBSERVATION_FACT} from '../mockups/db_mockup_data'
+import {MOCKUP_CODE_LOOKUP, MOCKUP_CONCEPT_DIMENSION, MOCKUP_PROVIDER_DIMENSION, MOCKUP_PATIENT_DIMENSION, MOCKUP_VISIT_DIMENSION, MOCKUP_OBSERVATION_FACT} from '../mockups/db_mockup_data'
 
 // VIEWS
 import {View_Patient} from '../../../src/classes/View_Patient'
@@ -46,7 +45,6 @@ describe('Teste die VIEWs für die DB', () => {
     dbman.connect(db_fn)    
     await perform_sql(SCHEME_CODE_LOOKUP, MOCKUP_CODE_LOOKUP)
     await perform_sql(SCHEME_CONCEPT_DIMENSION, MOCKUP_CONCEPT_DIMENSION)
-    await perform_sql(SCHEME_MODIFIER_DIMENSION, MOCKUP_MODIFIER_DIMENSION)
     await perform_sql(SCHEME_PATIENT_DIMENSION, MOCKUP_PATIENT_DIMENSION)
     await perform_sql(SCHEME_VISIT_DIMENSION, MOCKUP_VISIT_DIMENSION)
     await perform_sql(SCHEME_PROVIDER_DIMENSION, MOCKUP_PROVIDER_DIMENSION)

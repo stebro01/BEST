@@ -8,7 +8,6 @@ export const MOCKUP_CODE_LOOKUP = [
         data: [
             {CONCEPT_CD: 'LID: 63900-5'}, //age -> number
             {CONCEPT_CD: 'LID: 46463-6'}, //ethnicity => selection
-            {MODIFIER_CD: 'SCTID: 447634004', multiselection: true, selection: [{CONCEPT_CD: 'ICD10: F06.7'}, {CONCEPT_CD: 'ICD10: I11.0'}]} // Auswahl von verschiedenen ICDs
         ]}
     },
     {TABLE_CD: 'SCHEME_CD', COLUMN_CD: 'SCHEME_CD', CODE_CD: 'biomag_standard', NAME_CHAR: 'Standard Assessment f. Studie im BIOMAG, @FW', LOOKUP_BLOB: {
@@ -17,7 +16,6 @@ export const MOCKUP_CODE_LOOKUP = [
         data: [
             {CONCEPT_CD: 'LID: 63900-5'}, //age -> number
             {CONCEPT_CD: 'LID: 46463-6'}, //ethnicity => selection
-            {MODIFIER_CD: 'SCTID: 447634004', multiselection: true, selection: [{CONCEPT_CD: 'ICD10: F06.7'}, {CONCEPT_CD: 'ICD10: I11.0'}]} // Auswahl von verschiedenen ICDs
         ]}
     },
     //DATA-TYPES
@@ -111,10 +109,6 @@ export const MOCKUP_CONCEPT_DIMENSION = [
     {CONCEPT_PATH: '\\SNOMED-CT\\362981000\\260245000\\373066001', CONCEPT_CD: 'SCTID: 373068000', NAME_CHAR: 'unknown',  VALTYPE_CD: 'A', SOURCESYSTEM_CD: 'SNOMED-CT', UPLOAD_ID: '859723'},    
 ]
 
-export const MOCKUP_MODIFIER_DIMENSION = [
-    {MODIFIER_PATH: null, MODIFIER_CD: 'LID: 45404-1', NAME_CHAR: 'Marital status', SOURCESYSTEM_CD: 'LOINC', UPLOAD_ID: '859723', VALTYPE_CD: 'S'},
-    {MODIFIER_PATH: '\\SNOMED-CT\\447634004', MODIFIER_CD: 'SCTID: 447634004', NAME_CHAR: 'ICD-10 Diagnose', SOURCESYSTEM_CD: 'SNOMED-CT', UPLOAD_ID: '859723', VALTYPE_CD: 'T'}
-]
 
 export const MOCKUP_PROVIDER_DIMENSION = [
     {PROVIDER_ID: 's02840', PROVIDER_PATH: 'UKJ/IMSID/MI', NAME_CHAR: 'Sven Festag', CONCEPT_BLOB: 'wissenschaftlicher Mitarbeiter, Informatik M.Sc.', UPLOAD_ID: '859723'},

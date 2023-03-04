@@ -2,7 +2,6 @@ const {log, info} = require('src/tools/logger')
 
 import {SCHEME_CODE_LOOKUP} from 'src/classes/Scheme_code_lookup'
 import { SCHEME_CONCEPT_DIMENSION } from 'src/classes/Scheme_concept_dimension';
-import { SCHEME_MODIFIER_DIMENSION } from 'src/classes/Scheme_modifier_dimension';
 import { SCHEME_PATIENT_DIMENSION } from 'src/classes/Scheme_patient_dimension';
 import { SCHEME_VISIT_DIMENSION } from 'src/classes/Scheme_visit_dimension';
 import { SCHEME_PROVIDER_DIMENSION } from 'src/classes/Scheme_provider_dimension';
@@ -12,7 +11,7 @@ import { SCHEME_USER_PATIENT_LOOKUP } from 'src/classes/Scheme_user_patient_look
 import { SCHEME_CQL_FACT } from 'src/classes/Scheme_cql_fact';
 import { SCHEME_CONCEPT_CQL_LOOKUP } from 'src/classes/Scheme_concept_cql_lookup';
 import { SCHEME_NOTE_FACT } from 'src/classes/Scheme_note_fact';
-const SCHEMES = {SCHEME_CODE_LOOKUP, SCHEME_CONCEPT_DIMENSION, SCHEME_MODIFIER_DIMENSION, SCHEME_PATIENT_DIMENSION, SCHEME_VISIT_DIMENSION, SCHEME_PROVIDER_DIMENSION, SCHEME_OBSERVATION_FACT, SCHEME_USER_MANAGEMENT, SCHEME_USER_PATIENT_LOOKUP, SCHEME_CQL_FACT, SCHEME_CONCEPT_CQL_LOOKUP, SCHEME_NOTE_FACT}
+const SCHEMES = {SCHEME_CODE_LOOKUP, SCHEME_CONCEPT_DIMENSION, SCHEME_PATIENT_DIMENSION, SCHEME_VISIT_DIMENSION, SCHEME_PROVIDER_DIMENSION, SCHEME_OBSERVATION_FACT, SCHEME_USER_MANAGEMENT, SCHEME_USER_PATIENT_LOOKUP, SCHEME_CQL_FACT, SCHEME_CONCEPT_CQL_LOOKUP, SCHEME_NOTE_FACT}
 
 import {csvJSON} from 'src/tools/formatdata'
 

@@ -30,27 +30,29 @@ export async function Process_Observations(OBSERVATIONS, VIEW_CONCEPT) {
 }
 
 async function  resolve_CONCEPT_LIST(CONCEPT_LIST, VIEW_CONCEPT) {
-    const promises = []
     const CONCEPT_LIST_RESOLVED = []
-    CONCEPT_LIST.forEach(concept => {
-        promises.push(VIEW_CONCEPT.read({...concept}).then(res => {
-            if (res.data.length > 0) CONCEPT_LIST_RESOLVED.push(res.data[0])
-        }))
-    })
-    await Promise.all(promises)
+    for (let concept of CONCEPT_LIST) {
+        await _rcl(concept, CONCEPT_LIST_RESOLVED, VIEW_CONCEPT)
+    }
 
-    //GIBT ES ANTWORTEN DIE VORBEREITEN WERDEN müssen?
-    const promises2 = []
-    CONCEPT_LIST_RESOLVED.forEach(c => {
-        if (c.VALTYPE_CD === 'S') {
-            promises2.push(VIEW_CONCEPT.read({CONCEPT_PATH: `${c.CONCEPT_PATH}\\LA`, _like: true}).then(res => {
-                if (res.status) res.data.forEach(d => CONCEPT_LIST_RESOLVED.push(d))
-            }))
-        }
-    })
-    await Promise.all(promises2)
     //return
     return CONCEPT_LIST_RESOLVED
+}
+
+async function _rcl(concept, CONCEPT_LIST_RESOLVED, VIEW_CONCEPT) {
+    let res = await VIEW_CONCEPT.read({...concept})
+    if (res.data.length > 0) CONCEPT_LIST_RESOLVED.push(res.data[0])
+    let c = res.data[0]
+    if (c.VALTYPE_CD === 'S') {
+        res = await VIEW_CONCEPT.read({CONCEPT_PATH: `${c.CONCEPT_PATH}\\LA`, _like: true})
+        if (res.status) res.data.forEach(d => CONCEPT_LIST_RESOLVED.push(d))
+    }
+
+    //RELATED_CONCEPTS ?
+    if (c.RELATED_CONCEPT) {
+        let obj = CONCEPT_LIST_RESOLVED.find(el => el.CONCEPT_CD === c.RELATED_CONCEPT)
+        if (!obj) await _rcl({CONCEPT_CD: c.RELATED_CONCEPT}, CONCEPT_LIST_RESOLVED, VIEW_CONCEPT)
+    }
 }
 
 function prepare_CONCEPT_LIST(observation) {
@@ -76,6 +78,8 @@ function resolve_OBSERVATIONS(observation, CONCEPT_LIST)  {
           let obj = CONCEPT_LIST.find(el => el.CONCEPT_CD === value)
           if (obj)  {
             obs.CONCEPT_CD = obj.CONCEPT_CD
+            obs.CONCEPT_PATH = obj.CONCEPT_PATH
+            obs.RELATED_CONCEPT = obj.RELATED_CONCEPT
             obs.CONCEPT_NAME_CHAR = obj.NAME_CHAR
             if (obs.VALTYPE_CD !== obj.VALTYPE_CD) {
                 obs.VALTYPE_CD = obj.VALTYPE_CD
@@ -87,17 +91,31 @@ function resolve_OBSERVATIONS(observation, CONCEPT_LIST)  {
                 }
                 // CHANGE: > S 
                 else if (obj.VALTYPE_CD === 'S') {
-                let obj = CONCEPT_LIST.find(el => el.CONCEPT_CD === obs.TVAL_CHAR) 
-                if (obj) obs.TVAL_RESOLVED = obj.NAME_CHAR
-                else {
-                    if (obs.TVAL_CHAR) {
-                        obj = CONCEPT_LIST.find(el => el.NAME_CHAR.toLowerCase() === obs.TVAL_CHAR.toLowerCase())
-                        if (obj) {
-                        obs.TVAL_CHAR = obj.CONCEPT_CD
-                        obs.TVAL_RESOLVED = obj.NAME_CHAR
-                        } 
+                    let obj = CONCEPT_LIST.find(el => el.CONCEPT_CD === obs.TVAL_CHAR) 
+                    if (obj) obs.TVAL_RESOLVED = obj.NAME_CHAR // der NAME_CHAR ist bereits ein gueltiger Wert als CONCEPT_CD
+                    else { //muss noch suchen
+                        if (obs.TVAL_CHAR) { //suche zunaechst in der vorbereiteten Liste ob Pfad enthalten und der Wert stimmen
+                            obj = CONCEPT_LIST.find(el => el.CONCEPT_PATH.includes(obs.CONCEPT_PATH) && el.NAME_CHAR.toLowerCase() === obs.TVAL_CHAR.toLowerCase())
+                            if (obj) {
+                                obs.TVAL_CHAR = obj.CONCEPT_CD
+                                obs.TVAL_RESOLVED = obj.NAME_CHAR
+                                
+                            } else //der Wert konnte nicht gefunden werden
+                            {
+                                //ist ein RELATED_CONCEPT vorhanden?
+                                if (obs.RELATED_CONCEPT) {
+                                    let related_obj = CONCEPT_LIST.find(el => el.CONCEPT_CD === obs.RELATED_CONCEPT) //suche das relate element in der CONCEPT_LIST
+                                    if (related_obj) {
+                                        obj = CONCEPT_LIST.find(el => el.CONCEPT_PATH.includes(related_obj.CONCEPT_PATH) && el.NAME_CHAR.toLowerCase() === obs.TVAL_CHAR.toLowerCase())
+                                        if (obj) {
+                                            obs.TVAL_CHAR = obj.CONCEPT_CD
+                                            obs.TVAL_RESOLVED = obj.NAME_CHAR
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                }
                 
                 
                 }

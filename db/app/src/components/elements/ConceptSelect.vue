@@ -149,7 +149,6 @@ export default {
     computed: {
       concept_search() {
         if (this.table === 'CONCEPT_DIMENSION') return {table: 'CONCEPT_DIMENSION', value: 'CODE_CD', label: 'NAME_CHAR', path: "CONCEPT_PATH", options: [{label: 'Name', value: 'NAME_CHAR'}, {label: 'Concept', value: 'CONCEPT_CD'}, {label: 'Pfad', value: 'CONCEPT_PATH'}]} 
-        else if (this.table === 'MODIFIER_DIMENSION') return {table: 'MODIFIER_DIMENSION', value: 'CODE_CD', label: 'NAME_CHAR', path: "MODIFIER_PATH", options: [{label: 'Name', value: 'NAME_CHAR'}, {label: 'Concept', value: 'MODIFIER_CD'}, {label: 'Pfad', value: 'MODIFIER_PATH'}]} 
         return undefined
       }
     },

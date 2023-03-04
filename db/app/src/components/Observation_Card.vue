@@ -67,7 +67,6 @@ export default {
         { name: 'CONCEPT_CD', align: 'center', label: 'CONCEPT_CD', field: 'CONCEPT_CD', sortable: true },
         { name: 'PROVIDER_ID', align: 'center', label: 'Untersucher', field: 'PROVIDER_ID', sortable: true },
         { name: 'START_DATE', align: 'center', label: 'Datum', field: 'START_DATE', sortable: true },
-        { name: 'MODIFIER_CD', align: 'center', label: 'MODIFIER_CD', field: 'MODIFIER_CD', sortable: true },
         { name: 'VALTYPE_CD', align: 'center', label: 'type', field: 'VALTYPE_CD', sortable: true },
         { name: 'TVAL_CHAR', align: 'center', label: 'string', field: 'TVAL_CHAR', sortable: true, classes: 'overflow-hidden', style: 'max-width: 200px' },
         { name: 'NVAL_NUM', align: 'center', label: 'number', field: 'NVAL_NUM', sortable: true },

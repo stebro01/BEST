@@ -12,10 +12,12 @@
  */
 
 const fs = require("fs");
-const dbman = require('../../../src-electron/dbman')
-const csv = fs.readFileSync("/Users/ste/MyProjects/dbBEST/app/test/jest/mockups/OBS_MULTIPLE_PATIENTS.csv", 'utf-8')
-const csv_large = fs.readFileSync("/Users/ste/MyProjects/dbBEST/app/test/jest/mockups/OBS_MULTIPLE_PATIENTS_LARGE.csv", 'utf-8')
+const path = require("path")
+const csv = fs.readFileSync(path.join(global.MOCKUP_PATH, "/OBS_MULTIPLE_PATIENTS.csv"), 'utf-8')
+const csv_stroke = fs.readFileSync(path.join(global.MOCKUP_PATH, "/franzi_stroke/Stroke_Overview_202303_short.csv"), 'utf-8')
+const csv_large = fs.readFileSync(path.join(global.MOCKUP_PATH, "OBS_MULTIPLE_PATIENTS_LARGE.csv"), 'utf-8')
 import { importCSV, splitVisits } from "src/tools/formatdata";
+const dbman = require('src/tools/dbman')
 
 //DB Connection
 import { View_Concept } from "src/classes/View_Concept";
@@ -73,6 +75,31 @@ describe('Teste Import DB Funktion', () => {
     const VISITS = splitVisits(OBS)
  
     
+    expect(VISITS).not.toBeUndefined()
+  })
+
+  it (`Importiere ein Testfile > Stroke Daten von Franzi`, async() => {
+    var OBS = importCSV(csv_stroke)
+    OBS = await Process_Observations(OBS, VIEW_CONCEPT)
+    const VISITS = splitVisits(OBS)
+ 
+    const tmp = VISITS[0].OBSERVATIONS
+    // LID: 70184-7 => TVAL_RESOLVED = '1'
+    let obj = tmp.find(el => el.CONCEPT_CD === 'LID: 70184-7')
+    expect(obj.TVAL_RESOLVED).toBe('1')
+
+    // LID: 70184-7 => TVAL_CHAR = 'SCTID: 373068000' <= undefined
+    obj = tmp.find(el => el.CONCEPT_CD === 'LID: 70185-4')
+    expect(obj.TVAL_CHAR).toBe('SCTID: 373068000')
+
+    // MOD: 70187-0 LEFT => hier muss ich den modifier aufloese
+    obj = tmp.find(el => el.CONCEPT_CD === 'MOD: 70187-0 LEFT')
+    // console.log(obj)
+    expect(obj.TVAL_RESOLVED).toBe('0')
+    expect(obj.TVAL_CHAR).toBe('LID: LA6626-1_70187-0')
+
+
+
     expect(VISITS).not.toBeUndefined()
   })
 

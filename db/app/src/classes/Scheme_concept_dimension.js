@@ -26,7 +26,8 @@ class Scheme_concept_dimension extends Scheme_X {
         "CONCEPT_CD": dtypes.string, 
         "NAME_CHAR": dtypes.string, 
         "VALTYPE_CD": dtypes.string, // Gibt an, welcher Datentyp: S - Selection, N - Number, T - Text
-        "UNIT_CD": dtypes.string,  // gibt die Default Unit ein >> wenn Änderung notwendig, dann über *modifier_dimension*
+        "UNIT_CD": dtypes.string,  // gibt die Default Unit ein >> 
+        "RELATED_CONCEPT": dtypes.string, 
         "CONCEPT_BLOB": dtypes.blob, 
         "UPDATE_DATE": dtypes.date, 
         "DOWNLOAD_DATE": dtypes.date, 

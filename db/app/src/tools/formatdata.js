@@ -122,7 +122,7 @@ export function importCSV(text) {
                     obs.VALTYPE_CD = 'N'
                     obs.TVAL_CHAR = null
                     obs.UNIT_CD = UNIT_CD[F]
-                    obs.CONCEPT_CD = {value: F, label: NAME_CHAR[F]}
+                    obs.CONCEPT_CD = {value: parse_text(F), label: NAME_CHAR[F]}
                     somethin_found = true
                 } else if (VALTYPE_CD[F] === 'date') {
                     obs.NVAL_NUM = null
@@ -135,7 +135,7 @@ export function importCSV(text) {
                 else if (VALTYPE_CD[F] === 'text' || VALTYPE_CD[F] === 'string') {
                     obs.NVAL_NUM = null
                     obs.VALTYPE_CD = 'T'
-                    obs.TVAL_CHAR = json[i][F]
+                    obs.TVAL_CHAR = parse_text(json[i][F])
                     obs.UNIT_CD = null
                     obs.CONCEPT_CD = {value: F, label: NAME_CHAR[F]}
                     somethin_found = true
@@ -337,6 +337,22 @@ export const VALTYPE_CD_LIST = SCHEME_CONCEPT_DIMENSION._VALTYPE_CD_LIST
 
 
 //////// LOCAL HELPER FUNCTIONS
+
+function parse_text(value) {
+    if (!value) return undefined
+    if (typeof(value) !== 'string') return undefined
+    value = value.trim()
+
+    //some replacements
+    if (value.toUpperCase() === 'K.A.') return 'SCTID: 373068000'
+
+    // remove '"'
+    if (value.charAt(0) === '"' || value.charAt(value.length - 1) === '"') value = value.replace(/^"|"$/g, '')
+      
+
+    return value
+
+}
 
 /**
  * Wandelt einen String in eine Zahl um, korrigiert auch f. '.' und ','

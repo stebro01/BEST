@@ -31,7 +31,6 @@ class Scheme_observation_fact extends Scheme_X {
         "CONCEPT_CD": dtypes.string,
         "PROVIDER_ID": dtypes.string,
         "START_DATE": dtypes.date,
-        "MODIFIER_CD": dtypes.string,
         "INSTANCE_NUM": dtypes.numeric,
         "VALTYPE_CD": dtypes.string,
         "TVAL_CHAR": dtypes.string,

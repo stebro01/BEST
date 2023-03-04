@@ -98,8 +98,7 @@ const run = async (sql_query) => {
     message: 'run',
     sql_query
   })
-
-  
+ 
   return new Promise((resolve, reject) => {
     database.run(sql_query, function (err) {
       if (err) {
