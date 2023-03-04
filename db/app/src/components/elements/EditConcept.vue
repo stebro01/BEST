@@ -250,7 +250,8 @@ export default {
       result.UPDATE_DATE = datenow_isostring()
       result.CONCEPT_PATH = `${result.CONCEPT_PATH}\\${result.CONCEPT_CD}`
       result.CONCEPT_PATH = result.CONCEPT_PATH.replace(/\\\\/g,'\\');
-      if (result.SOURCESYSTEM_CD !== 'SNOMED-CT') result.CONCEPT_CD = `${result.SOURCESYSTEM_CD}: ${result.CONCEPT_CD }`
+      if (result.SOURCESYSTEM_CD === 'LOINC') result.CONCEPT_CD = `LID: ${result.CONCEPT_CD }`
+      else if (result.SOURCESYSTEM_CD !== 'SNOMED-CT') result.CONCEPT_CD = `${result.SOURCESYSTEM_CD}: ${result.CONCEPT_CD }`
       else result.CONCEPT_CD = `SCTID: ${result.CONCEPT_CD }`
       Object.keys(result).forEach(r => {
         if (result[r] === null || result[r] === 'null') result[r] = 'NULL'

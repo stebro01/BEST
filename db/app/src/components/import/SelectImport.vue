@@ -11,8 +11,11 @@
       <SELECT_FILE :accept="ACCEPT_FILETYPE" :label="`${TEXT.select_file} (${ACCEPT_FILETYPE})`"
         @save="importData($event, selected_import_method)" />
 
-      <div v-if="selected_import_method === 'csv'">
+      <div v-if="selected_import_method === 'csv' && !show_spinner">
         <q-icon name="info" class="q-mt-sm cursor-pointer" size="md" @click="show_csv_help = true" />
+      </div>
+      <div v-if="show_spinner">
+        <q-spinner size="md"></q-spinner>
       </div>
     </div>
 
@@ -41,6 +44,7 @@ export default {
       ],
       selected_import_method: "csv",
       show_csv_help: false,
+      show_spinner: false
     }
   },
 
@@ -65,9 +69,14 @@ export default {
       });
 
       // WHICH METHOD?
-      if (method === "hl7") this.importSURVEY(file.path);
-      else if (method === "csv") this.importCSVFile(file.path);
-      else this.$q.notify("Comming soong ...");
+      this.show_spinner = true
+      if (method === "hl7") return this.importSURVEY(file.path);
+      else if (method === "csv") return this.importCSVFile(file.path);
+      else {
+        this.$q.notify("Comming soong ...")
+        this.show_spinner = false
+      }
+      
     },
 
     importCSVFile(filePath) {
@@ -90,7 +99,7 @@ export default {
           }
 
         });
-
+        this.show_spinner = false
       return;
     },
 
@@ -120,6 +129,7 @@ export default {
       // else
       if (this.mode === 'multiple') this.previewData([DATA])
       else this.previewData(DATA)
+      this.show_spinner = false
     },
 
     previewData(DATA) {
