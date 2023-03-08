@@ -456,7 +456,7 @@
             {"label": "II_Aktivitaetseinschraenkung", "id": [11,12,13,14,15,16], "method": "sum"},
             {"label": "III_Schmerz ", "id": [20,21, "Schmerzgrad"], "method": "sum"},
             {"label": "sum", "id": ["I_Schweregrad","II_Aktivitaetseinschraenkung", "III_Schmerz"], "method": "sum",
-            "coding": { "display" : "TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale", "code" : "CUSTOM: TWSTRS", "system" : "CUSTOM"}}
+            "coding": { "display" : "TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale", "code" : "CUSTOM: SCORES\\TWSTRS", "system" : "CUSTOM"}}
         ]
     }
 }
