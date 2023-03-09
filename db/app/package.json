@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "appdmg": "^0.6.6",
     "core-js": "^3.6.5",
     "cql-execution": "^2.4.4",
     "crypto-js": "^4.1.1",
