@@ -32,7 +32,11 @@ export default {
         }
   
         //checke die Observations
+       
         for (let OBS of data.OBSERVATIONS) {
+           // CHECK FOR DOUBLES
+           OBS = await this.$store.dispatch('checkDoubles', OBS)
+           
           for (let obs_key of Object.keys(OBS)) {
             let obs = OBS[obs_key]
             let CHECK = undefined
@@ -47,8 +51,10 @@ export default {
             //count errors
             if (!CHECK.status) ERRORS.observations ++         
             if (typeof(obs.CONCEPT_CD) === 'object') ERRORS.observations++
+            if (obs._double_found === true) ERRORS.observations++
             obs._check = CHECK
           }
+         
         }   
         
         //errors:

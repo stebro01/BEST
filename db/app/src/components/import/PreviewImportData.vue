@@ -26,11 +26,17 @@
               <span v-else>{{ obs.TVAL_CHAR }}</span>
             </q-item-section>
             <q-item-section side>
+              <div>
+              <!-- CQL CHECK -->
               <span v-if="obs._check.status === true">✅<q-tooltip>CQL Check: {{ obs._check.data.length }} rules passed</q-tooltip></span>
               <span v-else>❌<q-tooltip>
                 <div>CQL Check: {{ obs._check.data.filter(el => el.status === false).length }} / {{ obs._check.data.length }} rules not passed</div>
                 <div v-for="(ccheck, ic) in obs._check.data.filter(el => el.status === false)" :key="ic+'check'+ind_visit+ind_obs"><span v-if="ccheck.info">{{ ccheck.info }}:</span>{{ ccheck.data }}</div>
               </q-tooltip></span>
+
+              <span v-if="obs._double_found === true">❌<q-tooltip>Dieser Datensatz wurde bereits in der DB gefunden</q-tooltip></span>
+              <span v-else-if="obs._double_found === false">✅<q-tooltip>Keine Doppelung gefunden</q-tooltip></span>
+            </div>
             </q-item-section>
           </q-item>
         </q-list>
@@ -74,6 +80,7 @@ export default {
 
         if (!v.CONCEPT_NAME_CHAR) errors++
         if (v._check.status === false) errors++
+        if (v._double_found === true) errors++
 
       })
       return errors

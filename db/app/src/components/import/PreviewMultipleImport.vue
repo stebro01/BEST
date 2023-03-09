@@ -8,7 +8,14 @@
       </q-table>
     </div>
     <div v-if="doing_check === false" class="col-12 q-mb-lg text-center">
-      <q-btn v-if="!data_checked" no-caps rounded class="q-mt-md" @click="checkCQL_Many(patient_data)">Daten mit CQL überprüfen</q-btn>
+      <div v-if="!data_checked">
+        <div>
+        <q-btn  no-caps rounded class="q-mt-md" @click="checkCQL_Many(patient_data)">Daten mit CQL überprüfen</q-btn>
+        </div>
+        <div>
+        <q-checkbox readonly :model-value="check_doubles" dense>doppelte Einträge vermeiden</q-checkbox>
+        </div>
+      </div>
       <q-btn v-else class="q-mt-md my-btn" no-caps flat rounded @click="importToDB(patient_data)">Daten importieren</q-btn>
     </div>
     <div v-else class="col-12 text-center">
@@ -51,7 +58,8 @@ export default {
         {name: 'CHECK', field: 'CHECK', label: 'CQL Check', sortable: true}
       ],
       data_checked: false,
-      doing_check: false
+      doing_check: false,
+      check_doubles: true
     }
   },
 

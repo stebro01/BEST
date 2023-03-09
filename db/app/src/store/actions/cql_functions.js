@@ -1,6 +1,7 @@
 import { exec, query_api, checkRule, exportCQL, importCQL } from "src/tools/cql"
 import { dtypes } from "src/classes/more/dtypes";
 import {getTable} from 'src/store/actions'
+import { CheckObservationsForDoubles } from 'src/tools/db_import_obs'
 
 export const execCQL = ({commit}, payload) => {
     commit('LOG', {method: 'action/execCQL'})
@@ -9,9 +10,16 @@ export const execCQL = ({commit}, payload) => {
     return res
 }
 
+// payload -> OBSERVATION
+export const checkDoubles = async ({commit, state}, payload) =>  {
+  commit('LOG', {method: 'action/checkDoubles'})
+  const VIEW = getTable('OBSERVATION_FACT', state)
+  const res = await CheckObservationsForDoubles(payload, VIEW)
+  return res
+}
+
 export const query_CQLAPI = async ({commit}, payload) =>  {
     commit('LOG', {method: 'action/query_CQLAPI'})
-
     const res = query_api(payload)
     return res
 }

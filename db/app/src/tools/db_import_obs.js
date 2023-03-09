@@ -5,6 +5,7 @@ import { log, error_codes } from "./logger"
  * 
  * @param {*} OBSERVATIONS 
  * @param {*} VIEW_CONCEPT 
+ * @param {object} options - ie: {check_for_doubles: true} => ruft noch die Funktino CheckObservationsForDoubles auf und überpruuft die Observations nach Doppelungen
  * @returns {object} List auf Observatinos
  * const db_fn = './test/jest/mockups/testdb.db'
  * const dbman = require('../../../src-electron/dbman')
@@ -26,7 +27,9 @@ export async function Process_Observations(OBSERVATIONS, VIEW_CONCEPT) {
     if (!CONCEPT_LIST) return undefined
     //gehe jetzt durch alle OBSERVATIONS und SCHAUE NACH DEN CONCEPTS
     resolve_OBSERVATIONS(OBSERVATIONS, CONCEPT_LIST_RESOLVED)
+
     return OBSERVATIONS
+    
 }
 
 async function  resolve_CONCEPT_LIST(CONCEPT_LIST, VIEW_CONCEPT) {
@@ -43,6 +46,7 @@ async function _rcl(concept, CONCEPT_LIST_RESOLVED, VIEW_CONCEPT) {
     let res = await VIEW_CONCEPT.read({...concept})
     if (res.data.length > 0) CONCEPT_LIST_RESOLVED.push(res.data[0])
     let c = res.data[0]
+    if (c === undefined) return
     if (c.VALTYPE_CD === 'S') {
         res = await VIEW_CONCEPT.read({CONCEPT_PATH: `${c.CONCEPT_PATH}\\LA`, _like: true})
         if (res.status) res.data.forEach(d => CONCEPT_LIST_RESOLVED.push(d))
@@ -185,4 +189,26 @@ async function addVisit(visit_info, VIEW_VISIT) {
 async function addObservation(obs, VIEW_OBSERVATION) {
     const res = await VIEW_OBSERVATION.create(obs)
     return res.status === true
+}
+
+
+/**
+ * 
+ * @param {Array} OBSERVATIONS - array of Objects >> output from Process_Observations: [{PATIENT_NUM:2, START_DATE: '2022-04-15', TVAL_CHAR: 'hallo'}]
+ * @param {*} VIEW_OBSERVATION - eine aktive VIEW_INSTANCE, z.b. VIEW_OBSERVATION
+ * @returns {object} OBSERVATIONS, an jedes Element wurde die Eigenschaft: ._double_found mit true | false angehangen
+ */
+export async function CheckObservationsForDoubles(OBSERVATIONS, VIEW_INSTANCE) {
+
+    for (let obs of OBSERVATIONS) {
+        let query = `SELECT COUNT(*)  FROM patient_observations WHERE PATIENT_CD = '${obs.PATIENT_CD}' AND CONCEPT_CD = '${obs.CONCEPT_CD}' AND START_DATE = '${obs.START_DATE}'`
+        if (obs.VALTYPE_CD === 'N') query += ` AND NVAL_NUM = ${obs.NVAL_NUM}`
+        else query += ` AND TVAL_CHAR = '${obs.TVAL_CHAR}'`
+        let res = await VIEW_INSTANCE.run_query(query)
+        if (res.data && res.data.length > 0) {
+            let count = res.data[0]['COUNT(*)']
+            obs._double_found = count > 0
+        }
+    }
+    return OBSERVATIONS
 }

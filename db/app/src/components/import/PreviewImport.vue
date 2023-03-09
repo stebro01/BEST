@@ -11,7 +11,9 @@
       @remove="removeItem($event)"
     />
     <div v-if="!data_checked" class="col-12 q-mb-lg text-center">
-      <q-btn v-if="doing_check === false" no-caps rounded class="q-mt-md" @click="checkCQL_single(patient_data)">Daten mit CQL überprüfen</q-btn>
+      <div  v-if="doing_check === false" >
+        <q-btn no-caps rounded class="q-mt-md" @click="checkCQL_single(patient_data)">Daten mit CQL überprüfen</q-btn>
+      </div>
       <q-spinner v-else size="md" ></q-spinner>
     </div>
   </div>
@@ -60,8 +62,8 @@ export default {
 
       const ERRORS = await this.checkCQL(data)
       this.total_errors_found = ERRORS.total_errors_found
-        this.doing_check = false
-        this.data_checked = true
+      this.doing_check = false
+      this.data_checked = true
     },
 
     removeItem(item) {

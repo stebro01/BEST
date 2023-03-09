@@ -2,7 +2,7 @@
 import { verifyCDA, importHL7toObject, addHL7ObjectToDB } from "src/tools/hl7_import";
 import {importCDAtoObject, extract_cda} from 'src/tools/surveybest_import'
 import {importCSV, splitVisits} from 'src/tools/formatdata'
-import {Process_Observations, Save_PatientVisitObservation} from 'src/tools/db_import_obs'
+import {Process_Observations} from 'src/tools/db_import_obs'
 import { error_codes } from 'src/tools/logger'
 import { View_Visit } from 'src/classes/View_Visit'
 import { View_Observation } from 'src/classes/View_Observation'
@@ -27,6 +27,7 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
   else DATA = await importHL7toObject(CDA_FROM_JSON.data.cda, VIEW_CONCEPT)
   
   if (!DATA || !DATA.PATIENT) return {status: false, error: error_codes.invalid_json_object}
+
   return DATA
 }
 
@@ -43,6 +44,7 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
     else res = await importHL7toObject(hl7json.cda, VIEW_CONCEPT)
 
     if (!res.PATIENT) return {status: false, error: error_codes.invalid_json_object}
+    
     return res
  }
 
@@ -79,8 +81,10 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
     var OBS = importCSV(txt)
     const CONCEPT = new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
     OBS = await Process_Observations(OBS, CONCEPT)
+
     if (OBS === undefined || OBS.length < 1) return false
     const VISITS = splitVisits(OBS)
+
     //PREPARE THE PATIENTS STRUCTURE FOR THE GUI
     const PATIENTS = {}
     VISITS.forEach(v => {
