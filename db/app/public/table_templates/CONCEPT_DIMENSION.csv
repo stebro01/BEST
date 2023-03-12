@@ -52,7 +52,6 @@ CONCEPT_PATH;CONCEPT_CD;NAME_CHAR;VALTYPE_CD;UNIT_CD;RELATED_CONCEPT;CONCEPT_BLO
 \CUSTOM\SCORES\DNMSQUEST;CUSTOM: SCORES\DNMSQUEST;DNMSQuest - Dystonia Non-Motor Symptoms Questionnaire;N;POINTS;;;;;26.01.23;CUSTOM;859723
 \CUSTOM\SCORES\NMSQUEST;CUSTOM: SCORES\NMSQUEST;NMS Quest - Parkinson;N;POINTS;;;;;26.01.23;CUSTOM;859723
 \CUSTOM\SCORES\TWSTRS;CUSTOM: SCORES\TWSTRS;TWSTRS - Toronto Western Spasmodic Torticollis Rating Scale;N;POINTS;;;;;22.02.23;CUSTOM;859723
-\CUSTOM\SCORES\SHAPS_D;CUSTOM: SCORES\SHAPS_D;SHAPS-D;N;POINTS;;;;;22.02.23;CUSTOM;859723
 \CUSTOM\STROKE\DIAGNOSIS\DIAGNOSE_PRIM;CUSTOM: STROKE_DIAGNOSE_PRIM;Schlaganfalldiagnose;T;;;;;;01.03.23;CUSTOM;859723
 \CUSTOM\STROKE\DIAGNOSIS\DIAGNOSE_SEC;CUSTOM: STROKE_DIAGNOSE_SEC;Sek. Schlaganfalldiagnose;T;;;;;;01.03.23;CUSTOM;859723
 \CUSTOM\STROKE\EXTERN\IS_EXTERNE_ZUVERLEGUNG;CUSTOM: STROKE_IS_EXTERNE_ZUVERLEGUNG;Externe Zuverlegung;F;;;;;;01.03.23;CUSTOM;859723
@@ -189,7 +188,7 @@ CONCEPT_PATH;CONCEPT_CD;NAME_CHAR;VALTYPE_CD;UNIT_CD;RELATED_CONCEPT;CONCEPT_BLO
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70186-2\LA\3;LID: LA18445-9;2;A;;;Performs neither task correctly;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70187-0;LID: 70187-0;Best gaze [NIH Stroke Scale];S;;;;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70187-0\LA\1;LID: LA6626-1_70187-0;0;A;;;Normal;;;01.03.23;LOINC;859723
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70187-0\LA\2;LID: LA18446-7;1;A;;;Partial gaze palsy;gaze is abnormal in one or both eyes, but forced deviation or total gaze paresis is not present;;04.03.23 08:54;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70187-0\LA\2;LID: LA18446-7;1;A;;;Partial gaze palsy;gaze is abnormal in one or both eyes, but forced deviation or total gaze paresis is not present;;2023-03-04 08:54:59;01.03.23;LOINC
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70187-0\LA\3;LID: LA18447-5;2;A;;;Forced deviation, or total gaze paresis not overcome by the oculocephalic maneuver;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70187-0\LEFT;MOD: 70187-0 LEFT;Blickbewegung links (NIHS);S;;LID: 70187-0;NIHSSBlickbewegung_Links;;;01.03.23;CUSTOM;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70187-0\RIGHT;MOD: 70187-0 RIGHT;Blickbewegung rechts (NIHS);S;;LID: 70187-0;NIHSSBlickbewegung_Rechts;;;01.03.23;CUSTOM;859723
@@ -208,17 +207,17 @@ CONCEPT_PATH;CONCEPT_CD;NAME_CHAR;VALTYPE_CD;UNIT_CD;RELATED_CONCEPT;CONCEPT_BLO
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70189-6\LEFT;MOD: 70189-6 LEFT;Motorik Gesicht links (NIHS);S;;LID: 70189-6;NIHSSMotorikGesicht_Links;;;01.03.23;CUSTOM;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70189-6\RIGHT;MOD: 70189-6 RIGHT;Motorik Gesicht rechts (NIHS);S;;LID: 70189-6;NIHSSMotorikGesicht_Rechts;;;01.03.23;CUSTOM;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4;LID: 70190-4;Motor arm Left arm [NIH Stroke Scale];S;;;;;;01.03.23;LOINC;859723
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\1;LID: LA18456-6;0;A;;;No drift;limb holds 90 (or 45) degrees for full 10 seconds;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\2;LID: LA18457-4;1;A;;;Drift;limb holds 90 (or 45) degrees, but drifts down before full 10 seconds;does not hit bed or other support;04.03.23 08:54;;01.03.23
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\3;LID: LA18458-2;2;A;;;Some effort against gravity;limb cannot get to or maintain (if cued) 90 (or 45) degrees, drifts down to bed, but has some effort against gravity;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\4;LID: LA18459-0;3;A;;;No effort against gravity;limb falls;;04.03.23 08:54;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\1;LID: LA18456-6;0;A;;;No drift;limb holds 90 (or 45) degrees for full 10 seconds;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\2;LID: LA18457-4;1;A;;;Drift;limb holds 90 (or 45) degrees, but drifts down before full 10 seconds;does not hit bed or other support;2023-03-04 08:54:59;;01.03.23
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\3;LID: LA18458-2;2;A;;;Some effort against gravity;limb cannot get to or maintain (if cued) 90 (or 45) degrees, drifts down to bed, but has some effort against gravity;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\4;LID: LA18459-0;3;A;;;No effort against gravity;limb falls;;2023-03-04 08:54:59;01.03.23;LOINC
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\5;LID: LA18460-8;4;A;;;No movement;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70190-4\LA\6;LID: LA18461-6_70190-4;UN;A;;;Amputation or joint fusion;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2;LID: 70191-2;Motor leg Leg - left [NIH Stroke Scale];S;;;;;;01.03.23;LOINC;859723
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\1;LID: LA18462-4;0;A;;;No drift;leg holds 30-degree position for full 5 seconds;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\2;LID: LA18463-2;1;A;;;Drift;leg falls by the end of the 5-second period but does not hit bed;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\3;LID: LA18464-0;2;A;;;Some effort against gravity;leg falls to bed by 5 seconds, but has some effort against gravity;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\4;LID: LA18465-7;3;A;;;No effort against gravity;leg falls to bed immediately;;04.03.23 08:54;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\1;LID: LA18462-4;0;A;;;No drift;leg holds 30-degree position for full 5 seconds;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\2;LID: LA18463-2;1;A;;;Drift;leg falls by the end of the 5-second period but does not hit bed;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\3;LID: LA18464-0;2;A;;;Some effort against gravity;leg falls to bed by 5 seconds, but has some effort against gravity;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\4;LID: LA18465-7;3;A;;;No effort against gravity;leg falls to bed immediately;;2023-03-04 08:54:59;01.03.23;LOINC
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70191-2\LA\6;LID: LA18461-6_70191-2;UN;A;;;Amputation or joint fusion;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70192-0;LID: 70192-0;Limb ataxia [NIH Stroke Scale];S;;;;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70192-0\LA\1;LID: LA9634-2_70192-0;0;A;;;Absent;;;01.03.23;LOINC;859723
@@ -230,25 +229,25 @@ CONCEPT_PATH;CONCEPT_CD;NAME_CHAR;VALTYPE_CD;UNIT_CD;RELATED_CONCEPT;CONCEPT_BLO
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70192-0\LEFTARM;MOD: 70192-0 RIGHTARM;rechter Arm - Ataxie (NIHS);S;;LID: 70192-0;NIHSSAtaxieArm_rechts;;;01.03.23;CUSTOM;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70192-0\LEFTARM;MOD: 70192-0 RIGHTLEG;rechtes Bein - Ataxie (NIHS);S;;LID: 70192-0;NIHSSAtaxieBein_rechts;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8;LID: 70193-8;Sensory [NIH Stroke Scale];S;;;;;;01.03.23;LOINC;859723
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8\LA\1;LID: LA18468-1;0;A;;;Normal;no sensory loss;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8\LA\2;LID: LA18469-9;1;A;;;Mild-to-moderate sensory loss;patient feels pinprick is less sharp or is dull on the affected side;or there is a loss of superficial pain with pinprick, but patient is aware of being touched;04.03.23 08:54;;01.03.23
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8\LA\3;LID: LA18470-7;2;A;;;Severe to total sensory loss;patient is not aware of being touched in the face, arm, and leg;;04.03.23 08:54;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8\LA\1;LID: LA18468-1;0;A;;;Normal;no sensory loss;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8\LA\2;LID: LA18469-9;1;A;;;Mild-to-moderate sensory loss;patient feels pinprick is less sharp or is dull on the affected side;or there is a loss of superficial pain with pinprick, but patient is aware of being touched;2023-03-04 08:54:59;;01.03.23
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8\LA\3;LID: LA18470-7;2;A;;;Severe to total sensory loss;patient is not aware of being touched in the face, arm, and leg;;2023-03-04 08:54:59;01.03.23;LOINC
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8\LEFT;MOD: 70193-8 LEFT;Sensibilit�t links (NIHS);S;;LID: 70193-8;NIHSSSensibilitaet_Links;;;01.03.23;CUSTOM;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70193-8\RIGHT;MOD: 70193-8 RIGHT;Sensibilit�t rechts (NIHS);S;;LID: 70193-8;NIHSSSensibilitaet_Rechts;;;01.03.23;CUSTOM;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6;LID: 70194-6;Best language [NIH Stroke Scale];S;;;;;;01.03.23;LOINC;859723
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6\LA\1;LID: LA18471-5;0;A;;;No aphasia;normal;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6\LA\2;LID: LA18472-3;1;A;;;Mild-to-moderate aphasia;some obvious loss of fluency or facility of comprehension, without significant limitation on ideas expressed or form of expression;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6\LA\3;LID: LA18473-1;2;A;;;Severe aphasia;all communication is through fragmentary expression;great need for inference, questioning, and guessing by the listener;04.03.23 08:54;;01.03.23
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6\LA\4;LID: LA18474-9;3;A;;;Mute, global aphasia;no usable speech or auditory comprehension;;04.03.23 08:54;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6\LA\1;LID: LA18471-5;0;A;;;No aphasia;normal;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6\LA\2;LID: LA18472-3;1;A;;;Mild-to-moderate aphasia;some obvious loss of fluency or facility of comprehension, without significant limitation on ideas expressed or form of expression;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6\LA\3;LID: LA18473-1;2;A;;;Severe aphasia;all communication is through fragmentary expression;great need for inference, questioning, and guessing by the listener;2023-03-04 08:54:59;;01.03.23
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70194-6\LA\4;LID: LA18474-9;3;A;;;Mute, global aphasia;no usable speech or auditory comprehension;;2023-03-04 08:54:59;01.03.23;LOINC
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70195-3;LID: 70195-3;Dysarthria [NIH Stroke Scale];S;;;;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70195-3\LA\1;LID: LA6626-1_70195-3;0;A;;;Normal;;;01.03.23;LOINC;859723
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70195-3\LA\2;LID: LA18475-6;1;A;;;Mild-to-moderate dysarthria;patient slurs at least some words and, at worst, can be understood with some difficulty;;04.03.23 08:54;01.03.23;LOINC
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70195-3\LA\3;LID: LA18476-4;2;A;;;Severe dysarthria;patient's speech is so slurred as to be unintelligible in the absence of or out of proportion to any dysphasia, or is mute/anarthric;;04.03.23 08:54;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70195-3\LA\2;LID: LA18475-6;1;A;;;Mild-to-moderate dysarthria;patient slurs at least some words and, at worst, can be understood with some difficulty;;2023-03-04 08:54:59;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70195-3\LA\3;LID: LA18476-4;2;A;;;Severe dysarthria;patient's speech is so slurred as to be unintelligible in the absence of or out of proportion to any dysphasia, or is mute/anarthric;;2023-03-04 08:54:59;01.03.23;LOINC
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70195-3\LA\4;LID: LA18477-2;UN;A;;;Intubated or other physical barrier;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70196-1;LID: 70196-1;Extinction and inattention [NIH Stroke Scale];S;;;;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70196-1\LA\1;LID: LA18478-0;0;A;;;No abnormality;;;01.03.23;LOINC;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70196-1\LA\2;LID: LA18479-8;1;A;;;Visual, tactile, auditory, spatial, or personal inattention or extinction to bilateral simultaneous stimulation in one of the sensory modalities;;;01.03.23;LOINC;859723
-\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70196-1\LA\3;LID: LA18480-6;2;A;;;Profound hemi-inattention or extinction to more than one modality;does not recognize own hand or orients to only one side of space;;04.03.23 08:54;01.03.23;LOINC
+\LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70196-1\LA\3;LID: LA18480-6;2;A;;;Profound hemi-inattention or extinction to more than one modality;does not recognize own hand or orients to only one side of space;;2023-03-04 08:54:59;01.03.23;LOINC
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70196-1\LEFT;MOD: 70196-1 LEFT;Neglekt links (NIHS);S;;LID: 70196-1;NIHSSAusloeschung_Links;;;01.03.23;CUSTOM;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70196-1\RIGHT;MOD: 70196-1 RIGHT;Neglekt rechts (NIHS);S;;LID: 70196-1;NIHSSAusloeschung_Rechts;;;01.03.23;CUSTOM;859723
 \LOINC\PANEL.SURVEY.NEURO\NIHSS\70182-1\70967-5;LID: 70967-5;Motor arm Right arm [NIH Stroke Scale];S;;LID: 70190-4;;;;01.03.23;LOINC;859723
@@ -442,4 +441,4 @@ CONCEPT_PATH;CONCEPT_CD;NAME_CHAR;VALTYPE_CD;UNIT_CD;RELATED_CONCEPT;CONCEPT_BLO
 \CONCEPT\LA\3;ICD10-2019;ICD10-2019;A;;;;;;06.01.23;CUSTOM;859723
 \CONCEPT\LA\1;LOINC;LOINC;A;;;;;;06.01.23;CUSTOM;859723
 \CONCEPT\LA\2;SNOMED-CT;SNOMED-CT;A;;;;;;06.01.23;CUSTOM;859723
-\LOINC\MISC\Study\78200-3;LID: 78200-3;Resource identifier [URI / ID] for Study;T;;;Studien URI / ID;04.03.23;;04.03.23 17:46;LOINC;79190712
+\LOINC\MISC\Study\78200-3;LID: 78200-3;Resource identifier [URI / ID] for Study;T;;;Studien URI / ID;2023-03-04;;2023-03-04 17:46:03;LOINC;79190712
