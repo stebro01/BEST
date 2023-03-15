@@ -115,6 +115,7 @@ class settings {
     if (data === null || data === undefined) {
       this._DATA = emptySettings;
       this._USER.create();
+      this.save()
     } else {
       this._DATA = JSON.parse(data);
       this._USER.import(this._DATA.userdata);

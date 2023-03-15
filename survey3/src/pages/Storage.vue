@@ -271,14 +271,15 @@ export default {
 
       this.selected.forEach((uid) => {
         console.log(uid);
-        this.remove(uid);
+        this.remove(uid, true);
       });
     },
 
-    remove(uid) {
-      const answ = confirm(`Wirklich löschen? uid = ${uid}`);
-      if (!answ) return;
-
+    remove(uid, no_dialog) {
+      if (no_dialog !== true) {
+        if (!confirm(`Wirklich löschen? uid = ${uid}`)) return;
+      }
+      
       this.$store.commit("STORAGE_REMOVE", uid);
       this.select_item(false, uid);
     },

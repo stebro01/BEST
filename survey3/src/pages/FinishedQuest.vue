@@ -45,7 +45,7 @@ export default {
     },
 
     mounted() {
-        console.log(this.$store.state.EXPORT_DATA)
+        // console.log(this.$store.state.EXPORT_DATA)
     },
     
     components: {BACKBUTTON},

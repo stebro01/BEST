@@ -329,3 +329,18 @@ export function getTable(table, state) {
         return new View_note(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
     } else return undefined
 }
+
+
+// query SNOMED API
+import * as SNOMED_API from 'src/tools/snomed_api'
+export const  resolve_SNOMED_API = async ({commit}, payload) => {
+    commit('LOG', {method: 'action -> resolve_SNOMED_API', data: payload})
+    const res = await SNOMED_API.resolve(payload)
+    return res
+}
+
+export const  query_SNOMED_API = async ({commit}, payload) => {
+    commit('LOG', {method: 'action -> query_SNOMED_API', data: payload})
+    const res = await SNOMED_API.query(payload)
+    return res
+}

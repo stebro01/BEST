@@ -78,14 +78,14 @@ export function decrypt(payload, privateKey) {
     dec.setKey(privateKey);
     var decrypted_key = dec.decrypt(payload.encrypted_key)
     if (decrypted_key === null) {
-        log({message: 'failed'})
+        // log({message: 'failed'})
         return undefined //could not decrypt key
     }
 
     // 2. DECIPHER the DATA using the decrypted KEY
     var bytes  = CryptoJS.AES.decrypt(payload.encrypted_data, decrypted_key);
     var originalText = bytes.toString(CryptoJS.enc.Utf8);
-    log({message: 'success'})
+    // log({message: 'success'})
     return originalText
 }
 

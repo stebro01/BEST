@@ -32,7 +32,15 @@
               <td class="bg-grey-2 row">
                 <div class="col relative-position"><span class="absolute-center"><span v-if="localData.SOURCESYSTEM_CD=== 'SNOMED-CT'">SCTID</span><span v-else>{{ localData.SOURCESYSTEM_CD }}</span>:</span>
                 </div>
-                <div class="col-8"><q-input dense v-model="localData.CONCEPT_CD" @blur="something_changed = true" /></div>
+                <div class="col-8">
+                  <q-input dense v-model="localData.CONCEPT_CD" @blur="something_changed = true">
+                    <template  v-slot:append>
+                      <q-icon name="search" @click="querySNOMED_API(localData.CONCEPT_CD)" class="cursor-pointer">
+                        <q-tooltip>Frage SNOMED API ab</q-tooltip>
+                        </q-icon>
+                    </template>
+                  </q-input>
+                </div>
               </td>
             </tr>
             <!-- NAME_CHAR -->
@@ -257,6 +265,22 @@ export default {
         if (result[r] === null || result[r] === 'null') result[r] = 'NULL'
       })
       return result
+    },
+
+    async querySNOMED_API(SNOMED_VAL) {
+      const SNOMED_ID = parseInt(SNOMED_VAL)
+      if (!SNOMED_ID) return this.$q.notify('Ungültige ID')
+      const query = await this.$store.dispatch('query_SNOMED_API', SNOMED_ID)
+      if (!query) return
+      // else
+      this.localData.SOURCESYSTEM_CD = 'SNOMED-CT'
+      this.localData.NAME_CHAR = query.pt.term
+      const resolve = await this.$store.dispatch('resolve_SNOMED_API', SNOMED_ID)
+      if (!resolve) return
+      //else 
+      this.localData.CONCEPT_PATH = resolve
+      this.$q.notify('SNOMED Abfrage war erfolgreich')
+
     }
   }
 

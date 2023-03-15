@@ -23,7 +23,7 @@
 
           <div class="col" v-for="(sa, indsa) in short_answers" :key="indsa + 'shortans'">
   
-            <q-radio v-model="val[index]" :val="sa.value">
+            <q-radio v-model="val[index]" :val="sa.value" @update:model-value="updateValue(val)">
                <q-tooltip anchor="top middle" self="center middle"> {{answers_only[indsa]}}</q-tooltip>
             </q-radio>
           </div>
@@ -53,11 +53,7 @@ export default {
     if (this.ITEM.hasOwnProperty('example_value')) this.val = this.ITEM.example_value
 
   },
-  watch: {
-    val(value) {
-      this.$emit('emitValue', value)
-    }
-  },
+  
   computed: {
     short_answers() {
       var out = [];
@@ -67,12 +63,19 @@ export default {
 
       return out
     },
+
     answers_only() {
       var out = [];
       this.item.options.answers.forEach(v => {
         out.push(v.label)
       })
       return out
+    }
+  },
+
+  methods: {
+    updateValue(value){
+      this.$emit('emitValue', value)
     }
   }
 }

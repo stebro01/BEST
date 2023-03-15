@@ -181,7 +181,9 @@ export default {
           console.log(`updateData: ${action} not found!`)
           return
       }
+      
     },
+
     randomFill() {
       this.$store.state.QuestMan.random_fill()
       // refresh 
@@ -196,6 +198,7 @@ export default {
     },
     emitEvent() {
       // FIRST CHECK THE FORM
+
       this.submit_clicked = true;
       this.check_form = this.$store.getters.QUESTMAN.check_activeQuest();
       this.key_suffix = Date.now() //update the quest for
