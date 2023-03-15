@@ -275,12 +275,15 @@ export default {
       // else
       this.localData.SOURCESYSTEM_CD = 'SNOMED-CT'
       this.localData.NAME_CHAR = query.pt.term
-      const resolve = await this.$store.dispatch('resolve_SNOMED_API', SNOMED_ID)
-      if (!resolve) return
-      //else 
-      this.localData.CONCEPT_PATH = resolve
+      const res = await this.$store.dispatch('resolve_SNOMED_API', SNOMED_ID)
+      if (!res) return
+      //else => entferne jetzt das letzte Element
+      const tmp = res.split('\\')
+      if (tmp.length > 0) tmp.splice(tmp.length-1, 1)
+      else return
+      //
+      this.localData.CONCEPT_PATH = tmp.join('\\')
       this.$q.notify('SNOMED Abfrage war erfolgreich')
-
     }
   }
 
