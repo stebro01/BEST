@@ -35,7 +35,7 @@
                 <div class="col-8">
                   <q-input dense v-model="localData.CONCEPT_CD" @blur="something_changed = true">
                     <template  v-slot:append>
-                      <q-icon name="search" @click="querySNOMED_API(localData.CONCEPT_CD)" class="cursor-pointer">
+                      <q-icon name="manage_search" @click="querySNOMED_API(localData.CONCEPT_CD)" class="cursor-pointer">
                         <q-tooltip>Frage SNOMED API ab</q-tooltip>
                         </q-icon>
                     </template>

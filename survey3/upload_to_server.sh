@@ -12,25 +12,12 @@ LOCAL_DIR="./dist/spa"
 REMOTE_DIR="www"
 
 # FTP-Verbindung aufbauen
-ftp -n $FTP_HOST <<END_SCRIPT
-quote USER $FTP_USER
-quote PASS $FTP_PASS
-
-# Lokales Verzeichnis ändern
-lcd $LOCAL_DIR
-
-# Remote-Verzeichnis ändern
+ncftp -u $FTP_USER -p $FTP_PASS $FTP_HOST <<EOF
 cd $REMOTE_DIR
-
-# Dateien hochladen
-prompt
-binary
-hash
-
-# GEHT NOCH TNICHT!!!!
-
+lcd $LOCAL_DIR
+put -R *
 quit
-END_SCRIPT
+EOF
 
 exit 0
 
