@@ -3,7 +3,7 @@
     <div class="col-12 overflow-hidden">
       <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close" size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
       <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer" @click="printDiv('mySurveyDIV')" name="picture_as_pdf" size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.pdf }}</q-tooltip></q-icon>
-      <q-card class="q-ma-md">
+      <q-card class="q-ma-md no-shadow">
         <!-- SUMMARY -->
         <q-card-section v-if="preview_survey_best_item.SUMMARY">
           <q-item-label v-for="(item, ind) in Object.keys(preview_survey_best_item.SUMMARY)" :key="ind + 'summary'"
@@ -40,7 +40,7 @@
             :rows-per-page-options="[100]">
             <template v-slot:item="props">
               <div class="q-pa-xs col-xs-6 col-sm-4 col-md-3">
-                <q-card dense :class="{ 'text-bold': props.row.label === 'sum' }">
+                <q-card dense :class="{ 'text-bold': props.row.label === 'sum' }" class="no-shadow bg-grey-1">
                   <q-card-section class="text-center q-pa-none overflow-hidden">
                     {{ props.row.label }}
 

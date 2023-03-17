@@ -10,8 +10,8 @@
       <template v-slot:main>
         <OBSERVATION_TABLE_EDIT v-if="formData" :input_data="formData" @changed="dataChanged($event)" @previewSurvey="previewSurveyBest($event)"/>
         
-        <q-btn v-if="!show_print_view" class="q-mt-xl" rounded @click="show_print_view = true">Druck-version</q-btn>
-        <PRINT_PREVIEW v-else :formData="formData" @close="show_print_view = false"/>
+        <q-btn v-if="!show_print_view && !preview_survey_best_show" class="q-mt-xl" rounded @click="show_print_view = true">Druck-version</q-btn>
+        <PRINT_PREVIEW v-else-if="show_print_view" :formData="formData" @close="show_print_view = false"/>
 
         <!-- PREVIEW SURVEYBEST -->
         <SURVEY_BEST_PREVIEW v-if="preview_survey_best_show" :item="preview_survey_best_item"

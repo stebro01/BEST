@@ -6,8 +6,8 @@
       <q-btn icon="close" round flat class="float-right" @click="$emit('close')"></q-btn>
       
     </div>
-    <div class="col-12 text-caption q-mb-xl row justify-center" v-if="PREVIEW_DATA" id="myPrintDiv">
-        <q-card style="width: 80%">
+    <div class="col-12 text-caption q-mb-xl row justify-center" v-if="PREVIEW_DATA" >
+        <q-card style="width: 80%" id="myPrintDiv">
           <q-card-section class="text-h6">Zusammenfassung</q-card-section>
           <q-card-section>Visiten: {{ PREVIEW_DATA.length }}</q-card-section>
           <q-card-section>
