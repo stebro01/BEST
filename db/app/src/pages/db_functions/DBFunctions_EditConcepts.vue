@@ -11,7 +11,9 @@
       <template v-slot:main>
         <div>
           <q-table class="my-table q-mt-xl" :rows="CONCEPTS_TOSHOW" row-key="CONCEPT_CD" dense
-            :rows-per-page-options="[10, 25, 50, 100]" :filter="filter" selection="multiple" v-model:selected="selected">
+            :rows-per-page-options="[10, 25, 50, 100]" :filter="filter" selection="multiple" v-model:selected="selected"
+            :columns="columns"
+            >
             <!-- OPTIONS -->
             <template v-slot:top>
               <BOTTOM_DROPDOWN :show_import="true" @import="$router.push({ name: 'DBFunctions_ImportConcepts' })"
@@ -70,7 +72,16 @@ export default {
       selected: [],
       show_edit_concept: false,
       show_add_concept: false,
-      show_add_concept_data: {}
+      show_add_concept_data: {},
+      columns: [
+        { name: 'CONCEPT_CD', align: 'left', label: 'CONCEPT_CD', field: 'CONCEPT_CD', sortable: true, style: "max-width: 150px; overflow: hidden; font-size: 0.6em" },
+        { name: 'NAME_CHAR', align: 'left', label: 'NAME_CHAR', field: 'NAME_CHAR', sortable: true, style: "max-width: 150px; overflow: hidden; font-size: 0.8em" },
+        { name: 'VALTYPE_CD', align: 'center', label: 'VALTYPE_CD', field: 'VALTYPE_CD', sortable: true, style: "max-width: 40px; overflow: hidden; font-size: 0.8em" },
+        { name: 'UNIT_CD', align: 'center', label: 'UNIT_CD', field: 'UNIT_CD', sortable: true, style: "max-width: 40px; overflow: hidden; font-size: 0.8em" },
+        { name: 'CONCEPT_PATH', align: 'left', label: 'CONCEPT_PATH', field: 'CONCEPT_PATH', sortable: true, style: "max-width: 150px; overflow: hidden; font-size: 0.5em" },
+        { name: 'RELATED_CONCEPT', align: 'left', label: 'RELATED_CONCEPT', field: 'RELATED_CONCEPT', sortable: true, style: "max-width: 50px; overflow: hidden; font-size: 0.5em" },
+        { name: 'CONCEPT_BLOB', align: 'left', label: 'CONCEPT_BLOB', field: 'CONCEPT_BLOB', sortable: true, style: "max-width: 150px; overflow: hidden; font-size: 0.5em" },
+      ]
     }
   },
 

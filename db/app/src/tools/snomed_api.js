@@ -26,7 +26,7 @@ export async function resolve(SNOMED_ID) {
     }
     
     
-    return `\\SNOMED-CD\\${url}`
+    return `\\SNOMED-CT\\${url}`
 }
 
 function _get_parent(res) {
