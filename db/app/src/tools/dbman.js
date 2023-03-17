@@ -78,6 +78,7 @@ const get_all = async (sql_query) => {
   return new Promise((resolve, reject) => {
     database.all(sql_query, [], (err, rows) => {
       if (err) {
+        console.log(sql_query)
         console.error(err)
         reject(err)
       } else {
