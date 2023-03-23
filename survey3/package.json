@@ -11,6 +11,7 @@
     "build_app": "quasar build --mode electron",
     "build_dmg": "electron-installer-dmg ./dist/electron/surveyBEST-darwin-arm64/surveyBEST.app surveyBEST --out=./dist --overwrite",
     "build4win": "quasar build --mode electron --target win32 ",
+    "icons": "icongenie generate -i ./public/icons/surveyBest_icon1024.png",
     "upload": "sh upload_to_server.sh",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,html,md,json}\" --ignore-path .gitignore",
