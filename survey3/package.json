@@ -8,6 +8,9 @@
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
+    "build_app": "quasar build --mode electron",
+    "build_dmg": "electron-installer-dmg ./dist/electron/surveyBEST-darwin-arm64/surveyBEST.app surveyBEST --out=./dist --overwrite",
+    "build4win": "quasar build --mode electron --target win32 ",
     "upload": "sh upload_to_server.sh",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,html,md,json}\" --ignore-path .gitignore",
@@ -20,6 +23,7 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.1.1",
     "dateformat": "^5.0.3",
+    "electron": "^23.2.0",
     "jsrsasign": "^10.6.1",
     "quasar": "^2.6.0",
     "raw-loader": "^4.0.2",
@@ -31,6 +35,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
     "@quasar/app-webpack": "^3.0.0",
+    "electron-packager": "^15.2.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.0.0",
