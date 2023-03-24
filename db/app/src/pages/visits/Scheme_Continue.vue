@@ -8,7 +8,7 @@
       <!-- MAIN -->
       <template v-slot:main>
         <!-- ALLGEMEIN -->
-        <OBSERVATION_TABLE_SHORT @changed="(localGlobalData = $event); changeDetected = true" />
+        <OBSERVATION_TABLE_SHORT @changed="updateGlobalData($event)" />
 
         <div v-if="!active_scheme.resolved">
           <!-- AUSWAHL BUTTON -->
@@ -127,7 +127,6 @@ export default {
       const OBSERVATIONS = []
       if (!VISIT) return OBSERVATIONS
       const obs = await this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { ENCOUNTER_NUM: VISIT.ENCOUNTER_NUM } })
-      if (obs.length === 0) return OBSERVATIONS
       for (let r of RESOLVED) {
         let obj = obs.find(el => el.CONCEPT_CD === r.CONCEPT_CD)
         if (obj) {
@@ -142,6 +141,26 @@ export default {
         OBSERVATIONS.push(r)
       }
       return OBSERVATIONS
+    },
+
+    // UPDATE GLOBAL DATA
+    async updateGlobalData(data) {
+      this.localGlobalData = data
+      this.changeDetected = true
+      
+      //update the VISIT
+      const VISIT = this.$store.getters.VISIT_PINNED
+      if (!VISIT) return
+      const SET = {}
+      if(data.LOCATION_CD && data.LOCATION_CD !== VISIT.LOCATION_CD) SET.LOCATION_CD = data.LOCATION_CD.value
+      if(data.START_DATE && data.START_DATE !== VISIT.START_DATE) SET.START_DATE = data.START_DATE
+      if(data.END_DATE && data.END_DATE !== VISIT.END_DATE) SET.END_DATE =data.END_DATE
+      if (Object.keys(SET).length === 0) return
+      const WHERE = {ENCOUNTER_NUM: VISIT.ENCOUNTER_NUM}
+      const res = await this.$store.dispatch('updateDB', {table: 'VISIT_DIMENSION', query_string: {where: WHERE, set: SET}})
+      this.$q.notify('Aktulle Visite: ' + res)
+      const res_visit = await this.$store.dispatch('searchDB', {table: 'VISIT_DIMENSION', query_string: WHERE})
+      if (res_visit && res_visit.length > 0) this.$store.commit('VISIT_PINNED_SET', res_visit[0])
     },
 
     //this will merge the data
@@ -174,7 +193,6 @@ export default {
       const DATA_CLEAN = []
       this.localFormData.forEach(d => {
         let temp = JSON.parse(JSON.stringify(d))
-        console.log(d)
         // fill Allgemeine Daten
         temp.LOCATION_CD = this._get_value(this.localGlobalData.LOCATION_CD)
         temp.PROVIDER_ID = this._get_value(this.localGlobalData.PROVIDER_ID)

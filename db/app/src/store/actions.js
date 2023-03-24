@@ -11,7 +11,6 @@ import { View_cql } from 'src/classes/View_CQL'
 import { View_Concept_CQL_Lookup } from 'src/classes/View_Concept_CQL_Lookup'
 import { View_note } from 'src/classes/View_Note'
 
-
 // SOME ACTION IMPORTS
 import {getGender, getConceptBy_CONCEPT_CD, getConceptList, getLookupBy_CODE_CD, getProviderBy_PROVIDER_ID, getCodeLookupList, resetDB, getAnswers, getAnswersForObservation, saveVisitObservation_to_Patient, createDB, getDistinctPatientList} from './actions/db_queries'
 export {getGender, getConceptBy_CONCEPT_CD, getConceptList, getLookupBy_CODE_CD, getProviderBy_PROVIDER_ID, getCodeLookupList, resetDB, getAnswers, getAnswersForObservation, saveVisitObservation_to_Patient, createDB, getDistinctPatientList}
@@ -34,6 +33,7 @@ export function initApp ({commit}, payload) {
   
     // set PLATFORM
     commit('ELECTRON_SET', payload.electron )
+    commit('SPINNER_SET', false)
   }
 
 /**
@@ -93,7 +93,7 @@ export function closeDB ({commit}) {
  */
 export function searchDB ({commit, state}, payload) {
     commit('LOG', {method: 'action -> searchDB', data: payload})
-    
+    commit('SPINNER_SET', true)
     return new Promise((res, rej) => {
         const TABLE = getTable(payload.table, state)
         
@@ -112,7 +112,7 @@ export function searchDB ({commit, state}, payload) {
                 else rej(query.error)
             }).catch(err => rej(err.message))
         }
-    })
+    }).finally(() => commit('SPINNER_SET', false))
 }
 
 /**
@@ -125,7 +125,7 @@ export function searchDB ({commit, state}, payload) {
  */
  export function updateDB ({commit, state}, payload) {
     commit('LOG', {method: 'action -> updateDB', data: payload})
-    
+    commit('SPINNER_SET', true)
     return new Promise((res, rej) => {
         const TABLE = getTable(payload.table, state)
         
@@ -140,7 +140,7 @@ export function searchDB ({commit, state}, payload) {
                 else rej(query.error)
             }).catch(err => rej(err.message))
         }
-    })
+    }).finally(() => commit('SPINNER_SET', false))
 }
 
 /**
@@ -166,7 +166,7 @@ export function searchDB ({commit, state}, payload) {
                 else rej(query.error)
             }).catch(err => rej(err.message))
         }
-    })
+    }).finally(() => commit('SPINNER_SET', false))
 }
 
 /**
@@ -197,7 +197,7 @@ export function searchDB ({commit, state}, payload) {
           
             }).catch(err => rej(err.message))
         }
-    })
+    }).finally(() => commit('SPINNER_SET', false))
 }
 
 /**
@@ -335,12 +335,16 @@ export function getTable(table, state) {
 import * as SNOMED_API from 'src/tools/snomed_api'
 export const  resolve_SNOMED_API = async ({commit}, payload) => {
     commit('LOG', {method: 'action -> resolve_SNOMED_API', data: payload})
+    commit('SPINNER_SET', true)
     const res = await SNOMED_API.resolve(payload)
+    commit('SPINNER_SET', false)
     return res
 }
 
 export const  query_SNOMED_API = async ({commit}, payload) => {
     commit('LOG', {method: 'action -> query_SNOMED_API', data: payload})
+    commit('SPINNER_SET', true)
     const res = await SNOMED_API.query(payload)
+    commit('SPINNER_SET', false)
     return res
 }

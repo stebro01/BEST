@@ -41,6 +41,8 @@
                 <!-- text hier -->
             </slot>
         </div>
+
+        <q-spinner v-if="SHOW_SPINNER" class="absolute-bottom-right z-max" size="lg"/>
     </div>
 </template>
 
@@ -56,6 +58,10 @@ export default {
             if (this.no_options === true && this.no_footer === true) return 'col-10'
             else if (this.no_options === true || this.no_footer === true) return 'col-9'
             return 'col-8'
+        },
+
+        SHOW_SPINNER() {
+            return this.$store.getters.SHOW_SPINNER
         }
     }
 }

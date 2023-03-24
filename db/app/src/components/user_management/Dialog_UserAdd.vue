@@ -10,15 +10,15 @@
             <q-form @submit="$emit('save', formData)">
               <div class="row">
                 <div class="q-mt-sm col-4 text-center justify-center">ID:</div>
-                <div class="col-8 shadow-1"><q-input filled dense v-model="formData.USER_CD" lazy-rules :rules="[ val => val && val.length > 2 || 'Mindestens 5 Zeichen']"/></div>
+                <div class="col-8 "><q-input filled dense v-model="formData.USER_CD" lazy-rules :rules="[ val => val && val.length > 2 || 'Mindestens 5 Zeichen']"/></div>
                 <div class="q-mt-sm col-4 text-center justify-center">Name:</div>
-                <div class="col-8 shadow-1"><q-input filled dense v-model="formData.NAME_CHAR" lazy-rules :rules="[ val => val && val.length > 3 || 'Mindestens 5 Zeichen']"/></div>
+                <div class="col-8 "><q-input filled dense v-model="formData.NAME_CHAR" lazy-rules :rules="[ val => val && val.length > 3 || 'Mindestens 5 Zeichen']"/></div>
                 <div class="q-mt-sm col-4 text-center justify-center">Typ:</div>
-                <div class="col-8 shadow-1"><q-select filled dense v-model="formData.COLUMN_CD" :options="TEXT.options_type" lazy-rules :rules="[ val => val && val.length > 1 || 'Bitte einen Typ auswählen']"/></div>
+                <div class="col-8 "><q-select filled dense v-model="formData.COLUMN_CD" :options="TEXT.options_type" lazy-rules :rules="[ val => val && val.length > 1 || 'Bitte einen Typ auswählen']"/></div>
                 <div class="q-mt-sm col-4 text-center justify-center">Beschreibung:</div>
-                <div class="col-8 shadow-1"><q-input filled dense v-model="formData.USER_BLOB"/></div>
+                <div class="col-8 "><q-input filled dense v-model="formData.USER_BLOB"/></div>
                 <div class="q-mt-lg col-4 text-center justify-center">Passwort:</div>
-                <div v-if="mode==='new' || resetPwd" class="q-mt-md col-8 shadow-1">
+                <div v-if="mode==='add' || resetPwd" class="q-mt-md col-8 shadow-1">
                   <q-input dense v-model="formData.PASSWORD_CHAR" filled :type="isPwd ? 'password' : 'text'"
                   lazy-rules :rules="[ val => val && val.length > 4 || 'Mindestens 5 Zeichen']" >
                     <template v-slot:append>
@@ -31,7 +31,7 @@
                   </q-input>
                 </div>
                 <div v-else-if="mode === 'edit' && !resetPwd">
-                  <q-btn class="q-mt-md" no-caps rounded flat @click="resetPwd = true">Passwort zurücksetzen</q-btn>
+                  <q-btn class="q-mt-md shadow-1" no-caps rounded flat @click="resetPwd = true">Passwort zurücksetzen</q-btn>
                 </div>
                 <!-- UPDATE -->
                 <div class="col-12 q-mt-lg text-center">

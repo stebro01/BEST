@@ -18,11 +18,6 @@
       </div>
       <q-btn v-else class="q-mt-md my-btn" no-caps flat rounded @click="importToDB(patient_data)">Daten importieren</q-btn>
     </div>
-    <div v-else class="col-12 text-center">
-      <q-spinner  size="md" ></q-spinner>
-    </div>
-
-
     <!-- PREVIEW PATIENT DATA -->
     <div class="col-12 row text-center justify-center" v-if="SELECTED_PATIENT">
       <PREVIEW_IMPORT_DATA :patient_data="SELECTED_PATIENT" :total_errors_found="SELECTED_PATIENT._ERRORS.total_errors_found"

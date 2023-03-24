@@ -14,7 +14,7 @@
       <div  v-if="doing_check === false" >
         <q-btn no-caps rounded class="q-mt-md" @click="checkCQL_single(patient_data)">Daten mit CQL überprüfen</q-btn>
       </div>
-      <q-spinner v-else size="md" ></q-spinner>
+      
     </div>
   </div>
 </template>

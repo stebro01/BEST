@@ -74,3 +74,7 @@ export function SESSION_MULTI_EDIT_LOAD(state) {
     if (!item) state.SESSION_MULTIEDIT = undefined
     else state.SESSION_MULTIEDIT = JSON.parse(item)
 }
+
+export function SPINNER_SET (state, payload) {
+    state.SHOW_SPINNER = payload === true
+}

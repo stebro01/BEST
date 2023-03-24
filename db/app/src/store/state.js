@@ -16,6 +16,7 @@ export default function () {
       OBSERVATION_PINNED: undefined,
       UPLOAD_ID: '79190712',
       IS_ELECTRON: false,
-      SESSION_MULTIEDIT: undefined
+      SESSION_MULTIEDIT: undefined,
+      SHOW_SPINNER: true
     }
   }

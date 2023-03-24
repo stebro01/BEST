@@ -26,7 +26,7 @@
                     @import="$router.push({ name: 'Observation_Import' })"
                     :show_add="selected.length === 0 && $store.getters.VISIT_PINNED"
                     @add="$router.push({ name: 'Observation_New' })"
-                    :show_play_playlist="$store.getters.VISIT_PINNED && selected.length === 0 && rows && rows.length > 0"
+                    :show_play_playlist="$store.getters.VISIT_PINNED && selected.length === 0"
                     @playlist_play="$router.push({ name: 'Scheme_Continue' })" :show_edit="selected.length > 0"
                     :show_delete="selected.length > 0" @edit="editSelection()" @delete="deleteSelection()"
                     :show_remove="selected.length > 0" @remove="deleteSelection()" />

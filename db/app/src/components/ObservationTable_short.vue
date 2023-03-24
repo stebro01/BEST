@@ -17,7 +17,7 @@
             <span v-else class="my-small-text">{{formData.PROVIDER_ID}}</span>
             <EDIT_ICON />
             <q-popup-edit v-model="formData.PROVIDER_ID" buttons auto-save v-slot="scope">
-              <q-select dense v-model="scope.value" :options="options.PROVIDER_ID" @blur="dataChanged()"/>
+              <q-select dense v-model="scope.value" :options="options.PROVIDER_ID" @blur="dataChanged({PROVIDER_ID: scope.value})"/>
             </q-popup-edit>
           </td>
           <!-- LOCATION_CD -->
@@ -26,19 +26,19 @@
             <span v-else class="my-small-text">{{formData.LOCATION_CD}}</span>
             <EDIT_ICON />
             <q-popup-edit v-model="formData.LOCATION_CD" buttons auto-save v-slot="scope">
-              <q-select dense v-model="scope.value" :options="options.LOCATION_CD" @blur="dataChanged()"/>
+              <q-select dense v-model="scope.value" :options="options.LOCATION_CD" @blur="dataChanged({LOCATION_CD: scope.value})"/>
             </q-popup-edit>
           </td>
           <!-- START DATE -->
           <td class="cursor-pointer"> {{formData.START_DATE}}<EDIT_ICON />
             <q-popup-edit v-model="formData.START_DATE" auto-save buttons v-slot="scope">
-              <q-input v-model="scope.value" dense  type="date" @keyup.enter="scope.set" @blur="dataChanged()"/>
+              <q-input v-model="scope.value" dense  type="date" @keyup.enter="scope.set" @blur="dataChanged({START_DATE: scope.value})"/>
             </q-popup-edit>
           </td>
           <!-- END_DATE -->
           <td class="cursor-pointer">{{formData.END_DATE}}<EDIT_ICON />
             <q-popup-edit v-model="formData.END_DATE" auto-save buttons v-slot="scope">
-              <q-input v-model="scope.value" dense  type="date" @keyup.enter="scope.set" @blur="dataChanged()"/>
+              <q-input v-model="scope.value" dense  type="date" @keyup.enter="scope.set" @blur="dataChanged({END_DATE: scope.value})"/>
             </q-popup-edit>
           </td>
         </tr>
@@ -81,7 +81,7 @@ export default {
           const PROVIDER = this.$store.getters.PROVIDER_PINNED
           if (PROVIDER.PROVIDER_ID) this.formData.PROVIDER_ID = PROVIDER.PROVIDER_ID
         }
-        this.$emit('changed', this.formData)
+        // this.$emit('changed', this.formData)
       }
 
       // prepare options
@@ -116,8 +116,13 @@ export default {
     },
 
     methods: {
-      dataChanged() {
+      dataChanged(val) {
+        if (val && val.LOCATION_CD) this.formData.LOCATION_CD = val.LOCATION_CD //damit daten sofort aktualisiert weitergeben werden
+        if (val && val.PROVIDER_ID) this.formData.PROVIDER_ID = val.PROVIDER_ID
+        if (val && val.START_DATE) this.formData.START_DATE = val.START_DATE
+        if (val && val.END_DATE) this.formData.END_DATE = val.END_DATE
         this.$emit('changed', this.formData)
+        
       }
     
     }

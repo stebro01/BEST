@@ -35,6 +35,11 @@ npm run doc
 ```
 
 ## Fehlerbehebung
+
+### Fehler: appdmg on windows 
+Fehler: electron-packager auf win32 mit appdmg installiert bringt einen Fehler
+Lösung: npm remove appdmg
+
 ### Fehler: code ELIFECYCLE; errno 1
 Fehler:
 ```

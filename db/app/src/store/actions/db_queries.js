@@ -5,7 +5,7 @@ import { View_Provider } from 'src/classes/View_Provider'
 import { prepare_path } from 'src/tools/prepare_sql_template_path'
 import { resetDatabase } from 'src/tools/db_functions'
 
-import { error_codes } from 'src/tools/logger'
+import { error_codes, RETURN_DATA } from 'src/tools/logger'
 import { View_Visit } from 'src/classes/View_Visit'
 import { View_Observation } from 'src/classes/View_Observation'
 
@@ -169,6 +169,7 @@ export const  getProviderBy_PROVIDER_ID = async ({commit, state}, value) => {
 */
 export const  resetDB = async ({commit, state}, payload) => {
     commit('LOG', {method: 'action/db_queries -> resetDB'})
+    commit('SPINNER_SET', true)
     return new Promise((resolve, reject) => {
         var publicFolder = 'public'
         if (!process.env.DEV) publicFolder = window.electron.publicFolder
@@ -182,7 +183,10 @@ export const  resetDB = async ({commit, state}, payload) => {
         window.electron.dbman.resetDB(PATH, resetDatabase)
         .then(res => resolve(res))
         .catch(err =>{console.log(err); reject(err)})
-        .finally(() => window.electron.dbman.close())
+        .finally(() => {
+            window.electron.dbman.close()
+            commit('SPINNER_SET', false)
+        })
                 
     })
  }
@@ -214,7 +218,7 @@ export const  resetDB = async ({commit, state}, payload) => {
   * this.$store.dispatch('saveVisitObservation_to_Patient', PATIENT) //called by CSV_ObservationEdit_Card.vue
   */
  export const  saveVisitObservation_to_Patient = async ({commit, state}, payload) => {
-    commit('LOG', {method: 'ImportObservation->saveVisitObservation_to_Patient'})
+    commit('LOG', {method: 'action->saveVisitObservation_to_Patient'})
     if (!payload) return error_codes.invalid_payload
     const PATIENT = payload
     if (!PATIENT.PATIENT_NUM) return error_codes.invalid_payload
@@ -237,7 +241,7 @@ export const  resetDB = async ({commit, state}, payload) => {
   * this.$store.dispatch('getDistinctPatientList', {PATIENT_NUM: 1, PATIENT_NUM: 2}) //called by CSV_ObservationEdit_Card.vue
  */
  export const  getDistinctPatientList = async ({commit, state}, payload) => {
-    commit('LOG', {method: 'ImportObservation->getDistinctPatientList', data: payload})
+    commit('LOG', {method: 'action->getDistinctPatientList', data: payload})
     if (!payload || payload.length < 1) throw(error_codes.invalid_payload)
 
     var SQL_STATEMENT = 'SELECT DISTINCT patient_observations.CONCEPT_CD as CONCEPT_CD, patient_observations.CONCEPT_NAME_CHAR as CONCEPT_NAME_CHAR, CONCEPT_DIMENSION.CONCEPT_PATH as CONCEPT_PATH FROM patient_observations  LEFT JOIN CONCEPT_DIMENSION ON CONCEPT_DIMENSION.CONCEPT_CD = patient_observations.CONCEPT_CD WHERE'

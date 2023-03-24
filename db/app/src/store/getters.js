@@ -6,6 +6,10 @@ export function TEXT(state) {
     return state.ENV.text
 }
 
+export function SHOW_SPINNER(state) {
+    return state.SHOW_SPINNER
+}
+
 export function SETTINGS(state) {
     return state.SETTINGS.data
 }

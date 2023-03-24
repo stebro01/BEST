@@ -7,9 +7,10 @@
       <q-splitter v-model="splitterModel" style="height: 50vh; width: 100%;">
 
         <template v-slot:before>
-          <div class="q-pa-md" v-if="formData.length > 0 && LEFT_TREE">
-            <q-tree dense :nodes="LEFT_TREE" node-key="label" selected-color="green" v-model:selected="selected"
-              default-expand-all />
+          <div class="q-pa-md" v-if="LEFT_TREE && data_is_prepared">
+            <q-tree default-expand-all dense :nodes="LEFT_TREE" node-key="label" selected-color="green" v-model:selected="selected"
+            no-selection-unset
+            />
           </div>
         </template>
 
@@ -93,6 +94,7 @@ export default {
       selected: null,
       simple: [],
       formData: [],
+      data_is_prepared: false,
       options: [],
       label: null,
       optons_finding: [
@@ -175,6 +177,7 @@ export default {
       if (this.scheme.scheme) {
         this.selected = this.scheme.scheme.NAME_CHAR
       }
+      
       if (this.scheme.resolved) {
         this.formData = []
         this.options = []
@@ -195,6 +198,8 @@ export default {
           }
         }
       }
+
+      this.data_is_prepared = true //die zeile brauche ich, damit die Option default-expand-all auch funktioniert!!!
     },
 
     selectTab(ind) {

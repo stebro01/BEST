@@ -45,7 +45,13 @@ const error_codes = {
     h7cda_not_valid: "H7 Dokument -> Signatur stimmt nicht überein; das Dokument wurde verändert"
 }
 
+const RETURN_DATA = (payload, commit) => {
+    if (commit) commit('SPINNER_SET', false)
+    return payload
+}
+
 exports.log = log
 exports.info = info
 exports.error = error
+exports.RETURN_DATA = RETURN_DATA
 exports.error_codes = error_codes
