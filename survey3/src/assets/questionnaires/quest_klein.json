@@ -188,6 +188,12 @@
       "force": false
     },
     {
+      "label": "",
+      "value": ["krahn.png", "palme.png"],
+      "type": "image",
+      "width": 200
+    },
+    {
       "label": "\"Was können Sie auf den gezeigten Bildern erkennen?\"",
       "id": 8,
       "coding": {

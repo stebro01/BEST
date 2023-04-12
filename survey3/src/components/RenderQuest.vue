@@ -83,6 +83,12 @@
             <q-item-label v-else-if="(item.type === 'multiple_radio')">
               <RenderMultipleRadio :ITEM="item" :VALUE="QUEST.items[indQ].value" @emitValue="updateData('multiple_radio', indQ, $event)" data-cy="multiple_radio" />
             </q-item-label>
+
+            <q-item-label v-else-if="(item.type === 'image')">
+              <span v-for="(img, imgind) of item.value" :key="imgind+'img'">
+              <img :src="`img/${img}`" alt="" :style="`width: ${item.width}px`">
+              </span>
+            </q-item-label>
 <!-- ENDE ITEM -->
 
             <!-- COMPLETE? -->
