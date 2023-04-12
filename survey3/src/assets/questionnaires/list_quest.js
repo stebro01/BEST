@@ -33,6 +33,7 @@ const quest = [
   "hoehnyahr",
   "hlq",
   "iqcode",
+  "klein",
   "mfq",
   "mrs",
   "mwtb",

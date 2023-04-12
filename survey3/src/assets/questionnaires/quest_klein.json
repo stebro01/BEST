@@ -1,0 +1,265 @@
+{
+  "title": "KLeiN-Score",
+  "short_title": "schnelles Demenzscreening",
+  "description": null,
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "225398001",
+    "display": "KLeiN_score"
+  },
+  "manual": "Wird vom Untersucher ausgefüllt",
+  "keywords": "dementia, demenz, screening",
+  "ref": null,
+  "items": [
+    {
+      "label": "1. Orientierung",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "\"Welches Jahr haben wir?\"",
+      "id": 1,
+      "coding": {
+        "display": "orientation_year",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "korrekt", "value": 1 },
+        { "label": "falsch", "value": 0 }
+      ]
+    },
+    {
+      "label": "\"Wer ist aktuell Bundeskanzler in Deutschland?\"",
+      "id": 2,
+      "coding": {
+        "display": "orientation_chancelor",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "korrekt", "value": 1 },
+        { "label": "falsch", "value": 0 }
+      ],
+      "ignore_for_result": false
+    },
+    {
+      "label": "2. Merkfähigkeit 1/2",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "caption": "Merken Sie sich bitte folgende 3 Worte:",
+      "label": "\"Kiste, Lampe, Jacke\"",
+      "id": 3,
+      "coding": {
+        "display": "memory",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "checkbox",
+      "inline": true,
+      "force": true,
+      "options": [{ "label": "ok", "value": 0 }],
+      "ignore_for_result": false
+    },
+    {
+      "label": "3. Aufmerksamkeit",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Bitte klopfen Sie mit ihrer rechten Hand, wenn Sie ein „A“ hören: S N A G Q A A M PG A T R",
+      "caption": "Der Prüfer liest die folgende Buchstabenreihe vor (1 Buchst./sek). (Punkt nur wenn 0 Fehler)",
+      "id": 4,
+      "coding": {
+        "display": "alertness",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "korrekt", "value": 1 },
+        { "label": "falsch", "value": 0 }
+      ],
+      "ignore_for_result": false
+    },
+    {
+      "label": "4. Abstraktion",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "„Welche Gemeinsamkeit besteht zwischen den folgenden Begriffen?“:  Eisenbahn und Fahrrad",
+      "caption": "(Bspw: Orange und Banane = Obst)",
+      "id": 5,
+      "coding": {
+        "display": "abstraction",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "korrekt", "value": 1 },
+        { "label": "falsch", "value": 0 }
+      ],
+      "ignore_for_result": false
+    },
+    {
+      "label": "5. Sprache",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "\"Ich weiß nur, dass Hans heute an der Reihe ist, zu helfen.\"",
+      "caption": "\"Bitte wiederholen Sie den folgenden Satz exakt gleich:",
+      "id": 6,
+      "coding": {
+        "display": "language",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "korrekt", "value": 1 },
+        { "label": "falsch", "value": 0 }
+      ],
+      "ignore_for_result": false
+    },
+    {
+      "label": "6. Merkfähigkeit 2/2",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "„Erinnern Sie sich noch an die Worte, die Sie sich vorhin merken sollten?“",
+      "id": 7,
+      "coding": {
+        "display": "memory_2",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "checkbox",
+      "inline": true,
+      "force": false,
+      "options": [
+        { "label": "Kiste", "value": 1 },
+        { "label": "Lampe", "value": 2 },
+        { "label": "Jacke", "value": 3 }
+      ],
+      "ignore_for_result": false
+    },
+    {
+      "label": "6. Benennen",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "\"Was können Sie auf den gezeigten Bildern erkennen?\"",
+      "id": 8,
+      "coding": {
+        "display": "naming",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "checkbox",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "Krahn", "value": 1 },
+        { "label": "Palme", "value": 2 }
+      ],
+      "ignore_for_result": false
+    },
+    {
+      "label": "Abschluss",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Nachfragen (Anzahl)",
+      "id": 9,
+      "coding": {
+        "display": "eval_questions",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Dauer des Tests (min)",
+      "id": 10,
+      "coding": {
+        "display": "eval_duration_minutes",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": true
+    },
+    {
+      "label": "Durchgeführt von",
+      "id": 11,
+      "coding": {
+        "display": "eval_provider",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": true,
+      "ignore_for_result": false
+    }
+  ],
+  "results": {
+    "method": "ids",
+    "scoring": [
+      {"id": [1,2,4, 5, 6, 7, 8], "value": [0,1,2,3], "score": [0,1,1,1]}
+    ],
+    
+    "domaine": [{ "label": "sum", "id": [1, 2, 4, 5, 6, 7, 8], "method": "sum" }],
+    "evaluation": []
+  }
+}

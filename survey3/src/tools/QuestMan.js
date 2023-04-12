@@ -504,10 +504,17 @@ function calc_ids(items, method) {
         var score = 0
         scoring.forEach(s => {
             if (s.id.includes(val.id)) {
-                if (Array.isArray(s.value)) { // value[0,1,2] => score[10,20,30] ,ie. sf36
+                if (Array.isArray(val.value)) { //added to support checkbox => array structure of values
+                    val.value.forEach(v => {
+                        let pos = s.value.indexOf(v)
+                        if (pos !== undefined) score += s.score[pos];
+                    })
+                }
+                else if (Array.isArray(s.value)) { // value[0,1,2] => score[10,20,30] ,ie. sf36
                     let pos = s.value.indexOf(val.value)
                     if (pos !== undefined) score = s.score[pos];
                 }
+                 
                 else if (s.method !== undefined && s.method === 'raw') score = val.value
                 else if (s.method !== undefined && s.method === 'multiply') score = val.value * s.value // v.value * s.value >> i.e. paq50plus
                 else if (s.method !== undefined && s.method === 'range') score = calc_range(val.value, s.range) // v.value * s.value >> i.e. paq50plus
