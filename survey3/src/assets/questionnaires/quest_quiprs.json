@@ -1,0 +1,314 @@
+{
+    "title": "QUIP-RS",
+    "short_title": "quiprs",
+    "description": "QUIP-RS: Questionnaire for Impulsive-Compulsive Disorders in Parkinson’s Disease–Rating Scale",
+    "coding": {
+        "system": "http://snomed.info/sct",
+        "code": "225398001",
+        "display": "QUIP-RS: Questionnaire for Impulsive-Compulsive Disorders in Parkinson’s Disease–Rating Scale"
+    },
+    "manual": null,
+    "keywords": "quip, parkinson, impuls, impulskontrollstörung",
+    "ref": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3537263/",
+    "items": [
+        {
+            "label": "1.\tWie oft denken Sie über die folgenden Verhaltensweisen nach (Haben Sie bspw. Schwierigkeiten, die Gedanken darüber aus dem Kopf zu bekommen oder haben Sie Schuldgefühle)? ",
+            "id": "[1,2,3,4,5,6,7]",
+            "coding": {
+                "display": "obsession_thinking",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": [],
+            "type": "multiple_radio",
+            "inline": false,
+            "force": false,
+            "options": {
+                "questions": [
+                    {
+                        "label": "Glücksspiele",
+                        "tag": "a1",
+                        "id": 1
+                    },
+                    {
+                        "label": "Sex",
+                        "tag": "a2",
+                        "id": 2
+                    },
+                    {
+                        "label": "Kaufen",
+                        "tag": "a3",
+                        "id": 3
+                    },
+                    {
+                        "label": "Essen",
+                        "tag": "a4",
+                        "id": 4
+                    },
+                    {
+                        "label": "Aufgabe durchführen/Hobbies nachgehen",
+                        "tag": "a5",
+                        "id": 5
+                    },
+                    {
+                        "label": "Einfache Aktivitäten wiederholen",
+                        "tag": "a6",
+                        "id": 6
+                    },
+                    {
+                        "label": "Ihre Parkinson-Medikamente nehmen",
+                        "tag": "a7",
+                        "id": 7
+                    }
+                ],
+                "answers": [
+                    {
+                        "label": "Nie",
+                        "value": 0
+                    },
+                    {
+                        "label": "Selten",
+                        "value": 1
+                    },
+                    {
+                        "label": "Manchmal",
+                        "value": 2
+                    },
+                    {
+                        "label": "Oft ",
+                        "value": 3
+                    },
+                    {
+                        "label": "Sehr Oft",
+                        "value": 4
+                    }
+                ]
+            }
+        },
+        {
+            "label": "2.\tHaben Sie einen Drang nach den folgenden Verhaltensweisen, den Sie für zu exzessiv halten oder unter dem Sie leiden? Verspüren Sie bspw. Ruhelosigkeit oder Reizbarkeit, wenn Sie die Verhaltensweisen nicht durchführen können?",
+            "id": "[8,9,10,11,12,13,14]",
+            "coding": {
+                "display": "obsession_impulse",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": [],
+            "type": "multiple_radio",
+            "inline": false,
+            "force": false,
+            "options": {
+                "questions": [
+                    {
+                        "label": "Glücksspiele",
+                        "tag": "b1",
+                        "id": 8
+                    },
+                    {
+                        "label": "Sex",
+                        "tag": "b2",
+                        "id": 9
+                    },
+                    {
+                        "label": "Kaufen",
+                        "tag": "b3",
+                        "id": 10
+                    },
+                    {
+                        "label": "Essen",
+                        "tag": "b4",
+                        "id": 11
+                    },
+                    {
+                        "label": "Aufgabe durchführen/Hobbies nachgehen",
+                        "tag": "b5",
+                        "id": 12
+                    },
+                    {
+                        "label": "Einfache Aktivitäten wiederholen",
+                        "tag": "b6",
+                        "id": 13
+                    },
+                    {
+                        "label": "Ihre Parkinson-Medikamente nehmen",
+                        "tag": "b7",
+                        "id": 14
+                    }
+                ],
+                "answers": [
+                    {
+                        "label": "Nie",
+                        "value": 0
+                    },
+                    {
+                        "label": "Selten",
+                        "value": 1
+                    },
+                    {
+                        "label": "Manchmal ",
+                        "value": 2
+                    },
+                    {
+                        "label": "Oft",
+                        "value": 3
+                    },
+                    {
+                        "label": "Sehr Oft",
+                        "value": 4
+                    }
+                ]
+            }
+        },
+        {
+            "label": "3.\tHaben Sie Schwierigkeiten, die folgenden Verhaltensweisen zu kontrollieren (nehmen diese z.B. über die Zeit hinweg zu oder haben Sie Schwierigkeiten sie einzuschränken oder einzustellen)? ",
+            "id": "[15,16,17,18,19,20,21]",
+            "coding": {
+                "display": "difficulty_control",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": [],
+            "type": "multiple_radio",
+            "inline": false,
+            "force": false,
+            "options": {
+                "questions": [
+                    {
+                        "label": "Glücksspiele",
+                        "tag": "c1",
+                        "id": 15
+                    },
+                    {
+                        "label": "Sex",
+                        "tag": "c2",
+                        "id": 16
+                    },
+                    {
+                        "label": "Kaufen",
+                        "tag": "c3",
+                        "id": 17
+                    },
+                    {
+                        "label": "Essen",
+                        "tag": "c4",
+                        "id": 18
+                    },
+                    {
+                        "label": "Aufgaben durchführen/Hobbies nachgehen",
+                        "tag": "c5",
+                        "id": 19
+                    },
+                    {
+                        "label": "Einfache Aktivitäten wiederholen ",
+                        "tag": "c6",
+                        "id": 20
+                    },
+                    {
+                        "label": "Ihre Parkinson-Medikamente nehmen",
+                        "tag": "c7",
+                        "id": 21
+                    }
+                ],
+                "answers": [
+                    {
+                        "label": "Nie",
+                        "value": 0
+                    },
+                    {
+                        "label": "Selten",
+                        "value": 1
+                    },
+                    {
+                        "label": "Manchmal",
+                        "value": 2
+                    },
+                    {
+                        "label": "Oft",
+                        "value": 3
+                    },
+                    {
+                        "label": "Sehr Oft",
+                        "value": 4
+                    }
+                ]
+            }
+        },
+        {
+            "label": "4.\tUnternehmen Sie bestimmte Tätigkeiten (wie z.B. verbergen, was Sie tun, lügen, Dinge horten, von anderen etwas ausleihen, Schulden anhäufen, stehlen oder sich an illegalen Handlungen beteiligen), nur um die folgenden Verhaltensweisen fortsetzen zu können?",
+            "id": "[22,23,24,25,26,27,28]",
+            "coding": {
+                "display": "compulsion",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": [],
+            "type": "multiple_radio",
+            "inline": false,
+            "force": false,
+            "options": {
+                "questions": [
+                    {
+                        "label": "Glücksspiele",
+                        "tag": "d1",
+                        "id": 22
+                    },
+                    {
+                        "label": "Sex",
+                        "tag": "d2",
+                        "id": 23
+                    },
+                    {
+                        "label": "Kaufen",
+                        "tag": "d3",
+                        "id": 24
+                    },
+                    {
+                        "label": "Essen",
+                        "tag": "d4",
+                        "id": 25
+                    },
+                    {
+                        "label": "Aufgaben durchführen/Hobbies nachgehen",
+                        "tag": "d5",
+                        "id": 26
+                    },
+                    {
+                        "label": "Einfache Aktivitäten wiederholen",
+                        "tag": "d6",
+                        "id": 27
+                    },
+                    {
+                        "label": "Ihre Parkinson-Medikamente nehmen",
+                        "tag": "d7",
+                        "id": 28
+                    }
+                ],
+                "answers": [
+                    {
+                        "label": "Nie",
+                        "value": 0
+                    },
+                    {
+                        "label": "Selten",
+                        "value": 1
+                    },
+                    {
+                        "label": "Manchmal",
+                        "value": 2
+                    },
+                    {
+                        "label": "Oft",
+                        "value": 3
+                    },
+                    {
+                        "label": "Sehr Oft",
+                        "value": 4
+                    }
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+}

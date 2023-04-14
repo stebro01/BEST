@@ -1,0 +1,121 @@
+{
+    "title": "PD-Allgemein",
+    "short_title": "pd_general",
+    "description": null,
+    "coding": {
+        "system": "http://snomed.info/sct",
+        "code": "225398001",
+        "display": "Parkinsonfragebogen / Biomag"
+    },
+    "manual": null,
+    "keywords": "parkinson, allgemein, anamnese",
+    "ref": null,
+    "items": [
+        {
+            "label": "1.\tWelche Form des Parkinson-Syndroms wurde bei Ihnen diagnostiziert?",
+            "id": 1,
+            "coding": {
+                "display": "type_parkinson",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                {
+                    "label": "a)\tIdiopathisches Parkinson-Syndrom",
+                    "value": "idiopathisch"
+                },
+                {
+                    "label": "b)\tGenetische Form des Parkinson-Syndroms",
+                    "value": "genetisch"
+                },
+                {
+                    "label": "c)\tAtypisches Parkinson-Syndrom",
+                    "value": "atypisch"
+                },
+                {
+                    "label": "d)\tSekundäres Parkinson-Syndrom",
+                    "value": "sekundär"
+                }
+            ]
+        },
+        {
+            "label": "2.\tVor wie vielen Jahren wurde das Parkinson-Syndrom erstmals bei Ihnen diagnostiziert?",
+            "id": 2,
+            "coding": {
+                "display": "duration_parkinson_years",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "number",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "3.\tWelche Medikation nehmen Sie aktuell ein?",
+            "id": 3,
+            "coding": {
+                "display": "current_medication",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "text",
+            "inline": false,
+            "force": false
+        },
+        {
+            "label": "4.\tTragen Sie in Ihrem Körper metallische Gegenstände (Schrittmacher, Herzklappen, Implantate, Prothesen/künstliche Gelenke, Hörgerät, Medikamentenpumpen, Retainer usw.)?",
+            "id": 4,
+            "coding": {
+                "display": "feromagnetic_objects_at_body",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                {
+                    "label": "Ja",
+                    "value": 1
+                },
+                {
+                    "label": "Nein",
+                    "value": 0
+                }
+            ]
+        },
+        {
+            "label": "5.\tIst bei Ihnen eine Form der Farbblindheit oder Farbsinnstörung bekannt (Achromatopsie, Rot-Grün-Sehschwäche usw.)? ",
+            "id": 5,
+            "coding": {
+                "display": "color_vision_impaired",
+                "code": "302199004",
+                "system": "http://snomed.info/sct"
+            },
+            "value": null,
+            "type": "radio",
+            "inline": false,
+            "force": false,
+            "options": [
+                {
+                    "label":"Ja",
+                    "value": 1
+                },
+                {
+                    "label": "Nein",
+                    "value": 0
+                }
+            ]
+        }
+    ],
+    "results": {
+        "method": "sum"
+    }
+}

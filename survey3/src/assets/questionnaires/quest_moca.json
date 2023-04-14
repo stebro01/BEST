@@ -1,0 +1,216 @@
+{
+  "title": "MoCA",
+  "short_title": "moca",
+  "description": "Montreal Cognitive Assessment",
+  "coding": {
+    "system": "LOINC",
+    "code": "LID: 72133-2",
+    "display": "MoCA"
+  },
+  "manual": "Montreal Cognitive Assessment",
+  "keywords": "screening, demenz, kognition",
+  "ref": "https://pubmed.ncbi.nlm.nih.gov/15817019/",
+  "items": [
+    {
+      "label": "Visuospatial/Executiv: Punkte verbinden",
+      "id": 1,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Visuospatial/Executiv: Würfel zeichnen",
+      "id": 2,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Visuospatial/Executiv: Uhr zeichnen",
+      "id": 3,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Tiere benennen",
+      "id": 4,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Gedächtnis 1. Versuch",
+      "id": 5,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Gedächtnis 2. Versuch",
+      "id": 6,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Aufmerksamkeit: Zahlenliste vorlesen",
+      "id": 7,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Aufmerksamkeit: Buchstabenliste vorlesen",
+      "id": 8,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Aufmerksamkeit: Rechnen",
+      "id": 9,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Sprache: Wiederholen",
+      "id": 10,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Sprache: Wörter nennen",
+      "id": 11,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Abstraktion",
+      "id": 12,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Orientierung (Datum, Monat, Jahr, Wochentag, Ort, Stadt)",
+      "id": 13,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Weniger als 12 Jahre Schulausbildung? (0-nein,  1-ja)",
+      "id": 14,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http: //snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": false,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    }
+  ],
+
+  "results": {
+    "method": "sum",
+    "coding": {
+      "display": "MoCA SUM",
+      "code": "LID: 72172-0",
+      "system": "LOINC"
+    }
+  }
+}

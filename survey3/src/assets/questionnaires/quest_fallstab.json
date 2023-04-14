@@ -1,0 +1,122 @@
+{
+  "title": "Fallstab Beidseits",
+  "short_title": "falling_stick",
+  "description": "Fallstab Test",
+  "coding": {
+    "system": "CUSTOM",
+    "code": "\\CUSTOM\\SCORES\\FALLING_STICK",
+    "display": "Fallstab"
+  },
+  "manual": "Wird vom Untersucher ausgefüllt",
+  "keywords": "Fallstab, motorisch",
+  "ref": "https://doi.org/10.1111/jsr.13459",
+  "items": [
+    {
+        "label": "Rechte Hand",
+        "value": null,
+        "type": "separator",
+        "inline": false,
+        "force": false
+      },
+    {
+      "label": "Wert 1 (mm)",
+      "id": 1,
+      "coding": {
+        "display": "right_1",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Wert 2 (mm)",
+      "id": 2,
+      "coding": {
+        "display": "right_2",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Wert 3 (mm)",
+      "id": 3,
+      "coding": {
+        "display": "right_3",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+        "label": "Linke Hand",
+        "value": null,
+        "type": "separator",
+        "inline": false,
+        "force": false
+      },
+    {
+      "label": "Wert 1 (mm)",
+      "id": 4,
+      "coding": {
+        "display": "left_1",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Wert 2 (mm)",
+      "id": 5,
+      "coding": {
+        "display": "left_2",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Wert 3 (mm)",
+      "id": 6,
+      "coding": {
+        "display": "left_3",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    }
+  ],
+  "results": {
+    "method": "ids",
+    "scoring": [
+        {"id": [1,2,3,4,5,6], "method": "raw"}
+      ],
+      
+      "domaine": [
+        { "label": "rechts", "id": [1, 2, 3], "method": "avg",
+        "coding": { "display" : "Fallstab rechts", "code" : "MOD: SCORES_FALLING_STICK RIGHT", "system" : "CUSTOM"}
+         },
+        { "label": "links", "id": [4, 5, 6], "method": "avg",
+        "coding": { "display" : "Fallstab links", "code" : "MOD: SCORES_FALLING_STICK LEFT", "system" : "CUSTOM"} }
+      ],
+      "evaluation": []
+  }
+}
