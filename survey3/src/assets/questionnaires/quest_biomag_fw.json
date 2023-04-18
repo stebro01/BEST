@@ -99,6 +99,7 @@
             "type": "radio",
             "inline": true,
             "options": [
+                {"label": "0", "value": "0"},
                 {"label": "1", "value": "1"},
                 {"label": "2-3", "value": "2-3"},
                 {"label": "4-5", "value": "4-5"},

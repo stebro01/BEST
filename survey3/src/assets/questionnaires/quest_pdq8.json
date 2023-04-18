@@ -25,7 +25,7 @@
                     {"label": "selten", "value": 1},
                     {"label": "manchmal", "value": 2},
                     {"label": "häufig", "value": 3},
-                    {"label": "immer / überhaupt nicht", "value": 4}
+                    {"label": "immer", "value": 4}
                 ],
                 "questions": [
                     {"label": "1. Probleme gehabt, sich in der Öffentlichkeit zu bewegen?", "tag": "mobility"},
