@@ -5,13 +5,12 @@
         "system" : "http://snomed.info/sct",
         "code" : "404684003",
         "display" : "NMS Quest",
-        "version": "20230126"
+        "version": "20230421"
     },
     "description": "",
-    "manual": "Die Bewegungsstörungen bei der Parkinson-Erkrankung sind gut bekannt. Es können aber manchmal auch andere Probleme auftreten, als Teil der Erkrankung oder deren Behandlung. Es ist wichtig, dass der Arzt über diese Probleme Bescheid weiß, v.a. wenn sie von Ihnen als störend empfunden werden.<br> Eine Reihe von Problemen ist unten aufgeführt. Bitte kreuzen Sie das Feld „Ja“ an, wenn Sie das beschriebene Symptom <b>während des letzten Monats</b> erlebt haben. Der Arzt oder die Kranken- schwester kann Ihnen Fragen stellen, um Ihnen bei der Entscheidung zu helfen. Wenn bei Ihnen das jeweilige Problem im Laufe des letzten Monats <b>nicht</b> aufgetreten ist, kreuzen Sie bitte das Feld „Nein“ an. Sie sollten auch dann „Nein“ antworten, wenn Sie die Symptome in der Vergangenheit, aber nicht während des letzten Monats hatten.",
+    "manual": "Die Bewegungsstörungen bei der Parkinson-Erkrankung sind gut bekannt. Es können aber manchmal auch andere Probleme auftreten, als Teil der Erkrankung oder deren Behandlung. Es ist wichtig, dass der Arzt über diese Probleme Bescheid weiß, v.a. wenn sie von Ihnen als störend empfunden werden.<br> Eine Reihe von Problemen ist unten aufgeführt. Bitte kreuzen Sie das Feld „Ja“ an, wenn Sie das beschriebene Symptom <b>während des letzten Monats</b> erlebt haben. Der Arzt oder die Kranken- schwester kann Ihnen Fragen stellen, um Ihnen bei der Entscheidung zu helfen. Wenn bei Ihnen das jeweilige Problem im Laufe des letzten Monats <b>nicht</b> aufgetreten ist, kreuzen Sie bitte das Feld „Nein“ an. Sie sollten auch dann „Nein“ antworten, wenn Sie die Symptome in der Vergangenheit, aber nicht während des letzten Monats hatten.",
     "keywords": "parkinson",
     "items": [
-
         {
             "label": "Fragebogen zu nicht-motorischen Symptomen beim Morbus Parkinson",
             "tag": "",
@@ -26,37 +25,36 @@
                     {"label": "Nein", "value": 0}
                 ],
                 "questions": [
-                    {"id": 1, "label": "1. Herauslaufen von Speichel tagsüber", "tag": "Speichel"},
-                    {"id": 2, "label": "2. Verlust oder Veränderung in Ihrer Fähigkeit zu schmecken oder zu riechen.", "tag": "Riechen"},
-                    {"id": 3, "label": "3. Schwierigkeit beim Schlucken von Nahrung oder Getränken oder Probleme mit Verschlucken.", "tag": "Schlucken"},
-                    {"id": 4, "label": "4. Erbrechen oder Gefühl von Übelkeit.", "tag": "Übelkeit"},
-                    {"id": 5, "label": "5. Verstopfung (weniger als 3 Stuhlentleerungen pro Woche) oder Notwendigkeit beim Stuhlgang stark zu pressen.", "tag": "Obstipation"},
-                    {"id": 6, "label": "6. Stuhlinkontinenz", "tag": "Stuhlinkontinenz"},
-                    {"id": 7, "label": "7. Gefühl der unvollständigen Darmentleerung nach dem Toilettengang.", "tag": "unvollständige_Darmentleerung"},
-                    {"id": 8, "label": "8. Plötzlicher starker Harndrang, so dass Sie sich beeilen müssen, zur Toilette zu gehen", "tag": "Harndrang"},
-                    {"id": 9, "label": "9. Regelmäßiges nächtliches Aufstehen zum Wasserlassen.", "tag": "Nykturie"},
-                    {"id": 10, "label": "10. Unerklärliche Schmerzen (nicht als Folge bekannter Erkrankungen wie z.B.Arthritis).", "tag": "Schmerzen"},
-                    {"id": 11, "label": "11. Unerklärliche Gewichtsveränderung (nicht als Folge geänderter Ernährung).", "tag": "Gewichtsverlust"},
-                    {"id": 12, "label": "12. Probleme sich an Dinge zu erinnern, die kürzlich passiert sind, oder vergessen, Dinge zu erledigen.", "tag": "Gedächtnis"},
-                    {"id": 13, "label": "13. Interesseverlust an dem was um Sie herum geschieht oder an Aktivitäten.", "tag": "Interessenverlust"},
-                    {"id": 14, "label": "14. Sehen oder Hören von Dingen, von denen Sie wissen oder Ihnen gesagt wird, dass sie nicht da sind.", "tag": "Sehen_Hören"},
-                    {"id": 15, "label": "15. Schwierigkeiten, sich zu konzentrieren oder aufmerksam zu bleiben.", "tag": "Konzentration"},
-                    {"id": 16, "label": "16. Sich traurig fühlen, niedergeschlagen oder schwermütig.", "tag": "Traurig"},
-                    {"id": 17, "label": "17. Gefühl der Angst, Furcht oder Panik.", "tag": "Anst"},
-                    {"id": 18, "label": "18. Reduziertes oder gesteigertes Interesse an Sex.", "tag": "Sex"},
-                    {"id": 19, "label": "19. Gefühl von Schwierigkeiten beim Versuch Geschlechtsverkehr zu praktizieren.", "tag": "Sex_Probleme"},
-                    {"id": 20, "label": "20. Gefühl von Blutleere im Kopf. Schwindel oder Schwäche beim Aufstehen aus dem Sitzen oder Liegen.", "tag": "Schwindel"},
-                    {"id": 21, "label": "21. Stürze.", "tag": "Stürze"},
-                    {"id": 22, "label": "22. Schwierigkeiten, während Aktivitäten wie Arbeit, Autofahren oder Essen wach zu bleiben.", "tag": "ADL"},
-                    {"id": 23, "label": "23. Schwierigkeiten abends einzuschlafen oder nachts durchzuschlafen.", "tag": "Einschlafen"},
-                    {"id": 24, "label": "24. Intensive lebhafte Träume oder Träume, die Angst machen", "tag": "Träume"},
-                    {"id": 25, "label": "25. Sprechen oder Bewegungen während des Schlafs, so als ob Sie einen Traum „ausleben“.", "tag": "Schlafverhaltensstörung"},
-                    {"id": 26, "label": "26. Unangenehme Empfindungen in Ihren Beinen nachts oder beim Ausruhen und das Gefühl, sich bewegen zu müssen.", "tag": "PML"},
-                    {"id": 27, "label": "27. Geschwollene Beine.", "tag": "Beinödeme"},
-                    {"id": 28, "label": "28. Übermäßiges Schwitzen.", "tag": "Schwitzen"},
-                    {"id": 29, "label": "29. Doppelbilder.", "tag": "Doppelbilder"},
-                    {"id": 30, "label": "30. Glauben, dass Ihnen Dinge passieren, von denen andere sagen, dass sie nicht wahr sind.", "tag": "Wahn"}
-
+                    {"id": 1, "label": "1. Herauslaufen von Speichel tagsüber", "tag": "Speichel", "coding": { "display" : "Speichel", "code" : "CUSTOM: SCORES_NMSQUEST_SPEICHEL", "system" : "CUSTOM"}},
+                    {"id": 2, "label": "2. Verlust oder Veränderung in Ihrer Fähigkeit zu schmecken oder zu riechen.", "tag": "Riechen", "coding": { "display" : "Riechen", "code" : "CUSTOM: SCORES_NMSQUEST_RIECHEN", "system" : "CUSTOM"}},
+                    {"id": 3, "label": "3. Schwierigkeit beim Schlucken von Nahrung oder Getränken oder Probleme mit Verschlucken.", "tag": "Schlucken",  "coding": { "display" : "schlucken", "code" : "CUSTOM: SCORES_NMSQUEST_SCHLUCKEN", "system" : "CUSTOM"}},
+                    {"id": 4, "label": "4. Erbrechen oder Gefühl von Übelkeit.", "tag": "Übelkeit", "coding": { "display" : "Uebelkeit", "code" : "CUSTOM: SCORES_NMSQUEST_UEBELKEIT", "system" : "CUSTOM"}},
+                    {"id": 5, "label": "5. Verstopfung (weniger als 3 Stuhlentleerungen pro Woche) oder Notwendigkeit beim Stuhlgang stark zu pressen.", "tag": "Obstipation", "coding": { "display" : "Obstipation", "code" : "CUSTOM: SCORES_NMSQUEST_OBSTIPATION", "system" : "CUSTOM"}},
+                    {"id": 6, "label": "6. Stuhlinkontinenz", "tag": "Stuhlinkontinenz", "coding": { "display" : "Stuhlinkontinenz", "code" : "CUSTOM: SCORES_NMSQUEST_STUHLINKONTINENZ", "system" : "CUSTOM"}},
+                    {"id": 7, "label": "7. Gefühl der unvollständigen Darmentleerung nach dem Toilettengang.", "tag": "unvollständige_Darmentleerung", "coding": { "display" : "unvollstaendige_Darmentleerung", "code" : "CUSTOM: SCORES_NMSQUEST_UNVOLLSTAENDIGE_DARMENTLEERUNG", "system" : "CUSTOM"}},
+                    {"id": 8, "label": "8. Plötzlicher starker Harndrang, so dass Sie sich beeilen müssen, zur Toilette zu gehen", "tag": "Harndrang",  "coding": { "display" : "Harndrang", "code" : "CUSTOM: SCORES_NMSQUEST_HARNDRANG", "system" : "CUSTOM"}},
+                    {"id": 9, "label": "9. Regelmäßiges nächtliches Aufstehen zum Wasserlassen.", "tag": "Nykturie", "coding": { "display" : "Nykturie", "code" : "CUSTOM: SCORES_NMSQUEST_NYKTURIE", "system" : "CUSTOM"}},
+                    {"id": 10, "label": "10. Unerklärliche Schmerzen (nicht als Folge bekannter Erkrankungen wie z.B.Arthritis).", "tag": "Schmerzen_1", "coding": { "display" : "Schmerzen_1", "code" : "CUSTOM: SCORES_NMSQUEST_SCHMERZEN_1", "system" : "CUSTOM"}},
+                    {"id": 11, "label": "11. Unerklärliche Gewichtsveränderung (nicht als Folge geänderter Ernährung).", "tag": "Schmerzen_2", "coding": { "display" : "Gewicht", "code" : "CUSTOM: SCORES_NMSQUEST_GEWICHT", "system" : "CUSTOM"}},
+                    {"id": 12, "label": "12. Probleme sich an Dinge zu erinnern, die kürzlich passiert sind, oder vergessen, Dinge zu erledigen.", "tag": "Gedaechtnis", "coding": { "display" : "Gedaechtnis", "code" : "CUSTOM: SCORES_NMSQUEST_GEDAECHTNIS", "system" : "CUSTOM"}},
+                    {"id": 13, "label": "13. Interesseverlust an dem was um Sie herum geschieht oder an Aktivitäten.", "tag": "Interessenverlust", "coding": { "display" : "Interessenverlust", "code" : "CUSTOM: SCORES_NMSQUEST_INTERESSENVERLUST", "system" : "CUSTOM"}},
+                    {"id": 14, "label": "14. Sehen oder Hören von Dingen, von denen Sie wissen oder Ihnen gesagt wird, dass sie nicht da sind.", "tag": "Sehen_Hoeren", "coding": { "display" : "Sehen_Hoeren", "code" : "CUSTOM: SCORES_NMSQUEST_SEHEN_HOEREN", "system" : "CUSTOM"}},
+                    {"id": 15, "label": "15. Schwierigkeiten, sich zu konzentrieren oder aufmerksam zu bleiben.", "tag": "Konzentration", "coding": { "display" : "Konzentration", "code" : "CUSTOM: SCORES_NMSQUEST_KONZENTRATION", "system" : "CUSTOM"}},
+                    {"id": 16, "label": "16. Sich traurig fühlen, niedergeschlagen oder schwermütig.", "tag": "Traurig", "coding": { "display" : "Traurig", "code" : "CUSTOM: SCORES_NMSQUEST_TRAURIG", "system" : "CUSTOM"}},
+                    {"id": 17, "label": "17. Gefühl der Angst, Furcht oder Panik.", "tag": "Anst", "coding": { "display" : "Angst", "code" : "CUSTOM: SCORES_NMSQUEST_ANGST", "system" : "CUSTOM"}},
+                    {"id": 18, "label": "18. Reduziertes oder gesteigertes Interesse an Sex.", "tag": "Sex", "coding": { "display" : "Sex", "code" : "CUSTOM: SCORES_NMSQUEST_SEX", "system" : "CUSTOM"}},
+                    {"id": 19, "label": "19. Gefühl von Schwierigkeiten beim Versuch Geschlechtsverkehr zu praktizieren.", "tag": "Sex_Probleme", "coding": { "display" : "Sex_Probleme", "code" : "CUSTOM: SCORES_NMSQUEST_SEX_PROBLEME", "system" : "CUSTOM"}},
+                    {"id": 20, "label": "20. Gefühl von Blutleere im Kopf. Schwindel oder Schwäche beim Aufstehen aus dem Sitzen oder Liegen.", "tag": "Schwindel", "coding": { "display" : "Schwindel", "code" : "CUSTOM: SCORES_NMSQUEST_SCHWINDEL", "system" : "CUSTOM"}},
+                    {"id": 21, "label": "21. Stürze.", "tag": "Stürze", "coding": { "display" : "Stuerze", "code" : "CUSTOM: SCORES_NMSQUEST_STUERZE", "system" : "CUSTOM"}},
+                    {"id": 22, "label": "22. Schwierigkeiten, während Aktivitäten wie Arbeit, Autofahren oder Essen wach zu bleiben.", "tag": "ADL", "coding": { "display" : "ADL", "code" : "CUSTOM: SCORES_NMSQUEST_ADL", "system" : "CUSTOM"}},
+                    {"id": 23, "label": "23. Schwierigkeiten abends einzuschlafen oder nachts durchzuschlafen.", "tag": "Einschlafen", "coding": { "display" : "Einschlafen", "code" : "CUSTOM: SCORES_NMSQUEST_EINSCHLAFEN", "system" : "CUSTOM"}},
+                    {"id": 24, "label": "24. Intensive lebhafte Träume oder Träume, die Angst machen", "tag": "Träume", "coding": { "display" : "Traeume", "code" : "CUSTOM: SCORES_NMSQUEST_TRAEUME", "system" : "CUSTOM"}},
+                    {"id": 25, "label": "25. Sprechen oder Bewegungen während des Schlafs, so als ob Sie einen Traum „ausleben“.", "tag": "Schlafverhaltensstörung", "coding": { "display" : "Schlafverhaltensstörung", "code" : "CUSTOM: SCORES_NMSQUEST_SCHLAFVERHALTENSSTOERUNG", "system" : "CUSTOM"}},
+                    {"id": 26, "label": "26. Unangenehme Empfindungen in Ihren Beinen nachts oder beim Ausruhen und das Gefühl, sich bewegen zu müssen.", "tag": "PML", "coding": { "display" : "PML", "code" : "CUSTOM: SCORES_NMSQUEST_PML", "system" : "CUSTOM"}},
+                    {"id": 27, "label": "27. Geschwollene Beine.", "tag": "Beinödeme", "coding": { "display" : "Beinödeme", "code" : "CUSTOM: SCORES_NMSQUEST_BEINOEDEME", "system" : "CUSTOM"}},
+                    {"id": 28, "label": "28. Übermäßiges Schwitzen.", "tag": "Schwitzen", "coding": { "display" : "Schwitzen", "code" : "CUSTOM: SCORES_NMSQUEST_SCHWITZEN", "system" : "CUSTOM"}},
+                    {"id": 29, "label": "29. Doppelbilder.", "tag": "Doppelbilder", "coding": { "display" : "Doppelbilder", "code" : "CUSTOM: SCORES_NMSQUEST_DOPPELBILDER", "system" : "CUSTOM"}},
+                    {"id": 30, "label": "30. Glauben, dass Ihnen Dinge passieren, von denen andere sagen, dass sie nicht wahr sind.", "tag": "Wahn", "coding": { "display" : "Wahn", "code" : "CUSTOM: SCORES_NMSQUEST_WAHN", "system" : "CUSTOM"}}
                 ]
             }
         }
@@ -64,7 +62,7 @@
     ],
     "results": {
         "method": "sum",
-        "coding": { "display" : "NMS Quest - Parkinson", "code" : "CUSTOM: SCORES\\NMSQUEST", "system" : "CUSTOM"}
+        "coding": { "display" : "NMS Quest - Parkinson", "code" : "CUSTOM: SCORES_NMSQUEST", "system" : "CUSTOM"}
     }
 
 }
