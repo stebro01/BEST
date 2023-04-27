@@ -8,7 +8,7 @@
     </template>
   </q-input>
   <!-- ELSE -->
-  <q-input v-else filled v-model="val" :label="ITEM.hint" :type="ITEM.type" data-cy="number"/>
+  <q-input v-else filled v-model.number="val" :label="ITEM.hint" :type="ITEM.type" data-cy="number"/>
 </div>
 </template>
 

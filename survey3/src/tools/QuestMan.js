@@ -402,7 +402,9 @@ function calc_results(data, methods) {
 function calc_simple_sum(items, methods) {
     var sum = 0
     items.forEach(item => {
-        if (typeof item.value === 'number' && item.ignore_for_result !== true) sum+= item.value
+        if (typeof item.value === 'number' && item.ignore_for_result !== true) {
+            sum+= item.value
+        }
     })
     const RESULT = {'label': 'sum', 'value': sum}
     if (methods.coding) RESULT.coding = methods.coding

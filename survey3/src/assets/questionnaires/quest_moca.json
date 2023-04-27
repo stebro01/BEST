@@ -15,7 +15,7 @@
       "label": "Visuospatial/Executiv: Punkte verbinden",
       "id": 1,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Visuospatial/Executiv1",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -28,7 +28,7 @@
       "label": "Visuospatial/Executiv: Würfel zeichnen",
       "id": 2,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Visuospatial/Executiv2",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -41,7 +41,7 @@
       "label": "Visuospatial/Executiv: Uhr zeichnen",
       "id": 3,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Visuospatial/Executiv3",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -54,7 +54,7 @@
       "label": "Tiere benennen",
       "id": 4,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Tiere benennen",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -67,7 +67,7 @@
       "label": "Gedächtnis 1. Versuch",
       "id": 5,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Gedächtnis 1",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -80,7 +80,7 @@
       "label": "Gedächtnis 2. Versuch",
       "id": 6,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Gedächtnis 2",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -93,7 +93,7 @@
       "label": "Aufmerksamkeit: Zahlenliste vorlesen",
       "id": 7,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Aufmerksamkeit1",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -106,7 +106,7 @@
       "label": "Aufmerksamkeit: Buchstabenliste vorlesen",
       "id": 8,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Aufmerksamkeit2",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -119,7 +119,7 @@
       "label": "Aufmerksamkeit: Rechnen",
       "id": 9,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Aufmerksamkeit3",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -132,7 +132,7 @@
       "label": "Sprache: Wiederholen",
       "id": 10,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Sprache1",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -145,7 +145,7 @@
       "label": "Sprache: Wörter nennen",
       "id": 11,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Sprache2",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -158,7 +158,7 @@
       "label": "Abstraktion",
       "id": 12,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Abstraktion",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -171,7 +171,7 @@
       "label": "Orientierung (Datum, Monat, Jahr, Wochentag, Ort, Stadt)",
       "id": 13,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Orientierung",
         "code": "302199004",
         "system": "http://snomed.info/sct"
       },
@@ -184,7 +184,7 @@
       "label": "Weniger als 12 Jahre Schulausbildung? (0-nein,  1-ja)",
       "id": 14,
       "coding": {
-        "display": "Untersuchung",
+        "display": "Schulausbildung",
         "code": "302199004",
         "system": "http: //snomed.info/sct"
       },
