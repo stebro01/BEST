@@ -56,6 +56,7 @@ export function stringify(obj) {
     return str.substring(1, str.length -1)
 }
 
+
 export function stringify_char(str) {
     str = str.replace(/\n/g, '\\n')
     return str

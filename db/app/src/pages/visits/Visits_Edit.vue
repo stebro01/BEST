@@ -12,6 +12,11 @@
         <VISIT_EDIT_CARD :item='$store.state.VISIT_PINNED' @close="$router.go(-1)" />
       </template>
 
+            <!-- FOOTER -->
+            <template v-slot:footer>
+        <BOTTOM_BUTTONS :show_back="true" @back="$router.go(-1)" />
+      </template>
+
     </MainSlot>
 
   </q-page>
@@ -22,6 +27,7 @@
 import VISIT_EDIT_CARD from 'src/components/visits/VisitEdit_Card.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import MainSlot from 'src/components/MainSlot.vue'
+import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 
 export default {
   name: 'Visits_Edit',
@@ -32,7 +38,7 @@ export default {
     }
   },
 
-  components: {VISIT_EDIT_CARD, HEADING, MainSlot },
+  components: {VISIT_EDIT_CARD, HEADING, MainSlot, BOTTOM_BUTTONS },
   // mixins: [myMixins], //imports: searchPatient & deleteItem
 
   mounted() {

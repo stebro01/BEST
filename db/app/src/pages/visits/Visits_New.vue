@@ -16,6 +16,11 @@
       <template v-slot:main v-if="visit">
         <VISIT_EDIT_CARD :item="visit" @close="$router.go(-1)" :mode="'new'" />
       </template>
+
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <BOTTOM_BUTTONS :show_back="true" @back="$router.go(-1)" />
+      </template>
     </MainSlot>
   </q-page>
 </template>
@@ -25,6 +30,8 @@
 import VISIT_EDIT_CARD from "src/components/visits/VisitEdit_Card.vue";
 import HEADING from "src/components/elements/Heading.vue";
 import MainSlot from "src/components/MainSlot.vue";
+import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
+
 
 import { datenow_isostring } from "src/tools/mydate";
 
@@ -37,7 +44,7 @@ export default {
     };
   },
 
-  components: { VISIT_EDIT_CARD, HEADING, MainSlot },
+  components: { VISIT_EDIT_CARD, HEADING, MainSlot, BOTTOM_BUTTONS },
   // mixins: [myMixins], //imports: searchPatient & deleteItem
 
   mounted() {
