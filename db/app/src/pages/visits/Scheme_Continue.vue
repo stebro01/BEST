@@ -8,7 +8,7 @@
       <!-- MAIN -->
       <template v-slot:main>
         <!-- ALLGEMEIN -->
-        <OBSERVATION_TABLE_SHORT @changed="updateGlobalData($event)" />
+        <OBSERVATION_TABLE_SHORT v-if="localGlobalData.START_DATE" @changed="updateGlobalData($event)" :input_data="localGlobalData"/>
 
         <div v-if="!active_scheme.resolved">
           <!-- AUSWAHL BUTTON -->
@@ -96,6 +96,7 @@ export default {
     if (this.VISIT.LOCATION_CD) this.localGlobalData.LOCATION_CD = this.VISIT.LOCATION_CD
     if (this.VISIT.START_DATE) this.localGlobalData.START_DATE = this.VISIT.START_DATE
     if (this.VISIT.END_DATE) this.localGlobalData.END_DATE = this.VISIT.END_DATE
+    if (this.$store.getters.PROVIDER_PINNED) this.localGlobalData.PROVIDER_ID = {value: this.$store.getters.PROVIDER_PINNED.PROVIDER_ID, label: this.$store.getters.PROVIDER_PINNED.NAME_CHAR}
   },
 
   computed: {
@@ -176,9 +177,10 @@ export default {
         if (!this.localGlobalData.PROVIDER_ID) missing_data.push('Untersucher')
         if (!this.localGlobalData.LOCATION_CD) missing_data.push('Untersuchungsort')
         if (!this.localGlobalData.START_DATE) missing_data.push('Datum der Untersuchung')
-        this.$q.notify('Allgemeine Daten sind nicht vollständig: ' + missing_data.join(','))
-        return
+        alert('Daten unvollständig: ' + missing_data.join(',') + '\n(es wird aber gespeichert!)')
+        
       }
+
       // checke lokale Daten
       let error_found = false
       this.localFormData.forEach(f => {
@@ -189,6 +191,7 @@ export default {
         if (!confirm('Einträge nicht vollständig, wirklich fortfahren?')) return
       }
 
+      console.log(this.localGlobalData)
       // prepare clean data
       const DATA_CLEAN = []
       this.localFormData.forEach(d => {
@@ -199,6 +202,7 @@ export default {
         temp.ENCOUNTER_NUM = this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM
         temp.PATIENT_NUM = this.$store.getters.PATIENT_PINNED.PATIENT_NUM
         temp.START_DATE = this.localGlobalData.START_DATE
+
         if (this.localGlobalData.END_DATE) temp.END_DATE = this.localGlobalData.END_DATE
 
         // checke jetzt die Daten
@@ -250,7 +254,7 @@ export default {
         this.changeDetected = false
       } catch (err) {
         console.error(err)
-        this.$q.notify(err.message)
+        this.$q.notify(err)
       }
 
     },

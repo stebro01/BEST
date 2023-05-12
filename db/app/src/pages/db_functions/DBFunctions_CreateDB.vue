@@ -11,6 +11,7 @@
         <div v-if="!new_db" class="absolute-center text-center">
           <div class="q-pa-lg">
             <q-input v-model="path" dense hint="Zielverzeichnis auswählen" />
+            <q-btn @click="pickFolder()">SELECT</q-btn>
           </div>
           <q-btn v-if="path" class="my-btn" no-caps rounded color="black" @click="createDB()">{{
             TEXT.btn_create
@@ -47,15 +48,23 @@ export default {
 
   data() {
     return {
-      path: '/home/ste',
+      path: null,
       new_db: undefined
     }
   },
 
+  mounted() {
+    this.path = this.HOME_DIR
+  },
 
   computed: {
     TEXT() {
       return this.$store.getters.TEXT.page.create_db
+    },
+
+    HOME_DIR() {
+      if (!window.electron.homedir) return '/home/user'
+      else return window.electron.homedir
     }
   },
 
@@ -72,8 +81,8 @@ export default {
 
     connectNewDB() {
       this.$store.commit('SETTINGS_SET', {label: 'filename', value: {path: this.new_db, name: this.new_db}})
-      this.$router.push({name: 'start'})
-    }
+      this.$router.push({name: 'Start'})
+    },
 
   }
 

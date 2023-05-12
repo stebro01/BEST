@@ -69,6 +69,7 @@ export default {
     mounted() {
       //prepare formData
       // use input_data
+      // console.log(this.input_data)
       if (this.input_data) this.formData = JSON.parse(JSON.stringify(this.input_data))
       else { //use globale settings instead
         if (this.$store.getters.VISIT_PINNED) {
