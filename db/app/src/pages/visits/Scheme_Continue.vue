@@ -8,7 +8,8 @@
       <!-- MAIN -->
       <template v-slot:main>
         <!-- ALLGEMEIN -->
-        <OBSERVATION_TABLE_SHORT v-if="localGlobalData.START_DATE" @changed="updateGlobalData($event)" :input_data="localGlobalData"/>
+        <OBSERVATION_TABLE_SHORT v-if="localGlobalData.START_DATE" @changed="updateGlobalData($event)"
+          :input_data="localGlobalData" />
 
         <div v-if="!active_scheme.resolved">
           <!-- AUSWAHL BUTTON -->
@@ -46,8 +47,8 @@
 
       <!-- FOOTER -->
       <template v-slot:footer>
-        <BOTTOM_BUTTONS :show_save="(changeDetected && localFormData.length > 0 && localGlobalData)"
-          @save="saveScheme()" :show_back="true" @back="$router.go(-1)" />
+        <BOTTOM_BUTTONS :show_save="(changeDetected && localFormData.length > 0 && localGlobalData)" @save="saveScheme()"
+          :show_back="true" @back="goBack()" />
       </template>
 
     </MainSlot>
@@ -61,7 +62,7 @@ import SCHEME_TABLE_NEW from 'src/components/SchemeTableNew.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
-
+import { now } from 'src/tools/mydate'
 export default {
   name: 'Scheme_Continue',
 
@@ -90,13 +91,18 @@ export default {
     //LOAD THE SCHEMES
     this.$store.dispatch('searchDB', { query_string: { COLUMN_CD: 'SCHEME_CD' }, table: 'CODE_LOOKUP' })
       .then(res => {
-        this.option_schemes = res
+
+        this.option_schemes = res.sort((a, b) => { // SORTIERE NOCH NACH LETZTEM ZUGRIFF
+          if (a.DOWNLOAD_DATE === null) return 1; // schiebt null Werte nach hinten
+          if (b.DOWNLOAD_DATE === null) return -1; // schiebt null Werte nach hinten
+          return b.DOWNLOAD_DATE.localeCompare(a.DOWNLOAD_DATE);
+        })
       })
     //ÜBERNEHME EINIGE GLOBALE DATEN
     if (this.VISIT.LOCATION_CD) this.localGlobalData.LOCATION_CD = this.VISIT.LOCATION_CD
     if (this.VISIT.START_DATE) this.localGlobalData.START_DATE = this.VISIT.START_DATE
     if (this.VISIT.END_DATE) this.localGlobalData.END_DATE = this.VISIT.END_DATE
-    if (this.$store.getters.PROVIDER_PINNED) this.localGlobalData.PROVIDER_ID = {value: this.$store.getters.PROVIDER_PINNED.PROVIDER_ID, label: this.$store.getters.PROVIDER_PINNED.NAME_CHAR}
+    if (this.$store.getters.PROVIDER_PINNED) this.localGlobalData.PROVIDER_ID = { value: this.$store.getters.PROVIDER_PINNED.PROVIDER_ID, label: this.$store.getters.PROVIDER_PINNED.NAME_CHAR }
   },
 
   computed: {
@@ -113,14 +119,24 @@ export default {
   },
 
   methods: {
+    goBack() {
+      if (this.changeDetected && !confirm('Änderungen werden nich gespeichert! \nWirklich fortfahren?')) return
+      else this.$router.go(-1)
+
+    },
+
     async onSelectScheme(el) {
       this.$store.commit('LOG', { method: 'SchemeEdit->onSelectScheme' })
       if (!this.$store.getters.VISIT_PINNED) return this.$q.notify('Keine Visite ausgewählt')
       let res = await this.$store.dispatch('obs_schemeResolve', { CODE_CD: el.CODE_CD })
+
       if (res) {
         //fill data
         let resolved_obs = await this.loadObservations(this.$store.getters.VISIT_PINNED, res)
         this.active_scheme = { scheme: el, resolved: resolved_obs }
+
+        //update date
+        this.$store.dispatch('updateDB', { table: 'CODE_LOOKUP', query_string: { where: { CODE_CD: el.CODE_CD }, set: { DOWNLOAD_DATE: now() } } })
       }
     },
 
@@ -148,19 +164,19 @@ export default {
     async updateGlobalData(data) {
       this.localGlobalData = data
       this.changeDetected = true
-      
+
       //update the VISIT
       const VISIT = this.$store.getters.VISIT_PINNED
       if (!VISIT) return
       const SET = {}
-      if(data.LOCATION_CD && data.LOCATION_CD !== VISIT.LOCATION_CD) SET.LOCATION_CD = data.LOCATION_CD.value
-      if(data.START_DATE && data.START_DATE !== VISIT.START_DATE) SET.START_DATE = data.START_DATE
-      if(data.END_DATE && data.END_DATE !== VISIT.END_DATE) SET.END_DATE =data.END_DATE
+      if (data.LOCATION_CD && data.LOCATION_CD !== VISIT.LOCATION_CD) SET.LOCATION_CD = data.LOCATION_CD.value
+      if (data.START_DATE && data.START_DATE !== VISIT.START_DATE) SET.START_DATE = data.START_DATE
+      if (data.END_DATE && data.END_DATE !== VISIT.END_DATE) SET.END_DATE = data.END_DATE
       if (Object.keys(SET).length === 0) return
-      const WHERE = {ENCOUNTER_NUM: VISIT.ENCOUNTER_NUM}
-      const res = await this.$store.dispatch('updateDB', {table: 'VISIT_DIMENSION', query_string: {where: WHERE, set: SET}})
+      const WHERE = { ENCOUNTER_NUM: VISIT.ENCOUNTER_NUM }
+      const res = await this.$store.dispatch('updateDB', { table: 'VISIT_DIMENSION', query_string: { where: WHERE, set: SET } })
       this.$q.notify('Aktulle Visite: ' + res)
-      const res_visit = await this.$store.dispatch('searchDB', {table: 'VISIT_DIMENSION', query_string: WHERE})
+      const res_visit = await this.$store.dispatch('searchDB', { table: 'VISIT_DIMENSION', query_string: WHERE })
       if (res_visit && res_visit.length > 0) this.$store.commit('VISIT_PINNED_SET', res_visit[0])
     },
 
@@ -178,7 +194,6 @@ export default {
         if (!this.localGlobalData.LOCATION_CD) missing_data.push('Untersuchungsort')
         if (!this.localGlobalData.START_DATE) missing_data.push('Datum der Untersuchung')
         alert('Daten unvollständig: ' + missing_data.join(',') + '\n(es wird aber gespeichert!)')
-        
       }
 
       // checke lokale Daten
@@ -256,7 +271,6 @@ export default {
         console.error(err)
         this.$q.notify(err)
       }
-
     },
 
     _get_value(val) {

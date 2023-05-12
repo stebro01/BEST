@@ -10,9 +10,6 @@
         <q-card style="width: 80%" id="myPrintDiv">
           <q-card-section class="text-h6">Zusammenfassung</q-card-section>
           <q-card-section>Visiten: {{ PREVIEW_DATA.length }}</q-card-section>
-          <q-card-section>
-            <q-item-label v-for="(item, ind) in PREVIEW_DATA" :key="ind + 'visitsinfo'">{{ item.info }}</q-item-label>
-          </q-card-section>
        
           <div class="row">
         <q-card v-for="(item, ind) in PREVIEW_DATA" :key="ind + 'visitscontent'" 
