@@ -7,11 +7,13 @@
     </template>
      <!-- MAIN -->
      <template v-slot:main>
+
       <q-list>
             <q-item v-for="(item, ind) in options" :key="ind + 'item'" 
               clickable v-ripple
               @click="$router.push({name: item.link})"
               class="bg-accent q-ma-xs"
+              :disable="$q.platform.is.win && (item.link === 'DBFunctions_ResetDB' || item.link === 'DBFunctions_CreateDB')"
             >
               <q-item-section avatar>
                 <q-icon :name="item.icon"/>

@@ -11,7 +11,6 @@
         <div v-if="!new_db" class="absolute-center text-center">
           <div class="q-pa-lg">
             <q-input v-model="path" dense hint="Zielverzeichnis auswählen" />
-            <q-btn @click="pickFolder()">SELECT</q-btn>
           </div>
           <q-btn v-if="path" class="my-btn" no-caps rounded color="black" @click="createDB()">{{
             TEXT.btn_create
