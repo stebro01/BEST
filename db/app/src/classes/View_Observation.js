@@ -208,6 +208,18 @@ export class View_Observation extends View_X {
             if (result.error) return
             if (result.data.length > 0) return result.data
         } 
+        //keine Antworten gefunden? 
+        if (!concept.RELATED_CONCEPT) return undefined
+        // => versuche dann den RELATED_CONCEPT
+        else {
+            sql_query = SCHEME_CONCEPT_DIMENSION.read({CONCEPT_CD: concept.RELATED_CONCEPT})
+            if (sql_query.error) return undefined
+            this._DB_MAN.connect(this._DB_FILENAME)
+            const result = await this._DB_MAN.get_all(sql_query.query)
+            this._DB_MAN.close() 
+            if (result.error || result.data.length < 1) return undefined
+            return this._find_concept_answers({CONCEPT_PATH: result.data[0].CONCEPT_PATH})
+        }
 
         //else
         return undefined

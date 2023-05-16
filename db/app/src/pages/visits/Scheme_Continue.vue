@@ -129,7 +129,6 @@ export default {
       this.$store.commit('LOG', { method: 'SchemeEdit->onSelectScheme' })
       if (!this.$store.getters.VISIT_PINNED) return this.$q.notify('Keine Visite ausgewählt')
       let res = await this.$store.dispatch('obs_schemeResolve', { CODE_CD: el.CODE_CD })
-
       if (res) {
         //fill data
         let resolved_obs = await this.loadObservations(this.$store.getters.VISIT_PINNED, res)

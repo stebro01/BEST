@@ -185,7 +185,7 @@ export default {
           if (el.OBSERVATION_ID) this.formData.push({ ...el, check: true, _checkcql: await this.$store.dispatch('checkCQLRule', el) }) //übernehme den kompletten Eintrag, wenn bereits eine Observation ID vorhanden ist
           else if (el.NAME_CHAR) this.formData.push({ CONCEPT_CD: el.CONCEPT_CD, NAME_CHAR: el.NAME_CHAR, VALTYPE_CD: el.VALTYPE_CD, UNIT_CD: el.UNIT_CD, TVAL_CHAR: null, NVAL_NUM: null, OBSERVATION_BLOB: null })
           // PREPARE OPTIONS
-          if (!el.selection) this.options.push({})
+          if (!el.selection) this.options.push([])
           else {
             var opt = []
             el.selection.forEach(o => {
