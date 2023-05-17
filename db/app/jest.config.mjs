@@ -25,7 +25,9 @@ export default {
     },
     
     DB_DEFAULT_PATH: '/Users/ste/MyProjects/dbBEST/dbase/mydb.db',
-    DB_TEST_PATH: './test/jest/mockups/testdb.db',
+    DB_TEST_PATH: './test/jest/mockups/db_test.db',
+    DB_MAIN_PATH: './test/jest/mockups/db_main.db',
+    DB_SECONDARY_PATH: './test/jest/mockups/db_secondary.db',
     MOCKUP_PATH: './test/jest/mockups'
   },
 };
