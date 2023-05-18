@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3')
-const { log, info } = require("./logger")
+const { log, info, error_codes } = require("./logger")
 const fs = require("fs")
 const readFile = fs.readFileSync
 
@@ -161,6 +161,8 @@ const resetDB = async (PATH, resetDatabase) => {
 }
 
 
+
+
 // EXPORT THE MODULES
 exports.connect = connect;
 exports.close = close;
@@ -170,3 +172,4 @@ exports.status = status;
 exports.create = create;
 exports.removeAllTables = removeAllTables;
 exports.resetDB = resetDB
+exports.fs = fs
