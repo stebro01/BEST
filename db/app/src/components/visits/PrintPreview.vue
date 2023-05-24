@@ -48,6 +48,8 @@
         </q-card>
       </div>
 
+      <div class="text-right my-small-text">Dies ist ein digitales Dokument und auch ohne Unterschrift gültig. <br>{{ new Date }}</div>
+
       </q-card>
       
     </div>
@@ -106,7 +108,6 @@ export default {
 
     printDiv(val) {
         var div = document.getElementById(val)
-        console.log(this.preview_survey_best_item)
         const filename = `print_preview.pdf`
         html2pdf(div, {margin: 1, filename: filename})
       }

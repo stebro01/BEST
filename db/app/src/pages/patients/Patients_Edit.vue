@@ -207,39 +207,46 @@ export default {
 
         //SPEICHERE zunächst den Patienten
         this.$store.dispatch('updateDB', {query_string: {where: {PATIENT_NUM: PATIENT_NUM}, set: data}, table:"PATIENT_DIMENSION"})
-        .then(res => this.$q.notify('speichern erfolgreich'))
+        .then(res => {
+          this.$q.notify('speichern erfolgreich')
+
+          //dann speichere die OBSERVATION
+          if (this.MORE_PROPS_SELECTED.length === 0) {}
+          else {
+            this.MORE_PROPS_SELECTED.forEach(el => {
+              if (el.data !== undefined && el.data !== null && el.data !== '') {
+                //gibt es den Eintrag schon?
+                this.$store.dispatch('searchDB', {query_string: {PATIENT_NUM: this.$route.params.PATIENT_NUM, CONCEPT_CD: el.value}, table: 'OBSERVATION_FACT'})
+                .then(res => {
+                  if (res.length >0 ) this.$store.dispatch('updateDB', {query_string: {set: {TVAL_CHAR: el.data}, where: {OBSERVATION_ID: res[0].OBSERVATION_ID}}, table: 'OBSERVATION_FACT'})
+                  
+                  else {
+                    //erste eine Visite erzeugen: 
+                    if (!this.HIDDEN_ENCOUNTER) this.$store.dispatch('addDB', {query_string: {PATIENT_NUM: this.$route.params.PATIENT_NUM, VISIT_BLOB: this.$store.getters.SYSTEM_ID}, table: 'VISIT_DIMENSION'})
+                    .then(res2 => {
+                      this.HIDDEN_ENCOUNTER = res2.ENCOUNTER_NUM
+                      this.$store.dispatch('addDB', {query_string: {ENCOUNTER_NUM: res2.ENCOUNTER_NUM, PATIENT_NUM: this.$route.params.PATIENT_NUM, PROVIDER_ID: this.$store.getters.SYSTEM_ID , CONCEPT_CD: el.value, TVAL_CHAR: el.data, OBSERVATION_BLOB: '<SPECIFIC PATIENT DATA>'}, table: 'OBSERVATION_FACT'})
+                    })
+                    else this.$store.dispatch('addDB', {query_string: {ENCOUNTER_NUM: this.HIDDEN_ENCOUNTER, PATIENT_NUM: this.$route.params.PATIENT_NUM, PROVIDER_ID: this.$store.getters.SYSTEM_ID , CONCEPT_CD: el.value, TVAL_CHAR: el.data, OBSERVATION_BLOB: '<SPECIFIC PATIENT DATA>'}, table: 'OBSERVATION_FACT'})
+
+                  }
+                })
+              }
+            })
+          }
+
+          this.change_detected = false
+          
+        })
         .catch(err =>{
+          console.log('hi', err.message)
           let msg = err
-          if (err === 'SQLITE_CONSTRAINT: UNIQUE constraint failed: PATIENT_DIMENSION.PATIENT_CD') msg = 'Fehler: Patient Code bereits vergeben!'
-          this.$q.notify({message: msg, timeout: 5000 })
+          if (err.message && err.message === 'SQLITE_CONSTRAINT: UNIQUE constraint failed: PATIENT_DIMENSION.PATIENT_CD') msg = 'Fehler: Patient Code bereits vergeben! Wenn Sie den Patienten auch bearbeiten möchten, wenden Sie sich an den DB Admin.'
+          this.$q.notify({message: msg, timeout: 1000})
+          return
         })
 
-        //dann speichere die OBSERVATION
-        if (this.MORE_PROPS_SELECTED.length === 0) {}
-        else {
-          this.MORE_PROPS_SELECTED.forEach(el => {
-            if (el.data !== undefined && el.data !== null && el.data !== '') {
-              //gibt es den Eintrag schon?
-              this.$store.dispatch('searchDB', {query_string: {PATIENT_NUM: this.$route.params.PATIENT_NUM, CONCEPT_CD: el.value}, table: 'OBSERVATION_FACT'})
-              .then(res => {
-                if (res.length >0 ) this.$store.dispatch('updateDB', {query_string: {set: {TVAL_CHAR: el.data}, where: {OBSERVATION_ID: res[0].OBSERVATION_ID}}, table: 'OBSERVATION_FACT'})
-                
-                else {
-                  //erste eine Visite erzeugen: 
-                  if (!this.HIDDEN_ENCOUNTER) this.$store.dispatch('addDB', {query_string: {PATIENT_NUM: this.$route.params.PATIENT_NUM, VISIT_BLOB: this.$store.getters.SYSTEM_ID}, table: 'VISIT_DIMENSION'})
-                  .then(res2 => {
-                    this.HIDDEN_ENCOUNTER = res2.ENCOUNTER_NUM
-                    this.$store.dispatch('addDB', {query_string: {ENCOUNTER_NUM: res2.ENCOUNTER_NUM, PATIENT_NUM: this.$route.params.PATIENT_NUM, PROVIDER_ID: this.$store.getters.SYSTEM_ID , CONCEPT_CD: el.value, TVAL_CHAR: el.data, OBSERVATION_BLOB: '<SPECIFIC PATIENT DATA>'}, table: 'OBSERVATION_FACT'})
-                  })
-                  else this.$store.dispatch('addDB', {query_string: {ENCOUNTER_NUM: this.HIDDEN_ENCOUNTER, PATIENT_NUM: this.$route.params.PATIENT_NUM, PROVIDER_ID: this.$store.getters.SYSTEM_ID , CONCEPT_CD: el.value, TVAL_CHAR: el.data, OBSERVATION_BLOB: '<SPECIFIC PATIENT DATA>'}, table: 'OBSERVATION_FACT'})
-
-                }
-              })
-            }
-          })
-        }
-
-        this.change_detected = false
+        
       },
 
       dataChanged() {
