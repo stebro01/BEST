@@ -58,6 +58,7 @@ import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 import EDIT_CONCEPT from 'src/components/elements/EditConcept.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   name: 'DBFunctions_EditConcepts',
@@ -194,7 +195,7 @@ export default {
     async deleteConcept(val) {
       if (!val) return
 
-      if (!confirm(`Sollen ${val.length} Einträge wirklich gelöscht werden?\nDieser Schritt kann nicht rückgängig gemacht werden!`)) return
+      if (!await my_confirm(`Sollen ${val.length} Einträge wirklich gelöscht werden?\nDieser Schritt kann nicht rückgängig gemacht werden!`)) return
       for (let item of val) {
         await this.$store.dispatch('deleteDB', { query_string: { CONCEPT_CD: item.CONCEPT_CD }, table: 'CONCEPT_DIMENSION' })
       }

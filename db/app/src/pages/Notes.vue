@@ -55,7 +55,7 @@ import HEADING from "src/components/elements/Heading.vue";
 import FILTER_BOX from "src/components/elements/FilterBox.vue";
 import MainSlot from "src/components/MainSlot.vue";
 import BOTTOM_DROPDOWN from "src/components/elements/BottomDropDown.vue";
-
+import { my_confirm } from "src/tools/my_dialog";
 export default {
   name: "NotePage",
   components: { HEADING, FILTER_BOX, MainSlot, BOTTOM_DROPDOWN },
@@ -139,7 +139,7 @@ export default {
     },
 
     async deleteNote(data) {
-      if (!confirm(`Soll der Eintrag wirklich gelöscht werden?`)) return
+      if (! await my_confirm(`Soll der Eintrag wirklich gelöscht werden?`)) return
 
       for (let d of data) {
         let res = await this.$store.dispatch('deleteDB', {table: 'NOTE_FACT', query_string: {NOTE_ID: d.NOTE_ID}})

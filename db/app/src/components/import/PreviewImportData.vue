@@ -47,6 +47,8 @@
 
 
 <script>
+import { my_confirm } from "src/tools/my_dialog";
+
 export default {
   name: 'PreviewImport',
 
@@ -86,8 +88,8 @@ export default {
       return errors
     },
 
-    removeItem(item) {
-      if (!confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
+    async removeItem(item) {
+      if (!await my_confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
       this.$emit('remove', item)
     },
 

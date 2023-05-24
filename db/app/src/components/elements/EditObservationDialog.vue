@@ -100,6 +100,8 @@
 <script>
 
 import NEW_VISIT_DIALOG from './NewVisitDialog.vue'
+import { my_confirm } from "src/tools/my_dialog";
+
 export default {
   name: 'EditObservationDialog',
 
@@ -152,8 +154,8 @@ export default {
       this.$emit('save', {PATIENT: this.PATIENT, OBSERVATION: this.OBSERVATION})
     },
 
-    deleteObs() {
-      if (!confirm(`Soll der Eintrag wirklich gelöscht werden?)`)) return
+    async deleteObs() {
+      if (!await my_confirm(`Soll der Eintrag wirklich gelöscht werden?)`)) return
       this.$emit('delete', {PATIENT: this.PATIENT, OBSERVATION: this.OBSERVATION})
     },
 

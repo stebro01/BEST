@@ -27,6 +27,7 @@
 import SELECT_CONCEPT from '../elements/SelectConcept_New.vue'
 import BOTTOM_DROPDOWN from '../elements/BottomDropDown.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   name: 'Card_CQL_concepts',
@@ -87,7 +88,7 @@ export default {
     },
     
     async removeRule(item) {
-      if ( !item || !confirm(`Soll der Eintrag wirklich gelöscht werden?`)) return 
+      if ( !item || await !my_confirm(`Soll der Eintrag wirklich gelöscht werden?`)) return 
       for (let val of item) {
         await this.$store.dispatch('deleteDB', {table: 'CONCEPT_CQL_LOOKUP', query_string: {CONCEPT_CQL_ID: val.CONCEPT_CQL_ID}})
       }

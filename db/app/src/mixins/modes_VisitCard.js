@@ -1,3 +1,4 @@
+import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   data() {
@@ -66,8 +67,8 @@ export default {
 
       //LOESCHE EINEN EINTRAG
       //ie: deleteData({table: 'VISIT_DIMENSION', value: item.ENCOUNTER_NUM, label: 'ENCOUNTER_NUM'})
-      deleteData(item){
-        if (!confirm('Soll der Eintrag wirklich gelöscht werden? Ggf. werden alle abhängigen Daten auch gelöscht ')) return
+      async deleteData(item){
+        if (!await my_confirm('Soll der Eintrag wirklich gelöscht werden? Ggf. werden alle abhängigen Daten auch gelöscht ')) return
         this.$store.dispatch('deleteDB', {query_string:{[item.label]:item.value},table:item.table})
         .then(res => {
           this.$q.notify('Löschen erfolgreich: ' + res)

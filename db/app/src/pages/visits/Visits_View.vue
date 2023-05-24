@@ -56,6 +56,7 @@ import VISIT_TAB from 'src/components/visits/VisitTab.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 // import {get_date_from_timeStamp} from 'src/classes/sqltools.js'
 
@@ -160,8 +161,8 @@ export default {
 
     },
 
-    deleteSelection() {
-      if (!confirm(`Sollen ${this.selected.length} ausgewählte Einträge wirklich gelöscht werden?`)) return
+    async deleteSelection() {
+      if (!await my_confirm(`Sollen ${this.selected.length} ausgewählte Einträge wirklich gelöscht werden?`)) return
       const promise = []
       const to_delete = []
       this.selected.forEach(obs => {

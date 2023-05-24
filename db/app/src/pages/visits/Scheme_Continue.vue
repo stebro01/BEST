@@ -63,6 +63,8 @@ import MainSlot from 'src/components/MainSlot.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import { now } from 'src/tools/mydate'
+import { my_confirm } from "src/tools/my_dialog";
+
 export default {
   name: 'Scheme_Continue',
 
@@ -119,8 +121,8 @@ export default {
   },
 
   methods: {
-    goBack() {
-      if (this.changeDetected && !confirm('Änderungen werden nich gespeichert! \nWirklich fortfahren?')) return
+    async goBack() {
+      if (this.changeDetected && !await my_confirm('Änderungen werden nich gespeichert! \nWirklich fortfahren?')) return
       else this.$router.go(-1)
 
     },
@@ -202,7 +204,7 @@ export default {
         else if (f.VALTYPE_CD !== 'N' && (f.TVAL_CHAR === undefined || f.TVAL_CHAR === null)) error_found = true
       })
       if (error_found) {
-        if (!confirm('Einträge nicht vollständig, wirklich fortfahren?')) return
+        if (!await my_confirm('Einträge nicht vollständig, wirklich fortfahren?')) return
       }
 
       console.log(this.localGlobalData)

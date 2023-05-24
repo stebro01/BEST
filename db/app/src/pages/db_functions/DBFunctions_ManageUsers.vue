@@ -43,6 +43,7 @@ import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import DIALOG_USER_ADD from 'src/components/user_management/Dialog_UserAdd.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   name: 'DBFunctions_ManageUsers',
@@ -106,8 +107,8 @@ export default {
       
     },  
 
-    delectUser() {
-      if (!confirm(`Sollen die ausgewählte(n) Nutzer wirklich gelöscht werden?`)) return
+    async delectUser() {
+      if (!await confirm(`Sollen die ausgewählte(n) Nutzer wirklich gelöscht werden?`)) return
       const promises = []
       this.selected.forEach(s => {
         if (s.USER_CD === 'admin') this.$q.notify('<<admin>> kann nicht gelöscht werden')

@@ -102,6 +102,8 @@ import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 import EDIT_LOCATION from 'src/components/elements/EditLocation.vue'
 import EDIT_PROVIDER from 'src/components/elements/EditProvider.vue'
+import { my_confirm } from "src/tools/my_dialog";
+
 export default {
   name: 'DBFunctions_EditLocationProvider',
 
@@ -163,7 +165,7 @@ export default {
     },
 
     async delete_LOCATION_CD() {
-      if (!confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
+      if (!await my_confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
       for (let item of this.selected_LOCATION_CD) {
         await this.$store.dispatch('deleteDB', {query_string: {CODE_CD: item.CODE_CD}, table: 'CODE_LOOKUP'})
         this.selected_LOCATION_CD = []
@@ -175,7 +177,7 @@ export default {
     },
 
     async delete_PROVIDER_DIMENSION() {
-      if (!confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
+      if (!await my_confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
       for (let item of this.selected_PROVIDER_DIMENSION) {
         await this.$store.dispatch('deleteDB', {query_string: {PROVIDER_ID: item.PROVIDER_ID}, table: 'PROVIDER_DIMENSION'})
         this.selected_PROVIDER_DIMENSION = []

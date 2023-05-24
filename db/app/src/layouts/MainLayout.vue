@@ -160,10 +160,14 @@ export default {
 
   methods: {
     closeDB() {
-      if (!confirm(`Nutzer wirklich abmelden?`)) return
+      this.$q.dialog({title: 'Nutzer abmelden', message: 'Wollen Sie sich abmelden?', cancel: true})
+      .onOk(() => {
       this.$store.commit('USER_SET', undefined)
       this.$store.commit('CONNECTED_SET', false)
       this.$router.push({name: 'Start'})
+      })
+      .onCancel(() => {}) //do nothing
+      // console.log(window.electron
 
     },
 

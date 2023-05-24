@@ -95,6 +95,8 @@ import RESOLVE_CONCEPT from 'src/components/elements/ResolveConcept.vue'
 import SELECT_FILE from 'src/components/elements/SelectFile.vue'
 import { unstringify } from 'src/classes/sqltools'
 import { exportFile } from 'quasar'
+import { my_confirm } from "src/tools/my_dialog";
+
 export default {
   name: 'DBFunctions_EditSchemes',
 
@@ -149,8 +151,8 @@ export default {
       this.$router.push({name: 'DBFunctions_EditSchemes_Edit', params: {id: val}})
     },
 
-    deleteData(val) {
-      if (!confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
+    async deleteData(val) {
+      if (!await my_confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
       const promises = []
       val.forEach(item => {
         let obj = this.SCHEMES.find(el => el.CODE_CD === item)

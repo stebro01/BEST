@@ -63,6 +63,7 @@
 <script>
 
 import RESOLVE_CONCEPT from 'src/components/elements/ResolveConcept.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 export default {
     name: 'VisitTab',
@@ -118,12 +119,12 @@ export default {
                 })
         },
 
-        deleteVisite(item) {
+        async deleteVisite(item) {
             if (!item) return
             const a = item.split('_')
             if (a.length < 2) return
             const ENCOUNTER_NUM = parseInt(a[1])
-            if (!confirm(`Soll Visite <<${ENCOUNTER_NUM}>> wirklich gelöscht werden? Wichtig: Alle zugehörigen Observations werden auch gelöscht.`)) return
+            if (!await my_confirm(`Soll Visite <<${ENCOUNTER_NUM}>> wirklich gelöscht werden? Wichtig: Alle zugehörigen Observations werden auch gelöscht.`)) return
             this.$store.dispatch('deleteDB', { query_string: { ENCOUNTER_NUM: ENCOUNTER_NUM }, table: "VISIT_DIMENSION" })
                 .then(() => {
                     this.$store.dispatch('deleteDB', { query_string: { ENCOUNTER_NUM: ENCOUNTER_NUM, _force: true }, table: "OBSERVATION_FACT" })

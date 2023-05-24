@@ -25,6 +25,7 @@
 // import {splitVisits, beautify_data} from 'src/tools/formatdata'
 import HEADING from 'src/components/elements/Heading.vue'
 import MainSlot from 'src/components/MainSlot.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   name: 'DBFunctions_ResetDB',
@@ -47,8 +48,8 @@ export default {
   },
 
   methods: {
-    resetDB() {
-      if (!confirm(this.TEXT.confirm_reset)) return
+    async resetDB() {
+      if (!await my_confirm(this.TEXT.confirm_reset)) return
 
       this.$store.dispatch('resetDB')
       .then(() => this.$q.notify(this.TEXT.msg_reset_complete))

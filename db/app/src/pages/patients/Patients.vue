@@ -73,6 +73,7 @@ import HEADING from "src/components/elements/Heading.vue";
 import FILTER_BOX from "src/components/elements/FilterBox.vue";
 import MainSlot from "src/components/MainSlot.vue";
 import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   name: "PatientsPage",
@@ -230,9 +231,9 @@ export default {
       return PATIENT_NUM;
     },
 
-    deletePatient() {
+    async deletePatient() {
       if (
-        !confirm(
+        !await my_confirm(
           `Sollen ausgewählte Patienten wirklich gelöscht werden?\nAlle zugehörigen Visten und Daten werden auch entfernt.\n(Dieser Schritt kann nicht rückgängig gemacht werden!)`
         )
       )

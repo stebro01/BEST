@@ -72,6 +72,7 @@ import CARD_CQL_CONCEPTS from 'src/components/cql/Card_CQL_concepts.vue'
 import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 import SELECT_FILE from 'src/components/elements/SelectFile.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 import { exportFile } from 'quasar'
 
@@ -166,7 +167,7 @@ export default {
     },
 
     async delectCQL(DATA) {
-      if (!DATA || !confirm(`Sollen ${DATA.length} Einträge wirklich gelöscht werden?`)) return
+      if (!DATA || ! await my_confirm(`Sollen ${DATA.length} Einträge wirklich gelöscht werden?`)) return
       // else
       for (let data of DATA) await this.$store.dispatch('deleteDB', { table: 'CQL_FACT', query_string: { CQL_ID: data.CQL_ID } })
       this.loadData()

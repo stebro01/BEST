@@ -134,6 +134,7 @@
 import {importConceptFromCSV, VALTYPE_CD_LIST} from 'src/tools/formatdata'
 import HEADING from 'src/components/elements/Heading.vue'
 import MainSlot from 'src/components/MainSlot.vue'
+import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   name: 'DBFunctions_ConceptsImport',
@@ -191,8 +192,8 @@ export default {
       this.modus = 'preview'
     },
 
-    deleteSelection() {
-      if (!confirm(this.$store.getters.TEXT.question.selection_remove)) return
+    async deleteSelection() {
+      if (!await my_confirm(this.$store.getters.TEXT.question.selection_remove)) return
       
       this.selected.forEach(s => {
         this.preview_data = this.preview_data.filter(el => el.CONCEPT_PATH !== s.CONCEPT_PATH)
