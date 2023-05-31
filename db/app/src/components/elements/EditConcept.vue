@@ -80,6 +80,10 @@
                 {{ SELECTION_ANSWERS }}
                 <q-icon v-if="SELECTION_ANSWERS.includes('link:')" name="close" class="cursor-pointer"
                   @click="unlinkAnswer(localData)" />
+                <span v-else-if="localData._answers_count !== undefined">
+                  {{ localData._answers_count }} items
+                  <q-icon size="sm" name="edit" class="cursor-pointer" @click="show_edit_answers = true"/>
+                </span>
                 <span v-else>
                   <q-icon size="sm" name="add" class="cursor-pointer q-mr-md" @click="show_edit_answers = true" />
                   <q-icon size="sm" name="link" class="cursor-pointer" @click="linkAnswer(localData)" />
@@ -113,7 +117,7 @@
           </tbody>
         </q-markup-table>
         <!-- ADD MODIFIKATION -->
-        <q-btn flat round icon="auto_fix_normal" class="absolute-bottom-left q-mt-xl" @click="createModifikation()"><q-tooltip>Modifikation
+        <q-btn v-if="VALID_FORM" flat round icon="auto_fix_normal" class="absolute-bottom-left q-mt-xl" @click="createModifikation()"><q-tooltip>Modifikation
             erzeugen</q-tooltip></q-btn>
       </q-card-section>
 
@@ -146,19 +150,15 @@
     </q-dialog>
 
     <!-- EDIT ANSWERS -->
-    <q-dialog v-model="show_edit_answers">
-      <q-card>
-        <q-btn flat rounded class="absolute-top-right z-top" icon="close" v-close-popup />
-        <q-card-section>Antworten bearbeiten</q-card-section>
-        <q-card-section>{{ show_preview_dialog_data }}</q-card-section>
-      </q-card>
-    </q-dialog>
+    <EDIT_CONCEPT_ANSWERS :active="show_edit_answers" @close="show_edit_answers = false" :CONCEPT="localData"/>
+
   </q-dialog>
 </template>
 
 <script>
 import SELECT_LIST from "src/components/elements/SelectList.vue";
 import PICK_PATH from "src/components/elements/PickPath.vue";
+import EDIT_CONCEPT_ANSWERS from "src/components/elements/EditConcept_Answers.vue"
 import { datenow_isostring } from "src/tools/mydate";
 import { my_confirm } from "src/tools/my_dialog";
 
@@ -167,7 +167,7 @@ export default {
 
   props: ["active", "item"],
 
-  components: { SELECT_LIST, PICK_PATH },
+  components: { SELECT_LIST, PICK_PATH, EDIT_CONCEPT_ANSWERS },
 
   data() {
     return {
@@ -193,6 +193,14 @@ export default {
     this.fill_options_SOURCESYSTEM_CD();
     this.split_CONCEPT_CD();
     this.split_CONCEPT_PATH(); //muss nach split_CONCEPT_CD ausgeführt werden!!!
+
+    if (this.localData.VALTYPE_CD === 'S' && this.localData.CONCEPT_PATH) {
+      this.$store.dispatch('getConceptList', `${this.localData.CONCEPT_PATH}\\LA`)
+      .then(res => {
+        this.localData._answers_count = res.length
+      })
+    }
+    
   },
 
   computed: {
@@ -212,6 +220,16 @@ export default {
         return `link: ${this.localData.RELATED_CONCEPT}`;
       else return " ";
     },
+
+    VALID_FORM() {
+      if (!this.localData) return false
+      if (!this.localData.CONCEPT_CD) return false
+      if (!this.localData.CONCEPT_PATH) return false
+      if (!this.localData.NAME_CHAR) return false
+      if (!this.localData.SOURCESYSTEM_CD) return false
+
+      return true
+    }
   },
   methods: {
     saveConcept() {
@@ -458,7 +476,19 @@ export default {
     },
 
     createModifikation() {
-      
+      this.$q.dialog({
+        title: 'Modifikation erstellen',
+        message: 'Wollen Sie eine Kopie erstellen?',
+        cancel: true,
+        persistent: true
+      }).onOk(() => {
+        console.log(this.localData)
+        this.localData.CONCEPT_CD = `${this.localData.CONCEPT_CD}_MOD`
+        this.localData.CONCEPT_PATH = `${this.localData.CONCEPT_PATH}_MOD`
+        var CONCEPT = this.prepare_final_data(this.localData);
+        this.$emit("modify", CONCEPT);
+      })
+    
     }
 
 
