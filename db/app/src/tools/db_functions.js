@@ -77,7 +77,16 @@ export async function resetDatabase(dbman, readFile, PATH ) {
         promises.push(dbman.run(sql_query.query))
     })
     await Promise.all(promises)
-    
+
+    // CQL LOOKUP
+    const CONCEPT_CQL_LOOKUP = readFile(PATH.CONCEPT_CQL_LOOKUP, 'utf-8')
+    const IMPORTED_CONCEPT_CQL_LOOKUP = csvJSON(CONCEPT_CQL_LOOKUP, ';')
+    promises = []
+    IMPORTED_CONCEPT_CQL_LOOKUP.forEach(item => {
+        let sql_query = SCHEMES.SCHEME_CONCEPT_CQL_LOOKUP.create(item)
+        promises.push(dbman.run(sql_query.query))
+    })
+    await Promise.all(promises)
     
     // VIEW patient_observations
     await dbman.run('DROP VIEW IF EXISTS patient_observations')

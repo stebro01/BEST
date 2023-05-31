@@ -3,7 +3,7 @@ var axios = require('axios');
 
 const url_full = 'https://browser.ihtsdotools.org/snowstorm/snomed-ct/browser/MAIN/2023-02-28/concepts'
 const url_short = 'https://browser.ihtsdotools.org/snowstorm/snomed-ct/MAIN/2023-02-28/concepts'
-
+const url_descriptions = 'https://browser.ihtsdotools.org/snowstorm/snomed-ct/browser/MAIN/descriptions'
 
 export async function resolve(SNOMED_ID) {
     console.log('snomed_api/resolve: ', SNOMED_ID)
@@ -70,6 +70,28 @@ export async function query(SNOMED_ID) {
         method: 'get',
         maxBodyLength: Infinity,
         url: `${url_short}/${SNOMED_ID}`,
+        headers: {
+        }
+    };
+    try {
+        const res = await axios(config)
+        if (res && res.data) return res.data
+        else return undefined
+    } catch (err) {
+        return undefined
+    }
+}
+
+
+// curl --silent "https://browser.ihtsdotools.org/snowstorm/snomed-ct/browser/MAIN/descriptions?&limit=50&term=heart%20attack&conceptActive=true&lang=english&skipTo=0&returnLimit=100"
+export async function queryby_string(TXT) {
+    console.log('snomed_api/queryby_string: ', TXT)
+    if (!TXT || typeof (TXT) !== 'string') return undefined
+
+    var config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `${url_descriptions}?&limit=50&term=${TXT}&conceptActive=true&lang=english&skipTo=0&returnLimit=50`,
         headers: {
         }
     };

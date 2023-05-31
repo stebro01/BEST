@@ -200,6 +200,12 @@ export function searchDB ({commit, state}, payload) {
     }).finally(() => commit('SPINNER_SET', false))
 }
 
+export const runQuery = async ({commit, state}, payload)  => {
+    commit('LOG', {method: 'action -> runQuery', data: payload})
+    const TABLE = getTable('CONCEPT_DIMENSION', state)    
+    return TABLE.run_query(payload)
+}
+
 /**
  * 
  * @param {object} param0 
@@ -345,6 +351,14 @@ export const  query_SNOMED_API = async ({commit}, payload) => {
     commit('LOG', {method: 'action -> query_SNOMED_API', data: payload})
     commit('SPINNER_SET', true)
     const res = await SNOMED_API.query(payload)
+    commit('SPINNER_SET', false)
+    return res
+}
+
+export const  query_SNOMED_API_byName = async ({commit}, payload) => {
+    commit('LOG', {method: 'action -> query_SNOMED_API_byName', data: payload})
+    commit('SPINNER_SET', true)
+    const res = await SNOMED_API.queryby_string(payload)
     commit('SPINNER_SET', false)
     return res
 }
