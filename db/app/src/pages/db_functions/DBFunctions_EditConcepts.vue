@@ -44,7 +44,7 @@
 
     <!-- EDIT CONCEPT -->
     <EDIT_CONCEPT v-if="show_edit_concept" :item="selected[0]" :active="show_edit_concept"
-      @close="show_edit_concept = false; selected = []" @save="updateCONCEPT($event)" @modify="saveNewConcept($event); show_edit_concept = false; selected = []"/>
+      @close="show_edit_concept = false; selected = []" @save="updateCONCEPT($event)" @modify="modifyConcept($event)"/>
     <!--  ADD CONCEPT -->
     <EDIT_CONCEPT v-if="show_add_concept" :item="show_add_concept_data" :active="show_add_concept"
       @close="saveNewConcept(undefined)" @save="saveNewConcept($event)" />
@@ -190,6 +190,13 @@ export default {
               })
           }
         })
+    },
+
+    modifyConcept(CONCEPT) {
+      this.saveNewConcept(CONCEPT); 
+      this.show_edit_concept = false; 
+      this.selected = []
+      this.filter = CONCEPT.CONCEPT_CD
     },
 
     async deleteConcept(val) {

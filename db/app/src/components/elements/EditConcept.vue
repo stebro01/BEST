@@ -80,9 +80,9 @@
                 {{ SELECTION_ANSWERS }}
                 <q-icon v-if="SELECTION_ANSWERS.includes('link:')" name="close" class="cursor-pointer"
                   @click="unlinkAnswer(localData)" />
-                <span v-else-if="localData._answers_count !== undefined">
+                <span v-else-if="localData._answers_count > 0">
                   {{ localData._answers_count }} items
-                  <q-icon size="sm" name="edit" class="cursor-pointer" @click="show_edit_answers = true"/>
+                  <q-icon size="sm" name="edit" class="cursor-pointer" @click="show_edit_answers = true" />
                 </span>
                 <span v-else>
                   <q-icon size="sm" name="add" class="cursor-pointer q-mr-md" @click="show_edit_answers = true" />
@@ -117,7 +117,8 @@
           </tbody>
         </q-markup-table>
         <!-- ADD MODIFIKATION -->
-        <q-btn v-if="VALID_FORM" flat round icon="auto_fix_normal" class="absolute-bottom-left q-mt-xl" @click="createModifikation()"><q-tooltip>Modifikation
+        <q-btn v-if="VALID_FORM" flat round icon="auto_fix_normal" class="absolute-bottom-left q-mt-xl"
+          @click="createModifikation()"><q-tooltip>Modifikation
             erzeugen</q-tooltip></q-btn>
       </q-card-section>
 
@@ -150,7 +151,8 @@
     </q-dialog>
 
     <!-- EDIT ANSWERS -->
-    <EDIT_CONCEPT_ANSWERS :active="show_edit_answers" @close="show_edit_answers = false" :CONCEPT="localData"/>
+    <EDIT_CONCEPT_ANSWERS v-if="show_edit_answers" :active="show_edit_answers" @close="show_edit_answers = false"
+      :CONCEPT="localData" />
 
   </q-dialog>
 </template>
@@ -194,13 +196,15 @@ export default {
     this.split_CONCEPT_CD();
     this.split_CONCEPT_PATH(); //muss nach split_CONCEPT_CD ausgeführt werden!!!
 
+    console.log(this.localData)
+
     if (this.localData.VALTYPE_CD === 'S' && this.localData.CONCEPT_PATH) {
-      this.$store.dispatch('getConceptList', `${this.localData.CONCEPT_PATH}\\LA`)
-      .then(res => {
-        this.localData._answers_count = res.length
-      })
+      this.$store.dispatch('getConceptList', `${this.localData.CONCEPT_PATH}\\${this.localData.CONCEPT_CD}\\LA`)
+        .then(res => {
+          this.localData._answers_count = res.length
+        })
     }
-    
+
   },
 
   computed: {
@@ -270,6 +274,7 @@ export default {
           0,
           ind
         );
+        if (this.localData.CONCEPT_PATH.endsWith("\\")) this.localData.CONCEPT_PATH = this.localData.CONCEPT_PATH.slice(0,-1)
       }
     },
 
@@ -488,7 +493,7 @@ export default {
         var CONCEPT = this.prepare_final_data(this.localData);
         this.$emit("modify", CONCEPT);
       })
-    
+
     }
 
 
