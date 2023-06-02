@@ -8,10 +8,10 @@
 
       <!-- OPTIONS -->
       <template v-slot:options_left>
-        <div class="text-right"><q-btn :class="{'bg-grey': mode === 'import'}" @click="mode='import'">Import</q-btn></div>
+        <div class="text-right"><q-btn :class="{'bg-grey': mode === 'import'}" flat @click="mode='import'">Import</q-btn></div>
       </template>
       <template v-slot:options_right>
-        <div class="text-left"><q-btn :class="{'bg-grey': mode === 'export'}" @click="mode='export'">Export</q-btn></div>
+        <div class="text-left"><q-btn :class="{'bg-grey': mode === 'export'}" flat @click="mode='export'">Export</q-btn></div>
       </template>
 
       <!-- MAIN -->
