@@ -8,7 +8,7 @@
 
     <div class="col q-pa-md">
       <div class="text-h6">
-        2. Schaue das Ergebnis der Suchanfrage an und füge die Daten dem Export-Basekt hinzu
+        2. Schaue das Ergebnis der Suchanfrage an und füge die Daten dem Export-Basket hinzu
         <q-btn v-if="PREVIEW" round flat class="float-right" icon="delete"
           @click="RESULT = undefined; active_where = undefined" />
       </div>
