@@ -13,7 +13,7 @@
           row-key="NOTE_ID" v-model:selected="selected">
           <template v-slot:top>
             <!-- BUTTONS -->
-            <BOTTOM_DROPDOWN :show_add="true" @add="show_new_patient = true; show_new_patient_data = {}" 
+            <BOTTOM_DROPDOWN :show_add="true" @add="show_new_patient = true; show_new_patient_data = {}"
               :show_remove="SELECTION > 0" @remove="deleteNote(selected)" />
             <q-space />
             <!-- FILTERBOX -->
@@ -27,23 +27,34 @@
     <!-- FORM -->
     <q-dialog v-model="show_new_patient">
       <q-card>
-        <q-btn class="float-right z-top" round flat  icon='close' v-close-popup/>
+        <q-btn class="float-right z-top" round flat icon='close' v-close-popup />
         <q-card-section>Neuen Eintrag</q-card-section>
         <q-card-section>
           <q-form @submit="saveNewNote(show_new_patient_data)">
-          <q-markup-table dense>
-            <tbody>
-              <!-- ID -->
-              <tr><td>Kategorie</td><td ><q-input dense filled v-model="show_new_patient_data.CATEGORY_CHAR" /></td></tr>
-              <tr><td>Titel</td><td ><q-input dense filled v-model="show_new_patient_data.NAME_CHAR" :rules="[val => !!val || 'Field is required']" /></td></tr>
-              <tr><td>Text</td><td ><q-input dense filled v-model="show_new_patient_data.NOTE_BLOB" type="textarea" :rules="[val => !!val || 'Field is required']" /></td></tr>
-              
-            </tbody>
-          </q-markup-table>
-          <div class="text-center">
-            <q-btn type="submit" rounded class="my-btn q-mt-lg">{{ $store.getters.TEXT.btn.save }}</q-btn>
-          </div>
-        </q-form>
+            <q-markup-table dense>
+              <tbody>
+                <!-- ID -->
+                <tr>
+                  <td>Kategorie</td>
+                  <td><q-input dense filled v-model="show_new_patient_data.CATEGORY_CHAR" /></td>
+                </tr>
+                <tr>
+                  <td>Titel</td>
+                  <td><q-input dense filled v-model="show_new_patient_data.NAME_CHAR"
+                      :rules="[val => !!val || 'Field is required']" /></td>
+                </tr>
+                <tr>
+                  <td>Text</td>
+                  <td><q-input dense filled v-model="show_new_patient_data.NOTE_BLOB" type="textarea"
+                      :rules="[val => !!val || 'Field is required']" /></td>
+                </tr>
+
+              </tbody>
+            </q-markup-table>
+            <div class="text-center">
+              <q-btn type="submit" rounded class="my-btn q-mt-lg">{{ $store.getters.TEXT.btn.save }}</q-btn>
+            </div>
+          </q-form>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -67,7 +78,7 @@ export default {
       selected: [],
       results: [],
       columns: [
-       
+
         {
           name: "CATEGORY_CHAR",
           required: true,
@@ -134,7 +145,7 @@ export default {
 
     async saveNewNote(data) {
       this.show_new_patient = false
-      const res = await this.$store.dispatch('addDB', {table: 'NOTE_FACT', query_string: data})
+      const res = await this.$store.dispatch('addDB', { table: 'NOTE_FACT', query_string: data })
       this.loadData()
     },
 
@@ -142,7 +153,7 @@ export default {
       if (! await my_confirm(`Soll der Eintrag wirklich gelöscht werden?`)) return
 
       for (let d of data) {
-        let res = await this.$store.dispatch('deleteDB', {table: 'NOTE_FACT', query_string: {NOTE_ID: d.NOTE_ID}})
+        let res = await this.$store.dispatch('deleteDB', { table: 'NOTE_FACT', query_string: { NOTE_ID: d.NOTE_ID } })
       }
 
       this.$q.notify('Aktion erfolgreich')

@@ -2,7 +2,8 @@
   <q-page class="non-selectable">
     <MainSlot :no_options="true" :no_footer="true">
       <template v-slot:header>
-        <div class="col text-h6 text-center">Über diese App</div>
+        <HEADING :title="'Über diese App'" 
+          :icon="'quiz'" />
       </template>
 
       <template v-slot:main>
@@ -69,11 +70,11 @@
 
 <script>
 import MainSlot from "src/components/MainSlot.vue";
-
+import HEADING from "src/components/elements/Heading.vue";
 export default {
   name: "AboutPage",
 
-  components: { MainSlot },
+  components: { MainSlot, HEADING },
 
   data() {
     return {
