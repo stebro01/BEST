@@ -2,8 +2,7 @@
   <q-page class="non-selectable">
     <MainSlot :no_options="true" :no_footer="true">
       <template v-slot:header>
-        <HEADING :title="'Über diese App'" 
-          :icon="'quiz'" />
+        <HEADING :title="'Über diese App'" :icon="'quiz'" />
       </template>
 
       <template v-slot:main>
@@ -27,9 +26,7 @@
                 <q-item-section>
                   <q-item-label>{{ item.label }}</q-item-label>
 
-                  <q-item-label caption
-                    >License: {{ item.license }}</q-item-label
-                  >
+                  <q-item-label caption>License: {{ item.license }}</q-item-label>
                 </q-item-section>
               </q-item>
             </q-list>
