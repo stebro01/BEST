@@ -202,7 +202,9 @@ export function searchDB ({commit, state}, payload) {
 
 export const runQuery = async ({commit, state}, payload)  => {
     commit('LOG', {method: 'action -> runQuery', data: payload})
+    commit('SPINNER_SET', true)
     const TABLE = getTable('CONCEPT_DIMENSION', state)    
+    commit('SPINNER_SET', false)
     return TABLE.run_query(payload)
 }
 

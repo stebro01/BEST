@@ -15,7 +15,7 @@
                   @click="show_SOURCESYSTEM_CD_list = true" />
               </td>
             </tr>
-            <!-- CONCEPT-PATH -->
+            <!-- CONCEPT_PATH -->
             <tr>
               <td>CONCEPT_PATH</td>
               <td class="bg-grey-2 row">
@@ -40,7 +40,7 @@
                 <div class="col-8">
                   <q-input dense v-model="localData.CONCEPT_CD" @blur="something_changed = true">
                     <template v-slot:append>
-                      <q-icon name="manage_search" @click="querySNOMED_API(localData.CONCEPT_CD)" class="cursor-pointer">
+                      <q-icon v-if="localData.SOURCESYSTEM_CD === 'SNOMED-CT'" name="manage_search" @click="querySNOMED_API(localData.CONCEPT_CD)" class="cursor-pointer">
                         <q-tooltip>Frage SNOMED API ab</q-tooltip>
                       </q-icon>
                     </template>
@@ -55,7 +55,7 @@
                 <div class="col-12">
                   <q-input dense v-model="localData.NAME_CHAR" input-class="text-center" @blur="something_changed = true">
                     <template v-slot:append>
-                      <q-icon name="manage_search" @click="querySNOMED_API_byName(localData.NAME_CHAR)"
+                      <q-icon v-if="localData.SOURCESYSTEM_CD === 'SNOMED-CT'" name="manage_search" @click="querySNOMED_API_byName(localData.NAME_CHAR)"
                         class="cursor-pointer">
                         <q-tooltip>Frage SNOMED API ab</q-tooltip>
                       </q-icon>
@@ -125,7 +125,7 @@
       <q-card-actions align="center">
         <q-btn no-caps rounded class="my-btn" @click="$emit('close')">abbrechen</q-btn>
         <q-btn v-if="something_changed" no-caps rounded class="my-btn" @click="saveConcept()">speichern</q-btn>
-        <q-btn rounded color="black" icon="preview" @click="show_preview()"><q-tooltip>Vorschau</q-tooltip></q-btn>
+        <q-btn v-if="localData.CONCEPT_CD && localData.CONCEPT_PATH" rounded color="black" icon="preview" @click="show_preview()"><q-tooltip>Vorschau</q-tooltip></q-btn>
       </q-card-actions>
     </q-card>
 
@@ -163,6 +163,7 @@ import PICK_PATH from "src/components/elements/PickPath.vue";
 import EDIT_CONCEPT_ANSWERS from "src/components/elements/EditConcept_Answers.vue"
 import { datenow_isostring } from "src/tools/mydate";
 import { my_confirm } from "src/tools/my_dialog";
+import {my_uid} from "src/tools/db_tools"
 
 export default {
   name: "EditConcept",
@@ -195,8 +196,6 @@ export default {
     this.fill_options_SOURCESYSTEM_CD();
     this.split_CONCEPT_CD();
     this.split_CONCEPT_PATH(); //muss nach split_CONCEPT_CD ausgeführt werden!!!
-
-    console.log(this.localData)
 
     if (this.localData.VALTYPE_CD === 'S' && this.localData.CONCEPT_PATH) {
       this.$store.dispatch('getConceptList', `${this.localData.CONCEPT_PATH}\\${this.localData.CONCEPT_CD}\\LA`)
@@ -363,14 +362,16 @@ export default {
 
     prepare_final_data(data) {
       var result = JSON.parse(JSON.stringify(data));
+      result.CONCEPT_CD = result.CONCEPT_CD.trim().toUpperCase()
       result.UPDATE_DATE = datenow_isostring();
-      result.CONCEPT_PATH = `${result.CONCEPT_PATH}\\${result.CONCEPT_CD}`;
+      result.CONCEPT_PATH = `${result.CONCEPT_PATH}\\${result.CONCEPT_CD}`.toUpperCase();
       result.CONCEPT_PATH = result.CONCEPT_PATH.replace(/\\\\/g, "\\");
       if (result.SOURCESYSTEM_CD === "LOINC")
         result.CONCEPT_CD = `LID: ${result.CONCEPT_CD}`;
       else if (result.SOURCESYSTEM_CD !== "SNOMED-CT")
         result.CONCEPT_CD = `${result.SOURCESYSTEM_CD}: ${result.CONCEPT_CD}`;
       else result.CONCEPT_CD = `SCTID: ${result.CONCEPT_CD}`;
+      
       Object.keys(result).forEach((r) => {
         if (result[r] === null || result[r] === "null") result[r] = "NULL";
       });
@@ -451,6 +452,7 @@ export default {
         })
         .onOk((data) => {
           this._query_concepts_to_link(data);
+          this.something_changed = true
         });
     },
     async _query_concepts_to_link(data) {
@@ -487,10 +489,11 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        console.log(this.localData)
-        this.localData.CONCEPT_CD = `${this.localData.CONCEPT_CD}_MOD`
-        this.localData.CONCEPT_PATH = `${this.localData.CONCEPT_PATH}_MOD`
         var CONCEPT = this.prepare_final_data(this.localData);
+        const UID = my_uid()
+        CONCEPT.CONCEPT_PATH = `${CONCEPT.CONCEPT_PATH}\\MOD\\${UID}`
+        CONCEPT.CONCEPT_CD = `${CONCEPT.CONCEPT_CD}_MOD_${UID}`
+        console.log(CONCEPT)
         this.$emit("modify", CONCEPT);
       })
 
