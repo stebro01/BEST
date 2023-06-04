@@ -159,7 +159,7 @@ export class Scheme_X {
             if (this._FIELDS[key]) {
                 if (SET !== '') SET += ', '
                 if (payload.set[key] === 'NULL') SET += `"${key}" = NULL`
-                else if (this._FIELDS[key] === 'numeric') SET += `"${key}" = ${payload.set[key]}`
+                else if (this._FIELDS[key] === 'numeric') SET += `"${key}" = ${_validate_numeric(payload.set[key])}`
                 else SET += `"${key}" = "${payload.set[key]}"`
             }
         })
@@ -189,4 +189,9 @@ export class Scheme_X {
         if (WHERE === '') return {query: undefined, error: error_codes.invalid_payload}
         return {query: `DELETE FROM "${this._TABLE_NAME}" WHERE ${WHERE}`, error: undefined}
     }
+}
+
+// prüft den inputwert und gibt ihn als Zahl zurück (wenn er eine Zahl ist) oder als hexadez. Wert, wenn er ein String ist
+function _validate_numeric(input) {
+    return isNaN(input) ? input.split('').map(char => char.charCodeAt(0)).join('') : input
 }
