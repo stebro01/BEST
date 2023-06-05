@@ -3,6 +3,7 @@ import { verifyCDA, importHL7toObject, addHL7ObjectToDB } from "src/tools/hl7_im
 import {importCDAtoObject, extract_cda} from 'src/tools/surveybest_import'
 import {importCSV, splitVisits} from 'src/tools/formatdata'
 import {Process_Observations} from 'src/tools/db_import_obs'
+import { importJSON } from "src/tools/db_datatransfer";
 import { error_codes, RETURN_DATA } from 'src/tools/logger'
 import { View_Visit } from 'src/classes/View_Visit'
 import { View_Observation } from 'src/classes/View_Observation'
@@ -105,4 +106,24 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
       })
 
     return RETURN_DATA(PATIENTS, commit)
+ }
+
+/**
+ * Importiert ein JSON Objekt mit tables f. die DB => verwendet von DataTransfer_Import.vue
+ * !siehe Test: DataTransfer.test.js
+ * @param {object} param0 
+ * @param {object} payload - {JSON_DATA}
+ * @returns Promise with result of importJSON
+ */
+ export const  importJSON_DataTransfer = async ({commit, state}, payload) => {
+  commit('LOG', {method: 'ImportObservation->importJSON_DataTransfer'})
+  commit('SPINNER_SET', true)
+
+  const data = {JSON: payload.JSON, db_fn: state.SETTINGS.data.filename.path, dbman: window.electron.dbman, force: undefined, UPLOAD_ID: state.UPLOAD_ID}
+
+  const res = await importJSON( data)
+  commit('SPINNER_SET', false)
+
+  return res
+
  }

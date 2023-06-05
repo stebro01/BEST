@@ -11,6 +11,31 @@ import { View_User } from "src/classes/View_User"
 import { View_cql } from "src/classes/View_CQL"
 import { View_Concept_CQL_Lookup } from "src/classes/View_Concept_CQL_Lookup"
 
+export const TRANSFER_OPTIONS = [
+        {
+          table: "CONCEPT_DIMENSION",
+          label: "Klinische Konzepte / CONCEPTS",
+          fields: ["CONCEPT_CD", "NAME_CHAR"],
+        },
+        {
+          table: "CQL_FACT",
+          label: "CQL FAC",
+          fields: ["CODE_CD", "NAME_CHAR"],
+          lookup: {table: "CONCEPT_CQL_LOOKUP", key_from: "CQL_ID", key_to: "CONCEPT_CD"}
+        },
+        { table: "USER_MANAGEMENT",
+          label: "Nutzerverwaltung",
+          fields: ["USER_CD", "NAME_CHAR"]
+        },
+        { table: "PROVIDER_DIMENSION",
+          label: "Provider",
+          fields: ["PROVIDER_ID", "NAME_CHAR", "PROVIDER_PATH"]
+        },
+        { table: "CODE_LOOKUP",
+          label: "Allgemeine Codes",
+          fields: ["CODE_CD", "NAME_CHAR", "COLUMN_CD"]
+        }
+      ]
 
 /**
  * 

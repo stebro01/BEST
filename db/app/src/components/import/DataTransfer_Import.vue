@@ -8,7 +8,7 @@
     <!-- ELSE -->
     <div v-else class="q-mt-xl col-12 text-center row q-gutter-y-lg">
       <div class="col-12">
-        <q-chip removable @remove="JSON_FN = undefined; show_spinner = false">{{ JSON_FN.name }}</q-chip>
+        <q-chip removable @remove="clearFile()">{{ JSON_FN.name }}</q-chip>
       </div>
       <!-- IF SHOW_SPINNER -->
       <div v-if="show_spinner" class="col-12 text-center q-gutter-y-lg">
@@ -32,9 +32,39 @@
             </q-item-section>
           </q-item>
         </q-list>
-
       </div>
-      <div class="col-12" v-if="!show_spinner">
+      <div v-else-if="RESULT_IMPORT" class="col-12 row justify-center">
+        <q-card class="my-card">
+
+          <q-btn icon="clear" @click="clearFile()" round flat class="absolute-top-right z-top"></q-btn>
+          <q-card-section class="bg-green-1 text-left">
+            Import erfolgreich! Status kann hier eingesehen werden:<br>
+            <ul>
+              <li v-for="(cc, ii) in RESULT_OPTIONS" :key="ii + 'sum'">
+                {{ cc }}: {{ RESULT_IMPORT[cc].length }}
+              </li>
+            </ul>
+          </q-card-section>
+          <q-card-section class="text-left" >
+            <q-btn-dropdown color="primary" :label="RESULT_ACTIVE_OPTION || 'Log auswählen'">
+              <q-list v-if="RESULT_OPTIONS" dense >
+                <q-item v-for="(el, ind) in RESULT_OPTIONS" :key="ind + 'el'" clickable v-close-popup
+                  @click="RESULT_ACTIVE_OPTION = el">
+                  <q-item-section>
+                    <q-item-label>{{ el }}</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-btn-dropdown>
+            </q-card-section>
+            <q-card-section>
+
+              <q-table v-if="RESULT_IMPORT && RESULT_ACTIVE_OPTION" :rows="RESULT_IMPORT[RESULT_ACTIVE_OPTION]"
+                :title="RESULT_ACTIVE_OPTION" style="width: 100%"></q-table>
+            </q-card-section>
+        </q-card>
+      </div>
+      <div class="col-12" v-if="!show_spinner && !RESULT_IMPORT">
         <q-btn rounded class="my-btn" @click="importNow()">Importieren</q-btn>
       </div>
 
@@ -54,7 +84,9 @@ export default {
     return {
       show_spinner: false,
       JSON_FN: undefined,
-      DATA: []
+      DATA: [],
+      RESULT_IMPORT: undefined,
+      RESULT_ACTIVE_OPTION: undefined
     }
   },
 
@@ -63,9 +95,23 @@ export default {
       return this.$store.getters.TEXT.page.visit_import
     },
 
+    RESULT_OPTIONS() {
+      if (!this.RESULT_IMPORT) return []
+      else {
+        return Object.keys(this.RESULT_IMPORT)
+      }
+    }
+
   },
 
   methods: {
+    clearFile() {
+      this.JSON_FN = undefined;
+      this.show_spinner = false
+      this.DATA = []
+      this.RESULT_IMPORT = undefined
+    },
+
     importData(file) {
       if (file && file.path) {
         this.JSON_FN = file
@@ -85,14 +131,30 @@ export default {
       this.DATA.forEach(d => d.selected = true)
     },
 
-    importNow() {
+    async importNow() {
       const TO_IMPORT = []
       this.DATA.forEach(d => {
         if (d.selected) TO_IMPORT.push(d)
       })
       this.show_spinner = true
-
-      console.log(TO_IMPORT)
+      this.$store.dispatch('importJSON_DataTransfer', { JSON: TO_IMPORT })
+        .then(res => {
+          if (res.status) {
+            this.$q.notify('Aktion erfolgreich')
+            //prepare results for view
+            Object.keys(res.data).forEach(key => {
+              if (res.data[key].length > 0) {
+                const TMP = []
+                res.data[key].forEach(el => TMP.push({ log: el }))
+                res.data[key] = TMP
+              }
+            })
+            this.RESULT_IMPORT = res.data
+          } else this.$q.notify('etwas ging schief')
+        }).finally(() => {
+          this.DATA = []
+          this.show_spinner = false
+        })
 
     }
 

@@ -54,34 +54,3 @@ export const checkCQLRule = async ({commit, state}, payload) =>  {
     const res = await checkRule({data, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP})
     return RETURN_DATA(res, commit)
 }
-
-export const cql_export = async ({commit, state}) =>  {
-    commit('LOG', {method: 'action/exportCQL'})
-    commit('SPINNER_SET', true)
-
-    const VIEW_CQL = getTable('CQL_FACT', state)
-    const VIEW_CONCEPT_CQL_LOOKUP = getTable('CONCEPT_CQL_LOOKUP', state)
-
-    const res = await exportCQL({VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP})
-    return RETURN_DATA(res, commit)
-}
-
-export const cql_import = async({commit, state}, filePath) => {
-    commit('LOG', {method: 'action/cql_import'})
-    commit('SPINNER_SET', true)
-
-    // READ THE DATA
-    try {
-        const txt = window.electron.readFile(filePath, 'utf8')
-        var JSON_DATA = JSON.parse(txt)
-    } catch(err ) {
-        return RETURN_DATA({status: false, error: err.message}, commit)
-    }
-    if (!Array.isArray(JSON_DATA)) return RETURN_DATA({status: false, error: 'invalid format'}, commit)
-    //prepare the VIEWS
-    const VIEW_CQL = getTable('CQL_FACT', state)
-    const VIEW_CONCEPT_CQL_LOOKUP = getTable('CONCEPT_CQL_LOOKUP', state)
-    // do the import
-    var res = await importCQL({data: JSON_DATA, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP})
-    return RETURN_DATA(res, commit)
-}

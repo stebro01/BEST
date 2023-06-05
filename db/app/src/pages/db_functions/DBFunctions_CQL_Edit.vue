@@ -16,8 +16,6 @@
             <template v-slot:top>
               <BOTTOM_DROPDOWN :show_add="selected.length === 0" @add="show_new = true" :show_remove="selected.length > 0"
                 @remove="delectCQL(selected)" :show_edit="selected.length === 1" @edit="show_edit = true" 
-                :show_import="true" @import="show_pick_path = true"
-                :show_export="true" @export="exportCQL()"
                 />
               <q-space />
               <FILTER_BOX :filter="filter" @update="filter = $event" />
@@ -53,10 +51,6 @@
     <DIALOG_CQL_EDIT v-if="show_edit" :data="selected[0]" :active="show_edit" :title="'Berarbeite eine CQL Regel'"
       @close="show_edit = false" @save="saveCQL($event)" />
 
-    <!-- PICK FILE DIALOG -->
-    <q-dialog v-model="show_pick_path">
-      <SELECT_FILE :accept="'.json'" :label="'JSON File mit CQL Rules importieren'" @save="importCQL($event)"/>
-    </q-dialog>
   </q-page>
 </template>
 
@@ -71,7 +65,6 @@ import CARD_CQL_RULES from 'src/components/cql/Card_CQL_rules.vue'
 import CARD_CQL_CONCEPTS from 'src/components/cql/Card_CQL_concepts.vue'
 import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
-import SELECT_FILE from 'src/components/elements/SelectFile.vue'
 import { my_confirm } from "src/tools/my_dialog";
 
 import { exportFile } from 'quasar'
@@ -81,7 +74,7 @@ import { stringify_char, stringify_json, unstringify_char, unstringify_json } fr
 export default {
   name: 'DBFunctions_CQL_Edit',
 
-  components: { BOTTOM_BUTTONS, HEADING, MainSlot, FILTER_BOX, DIALOG_CQL_EDIT, DIALOG_INFO_CQL, CARD_CQL_RULES, CARD_CQL_CONCEPTS, BOTTOM_DROPDOWN, SELECT_FILE },
+  components: { BOTTOM_BUTTONS, HEADING, MainSlot, FILTER_BOX, DIALOG_CQL_EDIT, DIALOG_INFO_CQL, CARD_CQL_RULES, CARD_CQL_CONCEPTS, BOTTOM_DROPDOWN },
 
   data() {
     return {
@@ -183,32 +176,6 @@ export default {
 
       this.show_edit = false
     },
-
-    async exportCQL() {
-      const res = await this.$store.dispatch('cql_export')
-      if (!res.status) return this.$q.notify('Export konnte nicht erzeugt werden')      
-
-      const status = exportFile('CQL_rules_export.json', JSON.stringify(res.data))
-
-      if (status === true) {
-        this.$q.notify('Export erfolgreich')
-      }
-      else {
-        // browser denied it
-        this.$q.notify('Error: ' + status)
-      }
-    },
-
-    async importCQL(val) {
-      const res = await this.$store.dispatch('cql_import', val.path)
-      if (!res.status) this.$q.notify(res.error)
-      else {
-        this.$q.notify('Aktion erfolgreich')
-        this.loadData()
-      }
-
-      this.show_pick_path = false
-    }
 
     //ende methods
   }

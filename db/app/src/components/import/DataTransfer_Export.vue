@@ -1,8 +1,9 @@
 <template>
   <div class="columns items-center" style="height: 100%">
-    <div class="col q-pa-md">
+    <div class="col q-pa-md" style="position: relative;">
       <div class="text-h6">1. Definiere Suchanfrage für Export</div>
       <DATATRANSFER_EXPORT_QUERY @query="queryDB($event)" @clear="RESULT = undefined" />
+      <q-btn class="absolute-bottom-right" flat round icon="done_all" @click="addAllToBasket()"><q-tooltip>Alle Tables zum Basket</q-tooltip></q-btn>
     </div>
 
 
@@ -61,6 +62,8 @@ import { exportFile } from 'quasar'
 import DATATRANSFER_EXPORT_QUERY from 'src/components/import/DataTransfer_Export_Query.vue'
 import FILTER_BOX from "src/components/elements/FilterBox.vue";
 import { my_confirm } from 'src/tools/my_dialog';
+import { now } from 'src/tools/mydate';
+import { TRANSFER_OPTIONS } from 'src/tools/db_datatransfer';
 
 export default {
   name: "DataTransfer_Export",
@@ -141,6 +144,21 @@ export default {
       arrayY
         .filter(objY => !setX.has(JSON.stringify(objY)))
         .forEach(objY => arrayX.push(objY));
+    },
+
+    async addAllToBasket() {
+      this.$store.commit('SPINNER_SET', true)
+      for (let TABLE of TRANSFER_OPTIONS) {
+        let query = `SELECT * FROM ${TABLE.table}`
+        let res = await this.$store.dispatch('runQuery', query)
+        if (res.status && res.data.length > 0) {
+          this.RESULT = { data: res.data, table: TABLE.table, query: query, DOWNLOAD_DATE: now(), primarykey:TABLE.fields[0], lookup: TABLE.lookup };
+          await this.add_to_basket(undefined)
+        }
+      }
+      this.RESULT = undefined
+      this.$store.commit('SPINNER_SET', false)
+
     },
 
     async removeFromBasket(ARR, ind) {

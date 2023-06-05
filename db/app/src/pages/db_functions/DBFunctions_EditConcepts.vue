@@ -16,10 +16,10 @@
             >
             <!-- OPTIONS -->
             <template v-slot:top>
-              <BOTTOM_DROPDOWN :show_import="true" @import="$router.push({ name: 'DBFunctions_ImportConcepts' })"
+              <BOTTOM_DROPDOWN 
                 :show_add="selected.length === 0" @add="showAddDialog()" :show_edit="selected.length === 1"
                 @edit="editConcept(selected[0])" :show_remove="selected.length > 0" @remove="deleteConcept(selected)"
-                :show_export="selected.length > 0" @export="exportConcept(selected)" />
+                 />
               <q-space />
               <div style="position: relative; width: 220px; height: 60px">
                 <FILTER_BOX :filter="filter" @update="filter = $event" />
@@ -208,11 +208,6 @@ export default {
       }
       this.loadData()
 
-      this.selected = []
-    },
-
-    exportConcept(val) {
-      this.$q.notify(this.$store.getters.TEXT.msg.comming_soon)
       this.selected = []
     }
   }

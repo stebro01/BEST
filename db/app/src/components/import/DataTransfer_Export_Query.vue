@@ -67,6 +67,7 @@
 
 <script>
 import { now } from 'src/tools/mydate';
+import { TRANSFER_OPTIONS } from 'src/tools/db_datatransfer';
 
 export default {
   name: "DataTransfer_Export_Query",
@@ -75,31 +76,7 @@ export default {
 
   data() {
     return {
-      options: [
-        {
-          table: "CONCEPT_DIMENSION",
-          label: "Klinische Konzepte / CONCEPTS",
-          fields: ["CONCEPT_CD", "NAME_CHAR"],
-        },
-        {
-          table: "CQL_FACT",
-          label: "CQL FAC",
-          fields: ["CODE_CD", "NAME_CHAR"],
-          lookup: {table: "CONCEPT_CQL_LOOKUP", key_from: "CQL_ID", key_to: "CONCEPT_CD"}
-        },
-        { table: "USER_MANAGEMENT",
-          label: "Nutzerverwaltung",
-          fields: ["USER_CD", "NAME_CHAR"]
-        },
-        { table: "PROVIDER_DIMENSION",
-          label: "Provider",
-          fields: ["PROVIDER_ID", "NAME_CHAR", "PROVIDER_PATH"]
-        },
-        { table: "CODE_LOOKUP",
-          label: "Allgemeine Codes",
-          fields: ["CODE_CD", "NAME_CHAR", "COLUMN_CD"]
-        }
-      ],
+      options: TRANSFER_OPTIONS,
       active_table: "CONCEPT_DIMENSION",
       active_where: undefined,
       SELECT_FROM: "SELECT * FROM",
@@ -170,7 +147,6 @@ export default {
       this.show_add_data = {};
       var query = `${this.SELECT_FROM} ${this.active_table}`;
       if (this.active_where) query += ` WHERE ${this.active_where}`
-      console.log(query)
       const res = await this.$store.dispatch("runQuery", query);
       if (!res.status) return this.$q.notify("Etwas ging schief");
       // else

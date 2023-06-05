@@ -63,18 +63,16 @@
       <template v-slot:footer>
         <!-- LOCATOIN_CD -->
       <BOTTOM_BUTTONS  v-if="tab==='locations'"
-        :show_edit="selected_LOCATION_CD.length === 1" :show_delete="selected_LOCATION_CD.length > 0" :show_export="selected_LOCATION_CD.length > 0" :show_add="selected_LOCATION_CD.length === 0"
+        :show_edit="selected_LOCATION_CD.length === 1" :show_delete="selected_LOCATION_CD.length > 0" :show_add="selected_LOCATION_CD.length === 0"
         @edit="edit_LOCATION_CD()"
         @delete="delete_LOCATION_CD()"
-        @export="export_LOCATION_CD()"
         @add="add_LOCATION_CD()"
       />
       <!-- PROVIDER -->
       <BOTTOM_BUTTONS  v-if="tab==='provider'"
-        :show_edit="selected_PROVIDER_DIMENSION.length === 1" :show_delete="selected_PROVIDER_DIMENSION.length > 0" :show_export="selected_PROVIDER_DIMENSION.length > 0" :show_add="selected_PROVIDER_DIMENSION.length === 0"
+        :show_edit="selected_PROVIDER_DIMENSION.length === 1" :show_delete="selected_PROVIDER_DIMENSION.length > 0" :show_add="selected_PROVIDER_DIMENSION.length === 0"
         @edit="edit_PROVIDER_DIMENSION()"
         @delete="delete_PROVIDER_DIMENSION()"
-        @export="export_PROVIDER_DIMENSION()"
         @add="add_PROVIDER_DIMENSION()"
       />
       </template>
@@ -186,10 +184,6 @@ export default {
       // finally reload
       this.loadData_PROVIDER_DIMENSION()
 
-    },
-
-    export_LOCATION_CD() {
-      this.$q.notify(this.$store.getters.TEXT.msg.comming_soon)
     },
 
     edit_LOCATION_CD() {

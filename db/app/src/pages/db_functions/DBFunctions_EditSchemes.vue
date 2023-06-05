@@ -58,28 +58,11 @@
 
       <!-- FOOTER -->
       <template v-slot:footer>
-        <BOTTOM_BUTTONS v-if="SCHEMES" :show_edit="expanded.length === 1" :show_delete="expanded.length > 0" :show_export="expanded.length === 1"
-          :show_add="expanded.length === 0" @edit="editData(expanded[0])" @delete="deleteData(expanded)" :show_import="expanded.length === 0"
-          @add="addData()" @export="exportScheme(expanded[0])" @import="show_import_dialog = true"/>
+        <BOTTOM_BUTTONS v-if="SCHEMES" :show_edit="expanded.length === 1" :show_delete="expanded.length > 0"
+          :show_add="expanded.length === 0" @edit="editData(expanded[0])" @delete="deleteData(expanded)"
+          @add="addData()" />
       </template>
     </MainSlot>
-
-    <!-- IMPORT DIALOG -->
-    <q-dialog v-model="show_import_dialog">
-
-      <q-card class="q-pa-md">
-        <q-btn icon="close" round flat class="absolute-top-right z-top" v-close-popup />
-
-        <q-card-section>
-          JSON File mit Scheme importieren
-        </q-card-section>
-        <q-card-section class="q-pa-none">
-          <SELECT_FILE :accept="'.json'" @save="importScheme($event)"/>
-        </q-card-section>  
-
-      </q-card>
-
-    </q-dialog>
 
   </q-page>
 </template>
@@ -92,15 +75,13 @@ import HEADING from 'src/components/elements/Heading.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 import RESOLVE_CONCEPT from 'src/components/elements/ResolveConcept.vue'
-import SELECT_FILE from 'src/components/elements/SelectFile.vue'
 import { unstringify } from 'src/classes/sqltools'
-import { exportFile } from 'quasar'
 import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   name: 'DBFunctions_EditSchemes',
 
-  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, MainSlot, RESOLVE_CONCEPT, SELECT_FILE },
+  components: { BOTTOM_BUTTONS, HEADING, FILTER_BOX, MainSlot, RESOLVE_CONCEPT },
 
   data() {
     return {
@@ -164,35 +145,6 @@ export default {
         this.expanded = []
         this.loadLocalData()
       })
-      
-    },
-
-    exportScheme(val) {
-      let obj = this.SCHEMES.find(el => el.CODE_CD === val)
-      if (!obj) return this.$q.notify('Scheme nicht gefunden ...')
-      // else
-      var TXT = JSON.stringify(obj)
-      const status = exportFile(`DBscheme_${val}.json`, TXT)
-      if (status === true) return this.$q.notify('Export erfolgreich')
-      else this.$q.notify('Export fehlgeschlagen.')
-    },
-
-    async importScheme(val) {
-      this.show_import_dialog = false
-      const txt = window.electron.readFile(val.path, "utf8");
-      try {
-        const json = JSON.parse(txt)
-        if (!json.TABLE_CD || json.TABLE_CD !== 'SCHEME_CD') return this.$q.notify('JSON enthält keine gültigen Daten.')
-
-        this.$store.dispatch('addDB', {query_string: json, table: 'CODE_LOOKUP'})
-          .then(res => {
-            this.$q.notify(this.$store.getters.TEXT.msg.action_successful)
-          }).catch(err => this.$q.notify(err))
-          .finally(() => this.loadLocalData())
-        
-      } catch (e) {
-        return this.$q.notify('Datei ist kein gültiges JSON-Format.')
-      }
       
     }
   }

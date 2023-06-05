@@ -21,11 +21,11 @@ export { addUser, deleteUser, updateUser, loginUser }
 import { exportObservationsCSV, exportObservationsHL7 } from './actions/export_queries'
 export { exportObservationsCSV, exportObservationsHL7 }
 
-import {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST } from './actions/import_data'
-export {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST }
+import {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST, importJSON_DataTransfer } from './actions/import_data'
+export {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST, importJSON_DataTransfer }
 
-import { execCQL, query_CQLAPI, checkCQLRule, cql_export, cql_import, checkDoubles } from './actions/cql_functions'
-export { execCQL, query_CQLAPI, checkCQLRule, cql_export, cql_import, checkDoubles }
+import { execCQL, query_CQLAPI, checkCQLRule, checkDoubles } from './actions/cql_functions'
+export { execCQL, query_CQLAPI, checkCQLRule, checkDoubles }
 
 
 export function initApp ({commit}, payload) {
