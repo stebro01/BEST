@@ -5,7 +5,7 @@ import { View_Provider } from 'src/classes/View_Provider'
 import { prepare_path } from 'src/tools/prepare_sql_template_path'
 import { resetDatabase } from 'src/tools/db_functions'
 import {importJSON_fromFile} from 'src/tools/db_datatransfer'
-import { error_codes, RETURN_DATA } from 'src/tools/logger'
+import { error, error_codes } from 'src/tools/logger'
 import { View_Visit } from 'src/classes/View_Visit'
 import { View_Observation } from 'src/classes/View_Observation'
 
@@ -172,6 +172,10 @@ export const  resetDB = async ({commit, state}, payload) => {
     commit('SPINNER_SET', true)
     var publicFolder = 'public'
     if (!process.env.DEV) publicFolder = window.electron.publicFolder
+    if (!publicFolder) {
+        error({method: 'resetDB', message: 'publicFolder is undefined'})
+        return {status: false, error: 'publicFolder is undefined'}
+    }
     const TEMPLATES = state.ENV.app.templates
 
     var db_fn = ''
@@ -179,7 +183,7 @@ export const  resetDB = async ({commit, state}, payload) => {
     else db_fn = state.SETTINGS.data.filename.path
     window.electron.dbman.connect(db_fn)
     //CLEAR ALL TABLES
-    await window.electron.dbman.resetDB()
+    await window.electron.dbman.removeAllTables()
     // AND REINIT THEM
     const PATH = prepare_path(TEMPLATES, publicFolder, window.electron.path)
     const status_reset = await resetDatabase(window.electron.dbman, window.electron.readFile, PATH)

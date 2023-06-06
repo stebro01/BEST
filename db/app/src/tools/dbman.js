@@ -1,8 +1,6 @@
 const sqlite3 = require('sqlite3')
 const { log, info, error_codes } = require("./logger")
-const fs = require("fs")
-const readFile = fs.readFileSync
-
+const fs = require('fs')
 let database = undefined
 
 /**
@@ -141,23 +139,6 @@ const removeAllTables = async () => {
   return true
 }
 
-/**
- * 
- * @param {object} PATH 
- * @param {function} resetDatabase 
- * @returns 
- * import { resetDatabase } from 'src/tools/db_functions';
- * const PATH = prepare_path(TEMPLATES, publicFolder, path)
- * dbman.connect(db_fn)
- * const status = await dbman.resetDB(PATH, resetDatabase)
- * dbman.close()
- */
-
-const resetDB = async () => {
-  await removeAllTables()
-  
-}
-
 
 
 
@@ -169,5 +150,3 @@ exports.run = run;
 exports.status = status;
 exports.create = create;
 exports.removeAllTables = removeAllTables;
-exports.resetDB = resetDB
-exports.fs = fs

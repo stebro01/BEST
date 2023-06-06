@@ -11,5 +11,6 @@ contextBridge.exposeInMainWorld("electron", {
   exists: fs.existsSync,
   path: path,
   dbman: dbman,
-  homedir: os.homedir()
+  homedir: os.homedir(),
+  publicFolder: path.resolve(__dirname, process.env.QUASAR_PUBLIC_FOLDER)
 });
