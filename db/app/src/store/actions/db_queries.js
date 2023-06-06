@@ -4,7 +4,7 @@ import { View_Code_Lookup } from 'src/classes/View_Code_Lookup'
 import { View_Provider } from 'src/classes/View_Provider'
 import { prepare_path } from 'src/tools/prepare_sql_template_path'
 import { resetDatabase } from 'src/tools/db_functions'
-
+import {importJSON_fromFile} from 'src/tools/db_datatransfer'
 import { error_codes, RETURN_DATA } from 'src/tools/logger'
 import { View_Visit } from 'src/classes/View_Visit'
 import { View_Observation } from 'src/classes/View_Observation'
@@ -170,25 +170,26 @@ export const  getProviderBy_PROVIDER_ID = async ({commit, state}, value) => {
 export const  resetDB = async ({commit, state}, payload) => {
     commit('LOG', {method: 'action/db_queries -> resetDB'})
     commit('SPINNER_SET', true)
-    return new Promise((resolve, reject) => {
-        var publicFolder = 'public'
-        if (!process.env.DEV) publicFolder = window.electron.publicFolder
-        const TEMPLATES = state.ENV.app.templates
-        const PATH = prepare_path(TEMPLATES, publicFolder, window.electron.path)
+    var publicFolder = 'public'
+    if (!process.env.DEV) publicFolder = window.electron.publicFolder
+    const TEMPLATES = state.ENV.app.templates
 
-        var db_fn = ''
-        if (payload) db_fn = payload
-        else db_fn = state.SETTINGS.data.filename.path
-        window.electron.dbman.connect(db_fn)
-        window.electron.dbman.resetDB(PATH, resetDatabase)
-        .then(res => resolve(res))
-        .catch(err =>{console.log(err); reject(err)})
-        .finally(() => {
-            window.electron.dbman.close()
-            commit('SPINNER_SET', false)
-        })
-                
-    })
+    var db_fn = ''
+    if (payload) db_fn = payload
+    else db_fn = state.SETTINGS.data.filename.path
+    window.electron.dbman.connect(db_fn)
+    //CLEAR ALL TABLES
+    await window.electron.dbman.resetDB()
+    // AND REINIT THEM
+    const PATH = prepare_path(TEMPLATES, publicFolder, window.electron.path)
+    const status_reset = await resetDatabase(window.electron.dbman, window.electron.readFile, PATH)
+    window.electron.dbman.close()
+    // NOW WRITE STANDARD DATA BACK
+    const status_template = await importJSON_fromFile({PATH: PATH, readFile: window.electron.readFile, dbman: window.electron.dbman, db_fn: db_fn})
+
+    // FERTIG
+    commit('SPINNER_SET', false)
+    return {status: true, data: "DB Erfolgreich zurückgesetzt."}
  }
 
  export const  createDB = async ({commit, state}, payload) => {
@@ -201,9 +202,7 @@ export const  resetDB = async ({commit, state}, payload) => {
 
     //reset DB
     const res = await resetDB({commit, state}, filename)
-    console.log(res)    
-
-    if (res) return {status: true, filename: filename, msg: `DB erfolgreich angelegt: ${filename}`}
+    if (res && res.status) return {status: true, filename: filename, msg: `DB erfolgreich angelegt: ${filename}`}
     return {status: false, error: error_codes.could_not_create_db}
 
  }

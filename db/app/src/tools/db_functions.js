@@ -13,9 +13,6 @@ import { SCHEME_CONCEPT_CQL_LOOKUP } from 'src/classes/Scheme_concept_cql_lookup
 import { SCHEME_NOTE_FACT } from 'src/classes/Scheme_note_fact';
 const SCHEMES = {SCHEME_CODE_LOOKUP, SCHEME_CONCEPT_DIMENSION, SCHEME_PATIENT_DIMENSION, SCHEME_VISIT_DIMENSION, SCHEME_PROVIDER_DIMENSION, SCHEME_OBSERVATION_FACT, SCHEME_USER_MANAGEMENT, SCHEME_USER_PATIENT_LOOKUP, SCHEME_CQL_FACT, SCHEME_CONCEPT_CQL_LOOKUP, SCHEME_NOTE_FACT}
 
-import {csvJSON} from 'src/tools/formatdata'
-
-
 export async function resetDatabase(dbman, readFile, PATH ) {
     info({method: 'db_tools/resetDatabase'})
    
@@ -27,66 +24,69 @@ export async function resetDatabase(dbman, readFile, PATH ) {
     })
     await Promise.all(promises)
 
-    // now fill with presets 
-    // CODE_LOOKUP
-    const CODE_LOOKUP = readFile(PATH.CODE_LOOKUP, 'utf-8')
-    const IMPORTED_CODE_LOOKUP = csvJSON(CODE_LOOKUP, ';')
-    promises = []
-    IMPORTED_CODE_LOOKUP.forEach(item => {
-        let sql_query = SCHEMES.SCHEME_CODE_LOOKUP.create(item)
-        promises.push(dbman.run(sql_query.query))
-    })
-    await Promise.all(promises)
+    //now ADD Data to empty tables
+    // await importJSON({JSON: DBJSON, dbman: dbman, db_fn})
 
-    // CONCEPT_DIMENSION
-    const CONCEPT_DIMENSION = readFile(PATH.CONCEPT_DIMENSION, 'utf-8')
-    const IMPORTED_CONCEPT_DIMENSION = csvJSON(CONCEPT_DIMENSION, ';')
-    promises = []
-    IMPORTED_CONCEPT_DIMENSION.forEach(item => {
-        let sql_query = SCHEMES.SCHEME_CONCEPT_DIMENSION.create(item)
-        promises.push(dbman.run(sql_query.query))
-    })
-    await Promise.all(promises)
+    // // now fill with presets 
+    // // CODE_LOOKUP
+    // const CODE_LOOKUP = readFile(PATH.CODE_LOOKUP, 'utf-8')
+    // const IMPORTED_CODE_LOOKUP = csvJSON(CODE_LOOKUP, ';')
+    // promises = []
+    // IMPORTED_CODE_LOOKUP.forEach(item => {
+    //     let sql_query = SCHEMES.SCHEME_CODE_LOOKUP.create(item)
+    //     promises.push(dbman.run(sql_query.query))
+    // })
+    // await Promise.all(promises)
 
-    // PROVIDER_DIMENSION
-    const PROVIDER_DIMENSION = readFile(PATH.PROVIDER_DIMENSION, 'utf-8')
-    const IMPORTED_PROVIDER_DIMENSION = csvJSON(PROVIDER_DIMENSION, ';')
-    promises = []
-    IMPORTED_PROVIDER_DIMENSION.forEach(item => {
-        let sql_query = SCHEMES.SCHEME_PROVIDER_DIMENSION.create(item)
-        promises.push(dbman.run(sql_query.query))
-    })
-    await Promise.all(promises)
+    // // CONCEPT_DIMENSION
+    // const CONCEPT_DIMENSION = readFile(PATH.CONCEPT_DIMENSION, 'utf-8')
+    // const IMPORTED_CONCEPT_DIMENSION = csvJSON(CONCEPT_DIMENSION, ';')
+    // promises = []
+    // IMPORTED_CONCEPT_DIMENSION.forEach(item => {
+    //     let sql_query = SCHEMES.SCHEME_CONCEPT_DIMENSION.create(item)
+    //     promises.push(dbman.run(sql_query.query))
+    // })
+    // await Promise.all(promises)
 
-    // USER_MANAGEMENT
-    const USER_MANAGEMENT = readFile(PATH.USER_MANAGEMENT, 'utf-8')
-    const IMPORTED_USER_MANAGEMENT = csvJSON(USER_MANAGEMENT, ';')
-    promises = []
-    IMPORTED_USER_MANAGEMENT.forEach(item => {
-        let sql_query = SCHEMES.SCHEME_USER_MANAGEMENT.create(item)
-        promises.push(dbman.run(sql_query.query))
-    })
-    await Promise.all(promises)
+    // // PROVIDER_DIMENSION
+    // const PROVIDER_DIMENSION = readFile(PATH.PROVIDER_DIMENSION, 'utf-8')
+    // const IMPORTED_PROVIDER_DIMENSION = csvJSON(PROVIDER_DIMENSION, ';')
+    // promises = []
+    // IMPORTED_PROVIDER_DIMENSION.forEach(item => {
+    //     let sql_query = SCHEMES.SCHEME_PROVIDER_DIMENSION.create(item)
+    //     promises.push(dbman.run(sql_query.query))
+    // })
+    // await Promise.all(promises)
 
-    // CQL_FACT
-    const CQL_FACT = readFile(PATH.CQL_FACT, 'utf-8')
-    const IMPORTED_CQL_FACT = csvJSON(CQL_FACT, ';')
-    promises = []
-    IMPORTED_CQL_FACT.forEach(item => {
-        let sql_query = SCHEMES.SCHEME_CQL_FACT.create(item)
-        promises.push(dbman.run(sql_query.query))
-    })
-    await Promise.all(promises)
+    // // USER_MANAGEMENT
+    // const USER_MANAGEMENT = readFile(PATH.USER_MANAGEMENT, 'utf-8')
+    // const IMPORTED_USER_MANAGEMENT = csvJSON(USER_MANAGEMENT, ';')
+    // promises = []
+    // IMPORTED_USER_MANAGEMENT.forEach(item => {
+    //     let sql_query = SCHEMES.SCHEME_USER_MANAGEMENT.create(item)
+    //     promises.push(dbman.run(sql_query.query))
+    // })
+    // await Promise.all(promises)
 
-    // CQL LOOKUP
-    const CONCEPT_CQL_LOOKUP = readFile(PATH.CONCEPT_CQL_LOOKUP, 'utf-8')
-    const IMPORTED_CONCEPT_CQL_LOOKUP = csvJSON(CONCEPT_CQL_LOOKUP, ';')
-    promises = []
-    IMPORTED_CONCEPT_CQL_LOOKUP.forEach(item => {
-        let sql_query = SCHEMES.SCHEME_CONCEPT_CQL_LOOKUP.create(item)
-        promises.push(dbman.run(sql_query.query))
-    })
-    await Promise.all(promises)
+    // // CQL_FACT
+    // const CQL_FACT = readFile(PATH.CQL_FACT, 'utf-8')
+    // const IMPORTED_CQL_FACT = csvJSON(CQL_FACT, ';')
+    // promises = []
+    // IMPORTED_CQL_FACT.forEach(item => {
+    //     let sql_query = SCHEMES.SCHEME_CQL_FACT.create(item)
+    //     promises.push(dbman.run(sql_query.query))
+    // })
+    // await Promise.all(promises)
+
+    // // CQL LOOKUP
+    // const CONCEPT_CQL_LOOKUP = readFile(PATH.CONCEPT_CQL_LOOKUP, 'utf-8')
+    // const IMPORTED_CONCEPT_CQL_LOOKUP = csvJSON(CONCEPT_CQL_LOOKUP, ';')
+    // promises = []
+    // IMPORTED_CONCEPT_CQL_LOOKUP.forEach(item => {
+    //     let sql_query = SCHEMES.SCHEME_CONCEPT_CQL_LOOKUP.create(item)
+    //     promises.push(dbman.run(sql_query.query))
+    // })
+    // await Promise.all(promises)
     
     // VIEW patient_observations
     await dbman.run('DROP VIEW IF EXISTS patient_observations')

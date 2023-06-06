@@ -153,11 +153,9 @@ const removeAllTables = async () => {
  * dbman.close()
  */
 
-const resetDB = async (PATH, resetDatabase) => {
+const resetDB = async () => {
   await removeAllTables()
-  return resetDatabase({
-    run
-  }, readFile, PATH)
+  
 }
 
 

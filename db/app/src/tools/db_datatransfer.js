@@ -37,6 +37,13 @@ export const TRANSFER_OPTIONS = [
         }
       ]
 
+export async function importJSON_fromFile(payload) {
+    log({ method: 'db_datatransfer/importJSON_fromFile', message: 'importiere Daten', data: payload !== undefined })
+    const TXT = payload.readFile(payload.PATH.TEMPLATE_JSON, 'utf-8')
+    const JSON_DATA = JSON.parse(TXT)
+    return await importJSON({JSON: JSON_DATA, dbman: payload.dbman, db_fn: payload.db_fn})
+}
+
 /**
  * 
  * @param {object} payload - {JSON: [..], dbman: {}, db_fn: 'templatedb.db'}
