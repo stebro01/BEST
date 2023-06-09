@@ -110,14 +110,23 @@ export default {
   
   methods: {
     save_preset(){
-      var label = prompt(this.TEXT.quest.save_preset, "Preset 1")
-      if (label === null || label === undefined) return
-      this.$store.dispatch('storePreset', {label: label, value: this.PARAMS.presets});
-      this.show_store_btn = false
-      this.$q.notify({
-        message: this.TEXT.quest.save_success,
-        color: 'green'
-      }) 
+      this.$q.dialog({
+        // title: 'Preset',
+        message: this.TEXT.quest.save_preset,
+        prompt: {
+          model: 'Preset 1',
+          type: 'text' // optional
+        },
+        cancel: true,
+        persistent: true
+      }).onOk(label => {
+        this.$store.dispatch('storePreset', {label: label, value: this.PARAMS.presets});
+        this.show_store_btn = false
+        this.$q.notify({
+          message: this.TEXT.quest.save_success,
+          color: 'green'
+        }) 
+      })
     },
     startQuest() {
       if (this.subject_pid === null) {
