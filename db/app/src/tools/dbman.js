@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3')
 const { log, info, error_codes } = require("./logger")
-const fs = require('fs')
+const fs = require('fs');
+const exp = require('constants');
 let database = undefined
 
 /**
@@ -90,6 +91,36 @@ const get_all = async (sql_query) => {
   })
 }
 
+/**
+ * @description Führt eine SQL-Query aus unter Verwendung von sqlite3.run und zuätzlichen Daten (VALUES)
+ * @param {*} sql - SQL-Query
+ * @param {*} VALUES - Array mit Daten
+ * @returns Promise mit {status, error, data}
+ * @example
+ * const sql = INSERT INTO OBSERVATION_FACT (PATIENT_NUM, ENCOUNTER_NUM, PROVIDER_ID, CATEGORY_CHAR, TVAL_CHAR, OBSERVATION_BLOB, UPLOAD_ID, SOURCESYSTEM_CD, IMPORT_DATE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+ * const VALUES = [PATIENT_NUM, ENCOUNTER_NUM, PROVIDER_ID, CATEGORY_CHAR, TVAL_CHAR, OBSERVATION_BLOB, UPLOAD_ID, SOURCESYSTEM_CD, IMPORT_DATE]
+ * const result = await dbman.run_with_data(sql, VALUES)
+ */
+const run_with_data = async (sql, VALUES) => {
+  log ({method: 'dbman -> run_with_data', data: sql})
+  return new Promise ((resolve, reject) => {
+    if (!sql || !VALUES) return  resolve({status: false, error: error_codes.invalid_payload})
+    database.run(sql, VALUES, function (err) {
+      if (err) {
+        console.error(err.message);
+        close()
+        return resolve({status: false, error: err})
+      }
+      return resolve({
+        message: 'SQL: Aktion erfolgreich',
+        status: true,
+        data: this.lastID
+      })
+    })
+
+  })
+ }
+
 const run = async (sql_query) => {
   if (!sql_query) return undefined
   info({
@@ -150,3 +181,4 @@ exports.run = run;
 exports.status = status;
 exports.create = create;
 exports.removeAllTables = removeAllTables;
+exports.run_with_data = run_with_data;

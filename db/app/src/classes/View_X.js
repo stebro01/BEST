@@ -10,6 +10,7 @@
  */
 
 const {log, info, error_codes} = require('src/tools/logger')
+import {now} from '../tools/mydate'
 
 import {SCHEME_CONCEPT_DIMENSION} from './Scheme_concept_dimension'
 import { SCHEME_CODE_LOOKUP } from './Scheme_code_lookup'
@@ -122,6 +123,44 @@ export class View_X {
         } catch(err) {
             return {status: false, error: err}
         }
+    }
+
+    /**
+     * NEW FUNCTION => used to add data to the db using DB_MAN.run_with_data
+     * @param {object} payload - Structure with the DB Fields as keys and the values as values
+     * @returns {status: true, data: {OBSERVATION_ID: number}, error: undefined} - gibt den Primary Key in DATA zurück
+     * @example
+     * const payload = {"PATIENT_NUM":58,"ENCOUNTER_NUM":62,"PROVIDER_ID":"sb71279","CATEGORY_CHAR":"RAW","TVAL_CHAR":"{\"filename\":\"patient_10019815_2023-01-22_HL7.json\",\"ext\":\".json\",\"source_dir\":\"test/jest/mockups/hl7\"}","OBSERVATION_BLOB":{"type":"Buffer","data":[12...]}}
+     * const status = await VIEW_OBSERVATION.prepare_create(payload)
+     */
+    async prepare_create(payload) {
+        log({method: 'View_X -> prepare_create', data: payload})
+        // PREPARE MY DATA
+        var COL = '';
+        var VALUE_QUESTION_MARK = '';
+        var VALUES = [];
+        
+        // Loop through the keys of the payload object
+        if (!payload.UPLOAD_ID) payload.UPLOAD_ID = this._UPLOAD_ID
+        if (!payload.IMPORT_DATE) payload.IMPORT_DATE = now()
+        for (const key in payload) {
+          // Append the key to COL
+          COL += key + ', ';
+          // Append a question mark as a placeholder to VALUE_QUESTION_MARK
+          VALUE_QUESTION_MARK += '?, ';
+          // Add the corresponding value to VALUES
+          VALUES.push(payload[key]);
+        }
+        // Remove the trailing comma and space from COL and VALUE_QUESTION_MARK
+        COL = COL.slice(0, -2);
+        VALUE_QUESTION_MARK = VALUE_QUESTION_MARK.slice(0, -2);
+        // prepare the inseart statement
+        const sql = `INSERT INTO ${this._SCHEME._TABLE_NAME} (${COL}) VALUES (${VALUE_QUESTION_MARK})`;
+        this._DB_MAN.connect(this._DB_FILENAME)
+        const result = await this._DB_MAN.run_with_data(sql, VALUES)
+        this._DB_MAN.close() 
+        // return the result
+        return {status: true, error: undefined, data: {[this._SCHEME._PRIMARY_KEY]: result.data}}
     }
 
     /**

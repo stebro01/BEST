@@ -91,21 +91,6 @@ export class View_Observation extends View_X {
     }
 
     /**
-     * 
-     * @param {object} payload 
-     */
-    async prepare(payload) {
-        log({method: 'View_Observation -> prepare', data: payload})
-
-        this._DB_MAN.connect(this._DB_FILENAME)
-        
-        
-        
-        this._DB_MAN.close() 
-
-    }
-
-    /**
      * EXPORT FUNCTION >> to CSV
      * Exportiere alle in payload.PATIENTS definierten Patienten in ein CSV entsprechend des DB Standards zum erneuten IMPORT
      * @param {object} payload -ie: {PATIENTS: [{PATIENT_NUM: 1}]}

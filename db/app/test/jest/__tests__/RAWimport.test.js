@@ -43,10 +43,10 @@ describe('Teste RAW import', () => {
 
   })
 
-  afterAll(async () => {
-    const status = await VIEW_PATIENT.delete({PATIENT_NUM: DUMMY.PATIENT_NUM})
-    console.log('Deleting DUMMY Patient: ', status.status)
-  })
+  // afterAll(async () => {
+  //   const status = await VIEW_PATIENT.delete({PATIENT_NUM: DUMMY.PATIENT_NUM})
+  //   console.log('Deleting DUMMY Patient: ', status.status)
+  // })
 
   it (`Das Testfile existiert`, async () => {
     expect(fs.existsSync(raw_fn))
@@ -56,7 +56,6 @@ describe('Teste RAW import', () => {
     // READ TESTFILE
     const status_read = await raw_read(raw_fn, fs, path)
     expect(status_read).toBeTruthy()
-    console.log(status_read.data)
     // WRITE OUTPUT
     status_read.data.filename = 'output222'
     const status_write = await raw_write(status_read.data, fs, path)
@@ -66,18 +65,29 @@ describe('Teste RAW import', () => {
     expect(JSON.stringify(status_check.data.buffer)).toBe(JSON.stringify(status_read.data.buffer))
   })
 
-  it (`Add somedata to the db`, async() => {
+  it (`Add somedata to the db and retrieve it`, async() => {
     // READ TESTFILE
     const status_read = await raw_read(raw_fn, fs, path)
     expect(status_read).toBeTruthy()
 
-    const status_create = await VIEW_OBSERVATION.create({PATIENT_NUM: DUMMY.PATIENT_NUM, ENCOUNTER_NUM: DUMMY.ENCOUNTER_NUM, PROVIDER_ID: 'sb71279'})
-    console.log('Add data:', status_create)
-
-    const status_prepare = await VIEW_OBSERVATION.prepare({PATIENT_NUM: DUMMY.PATIENT_NUM, ENCOUNTER_NUM: DUMMY.ENCOUNTER_NUM, PROVIDER_ID: 'sb71279', OBSERVATION_BLOB: status_read.data})
-
-    const status_obs = await VIEW_OBSERVATION.read({OBSERVATION_ID: status_create.data.OBSERVATION_ID})
-    console.log('DATA in DB: ', status_obs)
+    // PREPARE THE PAYLOAD
+    const payload = {
+      PATIENT_NUM: DUMMY.PATIENT_NUM, 
+      ENCOUNTER_NUM: DUMMY.ENCOUNTER_NUM, 
+      PROVIDER_ID: 'sb71279', 
+      CATEGORY_CHAR: 'RAW',
+      TVAL_CHAR: JSON.stringify({filename: status_read.data.filename+status_read.data.ext, ext: status_read.data.ext, source_dir: status_read.data.dir}),
+      OBSERVATION_BLOB: status_read.data.buffer,
+      UPLOAD_ID: 'sb71279', 
+      SOURCESYSTEM_CD: 'SNOMED-CT',
+    }
+    // CREATE THE OBSERVATION
+    const status_prepare_create = await VIEW_OBSERVATION.prepare_create(payload)
+    // CHECK IF THE OBSERVATION EXISTS
+    const status_obs = await VIEW_OBSERVATION.read({OBSERVATION_ID: status_prepare_create.data.OBSERVATION_ID})
+    // check the data and the blob
+    expect(status_obs).toBeTruthy() 
+    expect(JSON.stringify(status_obs.data[0].OBSERVATION_BLOB)).toBe(JSON.stringify(status_read.data.buffer))
   })
   
 })

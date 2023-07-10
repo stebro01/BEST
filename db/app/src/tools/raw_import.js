@@ -2,7 +2,7 @@
  * @description Sammlung von Funktionen, um Rohdaten einzulesen und in die DB einzufuegen sowie wieder zu extrahieren
  */
 
-import { log } from "./logger";
+import { error_codes, log } from "./logger";
 
 /**
  * 
@@ -20,9 +20,21 @@ export async function raw_read(filepath, fs, path) {
     return {status: true, data: {ext: parsedPath.ext, dir: parsedPath.dir, filename: parsedPath.name, buffer: buffer}}
 }
 
+/**
+ * 
+ * @param {*} data - {ext, dir, filename, buffer}
+ * @param {*} fs - library
+ * @param {*} path - library
+ * @returns promise with: {data, status, error}
+ * @example 
+ *  const data = {ext: '.json', dir:'some_dir', filename: 'filetowrite', buffer: buffer}
+ *  const status_write = await raw_write(data, fs, path)
+ */
 export async function raw_write(data, fs, path) {
     log({method: 'raw_import -> raw_write', message: 'write data', data: data})
-
+    // data valid?
+    if (!data || !data.buffer) return {error: error_codes.invalid_payload, status: false}
+    // else
     var outpath = path.join(data.dir, data.filename + data.ext)
     log({method: 'raw_import -> raw_write', message: `write data to: ${outpath}`})
     fs.writeFileSync(outpath, data.buffer);
