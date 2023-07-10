@@ -4,7 +4,7 @@
     <div v-if="mode === 'new' && !visit.ACTIVE_STATUS_CD" class="q-mb-md">
       <q-banner dense class="bg-info">Neue Visite anlegen: bitte den <b>Status</b> auswählen</q-banner>
     </div>
-    <q-markup-table flat bordered dense class="my-table">
+    <q-markup-table flat bordered dense >
       <thead v-if="mode !== 'new'">
         <tr>
           <th class="text-center">ID</th>
@@ -166,6 +166,7 @@ export default {
         this.$store
           .dispatch("addDB", { query_string: data, table: "VISIT_DIMENSION" })
           .then((res) => {
+            this.$emit('save')
             //get new visit
             this.visit.ENCOUNTER_NUM = res.ENCOUNTER_NUM;
             this.$store

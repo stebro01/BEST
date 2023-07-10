@@ -10,6 +10,7 @@ import { View_Observation } from 'src/classes/View_Observation'
 import { View_Patient } from "src/classes/View_Patient";
 import { View_Concept } from 'src/classes/View_Concept'
 import { View_user_patient_lookup } from "src/classes/View_User_Patient_Lookup";
+import { raw_read } from "src/tools/raw_import";
 
 
 export const importSurveyBEST = async ({commit, state}, payload ) => {
@@ -107,6 +108,38 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
 
     return RETURN_DATA(PATIENTS, commit)
  }
+
+/**
+ * @description Importiere eine komplette Datei mit RAW Daten
+ * @param {*} param0 - {commit, state}
+ * @param {*} payload 
+ */
+export const  importRAWdata_from_file = async ({commit, state}, payload) => {
+  commit('LOG', {method: 'action->importRAWdata_from_file', data: payload.raw_fn})
+  commit('SPINNER_SET', true)
+  // READ DATA
+  const raw_fn = payload.raw_fn; //'test/jest/mockups/hl7/patient_10019815_2023-01-22_HL7.json'
+  const LOCAL_FS = {readFileSync: window.electron.readFile, existsSync: window.electron.exists}
+  const status_read = await raw_read(raw_fn, LOCAL_FS, window.electron.path)
+  if (status_read.status === false) return RETURN_DATA( {status: false, error: error_codes.file_does_not_exist}, commit)
+  // ADD OBSERVATION
+  const OBSERVATION_DATA = {
+    PATIENT_NUM: payload.PATIENT_NUM,
+    ENCOUNTER_NUM: payload.ENCOUNTER_NUM,
+    PROVIDER_ID: payload.PROVIDER_ID,
+    START_DATE: payload.START_DATE,
+    TVAL_CHAR: JSON.stringify({filename: status_read.data.filename+status_read.data.ext, ext: status_read.data.ext, source_dir: status_read.data.dir}),
+    UPLOAD_ID: state.UPLOAD_ID,
+    CATEGORY_CHAR: 'RAW',
+    OBSERVATION_BLOB: status_read.data.buffer,
+    SOURCESYSTEM_CD: 'SNOMED-CT',
+  }
+  // CREATE THE OBSERVATION
+  const VIEW_OBSERVATION = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+  const status_prepare_create = await VIEW_OBSERVATION.prepare_create(OBSERVATION_DATA)
+  // FERTIG
+  return RETURN_DATA(status_prepare_create, commit)
+}
 
 /**
  * Importiert ein JSON Objekt mit tables f. die DB => verwendet von DataTransfer_Import.vue
