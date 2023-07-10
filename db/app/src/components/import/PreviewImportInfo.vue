@@ -55,9 +55,9 @@ export default {
 
   computed: {
     options_mode_visits() {
-      const options = [{ label: "Neu", value: "new" }];
+      const options = [{ label: "Neu", value: this.$store.getters.MODE_VISITS.new }];
       if (this.$store.getters.VISIT_PINNED)
-        options.push({ label: "Hinzufügen", value: "add" });
+        options.push({ label: "Hinzufügen", value: this.$store.getters.MODE_VISITS.add });
       return options;
     },
 

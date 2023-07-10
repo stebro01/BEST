@@ -21,13 +21,13 @@
           <th>Wert</th>
           <th>Einheit</th>
           <th>Bemerkung</th>
+          <th>Datum</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, ind) in formData" :key="ind + 'localForm'">
-          <td class="my-cell-entry text-left cursor-pointer" @click="editConcept(item, ind)">
+          <td class="my-cell-entry text-left">
             <VALUE_ITEM :value="item.CONCEPT_CD" :label="item.CONCEPT_NAME_CHAR" />
-            <EDIT_ICON class="absolute-right bg-white q-mt-sm" />
           </td>
           <td>{{ item.VALTYPE_CD }}
             <q-tooltip v-if="item.VALTYPE_CD === 'T'">Text (string)</q-tooltip>
@@ -96,6 +96,20 @@
               }}</q-tooltip>
             </span>
           </td>
+          <!-- DATE -->
+          <td class="my-cell-entry">
+            <!-- START DATE -->
+            <span class="cursor-pointer">{{ item.START_DATE }}
+              <q-popup-edit v-model="item.START_DATE" auto-save v-slot="scope">
+                <q-input v-model="scope.value" dense autofocus counter type="date" @keyup.enter="scope.set"
+                  @blur="dataChanged()" @change="dataChanged()" />
+              </q-popup-edit>
+            </span> 
+            <!-- END DATE? -->
+            <span v-if="item.END_DATE">
+            / {{ item.END_DATE }}
+            </span>
+          </td>
         </tr>
       </tbody>
     </q-markup-table>
@@ -106,12 +120,6 @@
       </span>
     </div>
 
-    <!-- CONCEPT DIALOG -->
-    <q-dialog v-model="show_concept_dialog" style="max-height: 100%">
-      <CONCEPT_SELECTION @close="(show_concept_dialog = false); edit_concept = undefined" @clear="clearConcept()"
-        @clicked="conceptSelected($event)" :table="edit_concept.table" :CONCEPT_CD="edit_concept.item.CONCEPT_CD" />>
-    </q-dialog>
-
   </div>
 </template>
 
@@ -119,7 +127,6 @@
 
 import VALUE_ITEM from 'src/components/elements/ValueItem.vue'
 import EDIT_ICON from 'src/components/elements/EditIcon.vue'
-import CONCEPT_SELECTION from 'src/components/elements/ConceptSelect.vue'
 import POPUP_CONCEPT from 'src/components/elements/PopupConcept.vue'
 import CQL_CHECK from "./cql/CQLCheck.vue";
 
@@ -128,14 +135,13 @@ export default {
 
   props: ['input_data', 'title'],
 
-  components: { VALUE_ITEM, EDIT_ICON, CONCEPT_SELECTION, POPUP_CONCEPT, CQL_CHECK },
+  components: { VALUE_ITEM, EDIT_ICON, POPUP_CONCEPT, CQL_CHECK },
 
   data() {
     return {
       formData: undefined,
       options: {},
       label: null,
-      show_concept_dialog: false,
       edit_concept: undefined,
       show_import_details: false,
       preview_survey_best_show: false,
@@ -178,37 +184,6 @@ export default {
         else this.formData[ind].TVAL_CHAR = val
       }
       this.formData[ind].check = await this.$store.dispatch('checkCQLRule', this.formData[ind])
-    },
-
-    editConcept(item, ind) {
-      this.edit_concept = { item: item, ind: ind, table: 'CONCEPT_DIMENSION' }
-      this.show_concept_dialog = true
-    },
-
-    clearConcept() {
-      this.show_concept_dialog = false
-      this.edit_concept = undefined
-      this.$q.notify('Nicht unterstützt in dieser Ansicht')
-    },
-
-    conceptSelected(CONCEPT) {
-      if (!CONCEPT || !CONCEPT.CONCEPT_CD) this.$q.notify('Etwas ging schief: <conceptSelected>')
-      this.formData[this.edit_concept.ind].CONCEPT_CD = CONCEPT.CONCEPT_CD
-      this.formData[this.edit_concept.ind].CONCEPT_NAME_CHAR = CONCEPT.NAME_CHAR
-
-      this.formData[this.edit_concept.ind].VALTYPE_CD = CONCEPT.VALTYPE_CD
-      if (CONCEPT.VALTYPE_CD === 'N') {
-        this.formData[this.edit_concept.ind].TVAL_CHAR = undefined
-        if (CONCEPT.UNIT_CD) this.formData[this.edit_concept.ind].UNIT_CD = CONCEPT.UNIT_CD
-      } else {
-        this.formData[this.edit_concept.ind].NVAL_NUM = undefined
-        this.formData[this.edit_concept.ind].UNIT_CD = undefined
-      }
-      this.$emit('changed', this.formData)
-
-      //reset the form
-      this.edit_concept = undefined
-      this.show_concept_dialog = false
     },
 
     // ENDE METHODS

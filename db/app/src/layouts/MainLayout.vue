@@ -78,7 +78,7 @@
     <!-- FOOTER -->
     <q-footer bordered class="bg-grey-2 text-primary text-center">
       <div class="row text-center text-caption">
-        <div class="col-2">{{$route.path}}</div>
+        <div class="col-2">{{ ROUTE_PATH }}</div>
         <div v-if="$store.getters.ELECTRON_MODE" class="col">standard-mode</div>
         <div v-else class="col-7">debug-mode (no electron found)</div>
         <!-- USER BADGE -->
@@ -137,6 +137,13 @@ export default {
     showHomeButton() {
       if (this.$route.name === 'Index') return false
       else return true
+    },
+
+    ROUTE_PATH() {
+      var txt = this.$route.path
+      var index = txt.indexOf('[');
+      if (index != -1) txt = txt.substring(0, index);
+      return txt
     }
   },
 

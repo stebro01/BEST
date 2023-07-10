@@ -64,6 +64,22 @@ export function ELECTRON_MODE(state) {
     return state.IS_ELECTRON
 }
 
+export function MODE_VISITS() {
+    return {new: 'new', add: 'add'}
+}
+
+export function IMPORT_OPTIONS() {
+    return [
+        { value: "hl7", label: "HL7 JSON/HTML" },
+        { value: "csv", label: "CSV Tabellenformat" },
+        { value: "raw", label: "Rohdaten" },
+    ]
+}
+
+export function IMPORT_MODES() {
+    return {hl7: 'hl7', csv: 'csv', raw: 'raw'}
+}
+
 export function SESSION_MULTIEDIT(state) {
     return state.SESSION_MULTIEDIT
 }

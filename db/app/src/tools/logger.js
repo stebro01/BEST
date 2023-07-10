@@ -11,7 +11,10 @@ const log = (arg, mode) => {
     if (arg.method) txt += `method: ${arg.method}, `
     if (arg.message) txt += `message: ${arg.message}, `
     if (arg.data) txt += `data: ${JSON.stringify(arg.data)}, `
-    if (txt) console.log(txt)
+    if (txt) {
+        if(txt.length > 200) txt = txt.substring(0, 200);
+        console.log(txt)
+    }
 }
 
 const info = (arg) => {

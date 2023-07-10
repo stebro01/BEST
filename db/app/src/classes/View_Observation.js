@@ -15,7 +15,7 @@ import { SCHEME_CONCEPT_DIMENSION } from './Scheme_concept_dimension'
 import { SCHEME_OBSERVATION_FACT } from './Scheme_observation_fact'
 import { SCHEME_CODE_LOOKUP } from './Scheme_code_lookup'
 
-import { error_codes } from 'src/tools/logger'
+import { error_codes, log } from 'src/tools/logger'
 import { unstringify } from './sqltools'
 
 import {exportCSVTable, exportHL7JSON} from 'src/tools/db_export_obs'
@@ -87,6 +87,21 @@ export class View_Observation extends View_X {
         }
 
         return {status: true, data: CONCEPTS}
+
+    }
+
+    /**
+     * 
+     * @param {object} payload 
+     */
+    async prepare(payload) {
+        log({method: 'View_Observation -> prepare', data: payload})
+
+        this._DB_MAN.connect(this._DB_FILENAME)
+        
+        
+        
+        this._DB_MAN.close() 
 
     }
 

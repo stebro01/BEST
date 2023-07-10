@@ -38,11 +38,8 @@ export default {
 
   data() {
     return {
-      options_import: [
-        { value: "hl7", label: "HL7 JSON/HTML" },
-        { value: "csv", label: "CSV Tabellenformat" },
-      ],
-      selected_import_method: "csv",
+      options_import: this.$store.getters.IMPORT_OPTIONS,
+      selected_import_method: this.$store.getters.IMPORT_MODES.hl7,
       show_csv_help: false,
       show_spinner: false
     }
@@ -55,33 +52,42 @@ export default {
 
     ACCEPT_FILETYPE() {
       if (!this.selected_import_method) return "";
-      if (this.selected_import_method === "csv") return ".csv";
-      if (this.selected_import_method === "hl7") return ".json, .html";
+      if (this.selected_import_method === this.$store.getters.IMPORT_MODES.csv) return ".csv";
+      if (this.selected_import_method === this.$store.getters.IMPORT_MODES.hl7) return ".json, .html";
+      if (this.selected_import_method === this.$store.getters.IMPORT_MODES.raw) return "*";
       return "";
     }
   },
 
   methods: {
-    importData(file, method) {
+    importData(fileArr, method) {
+      if (!Array.isArray(fileArr)) return false
+      const FILE_PATH = []
+      fileArr.forEach(f => FILE_PATH.push(f.path))
+
       this.$store.commit("LOG", {
         method: "ImportObservation->importData",
-        data: { file: file.path, method: method },
+        data: { file: FILE_PATH, method: method },
       });
 
       // WHICH METHOD?
       this.show_spinner = true
-      if (method === "hl7") return this.importSURVEY(file.path);
-      else if (method === "csv") return this.importCSVFile(file.path);
+      if (method === "hl7") return this.importSURVEY(FILE_PATH);
+      else if (method === "csv") return this.importCSVFile(FILE_PATH);
+      else if (method === "raw") return this.importRAWdata(FILE_PATH);
       else {
         this.$q.notify("Comming soong ...")
         this.show_spinner = false
       }
-      
+    },
+
+    importRAWdata(FILE_PATH) {
+      this.$router.push({name: 'Observation_Import_RAW', params: {FILE_PATH: JSON.stringify(FILE_PATH)}})
     },
 
     importCSVFile(filePath) {
       this.$store
-        .dispatch("importObjectsFromCSVFile", filePath)
+        .dispatch("importObjectsFromCSVFile", filePath[0])
         .then((patients) => {
           if (!patients) return this.$q.notify("Daten sind nicht kompatible");
           const keys = Object.keys(patients);
@@ -119,17 +125,30 @@ export default {
       return DATA
     },
 
-    async importSURVEY(filePath) {
-      const txt = window.electron.readFile(filePath, "utf8");
-      const DATA = await this.$store.dispatch("importSurveyBEST", txt);
-
-      if (DATA.error) return this.$q.notify("Error: " + DATA.error);
-      if (!DATA || !DATA.PATIENT)
-        return this.$q.notify("Daten konnten nicht geladen werden");
-      // else
+    async importSURVEY(FILE_PATH) {
+      var DATA = undefined
+      for (let fp of FILE_PATH) {
+        let DATA_TMP = await this._readSURVEY(fp)
+        if (DATA_TMP.PATIENT) {
+          if (DATA === undefined) DATA = DATA_TMP
+          else {
+            //MERGE MULTIPLE DATA POINTS
+            DATA.OBSERVATIONS[0] = DATA.OBSERVATIONS[0].concat(DATA_TMP.OBSERVATIONS[0])
+          }
+        }
+      }
+      //prepare the preview
       if (this.mode === 'multiple') this.previewData([DATA])
       else this.previewData(DATA)
       this.show_spinner = false
+    },
+
+    async _readSURVEY(filePath) {
+      const txt = window.electron.readFile(filePath, "utf8");
+      const DATA = await this.$store.dispatch("importSurveyBEST", txt);
+      if (DATA.error) this.$q.notify("Error: " + DATA.error);
+      if (!DATA || !DATA.PATIENT) this.$q.notify("Daten konnten nicht geladen werden");
+      return DATA
     },
 
     previewData(DATA) {

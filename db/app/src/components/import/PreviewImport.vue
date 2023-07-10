@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-center q-mb-lg">
     <!-- PREVIEW PATIENT -->
-    <PREVIEW_IMPORT_INFO :data_checked="data_checked" :patient_data="patient_data" :mode_visits="mode_visits" 
+    <PREVIEW_IMPORT_INFO v-if="mode_visits" :data_checked="data_checked" :patient_data="patient_data" :mode_visits="mode_visits" 
       @updateMode="mode_visits = $event" @close="$emit('close')"
       @save="saveToDB()"
     />
@@ -36,7 +36,7 @@ export default {
 
   data() {
     return {
-      mode_visits: 'new',
+      mode_visits: undefined,
       data_checked: false,
       doing_check: false,
       total_errors_found: undefined,
@@ -46,6 +46,9 @@ export default {
 
   mounted(){
     if (this.imported_data) this.patient_data = JSON.parse(JSON.stringify(this.imported_data))
+    //define the mode in which new Observations will be added: as 'new' visit or 'add' to existing one
+    if (this.$store.getters.VISIT_PINNED !== undefined) this.mode_visits =  this.$store.getters.MODE_VISITS.add
+    else this.mode_visits = this.$store.getters.MODE_VISITS.new
   },
 
   computed: {

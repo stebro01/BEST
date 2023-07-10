@@ -2,7 +2,7 @@
   <q-card class="my-card q-mt-xl">
     <q-separator class="q-mx-sm" />
     <q-card-section class="q-pa-md">
-      <q-file v-model="file_to_read" :accept="accept" :label="label">
+      <q-file v-model="file_to_read" :accept="accept" :label="label" :multiple="true">
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
