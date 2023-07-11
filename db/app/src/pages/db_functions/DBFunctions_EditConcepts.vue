@@ -21,7 +21,7 @@
                 @edit="editConcept(selected[0])" :show_remove="selected.length > 0" @remove="deleteConcept(selected)"
                  />
               <q-space />
-              <div style="position: relative; width: 220px; height: 60px">
+              <div style="position: relative; width: 250px; height: 60px">
                 <FILTER_BOX :filter="filter" @update="filter = $event" />
                 <div class="q-gutter-xs z-top" style="position: absolute; right: 0px">
                   <q-checkbox size="xs" dense v-model="filter_options.T" label="T" @blur="valtypeSelected('T')" />
@@ -30,7 +30,8 @@
                   <q-checkbox size="xs" dense v-model="filter_options.S" label="S" @blur="valtypeSelected('S')" />
                   <q-checkbox size="xs" dense v-model="filter_options.F" label="F" @blur="valtypeSelected('F')" />
                   <q-checkbox size="xs" dense v-model="filter_options.A" label="A" @blur="valtypeSelected('A')" />
-                  <q-tooltip>VALTYPE_CD: T-Text, N-Number, S-Selection, F-Finding, A-Answer</q-tooltip>
+                  <q-checkbox size="xs" dense v-model="filter_options.R" label="R" @blur="valtypeSelected('R')" />
+                  <q-tooltip>VALTYPE_CD: T-Text, N-Number, S-Selection, F-Finding, A-Answer, R-Rawdata</q-tooltip>
                 </div>
               </div>
             </template>
@@ -69,7 +70,7 @@ export default {
     return {
       CONCEPTS: [],
       filter: undefined,
-      filter_options: { T: true, N: true, D: true, S: true, F: true, A: false },
+      filter_options: { T: true, N: true, D: true, S: true, F: true, A: false, R: false },
       selected: [],
       show_edit_concept: false,
       show_add_concept: false,

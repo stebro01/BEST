@@ -76,13 +76,13 @@ export default {
         // {name: 'OBSERVATION_ID', field: 'OBSERVATION_ID', label: 'ID', sortable: true, align: 'center'},
         // {name: 'ENCOUNTER_NUM', field: 'ENCOUNTER_NUM', label: 'Visite', sortable: true, align: 'center'},
         // {name: 'PATIENT_NUM', field: 'name', label: 'Patient'},
-        // {name: 'CATEGORY_CHAR', field: 'CATEGORY_CHAR', label: 'Kategorie', style: 'max-width: 40px; overflow: hidden', sortable: true, align: 'center'},
         { name: 'CONCEPT_CD', field: 'CONCEPT_CD', label: 'Concept', sortable: true, align: 'left', style: 'max-width: 150px; overflow: hidden' },
         // {name: 'VALTYPE_CD', field: 'VALTYPE_CD', label: 'Typ', align: 'center'},
         { name: 'TVAL_CHAR', field: 'TVAL_CHAR', label: 'Wert', align: 'center', style: 'max-width: 200px; overflow: hidden' },
         // {name: 'NVAL_NUM', field: 'NVAL_NUM', label: 'Wert(N)', align: 'center'},
         // { name: 'UNIT_CD', field: 'UNIT_CD', label: 'Einheit', align: 'center', style: 'max-width: 50px; overflow: hidden' },
-        { name: 'OBSERVATION_BLOB', field: 'OBSERVATION_BLOB', label: 'Beschr.', style: 'max-width: 100px', align: 'center' },
+        // { name: 'OBSERVATION_BLOB', field: 'OBSERVATION_BLOB', label: 'Beschr.', style: 'max-width: 100px', align: 'center' },
+        {name: 'CATEGORY_CHAR', field: 'CATEGORY_CHAR', label: 'Kategorie', style: 'max-width: 40px; overflow: hidden', sortable: true, align: 'center'},
         { name: 'START_DATE', field: 'START_DATE', label: 'Datum', sortable: true, align: 'center', style: 'max-width: 50px; overflow: hidden' },
       ],
     }
@@ -128,7 +128,7 @@ export default {
 
     loadObservations(PAYLOAD) {
       this.selected = []
-      this.$store.dispatch('searchDB', { query_string: { ...PAYLOAD, _view: true }, table: "OBSERVATION_FACT" })
+      this.$store.dispatch('searchDB', { query_string: { ...PAYLOAD, _view: true, _columns: ['OBSERVATION_ID', 'CONCEPT_CD', 'CONCEPT_NAME_CHAR', 'TVAL_CHAR', 'NVAL_NUM', 'UNIT_CD', 'VALTYPE_CD', 'CATEGORY_CHAR', 'START_DATE'] }, table: "OBSERVATION_FACT" })
         .then(res_obs => {
 
           this.rows = []
@@ -142,7 +142,6 @@ export default {
             if (r.NVAL_NUM || r.NVAL_NUM === 0) r.TVAL_CHAR = r.NVAL_NUM
             if (r.UNIT_RESOLVED) r.UNIT_CD = r.UNIT_RESOLVED
             if (r.UNIT_CD && r.NVAL_NUM) r.TVAL_CHAR +=' ' + r.UNIT_CD
-            if (r.OBSERVATION_BLOB && r.OBSERVATION_BLOB.indexOf('resourceType') > 0) r.OBSERVATION_BLOB = 'surveyBEST'
           })
         })
     },

@@ -80,6 +80,7 @@ describe('Teste RAW import', () => {
       OBSERVATION_BLOB: status_read.data.buffer,
       UPLOAD_ID: 'sb71279', 
       SOURCESYSTEM_CD: 'SNOMED-CT',
+      VALUEFLAG_CD: status_read.data.signature
     }
     // CREATE THE OBSERVATION
     const status_prepare_create = await VIEW_OBSERVATION.prepare_create(payload)

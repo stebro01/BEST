@@ -21,8 +21,8 @@ export { addUser, deleteUser, updateUser, loginUser }
 import { exportObservationsCSV, exportObservationsHL7 } from './actions/export_queries'
 export { exportObservationsCSV, exportObservationsHL7 }
 
-import {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST, importRAWdata_from_file, importJSON_DataTransfer } from './actions/import_data'
-export {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST, importRAWdata_from_file, importJSON_DataTransfer }
+import {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST, importRAWdata_from_file, exportRAWdata_to_file, importJSON_DataTransfer } from './actions/import_data'
+export {importObjectsFromCSVFile, importObjectsFromHL7File, saveHL7ObjectsToDB, importSurveyBEST, importRAWdata_from_file, exportRAWdata_to_file, importJSON_DataTransfer }
 
 import { execCQL, query_CQLAPI, checkCQLRule, checkDoubles } from './actions/cql_functions'
 export { execCQL, query_CQLAPI, checkCQLRule, checkDoubles }

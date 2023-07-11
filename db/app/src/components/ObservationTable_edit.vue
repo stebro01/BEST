@@ -35,18 +35,19 @@
             <q-tooltip v-else-if="item.VALTYPE_CD === 'D'">Datum (date)</q-tooltip>
             <q-tooltip v-else-if="item.VALTYPE_CD === 'S'">Auswahl (selection)</q-tooltip>
             <q-tooltip v-else-if="item.VALTYPE_CD === 'F'">Finding (Merkmal vorhanden: yes, no, unknown)</q-tooltip>
+            <q-tooltip v-else-if="item.VALTYPE_CD === 'R'">Rohdaten</q-tooltip>
           </td>
           <!-- VALUE -->
-          <td >
-            <CQL_CHECK :value=item.check />
-            <span v-if="item.VALTYPE_CD === 'N'">{{ item.NVAL_NUM }}
+          <td>
+            <q-tooltip>{{ item.TVAL_CHAR || item.NVAL_NUM}}</q-tooltip>
+            <span v-if="item.VALTYPE_CD === 'N'"><CQL_CHECK :value=item.check />{{ item.NVAL_NUM }}
             <EDIT_ICON class="absolute-right q-mt-sm" />
             <q-popup-edit v-model="item.NVAL_NUM" buttons v-slot="scope">
               <q-input v-model="scope.value" dense autofocus counter type="number" @keyup.enter="scope.set"
                 @change="dataChanged(ind, $event)" />
             </q-popup-edit>
             </span>
-          <span v-else-if="item.VALTYPE_CD === 'D'">{{ item.TVAL_CHAR }}
+          <span v-else-if="item.VALTYPE_CD === 'D'"><CQL_CHECK :value=item.check />{{ item.TVAL_CHAR }}
             <EDIT_ICON class="absolute-right q-mt-sm" />
             <q-popup-edit v-model="item.TVAL_CHAR" buttons v-slot="scope">
               <q-input v-model="scope.value" dense autofocus counter type="date" @keyup.enter="scope.set"
@@ -60,12 +61,15 @@
               @update="item.TVAL_CHAR = $event.value; item.TVAL_RESOLVED = $event.label; dataChanged(ind)" />
 
           </span>
-          <span v-else style="max-width: 100px; overflow: hidden">{{ item.TVAL_CHAR }}
-            <EDIT_ICON class="absolute-right q-mt-sm" />
+          <span v-else >
+            <div style="max-width: 300px; overflow: hidden; box-sizing: border-box;">
+              {{ item.TVAL_CHAR }}
+            </div>
+            <!-- <EDIT_ICON class="absolute-right q-mt-sm" />
             <q-popup-edit v-model="item.TVAL_CHAR" buttons="" v-slot="scope">
               <q-input v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set"
                 @change="dataChanged(ind, $event)" />
-            </q-popup-edit>
+            </q-popup-edit> -->
           </span>
           </td>
           <!-- UNIT_CD -->
@@ -79,11 +83,13 @@
             </span>
             <q-icon v-else name="block" />
           </td>
-          <!-- OBSERVATION -->
+          <!-- OBSERVATION_BLOB -->
           <td class="my-cell-entry">
-            <span v-if="item.OBSERVATION_BLOB && item.OBSERVATION_BLOB.indexOf('resourceType') > 0">
-              surveyBEST <q-icon name="preview" class="cursor-pointer"
-                @click="$emit('previewSurvey', item.OBSERVATION_BLOB)" />
+            <span v-if="item.CATEGORY_CHAR === 'surveyBEST'">
+              <q-icon name="preview" class="cursor-pointer" @click="loadSurvey(item)"><q-tooltip>Vorschau</q-tooltip></q-icon> surveyBEST 
+            </span>
+            <span v-else-if="item.VALTYPE_CD === 'R'">
+              <q-icon name="file_download" class="cursor-pointer" @click="downloadRAW(item)"><q-tooltip>Daten herunterladen</q-tooltip></q-icon>RAW
             </span>
             <span v-else>
               {{ item.OBSERVATION_BLOB }}
@@ -112,13 +118,15 @@
           </td>
         </tr>
       </tbody>
-    </q-markup-table>
+    </q-markup-table>​
 
     <div class="my-table my-small-text">
       <q-icon v-if="!show_import_details" name="info" @click="show_import_details = true" class="cursor-pointer" />
       <span v-else><q-icon name="close" @click="show_import_details = false" class="cursor-pointer" />{{ formData }}
       </span>
     </div>
+
+    <SELECT_FOLDER :label="'Ordner zum Speichern auswählen'"/>
 
   </div>
 </template>
@@ -129,13 +137,14 @@ import VALUE_ITEM from 'src/components/elements/ValueItem.vue'
 import EDIT_ICON from 'src/components/elements/EditIcon.vue'
 import POPUP_CONCEPT from 'src/components/elements/PopupConcept.vue'
 import CQL_CHECK from "./cql/CQLCheck.vue";
+import SELECT_FOLDER from 'src/components/elements/SelectFolder.vue'
 
 export default {
   name: 'ObservationTable',
 
   props: ['input_data', 'title'],
 
-  components: { VALUE_ITEM, EDIT_ICON, POPUP_CONCEPT, CQL_CHECK },
+  components: { VALUE_ITEM, EDIT_ICON, POPUP_CONCEPT, CQL_CHECK, SELECT_FOLDER },
 
   data() {
     return {
@@ -185,6 +194,25 @@ export default {
       }
       this.formData[ind].check = await this.$store.dispatch('checkCQLRule', this.formData[ind])
     },
+
+    loadSurvey(item) {
+      this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { OBSERVATION_ID: item.OBSERVATION_ID, _columns: ['OBSERVATION_BLOB'] } })
+        .then(res => this.$emit('previewSurvey', res[0].OBSERVATION_BLOB))
+    },
+
+    downloadRAW(item) {
+      this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { OBSERVATION_ID: item.OBSERVATION_ID, _columns: ['OBSERVATION_BLOB', 'TVAL_CHAR'] } })
+        .then(res => {
+          const TMP_JSON = JSON.parse(res[0].TVAL_CHAR)
+          console.log(TMP_JSON)
+          const payload = {
+            filename: 'test.pdf', //TMP_JSON.filename,
+            dir: TMP_JSON.source_dir,
+            buffer: res[0].OBSERVATION_BLOB
+          }
+          this.$store.dispatch('exportRAWdata_to_file', payload)
+        })
+    }
 
     // ENDE METHODS
   }

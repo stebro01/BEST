@@ -10,7 +10,7 @@ import { View_Observation } from 'src/classes/View_Observation'
 import { View_Patient } from "src/classes/View_Patient";
 import { View_Concept } from 'src/classes/View_Concept'
 import { View_user_patient_lookup } from "src/classes/View_User_Patient_Lookup";
-import { raw_read } from "src/tools/raw_import";
+import { raw_read, raw_write } from "src/tools/raw_import";
 
 
 export const importSurveyBEST = async ({commit, state}, payload ) => {
@@ -128,17 +128,36 @@ export const  importRAWdata_from_file = async ({commit, state}, payload) => {
     ENCOUNTER_NUM: payload.ENCOUNTER_NUM,
     PROVIDER_ID: payload.PROVIDER_ID,
     START_DATE: payload.START_DATE,
-    TVAL_CHAR: JSON.stringify({filename: status_read.data.filename+status_read.data.ext, ext: status_read.data.ext, source_dir: status_read.data.dir}),
+    TVAL_CHAR: JSON.stringify({filename: status_read.data.filename+status_read.data.ext, ext: status_read.data.ext, sizeKB: status_read.data.sizeKB,source_dir: status_read.data.dir}),
     UPLOAD_ID: state.UPLOAD_ID,
     CATEGORY_CHAR: 'RAW',
     OBSERVATION_BLOB: status_read.data.buffer,
     SOURCESYSTEM_CD: 'SNOMED-CT',
+    VALUEFLAG_CD: status_read.data.signature,
+    CONCEPT_CD: payload.CONCEPT_CD,
+    VALTYPE_CD: 'R'
   }
-  // CREATE THE OBSERVATION
+  // CREATE THE VIEW OBSERVATION
   const VIEW_OBSERVATION = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+  // CHECK IF THE DATA ALREADY EXISTS
+  if (!payload._force) {  
+    const res_exist = await VIEW_OBSERVATION.read({VALUEFLAG_CD: OBSERVATION_DATA.VALUEFLAG_CD})
+    console.log(OBSERVATION_DATA.VALUEFLAG_CD, res_exist)
+    if (res_exist.data.length > 0) return RETURN_DATA({status: false, error: error_codes.data_already_exists}, commit)
+  }
+  // ADD THE DATA
   const status_prepare_create = await VIEW_OBSERVATION.prepare_create(OBSERVATION_DATA)
   // FERTIG
   return RETURN_DATA(status_prepare_create, commit)
+}
+
+export const exportRAWdata_to_file = async ({commit, state}, payload) => {
+  commit('LOG', {method: 'action->exportRAWdata_to_file', data: payload})
+  commit('SPINNER_SET', true)
+  // WRITE DATA
+  const status_write = await raw_write(payload, {writeFileSync: window.electron.writeFile}, window.electron.path)
+
+  return RETURN_DATA(status_write, commit)
 }
 
 /**

@@ -3,6 +3,7 @@
  */
 
 import { error_codes, log } from "./logger";
+const CryptoJS = require('crypto-js');
 
 /**
  * 
@@ -17,7 +18,7 @@ export async function raw_read(filepath, fs, path) {
     // else
     var buffer = fs.readFileSync(filepath);
     var parsedPath = path.parse(filepath);
-    return {status: true, data: {ext: parsedPath.ext, dir: parsedPath.dir, filename: parsedPath.name, buffer: buffer}}
+    return {status: true, data: {ext: parsedPath.ext, dir: parsedPath.dir, filename: parsedPath.name, buffer: buffer, signature: createBlobSignature(buffer), sizeKB: buffer.length / 1024}}
 }
 
 /**
@@ -31,12 +32,20 @@ export async function raw_read(filepath, fs, path) {
  *  const status_write = await raw_write(data, fs, path)
  */
 export async function raw_write(data, fs, path) {
-    log({method: 'raw_import -> raw_write', message: 'write data', data: data})
+    log({method: 'raw_import -> raw_write', message: 'write data'})
     // data valid?
     if (!data || !data.buffer) return {error: error_codes.invalid_payload, status: false}
     // else
-    var outpath = path.join(data.dir, data.filename + data.ext)
+    var outpath = path.join(data.dir, data.filename)
     log({method: 'raw_import -> raw_write', message: `write data to: ${outpath}`})
     fs.writeFileSync(outpath, data.buffer);
     return {status: true, data: outpath}
 }
+
+
+// SOME LOCAL FUNCTIONS
+function createBlobSignature(blob) {
+    const wordArray = CryptoJS.lib.WordArray.create(blob);
+    const hash = CryptoJS.SHA256(wordArray);
+    return hash.toString();
+  }

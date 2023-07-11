@@ -124,7 +124,11 @@ export class Scheme_X {
         if (payload._sort) EL += ` ORDER BY \"${payload._sort}\"`
 
         if (EL === '') return {query: undefined, error: error_codes.invalid_payload}
-        return {query: `SELECT * from ${TABLE_NAME} WHERE ${EL}`, error: undefined}
+
+        // DETERMINE THE COLUMNS
+        var COLUMNS = '*'
+        if (payload._columns) COLUMNS = payload._columns.join(', ')
+        return {query: `SELECT ${COLUMNS} from ${TABLE_NAME} WHERE ${EL}`, error: undefined}
 
     }
 

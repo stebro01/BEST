@@ -42,6 +42,7 @@ const error_codes = {
     could_not_get_patient_num: 'PATIENT_NUM konnte nicht bestimmt werden',
     folder_does_not_exist: "Verzeichnis existiert nicht",
     file_does_not_exist: "Datei existiert nicht",
+    data_already_exists: "Daten existieren bereits in der DB",
     table_does_not_exist: "Der angegebene Table existiert nicht",
     could_not_create_db: "Konnte die DB nicht erzeugen",
     could_not_attach_db: "Konnte die angegebene DB nicht anhängen (ATTACH)",
