@@ -10,19 +10,21 @@
 export class FileExplorer {
     constructor(pathModule, fsModule) {
       this.path = pathModule;
-      this.fs = fsModule;
-      this.currentPath = "/";
+      this.fs = fsModule;    
       this.availableDrives = this.detectDrives();
+      this.currentPath = this.availableDrives[0]; //this.currentPath = "/";
+      this.hideHiddenFiles = true;
   
-      if (process.platform === "win32" && this.availableDrives.length > 0) {
-        this.currentPath = this.availableDrives[0];
-      }
     }
   
     // Set the current path
     // Example: explorer.setCurrentPath('/Users/ste/MyProjects/BEST/db/app')
     setCurrentPath(folderPath) {
       this.currentPath = folderPath;
+    }
+
+    async checkPath(folderPath) {
+        return this.fs.existsSync(folderPath)
     }
   
     // Get the current path
@@ -33,26 +35,27 @@ export class FileExplorer {
   
     // Get the directory contents
     // Example: explorer.getDirectoryContents()
-    getDirectoryContents() {
+    async getDirectoryContents() {
       const directoryPath = this.currentPath;
-  
       try {
-        const files = this.fs.readdirSync(directoryPath);
-        const directoryContents = files.map((file) => {
-          const filePath = this.path.join(directoryPath, file);
-          const isDirectory = this.fs.lstatSync(filePath).isDirectory();
-          return {
-            name: file,
-            path: filePath,
-            isDirectory,
-          };
-        });
-        const result = [];
-        directoryContents.forEach((content) => {
-          if (content.isDirectory) result.push(content.path);
-        });
-  
-        return result;
+        const files = await this.fs.readdirSync(directoryPath);
+        var directoryContents = []
+        for (let file of files) {
+            // check if first string of file is a dot
+            if (!this.hideHiddenFiles || (file[0] !== '.' && file[0] !== '~' && file[0] !== '$')) {
+                let filePath = this.path.join(directoryPath, file);
+            var isDirectory = false
+            // NEED TO DO THIS WORKOROUND TO CHECK IF IT IS A DIRECTORY
+            try {
+                let tmp = await this.fs.readdirSync(filePath) //if no error occurs, it is a directory
+                isDirectory = true
+            } catch (err) {
+                // console.error(err)
+            }
+            if (isDirectory) directoryContents.push(filePath)
+            }
+        }
+        return directoryContents;
       } catch (err) {
         console.error("Error reading directory:", err);
         return [];
@@ -77,16 +80,18 @@ export class FileExplorer {
           drives.push(drivePath);
         }
       }
+
+      if (this.fs.existsSync('/')) drives.push('/')
   
       return drives;
     }
   
     // Get info about the file explorer
     // Example: explorer.info()
-    info() {
+    async info() {
       const currentPath = this.currentPath;
       const availableDrives = this.availableDrives;
-      const directoryContents = this.getDirectoryContents();
+      const directoryContents = await this.getDirectoryContents();
   
       return {
         currentPath,

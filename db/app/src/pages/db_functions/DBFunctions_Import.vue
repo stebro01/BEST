@@ -68,8 +68,10 @@ export default {
     // },
 
     importData(data) {
-      this.imported_data = data
-
+      if (!data || !Array.isArray(data) || data[0] === undefined)  {
+        return false
+      } else this.imported_data = data
+      
       // // FOR DEBUGGING
       // const status = exportFile('IMPORT.json', JSON.stringify(data))
 

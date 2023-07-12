@@ -9,7 +9,7 @@
     <!-- SELECT FILE -->
     <div class="col-12 text-center">
       <SELECT_FILE :accept="ACCEPT_FILETYPE" :label="`${TEXT.select_file} (${ACCEPT_FILETYPE})`"
-        @save="importData($event, selected_import_method)" />
+        @save="importData($event, selected_import_method)" :multiple="true"/>
 
       <div v-if="selected_import_method === 'csv' && !show_spinner">
         <q-icon name="info" class="q-mt-sm cursor-pointer" size="md" @click="show_csv_help = true" />

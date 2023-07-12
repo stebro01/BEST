@@ -113,6 +113,7 @@ export default {
     },
 
     importData(file) {
+      console.log(file)
       if (file && file.path) {
         this.JSON_FN = file
         this.loadFile(this.JSON_FN)

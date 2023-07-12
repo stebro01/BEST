@@ -105,6 +105,8 @@
             </q-icon>
           </span>
         </q-badge>
+        <!-- DB IS UPT TO DATE -->
+        <q-badge v-if="db_status_text" color="white"><q-icon v-if="db_is_uptodate" color='green' name="check"/><q-icon v-else class="cursor-pointer" @click="$router.push({name: 'DBFunctions_Update'})" color='red' name="warning"/><q-tooltip>{{ db_status_text }}</q-tooltip></q-badge>
       </div>
     </q-footer>
 
@@ -129,7 +131,9 @@ export default {
     data() {
     return {
       leftDrawerOpen: false,
-      essentialLinks: this.$store.getters.ENV.essentialLinks
+      essentialLinks: this.$store.getters.ENV.essentialLinks,
+      db_is_uptodate: false,
+      db_status_text: undefined
     }
   },
 
@@ -154,6 +158,7 @@ export default {
     if (this.$store.getters.ENV.app.autologin) {
       if (this.$store.getters.SETTINGS) this.$store.dispatch('connectDB')
       .then(() => {
+        this.check_db_date()
         this.$store.dispatch('loginUser', {USER_CD: this.$store.getters.ENV.app.autologin_data.name, PASSWORD_CHAR: this.$store.getters.ENV.app.autologin_data.password})
        .then(() => {
         this.$router.push({name: 'Start'})
@@ -161,7 +166,6 @@ export default {
       })
       .catch(err => {})
     }
-
     
   },
 
@@ -180,6 +184,23 @@ export default {
 
     changeDrawer(val) {
       this.leftDrawerOpen = val
+    },
+
+    // check if db is up to date
+    check_db_date() {
+      
+      // get the db version
+      this.$store.dispatch('searchDB', {table: 'CODE_LOOKUP', query_string: {CODE_CD: 'DB_VERSION', _columns: ['NAME_CHAR']}})
+      .then(res => {
+        if (res && res.length > 0) {
+          const db_version = res[0].NAME_CHAR
+          const app_version = this.$store.getters.ENV.app.version
+          this.db_status_text = `DB-Version: ${db_version} (App-Version: ${app_version})`
+          if (db_version === app_version) this.db_is_uptodate = true
+          else this.db_is_uptodate = false
+        }
+      })
+
     }
 
   }

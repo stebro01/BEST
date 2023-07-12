@@ -89,7 +89,7 @@
               <q-icon name="preview" class="cursor-pointer" @click="loadSurvey(item)"><q-tooltip>Vorschau</q-tooltip></q-icon> surveyBEST 
             </span>
             <span v-else-if="item.VALTYPE_CD === 'R'">
-              <q-icon name="file_download" class="cursor-pointer" @click="downloadRAW(item)"><q-tooltip>Daten herunterladen</q-tooltip></q-icon>RAW
+              <q-icon name="file_download" class="cursor-pointer" @click="show_data_explorer = true; show_data_explorer_item = item"><q-tooltip>Daten herunterladen</q-tooltip></q-icon>RAW
             </span>
             <span v-else>
               {{ item.OBSERVATION_BLOB }}
@@ -126,7 +126,13 @@
       </span>
     </div>
 
-    <SELECT_FOLDER :label="'Ordner zum Speichern auswählen'"/>
+    <!-- SELECT A FOLDER -->
+    <q-dialog v-model="show_data_explorer">
+        <SELECT_FOLDER v-if="show_data_explorer" :label="'Ordner zum Speichern auswählen'" :root_dir="last_selected_folder" 
+          @close="show_data_explorer = false; show_data_explorer_item = undefined"
+          @save="downloadRAW($event, show_data_explorer_item)"
+        />
+    </q-dialog>
 
   </div>
 </template>
@@ -155,6 +161,9 @@ export default {
       show_import_details: false,
       preview_survey_best_show: false,
       preview_survey_best_item: undefined,
+      show_data_explorer: false,
+      show_data_explorer_item: undefined,
+      last_selected_folder: undefined,
 
     }
   },
@@ -200,18 +209,28 @@ export default {
         .then(res => this.$emit('previewSurvey', res[0].OBSERVATION_BLOB))
     },
 
-    downloadRAW(item) {
+    downloadRAW(folder, item) {
       this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { OBSERVATION_ID: item.OBSERVATION_ID, _columns: ['OBSERVATION_BLOB', 'TVAL_CHAR'] } })
         .then(res => {
           const TMP_JSON = JSON.parse(res[0].TVAL_CHAR)
-          console.log(TMP_JSON)
           const payload = {
-            filename: 'test.pdf', //TMP_JSON.filename,
-            dir: TMP_JSON.source_dir,
+            filename: TMP_JSON.filename,
+            dir: folder,
             buffer: res[0].OBSERVATION_BLOB
           }
           this.$store.dispatch('exportRAWdata_to_file', payload)
+          .then(res => {
+            this.$q.notify({
+              message: `Datei erfolgreich gespeichert: ${payload.dir}/${payload.filename}`,
+              color: 'positive',
+              icon: 'cloud_done',
+            })
+          })
         })
+        // CLOSE EVERYTING
+        this.last_selected_folder = folder
+        this.show_data_explorer = false
+        this.show_data_explorer_item = undefined
     }
 
     // ENDE METHODS

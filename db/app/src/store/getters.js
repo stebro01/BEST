@@ -29,7 +29,9 @@ export function CONNECTED(state) {
 }
 
 export function ISADMIN(state) {
-    return false
+    if (state.USER === undefined) return false
+    if (state.USER.COLUMN_CD !== 'admin') return false
+    return true
 }
 
 export function SYSTEM_ID(state) {

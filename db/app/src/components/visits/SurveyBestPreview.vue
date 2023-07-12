@@ -2,7 +2,8 @@
   <div v-if="preview_survey_best_item" class="row justify-center" style="max-width: 90%" id="mySurveyDIV">
     <div class="col-12 overflow-hidden">
       <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close" size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
-      <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer" @click="printDiv('mySurveyDIV')" name="picture_as_pdf" size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.pdf }}</q-tooltip></q-icon>
+      <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer q-ml-md" @click="printDiv('mySurveyDIV')" name="picture_as_pdf" size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.pdf }}</q-tooltip></q-icon>
+      <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer q-ml-md" @click="save_to_disk()" name="download" size="md"><q-tooltip>Speichere lokal</q-tooltip></q-icon>
       <q-card class="q-ma-md no-shadow">
         <!-- SUMMARY -->
         <q-card-section v-if="preview_survey_best_item.SUMMARY">
@@ -72,6 +73,7 @@
 
 <script>
 import html2pdf from "html2pdf.js"
+import { exportFile } from 'quasar'
 
 export default {
   name: 'SurveyBestPreview',
@@ -167,6 +169,13 @@ export default {
         var div = document.getElementById(val)
         const filename = `${this.preview_survey_best_item.RESULTS[0].value}_${this.preview_survey_best_item.RESULTS[1].value}.pdf`
         html2pdf(div, {margin: 1, filename: filename})
+      },
+
+      save_to_disk() {
+        const filename = `PID_${this.$store.getters.PATIENT_PINNED.PATIENT_CD}_SURVEYBEST_${this.preview_survey_best_item.RESULTS[1].value}_DATE_${this.preview_survey_best_item.RESULTS[2].value}.json`
+        const status = exportFile(filename, this.item, 'application/json')
+        if (!status === true)this.$q.notify({type: 'negative', message: 'Datei konnte nicht gespeichert werden'})
+
       }
 
 

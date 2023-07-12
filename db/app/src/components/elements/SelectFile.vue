@@ -2,7 +2,7 @@
   <q-card class="my-card q-mt-xl">
     <q-separator class="q-mx-sm" />
     <q-card-section class="q-pa-md">
-      <q-file v-model="file_to_read" :accept="accept" :label="label" :multiple="true">
+      <q-file v-model="file_to_read" :accept="accept" :label="label" :multiple="MULTIPLE">
         <template v-slot:prepend>
           <q-icon name="attach_file" />
         </template>
@@ -26,7 +26,7 @@
 export default {
   name: 'SelectFile',
 
-  props: ['label', 'accept'],
+  props: ['label', 'accept', 'multiple'],
 
   components: {},
 
@@ -43,7 +43,10 @@ export default {
   },
 
   computed: {
-
+    MULTIPLE() {
+      if (this.multiple) return true
+      else return false
+    } 
   }
 
 
