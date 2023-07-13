@@ -1,0 +1,74 @@
+{
+    "title": "Fragebogen zur Erfassung der geistigen Leistungsfähigkeit (FLei)",
+    "short_title": "flei",
+    "coding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "868186005",
+        "display" : "Fragebogen zur Erfassung der geistigen Leistungsfähigkeit",
+        "version": "20230713"
+    },
+    "description": "Fragebogen zur Erfassung der geistigen Leistungsfähigkeit",
+    "manual": "Bitte lesen Sie jede Frage einzeln sorgfältig durch und entscheiden Sie, wie häufig das vorkommt. Kreuzen Sie bitte bei jeder Frage die für Sie am besten zutreffende Antwort an. <br><b>Bitte beantworten Sie jede Frage!</b>",
+    "keywords": "geistige Leistungsfähigkeit, Konzentration, Gedächtnis, Planung",
+    "items": [
+        {
+            "label": "Wie häufig kommt das vor...",
+            "tag": "Q1",
+            "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "Nie", "value": 0},
+                    {"label": "Selten", "value": 1},
+                    {"label": "Gelegentlich", "value": 2},
+                    {"label": "Häufig", "value": 3},
+                    {"label": "Sehr häufig", "value": 4}
+                ],
+                "questions": [
+                    {"id": 1, "label": "Es fällt mir schwer, mich durchgehend über eine halbe Stunde zu konzentrieren.", "tag": "difficulty_concentrating"},
+                    {"id": 2, "label": "Eine Geburtstagsfeier vorzubereiten, fällt mir schwer.", "tag": "difficulty_preparing_birthday_party"},
+                    {"id": 3, "label": "Bei wichtigen Gesprächen nehme ich mir vor, gewisse Punkte anzusprechen. Anschließend muss ich aber feststellen, dass ich einige Punkte vergessen habe anzusprechen.", "tag": "forgetting_points_in_conversation"},
+                    {"id": 4, "label": "Ganz normale Nebengeräusche stören mich beim Lesen.", "tag": "disturbed_by_background_noise"},
+                    {"id": 5, "label": "Manchmal überstürzt sich in meinem Kopf alles, so dass ich mir nichts merken kann.", "tag": "overwhelmed_thoughts"},
+                    {"id": 6, "label": "Namen von Politikern oder Prominenten, die ich mir merken wollte, vergesse ich immer wieder.", "tag": "forgetting_names"},
+                    {"id": 7, "label": "Neues zu verstehen, z. B. ein Spiel, fällt mir schwer.", "tag": "difficulty_understanding_new_things"},
+                    {"id": 8, "label": "Es fällt mir schwer, meinen Tagesablauf (Essenszeiten, Arbeiten, Termine, Freizeit) selbstständig zu planen.", "tag": "difficulty_planning_daily_routine"},
+                    {"id": 9, "label": "Beim Lesen eines Romans verliere ich den Überblick über die Handlung und die Personen.", "tag": "losing_track_reading_novel"},
+                    {"id": 10, "label": "Ich stoße an Hindernisse auf der rechten Seite an.", "tag": "bumping_into_obstacles_right_side"},
+                    {"id": 11, "label": "Wenn ich eine Geschichte, die mir jemand erzählt hat, zu Hause weitererzählen will, bekomme ich den Inhalt nicht mehr zusammen.", "tag": "forgetting_story_details"},
+                    {"id": 12, "label": "Ich übersehe Personen auf der linken Seite.", "tag": "overlooking_people_left_side"},
+                    {"id": 13, "label": "Wenn ich eine Aufgabe im Kopf rechnen will, kann ich mir die Zwischenergebnisse nicht merken.", "tag": "difficulty_remembering_calculations"},
+                    {"id": 14, "label": "Es fällt mir schwer, meinen Tag schon am Morgen zu planen.", "tag": "difficulty_planning_day_in_morning"},
+                    {"id": 15, "label": "Mein Kopf ist so voll, dass ich mir nichts Neues merken kann.", "tag": "head_too_full_to_remember_new_things"},
+                    {"id": 16, "label": "Ich habe Schwierigkeiten, in meinem Zimmer Sachen zu finden, die sich rechts von mir befinden.", "tag": "difficulty_finding_things_right_side"},
+                    {"id": 17, "label": "Es fällt mir schwer, lange an einer Sache zu bleiben.", "tag": "difficulty_staying_on_task"},
+                    {"id": 18, "label": "Ich habe das Gefühl, dass meine Gedanken blockiert sind.", "tag": "feeling_of_blocked_thoughts"},
+                    {"id": 19, "label": "Einen Urlaub zu planen, fällt mir schwer.", "tag": "difficulty_planning_vacation"},
+                    {"id": 20, "label": "Wenn ich Sorgen habe, verliere ich völlig den Überblick.", "tag": "losing_track_when_worried"},
+                    {"id": 21, "label": "Lösungen für Alltagsprobleme fallen mir nicht ein.", "tag": "difficulty_finding_solutions"},
+                    {"id": 22, "label": "Ich habe Schwierigkeiten, in meinem Zimmer Sachen zu finden, die sich links von mir befinden.", "tag": "difficulty_finding_things_left_side"},
+                    {"id": 23, "label": "Meine Konzentrationsprobleme beeinträchtigen das Alltagsleben.", "tag": "concentration_issues_affecting_daily_life"},
+                    {"id": 24, "label": "Neue Namen kann ich mir schwer merken.", "tag": "difficulty_remembering_new_names"},
+                    {"id": 25, "label": "Mir fällt es schwer, aus Gewohnheiten auszubrechen.", "tag": "difficulty_breaking_habits"},
+                    {"id": 26, "label": "Wenn ich Sorgen habe, fallen mir sogar für kleine Probleme keine Lösungen ein.", "tag": "no_solutions_when_worried"},
+                    {"id": 27, "label": "Es fällt mir schwer, einem Gespräch zwischen mehreren Personen zu folgen.", "tag": "difficulty_following_group_conversation"},
+                    {"id": 28, "label": "Wenn ich einen Zeitungsartikel lese, vergesse ich den Inhalt schnell.", "tag": "forgetting_news_articles"},
+                    {"id": 29, "label": "Beim Frühstück übersehe ich Dinge auf der linken Seite des Tabletts bzw. Tellers.", "tag": "overlooking_things_at_breakfast"},
+                    {"id": 30, "label": "Neuigkeiten aus der Familie, die ich mir unbedingt merken wollte, vergesse ich trotzdem.", "tag": "forgetting_important_family_news"},
+                    {"id": 31, "label": "Wenn ich etwas lese, schweifen meine Gedanken bald ab, so dass ich gar nicht mitbekomme, was ich da gerade lese.", "tag": "mind_wandering_while_reading"},
+                    {"id": 32, "label": "Ich habe Schwierigkeiten, mein Wochenende zu planen.", "tag": "difficulty_planning_weekend"},
+                    {"id": 33, "label": "Ich stehe da und weiß nicht mehr, was ich gerade tun wollte.", "tag": "forgetting_what_i_was_doing"},
+                    {"id": 34, "label": "Es fällt mir schwer, die Vor- und Nachteile einer Entscheidung abzuwägen (z. B. über Geld).", "tag": "difficulty_weighing_pros_cons"},
+                    {"id": 35, "label": "Wenn mich jemand bei einer Tätigkeit unterbricht, kann ich die Tätigkeit nachher nur schwer wieder aufnehmen.", "tag": "difficulty_resuming_task_after_interruption"}
+                ]
+            }
+        }
+    ],
+    "results": {
+        "method": "sum",
+        "coding": { "display" : "flei", "code" : "CUSTOM: XXXXXX", "system" : "http://snomed.info/sct"}
+    }
+}

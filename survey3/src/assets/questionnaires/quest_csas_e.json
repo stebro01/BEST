@@ -1,0 +1,271 @@
+{
+  "title": "CSAS-E: Computerspielabhängigkeitsskala für Erwachsene",
+  "short_title": "csas_e",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "444061006",
+    "display": "CSAS-E",
+    "version": "20230124"
+  },
+  "description": "Ein Verfahren zur Erfassung der Internet Gaming Disorder nach DSM-5",
+  "manual": "<b>Sehr geehrte*r Studienteilnehmer*in,</b>: Wir danken Ihnen für die Teilnahme an unserer Untersuchung. ",
+  "keywords": "Computerspielabhängigkeitsskala für Erwachsene, CSAS-E, Internet Gaming Disorder DSM-5",
+  
+    "items": [
+      {
+        "label": "Alter",
+        "id": 1,
+        "coding": {
+          "display": "age",
+          "code": "397669002",
+          "system": "http://snomed.info/sct"
+        },
+        "value": null,
+        "type": "number",
+        "force": true
+      },
+      {
+        "label": "Geschlecht",
+        "id": 2,
+        "coding": {
+          "display": "gender",
+          "code": "SCTID: 263495000",
+          "system": "http://snomed.info/sct"
+        },
+        "value": null,
+        "type": "radio",
+        "inline": true,
+        "force": true,
+        "options": [
+          { "label": "m", "value": "Male" },
+          { "label": "w", "value": "Female" },
+          { "label": "d", "value": "Intersex" }
+        ]
+      },
+      {
+        "label": "Wie oft haben Sie in den letzten 12 Monaten auf folgenden Geräten Computerspiele gespielt?",
+        "tag": "Q1",
+        "id": [3, 4, 5, 6],
+        "caption": "",
+        "value": [],
+        "type": "multiple_radio",
+        "inline": true,
+        "options": {
+          "answers": [
+            { "label": "nie", "value": 0 },
+            { "label": "1- oder 2-mal", "value": 1 },
+            { "label": "3- bis 5-mal", "value": 2 },
+            { "label": "6- bis 12-mal", "value": 3 },
+            { "label": "mehrmals pro Monat", "value": 4 },
+            { "label": "einmal pro Woche", "value": 5 },
+            { "label": "mehrmals pro Woche", "value": 6 },
+            { "label": "täglich", "value": 7 }
+          ],
+          "questions": [
+            {
+              "id": 3,
+              "label": "Spiele auf PC, Mac oder Tablet:",
+              "tag": "games_on_pc_mac_tablet"
+            },
+            {
+              "id": 4,
+              "label": "Spiele auf Spielkonsolen (Playstation, Gamecube, Xbox, Wii):",
+              "tag": "games_on_game_consoles"
+            },
+            {
+              "id": 5,
+              "label": "Spiele auf tragbaren Spielkonsolen (Gameboy, Nintendo DS, PSP):",
+              "tag": "games_on_portable_consoles"
+            },
+            {
+              "id": 6,
+              "label": "Spiele auf Handy oder Smartphone:",
+              "tag": "games_on_mobile_devices"
+            }
+          ]
+        }
+      },
+      {
+        "label": "Sie haben immer <b>nie</b> angekreuzt? Dann brauchen Sie die nachfolgenden Fragen nicht mehr zu beantworten, und der Fragebogen endet hier. Ansonsten fahren Sie bitte direkt bei den nächsten Fragen fort.<br><br><br>",
+        "type": "separator",
+        "force": false
+      },
+      {
+          "label": "Denken Sie bitte an einen gewöhnlichen Werktag bzw. einen gewöhnlichen Wochenendtag. Wie lange spielen Sie Computer- bzw. Videospiele?",
+          "type": "separator",
+          "force": false
+        },
+        {
+          "label": "Gewöhnlicher Werktag (in Stunden)",
+          "id": 7,
+          "value": null,
+          "type": "number",
+          "inline": false,
+          "force": false
+      },
+      {
+          "label": "Gewöhnlicher Wochentag (in Stunden)",
+          "id": 8,
+          "value": null,
+          "type": "number",
+          "inline": false,
+          "force": false
+      },
+      {
+          "label": "Welche drei Computer- und Videospiele spielen Sie momentan am liebsten?",
+          "type": "separator",
+          "force": false
+        },
+        {
+          "label": "Spiel 1",
+          "id": 9,
+          "value": null,
+          "type": "text",
+          "inline": false,
+          "force": false
+      },
+      {
+          "label": "Spiel 2",
+          "id": 10,
+          "value": null,
+          "type": "text",
+          "inline": false,
+          "force": false
+      },
+      {
+          "label": "Spiel 3",
+          "id": 11,
+          "value": null,
+          "type": "text",
+          "inline": false,
+          "force": false
+      },
+      {
+          "label": "Bei den folgenden Fragen geht es um Ihren <b>Umgang mit Computerspielen</b>. Mit Computerspielen sind alle Arten von elektronischen Bildschirmspielen gemeint. Zum Beispiel:<ul><li>Computerspiele am PC, Mac oder Tablet</li><li>Videospiele auf der Spielkonsole</li><li>Mobile Spiele auf tragbaren Spielkonsolen, Handys und Smartphones</li></ul><br>Es wird nach Ihren persönlichen Erlebnissen und Meinungen gefragt, es gibt also keine richtigen oder falschen Antworten.<br>Bitte kreuzen Sie für jede Aussage genau ein Antwortkästchen an. Kreuzen Sie bitte nicht zwischen den Kästchen an, sondern immer nur an den vorgesehenen Stellen. Sollte es vorkommen, dass keine der vorgegebenen Antwortmöglichkeiten genau zutrifft, dann kreuzen Sie bitte das an, was am ehesten auf Sie zutrifft.",
+          "type": "separator",
+          "force": false
+        },
+        {
+          "label": "Wie ist Ihre Meinung zu folgenden Aussagen über das Computerspielen? Denken Sie dabei bitte an die letzten 12 Monate.",
+          "tag": "Q2",
+          "id": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+          "caption": "",
+          "value": [],
+          "type": "multiple_radio",
+          "inline": true,
+          "options": {
+            "answers": [
+              {"label": "stimmt nicht", "value": 1},
+              {"label": "stimmt kaum", "value": 2},
+              {"label": "stimmt eher", "value": 3},
+              {"label": "stimmt genau", "value": 4}
+            ],
+            "questions": [
+              {
+                "id": 12,
+                "label": "Ich beschäftige mich auch während der Zeit, in der ich nicht Computerspiele spiele, gedanklich sehr stark mit Spielen.",
+                "tag": "thinking_about_games_when_not_playing"
+              },
+              {
+                "id": 13,
+                "label": "Ich habe das Gefühl, dass Computerspiele für mich immer wichtiger werden.",
+                "tag": "games_becoming_more_important"
+              },
+              {
+                "id": 14,
+                "label": "Ich habe das Gefühl, meine Spielzeit nicht kontrollieren zu können.",
+                "tag": "lack_of_control_over_gaming_time"
+              },
+              {
+                "id": 15,
+                "label": "Ich muss immer länger spielen, um zufrieden zu sein.",
+                "tag": "playing_longer_to_be_satisfied"
+              },
+              {
+                "id": 16,
+                "label": "Wenn ich nicht spielen kann, bin ich gereizt und unzufrieden.",
+                "tag": "irritated_and_unsatisfied_when_unable_to_play"
+              },
+              {
+                "id": 17,
+                "label": "Ich bin so häufig und intensiv mit Computerspielen beschäftigt, dass ich manchmal Probleme in der Schule bzw. auf der Arbeit bekomme.",
+                "tag": "gaming_causing_problems_in_school_or_work"
+              },
+              {
+                "id": 18,
+                "label": "Wenn ich längere Zeit nicht spiele, werde ich unruhig und nervös.",
+                "tag": "restlessness_and_nervousness_when_not_gaming"
+              },
+              {
+                "id": 19,
+                "label": "Meine Gedanken kreisen ständig ums Computerspielen, auch wenn ich gar nicht spiele.",
+                "tag": "constant_thoughts_about_gaming"
+              },
+              {
+                "id": 20,
+                "label": "Ich spiele häufig, wenn es in meinem Leben ansonsten gerade nicht so gut läuft.",
+                "tag": "gaming_as_escape_from_life_issues"
+              },
+              {
+                "id": 21,
+                "label": "Ich habe versucht, weniger zu spielen, habe es aber nicht geschafft.",
+                "tag": "failed_attempts_to_reduce_gaming"
+              },
+              {
+                "id": 22,
+                "label": "Durch mein Computerspielen machen mir andere Aktivitäten weniger Spaß als früher.",
+                "tag": "decreased_enjoyment_in_other_activities_due_to_gaming"
+              },
+              {
+                "id": 23,
+                "label": "Computerspielen ist für mich die beste Möglichkeit, meine Probleme zu vergessen.",
+                "tag": "gaming_as_best_escape_from_problems"
+              },
+              {
+                "id": 24,
+                "label": "Ich spiele länger, als ich es anderen eingestehe.",
+                "tag": "playing_longer_than_admitted"
+              },
+              {
+                "id": 25,
+                "label": "Weil ich so viel spiele, gibt es zu Hause oft ernsthaften Ärger und Streit.",
+                "tag": "conflict_at_home_due_to_gaming"
+              },
+              {
+                "id": 26,
+                "label": "Ich habe andere Hobbies aufgegeben oder stark eingeschränkt, weil mir das Computerspielen wichtiger ist.",
+                "tag": "giving_up_or_reducing_other_hobbies_for_gaming"
+              },
+              {
+                "id": 27,
+                "label": "Durch mein Computerspielen habe ich schon mein schulisches bzw. berufliches Weiterkommen riskiert.",
+                "tag": "risking_academic_or_career_progress_due_to_gaming"
+              },
+              {
+                "id": 28,
+                "label": "Ich belüge andere, um meine tatsächliche Spielzeit zu verheimlichen.",
+                "tag": "lying_about_gaming_time"
+              },
+              {
+                "id": 29,
+                "label": "Wegen des Computerspielens habe ich schon eine enge Beziehung/Freundschaft aufs Spiel gesetzt oder verloren.",
+                "tag": "jeopardizing_relationships_due_to_gaming"
+              }
+            ]
+          }
+        }
+    ]
+  
+  ,
+  "results": {
+    "method": "ids",
+    "scoring": [
+        {"id": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "value": [1,2,3,4], "score": [1,2,3,4]}
+    ],
+    "domaine":[
+        {"label": "sum_q2", "id": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "method": "sum",
+        "coding": { "display" : "CSAS-E", "code" : "CUSTOM: SCORE_CSASE_SUM", "system" : "CUSTOM"}
+        }
+    ]
+}
+}

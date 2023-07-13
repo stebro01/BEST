@@ -1,0 +1,235 @@
+{
+    "title": "PDQ - 39 (deutsche Version)",
+    "short_title": "pdq39",
+    "coding" : {
+        "system" : "CUSTOM",
+        "code" : "CUSTOM: SCORE_PDQ39",
+        "display" : "Fragebogen zur Erfassung der Stimmungs- und Verhaltensänderungen bei Parkinson (PDQ-39)",
+        "version": "20230713"
+    },
+    "description": "Fragebogen zur Erfassung der Stimmungs- und Verhaltensänderungen bei Parkinson (PDQ-39)",
+    "manual": "Bitte lesen Sie jede Frage einzeln sorgfältig durch und entscheiden Sie, wie häufig das vorkommt. Kreuzen Sie bitte bei jeder Frage die für Sie am besten zutreffende Antwort an. <br><b>Bitte beantworten Sie jede Frage!</b>",
+    "keywords": "parkionson, depression, angst, stimmung, verhalten, pdq39",
+    "items": [
+        {
+            "label": "Wie oft haben Sie im letzten Monat wegen Ihrer Parkinson-Erkrankung ...",
+            "tag": "Q1",
+            "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39],
+            "caption": "",
+            "value": [],
+            "type": "multiple_radio",
+            "inline": true,
+            "options": {
+                "answers": [
+                    {"label": "Niemals", "value": 0},
+                    {"label": "Selten", "value": 1},
+                    {"label": "Manchmal", "value": 2},
+                    {"label": "Häufig", "value": 3},
+                    {"label": "Immer oder Gar nicht", "value": 4}
+                ],
+                "questions": [
+                    {
+                      "id": 1,
+                      "label": "Schwierigkeiten gehabt, Freizeitaktivitäten, die Sie gerne machen würden, auszuüben?",
+                      "tag": "difficulty_engaging_in_leisure_activities"
+                    },
+                    {
+                      "id": 2,
+                      "label": "Schwierigkeiten gehabt, Ihren Haushalt zu versorgen (z.B. handwerkliche Tätigkeiten, Hausarbeiten, Kochen)?",
+                      "tag": "difficulty_managing_household_tasks"
+                    },
+                    {
+                      "id": 3,
+                      "label": "Schwierigkeiten gehabt, Einkaufstaschen zu tragen?",
+                      "tag": "difficulty_carrying_shopping_bags"
+                    },
+                    {
+                      "id": 4,
+                      "label": "Probleme gehabt, ungefähr 1 km zu gehen?",
+                      "tag": "difficulty_walking_1km"
+                    },
+                    {
+                      "id": 5,
+                      "label": "Probleme gehabt, ungefähr 100 m zu gehen?",
+                      "tag": "difficulty_walking_100m"
+                    },
+                    {
+                      "id": 6,
+                      "label": "Probleme gehabt, sich im Haus so zu bewegen, wie Sie wollten?",
+                      "tag": "difficulty_moving_around_in_house"
+                    },
+                    {
+                      "id": 7,
+                      "label": "Probleme gehabt, sich in der Öffentlichkeit zu bewegen?",
+                      "tag": "difficulty_moving_in_public"
+                    },
+                    {
+                      "id": 8,
+                      "label": "Eine Begleitperson gebraucht, um sich außer Haus zu bewegen?",
+                      "tag": "need_assistance_outside_home"
+                    },
+                    {
+                      "id": 9,
+                      "label": "Angst oder Sorgen gehabt, dass Sie in der Öffentlichkeit hinfallen könnten?",
+                      "tag": "fear_of_falling_in_public"
+                    },
+                    {
+                      "id": 10,
+                      "label": "Das Gefühl gehabt, mehr an das Haus gebunden zu sein, als Ihnen lieb wäre?",
+                      "tag": "feeling_housebound"
+                    },
+                    {
+                      "id": 11,
+                      "label": "Schwierigkeiten gehabt, sich selbst zu waschen?",
+                      "tag": "difficulty_self_washing"
+                    },
+                    {
+                      "id": 12,
+                      "label": "Schwierigkeiten gehabt, sich selbst anzuziehen?",
+                      "tag": "difficulty_self_dressing"
+                    },
+                    {
+                      "id": 13,
+                      "label": "Probleme gehabt, Knöpfe zu schließen oder Schnürsenkel zu binden?",
+                      "tag": "difficulty_buttoning_lacing"
+                    },
+                    {
+                      "id": 14,
+                      "label": "Probleme gehabt, deutlich zu schreiben?",
+                      "tag": "difficulty_writing_clearly"
+                    },
+                    {
+                      "id": 15,
+                      "label": "Schwierigkeiten gehabt, Ihr Essen klein zu schneiden?",
+                      "tag": "difficulty_cutting_food"
+                    },
+                    {
+                      "id": 16,
+                      "label": "Schwierigkeiten gehabt, ein Getränk zu halten, ohne es zu verschütten?",
+                      "tag": "difficulty_holding_drink"
+                    },
+                    {
+                      "id": 17,
+                      "label": "Sich niedergeschlagen oder deprimiert gefühlt?",
+                      "tag": "feeling_depressed"
+                    },
+                    {
+                      "id": 18,
+                      "label": "Sich isoliert oder einsam gefühlt?",
+                      "tag": "feeling_isolated_lonely"
+                    },
+                    {
+                      "id": 19,
+                      "label": "Sich verärgert oder verbittert gefühlt?",
+                      "tag": "feeling_angry_bitter"
+                    },
+                    {
+                      "id": 20,
+                      "label": "Sich den Tränen nahe gefühlt?",
+                      "tag": "feeling_on_the_verge_of_tears"
+                    },
+                    {
+                      "id": 21,
+                      "label": "Sich ängstlich gefühlt?",
+                      "tag": "feeling_anxious"
+                    },
+                    {
+                      "id": 22,
+                      "label": "Sich Sorgen über Ihre Zukunft gemacht?",
+                      "tag": "worrying_about_future"
+                    },
+                    {
+                      "id": 23,
+                      "label": "Das Gefühl gehabt, Ihre Parkinson-Erkrankung vor anderen verheimlichen zu müssen?",
+                      "tag": "feeling_need_to_hide_parkinsons"
+                    },
+                    {
+                      "id": 24,
+                      "label": "Situationen vermieden, die mit dem Essen oder Trinken in der Öffentlichkeit verbunden waren?",
+                      "tag": "avoiding_public_meals"
+                    },
+                    {
+                      "id": 25,
+                      "label": "Sich in der Öffentlichkeit wegen Ihrer Parkinson-Erkrankung geschämt?",
+                      "tag": "feeling_embarrassed_public_parkinsons"
+                    },
+                    {
+                      "id": 26,
+                      "label": "Sich Sorgen über Reaktionen anderer Ihnen gegenüber gemacht?",
+                      "tag": "worrying_about_others_reactions"
+                    },
+                    {
+                      "id": 27,
+                      "label": "Probleme im Verhältnis mit Ihnen nahestehenden Menschen gehabt?",
+                      "tag": "problems_with_close_relationships"
+                    },
+                    {
+                      "id": 28,
+                      "label": "Nicht die Unterstützung erhalten, die Sie von Ihrem (Ehe-)Partner benötigt hätten?",
+                      "tag": "lack_of_support_from_partner"
+                    },
+                    {
+                      "id": 29,
+                      "label": "Nicht die Unterstützung erhalten, die Sie von Ihren Verwandten oder engen Freunden benötigt hätten?",
+                      "tag": "lack_of_support_from_family_friends"
+                    },
+                    {
+                      "id": 30,
+                      "label": "Das Problem gehabt, tagsüber unerwartet einzuschlafen?",
+                      "tag": "problem_with_daytime_sleepiness"
+                    },
+                    {
+                      "id": 31,
+                      "label": "Probleme gehabt, sich zu konzentrieren (z.B. beim Lesen oder beim Fernsehen)?",
+                      "tag": "difficulty_concentrating"
+                    },
+                    {
+                      "id": 32,
+                      "label": "Das Gefühl gehabt, dass Sie ein schlechtes Gedächtnis hätten?",
+                      "tag": "feeling_poor_memory"
+                    },
+                    {
+                      "id": 33,
+                      "label": "Schlechte Träume oder Halluzinationen gehabt?",
+                      "tag": "having_nightmares_hallucinations"
+                    },
+                    {
+                      "id": 34,
+                      "label": "Schwierigkeiten mit dem Sprechen gehabt?",
+                      "tag": "difficulty_speaking"
+                    },
+                    {
+                      "id": 35,
+                      "label": "Sich außer Stande gefühlt, mit anderen richtig zu kommunizieren?",
+                      "tag": "feeling_incapable_of_communication"
+                    },
+                    {
+                      "id": 36,
+                      "label": "Den Eindruck gehabt, von anderen nicht beachtet zu werden?",
+                      "tag": "feeling_ignored_by_others"
+                    },
+                    {
+                      "id": 37,
+                      "label": "Schmerzhafte Muskelkrämpfe gehabt?",
+                      "tag": "painful_muscle_cramps"
+                    },
+                    {
+                      "id": 38,
+                      "label": "Schmerzen in den Gelenken oder anderen Körperteilen gehabt?",
+                      "tag": "pain_in_joints_body_parts"
+                    },
+                    {
+                      "id": 39,
+                      "label": "Sich unangenehm heiß oder kalt gefühlt?",
+                      "tag": "feeling_unpleasantly_hot_cold"
+                    }
+                  ]
+                  
+            }
+        }
+    ],
+    "results": {
+        "method": "sum",
+        "coding": { "display" : "flei", "code" : "CUSTOM: SCORE_PDQ39_SUM", "system" : "CUSTOM" }
+    }
+}
