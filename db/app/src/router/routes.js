@@ -45,6 +45,7 @@ const routes = [
       { path: 'db_queries', name: 'DBQueries', component: () => import('src/pages/DBQueries/DBQueries.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_queries/patient/csv_export', name: 'DBQueries_PatientCSVExport', component: () => import('src/pages/DBQueries/DBQueries_PatientCSVExport.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_queries/patient/multiedit', name: 'DBQueries_PatientMultiEdit', component: () => import('src/pages/DBQueries/DBQueries_PatientMultiEdit.vue'), beforeEnter: beforeEnterFuncAll },
+      { path: 'db_queries/patient/modernview', name: 'DBQueries_PatientView', component: () => import('src/pages/DBQueries/DBQueries_PatientView.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_functions', name: 'DBFunctions', component: () => import('src/pages/db_functions/DBFunctions.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_functions/import', name: 'DBFunctions_Import', component: () => import('src/pages/db_functions/DBFunctions_Import.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_functions/schemes', name: 'DBFunctions_EditSchemes', component: () => import('src/pages/db_functions/DBFunctions_EditSchemes.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
