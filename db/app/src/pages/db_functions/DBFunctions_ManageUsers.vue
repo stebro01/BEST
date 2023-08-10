@@ -56,10 +56,10 @@ export default {
       filter: undefined,
       selected: [],
       columns: [
-        { name: 'USER_CD', align: 'center', label: 'ID', field: 'USER_CD', sortable: true },
         { name: 'COLUMN_CD', align: 'center', label: 'Gruppe', field: 'COLUMN_CD', sortable: true },
+        { name: 'USER_CD', align: 'center', label: 'ID', field: 'USER_CD', sortable: true },
         { name: 'NAME_CHAR', align: 'center', label: 'Name', field: 'NAME_CHAR', sortable: true },
-        { name: 'USER_BLOB', align: 'center', label: 'Beschr.', field: 'USER_BLOB', sortable: true },
+        { name: 'CONCEPT_BLOB', align: 'center', label: 'Beschr.', field: 'CONCEPT_BLOB', sortable: true },
       ],
 
       show_add_user: false,
@@ -81,8 +81,12 @@ export default {
 
   methods: {
     loadData() {
-      this.$store.dispatch('searchDB', { query_string: {USER_ID: 0, _greater: true}, table: "USER_MANAGEMENT"})
-      .then(res => this.USER = res)
+      const query_string = "SELECT PROVIDER_DIMENSION.PROVIDER_ID as PROVIDER_ID, PROVIDER_DIMENSION.NAME_CHAR as NAME_CHAR, PROVIDER_DIMENSION.PROVIDER_PATH as PROVIDER_PATH, PROVIDER_DIMENSION.CONCEPT_BLOB as CONCEPT_BLOB, USER_MANAGEMENT.USER_ID as USER_ID, USER_MANAGEMENT.COLUMN_CD as COLUMN_CD, USER_MANAGEMENT.USER_CD as USER_CD, USER_MANAGEMENT.PASSWORD_CHAR as PASSWORD_CHAR FROM USER_MANAGEMENT LEFT JOIN PROVIDER_DIMENSION ON USER_MANAGEMENT.USER_CD = PROVIDER_DIMENSION.PROVIDER_ID;"
+      this.$store.dispatch('runQuery', query_string)
+      .then(res => {
+        this.USER = res.data
+        console.log(res.data)
+      })
     },
 
     editUser() {

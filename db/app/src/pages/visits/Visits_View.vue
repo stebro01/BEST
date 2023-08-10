@@ -16,10 +16,12 @@
               <VISIT_TAB v-if="PATIENT_PINNED" :PATIENT="PATIENT_PINNED" @clicked="visitTabClicked($event)" />
             </div>
             <div class="col-12 ">
+              <!-- Q_TABLE -->
               <q-table v-if="this.rows" :rows="rows" :columns="columns" row-key="OBSERVATION_ID"
-                class="cursor-pointer my-table" :filter="filter" :rows-per-page-options="rowsperpage" dense
+                class="my-table" :filter="filter" :rows-per-page-options="rowsperpage" dense
                 selection="multiple" v-model:selected="selected">
 
+                <!-- VSLOT -->
                 <template v-slot:top>
                   <!-- BUTTONS -->
                   <BOTTOM_DROPDOWN :show_import="selected.length === 0"
@@ -33,6 +35,34 @@
                   <q-space />
                   <!-- FILTERBOX -->
                   <FILTER_BOX :filter="filter" @update="filter = $event" />
+                </template>
+
+                <!-- SLOTS -->
+                <template v-slot:body="props">
+                  <q-tr :props="props" class="non-selectable">
+                    <q-td class="text-center cursor-pointer text-grey-7">
+                     <q-icon size="xs" v-if="selected.some(item => item.OBSERVATION_ID === props.row.OBSERVATION_ID)" name="check_box" @click="selected = selected.filter(item => item.OBSERVATION_ID !== props.row.OBSERVATION_ID);"/>
+                     <q-icon size="xs" v-else name="check_box_outline_blank" @click="selected.push(props.row)"/>
+                    </q-td>
+                    <!-- CONCEPT_CD -->
+                    <q-td key="CONCEPT_CD" :props="props">
+                      <div class="text-pre-wrap">{{ props.row.CONCEPT_CD }}</div>
+                    </q-td>
+                    <!-- CONCEPT_CD -->
+                    <q-td key="TVAL_CHAR" :props="props">
+                      <div class="text-pre-wrap">{{ props.row.TVAL_CHAR }}</div>
+                    </q-td>
+                    <!-- CATEGORY_CHAR -->
+                    <q-td key="CATEGORY_CHAR" :props="props">
+                      <div class="text-pre-wrap">{{ props.row.CATEGORY_CHAR }}</div>
+                    </q-td>
+
+                    <!-- START_DATE -->
+                    <q-td key="START_DATE" :props="props">
+                      <div class="text-pre-wrap">{{ props.row.START_DATE }}</div>
+                    </q-td>
+                    
+                  </q-tr>
                 </template>
 
               </q-table>
@@ -128,9 +158,8 @@ export default {
 
     loadObservations(PAYLOAD) {
       this.selected = []
-      this.$store.dispatch('searchDB', { query_string: { ...PAYLOAD, _view: true, _columns: ['OBSERVATION_ID', 'CONCEPT_CD', 'CONCEPT_NAME_CHAR', 'TVAL_CHAR', 'NVAL_NUM', 'UNIT_CD', 'VALTYPE_CD', 'CATEGORY_CHAR', 'START_DATE'] }, table: "OBSERVATION_FACT" })
+      this.$store.dispatch('searchDB', { query_string: { ...PAYLOAD, _view: true, _columns: ['OBSERVATION_ID', 'CONCEPT_CD', 'CONCEPT_NAME_CHAR', 'TVAL_CHAR', 'TVAL_RESOLVED', 'NVAL_NUM', 'UNIT_CD', 'VALTYPE_CD', 'CATEGORY_CHAR', 'START_DATE'], _sort: 'OBSERVATION_ID' }, table: "OBSERVATION_FACT" })
         .then(res_obs => {
-
           this.rows = []
           res_obs.forEach(r => {
             if (r.PROVIDER_ID !== '<SYSTEM>') this.rows.push(r)
