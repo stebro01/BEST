@@ -15,7 +15,9 @@
           <template v-slot:top>
             <!-- BUTTONS -->
             <BOTTOM_DROPDOWN :show_add="true" @add="newPatient()" :show_edit="SELECTION === 1" @edit="editPatient()"
-              :show_remove="SELECTION > 0" @remove="deletePatient()" />
+              @make_private="makePrivate()" @make_public="makePublic()"
+              :show_remove="SELECTION > 0" @remove="deletePatient()" :show_make_public="SELECTION > 0" :show_make_private="SELECTION > 0" 
+            />
             <q-space />
             <!-- FILTERBOX -->
             <FILTER_BOX :filter="filter" @update="filter = $event" />
@@ -31,7 +33,11 @@
               <q-th v-for="col in props.cols" :key="col.name" :props="props">
                 {{ col.label }}
               </q-th>
-              <q-th auto-width />
+
+
+              <q-th class="text-center">
+                <q-icon class="q-ml-xs" size="xs" name="preview"><q-tooltip>Sichtbarkeit</q-tooltip></q-icon>
+              </q-th>
             </q-tr>
           </template>
 
@@ -39,7 +45,7 @@
             <q-tr :props="props" @click="
               selected[props.row.PATIENT_NUM].selected =
               !selected[props.row.PATIENT_NUM].selected
-            " class="cursor-pointer">
+              " class="cursor-pointer">
               <q-td>
                 <q-checkbox v-model="selected[props.row.PATIENT_NUM].selected" />
               </q-td>
@@ -57,8 +63,16 @@
                   <div>Religion: {{ props.row.RELIGION_RESOLVED }}</div>
                 </q-tooltip>
               </q-td>
-              <q-td @click="visitePatient(props.row)"><q-btn icon="event" flat dense> <q-tooltip>Visten
-                    öffnen</q-tooltip> </q-btn></q-td>
+              <q-td class="text-center">
+                <q-icon v-if="props.row.USER_ID === public_id" name="visibility"><q-tooltip>Public (jeder kann diesen
+                    Patienten sehen)</q-tooltip></q-icon>
+                <q-icon v-else name="visibility_off"><q-tooltip>Privat (nur der Ersteller kann diesen Patienten sehen)
+                  </q-tooltip></q-icon>
+
+              </q-td>
+              <q-td><q-btn icon="event" flat dense @click="visitePatient(props.row)"> <q-tooltip>Visten
+                    öffnen</q-tooltip> </q-btn>
+              </q-td>
             </q-tr>
           </template>
         </q-table>
@@ -81,6 +95,7 @@ export default {
   data() {
     return {
       filter: null,
+      public_id: this.$store.getters.ENV.app.env.public_id,
       selected: {},
       results: [],
       columns: [
@@ -136,8 +151,8 @@ export default {
           align: "center",
           field: "PATIENT_BLOB",
           sortable: true,
-          style: "width: 20px",
-        },
+          style: "width: 120px",
+        }
       ],
       options_gender: [],
     };
@@ -273,6 +288,25 @@ export default {
           this.$q.notify(`Löschen erfolgreich: ${cc} Patienten entfernt`);
         });
     },
+
+    async makePublic() {
+      console.log(this.selected)
+      for (let ind in this.selected) {
+        let item = this.selected[ind]
+        if(item.selected) {
+          console.log(item)
+        }
+      }
+
+      this.loadPatient();
+      this.$q.notify(this.$store.getters.TEXT.msg.action_successful)
+    },
+
+    async makePrivate() {
+
+      this.loadPatient();
+      this.$q.notify(this.$store.getters.TEXT.msg.action_successful)
+    }
   },
 };
 </script>

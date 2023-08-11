@@ -71,7 +71,10 @@ export default {
         case 'provider':
           if (this.$route.fullPath.indexOf('/visits') >= 0) this.$router.push({ name: 'Visits' })
           this.$store.commit('PROVIDER_PINNED_SET', undefined);
+          this.$store.commit('USER_SET', undefined)
+          this.$router.push({ name: 'LoginUser' })
           this.$emit('provider_removed')
+
           break
         case 'patient':
           this.$store.commit('PATIENT_PINNED_SET', undefined)

@@ -25,7 +25,7 @@
         <q-item-section>remove</q-item-section>
       </q-item>
 
-      <q-separator v-if="show_import || show_export"/>
+      <q-separator v-if="show_import || show_export || show_make_public || show_make_private"/>
 
       <!-- IMPORT BUTTON -->
       <q-item v-if="show_import" clickable v-close-popup @click="$emit('import')">
@@ -39,6 +39,18 @@
         <q-item-section>Daten exportieren</q-item-section>
       </q-item>
 
+      <!-- MAKE PUBLIC BUTTON -->
+      <q-item v-if="show_make_public" clickable v-close-popup @click="$emit('make_public')">
+        <q-item-section avatar><q-icon name="visibility" /></q-item-section>
+        <q-item-section>Daten freigeben</q-item-section>
+      </q-item>
+
+      <!-- MAKE PRIVATE BUTTON -->
+      <q-item v-if="show_make_private" clickable v-close-popup @click="$emit('make_private')">
+        <q-item-section avatar><q-icon name="visibility_off" /></q-item-section>
+        <q-item-section>Daten speeren (nur für aktuellen Nutzer sichtbar)</q-item-section>
+      </q-item>
+
     </q-list>
   </q-btn-dropdown>
 </template>
@@ -47,7 +59,7 @@
 export default {
   name: 'BottomDropDown',
 
-  props: ['show_add', 'show_remove', 'show_edit', 'show_import', 'show_export', 'show_play_playlist'],
+  props: ['show_add', 'show_remove', 'show_edit', 'show_import', 'show_export', 'show_play_playlist', 'show_make_public', 'show_make_private'],
 
   components: {},
 
