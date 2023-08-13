@@ -310,6 +310,59 @@ export function findPath ({commit, state}, payload) {
     })
 }
 
+// this function will change the visibility of a patient
+export const  changePatientVisibility = async ({commit, state}, payload) => {
+    commit('LOG', {method: 'action -> changePatientVisibility', data: payload})
+    // get the table USER_PATIENT_LOOKUP
+    if (!payload) return {status: false, data: 'Ungültige Daten'}
+    const USER_PATIENT_LOOKUP = new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+    // first check, if the patient is already in the table
+    const query = await USER_PATIENT_LOOKUP.read({PATIENT_NUM: payload.PATIENT_NUM})
+    if (query.status && query.data.length > 0) {
+        // update the patient
+        const update = await USER_PATIENT_LOOKUP.update({where: {USER_PATIENT_ID: query.data[0].USER_PATIENT_ID}, set: {USER_ID: payload.USER_ID}})
+        return update
+    } else {
+        // insert the patient
+        const insert = await USER_PATIENT_LOOKUP.create({USER_ID: payload.USER_ID, PATIENT_NUM: payload.PATIENT_NUM})
+        return insert
+    }
+}
+
+// LAYOUTS FOR THE VIEWS
+
+import {stringify} from 'src/classes/sqltools'
+import { my_uid } from 'src/tools/db_tools'
+
+export const  updateLayout = async ({commit, state}, payload) => {
+    commit('LOG', {method: 'action -> updateLayout', data: payload})
+    if (!payload) return {status: false, data: 'Ungültige Daten'}
+    // get the table CODE_LOOKUP
+    const CODE_LOOKUP = new View_Code_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
+    // first check, if the entry is already in the table
+    const res_layout = await CODE_LOOKUP.read({CODE_CD: payload.value, COLUMN_CD: 'VIEW_LAYOUT'})
+    if (res_layout && res_layout.data.length > 0) {
+        // update the entry
+        const update = await CODE_LOOKUP.update({where: {CODE_CD: res_layout.data[0].CODE_CD}, set: {LOOKUP_BLOB: stringify(payload.DATA)}})
+        return update
+    } else {
+        // insert the entry
+        const insert = await CODE_LOOKUP.create({CODE_CD: payload.value, TABLE_CD: 'VIEW_LAYOUT', COLUMN_CD: 'VIEW_LAYOUT', LOOKUP_BLOB: stringify(payload.DATA), NAME_CHAR: payload.value})
+        return insert
+    }
+}
+
+export const  saveLayout = async ({commit, state}, payload) => {
+    commit('LOG', {method: 'action -> saveLayout', data: payload})
+    if (!payload) return {status: false, data: 'Ungültige Daten'}
+    // get the table CODE_LOOKUP
+    const CODE_LOOKUP = new View_Code_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
+    
+    const insert = await CODE_LOOKUP.create({CODE_CD: my_uid(), TABLE_CD: 'VIEW_LAYOUT', COLUMN_CD: 'VIEW_LAYOUT', LOOKUP_BLOB: stringify(payload.DATA), NAME_CHAR: payload.value})
+    return insert
+    
+}
+
 
 // ie: const TABLE = getTable('PATIENT_DIMENSION', state)
 export function getTable(table, state) {

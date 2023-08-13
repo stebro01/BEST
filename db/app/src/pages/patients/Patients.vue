@@ -26,6 +26,9 @@
           <!-- PROPS -->
           <template v-slot:header="props">
             <q-tr :props="props">
+              <q-th>
+                <!-- empty -->
+              </q-th>
               <q-th auto-width class="cursor-pointer">
                 <q-icon v-if="SELECTION === 0" name="check_box_outline_blank" size="sm" @click="setSelection(true)" />
                 <q-icon v-else name="indeterminate_check_box" size="sm" @click="setSelection(false)" />
@@ -46,6 +49,9 @@
               selected[props.row.PATIENT_NUM].selected =
               !selected[props.row.PATIENT_NUM].selected
               " class="cursor-pointer">
+                            <q-td><q-btn icon="event" flat dense @click="visitePatient(props.row)"> <q-tooltip>Visten
+                    öffnen</q-tooltip> </q-btn>
+              </q-td>
               <q-td>
                 <q-checkbox v-model="selected[props.row.PATIENT_NUM].selected" />
               </q-td>
@@ -69,9 +75,6 @@
                 <q-icon v-else name="visibility_off"><q-tooltip>Privat (nur der Ersteller kann diesen Patienten sehen)
                   </q-tooltip></q-icon>
 
-              </q-td>
-              <q-td><q-btn icon="event" flat dense @click="visitePatient(props.row)"> <q-tooltip>Visten
-                    öffnen</q-tooltip> </q-btn>
               </q-td>
             </q-tr>
           </template>
@@ -290,11 +293,13 @@ export default {
     },
 
     async makePublic() {
-      console.log(this.selected)
       for (let ind in this.selected) {
         let item = this.selected[ind]
         if(item.selected) {
-          console.log(item)
+          await this.$store.dispatch("changePatientVisibility", {
+            PATIENT_NUM: item.PATIENT_NUM,
+            USER_ID: this.$store.getters.ENV.app.env.public_id
+          })
         }
       }
 
@@ -303,10 +308,27 @@ export default {
     },
 
     async makePrivate() {
+      // get the USER_ID first
+      let PROVIDER = this.$store.getters.PROVIDER_PINNED
+      let  USER =  await this.$store.dispatch("searchDB", {
+        query_string: { USER_CD: PROVIDER.PROVIDER_ID },
+        table: "USER_MANAGEMENT",
+      })
+      let USER_ID = USER[0].USER_ID
+      for (let ind in this.selected) {
+        let item = this.selected[ind]
+        if(item.selected) {
+          await this.$store.dispatch("changePatientVisibility", {
+            PATIENT_NUM: item.PATIENT_NUM,
+            USER_ID: USER_ID
+          })
+        }
+      }
 
       this.loadPatient();
       this.$q.notify(this.$store.getters.TEXT.msg.action_successful)
-    }
+    },
+    
   },
 };
 </script>

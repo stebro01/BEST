@@ -36,7 +36,7 @@
             </q-scroll-area>
         </div>
         <!-- BUTTONS -->
-        <div v-if="no_footer !== true" class="col-1 bg-accent">
+        <div v-if="no_footer !== true" class="col-1 bg-accent flex flex-center">
             <slot name="footer">
                 <!-- text hier -->
             </slot>
