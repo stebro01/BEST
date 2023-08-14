@@ -20,6 +20,9 @@
                 <q-item-section class="text-caption">{{ item.PATIENT_CD }}</q-item-section>
             </q-item>
         </q-virtual-scroll>
+
+        <!-- some info -->
+        <q-chip v-if="PATIENTS" class="absolute-bottom-left z-top" size="sm"> <q-icon name="list"/>{{ PATIENTS.length }}</q-chip>
     </div>
 </template>
 

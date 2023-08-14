@@ -78,3 +78,36 @@ export function SESSION_MULTI_EDIT_LOAD(state) {
 export function SPINNER_SET (state, payload) {
     state.SHOW_SPINNER = payload === true
 }
+
+// PATIENT_VIEW
+export function PATIENT_VIEW_PROTECTED_MODE_SET (state, payload) {
+    state.PATIENT_VIEW.protected_mode = payload
+}
+
+export function PATIENT_VIEW_HIDEN_MODE_SET (state, payload) {
+    state.PATIENT_VIEW.hiden_mode = payload
+}
+
+export function PATIENT_VIEW_LAYOUT_CHANGED_SET (state, payload) {
+    state.PATIENT_VIEW.layout_changed = payload
+}
+
+export function PATIENT_VIEW_LAYOUTS_SET (state, payload) {
+    state.PATIENT_VIEW.LAYOUTS = payload
+}   
+
+export function PATIENT_VIEW_ACTIVE_LAYOUT_VALUE_SET (state, payload) {
+    state.PATIENT_VIEW.active_layout_value = payload
+}   
+
+export function PATIENT_VIEW_ACTIVE_LAYOUT_SET (state, payload) {
+    state.PATIENT_VIEW.active_layout = payload
+}   
+
+export function PATIENT_VIEW_EDIT_CATEGORIES_SET (state, payload) {
+    state.PATIENT_VIEW.EDIT.CATEGORIES = payload
+}
+
+export function PATIENT_VIEW_EDIT_UNITCD_SET (state, payload) {
+    state.PATIENT_VIEW.EDIT.UNIT_CD = payload
+}   

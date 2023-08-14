@@ -1,7 +1,8 @@
 <template>
     <div class="fit" v-if="param">
-
-        <q-chip size="sm" dense class="absolute-bottom-right z-top"><q-icon name="subject"/>{{ OBSERVATIONS.length }}<q-tooltip>Anzahl der Listenelemente: {{ OBSERVATIONS.length }}</q-tooltip></q-chip>
+        <div class="absolute-bottom-right z-top q-pa-xs">
+            <LAYOUT_INFO_PANEL :observations="OBSERVATIONS.length"/>
+        </div>
         <q-scroll-area :style="`height: ${SIZE.height}px; max-width: ${SIZE.width}px;`" class="q-pa-md ">
             <!-- CONTEBNT -->
             <q-markup-table dense  separator="cell">
@@ -21,25 +22,29 @@
                 <!-- BODY -->
                 
                 <tbody >
-                    <tr v-for="(item, index) in OBSERVATIONS" :key="index + 'obs'" :id="`box_${index}`" 
-                       
-
-                    >
+                    <tr v-for="(item, index) in OBSERVATIONS" :key="index + 'obs'" :id="`box_${index}`">
                         <!-- EDIT MODE -->
                         <td v-show="EDIT_MODE">
-                            <q-btn :icon="item._check === false ? 'visibility_off' : 'visibility'" round flat size="xs" @click="item._check = toggleValue(item._check); updateSort()"><q-tooltip>Sichtbarkeit ändern</q-tooltip></q-btn>
+                            <q-btn :icon="item._check === false ? 'visibility_off' : 'visibility'" round flat size="xs" @click="item._check = toggleValue(item._check);"><q-tooltip>Sichtbarkeit ändern</q-tooltip></q-btn>
                             <q-btn icon="clear" round flat size="xs" @click="deleteItem(item)"><q-tooltip>Lösche den Wert aus der DB</q-tooltip></q-btn>
                         </td>
                         <!-- NORMAL VALUES -->
                         <td class="text-left" style="max-width: 250px; overflow: hidden">{{ item.CONCEPT_NAME_CHAR ||
                             item.CONCEPT_CD }}<q-tooltip>{{ item.CONCEPT_NAME_CHAR || item.CONCEPT_CD }}</q-tooltip></td>
-                        <td class="text-left" style="max-width: 50px; overflow: hidden">{{ item.NVAL_NUM ||
-                            item.TVAL_RESOLVED || item.TVAL_CHAR }}<q-tooltip>{{ item.NVAL_NUM || item.TVAL_RESOLVED ||
-        item.TVAL_CHAR }}</q-tooltip></td>
-                        <td class="text-left" style="max-width: 50px; overflow: hidden">{{ item.UNIT_RESOLVED ||
-                            item.UNIT_CD }}<q-tooltip>{{ item.UNIT_RESOLVED || item.UNIT_CD }}</q-tooltip></td>
-                        <td class="text-left" style="max-width: 50px; overflow: hidden">{{ item.CATEGORY_CHAR }}<q-tooltip>{{
-                            item.CATEGORY_CHAR }}</q-tooltip></td>
+                        <td class="text-left" :class="{'bg-blue-1': EDIT_MODE}" style="max-width: 50px; overflow: hidden">{{ item.NVAL_NUM ||
+                            item.TVAL_RESOLVED || item.TVAL_CHAR }}<q-tooltip>{{ item.NVAL_NUM || item.TVAL_RESOLVED || item.TVAL_CHAR }}</q-tooltip></td>
+                        <!-- UNIT -->
+                        <td class="text-left" :class="{'bg-blue-1': EDIT_MODE}" @click="item._edit_unit = true" style="max-width: 50px; overflow: hidden">{{ item.UNIT_RESOLVED ||
+                            item.UNIT_CD }}<q-tooltip>{{ item.UNIT_RESOLVED || item.UNIT_CD }}</q-tooltip>
+                             <POPUP_UNIT v-if="EDIT_MODE && item._edit_unit" :item="item"
+                                @update="updateUnit($event, item)" @close="item._edit_unit = false" />    
+                        </td>
+                        <!-- CATEGORY -->
+                        <td class="text-left" :class="{'bg-blue-1': EDIT_MODE}" @click="item._edit_cat = true" style="max-width: 50px; overflow: hidden">{{ item.CATEGORY_CHAR }}
+                            <q-tooltip>{{ item.CATEGORY_CHAR }}</q-tooltip>
+                            <POPUP_CATEGORY v-if="EDIT_MODE && item._edit_cat" :item="item.CATEGORY_CHAR"
+                                @update="updateCategory($event, item)" @close="item._edit_cat = false" />                            
+                        </td>
                         <td class="text-right text-caption" style="max-width: 50px; overflow: hidden">{{ item.START_DATE }}
                         </td>
                     </tr>
@@ -57,11 +62,16 @@
 
 <script>
 import DIALOG_DRAG_DROP from 'src/components/patient_view/PatientView_DialogDragDrop.vue'
+import LAYOUT_INFO_PANEL from 'src/components/patient_view/LayoutInfoPanel.vue'
+import POPUP_CATEGORY from 'src/components/patient_view/PopupCategory.vue'
+import POPUP_UNIT from 'src/components/patient_view/PopupUnit.vue'
+
 import { my_confirm } from 'src/tools/my_dialog'
+
 export default {
     name: 'PatientView_ObservationList',
 
-    components: { DIALOG_DRAG_DROP },
+    components: { DIALOG_DRAG_DROP, LAYOUT_INFO_PANEL, POPUP_CATEGORY, POPUP_UNIT },
 
     props: ['param'],
 
@@ -120,15 +130,15 @@ export default {
         },
 
         HIDE_MODE() {
-            return this.param.show_hide
+            return this.$store.getters.PATIENT_VIEW.hiden_mode
         },
 
         EDIT_MODE() {
-            return this.param.protected
+            return this.$store.getters.PATIENT_VIEW.protected_mode
         },
 
         SORT_LIST() {
-            return this.param.layout.DATA
+            return this.$store.getters.PATIENT_VIEW.active_layout
         }
 
     },
@@ -162,11 +172,33 @@ export default {
             else this.$q.notify({ message: 'Error deleting item', color: 'red-5' })
         },
 
-        updateSort(list) {
-            if (!list) return
+        // EDIT AND UPDATE VALUES
+        updateCategory(val, item) {
+            item._edit_cat = false
+            this.$store.dispatch('updateDB',  { table: 'OBSERVATION_FACT', query_string: { where: {OBSERVATION_ID: item.OBSERVATION_ID }, set: { CATEGORY_CHAR: val } }})
+                .then(res => {
+                    item.CATEGORY_CHAR = val
+                    if (res) this.$q.notify({ message: 'Item updated', color: 'green-5' })
+                    else this.$q.notify({ message: 'Error updating item', color: 'red-5' })
+                })
+        },
 
-            // send the update
-            this.$emit('update_layout', list)
+        // EDIT AND UPDATE VALUES
+        updateUnit(val, item) {
+            item._edit_unit = false
+            var UNIT_CD = ''
+            if (val.value) UNIT_CD = val.value
+            else UNIT_CD = val
+
+            this.$store.dispatch('updateDB',  { table: 'OBSERVATION_FACT', 
+                query_string: { 
+                    where: {OBSERVATION_ID: item.OBSERVATION_ID }, 
+                    set: { UNIT_CD: UNIT_CD } }})
+                .then(res => {
+                    item.UNIT_CD = UNIT_CD
+                    if (res) this.$q.notify({ message: 'Item updated', color: 'green-5' })
+                    else this.$q.notify({ message: 'Error updating item', color: 'red-5' })
+                })
         }
 
         // ENDE METHODS

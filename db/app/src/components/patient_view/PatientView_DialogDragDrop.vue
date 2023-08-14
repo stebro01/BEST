@@ -64,7 +64,8 @@ export default {
                 else return this.list.map(item => item.CONCEPT_NAME_CHAR || item.CONCEPT_CD)
             },
             set(val) {
-                this.$emit('update_list', val)
+                this.$store.commit("PATIENT_VIEW_ACTIVE_LAYOUT_SET", val)
+                this.$store.commit("PATIENT_VIEW_LAYOUT_CHANGED_SET", true)
             }
         }
 

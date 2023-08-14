@@ -67,7 +67,7 @@ export function ELECTRON_MODE(state) {
 }
 
 export function MODE_VISITS() {
-    return {new: 'new', add: 'add'}
+    return { new: 'new', add: 'add' }
 }
 
 export function IMPORT_OPTIONS() {
@@ -79,9 +79,14 @@ export function IMPORT_OPTIONS() {
 }
 
 export function IMPORT_MODES() {
-    return {hl7: 'hl7', csv: 'csv', raw: 'raw'}
+    return { hl7: 'hl7', csv: 'csv', raw: 'raw' }
 }
 
 export function SESSION_MULTIEDIT(state) {
     return state.SESSION_MULTIEDIT
+}
+
+//  SOME OPTIONS FOR PATIENT_VIEW
+export function PATIENT_VIEW(state) {
+    return state.PATIENT_VIEW
 }

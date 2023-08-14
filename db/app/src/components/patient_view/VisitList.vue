@@ -5,7 +5,7 @@
         <div class="col-2 flex flex-center">
             <q-card class="q-pa-none">
                 <q-card-section class="q-pa-none my-small-text text-center">
-                    Visiten
+                    Visiten <span v-if="VISITEN">({{ VISITEN.length }})</span>
                 </q-card-section>
                 <q-card-section class="q-pa-none">
                     <q-btn-dropdown class="fit" size="sm" dense flat color="primary" :label="VISITEN_BUTTON">
