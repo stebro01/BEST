@@ -29,10 +29,15 @@
                             <q-btn icon="clear" round flat size="xs" @click="deleteItem(item)"><q-tooltip>Lösche den Wert aus der DB</q-tooltip></q-btn>
                         </td>
                         <!-- NORMAL VALUES -->
+                        <!-- CONCEPT -->
                         <td class="text-left" style="max-width: 250px; overflow: hidden">{{ item.CONCEPT_NAME_CHAR ||
                             item.CONCEPT_CD }}<q-tooltip>{{ item.CONCEPT_NAME_CHAR || item.CONCEPT_CD }}</q-tooltip></td>
-                        <td class="text-left" :class="{'bg-blue-1': EDIT_MODE}" style="max-width: 50px; overflow: hidden">{{ item.NVAL_NUM ||
-                            item.TVAL_RESOLVED || item.TVAL_CHAR }}<q-tooltip>{{ item.NVAL_NUM || item.TVAL_RESOLVED || item.TVAL_CHAR }}</q-tooltip></td>
+                        <!-- DATA -->
+                        <td class="text-left" :class="{'bg-blue-1': EDIT_MODE}" @click="item._edit_val = true" style="max-width: 50px; overflow: hidden">{{ item.NVAL_NUM ||
+                            item.TVAL_RESOLVED || item.TVAL_CHAR }}<q-tooltip>{{ item.NVAL_NUM || item.TVAL_RESOLVED || item.TVAL_CHAR }}</q-tooltip>
+                            <POPUP_DATA v-if="EDIT_MODE && item._edit_val" :item="item"
+                                @update="updateValue($event, item)" @close="item._edit_val = false" />
+                        </td>
                         <!-- UNIT -->
                         <td class="text-left" :class="{'bg-blue-1': EDIT_MODE}" @click="item._edit_unit = true" style="max-width: 50px; overflow: hidden">{{ item.UNIT_RESOLVED ||
                             item.UNIT_CD }}<q-tooltip>{{ item.UNIT_RESOLVED || item.UNIT_CD }}</q-tooltip>
@@ -65,13 +70,14 @@ import DIALOG_DRAG_DROP from 'src/components/patient_view/PatientView_DialogDrag
 import LAYOUT_INFO_PANEL from 'src/components/patient_view/LayoutInfoPanel.vue'
 import POPUP_CATEGORY from 'src/components/patient_view/PopupCategory.vue'
 import POPUP_UNIT from 'src/components/patient_view/PopupUnit.vue'
+import POPUP_DATA from 'src/components/patient_view/PopupData.vue'
 
 import { my_confirm } from 'src/tools/my_dialog'
 
 export default {
     name: 'PatientView_ObservationList',
 
-    components: { DIALOG_DRAG_DROP, LAYOUT_INFO_PANEL, POPUP_CATEGORY, POPUP_UNIT },
+    components: { DIALOG_DRAG_DROP, LAYOUT_INFO_PANEL, POPUP_CATEGORY, POPUP_UNIT, POPUP_DATA },
 
     props: ['param'],
 
@@ -196,6 +202,27 @@ export default {
                     set: { UNIT_CD: UNIT_CD } }})
                 .then(res => {
                     item.UNIT_CD = UNIT_CD
+                    if (res) this.$q.notify({ message: 'Item updated', color: 'green-5' })
+                    else this.$q.notify({ message: 'Error updating item', color: 'red-5' })
+                })
+        },
+
+        updateValue(val, item) {
+            item._edit_val = false
+            const where = {OBSERVATION_ID: val.OBSERVATION_ID }
+            const set = {}
+            if (item.VALTYPE_CD === 'N') {
+                set.NVAL_NUM = val.NVAL_NUM
+                item.NVAL_NUM = val.NVAL_NUM
+            }
+            else {
+                set.TVAL_CHAR = val.TVAL_CHAR
+                item.TVAL_CHAR = val.TVAL_CHAR
+                if (val.TVAL_RESOLVED) item.TVAL_RESOLVED = val.TVAL_RESOLVED
+
+            }
+            this.$store.dispatch('updateDB',  { table: 'OBSERVATION_FACT', query_string: { where, set }})
+                .then(res => {
                     if (res) this.$q.notify({ message: 'Item updated', color: 'green-5' })
                     else this.$q.notify({ message: 'Error updating item', color: 'red-5' })
                 })
