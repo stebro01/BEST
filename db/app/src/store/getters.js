@@ -90,3 +90,7 @@ export function SESSION_MULTIEDIT(state) {
 export function PATIENT_VIEW(state) {
     return state.PATIENT_VIEW
 }
+
+export function ANSWER_ABSENT() { 
+    return { value: 'SCTID: 2667000', label: 'k.A.' }
+}

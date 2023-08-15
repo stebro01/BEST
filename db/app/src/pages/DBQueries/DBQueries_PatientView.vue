@@ -23,21 +23,23 @@
           <div class="col">
             <div class="row justify-center fit">
               <!-- PATIENTLIST -->
-              <div class="col-3">
+              <div class="col-3" >
                 <q-resize-observer @resize="onResize($event, 'patientlist_size')" />
-                <PATIENT_LIST :patients="localData.PATIENTS" :size="param.patientlist_size"
-                  @clicked="patientClicked($event)" />
+                <PATIENT_LIST :patients="localData.PATIENTS" :size="param.patientlist_size" @clicked="patientClicked($event)" />
               </div>
               <!-- MAIN -->
               <div class="col-9 column" v-if="$store.getters.PATIENT_PINNED">
-                <div class="col-2">
+                <div class="col-2" >
                   <VISIT_LIST />
                 </div>
                 <div class="col-10">
                   <q-resize-observer @resize="onResize($event, 'observationlist_size')" />
-                  <OBSERVATION_LIST :param="param" />
+                  <OBSERVATION_LIST :param="param"/>
                 </div>
               </div>
+
+              <!-- ADD DATA BTN -->
+              <ADD_DATA_BTN />
 
             </div>
           </div>
@@ -46,7 +48,7 @@
 
       <!-- FOOTER -->
       <template v-slot:footer>
-
+       
       </template>
 
     </MainSlot>
@@ -60,11 +62,13 @@ import MainSlot from 'src/components/MainSlot.vue'
 import PATIENT_LIST from 'src/components/patient_view/PatientList.vue'
 import VISIT_LIST from 'src/components/patient_view/VisitList.vue'
 import OBSERVATION_LIST from 'src/components/patient_view/ObservationList.vue'
+import ADD_DATA_BTN from 'src/components/patient_view/AddDataBtn.vue'
+
 
 export default {
   name: 'DBQueries_PatientView',
 
-  components: { HEADING, MainSlot, PATIENT_LIST, VISIT_LIST, OBSERVATION_LIST },
+  components: { HEADING, MainSlot, PATIENT_LIST, VISIT_LIST, OBSERVATION_LIST, ADD_DATA_BTN },
 
   data() {
     return {
@@ -95,7 +99,7 @@ export default {
 
     MAIN_STYLE() {
       if (!this.param.main_size) return `width: 100%; height: 200px`
-      return `width: 100%; height: ${this.param.main_size.height / 11 * 7.9}px`
+      return `width: 100%; height: ${this.param.main_size.height / 12 * 9.5}px`
     },
 
     PATIENTS() {
@@ -108,7 +112,7 @@ export default {
   },
 
   methods: {
-
+    
 
     onResize(size, field) {
       this.param[field] = size

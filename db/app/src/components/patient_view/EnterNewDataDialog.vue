@@ -1,9 +1,8 @@
 <template>
-    <q-popup-proxy @hide="$emit('close')">
-        <q-card style="min-width: 300px; min-height: 300px">
+        <q-card style="min-width: 300px; min-height: 300px" v-if="localData">
             <q-btn class="absolute-top-right z-top" icon="close" flat round @click="$emit('close')" v-close-popup />
             <q-card-section>
-                Wert bearbeiten
+                Neuer Wert
             </q-card-section>
             <!--  VALUES -->
             <!-- VALTYPE_CD === 'N' -->
@@ -18,16 +17,16 @@
             </q-card-section>
             <!-- VALTYPE_CD === 'D' -->
             <q-card-section v-else-if="DATA.VALTYPE_CD === 'D'">
-                <q-input dense filled type="date" v-model="value" hint="Zahl"
+                <q-input dense filled type="date" v-model="value" hint="Datum"
                     @change="localData.TVAL_CHAR = value; cql_check_data(localData)" />
             </q-card-section>
             <!-- VALTYPE_CD === 'F' -->
-            <q-card-section v-else-if="DATA.VALTYPE_CD === 'F'">
+            <q-card-section v-else-if="DATA.VALTYPE_CD === 'F' && answers">
                 <q-option-group dense filled v-model="value" :options="answers"
                     @update:model-value="localData.TVAL_CHAR = value; cql_check_data(localData)" />
             </q-card-section>
             <!-- VALTYPE_CD === 'S' -->
-            <q-card-section v-else-if="DATA.VALTYPE_CD === 'S'">
+            <q-card-section v-else-if="DATA.VALTYPE_CD === 'S' && answers">
                 <q-option-group dense filled v-model="value" :options="answers"
                     @update:model-value="localData.TVAL_CHAR = value; cql_check_data(localData)" />
             </q-card-section>
@@ -51,13 +50,12 @@
 
 
         </q-card>
-    </q-popup-proxy>
 </template>
 
 <script>
 
 export default {
-    name: 'PopupData',
+    name: 'EnterNewDataDialog',
 
     components: {},
 
@@ -66,7 +64,7 @@ export default {
     data() {
         return {
             localData: undefined,
-            value: undefined,
+            value: null,
             answers: undefined,
             check: undefined
         }
@@ -75,32 +73,33 @@ export default {
     mounted() {
         if (!this.item) this.$emit('close')
         this.localData = JSON.parse(JSON.stringify(this.item))
-
+        console.log(this.localData)
         // 
         if (this.localData.VALTYPE_CD === 'N') {
-            this.value = this.localData.NVAL_NUM
+            // this.value = this.localData.NVAL_NUM
         }
         else if (this.localData.VALTYPE_CD === 'D') {
-            this.value = this.localData.TVAL_CHAR
+            // this.value = this.localData.TVAL_CHAR
         }
         else if (this.localData.VALTYPE_CD === 'T') {
-            this.value = this.localData.TVAL_CHAR
+            // this.value = this.localData.TVAL_CHAR
         }
         else if (this.localData.VALTYPE_CD === 'F') {
             this.$store.dispatch('getAnswers', { VALTYPE_CD: 'F', CONCEPT_CD: this.localData.CONCEPT_CD }).then((res) => {
                 this.answers = res
-                this.value = this.localData.TVAL_CHAR
+                this.answers.push(this.$store.getters.ANSWER_ABSENT)
             })
         }
         else if (this.localData.VALTYPE_CD === 'S') {
             this.$store.dispatch('getAnswersForObservation', { VALTYPE_CD: 'S', CONCEPT_CD: this.localData.CONCEPT_CD })
                 .then((res) => {
-                    this.value = this.localData.TVAL_CHAR
+                    this.value = undefined
                     this.answers = res
+                    this.answers.push(this.$store.getters.ANSWER_ABSENT)
                 })
         }
 
-        this.cql_check_data(this.item)
+        // this.cql_check_data(this.item)
 
     },
 
@@ -124,12 +123,11 @@ export default {
 
     methods: {
         async cql_check_data(item) {
-            console.log('check data')
             this.check = await this.$store.dispatch('checkCQLRule', item)
         },
 
-        updateValue(item, localData) {
-            const result = { OBSERVATION_ID: localData.OBSERVATION_ID, VALTYPE_CD: localData.VALTYPE_CD }
+        async updateValue(item, localData) {
+            const result = localData
             if (!item) return
             if (result.VALTYPE_CD === 'N') result.NVAL_NUM = item
             else if (result.VALTYPE_CD === 'D') result.TVAL_CHAR = item
@@ -138,7 +136,16 @@ export default {
             else if (result.VALTYPE_CD === 'S') result.TVAL_CHAR = item
             if (result.VALTYPE_CD === 'F' || result.VALTYPE_CD === 'S') result.TVAL_RESOLVED = this.answers.find(answer => answer.value === item).label
 
-            this.$emit('update', result)
+            const res = await this.$store.dispatch('addDB', {table: 'OBSERVATION_FACT', query_string: result})
+            if (res) {
+                result.OBSERVATION_ID = res.OBSERVATION_ID
+                this.$q.notify({ type: 'positive', message: 'Wert erfolgreich gespeichert' })
+
+                this.$emit('save', result)
+            } else {
+                this.$q.notify({ type: 'negative', message: 'Wert konnte nicht gespeichert werden' })
+                this.$emit('close')
+            }
         }
 
         // ENDE METHODS

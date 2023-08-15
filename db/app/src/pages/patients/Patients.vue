@@ -147,15 +147,15 @@ export default {
           sortable: true,
           style: "width: 20px",
         },
-        {
-          name: "PATIENT_BLOB",
-          required: true,
-          label: "BLOB",
-          align: "center",
-          field: "PATIENT_BLOB",
-          sortable: true,
-          style: "width: 120px",
-        }
+        // {
+        //   name: "PATIENT_BLOB",
+        //   required: true,
+        //   label: "BLOB",
+        //   align: "center",
+        //   field: "PATIENT_BLOB",
+        //   sortable: true,
+        //   style: "width: 120px",
+        // }
       ],
       options_gender: [],
     };

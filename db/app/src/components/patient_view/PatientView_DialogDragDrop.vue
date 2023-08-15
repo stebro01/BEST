@@ -15,7 +15,7 @@
                     <template #item="{ element }">
                     <q-item dense clickable v-ripple class="q-mb-xs shadow-1 q-pa-xs">
                         <q-item-section avatar><q-icon name="drag_handle"/></q-item-section>    
-                        <q-item-section >{{ element }}</q-item-section>
+                        <q-item-section >{{ element.CONCEPT_NAME_CHAR }}</q-item-section>
                     </q-item>
                     </template>
                 </draggable>
@@ -61,7 +61,15 @@ export default {
         LIST: {
             get() {
                 if (!this.list) return []
-                else return this.list.map(item => item.CONCEPT_NAME_CHAR || item.CONCEPT_CD)
+                // only use the elements CONCEPT_NAME_CHAR AND CONCEPT_CD
+                // result should look like: [{CONCEPT_NAME_CHAR: "Diastolic Blood Pressure", CONCEPT_CD: "DIASBP"}, ...]
+                return this.list.map(item => {
+                    return {
+                        CONCEPT_NAME_CHAR: item.CONCEPT_NAME_CHAR,
+                        CONCEPT_CD: item.CONCEPT_CD
+                    }
+                })
+                
             },
             set(val) {
                 this.$store.commit("PATIENT_VIEW_ACTIVE_LAYOUT_SET", val)

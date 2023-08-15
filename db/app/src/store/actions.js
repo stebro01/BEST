@@ -343,11 +343,11 @@ export const  updateLayout = async ({commit, state}, payload) => {
     const res_layout = await CODE_LOOKUP.read({CODE_CD: payload.value, COLUMN_CD: 'VIEW_LAYOUT'})
     if (res_layout && res_layout.data.length > 0) {
         // update the entry
-        const update = await CODE_LOOKUP.update({where: {CODE_CD: res_layout.data[0].CODE_CD}, set: {LOOKUP_BLOB: stringify(payload.DATA)}})
+        const update = await CODE_LOOKUP.update({where: {CODE_CD: res_layout.data[0].CODE_CD}, set: {LOOKUP_BLOB: stringify(removeDuplicates(payload.DATA))}})
         return update
     } else {
         // insert the entry
-        const insert = await CODE_LOOKUP.create({CODE_CD: payload.value, TABLE_CD: 'VIEW_LAYOUT', COLUMN_CD: 'VIEW_LAYOUT', LOOKUP_BLOB: stringify(payload.DATA), NAME_CHAR: payload.value})
+        const insert = await CODE_LOOKUP.create({CODE_CD: payload.value, TABLE_CD: 'VIEW_LAYOUT', COLUMN_CD: 'VIEW_LAYOUT', LOOKUP_BLOB: stringify(removeDuplicates(payload.DATA)), NAME_CHAR: payload.value})
         return insert
     }
 }
@@ -358,9 +358,23 @@ export const  saveLayout = async ({commit, state}, payload) => {
     // get the table CODE_LOOKUP
     const CODE_LOOKUP = new View_Code_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     
-    const insert = await CODE_LOOKUP.create({CODE_CD: my_uid(), TABLE_CD: 'VIEW_LAYOUT', COLUMN_CD: 'VIEW_LAYOUT', LOOKUP_BLOB: stringify(payload.DATA), NAME_CHAR: payload.value})
+    const insert = await CODE_LOOKUP.create({CODE_CD: my_uid(), TABLE_CD: 'VIEW_LAYOUT', COLUMN_CD: 'VIEW_LAYOUT', LOOKUP_BLOB: stringify(removeDuplicates(payload.DATA)), NAME_CHAR: payload.value})
     return insert
-    
+}
+
+function removeDuplicates(arr) {
+    const uniqueJSONStrings = new Set();
+
+    return arr.filter((obj) => {
+        const jsonObjStr = JSON.stringify(obj);
+
+        if (uniqueJSONStrings.has(jsonObjStr)) {
+            return false;
+        } else {
+            uniqueJSONStrings.add(jsonObjStr);
+            return true;
+        }
+    });
 }
 
 

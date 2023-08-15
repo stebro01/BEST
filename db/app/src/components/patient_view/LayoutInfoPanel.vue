@@ -8,7 +8,7 @@
                         >
                         
                         <q-item-section side>
-                            <div class="row">
+                            <div class="row" v-if="item.value !== null">
                             <q-btn @click="removeLayout(item)" size="sm" dense flat rounded icon="delete"><q-tooltip>Entferne das Layout</q-tooltip></q-btn>
                             <q-btn @click="renameLayout(item)" size="sm" dense flat rounded icon="edit"><q-tooltip> Layout umbenennen</q-tooltip></q-btn>
                         </div>
@@ -23,9 +23,10 @@
             </q-btn-dropdown>
             <!-- LAYOUT BTNS -->
             <span class="q-ml-x q-gutter-x-xs" v-if="LAYOUT_CHANGED">
-                <q-btn size="sm" dense no-caps flat class="bg-positive" @click="btnUpdateLayout()">update</q-btn>
+                
+                <q-btn v-if="ACTIVE_LAYOUT" size="sm" dense no-caps flat class="bg-positive" @click="btnUpdateLayout()">update</q-btn>
                 <q-btn size="sm" dense no-caps flat class="bg-positive" @click="btnSaveLayout()">neu</q-btn>
-                <q-btn size="sm" dense @click="LAYOUT_CHANGED = false" flat icon="close"><q-tooltip>Änderungen nicht
+                <q-btn size="sm" dense @click="undoLayoutChanges()" flat icon="close"><q-tooltip>Änderungen nicht
                         übernehmen</q-tooltip></q-btn>
             </span>
         </div>
@@ -148,7 +149,7 @@ export default {
                         res = res.map(item => {
                             return { value: item.CODE_CD, label: item.NAME_CHAR }
                         })
-
+                        res.unshift({ value: null, label: 'Alles anzeigen' })
                         this.$store.commit('PATIENT_VIEW_LAYOUTS_SET', res)
                         this.selectLayout(res[0])
                     }
@@ -162,6 +163,10 @@ export default {
 
         //  // LAYOUT
         async loadLayout(val) {
+            if (val === null) {
+                this.$store.commit("PATIENT_VIEW_ACTIVE_LAYOUT_SET", undefined)
+                return
+            }
             const res = await this.$store.dispatch('searchDB', { table: 'CODE_LOOKUP', query_string: { COLUMN_CD: 'VIEW_LAYOUT', CODE_CD: val, _columns: ["LOOKUP_BLOB"] } })
             if (res && res.length > 0) {
                 this.$store.commit("PATIENT_VIEW_ACTIVE_LAYOUT_SET", JSON.parse(unstringify(res[0].LOOKUP_BLOB)))
@@ -169,6 +174,11 @@ export default {
             } else {
                 this.$q.notify({ type: 'negative', message: 'Layout konnte nicht geladen werden' })
             }
+        },
+
+        undoLayoutChanges() {
+            this.loadLayout(this.ACTIVE_LAYOUT)
+            this.$store.commit("PATIENT_VIEW_LAYOUT_CHANGED_SET", false)
         },
 
 
