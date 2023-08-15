@@ -1,12 +1,10 @@
 <template>
     <q-page-sticky position="bottom-right" :offset="fabPos">
         <q-fab v-model="fab_status" color="dark" icon="add" direction="up" :disable="draggingFab" v-touch-pan.prevent.mouse="moveFab">
-                <div v-if="this.$store.getters.VISIT_PINNED" >
-                    <q-btn @click="fab_status = true" round class="my-observation-color" icon="file_download"><q-tooltip>Daten importieren</q-tooltip></q-btn>
-                    <q-btn @click="fab_status = true" round class="my-observation-color" icon="add" ><q-tooltip>Observation hinzufügen</q-tooltip></q-btn>
-                </div>
-            <q-fab-action v-if="this.$store.getters.PATIENT_PINNED" external-label label-position="right" class="my-visit-color" @click="onClickVisit()" :icon="VISIT_TAB.icon" label="Visite"/>
-            <q-fab-action class="my-patient-color" external-label label-position="right" @click="onClickPatient()" :icon="PATIENT_TAB.icon" label="Patient"/>
+            <q-fab-action v-if="this.$store.getters.VISIT_PINNED" external-label label-position="left" class="my-observation-color"  :icon="OBSERVATION_TAB.icon" label="+ Observation"/>
+            <q-fab-action v-if="this.$store.getters.VISIT_PINNED" external-label label-position="left" class="my-observation-color"  icon="file_download" label="+ Import"/>
+            <q-fab-action v-if="this.$store.getters.PATIENT_PINNED" external-label label-position="left" class="my-visit-color" @click="onClickVisit()" :icon="VISIT_TAB.icon" label="+ Visite"/>
+            <q-fab-action class="my-patient-color" external-label label-position="left" @click="onClickPatient()" :icon="PATIENT_TAB.icon" label="+ Patient"/>
 
         </q-fab>
         
@@ -25,8 +23,8 @@ export default {
     data() {
         return {
             draggingFab: false,
-            fabPos: [150, 0],
-            fab_status: true
+            fabPos: [10, 10],
+            fab_status: false
 
         }
     },

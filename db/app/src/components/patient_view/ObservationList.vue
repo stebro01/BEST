@@ -1,6 +1,6 @@
 <template>
     <div class="fit" v-if="param" style="">
-        <div class="absolute-bottom-left z-top q-pa-xs">
+        <div class="absolute-bottom-right  q-pa-xs">
             <LAYOUT_INFO_PANEL :observations="OBSERVATIONS.length" />
         </div>
         <q-scroll-area :style="`height: ${SIZE.height}px; max-width: ${SIZE.width}px;`" class="q-pa-md ">
