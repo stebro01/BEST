@@ -37,26 +37,30 @@
                         <td class="text-left" style="max-width: 250px; overflow: hidden">{{ item.CONCEPT_NAME_CHAR ||
                             item.CONCEPT_CD }}<q-tooltip>{{ item.CONCEPT_NAME_CHAR || item.CONCEPT_CD }}</q-tooltip></td>
                         <!-- DATA -->
-                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE }" @click="item._edit_val = true"
+                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_val = true"
                             style="max-width: 50px; overflow: hidden">{{ item.NVAL_NUM ||
                                 item.TVAL_RESOLVED || item.TVAL_CHAR }}<q-tooltip>{{ item.NVAL_NUM || item.TVAL_RESOLVED ||
         item.TVAL_CHAR }}</q-tooltip>
-                            <POPUP_DATA v-if="EDIT_MODE && item._edit_val" :item="item" @update="updateValue($event, item)"
+                            <POPUP_DATA v-if="EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR) && item._edit_val" :item="item" @update="updateValue($event, item)"
                                 @close="item._edit_val = false" />
                         </td>
                         <!-- UNIT -->
-                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE }" @click="item._edit_unit = true"
+                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_unit = true"
                             style="max-width: 50px; overflow: hidden">{{ item.UNIT_RESOLVED ||
                                 item.UNIT_CD }}<q-tooltip>{{ item.UNIT_RESOLVED || item.UNIT_CD }}</q-tooltip>
-                            <POPUP_UNIT v-if="EDIT_MODE && item._edit_unit" :item="item" @update="updateUnit($event, item)"
+                            <POPUP_UNIT v-if="EDIT_MODE && item._edit_unit && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)" :item="item" @update="updateUnit($event, item)"
                                 @close="item._edit_unit = false" />
                         </td>
                         <!-- CATEGORY -->
-                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE }" @click="item._edit_cat = true"
+                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_cat = true"
                             style="max-width: 50px; overflow: hidden">{{ item.CATEGORY_CHAR }}
                             <q-tooltip>{{ item.CATEGORY_CHAR }}</q-tooltip>
-                            <POPUP_CATEGORY v-if="EDIT_MODE && item._edit_cat" :item="item.CATEGORY_CHAR"
+                            <POPUP_CATEGORY v-if="EDIT_MODE && item._edit_cat && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)" :item="item.CATEGORY_CHAR"
                                 @update="updateCategory($event, item)" @close="item._edit_cat = false" />
+                            <!-- DOWNLOAD RAW -->
+                            <span v-if="item.CATEGORY_CHAR === 'RAW' || item.CATEGORY_CHAR === 'surveyBEST'" class="cursor-pointer" @click="downloadRAW(item)"><q-icon name="download"><q-tooltip>Download</q-tooltip></q-icon></span>
+                            <span v-if="item.CATEGORY_CHAR === 'surveyBEST'" class="cursor-pointer" @click="previewSURVEY(item)"><q-icon name="preview"><q-tooltip>Preview</q-tooltip></q-icon></span>
+
                         </td>
                         <td class="text-right text-caption" style="max-width: 50px; overflow: hidden">{{ item.START_DATE }}
                         </td>
@@ -96,6 +100,12 @@
                 @close="show_new_obs_dialog = false; show_new_obs_dialog_data = undefined"
                 @save="updateObservationsFromSaveDialog($event)" />
         </q-dialog>
+
+        <!-- DOWNLOAD DATA -->
+        <DOWNLOAD_DATA v-if="download_data" @close="download_data = undefined" :input_data="download_data"/>
+
+        <!-- PREVIEW -->
+        <PREVIEW_SURVEY v-if="preview_data" @close="preview_data = undefined" :input_data="preview_data" :mode="'col'"/>
     </div>
 </template>
 
@@ -107,6 +117,8 @@ import POPUP_UNIT from 'src/components/patient_view/PopupUnit.vue'
 import POPUP_DATA from 'src/components/patient_view/PopupData.vue'
 
 import ENTER_NEW_DATA_DIALOG from 'src/components/patient_view/EnterNewDataDialog.vue'
+import DOWNLOAD_DATA from 'src/components/patient_view/DownloadData.vue'
+import PREVIEW_SURVEY from 'src/components/patient_view/SurveyPreview.vue'
 
 import { my_confirm } from 'src/tools/my_dialog'
 import { datenow_isostring } from 'src/tools/mydate'
@@ -114,7 +126,7 @@ import { datenow_isostring } from 'src/tools/mydate'
 export default {
     name: 'PatientView_ObservationList',
 
-    components: { DIALOG_DRAG_DROP, LAYOUT_INFO_PANEL, POPUP_CATEGORY, POPUP_UNIT, POPUP_DATA, ENTER_NEW_DATA_DIALOG },
+    components: { DIALOG_DRAG_DROP, LAYOUT_INFO_PANEL, POPUP_CATEGORY, POPUP_UNIT, POPUP_DATA, ENTER_NEW_DATA_DIALOG, DOWNLOAD_DATA, PREVIEW_SURVEY },
 
     props: ['param'],
 
@@ -125,7 +137,9 @@ export default {
             },
             show_drop_list: false,
             show_new_obs_dialog: false,
-            show_new_obs_dialog_data: undefined
+            show_new_obs_dialog_data: undefined,
+            download_data: undefined,
+            preview_data: undefined
         }
     },
 
@@ -202,6 +216,10 @@ export default {
         SORT_LIST() {
             if (!this.$store.getters.PATIENT_VIEW.active_layout) return []
             return this.$store.getters.PATIENT_VIEW.active_layout
+        },
+
+        FORBIDDEN_CATEGORY() {
+            return this.$store.getters.ENV.app.env.patient_view.forbidden_categories
         }
 
     },
@@ -321,7 +339,19 @@ export default {
             this.show_new_obs_dialog = false
             this.show_new_obs_dialog_data = undefined
             if (obs) this.localData.OBSERVATIONS.push(obs)
-        }
+        },
+
+        // DOWNLOAD DATA
+
+        downloadRAW(item) {
+            this.download_data = item
+        },
+
+        previewSURVEY(item) {
+            if (!item) return
+            this.preview_data = item
+        },
+        
 
         // ENDE METHODS
     }

@@ -105,7 +105,9 @@ export function PATIENT_VIEW_ACTIVE_LAYOUT_SET (state, payload) {
 }   
 
 export function PATIENT_VIEW_EDIT_CATEGORIES_SET (state, payload) {
-    state.PATIENT_VIEW.EDIT.CATEGORIES = payload
+    const removeArray = state.ENV.app.env.patient_view.forbidden_categories
+    console.log('removeArray', removeArray, payload)
+    state.PATIENT_VIEW.EDIT.CATEGORIES = payload.filter(item => !removeArray.includes(item));
 }
 
 export function PATIENT_VIEW_EDIT_UNITCD_SET (state, payload) {

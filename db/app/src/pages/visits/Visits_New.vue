@@ -19,7 +19,7 @@
 
       <!-- FOOTER -->
       <template v-slot:footer>
-        <BOTTOM_BUTTONS :show_back="true" @back="$router.go(-1)" />
+        <!-- <BOTTOM_BUTTONS :show_back="true" @back="$router.go(-1)" /> -->
       </template>
     </MainSlot>
   </q-page>
@@ -30,7 +30,7 @@
 import VISIT_EDIT_CARD from "src/components/visits/VisitEdit_Card.vue";
 import HEADING from "src/components/elements/Heading.vue";
 import MainSlot from "src/components/MainSlot.vue";
-import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
+// import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
 
 
 import { datenow_isostring } from "src/tools/mydate";
@@ -44,7 +44,7 @@ export default {
     };
   },
 
-  components: { VISIT_EDIT_CARD, HEADING, MainSlot, BOTTOM_BUTTONS },
+  components: { VISIT_EDIT_CARD, HEADING, MainSlot },
   // mixins: [myMixins], //imports: searchPatient & deleteItem
 
   mounted() {

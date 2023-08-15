@@ -14,7 +14,6 @@
     <template v-slot:footer>
           <!-- BUTTONS -->
     <BOTTOM_BUTTONS 
-      :show_back="true" @back="closeObservation()"
       :show_save="data_changed === true" @save="saveData()"
     />  
     </template>
@@ -105,7 +104,8 @@ export default {
 
     closeObservation() {
       this.$store.commit('OBSERVATION_PINNED_SET', undefined)
-      this.$router.push({name: 'VisitsView'})
+      // this.$router.push({name: 'VisitsView'})
+
     },
 
     updateData(data) {
