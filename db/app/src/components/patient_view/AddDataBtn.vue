@@ -1,5 +1,5 @@
 <template>
-    <q-page-sticky position="bottom-right" :offset="fabPos">
+    <q-page-sticky class="z-max" position="bottom-right" :offset="fabPos">
         <q-fab v-model="fab_status" color="dark" icon="add" direction="up" :disable="draggingFab" v-touch-pan.prevent.mouse="moveFab">
             <q-fab-action v-if="this.$store.getters.VISIT_PINNED" external-label label-position="left" class="my-observation-color"  :icon="OBSERVATION_TAB.icon" label="+ Observation"/>
             <q-fab-action v-if="this.$store.getters.VISIT_PINNED" external-label label-position="left" class="my-observation-color"  icon="file_download" label="+ Import"/>
