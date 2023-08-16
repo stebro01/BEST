@@ -69,7 +69,7 @@ export default {
 
     computed: {
         ELEMENTS_TO_SHOW() {
-            return [{value: 'LID: 63900-5', label: 'Age'}, {value: 'SCTID: 371484003', label: 'Name'}, {value: 'SCTID: 263495000', label: 'Gender'}, {value: 'SCTID: 246261001', label: 'Gruppe'}, {label: 'Hauptdiagnose', value: 'SCTID: 8319008'} ]
+            return [{value: 'SCTID: 184099003', label: 'Geb.-Datum'}, {value: 'SCTID: 371484003', label: 'Name'}, {value: 'SCTID: 263495000', label: 'Gender'}, {value: 'SCTID: 246261001', label: 'Gruppe'}, {label: 'Hauptdiagnose', value: 'SCTID: 8319008'} ]
         },
 
         ACTIVE_PATIENT() {
