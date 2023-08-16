@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     async loadAnswers(payload) {
-      this.ANSWERS = await this.$store.dispatch('searchDB', {table: "CONCEPT_DIMENSION", query_string: {CONCEPT_PATH: `${payload.CONCEPT_PATH}${payload.CONCEPT_CD}\\LA`, _like: true}})
+      this.ANSWERS = await this.$store.dispatch('searchDB', {table: "CONCEPT_DIMENSION", query_string: {CONCEPT_PATH: `${payload.CONCEPT_PATH}\\${payload.CONCEPT_CD}\\LA`, _like: true}})
       for (let item of this.ANSWERS) {
         item._old_CONCEPT_CD = item.CONCEPT_CD
         // SPLIT by SOURCESYSTEM_CD
@@ -233,7 +233,9 @@ export default {
       if (SOURCESYSTEM_CD === 'LOINC') SOURCESYSTEM_CD = "LID"
       if (SOURCESYSTEM_CD === 'SNOMED-CT') SOURCESYSTEM_CD = "SCTID"
       item.CONCEPT_CD = `${SOURCESYSTEM_CD}: ${item.SHORT_CONCEPT}`
-      item.CONCEPT_PATH = `${CONCEPT.CONCEPT_PATH}${CONCEPT.CONCEPT_CD}\\LA\\${item.SHORT_CONCEPT}`
+      // REMOVE '\\' at the end of CONCEPT.CONCEPT_PATH
+      if (CONCEPT.CONCEPT_PATH.endsWith("\\")) CONCEPT.CONCEPT_PATH = CONCEPT.CONCEPT_PATH.slice(0, -1);
+      item.CONCEPT_PATH = `${CONCEPT.CONCEPT_PATH}\\${CONCEPT.CONCEPT_CD}\\LA\\${item.SHORT_CONCEPT}`
       return item
     },
 

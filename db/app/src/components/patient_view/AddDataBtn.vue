@@ -2,6 +2,7 @@
     <q-page-sticky class="z-max" position="bottom-right" :offset="fabPos">
         <q-fab v-model="fab_status" color="dark" icon="add" direction="up" :disable="draggingFab" v-touch-pan.prevent.mouse="moveFab">
             <q-fab-action v-if="this.$store.getters.VISIT_PINNED" external-label label-position="left" class="my-observation-color"  @click="onAddObservation()" :icon="OBSERVATION_TAB.icon" label="+ Observation"/>
+            <q-fab-action v-if="this.$store.getters.VISIT_PINNED" external-label label-position="left" class="my-observation-color" @click="onSchemeClick()" icon="playlist_play" label="+ Scheme"/>
             <q-fab-action v-if="this.$store.getters.VISIT_PINNED" external-label label-position="left" class="my-observation-color" @click="onImportClick()" icon="file_download" label="+ Import"/>
             <q-fab-action v-if="this.$store.getters.PATIENT_PINNED" external-label label-position="left" class="my-visit-color" @click="onClickVisit()" :icon="VISIT_TAB.icon" label="+ Visite"/>
             <q-fab-action class="my-patient-color" external-label label-position="left" @click="onClickPatient()" :icon="PATIENT_TAB.icon" label="+ Patient"/>
@@ -82,6 +83,10 @@ export default {
 
         onImportClick() {
             this.$router.push({name: 'Observation_Import'})
+        },
+
+        onSchemeClick() {
+            this.$router.push({name: 'Scheme_Continue'})
         }
     }
 

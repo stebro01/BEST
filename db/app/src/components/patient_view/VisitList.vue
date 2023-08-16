@@ -98,7 +98,8 @@ export default {
                 }
             });
             if (res) {
-                this.localData.VISITS = res
+                // but filter elements with VISIT_BLOB: '<SYSTEM>'
+                this.localData.VISITS = res.filter(item => item.VISIT_BLOB !== '<SYSTEM>')    
                 if (!this.$store.getters.VISIT_PINNED && this.localData.VISITS.length) this.$store.commit('VISIT_PINNED_SET', this.localData.VISITS[0])
             }
             else this.$q.notify({ type: 'negative', message: 'Fehler beim Laden der Visiten' });

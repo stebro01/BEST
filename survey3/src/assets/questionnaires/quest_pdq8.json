@@ -42,7 +42,8 @@
         }
     ],
     "results": {
-        "method": "sum"
+        "method": "sum",
+        "coding": { "display" : "PDQ-8", "code" : "CUSTOM: PDQ_8", "system" : "CUSTOM" }
     }
 
 }

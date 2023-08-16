@@ -92,7 +92,7 @@
         <!-- DB IS UPT TO DATE -->
         <q-badge v-if="db_status_text && CONNECTED" color="white"><q-icon v-if="db_is_uptodate" color='green'
             name="check" /><q-icon v-else class="cursor-pointer" @click="$router.push({ name: 'DBFunctions_Update' })"
-            color='red' name="warning" /><q-tooltip>{{ db_status_text }}</q-tooltip></q-badge>
+            color='red' name="warning" /><q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">{{ db_status_text }}</q-tooltip></q-badge>
 
       </div>
     </q-footer>
@@ -189,9 +189,9 @@ export default {
         .then(res => {
           if (res && res.length > 0) {
             const db_version = res[0].NAME_CHAR
-            const app_version = this.$store.getters.ENV.app.version
-            this.db_status_text = `DB-Version: ${db_version} (App-Version: ${app_version})`
-            if (db_version === app_version) this.db_is_uptodate = true
+            const db_app_version = this.$store.getters.ENV.app.db_version
+            this.db_status_text = `Exptected DB-Version: ${db_app_version}; Current DB-Version: ${db_version}`
+            if (db_version === db_app_version) this.db_is_uptodate = true
             else this.db_is_uptodate = false
           } else {
             this.db_status_text = 'DB-Version unbekannt'

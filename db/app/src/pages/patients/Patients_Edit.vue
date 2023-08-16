@@ -109,8 +109,8 @@
     <!-- FOOTER -->
     <template v-slot:footer>
     <BOTTOM_BUTTONS  
-      :show_save="change_detected" :show_back="true"
-      @save="saveEntry()" @back="$router.go(-1)"
+      :show_save="change_detected" 
+      @save="saveEntry()" 
     />
     </template>
 

@@ -230,6 +230,6 @@
     ],
     "results": {
         "method": "sum",
-        "coding": { "display" : "flei", "code" : "CUSTOM: SCORE_PDQ39_SUM", "system" : "CUSTOM" }
+        "coding": { "display" : "PDQ_39", "code" : "CUSTOM: SCORE_PDQ39_SUM", "system" : "CUSTOM" }
     }
 }

@@ -73,7 +73,6 @@ export default {
     mounted() {
         if (!this.item) this.$emit('close')
         this.localData = JSON.parse(JSON.stringify(this.item))
-        console.log(this.localData)
         // 
         if (this.localData.VALTYPE_CD === 'N') {
             // this.value = this.localData.NVAL_NUM

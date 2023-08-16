@@ -5,7 +5,7 @@
         </div>
         <q-scroll-area :style="`height: ${SIZE.height}px; max-width: ${SIZE.width}px;`" class="q-pa-md ">
             <!-- CONTEBNT -->
-            <q-markup-table dense separator="cell">
+            <q-markup-table dense separator="cell" style="max-width: 100%!important">
                 <!-- HEADER -->
                 <thead>
                     <tr>
@@ -34,35 +34,35 @@
                         </td>
                         <!-- NORMAL VALUES -->
                         <!-- CONCEPT -->
-                        <td class="text-left" style="max-width: 250px; overflow: hidden">{{ item.CONCEPT_NAME_CHAR ||
+                        <td class="col_CONCEPT_CD" >{{ item.CONCEPT_NAME_CHAR ||
                             item.CONCEPT_CD }}<q-tooltip>{{ item.CONCEPT_NAME_CHAR || item.CONCEPT_CD }}</q-tooltip></td>
                         <!-- DATA -->
-                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_val = true"
-                            style="max-width: 50px; overflow: hidden">{{ item.NVAL_NUM ||
+                        <td class="col_DATA" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_val = true"
+                            >{{ item.NVAL_NUM ||
                                 item.TVAL_RESOLVED || item.TVAL_CHAR }}<q-tooltip>{{ item.NVAL_NUM || item.TVAL_RESOLVED ||
         item.TVAL_CHAR }}</q-tooltip>
                             <POPUP_DATA v-if="EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR) && item._edit_val" :item="item" @update="updateValue($event, item)"
                                 @close="item._edit_val = false" />
                         </td>
                         <!-- UNIT -->
-                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_unit = true"
-                            style="max-width: 50px; overflow: hidden">{{ item.UNIT_RESOLVED ||
+                        <td class="col_UNIT_CD" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_unit = true"
+                            >{{ item.UNIT_RESOLVED ||
                                 item.UNIT_CD }}<q-tooltip>{{ item.UNIT_RESOLVED || item.UNIT_CD }}</q-tooltip>
                             <POPUP_UNIT v-if="EDIT_MODE && item._edit_unit && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)" :item="item" @update="updateUnit($event, item)"
                                 @close="item._edit_unit = false" />
                         </td>
                         <!-- CATEGORY -->
-                        <td class="text-left" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_cat = true"
-                            style="max-width: 50px; overflow: hidden">{{ item.CATEGORY_CHAR }}
-                            <q-tooltip>{{ item.CATEGORY_CHAR }}</q-tooltip>
+                        <td class="col_CATEGORY_CHAR" :class="{ 'bg-blue-1': EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)}" @click="item._edit_cat = true"
+                            >
+                                       <!-- DOWNLOAD RAW -->
+                                       <span v-if="item.CATEGORY_CHAR === 'RAW' || item.CATEGORY_CHAR === 'surveyBEST'" class="cursor-pointer" @click="downloadRAW(item)"><q-icon name="download"><q-tooltip>Download</q-tooltip></q-icon></span>
+                            <span v-if="item.CATEGORY_CHAR === 'surveyBEST'" class="cursor-pointer" @click="previewSURVEY(item)"><q-icon name="preview"><q-tooltip>Preview</q-tooltip></q-icon></span>
+                            {{ item.CATEGORY_CHAR }}
                             <POPUP_CATEGORY v-if="EDIT_MODE && item._edit_cat && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR)" :item="item.CATEGORY_CHAR"
                                 @update="updateCategory($event, item)" @close="item._edit_cat = false" />
-                            <!-- DOWNLOAD RAW -->
-                            <span v-if="item.CATEGORY_CHAR === 'RAW' || item.CATEGORY_CHAR === 'surveyBEST'" class="cursor-pointer" @click="downloadRAW(item)"><q-icon name="download"><q-tooltip>Download</q-tooltip></q-icon></span>
-                            <span v-if="item.CATEGORY_CHAR === 'surveyBEST'" class="cursor-pointer" @click="previewSURVEY(item)"><q-icon name="preview"><q-tooltip>Preview</q-tooltip></q-icon></span>
-
+                 
                         </td>
-                        <td class="text-right text-caption" style="max-width: 50px; overflow: hidden">{{ item.START_DATE }}
+                        <td class="col_START_DATE" >{{ item.START_DATE }}
                         </td>
                     </tr>
 
@@ -360,4 +360,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+</style>

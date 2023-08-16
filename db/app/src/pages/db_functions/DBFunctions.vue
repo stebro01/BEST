@@ -23,6 +23,7 @@
                   {{ item.label }}
                 </q-item-label>
               </q-item-section>
+              <q-tooltip>{{ item.caption }}</q-tooltip>
             </q-item>
           </q-list>
      </template>

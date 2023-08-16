@@ -31,8 +31,11 @@
               <div class="col-9 column" v-if="$store.getters.PATIENT_PINNED">
                 <div class="col-2" >
                   <VISIT_LIST />
+                  <GLOBAL_OBSERVATIONS />
                 </div>
+  
                 <div class="col-10">
+                 
                   <q-resize-observer @resize="onResize($event, 'observationlist_size')" />
                   <OBSERVATION_LIST :param="param"/>
                 </div>
@@ -64,11 +67,13 @@ import VISIT_LIST from 'src/components/patient_view/VisitList.vue'
 import OBSERVATION_LIST from 'src/components/patient_view/ObservationList.vue'
 import ADD_DATA_BTN from 'src/components/patient_view/AddDataBtn.vue'
 
+import GLOBAL_OBSERVATIONS from 'src/components/patient_view/GlobalObservations.vue'
+
 
 export default {
   name: 'DBQueries_PatientView',
 
-  components: { HEADING, MainSlot, PATIENT_LIST, VISIT_LIST, OBSERVATION_LIST, ADD_DATA_BTN },
+  components: { HEADING, MainSlot, PATIENT_LIST, VISIT_LIST, OBSERVATION_LIST, ADD_DATA_BTN, GLOBAL_OBSERVATIONS },
 
   data() {
     return {
