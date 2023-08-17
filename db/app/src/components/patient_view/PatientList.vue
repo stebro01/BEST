@@ -1,5 +1,5 @@
 <template>
-    <div v-if="PATIENTS" :style="`height: ${SIZE}`">
+    <div v-if="PATIENTS" class="fit">
         <div class="q-px-sm q-py-xs" style="height: 50px">
             <q-input input-class="text-caption" dense filled v-model="filter_patient">
                 <template v-slot:prepend>
@@ -12,12 +12,12 @@
 
         </div>
 
-        <q-virtual-scroll :style="`height: ${LIST_SIZE}`" :items="PATIENTS" separator v-slot="{ item, index }">
+        <q-virtual-scroll style="height: calc(100% - 50px)" :items="PATIENTS" separator v-slot="{ item, index }">
             <q-item :key="index" dense
             clickable v-ripple
                 @click="setActivePatient(item)" :class="{ 'bg-grey-4': active_patient === item.PATIENT_CD }"
             >
-                <q-item-section class="text-caption">{{ item.PATIENT_CD }}</q-item-section>
+                <q-item-section class="text-caption"><div>{{ item.PATIENT_CD }} <q-icon v-if="item.USER_ID === $store.getters.PUBLIC_ID" name="visibility"/></div></q-item-section>
             </q-item>
         </q-virtual-scroll>
 
@@ -55,14 +55,6 @@ export default {
             else return this.$store.getters.PATIENT_PINNED.PATIENT_CD
         },
 
-        SIZE() {
-            if (!this.size) return '100%'
-            else return this.size.height+'px'
-        },
-        LIST_SIZE() {
-            if (!this.size) return '100%'
-            else return this.size.height-50+'px'
-        }
     },
 
     methods: {
