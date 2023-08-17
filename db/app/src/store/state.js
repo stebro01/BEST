@@ -28,7 +28,8 @@ export default function () {
       EDIT: {
         CATEGORIES: undefined, //expect an array
         UNIT_CD: undefined, //expect an array of objects
-      }
+      }, 
+      SQL_STATEMENT: undefined, //expect a string
     }
   }
 }

@@ -113,3 +113,7 @@ export function PATIENT_VIEW_EDIT_CATEGORIES_SET (state, payload) {
 export function PATIENT_VIEW_EDIT_UNITCD_SET (state, payload) {
     state.PATIENT_VIEW.EDIT.UNIT_CD = payload
 }   
+
+export function PATIENT_VIEW_SQLSTATEMENT_SET (state, payload) {
+    state.PATIENT_VIEW.SQL_STATEMENT = payload
+}   

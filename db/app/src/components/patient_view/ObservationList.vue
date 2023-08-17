@@ -1,9 +1,9 @@
 <template>
-    <div class="fit" v-if="param" style="">
+    <div class="fit" v-if="param">
         <div class="absolute-bottom-right  q-pa-xs z-top">
             <LAYOUT_INFO_PANEL :observations="OBSERVATIONS.length" />
         </div>
-        <q-scroll-area :style="`height: ${SIZE.height}px; max-width: ${SIZE.width}px;`" class="q-pa-md ">
+        <q-scroll-area  class="fit q-pa-md ">
             <!-- CONTEBNT -->
             <q-markup-table dense separator="cell" style="max-width: 100%!important">
                 <!-- HEADER -->
@@ -166,11 +166,6 @@ export default {
     },
 
     computed: {
-        SIZE() {
-            if (!this.param.observationlist_size) return { width: 100, height: 100 }
-            return this.param.observationlist_size
-        },
-
         ACTIVE_VISIT() {
             return this.$store.getters.VISIT_PINNED
         },

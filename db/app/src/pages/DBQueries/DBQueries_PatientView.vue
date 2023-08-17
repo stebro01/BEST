@@ -1,6 +1,5 @@
 <template>
   <q-page class="">
-    <q-resize-observer @resize="onResize($event, 'main_size')" />
 
     <MainSlot :no_options="true" :no_footer="true">
       <!-- HEADING -->
@@ -10,34 +9,51 @@
 
       <!-- MAIN -->
       <template v-slot:main>
-        <div class="column" :style="MAIN_STYLE">
+        <div class="row" style="width: 100%; height: 70vh">
           <!-- HEADER -->
-          <div class="col-2 q-pa-sm">
+          <div class="col-12 q-pa-sm" :style="`height: ${SIZE_TOP}`">
             <div class="row ">
-              <div class="col-8"><q-input dense input-class="text-left" input-style="font-family: 'Courier', monospace;"
-                  filled v-model="param.sql_query" label="SQL Statement" /></div>
-              <div class="col"><q-btn class="q-ml-md my-btn" @click="runSQLStatement(param.sql_query)">laden</q-btn></div>
+              <div class="col-8">
+                <q-input dense input-class="text-left" input-style="font-family: 'Courier', monospace;" filled
+                  :readonly="query_sql_locked" v-model="SQL_QUERY" label="SQL Statement">
+                  <template v-slot:prepend>
+                    <q-icon :name="query_sql_locked ? 'lock' : 'lock_open'" size="xs"
+                      @click="query_sql_locked = !query_sql_locked"><q-tooltip>Speeren und Entspeeren der Eingabe; ACHTUNG: nur für fortgeschrittene Nutzer!</q-tooltip></q-icon>
+                  </template>
+                  <template v-slot:append>
+                    <q-btn flat dense icon="clear" @click="query_obs_elements = []; resetSQLQuery()" />
+                  </template>
+                  <q-tooltip>{{ SQL_QUERY }}</q-tooltip>
+                </q-input>
+                <div>
+                  <q-chip v-for="(q_el, q_ind) of query_obs_elements" :key="q_ind + 'indelq'" dense size="sm" removable
+                    @remove="removeSqlEl(q_ind)">
+                    {{ q_el.CONCEPT_NAME_CHAR }}={{ q_el.TVAL_RESOLVED || q_el.NVAL_NUM || q_el.TVAL_CHAR }}
+                  </q-chip>
+                </div>
+              </div>
+              <div class="col"><q-btn class="q-ml-md my-btn" @click="runSQLStatement(SQL_QUERY)">laden</q-btn></div>
             </div>
           </div>
           <!-- MAIN -->
-          <div class="col">
+          <div class="col-12 q-mt-md" :style="`height: calc(100% - ${SIZE_TOP})`">
             <div class="row justify-center fit">
               <!-- PATIENTLIST -->
-              <div class="col-3" >
-                <q-resize-observer @resize="onResize($event, 'patientlist_size')" />
-                <PATIENT_LIST :patients="localData.PATIENTS" :size="param.patientlist_size" @clicked="patientClicked($event)" />
+              <div class="col-3 full-height" >
+                <PATIENT_LIST :patients="localData.PATIENTS" :size="param.patientlist_size"
+                  @clicked="patientClicked($event)" />
               </div>
-              <!-- MAIN -->
-              <div class="col-9 column" v-if="$store.getters.PATIENT_PINNED">
-                <div class="col-2" >
+              <!-- MAIN LEFT-->
+              <div class="col-9 row" style="height: 100%" v-if="$store.getters.PATIENT_PINNED" >
+                <!-- VISITE UND GLOBAL -->
+                <div class="col-12" :style="`height: ${SIZE_VISIT}`">
                   <VISIT_LIST />
-                  <GLOBAL_OBSERVATIONS />
+                  <GLOBAL_OBSERVATIONS @add_sql="addElementToQuery($event)" />
                 </div>
-  
-                <div class="col-10">
-                 
-                  <q-resize-observer @resize="onResize($event, 'observationlist_size')" />
-                  <OBSERVATION_LIST :param="param"/>
+
+                <!-- OBSErVATION_LIST -->
+                <div class="col-12" :style="`min-height: calc(100% - ${SIZE_VISIT})`" >
+                  <OBSERVATION_LIST :param="param" />
                 </div>
               </div>
 
@@ -51,7 +67,7 @@
 
       <!-- FOOTER -->
       <template v-slot:footer>
-       
+
       </template>
 
     </MainSlot>
@@ -79,7 +95,6 @@ export default {
     return {
       options: this.$store.getters.ENV.options_db_queries,
       param: {
-        sql_query: this.$store.getters.ENV.app.env.patient_view.sql_statement,
         filter_patient: undefined,
         main_size: undefined,
         patientlist_size: undefined,
@@ -87,12 +102,15 @@ export default {
       },
       localData: {
         PATIENTS: undefined
-      }
+      },
+      query_obs_elements: [],
+      query_sql_locked: true
     }
   },
 
   mounted() {
-    this.runSQLStatement(this.param.sql_query)
+    if (!this.SQL_QUERY) this.resetSQLQuery()
+    else this.runSQLStatement(this.SQL_QUERY)
 
   },
 
@@ -102,9 +120,12 @@ export default {
       return this.$store.getters.TEXT.page.db_queries
     },
 
-    MAIN_STYLE() {
-      if (!this.param.main_size) return `width: 100%; height: 200px`
-      return `width: 100%; height: ${this.param.main_size.height / 12 * 9.5}px`
+    SIZE_TOP() {
+      return '80px'
+    },
+
+    SIZE_VISIT() {
+      return '120px'
     },
 
     PATIENTS() {
@@ -113,11 +134,22 @@ export default {
         if (!this.param.filter_patient) return true
         return item.PATIENT_CD.includes(this.param.filter_patient)
       })
+    },
+
+    SQL_QUERY: {
+      get() {
+        return this.$store.getters.PATIENT_VIEW_SQL_STATEMENT
+      },
+      set(val) {
+        this.$store.commit('PATIENT_VIEW_SQLSTATEMENT_SET', val)
+      }
     }
+
+    // ENDE COMPUTED
   },
 
   methods: {
-    
+
 
     onResize(size, field) {
       this.param[field] = size
@@ -134,12 +166,52 @@ export default {
       }
     },
 
+    // QUERY FUNCTIONS
+    resetSQLQuery() {
+      var sql = undefined
+      if (this.query_obs_elements.length === 0) sql = `${this.$store.getters.ENV.app.env.patient_view.sql_statement} WHERE USER_ID=${this.$store.getters.USER.USER_ID} OR USER_ID=${this.$store.getters.ENV.app.env.public_id}`
+      else {
+        // SELECT * FROM patient_list pl WHERE (pl.USER_ID = 14 OR pl.USER_ID = 999999) AND EXISTS (SELECT 1 FROM OBSERVATION_FACT of WHERE pl.PATIENT_NUM = of.PATIENT_NUM AND of.CONCEPT_CD = 'age');
+        const CONCEPTS = this.query_obs_elements.map(el => {
+          if (el.VALTYPE_CD === 'N') {
+            return `(of.CONCEPT_CD = '${el.CONCEPT_CD}' AND of.NUM_VAL=${el.NVAL_NUM})`;
+          } else  {
+            return `(of.CONCEPT_CD = '${el.CONCEPT_CD}' AND of.TVAL_CHAR='${el.TVAL_CHAR}')`;
+          }
+        }).join(' OR ');
+
+        const and = ` AND EXISTS (SELECT 1 FROM OBSERVATION_FACT of WHERE pl.PATIENT_NUM = of.PATIENT_NUM AND (${CONCEPTS})`
+        sql = `${this.$store.getters.ENV.app.env.patient_view.sql_statement} pl WHERE (pl.USER_ID = ${this.$store.getters.USER.USER_ID} OR pl.USER_ID = ${this.$store.getters.ENV.app.env.public_id}) ${and} )`
+
+      }
+
+      console.log(sql)
+
+      this.$store.commit('PATIENT_VIEW_SQLSTATEMENT_SET', sql)
+      this.runSQLStatement(sql)
+    },
+
+    addElementToQuery(el) {
+      if (!this.query_obs_elements.some(element => element.CONCEPT_CD === el.CONCEPT_CD)) {
+        this.query_obs_elements.push(el)
+        this.resetSQLQuery()
+      }
+
+    },
+
+    removeSqlEl(ind) {
+      this.query_obs_elements.splice(ind, 1)
+      this.resetSQLQuery()
+    },
+
     // PATIENT CLICKED
     patientClicked(patient) {
       // lade die Visiten
       this.$store.commit('PATIENT_PINNED_SET', patient)
       this.$store.commit('VISIT_PINNED_SET', undefined)
     },
+
+
 
     // ENDE METHODS
   }

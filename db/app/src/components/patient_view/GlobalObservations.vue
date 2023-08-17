@@ -2,35 +2,38 @@
     <div class="row q-pa-sm">
         <!-- DATA TO SHOW -->
         <div v-if="DATA_TO_SHOW" class="col">
-        <q-icon name="info" class="q-pa-xs"><q-tooltip>Globale Variablen: </q-tooltip></q-icon>
-    <q-chip v-for="(el, ind_el) of DATA_TO_SHOW" :key="ind_el + 'el'" dense>
+            <q-icon name="info" class="q-pa-xs"><q-tooltip>Globale Variablen: </q-tooltip></q-icon>
+            <q-chip v-for="(el, ind_el) of DATA_TO_SHOW" :key="ind_el + 'el'" dense clickable @click="$emit('add_sql', {CONCEPT_CD: el.CONCEPT_CD, CONCEPT_NAME_CHAR: el.CONCEPT_NAME_CHAR, NUM_VAL: el.NUM_VAL, TVAL_CHAR: el.TVAL_CHAR, TVAL_RESOLVED: el.TVAL_RESOLVED})">
                 <div class="my-small-text q-mr-xs my-el">{{ el.CONCEPT_NAME_CHAR }}: </div>
-                <div v-if="el.VALTYPE_CD === 'N'" class="my-el">{{ el.NVAL_NUM }} <span v-if="el.UNIT_CD" class="my-small-text my-el">{{ el.UNIT_CD }}</span></div>
-                <div v-else-if="el.VALTYPE_CD === 'T'" class="my-el">{{ el.TVAL_CHAR }}</div>
+                <div v-if="el.VALTYPE_CD === 'N'" class="my-el">{{ el.NVAL_NUM }} <span v-if="el.UNIT_CD"
+                        class="my-small-text my-el">{{ el.UNIT_CD }}</span></div>
+                <div v-else-if="el.VALTYPE_CD === 'T' || el.VALTYPE_CD === 'D'" class="my-el">{{ el.TVAL_CHAR }}</div>
                 <div v-else class="my-el">{{ el.TVAL_RESOLVED }}</div>
                 <q-tooltip>
-                    {{ el.CONCEPT_NAME_CHAR }} ({{ el.CONCEPT_CD  }}):
-                    <div v-if="el.VALTYPE_CD === 'N'" >{{ el.NVAL_NUM }} <span v-if="el.UNIT_CD" >{{ el.UNIT_CD }}</span></div>
-                <div v-else-if="el.VALTYPE_CD === 'T'" >{{ el.TVAL_CHAR }}</div>
-                <div v-else >{{ el.TVAL_RESOLVED }}</div>
+                    {{ el.CONCEPT_NAME_CHAR }} ({{ el.CONCEPT_CD }}):
+                    <div v-if="el.VALTYPE_CD === 'N'">{{ el.NVAL_NUM }} <span v-if="el.UNIT_CD">{{ el.UNIT_CD }}</span>
+                    </div>
+                    <div v-else-if="el.VALTYPE_CD === 'T'">{{ el.TVAL_CHAR }}</div>
+                    <div v-else>{{ el.TVAL_RESOLVED }}</div>
                 </q-tooltip>
             </q-chip>
         </div>
 
         <!-- MISSING DATA -->
-        <div class="col" v-if="MISSING_ELEMENTS && MISSING_ELEMENTS.length > 0"> 
-            <q-icon name="warning" color="red"><q-tooltip>Folgende Werte wurden nicht gefunden</q-tooltip>   </q-icon>
-            <q-chip v-for="(el_missing, ind_el_missing) of MISSING_ELEMENTS" :key="ind_el_missing + 'missing'" dense class="bg-red-2" size="sm" clickable @click="addData(el_missing)">
-                {{ el_missing.label  }}
+        <div class="col" v-if="MISSING_ELEMENTS && MISSING_ELEMENTS.length > 0">
+            <q-icon name="warning" color="red"><q-tooltip>Folgende Werte wurden nicht gefunden</q-tooltip> </q-icon>
+            <q-chip v-for="(el_missing, ind_el_missing) of MISSING_ELEMENTS" :key="ind_el_missing + 'missing'" dense
+                class="bg-red-2" size="sm" clickable @click="addData(el_missing)">
+                {{ el_missing.label }}
                 <q-tooltip>Anklicken zum Hinzufügen; der Wert wird der aktuellen Visite zugeordnet</q-tooltip>
-                </q-chip>
+            </q-chip>
 
         </div>
 
 
         <!-- ENTER MISSING DATA DIALOG -->
-         <!-- NEW ENTER DATA DIALOG -->
-         <q-dialog v-model="show_new_obs_dialog">
+        <!-- NEW ENTER DATA DIALOG -->
+        <q-dialog v-model="show_new_obs_dialog">
             <ENTER_NEW_DATA_DIALOG v-if="show_new_obs_dialog_data" :item="show_new_obs_dialog_data"
                 @close="show_new_obs_dialog = false; show_new_obs_dialog_data = undefined"
                 @save="updateObservationsFromSaveDialog($event)" />
@@ -46,7 +49,7 @@ import ENTER_NEW_DATA_DIALOG from 'src/components/patient_view/EnterNewDataDialo
 export default {
     name: 'GlobalObservations',
 
-    components: {ENTER_NEW_DATA_DIALOG},
+    components: { ENTER_NEW_DATA_DIALOG },
 
 
     data() {
@@ -69,7 +72,7 @@ export default {
 
     computed: {
         ELEMENTS_TO_SHOW() {
-            return [{value: 'SCTID: 184099003', label: 'Geb.-Datum'}, {value: 'SCTID: 371484003', label: 'Name'}, {value: 'SCTID: 263495000', label: 'Gender'}, {value: 'SCTID: 246261001', label: 'Gruppe'}, {label: 'Hauptdiagnose', value: 'SCTID: 8319008'} ]
+            return [{ value: 'SCTID: 184099003', label: 'Geb.-Datum' }, { value: 'SCTID: 371484003', label: 'Name' }, { value: 'SCTID: 263495000', label: 'Gender' }, { value: 'SCTID: 246261001', label: 'Gruppe' }, { label: 'Hauptdiagnose', value: 'SCTID: 8319008' }]
         },
 
         ACTIVE_PATIENT() {
@@ -81,7 +84,7 @@ export default {
             else return this.localData
         },
 
-        MISSING_ELEMENTS(){
+        MISSING_ELEMENTS() {
             // ELEMENTS that are in ELEMENTS_TO_SHOW but not in DATA_TO_SHOW
             if (!this.DATA_TO_SHOW) return this.ELEMENTS_TO_SHOW
             else {
@@ -100,15 +103,13 @@ export default {
         async loadGlobalObservations(patient, elements) {
             const TMP = []
             for (let el of this.ELEMENTS_TO_SHOW) {
-                let res = await this.$store.dispatch('searchDB', {table: 'OBSERVATION_FACT', query_string: {PATIENT_NUM: patient.PATIENT_NUM, CONCEPT_CD: el.value, _view: true}})
+                let res = await this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { PATIENT_NUM: patient.PATIENT_NUM, CONCEPT_CD: el.value, _view: true } })
                 if (res.length > 0) TMP.push(res[0])
             }
             if (TMP.length > 0) this.localData = TMP
         },
 
         async addData(item) {
-            console.log(item)
-
             const res = await this.$store.dispatch('searchDB', { table: 'CONCEPT_DIMENSION', query_string: { CONCEPT_CD: item.value } })
             if (!res || res.length === 0) return this.$q.notify({ message: 'Error loading concept', color: 'red-5' })
 
@@ -129,7 +130,6 @@ export default {
         },
 
         updateObservationsFromSaveDialog(obs) {
-            console.log(obs)
             this.show_new_obs_dialog = false
             this.show_new_obs_dialog_data = undefined
             if (obs) this.localData.push(obs)
@@ -142,6 +142,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

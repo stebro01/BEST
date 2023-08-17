@@ -26,13 +26,13 @@
               <q-btn class="col-12 my-list-btn" rounded no-caps @click="loadDB">lade DB</q-btn>
             </div>
           </div>
-          <div class="col-4 ">
+          <!-- <div class="col-4 ">
             <div class="text-center">
               <div>oder</div>
               <q-btn flat rounded no-caps class="my-btn" @click="$router.push({ name: 'DBFunctions_CreateDB' })">neue DB
                 anlegen</q-btn>
             </div>
-          </div>
+          </div> -->
         </div>
 
       </template>

@@ -228,7 +228,10 @@ export default {
           this.$store.commit("PATIENT_PINNED_SET", res[0]);
           this.$store.commit("VISIT_PINNED_SET", undefined);
           this.$store.commit("OBSERVATION_PINNED_SET", undefined);
-          this.$router.push({ name: "Visits" });
+          // sql statement to get PATIENT_CD from patient_list
+          const sql = `SELECT * FROM patient_list WHERE PATIENT_CD='${res[0].PATIENT_CD}'`
+          this.$store.commit("PATIENT_VIEW_SQLSTATEMENT_SET", sql);
+          this.$router.push({ name: "DBQueries_PatientView" });
         });
     },
 

@@ -91,6 +91,15 @@ export function PATIENT_VIEW(state) {
     return state.PATIENT_VIEW
 }
 
+//  SOME OPTIONS FOR PATIENT_VIEW
+export function PATIENT_VIEW_SQL_STATEMENT(state) {
+    return state.PATIENT_VIEW.SQL_STATEMENT
+}
+
+export function PUBLIC_ID(state) {
+    return state.ENV.app.env.public_id
+}
+
 export function ANSWER_ABSENT() { 
     return { value: 'SCTID: 2667000', label: 'k.A.' }
 }
