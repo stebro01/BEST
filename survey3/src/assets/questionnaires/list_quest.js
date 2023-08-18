@@ -26,6 +26,7 @@ const quest = [
   "fallstab",
   "fas",
   "feda",
+  "fim",
   "flei",
   "gas",
   "gds",

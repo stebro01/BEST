@@ -1,0 +1,163 @@
+{
+  "title": "Functional Independence Measure (FIM)",
+  "short_title": "FIM",
+  "description": "Mit dem Instrument FIM™ (Functional Independence Measure) werden funktionelle Einschränkungen von Patienten anhand von 18 Merkmalen gemessen. Dabei wird eine für alle Merkmale einheitliche Skala mit 7 Ausprägungen angewandt.",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "225398001",
+    "display": "FIM Score"
+  },
+  "manual": "FIM Bewertungsskale: 1 = Total abhängig, 2 = Maximal abhängig, 3 = Stark abhängig, 4 = Mäßig abhängig, 5 = Leicht abhängig, 6 = Unabhängig mit Hilfsmittel, 7 = Unabhängig ohne Hilfsmittel",
+  "keywords": "FIM, physio, ergo",
+  "ref": null,
+  "items": [
+    {
+        "label": "Selbstversorgung",
+        "id": [1,2,3,4,5,6],
+        "value": [],
+        "type": "multiple_radio",
+        "inline": false,
+        "force": false,
+        "options": {
+            "questions": [
+                { "label": "A Essen Trinken", "tag": "A_eat_drink", "id": 1 },
+                { "label": "B Körperpflege", "tag": "B_body_care", "id": 2 },
+                { "label": "C Baden, Duschen, Waschen", "tag": "C_bathing_showering_washing", "id": 3 },
+                { "label": "D Ankleiden - oben", "tag": "D_dressing_top", "id": 4 },
+                { "label": "E Ankleiden - unten", "tag": "E_dressing_bottom", "id": 5 },
+                { "label": "F Intimhygiene", "tag": "F_intimate_hygiene", "id": 6 }
+            ],
+            "answers": [
+                { "label": "1", "value": 1 },
+                { "label": "2", "value": 2 },
+                { "label": "3", "value": 3 },
+                { "label": "4", "value": 4 },
+                { "label": "5", "value": 5 },
+                { "label": "6", "value": 6 },
+                { "label": "7", "value": 7 }
+            ]
+        }
+    },
+    {
+        "label": "Kontinenz",
+        "id": [7,8],
+        "value": [],
+        "type": "multiple_radio",
+        "inline": false,
+        "force": false,
+        "options": {
+            "answers": [
+                { "label": "1", "value": 1 },
+                { "label": "2", "value": 2 },
+                { "label": "3", "value": 3 },
+                { "label": "4", "value": 4 },
+                { "label": "5", "value": 5 },
+                { "label": "6", "value": 6 },
+                { "label": "7", "value": 7 }
+            ],
+            "questions": [
+                { "label": "G Blasenkontrolle", "tag": "G_bladder_control", "id": 7 },
+                { "label": "H Darmkontrolle", "tag": "H_bowel_control", "id": 8 }
+            ]
+        }
+    },
+    {
+        "label": "Transfers",
+        "id": [9,10,11],
+        "value": [],
+        "type": "multiple_radio",
+        "inline": false,
+        "force": false,
+        "options": {
+            "answers": [
+                { "label": "1", "value": 1 },
+                { "label": "2", "value": 2 },
+                { "label": "3", "value": 3 },
+                { "label": "4", "value": 4 },
+                { "label": "5", "value": 5 },
+                { "label": "6", "value": 6 },
+                { "label": "7", "value": 7 }
+            ],
+            "questions": [
+                { "label": "I Bett, Stuhl, Rollstuhl", "tag": "I_bed_chair_wheelchair", "id": 9 },
+                { "label": "J Toilettensitz", "tag": "J_toilet_seat", "id": 10 },
+                { "label": "K Dusche, Badewanne", "tag": "K_shower_bathtub", "id": 11 }
+            ]
+        }
+    },
+    {
+        "label": "Fortbewegung",
+        "id": [12,13],
+        "value": [],
+        "type": "multiple_radio",
+        "inline": false,
+        "force": false,
+        "options": {
+            "answers": [
+                { "label": "1", "value": 1 },
+                { "label": "2", "value": 2 },
+                { "label": "3", "value": 3 },
+                { "label": "4", "value": 4 },
+                { "label": "5", "value": 5 },
+                { "label": "6", "value": 6 },
+                { "label": "7", "value": 7 }
+            ],
+            "questions": [
+                { "label": "L Gehen/ Rollstuhl", "tag": "L_walk_wheelchair", "id": 12 },
+                { "label": "M Treppensteigen", "tag": "M_climbing_stairs", "id": 13 }
+            ]
+        }
+    },
+    {
+        "label": "Kommunikation",
+        "id": [14,15],
+        "value": [],
+        "type": "multiple_radio",
+        "inline": false,
+        "force": false,
+        "options": {
+            "answers": [
+                { "label": "1", "value": 1 },
+                { "label": "2", "value": 2 },
+                { "label": "3", "value": 3 },
+                { "label": "4", "value": 4 },
+                { "label": "5", "value": 5 },
+                { "label": "6", "value": 6 },
+                { "label": "7", "value": 7 }
+            ],
+            "questions": [
+                { "label": "N Verstehen (auditiv/visuell)", "tag": "N_understand_audio_visual", "id": 14 },
+                { "label": "O Ausdruck (verbal/ non verbal)", "tag": "O_expression_verbal_nonverbal", "id": 15 }
+            ]
+        }
+    },
+    {
+        "label": "Kognitive Fähigkeiten",
+        "id": [16,17,18],
+        "value": [],
+        "type": "multiple_radio",
+        "inline": false,
+        "force": false,
+        "options": {
+            "answers": [
+                { "label": "1", "value": 1 },
+                { "label": "2", "value": 2 },
+                { "label": "3", "value": 3 },
+                { "label": "4", "value": 4 },
+                { "label": "5", "value": 5 },
+                { "label": "6", "value": 6 },
+                { "label": "7", "value": 7 }
+            ],
+            "questions": [
+                { "label": "P soziales Verhalten", "tag": "P_social_behavior", "id": 16 },
+                { "label": "Q Problemlösung", "tag": "Q_problem_solving", "id": 17 },
+                { "label": "R Zeitmanagement", "tag": "R_time_management", "id": 18 }
+            ]
+        }
+    }
+  ],
+  "results": { 
+        "method": "sum",
+        "coding": { "display" : "FIM Score", "code" : "SCTID: 716795003", "system" : "http://snomed.info/sct"}
+    }
+}
