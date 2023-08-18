@@ -13,8 +13,7 @@
   
   <script>
   
-
-  import SELECT_FOLDER from 'src/components/elements/SelectFolder.vue'
+import SELECT_FOLDER from 'src/components/elements/SelectFolder.vue'
   
   export default {
     name: 'DownloadData',
@@ -50,16 +49,17 @@
  
   
       downloadRAW(folder, item) {
-        this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { OBSERVATION_ID: item.OBSERVATION_ID, _columns: ['OBSERVATION_BLOB', 'TVAL_CHAR'] } })
+        this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { OBSERVATION_ID: item.OBSERVATION_ID, _columns: ['OBSERVATION_BLOB', 'TVAL_CHAR', 'CATEGORY_CHAR', 'START_DATE'] } })
           .then(res => {
             var TMP_JSON = undefined
             if (res[0].CATEGORY_CHAR === 'RAW') TMP_JSON = JSON.parse(res[0].TVAL_CHAR)
-            else TMP_JSON = {filename: 'surveyBEST_download.json'}
+            else TMP_JSON = {filename: `surveyBEST_${res[0].TVAL_CHAR}_${res[0].START_DATE}.json`}
             const payload = {
               filename: TMP_JSON.filename,
               dir: folder,
               buffer: res[0].OBSERVATION_BLOB
             }
+
             this.$store.dispatch('exportRAWdata_to_file', payload)
             .then(res => {
               this.$q.notify({
