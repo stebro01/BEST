@@ -1,6 +1,6 @@
 <template>
     <!-- VISITEN LISTE -->
-    <div class="row">
+    <div class="row" v-if="$store.getters.VISIT_PINNED">
         <!-- DROP DOWN BTN -->
         <div class="col-2 flex flex-center">
             <q-card class="q-pa-none">

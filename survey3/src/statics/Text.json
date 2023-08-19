@@ -1,8 +1,8 @@
-{ 
+{
   "ENV": {
     "APP_NAME": "surveyBEST",
-    "APP_VERSION": "v1.7",
-    "APP_UPDATED": "2023-08-18"
+    "APP_VERSION": "v1.7.1",
+    "APP_UPDATED": "2023-08-19"
   },
   "title": "Willkommen",
   "label": "bestQUEST",
@@ -28,10 +28,10 @@
     "export": {
       "icon": "import_export",
       "label": "Export - Format für Export festlegen",
-      "options":[
-          {"label": "html", "value": "html"},
-          {"label": "json", "value": "json"},
-          {"label": "CDA", "value": "CDA"}
+      "options": [
+        { "label": "html", "value": "html" },
+        { "label": "json", "value": "json" },
+        { "label": "CDA", "value": "CDA" }
       ],
       "description": {
         "html": "Der Report wird als HTML gespeichert (kurze Version)",
@@ -189,13 +189,13 @@
       "fileselect": "Datei auswählen"
     }
   },
-  "essentialLinks": [{
+  "essentialLinks": [
+    {
       "title": "Startseite",
       "caption": "Herzlich Willkommen :-)",
       "icon": "home",
       "link": "/",
       "name": "start"
-
     },
     {
       "title": "Fragebogenauswahl",
@@ -234,6 +234,13 @@
       "icon": "info",
       "link": "about",
       "name": "about"
+    },
+    {
+      "title": "Change Log",
+      "caption": "Änderungen und Neuerungen",
+      "icon": "update",
+      "link": "changelog",
+      "name": "changelog"
     }
   ]
 }

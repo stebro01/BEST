@@ -30,6 +30,11 @@ export function EXPORT_CLEAR(state) {
   state.EXPORT_DATA = [];
 }
 
+export function STORAGE_LOAD(state) {
+  log({ message: "mutation: STORAGE_LOAD" });
+  state.STORAGE.load();
+}
+
 export function STORAGE_ADD(state, payload) {
   log({ message: "mutation: STORAGE_ADD" });
   state.STORAGE.add(payload);

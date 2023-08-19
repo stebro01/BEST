@@ -14,6 +14,11 @@ const routes = [{
     component: () => import("pages/About.vue"),
   },
   {
+    path: "changelog",
+    name: "changelog",
+    component: () => import("pages/Changelog.vue"),
+  },
+  {
     path: "select",
     name: "select",
     component: () => import("pages/SelectQ.vue"),

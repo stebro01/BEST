@@ -26,10 +26,15 @@
                   <q-tooltip>{{ SQL_QUERY }}</q-tooltip>
                 </q-input>
                 <div>
+                  <!-- CHIP WITH SQL SEARCH ELEMENTS -->
                   <q-chip v-for="(q_el, q_ind) of query_obs_elements" :key="q_ind + 'indelq'" dense size="sm" removable
-                    @remove="removeSqlEl(q_ind)">
+                    @remove="removeSqlEl(q_ind)" clickable >
                     {{ q_el.CONCEPT_NAME_CHAR }}={{ q_el.TVAL_RESOLVED || q_el.NVAL_NUM || q_el.TVAL_CHAR }}
+                    <q-tooltip>Anklicken, um Wert zu ändern</q-tooltip>
+                    <!-- POP CHANGE VALUE -->
+                    <POPUP_DATA  :item="q_el" @update="updateSQL_El_value($event, q_ind)" />
                   </q-chip>
+                  
                 </div>
               </div>
               <div class="col"><q-btn class="q-ml-md my-btn" @click="runSQLStatement(SQL_QUERY)">laden</q-btn></div>
@@ -48,12 +53,15 @@
                 <!-- VISITE UND GLOBAL -->
                 <div class="col-12" :style="`height: ${SIZE_VISIT}`">
                   <VISIT_LIST />
-                  <GLOBAL_OBSERVATIONS @add_sql="addElementToQuery($event)" />
+                  <GLOBAL_OBSERVATIONS @add_sql="addElementToQuery($event)" v-if="$store.getters.VISIT_PINNED"/>
                 </div>
 
                 <!-- OBSErVATION_LIST -->
                 <div class="col-12" :style="`min-height: calc(100% - ${SIZE_VISIT})`" >
-                  <OBSERVATION_LIST :param="param" />
+                  <OBSERVATION_LIST :param="param" v-if="$store.getters.VISIT_PINNED"/>
+                  <div v-else class="fit flex flex-center"> 
+                    <q-banner class="bg-info">Keine Visite gefunden</q-banner>
+                  </div>
                 </div>
               </div>
 
@@ -84,12 +92,13 @@ import OBSERVATION_LIST from 'src/components/patient_view/ObservationList.vue'
 import ADD_DATA_BTN from 'src/components/patient_view/AddDataBtn.vue'
 
 import GLOBAL_OBSERVATIONS from 'src/components/patient_view/GlobalObservations.vue'
+import POPUP_DATA from 'src/components/patient_view/PopupData.vue'
 
 
 export default {
   name: 'DBQueries_PatientView',
 
-  components: { HEADING, MainSlot, PATIENT_LIST, VISIT_LIST, OBSERVATION_LIST, ADD_DATA_BTN, GLOBAL_OBSERVATIONS },
+  components: { HEADING, MainSlot, PATIENT_LIST, VISIT_LIST, OBSERVATION_LIST, ADD_DATA_BTN, GLOBAL_OBSERVATIONS, POPUP_DATA },
 
   data() {
     return {
@@ -104,7 +113,7 @@ export default {
         PATIENTS: undefined
       },
       query_obs_elements: [],
-      query_sql_locked: true
+      query_sql_locked: true,
     }
   },
 
@@ -185,8 +194,6 @@ export default {
 
       }
 
-      console.log(sql)
-
       this.$store.commit('PATIENT_VIEW_SQLSTATEMENT_SET', sql)
       this.runSQLStatement(sql)
     },
@@ -201,6 +208,17 @@ export default {
 
     removeSqlEl(ind) {
       this.query_obs_elements.splice(ind, 1)
+      this.resetSQLQuery()
+    },
+
+    updateSQL_El_value(val, ind) {
+      if (!val || ind < 0) return
+      // find val in query_obs_elements and update
+      if (val.VALTYPE_CD === 'N') this.query_obs_elements[ind].NVAL_NUM = val.NVAL_NUM
+      else {
+        this.query_obs_elements[ind].TVAL_CHAR = val.TVAL_CHAR
+        if (val.TVAL_RESOLVED) this.query_obs_elements[ind].TVAL_RESOLVED = val.TVAL_RESOLVED
+      }
       this.resetSQLQuery()
     },
 

@@ -1,15 +1,15 @@
-import {log} from './Logger.js'
+import { log } from './Logger.js'
 
-import {sign, uuidv4} from './hhash'
+import { sign, uuidv4 } from './hhash'
 
-import {template} from './CDA_template'
+import { template } from './CDA_template'
 import dateFormat from 'dateformat'
 
-  //  MAIN FUNCTION: payload = QuestMan.active_quest
+//  MAIN FUNCTION: payload = QuestMan.active_quest
 export function import_quest(payload) {
-  if (payload === undefined || payload.investigator === undefined || payload.data === undefined ) return log({message: 'CDA_H7>import: invalid payload', data: payload, error: true})
+  if (payload === undefined || payload.investigator === undefined || payload.data === undefined) return log({ message: 'CDA_H7>import: invalid payload', data: payload, error: true })
   // check successfull ...
-  log({message: 'import', data: payload})
+  log({ message: 'import', data: payload })
 
   // LOAD THE TEMPLATE
   const cda = JSON.parse(JSON.stringify(template))
@@ -34,7 +34,7 @@ export function import_quest(payload) {
   // NOW HASH THE TABLE
   const hash = sign(cda, payload.investigator.keyPair.privateKey, payload.investigator.keyPair.publicKey)
   hash.investigator_uid = payload.investigator.uid
-  return {cda, hash, exported: false, info: {title: payload.data.quest.title, label: payload.data.quest.label, PID: payload.data.PID, date: payload.data.quest.date_end, uid: uuidv4()}}
+  return { cda, hash, exported: false, info: { title: payload.data.quest.title, label: payload.data.quest.label, PID: payload.data.PID, date: payload.data.quest.date_end, uid: uuidv4() } }
 }
 
 // PREPARE EVALUATION
@@ -71,7 +71,7 @@ function prepare_results(cda, data) {
   // first check the data
   if (data.quest.results === undefined || data.quest.results.length < 1) return
   if (!Array.isArray(data.quest.results)) return
-  
+
   // check successfull ...
   const results = {
     title: "Results Section",
@@ -97,12 +97,12 @@ function prepare_results(cda, data) {
   data.quest.results.forEach(item => {
     let entry = {
       title: item.label,
-      code: [{coding: [{code: '782487009', display: item.label, system: "http://snomed.info/sct"}]}],
+      code: [{ coding: [{ code: '782487009', display: item.label, system: "http://snomed.info/sct" }] }],
       value: item.value,
-      text: {status: 'generated', div: ''}
+      text: { status: 'generated', div: '' }
     }
-    if (item.coding) entry.code = [{coding: [item.coding]}]
-    
+    if (item.coding) entry.code = [{ coding: [item.coding] }]
+
     entry.text.div = `<table><tbody><tr><td>${entry.title}</td></tr><tr><td>${entry.value}</td></tr></tbody></table>`
 
     div_header += `<td>${entry.title}</td>`
@@ -136,7 +136,7 @@ function prepare_findings(cda, data) {
   }
   // eventually update the code[0].coding[0] = {system, code, display}
   if (data.quest.coding !== undefined) findings.code[0].coding[0] = data.quest.coding
-  
+
   // now fill the entries
   var div = '<table id="section_findings"><tbody>'
   var div_header = ''
@@ -144,9 +144,9 @@ function prepare_findings(cda, data) {
   data.quest.items.forEach(item => {
     let entry = {
       title: item.label,
-      code: [{coding: [item.coding]}], //code[0].coding[0] = {system, code, display}
+      code: [{ coding: [item.coding] }], //code[0].coding[0] = {system, code, display}
       value: extract_value(item.value),
-      text: {status: 'generated', div: ''}
+      text: { status: 'generated', div: '' }
     }
 
     if (item.coding !== undefined) entry.title = item.coding.display
@@ -167,7 +167,7 @@ function prepare_findings(cda, data) {
 function prepare_text(cda, data) {
   if (data === undefined) return undefined
   // COLLECT THE DATA
-  const {header, row, evaluation} = prepare_row(data)
+  const { header, row, evaluation } = prepare_row(data)
 
   // NOW BUILD THE DIV TABLE
   var div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">"
@@ -175,82 +175,82 @@ function prepare_text(cda, data) {
   div += `<h1>${cda.title}</h1>`
   // quest description
   div += '<table id="summary_table" >'
-    div += '<tbody>'
-      //line
-      div += '<tr>'
-        div += `<td>questionnaire:</td>`
-        div += `<td>${cda.event[0].code[0].coding[0].display}</td>`
-      div += '</tr>'
-      div += '<tr>'
-        div += `<td>code:</td>`
-        div += `<td>${cda.event[0].code[0].coding[0].code}</td>`
-      div += '</tr>'
-      div += '<tr>'
-        div += `<td>system:</td>`
-        div += `<td>${cda.event[0].code[0].coding[0].system}</td>`
-      div += '</tr>'
-    div += '</tbody>'
+  div += '<tbody>'
+  //line
+  div += '<tr>'
+  div += `<td>questionnaire:</td>`
+  div += `<td>${cda.event[0].code[0].coding[0].display}</td>`
+  div += '</tr>'
+  div += '<tr>'
+  div += `<td>code:</td>`
+  div += `<td>${cda.event[0].code[0].coding[0].code}</td>`
+  div += '</tr>'
+  div += '<tr>'
+  div += `<td>system:</td>`
+  div += `<td>${cda.event[0].code[0].coding[0].system}</td>`
+  div += '</tr>'
+  div += '</tbody>'
   div += '</table><br>'
   // description document
   div += '<table id="description_table">'
-    div += '<tbody>'
-      //line
-      div += '<tr>'
-        div += `<td>Document-ID:</td>`
-        div += `<td>${cda.identifier.value}</td>`
-      div += '</tr>'
-      div += '<tr>'
-        div += `<td>date:</td>`
-        div += `<td>${cda.date}</td>`
-      div += '</tr>'
-      div += '<tr>'
-        div += `<td>ressource:</td>`
-        div += `<td>${cda.meta.source}_${cda.meta.versionId}_${cda.meta.lastUpdated}</td>`
-      div += '</tr>'
-    div += '</tbody>'
+  div += '<tbody>'
+  //line
+  div += '<tr>'
+  div += `<td>Document-ID:</td>`
+  div += `<td>${cda.identifier.value}</td>`
+  div += '</tr>'
+  div += '<tr>'
+  div += `<td>date:</td>`
+  div += `<td>${cda.date}</td>`
+  div += '</tr>'
+  div += '<tr>'
+  div += `<td>ressource:</td>`
+  div += `<td>${cda.meta.source}_${cda.meta.versionId}_${cda.meta.lastUpdated}</td>`
+  div += '</tr>'
+  div += '</tbody>'
   div += '</table><br>'
 
   // description investigator
   div += '<table id="subjects_table">'
-    div += '<tbody>'
-      //line
-      div += '<tr>'
-        div += `<td>Subject:</td>`
-        div += `<td>${cda.subject.display}</td>`
-      div += '</tr>'
-      div += '<tr>'
-        div += `<td>Investigator:</td>`
-        div += `<td>${cda.attester[0].party.display}</td>`
-      div += '</tr>'
-      div += '<tr>'
-        div += `<td>start time:</td>`
-        div += `<td>${cda.event[0].period.start}</td>`
-      div += '</tr>'
-      div += '<tr>'
-        div += `<td>start time:</td>`
-        div += `<td>${cda.event[0].period.end}</td>`
-      div += '</tr>'
-    div += '</tbody>'
+  div += '<tbody>'
+  //line
+  div += '<tr>'
+  div += `<td>Subject:</td>`
+  div += `<td>${cda.subject.display}</td>`
+  div += '</tr>'
+  div += '<tr>'
+  div += `<td>Investigator:</td>`
+  div += `<td>${cda.attester[0].party.display}</td>`
+  div += '</tr>'
+  div += '<tr>'
+  div += `<td>start time:</td>`
+  div += `<td>${cda.event[0].period.start}</td>`
+  div += '</tr>'
+  div += '<tr>'
+  div += `<td>end time:</td>`
+  div += `<td>${cda.event[0].period.end}</td>`
+  div += '</tr>'
+  div += '</tbody>'
   div += '</table><br>'
 
   // Table & Results
   div += '<h2>Results</h2>'
   div += '<table id="results_table">'
-    div += '<tbody>'
-      //line 1
-      div += '<tr>'
-        header.forEach(h => {
-          div += `<td>${h}</td>`
-        })
-      div += '</tr>'
-      //line 2
-      div += '<tr>'
-        row.forEach(h => {
-          div += `<td>${h}</td>`
-        })
-       
-      div += '</tr>'
-    div += '</tbody>'
+  div += '<tbody>'
+  //line 1
+  div += '<tr>'
+  header.forEach(h => {
+    div += `<td>${h}</td>`
+  })
+  div += '</tr>'
+  //line 2
+  div += '<tr>'
+  row.forEach(h => {
+    div += `<td>${h}</td>`
+  })
+
+  div += '</tr>'
+  div += '</tbody>'
   div += '</table><br>'
 
   // EVALUATION
@@ -266,8 +266,8 @@ function prepare_text(cda, data) {
 
   // UPDATE THE CDA
   cda.text = {
-    status : "generated",
-    div : div
+    status: "generated",
+    div: div
   }
 }
 
@@ -281,8 +281,8 @@ function prepare_row(data) {
   header.push('date'); row.push(formatDate(data.date))// date
   // results
   if (Array.isArray(data.quest.results)) data.quest.results.forEach(res => {
-      header.push(res.label); row.push(res.value)// result
-      if (res.evaluation !== undefined) evaluation.push(res.evaluation)
+    header.push(res.label); row.push(res.value)// result
+    if (res.evaluation !== undefined) evaluation.push(res.evaluation)
   })
   // items
   data.quest.items.forEach(item => {
@@ -290,7 +290,7 @@ function prepare_row(data) {
     row.push(extract_value(item.value))
   })
 
-  return {header, row, evaluation}
+  return { header, row, evaluation }
 }
 
 // PREPARE_HEADER
@@ -314,14 +314,13 @@ function prepare_header(cda, payload) {
   if (payload.data.quest.coding !== undefined) {
     cda.event[0].code[0].coding[0] = {
       system: payload.data.quest.coding.system,
-      code: payload.data.quest.coding.code, 
+      code: payload.data.quest.coding.code,
       display: payload.data.quest.coding.display
     }
-  } else
-  {
+  } else {
     cda.event[0].code[0].coding[0] = {
       system: '',
-      code: '', 
+      code: '',
       display: payload.data.quest.title
     }
   }

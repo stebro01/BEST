@@ -3,7 +3,7 @@
         <!-- DATA TO SHOW -->
         <div v-if="DATA_TO_SHOW" class="col">
             <q-icon name="info" class="q-pa-xs"><q-tooltip>Globale Variablen: </q-tooltip></q-icon>
-            <q-chip v-for="(el, ind_el) of DATA_TO_SHOW" :key="ind_el + 'el'" dense clickable @click="$emit('add_sql', {CONCEPT_CD: el.CONCEPT_CD, CONCEPT_NAME_CHAR: el.CONCEPT_NAME_CHAR, NUM_VAL: el.NUM_VAL, TVAL_CHAR: el.TVAL_CHAR, TVAL_RESOLVED: el.TVAL_RESOLVED})">
+            <q-chip v-for="(el, ind_el) of DATA_TO_SHOW" :key="ind_el + 'el'" dense clickable @click="$emit('add_sql', {CONCEPT_CD: el.CONCEPT_CD, CONCEPT_NAME_CHAR: el.CONCEPT_NAME_CHAR, NUM_VAL: el.NUM_VAL, TVAL_CHAR: el.TVAL_CHAR, TVAL_RESOLVED: el.TVAL_RESOLVED, VALTYPE_CD: el.VALTYPE_CD})">
                 <div class="my-small-text q-mr-xs my-el">{{ el.CONCEPT_NAME_CHAR }}: </div>
                 <div v-if="el.VALTYPE_CD === 'N'" class="my-el">{{ el.NVAL_NUM }} <span v-if="el.UNIT_CD"
                         class="my-small-text my-el">{{ el.UNIT_CD }}</span></div>

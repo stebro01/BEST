@@ -45,7 +45,7 @@
                     <q-icon v-else name="report_problem" color="red"><q-tooltip>CQL Rule violated: {{ check.data
                     }}</q-tooltip></q-icon>
                 </span>
-                <q-btn v-if="SAVE_DETECTED" dense no-caps flat class="my-btn"
+                <q-btn v-if="SAVE_DETECTED" dense no-caps flat class="my-btn" 
                     @click="updateValue(value, localData)">save</q-btn>
             </q-card-actions>
 
@@ -68,13 +68,48 @@ export default {
             localData: undefined,
             value: undefined,
             answers: undefined,
-            check: undefined
+            check: undefined,
+            close_popup: false
+        } 
+    },
+
+    watch: {
+        ITEM(val) {
+            this.loadData(val)
         }
     },
 
     mounted() {
         if (!this.item) this.$emit('close')
-        this.localData = JSON.parse(JSON.stringify(this.item))
+        this.loadData(this.item)
+
+    },
+
+    computed: {
+        DATA() {
+            return this.localData
+        },
+
+        ITEM() {
+            return this.item
+        },
+
+        SAVE_DETECTED() {
+            if (this.DATA.VALTYPE_CD === 'N' && this.value !== this.item.NVAL_NUM) return true
+            if (this.DATA.VALTYPE_CD === 'D' && this.value !== this.item.TVAL_CHAR) return true
+            if (this.DATA.VALTYPE_CD === 'T' && this.value !== this.item.TVAL_CHAR) return true
+            if (this.DATA.VALTYPE_CD === 'F' && this.value !== this.item.TVAL_CHAR) return true
+            if (this.DATA.VALTYPE_CD === 'S' && this.value !== this.item.TVAL_CHAR) return true
+
+            return false
+        }
+
+    },
+
+
+    methods: {
+        loadData(item) {
+            this.localData = JSON.parse(JSON.stringify(item))
 
         // 
         if (this.localData.VALTYPE_CD === 'N') {
@@ -100,44 +135,24 @@ export default {
                 })
         }
 
-        this.cql_check_data(this.item)
-
-    },
-
-    computed: {
-        DATA() {
-            return this.localData
+        this.cql_check_data(item)
         },
 
-        SAVE_DETECTED() {
-            if (this.DATA.VALTYPE_CD === 'N' && this.value !== this.item.NVAL_NUM) return true
-            if (this.DATA.VALTYPE_CD === 'D' && this.value !== this.item.TVAL_CHAR) return true
-            if (this.DATA.VALTYPE_CD === 'T' && this.value !== this.item.TVAL_CHAR) return true
-            if (this.DATA.VALTYPE_CD === 'F' && this.value !== this.item.TVAL_CHAR) return true
-            if (this.DATA.VALTYPE_CD === 'S' && this.value !== this.item.TVAL_CHAR) return true
 
-            return false
-        }
-
-    },
-
-
-    methods: {
         async cql_check_data(item) {
-            console.log('check data')
             this.check = await this.$store.dispatch('checkCQLRule', item)
         },
 
         updateValue(item, localData) {
             const result = { OBSERVATION_ID: localData.OBSERVATION_ID, VALTYPE_CD: localData.VALTYPE_CD }
-            if (!item) return
+            if (item === undefined) return
             if (result.VALTYPE_CD === 'N') result.NVAL_NUM = item
             else if (result.VALTYPE_CD === 'D') result.TVAL_CHAR = item
             else if (result.VALTYPE_CD === 'T') result.TVAL_CHAR = item
             else if (result.VALTYPE_CD === 'F') result.TVAL_CHAR = item
             else if (result.VALTYPE_CD === 'S') result.TVAL_CHAR = item
             if (result.VALTYPE_CD === 'F' || result.VALTYPE_CD === 'S') result.TVAL_RESOLVED = this.answers.find(answer => answer.value === item).label
-
+            this.close_popup = true
             this.$emit('update', result)
         }
 

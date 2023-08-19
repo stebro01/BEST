@@ -7,10 +7,7 @@
       </div>
 
       <div class="col-1" style="max-height: 50px">
-        <FILTERSTORAGE
-          @filterSet="filterDO('set')"
-          @filterCleared="filterDO('cleared')"
-        />
+        <FILTERSTORAGE @filterSet="filterDO('set')" @filterCleared="filterDO('cleared')" />
       </div>
 
       <!-- <div>
@@ -21,75 +18,36 @@
       <div class="col q-py-md" style="position: relative">
         <q-scroll-area class="shadow-1 my-form">
           <div class="row q-pa-md justify-around q-gutter-md" data-cy="items">
-            <div
-              class="col-auto"
-              v-for="(item, index) in QUEST_LIST"
-              :key="'item_' + index"
-              :data-cy="'item_' + index"
-            >
-              <StorageCard
-                v-if="
-                  FILTER_ON === false ||
-                  FILTER.text === null ||
-                  item.info.PID.includes(FILTER.text) > 0 ||
-                  item.info.title.includes(FILTER.text) > 0
-                "
-                :item="item"
-                :index="index"
-                :selected="selected.indexOf(item.info.uid) > -1"
-                @change_selection="select_item($event, item.info.uid)"
-                @export_cloud="export_cloud(item.info.uid)"
-                @export_item="export_item(item.info.uid)"
-                @export_item_encrypted="export_item_encrypted(item.info.uid)"
-                @remove="remove(item.info.uid)"
-                @view_item="view_item(item.info.uid)"
-              />
+            <div class="col-auto" v-for="(item, index) in QUEST_LIST" :key="'item_' + index" :data-cy="'item_' + index">
+              <StorageCard v-if="FILTER_ON === false ||
+                FILTER.text === null ||
+                item.info.PID.includes(FILTER.text) > 0 ||
+                item.info.title.includes(FILTER.text) > 0
+                " :item="item" :index="index" :selected="selected.indexOf(item.info.uid) > -1"
+                @change_selection="select_item($event, item.info.uid)" @export_cloud="export_cloud(item.info.uid)"
+                @export_item="export_item(item.info.uid)" @export_item_encrypted="export_item_encrypted(item.info.uid)"
+                @remove="remove(item.info.uid)" @view_item="view_item(item.info.uid)" />
             </div>
           </div>
         </q-scroll-area>
       </div>
 
       <!-- ACTIONBTTNS -->
-      <div
-        v-if="QUEST_LIST.length > 0"
-        class="col-3 col-md-2 text-center q-gutter-md justify-around"
-        style="width: 100%"
-      >
+      <div v-if="QUEST_LIST.length > 0" class="col-3 col-md-2 text-center q-gutter-md justify-around" style="width: 100%">
         <!-- SELECTALL -->
-        <MYBUTTON
-          v-if="!somethingselected"
-          :icon="TEXT.btn.select_all.icon"
-          :label="TEXT.btn.select_all.label"
-          @click="selectall(true)"
-        />
-        <MYBUTTON
-          v-if="!somethingselected"
-          :icon="TEXT.btn.import2.icon"
-          :label="TEXT.btn.import2.label"
-          @click="$router.push({ name: 'importQuest' })"
-        />
+        <MYBUTTON v-if="!somethingselected" :icon="TEXT.btn.select_all.icon" :label="TEXT.btn.select_all.label"
+          @click="selectall(true)" />
+        <MYBUTTON v-if="!somethingselected" :icon="TEXT.btn.import2.icon" :label="TEXT.btn.import2.label"
+          @click="$router.push({ name: 'importQuest' })" />
         <!-- DESELECT -->
-        <MYBUTTON
-          v-if="somethingselected"
-          :icon="TEXT.btn.deselect.icon"
-          @click="selectall(false)"
-          :label="TEXT.btn.deselect.label"
-        />
+        <MYBUTTON v-if="somethingselected" :icon="TEXT.btn.deselect.icon" @click="selectall(false)"
+          :label="TEXT.btn.deselect.label" />
         <!-- EXPORT SELECTION -->
-        <MYBUTTON
-          v-if="QUEST_LIST.length > 0 && somethingselected"
-          :icon="TEXT.btn.selection_export.icon"
-          @click="exportselection"
-          data-cy="btn_export_all"
-          :label="TEXT.btn.selection_export.label"
-        />
+        <MYBUTTON v-if="QUEST_LIST.length > 0 && somethingselected" :icon="TEXT.btn.selection_export.icon"
+          @click="exportselection" data-cy="btn_export_all" :label="TEXT.btn.selection_export.label" />
         <!-- DELETE SELCTON -->
-        <MYBUTTON
-          v-if="QUEST_LIST.length > 0 && somethingselected"
-          :icon="TEXT.btn.selection_delete.icon"
-          @click="deleteselection"
-          :label="TEXT.btn.selection_delete.label"
-        />
+        <MYBUTTON v-if="QUEST_LIST.length > 0 && somethingselected" :icon="TEXT.btn.selection_delete.icon"
+          @click="deleteselection" :label="TEXT.btn.selection_delete.label" />
         <!-- DEBUG PRINT  -->
         <MYBUTTON v-if="$store.state.debug" @click="printStorageToConsole" />
       </div>
@@ -100,11 +58,8 @@
           {{ TEXT.storage.no_entry }}
         </div>
         <div>
-          <MYBUTTON
-            :icon="TEXT.btn.import2.icon"
-            :label="TEXT.btn.import2.label"
-            @click="$router.push({ name: 'importQuest' })"
-          />
+          <MYBUTTON :icon="TEXT.btn.import2.icon" :label="TEXT.btn.import2.label"
+            @click="$router.push({ name: 'importQuest' })" />
         </div>
       </div>
 
@@ -115,12 +70,8 @@
     <BACKBUTTON />
 
     <!-- DIALOG -->
-    <TABLEVIEW
-      v-if="view_QUEST !== undefined && medium === true"
-      :QUEST="view_QUEST"
-      :medium="medium"
-      @closeClick="medium = false"
-    />
+    <TABLEVIEW v-if="view_QUEST !== undefined && medium === true" :QUEST="view_QUEST" :medium="medium"
+      @closeClick="medium = false" />
   </q-page>
 </template>
 
@@ -151,6 +102,7 @@ export default {
   mounted() {
     this.selected = [];
     this.$store.state.leftDrawerOpen = false;
+    this.$store.commit('STORAGE_LOAD')
     this.$store.dispatch("setProtectedMode", true);
   },
   computed: {
@@ -233,7 +185,7 @@ export default {
     export_item(uid) {
       this.$store
         .dispatch("storage_export", [uid])
-        .then((val) => {})
+        .then((val) => { })
         .catch((err) => {
           log({
             error: "export_item",
@@ -248,7 +200,7 @@ export default {
       };
       this.$store
         .dispatch("storage_encrypted_export", payload)
-        .then((val) => {})
+        .then((val) => { })
         .catch((err) => {
           log({
             error: "export_item_encrypted",
@@ -279,7 +231,7 @@ export default {
       if (no_dialog !== true) {
         if (!confirm(`Wirklich löschen? uid = ${uid}`)) return;
       }
-      
+
       this.$store.commit("STORAGE_REMOVE", uid);
       this.select_item(false, uid);
     },
