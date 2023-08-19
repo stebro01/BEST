@@ -15,10 +15,9 @@ REMOTE_DIR="www"
 ncftp -u $FTP_USER -p $FTP_PASS $FTP_HOST <<EOF
 cd $REMOTE_DIR
 lcd $LOCAL_DIR
-put -R *
+put -DD -R *
 quit
 EOF
 
-exit 0
-
 echo 'upload erfolgreich'
+exit 0
