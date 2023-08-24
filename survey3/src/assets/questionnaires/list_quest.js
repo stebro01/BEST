@@ -59,6 +59,7 @@ const quest = [
   "sf36",
   "shapsd",
   "sus",
+  "tinetti",
   "twstrs",
   "updrs_1",
   "updrs_2",

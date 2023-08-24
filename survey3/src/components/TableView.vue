@@ -29,7 +29,7 @@ export default {
   },
 
   mounted() {
-    console.log(this.QUEST.cda.text.div)
+    // console.log(this.QUEST.cda.text.div)
   },
 
   watch: {

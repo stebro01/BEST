@@ -205,6 +205,7 @@ class QuestMan {
 
   // RESULTS
   get summary() {
+    console.log('get summary')
     if (this.activeQuest === undefined) return undefined
 
     const result = {}
@@ -243,6 +244,7 @@ class QuestMan {
     // dates
     result.date_start = this.activeQuest.date_start
     result.date_end = Date.now()
+    console.log('get summary: finished')
     return result
   }
 
