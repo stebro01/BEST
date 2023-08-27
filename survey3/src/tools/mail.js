@@ -2,7 +2,7 @@ import { log } from "src/tools/Logger"
 
 // sendgrid key
 const api_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJqMzMyMTg0XzAtc3VydmV5IiwiaWF0IjoxNjI0NjU0NjQyLCJleHAiO'
-const api_url = 'http://178.254.43.96:3000/sendEmail'
+const api_url = 'https://178.254.43.96:3000/sendEmail'
 const axios = require('axios');
 
 

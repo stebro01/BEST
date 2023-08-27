@@ -79,11 +79,12 @@ app.post('/sendEmail', async (req, res) => {
   }
 });
 
+// HTTP
 // app.listen(port, () => {
 //   console.log(`App running on port ${port}`);
 // });
 
-//https
+//HTTPS
 const fs = require('fs')
 const privateKey = fs.readFileSync('./ssl/private.key', 'utf8')
 const certificate = fs.readFileSync('./ssl/cert.pem', 'utf8')
@@ -94,4 +95,3 @@ const httpsServer = https.createServer(credentials, app);
 httpsServer.listen(port, () => {
   console.log(`HTTPS server running on port ${port}`);
 });
-console.log('hi')
