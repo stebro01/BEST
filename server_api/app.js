@@ -19,7 +19,14 @@ const ENV = {
 
 const port = ENV.PORT || 3000;
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://www.surveybest.de',
+  methods: 'GET,POST',
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/sendEmail', async (req, res) => {
