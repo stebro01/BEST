@@ -79,6 +79,19 @@ app.post('/sendEmail', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`App running on port ${port}`);
+// app.listen(port, () => {
+//   console.log(`App running on port ${port}`);
+// });
+
+//https
+const fs = require('fs')
+const privateKey = fs.readFileSync('./ssl/private.key', 'utf8')
+const certificate = fs.readFileSync('./ssl/cert.pem', 'utf8')
+const ca = fs.readFileSync('./ssl/bridgecert', 'utf8')
+const https = require('https')
+const credentials = { key: privateKey, cert: certificate, ca: ca }; // If applicable
+const httpsServer = https.createServer(credentials, app);
+httpsServer.listen(port, () => {
+  console.log(`HTTPS server running on port ${port}`);
 });
+console.log('hi')
