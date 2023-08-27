@@ -2,18 +2,21 @@
 
 ## Beschreibung
 
-WebAPI und Email-Server in einem Docker-Container
+WebAPI und Email-Server in einem Docker-Container.
 
-Der Dienst läuft auf port:3000 und kann mit folgendem Call getestet werden:
+Aktuell verwende ich diesen Dienst, damit surveyBEST die Mail mit dem Report an den Nutzer senden kann. 
+Der entsprechende Call wird in der Datei `surveyBEST/src/tools/mail.js` ausgeführt.
+
+Der Dienst läuft auf port:3000 (HTTPS) und kann mit folgendem Call getestet werden:
 
 ```bash
-curl --location 'localhost:3000/sendEmail'
+curl --location 'https://localhost:3000/sendEmail'
 ```
 
 Der Dienst kann mit folgendem Call getestet werden:
 
 ```bash
-curl --location 'localhost:3000/sendEmail' \
+curl --location 'https://localhost:3000/sendEmail' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJqMzMyMTg0XzAtc3VydmV5IiwiaWF0IjoxNjI0NjU0NjQyLCJleHAiO",
@@ -49,6 +52,7 @@ docker-compose down
 ### GET /api
 
 ```bash
-curl http://localhost:3000/api
+curl https://www.jenai.de:3000/sendEmail
+
 ```
 

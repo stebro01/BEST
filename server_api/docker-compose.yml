@@ -9,4 +9,10 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3000
-      - HOST=
+      - SMTP_HOST=smtp.1blu.de
+      - SMTP_PORT=465
+      - SMTP_SECURE=true
+      - USER=j332184_0-survey
+      - PASSWORD=Floq7iqbJVpz)7j
+      - EMAIL=info@surveybest.de
+      - TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJqMzMyMTg0XzAtc3VydmV5IiwiaWF0IjoxNjI0NjU0NjQyLCJleHAiO

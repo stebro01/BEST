@@ -5,15 +5,20 @@ const cors = require('cors');
 
 const app = express();
 
+if (!process.env.PORT) {
+  console.log('No port specified in enviromentals!');
+  process.exit(1);
+}
+
 const ENV = {
-  SMTP_HOST: 'smtp.1blu.de',
-  SMTP_PORT: 465,
-  SMTP_SECURE: 'true',
-  EMAIL: 'info@surveybest.de',
-  PASSWORD: 'Floq7iqbJVpz)7j',
-  USER: 'j332184_0-survey',
-  PORT: 3000,
-  TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJqMzMyMTg0XzAtc3VydmV5IiwiaWF0IjoxNjI0NjU0NjQyLCJleHAiO'
+  SMTP_HOST: process.env.SMTP_HOST,
+  SMTP_PORT: process.env.SMTP_PORT,
+  SMTP_SECURE: process.env.SMTP_SECURE,
+  EMAIL: process.env.EMAIL,
+  PASSWORD: process.env.PASSWORD,
+  USER: process.env.USER,
+  PORT: process.env.PORT,
+  TOKEN: process.env.TOKEN
 }
 
 
