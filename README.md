@@ -5,3 +5,14 @@ Forschungs-DB und Fragebogen-APP in einem
 
 
 ## dbBEST
+
+
+## SERVER / API
+
+WebAPI und Email-Server in einem Docker-Container
+
+### Installation
+
+- Docker starten
+
+

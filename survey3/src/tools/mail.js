@@ -1,22 +1,45 @@
 import { log } from "src/tools/Logger"
 
-import emailjs from '@emailjs/browser';
+// sendgrid key
+const api_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJqMzMyMTg0XzAtc3VydmV5IiwiaWF0IjoxNjI0NjU0NjQyLCJleHAiO'
+const api_url = 'http://178.254.43.96:3000/sendEmail'
+const axios = require('axios');
 
 
 export async function sendMail(message) {
+  log({ message: 'sendMail' })
+  if (!message.email || !message.data) {
+    return { error: 'no email or data' }
+  }
 
-    log({message: 'sendMail'})
+  //date from today in format: YYYY-MM-DD, HH:MM:SS
+  let today = new Date();
+  let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + ', ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
 
-    // HIER SOLLTE JETZT DER EMAIL VERSAND HIN ...
-    var templateParams = {
-        from_name: 'surveyBEST form',
-        mail_to: message.email,
-        content: btoa(JSON.stringify(message.data)),
-    };
+  let data = JSON.stringify({
+    "TOKEN": api_key,
+    "to": message.email || "info@surveybest.de",
+    "subject": "Report surveyBEST: " + date,
+    "message": "Vielen Dank für die Nutzung von surveyBEST. Anbei ein Report.",
+    "attachment": message.data
+  });
 
-    emailjs.send('service_vrqgv6q', 'template_yywure9', templateParams, 'user_8OFpuEKo82tWvLxKamkmr')
-        .then((result) => {
-            log({method: 'sendmail', message: 'success'})
-            // resolve(true)
-        })
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: api_url,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data: data
+  };
+
+  try {
+    const answ = await axios.request(config)
+    return { status: answ.status, data: answ.data }
+  }
+  catch (error) {
+    return { error: error }
+  }
+
 }

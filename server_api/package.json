@@ -1,0 +1,25 @@
+{
+  "name": "server_api",
+  "version": "1.0.0",
+  "description": "WebAPI und Email-Server in einem Docker-Container",
+  "main": "app.js",
+  "scripts": {
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "rebuild": "docker-compose build",
+    "test": "nodemon app.js"
+  },
+  "keywords": [
+    "server",
+    "email",
+    "app"
+  ],
+  "author": "sb",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.4"
+  }
+}
