@@ -16,7 +16,7 @@ curl --location 'https://localhost:3000/sendEmail'
 Der Dienst kann mit folgendem Call getestet werden:
 
 ```bash
-curl --location 'https://localhost:3000/sendEmail' \
+curl --location 'https://www.jenai.de:3000/sendEmail' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJqMzMyMTg0XzAtc3VydmV5IiwiaWF0IjoxNjI0NjU0NjQyLCJleHAiO",
