@@ -59,8 +59,9 @@
                   label="eMail" />
                 <!-- CHECK THE EMAIL CLIENT -->
                 <div class="">
-                  <q-icon v-if="!email_server_available" name="warning" color="red"><q-tooltip>der Email-Server ist NICHT
-                      erreichbar</q-tooltip></q-icon>
+
+                  <q-icon v-if="!email_server_available || email_server_available.error" name="warning" color="red"><q-tooltip>der Email-Server ist NICHT
+                      erreichbar: {{ email_server_available }}</q-tooltip></q-icon>
                   <q-icon v-else name="check"><q-tooltip>der Email-Server ist erreichbar</q-tooltip></q-icon>
 
                 </div>

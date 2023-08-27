@@ -19,8 +19,16 @@ const ENV = {
 
 const port = ENV.PORT || 3000;
 
+const allowedOrigins = ['https://www.surveybest.de', 'https://localhost:8088'];
+
 const corsOptions = {
-  origin: 'https://www.surveybest.de',
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: 'GET,POST',
   credentials: true,
   optionsSuccessStatus: 204
