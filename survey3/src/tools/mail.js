@@ -43,3 +43,23 @@ export async function sendMail(message) {
   }
 
 }
+
+export async function checkMail() {
+  // make an axios request to the backend via get and return the response
+  log({ message: 'checkMail' })
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: api_url,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+  try {
+    const answ = await axios.request(config)
+    return { status: answ.status, data: answ.data }
+  }
+  catch (error) {
+    return { error: error }
+  }
+}

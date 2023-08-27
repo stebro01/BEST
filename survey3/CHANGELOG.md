@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
-v1.7.1 - 2023-08-24
+v1.7.1 - 2023-08-27
 
 ### Added
 
@@ -16,6 +16,7 @@ v1.7.1 - 2023-08-24
 ### Changed
 
 - Numeric values will be checked for validity (not string) and will be converted to numbers if nessesary
+- switched from emailjs to a custom email service on http://178.254.43.96:3000/sendEmail via POST request and nodemailer
 
 ### Fixed
 
