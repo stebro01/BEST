@@ -1,0 +1,130 @@
+{
+  "title": "McGill Pain Questionnaire",
+  "short_title": "MPQ",
+  "description": null,
+  "coding": {
+    "system": "SNOMED-CT",
+    "code": "SCTID: 446009008",
+    "display": "McGill Pain Questionnaire"
+  },
+  "manual": null,
+  "keywords": null,
+  "ref": null,
+  "items": [
+    {
+      "label": "I. Normativ geschätzter Schmerzindex",
+      "type": "separator",
+      "force": false
+    },
+    {
+      "label": "Ia sensorischer Schmerzindex",
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "answers": [
+          { "label": "keine", "value": 0 },
+          { "label": "gering/leicht", "value": 1 },
+          { "label": "mäßig", "value": 2 },
+          { "label": "stark", "value": 3 }
+        ],
+        "questions": [
+          { "label": "klopfend", "tag": "a1", "id": 1 },
+          { "label": "einschießend", "tag": "a2", "id": 2 },
+          { "label": "stechend", "tag": "a3", "id": 3 },
+          { "label": "scharf", "tag": "a4", "id": 4 },
+          { "label": "klemmend", "tag": "a5", "id": 5 },
+          { "label": "nagend", "tag": "a6", "id": 6 },
+          { "label": "heiß/brennend", "tag": "a7", "id": 7 },
+          { "label": "schmerzend", "tag": "a8", "id": 8 },
+          { "label": "schwer", "tag": "a9", "id": 9 },
+          { "label": "empfindlich", "tag": "a10", "id": 10 },
+          { "label": "durchtrennend", "tag": "a11", "id": 11 }
+        ]
+      },
+      "longanswers": false
+    },
+    {
+      "label": "Ib affektiver Schmerzindex",
+      "id": [12, 13, 14, 15],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "answers": [
+          { "label": "keine", "value": 0 },
+          { "label": "gering/leich", "value": 1 },
+          { "label": "mäßig", "value": 2 },
+          { "label": "stark", "value": 3 }
+        ],
+        "questions": [
+          { "label": "ermüdend/erschöpfend", "tag": "a1", "id": 12 },
+          { "label": "Übelkeit erregend", "tag": "a2", "id": 13 },
+          { "label": "beängstigend", "tag": "a3", "id": 14 },
+          { "label": "bestrafend/grausam", "tag": "a4", "id": 15 }
+        ]
+      }
+    },
+    {
+      "label": "II. Momentane Schmerzintensität - Visuelle Analogskala (VAS)",
+      "id": 16,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 0,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "denkbar schlimmster Schmerz" },
+        "bottom": { "value": 0, "label": "schmerzfrei" },
+        "steps": 10
+      }
+    },
+    {
+      "label": "III. Beurteilung der Intensität der gesamten Schmerzerfahrung",
+      "id": 17,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "checkbox",
+      "inline": false,
+      "force": false,
+      "options": [
+        { "label": "schmerzfrei", "value": 0 },
+        { "label": "gering/leicht", "value": 1 },
+        { "label": "unangenehm", "value": 2 },
+        { "label": "belastend", "value": 3 },
+        { "label": "fürchterlich", "value": 4 },
+        { "label": "qualvoll", "value": 5 }
+      ]
+    }
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "display": "McGill Pain Score",
+      "code": "SCTID: 718970003",
+      "system": "SNOMED-CT"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 // angabe des Namens> quest_XXXXXX.json >> XXXXX ist der Name
 const quest = [
+  "6mwt",
   "badl",
   "brain_tremor",
   "bdi2",
@@ -8,18 +9,19 @@ const quest = [
   "biomag_fw",
   "biomag_handedness",
   "bsi",
-  "bss", 
+  "bss",
   "caide",
   "cdq24",
   "cfqg",
   "cfsme",
   "csas_e",
   "daily_activity",
-  "demenz_biomag01", 
+  "demenz_biomag01",
   "dex_female",
   "dex_male",
   "dex_selbstbeurteilung",
   "dnms",
+  "dynamic_gait_index",
   "ecoq",
   "eq5d",
   "ess",
@@ -38,6 +40,7 @@ const quest = [
   "hlq",
   "iqcode",
   "klein",
+  "mcgill",
   "mfq",
   "moca",
   "mrs",
@@ -48,6 +51,7 @@ const quest = [
   "nmsquest",
   "paq_50plus",
   "panas",
+  "park_move",
   "pd_general",
   "pdq8",
   "pdq39",
@@ -55,7 +59,7 @@ const quest = [
   "psqi",
   "quiprs",
   "fact",
-  "ptss14","ptss14_cov2",
+  "ptss14", "ptss14_cov2",
   "sf36",
   "shapsd",
   "sus",
@@ -69,7 +73,7 @@ const quest = [
   "test"
 ]
 
-export function QUESTS(){
+export function QUESTS() {
   return quest.sort()
 }
 
@@ -78,21 +82,21 @@ export const quest_template = {
   short_title: null,
   description: null,
   coding: {
-    system : "http://snomed.info/sct",
-    code : "225398001",
-    display : "Blepharospasm severity scale"
+    system: "http://snomed.info/sct",
+    code: "225398001",
+    display: "Blepharospasm severity scale"
   },
   manual: null,
   keywords: null,
   ref: null,
   items: [],
-  results: {method: "sum"}
+  results: { method: "sum" }
 }
 
 export const item_template = {
   "label": "",
   "id": null,
-  "coding": { "display" : "Untersuchung", "code" : "302199004", "system" : "http://snomed.info/sct"},
+  "coding": { "display": "Untersuchung", "code": "302199004", "system": "http://snomed.info/sct" },
   "value": null,
   "type": "text",
   "inline": false,
@@ -104,8 +108,8 @@ export const result_types = ["nothing", "sum", "count", "avg", "count_targets", 
 export const result_method_templates = {
   targets: { label: 'correct', value: 1, score: 1 },
   scoring: { id: [], value: [], score: [] },
-  domaine: { label: "sum", id: [], method: "sum"},
-  evaluation: { range: [0,12], label: "klinisch unauffällig" }
+  domaine: { label: "sum", id: [], method: "sum" },
+  evaluation: { range: [0, 12], label: "klinisch unauffällig" }
 
 
 }

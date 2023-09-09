@@ -1,0 +1,272 @@
+{
+  "title": "Anamnese Fragebogen Parkinson",
+  "short_title": "PARK_MOVE",
+  "description": null,
+  "coding": {
+    "system": "CUSTOM",
+    "code": "CUSTOM: ASSESSMENT_PARK_MOVE",
+    "display": "Anamnese Fragebogen Parkinson - PARK_MOVE"
+  },
+  "manual": null,
+  "keywords": null,
+  "ref": null,
+  "items": [
+    {
+      "label": "Geschlecht",
+      "Geschlecht": {
+        "coding": {
+          "display": "gender",
+          "code": "263495000",
+          "system": "http://snomed.info/sct"
+        }
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        { "label": "männlich", "value": "Male" },
+        { "label": "weiblich", "value": "Female" },
+        { "label": "divers", "value": "Intersex" }
+      ]
+    },
+    {
+      "label": "Gewicht (kg)",
+      "coding": {
+        "display": "weight",
+        "code": "SCTID: 27113001",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": true
+    },
+    {
+      "label": "Körpergröße (cm)",
+      "coding": {
+        "display": "height",
+        "code": "SCTID: 1153637007",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": true
+    },
+    {
+      "label": "Höchster schulischer Abschluss",
+      "id": 2,
+      "coding": {
+        "display": "Bildungsgrad",
+        "code": "CUSTOM: ANAMNESE_EDUCATION",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Beruf",
+      "id": 3,
+      "coding": {
+        "display": "employment_status",
+        "code": "LID: 99222-2T",
+        "system": "LOINC"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Hobbys/Interessen",
+      "id": 4,
+      "coding": {
+        "display": "Hobbies",
+        "code": "SCTID: 300758009",
+        "system": "SNOMNED-CD"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Sind Sie",
+      "coding": {
+        "display": "smoker",
+        "code": "LID: 72166-2",
+        "system": "LOINC"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "options": [
+        {
+          "label": "gegenwärtiger Raucher?",
+          "value": "current every day smoker"
+        },
+        { "label": "ehemaliger Raucher?", "value": "former smoker" },
+        { "label": "noch nie Raucher gewesen?", "value": "never smoker" }
+      ]
+    },
+    {
+      "label": "Pflegegrad",
+      "id": 6,
+      "coding": {
+        "display": "care_level",
+        "code": "SCTID: 78629008",
+        "system": "SNOMNED-CT"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        { "label": "keinen", "value": 0 },
+        { "label": "1", "value": 1 },
+        { "label": "2", "value": 2 },
+        { "label": "3", "value": 3 },
+        { "label": "4", "value": 4 },
+        { "label": "5", "value": 5 }
+      ]
+    },
+    {
+      "label": "Hilfsmittel",
+      "id": 7,
+      "coding": {
+        "display": "aids_mechanical",
+        "code": "SCTID: 276734006",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Erstdiagnose",
+      "id": 8,
+      "coding": {
+        "display": "year_of_first_diagnosis",
+        "code": "CUSTOM: 277267003_MOD_AF6B2644-F2DA-42AF-8444-400E1ADD2AA8",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "date_year",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "maximale Gehstrecke (m)",
+      "id": 9,
+      "coding": {
+        "display": "walking_distance",
+        "code": "SCTID: 165263003",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Anzahl der Stürze in den letzten 12 Monaten",
+      "id": 10,
+      "coding": {
+        "display": "number_of_falls_last_year",
+        "code": "SCTID: 298348009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Auslöser für die Stürze",
+      "id": 11,
+      "coding": {
+        "display": "cause_of_fall",
+        "code": "SCTID: 298343000",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Sturzfolgen",
+      "id": 12,
+      "coding": {
+        "display": "fall_consequences",
+        "code": "SCTID: 298343000_MOD_CC982444-8E6B-43B3-9F55-1AD30B8BE728",
+        "system": "SCTID"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Freezing im letzten Monat",
+      "id": 13,
+      "coding": {
+        "display": "freezing_in_last_month",
+        "code": "SCTID: 443544006",
+        "system": "SNOMNED-CT"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": false,
+      "options": [
+        { "label": "Ja", "value": 1 },
+        { "label": "Nein", "value": 0 }
+      ]
+    },
+    {
+      "label": "wenn ja, wie oft pro Tag?",
+      "id": 14,
+      "coding": {
+        "display": "freezing_frequency",
+        "code": "SCTID: 443544006_MOD_FBCAF68A-599E-43FD-AFA8-A4B28CB1BEC9",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "aktuelle Medikamente",
+      "id": 15,
+      "coding": {
+        "display": "current_medication",
+        "code": "SCTID: 513881000000106",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "NOFT (Pumpe, DBS, sonstiges)",
+      "id": 16,
+      "coding": {
+        "display": "noft",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    }
+  ],
+  "results": {}
+}

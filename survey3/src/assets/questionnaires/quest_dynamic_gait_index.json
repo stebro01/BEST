@@ -1,0 +1,111 @@
+{
+  "keywords": null,
+  "manual": null,
+  "ref": null,
+  "results": {
+    "method": "sum",
+    "coding": {
+      "code": "SCTID: 443707009",
+      "display": "Dynamic Gait Index",
+      "system": "SNOMED-CT"
+    }
+  },
+  "short_title": "DGI",
+  "title": "Dynamic Gait Index",
+  "coding": {
+    "code": "SCTID: 445642004",
+    "display": "Dynamic Gait Index",
+    "system": "SNOMED-CT"
+  },
+  "description": null,
+  "items": [
+    {
+      "coding": {
+        "code": "302199004",
+        "display": "Untersuchung",
+        "system": "http://snomed.info/sct"
+      },
+      "force": false,
+      "id": 1,
+      "inline": false,
+      "label": "Hilfsmittel",
+      "type": "text",
+      "value": null
+    },
+    {
+      "coding": {
+        "code": "302199004",
+        "display": "Untersuchung",
+        "system": "http://snomed.info/sct"
+      },
+      "force": false,
+      "id": [2, 3, 4, 5, 6, 7, 8, 9],
+      "inline": false,
+      "label": "Items",
+      "options": {
+        "answers": [
+          {
+            "label": "starke Einschränkungen",
+            "value": 0
+          },
+          {
+            "label": "mittlere Einschränkungen",
+            "value": 1
+          },
+          {
+            "label": "leichte Einschränkungen",
+            "value": 2
+          },
+          {
+            "label": "normal",
+            "value": "3"
+          }
+        ],
+        "questions": [
+          {
+            "id": 2,
+            "label": "Gehen auf ebener Strecke 20m",
+            "tag": "walk_20m"
+          },
+          {
+            "id": 3,
+            "label": "Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam",
+            "tag": "walk_5m"
+          },
+          {
+            "id": 4,
+            "label": "Gehen mit Kopfdrehung rechts und links",
+            "tag": "turning_head"
+          },
+          {
+            "id": 5,
+            "label": "Gehen und nach oben und nach unten schauen",
+            "tag": "walk_watching"
+          },
+          {
+            "id": 6,
+            "label": "Gehen und Drehung um 180°",
+            "tag": "walk_turning"
+          },
+          {
+            "id": 7,
+            "label": "Gehen über Hindernisse",
+            "tag": "walk_obstacles"
+          },
+          {
+            "id": 8,
+            "label": "Gehen um Hindernisse links und rechts herum",
+            "tag": "walk_around"
+          },
+          {
+            "id": 9,
+            "label": "Treppensteigen",
+            "tag": "climb_stairs"
+          }
+        ]
+      },
+      "type": "multiple_radio",
+      "value": []
+    }
+  ]
+}

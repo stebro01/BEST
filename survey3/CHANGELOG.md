@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
-v1.7.1 - 2023-08-27
+v1.7.1 - 2023-09-09
 
 ### Added
 
-- Added a new questionnaire: FIM, TINETTI
+- Added a new questionnaire: FIM, TINETTI, 6MWT, McGill, ParkMove
 
 ### Changed
 

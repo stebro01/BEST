@@ -1,0 +1,119 @@
+{
+  "title": "6-Minuten-Gehtest",
+  "short_title": "6MWT",
+  "description": null,
+  "coding": {
+    "system": "SNOMED-CT",
+    "code": "SCTID 252478000",
+    "display": "6MWT"
+  },
+  "manual": null,
+  "keywords": null,
+  "ref": null,
+  "items": [
+    {
+      "label": "Wurde der Test vollständig durchgeführt?",
+      "id": 1,
+      "coding": {
+        "display": "test_complete",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "checkbox",
+      "inline": false,
+      "force": false,
+      "options": [
+        { "label": "Ja", "value": 1 },
+        { "label": "Nein", "value": 0 }
+      ]
+    },
+    {
+      "label": "Falls \"Nein\", Grund angeben",
+      "id": 2,
+      "coding": {
+        "display": "cause_incomplete",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "checkbox",
+      "inline": false,
+      "force": false,
+      "options": [
+        { "label": "Patient setzt sich hin", "value": "setzt_sich" },
+        { "label": "Patient ist erschöpft", "value": "erschoepft" },
+        {
+          "label": "Verletzung des Patienten infolge eines Sturzes",
+          "value": "sturz"
+        }
+      ]
+    },
+    {
+      "label": "Zurückgelegter Weg vor dem letzten Hütchen in Metern (n)",
+      "id": 3,
+      "coding": {
+        "display": "distance_before_last_cone_meters",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Abstand vom letzten Hütchen (a) (möglich zwischen 0-24 Meter)",
+      "id": 4,
+      "coding": {
+        "display": "distance_after_last_cone_meters",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Gesamtstrecke (n+a)",
+      "id": 5,
+      "coding": {
+        "display": "distance_total_meters",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Pausen mit jeweiliger Zeit (min:sec)",
+      "id": 6,
+      "coding": {
+        "display": "breaks_minutes_seconds",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Stürze mit jeweiliger Zeit (min:sec)",
+      "id": 7,
+      "coding": {
+        "display": "falls_minutes_seconds",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    }
+  ],
+  "results": {}
+}
