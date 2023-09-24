@@ -30,7 +30,7 @@ export { execCQL, query_CQLAPI, checkCQLRule, checkDoubles }
 
 export function initApp ({commit}, payload) {
     commit('LOG', {method: 'action -> initApp'})
-  
+
     // set PLATFORM
     commit('ELECTRON_SET', payload.electron )
     commit('SPINNER_SET', false)
@@ -43,7 +43,7 @@ export function initApp ({commit}, payload) {
  */
 export function clearSettings ({commit}) {
     commit('LOG', {method: 'action -> clearSettings'})
-    
+
     return new Promise((res, rej) => {
         return res('Einstellungen erfolgreich zurückgesetzt')
     })
@@ -58,7 +58,7 @@ export function clearSettings ({commit}) {
 export function connectDB ({commit, state}) {
     commit('LOG', {method: 'action -> connectDB', message: 'connectDB', data: JSON.stringify(state.SETTINGS.data.filename)})
     const filename = state.SETTINGS.data.filename
-    
+
     return new Promise((res, rej) => {
         if (!window.electron) return rej('Electron nicht verfügbar!')
         if (!filename) return rej('Keine DB ausgewählt')
@@ -66,7 +66,7 @@ export function connectDB ({commit, state}) {
             commit('SETTINGS_SET', {label: 'filename', value: undefined})
             return rej('DB nicht gefunden')
         }
-        const status = window.electron.dbman.connect(filename.path) 
+        const status = window.electron.dbman.connect(filename.path)
         if (!status) return rej('DB konnte nicht geladen werden')
         commit('CONNECTED_SET', true)
         return res('DB konnte erfolgreich geladen werden')
@@ -80,23 +80,25 @@ export function closeDB ({commit}) {
     return new Promise((res, rej) => {
         if (!status) return rej('Verbindung war bereits getrennt.')
         return res('Verbindung erfoglreich getrennt.')
-    }) 
+    })
 }
 
 /**
- * 
- * @param {object} param0 
- * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'} 
+ *
+ * @param {object} param0
+ * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'}
  * @returns {promise} object - ergebnis der Suche
  * @example
  * this.$store.dispatch('searchDB', { query_string: {PATIENT_NUM:1}, table: "PATIENT_DIMENSION"})
  */
 export function searchDB ({commit, state}, payload) {
     commit('LOG', {method: 'action -> searchDB', data: payload})
+    if (state.connected === false) return {status: false, data: 'Keine Verbindung zur DB'}
     commit('SPINNER_SET', true)
+
     return new Promise((res, rej) => {
         const TABLE = getTable(payload.table, state)
-        
+
         // TABLE NICHT DEFINIERT
         if (!TABLE) {
             commit('LOG', {method: 'action -> searchDB', message: 'TABLE nicht bekannt', data: payload.table})
@@ -116,9 +118,9 @@ export function searchDB ({commit, state}, payload) {
 }
 
 /**
- * 
- * @param {object} param0 
- * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'} 
+ *
+ * @param {object} param0
+ * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'}
  * @returns {promise} object - ergebnis der Suche
  * @example
  * this.$store.dispatch('updateDB', {query_string: {where: {PATIENT_NUM: PATIENT_NUM}, set: data}, table:"PATIENT_DIMENSION"})
@@ -128,7 +130,7 @@ export function searchDB ({commit, state}, payload) {
     commit('SPINNER_SET', true)
     return new Promise((res, rej) => {
         const TABLE = getTable(payload.table, state)
-        
+
         // TABLE NICHT DEFINIERT
         if (!TABLE) {
             commit('LOG', {method: 'action -> updateDB', message: 'TABLE nicht bekannt', data: payload.table})
@@ -144,19 +146,19 @@ export function searchDB ({commit, state}, payload) {
 }
 
 /**
- * 
- * @param {object} param0 
- * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'} 
+ *
+ * @param {object} param0
+ * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'}
  * @returns {promise} object - ergebnis der Suche
  * @example
  * this.$store.dispatch('deleteDB', {"query_string":{"PATIENT_NUM":1},"table":"PATIENT_DIMENSION"})
  */
  export function deleteDB ({commit, state}, payload) {
     commit('LOG', {method: 'action -> deleteDB', data: payload})
-    
+
     return new Promise((res, rej) => {
         const TABLE = getTable(payload.table, state)
-        
+
         if (!TABLE) {
             commit('LOG', {method: 'action -> deleteDB', message: 'TABLE nicht bekannt', data: payload.table})
             rej('TABLE not defined')
@@ -170,19 +172,19 @@ export function searchDB ({commit, state}, payload) {
 }
 
 /**
- * 
- * @param {object} param0 
- * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'} 
+ *
+ * @param {object} param0
+ * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'}
  * @returns {promise} object - PRIMARY_KEY des hinzugefügten Datensatzes
  * @example
  * this.$store.dispatch('addDB', {"query_string":{"STATECITYZIP_PATH":"45"},"table":"PATIENT_DIMENSION"})
  */
  export function addDB ({commit, state}, payload) {
     commit('LOG', {method: 'action -> addDB', data: payload})
-    
+
     return new Promise((res, rej) => {
         const TABLE = getTable(payload.table, state)
-        
+
         if (!TABLE) {
             commit('LOG', {method: 'action -> addDB', message: 'TABLE nicht bekannt', data: payload.table})
             rej('TABLE not defined')
@@ -192,9 +194,9 @@ export function searchDB ({commit, state}, payload) {
                 if (payload.table === 'PATIENT_DIMENSION') {
                     const TABLE_USER_PATIENT_LOOKUP = getTable('USER_PATIENT_LOOKUP', state)
                     TABLE_USER_PATIENT_LOOKUP.create({USER_ID: state.USER.USER_ID, PATIENT_NUM: query.data.PATIENT_NUM})
-                }            
+                }
                 res(query.data)
-          
+
             }).catch(err => rej(err.message))
         }
     }).finally(() => commit('SPINNER_SET', false))
@@ -203,25 +205,25 @@ export function searchDB ({commit, state}, payload) {
 export const runQuery = async ({commit, state}, payload)  => {
     commit('LOG', {method: 'action -> runQuery', data: payload})
     commit('SPINNER_SET', true)
-    const TABLE = getTable('CONCEPT_DIMENSION', state)    
+    const TABLE = getTable('CONCEPT_DIMENSION', state)
     commit('SPINNER_SET', false)
     return TABLE.run_query(payload)
 }
 
 /**
- * 
- * @param {object} param0 
- * @param {object} payload - payload: {table: 'TABLENAME'} 
+ *
+ * @param {object} param0
+ * @param {object} payload - payload: {table: 'TABLENAME'}
  * @returns {promise} object - ergebnis der Suche
  * @example
  * this.$store.dispatch('resolveCD', {"table":"PATIENT_DIMENSION"})
  */
 export function resolveCD({commit, state}, payload) {
     commit('LOG', {method: 'action -> resolveCD', data: payload})
-    
+
     return new Promise((res, rej) => {
         const TABLE = getTable(payload.table, state)
-        
+
         if (!TABLE) {
             commit('LOG', {method: 'action -> searchDB', message: 'TABLE nicht bekannt', data: payload.table})
             rej('TABLE not defined')
@@ -235,18 +237,18 @@ export function resolveCD({commit, state}, payload) {
 }
 
 /**
- * @param {object} param0 
- * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'} 
+ * @param {object} param0
+ * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'}
  * @returns {promise} object - ergebnis der Suche
  * @example
  * this.$store.dispatch('searchDB', {"query_string":{"PATIENT_NUM":1},"table":"PATIENT_DIMENSION"})
  */
  export function obs_schemeFind ({commit, state}, payload) {
     commit('LOG', {method: 'action -> obs_schemeFind', data: payload})
-    
+
     return new Promise((res, rej) => {
         const TABLE = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
-        
+
         TABLE.scheme_find(payload).then(query => {
             if (query.status) res(query.data)
             else rej(query.error)
@@ -255,18 +257,18 @@ export function resolveCD({commit, state}, payload) {
 }
 
 /**
- * @param {object} param0 
- * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'} 
+ * @param {object} param0
+ * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'}
  * @returns {promise} object - ergebnis der Suche
  * @example
  * this.$store.dispatch('obs_schemeResolve', {"query_string":{"PATIENT_NUM":1},"table":"PATIENT_DIMENSION"})
  */
 export function obs_schemeResolve ({commit, state}, payload) {
     commit('LOG', {method: 'action -> obs_schemeResolve', data: payload})
-    
+
     return new Promise((res, rej) => {
         const TABLE = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
-        
+
         TABLE.scheme_resolve(payload).then(query => {
             if (query.status) res(query.data)
             else rej(query.error)
@@ -275,19 +277,19 @@ export function obs_schemeResolve ({commit, state}, payload) {
 }
 
 /**
- * 
- * @param {object} param0 
- * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'} 
+ *
+ * @param {object} param0
+ * @param {object} payload - payload: {query_string: {}, table: 'TABLENAME'}
  * @returns {promise} object - ergebnis der Suche
  * @example
  * this.$store.dispatch('findPath', {"query_string":{CONCEPT_CD: 'SCTID: 263495000'},"table":"CONCEPT_DIMENSION"})
  */
 export function findPath ({commit, state}, payload) {
     commit('LOG', {method: 'action -> findPath', data: payload})
-    
+
     return new Promise((res, rej) => {
         const TABLE = getTable(payload.table, state)
-        
+
         // TABLE NICHT DEFINIERT
         if (!TABLE) {
             commit('LOG', {method: 'action -> findPath', message: 'TABLE nicht bekannt', data: payload.table})
@@ -315,7 +317,7 @@ export const  changePatientVisibility = async ({commit, state}, payload) => {
     commit('LOG', {method: 'action -> changePatientVisibility', data: payload})
     // get the table USER_PATIENT_LOOKUP
     if (!payload) return {status: false, data: 'Ungültige Daten'}
-    const USER_PATIENT_LOOKUP = new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+    const USER_PATIENT_LOOKUP = new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     // first check, if the patient is already in the table
     const query = await USER_PATIENT_LOOKUP.read({PATIENT_NUM: payload.PATIENT_NUM})
     if (query.status && query.data.length > 0) {
@@ -357,8 +359,10 @@ export const  saveLayout = async ({commit, state}, payload) => {
     if (!payload) return {status: false, data: 'Ungültige Daten'}
     // get the table CODE_LOOKUP
     const CODE_LOOKUP = new View_Code_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
-    
-    const insert = await CODE_LOOKUP.create({CODE_CD: my_uid(), TABLE_CD: 'VIEW_LAYOUT', COLUMN_CD: 'VIEW_LAYOUT', LOOKUP_BLOB: stringify(removeDuplicates(payload.DATA)), NAME_CHAR: payload.value})
+
+    const tmp = {CODE_CD: my_uid(), TABLE_CD: 'VIEW_LAYOUT', COLUMN_CD: 'VIEW_LAYOUT', LOOKUP_BLOB: stringify(removeDuplicates(payload.DATA)), NAME_CHAR: payload.value}
+
+    const insert = await CODE_LOOKUP.create(tmp)
     return insert
 }
 
@@ -381,27 +385,27 @@ function removeDuplicates(arr) {
 // ie: const TABLE = getTable('PATIENT_DIMENSION', state)
 export function getTable(table, state) {
     if (table === 'PATIENT_DIMENSION') {
-        return new View_Patient(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_Patient(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'VISIT_DIMENSION') {
-        return new View_Visit(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_Visit(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'OBSERVATION_FACT') {
-        return new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'CONCEPT_DIMENSION') {
-        return new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'PROVIDER_DIMENSION') {
-        return new View_Provider(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_Provider(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'CODE_LOOKUP') {
-        return new View_Code_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_Code_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'USER_MANAGEMENT') {
-        return new View_User(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_User(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'USER_PATIENT_LOOKUP') {
-        return new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'CQL_FACT') {
-        return new View_cql(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_cql(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'CONCEPT_CQL_LOOKUP') {
-        return new View_Concept_CQL_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_Concept_CQL_Lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else if (table === 'NOTE_FACT') {
-        return new View_note(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+        return new View_note(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     } else return undefined
 }
 

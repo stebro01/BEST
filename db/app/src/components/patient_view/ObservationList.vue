@@ -44,7 +44,14 @@
                         <td class="col_DATA" :class="{
                                     'bg-blue-1':
                                         EDIT_MODE && !FORBIDDEN_CATEGORY.includes(item.CATEGORY_CHAR),
-                                }" @click="item._edit_val = true"> <span v-if="item.VALTYPE_CD === 'N'"> {{ item.NVAL_NUM }} </span>
+                                }" @click="item._edit_val = true">
+                            <span v-if="item.VALTYPE_CD === 'N'"> {{ item.NVAL_NUM }} </span>
+                            <span v-else-if="IS_IMAGE.includes(item.CONCEPT_CD)" class="cursor-pointer" @click="image_data = item">
+                              <q-icon name="image"/>
+                              <span v-if="JSON.parse(item.TVAL_CHAR)" class="my-small-text">
+                                {{ JSON.parse(item.TVAL_CHAR).filename  }}
+                              </span>
+                            </span>
                             <span v-else>{{ item.TVAL_RESOLVED || item.TVAL_CHAR
                             }}</span>
                             <q-tooltip>{{
@@ -111,7 +118,7 @@
 
         <!-- DROP LIST -->
         <DIALOG_DRAG_DROP v-if="show_drop_list" :active="show_drop_list" @close="show_drop_list = false"
-            @update_list="updateSort($event)" :list="OBSERVATIONS" />
+            :list="OBSERVATIONS" />
 
         <!-- NEW ENTER DATA DIALOG -->
         <q-dialog v-model="show_new_obs_dialog">
@@ -126,6 +133,9 @@
 
         <!-- PREVIEW -->
         <PREVIEW_SURVEY v-if="preview_data" @close="preview_data = undefined" :input_data="preview_data" :mode="'col'" />
+
+        <!-- PREVIEW -->
+        <PREVIEW_IMAGE v-if="image_data" @close="image_data = undefined" :input_data="image_data" :mode="'col'" />
     </div>
 </template>
 
@@ -139,6 +149,7 @@ import POPUP_DATA from "src/components/patient_view/PopupData.vue";
 import ENTER_NEW_DATA_DIALOG from "src/components/patient_view/EnterNewDataDialog.vue";
 import DOWNLOAD_DATA from "src/components/patient_view/DownloadData.vue";
 import PREVIEW_SURVEY from "src/components/patient_view/SurveyPreview.vue";
+import PREVIEW_IMAGE from "src/components/patient_view/ImagePreview.vue";
 
 import { my_confirm } from "src/tools/my_dialog";
 import { datenow_isostring } from "src/tools/mydate";
@@ -155,6 +166,7 @@ export default {
         ENTER_NEW_DATA_DIALOG,
         DOWNLOAD_DATA,
         PREVIEW_SURVEY,
+        PREVIEW_IMAGE
     },
 
     props: ["param"],
@@ -169,6 +181,7 @@ export default {
             show_new_obs_dialog_data: undefined,
             download_data: undefined,
             preview_data: undefined,
+            image_data: undefined
         };
     },
 
@@ -191,6 +204,37 @@ export default {
                     obs._check = val_concept_cd.includes(obs.CONCEPT_CD);
                 });
             }
+        },
+
+        OBSERVATIONS(val) {
+            if (!this.EDIT_MODE) return;
+            // CHECK FOR LAOYOUT CHANGES
+            if (!this.$store.getters.PATIENT_VIEW.active_layout) {
+                const layout = val.filter((item) => item._check === true).map((item) => {
+                    return {
+                        CONCEPT_CD: item.CONCEPT_CD,
+                        CONCEPT_NAME_CHAR: item.CONCEPT_NAME_CHAR,
+                    };
+                });
+                this.$store.commit("PATIENT_VIEW_ACTIVE_LAYOUT_SET", layout);
+                return
+            }
+            // else
+            {
+              const layout = val.map((item) => {
+                return {
+                  CONCEPT_CD: item.CONCEPT_CD,
+                  CONCEPT_NAME_CHAR: item.CONCEPT_NAME_CHAR,
+                };
+              });
+              // return if layout empty or number of elements in layout and active_layout are the same
+              if (!layout || layout.length === 0 || layout.length === this.$store.getters.PATIENT_VIEW.active_layout.length) return
+
+              this.$store.commit("PATIENT_VIEW_ACTIVE_LAYOUT_SET", layout);
+              this.$store.commit("PATIENT_VIEW_LAYOUT_CHANGED_SET", true);
+              return
+            }
+
         },
     },
 
@@ -234,7 +278,7 @@ export default {
             if (!this.SORT_LIST) return [];
             return this.SORT_LIST.filter(
                 (item) =>
-                    !this.OBSERVATIONS.some(
+                    item._check === true && !this.OBSERVATIONS.some(
                         (obs) =>
                             obs.CONCEPT_CD === item.CONCEPT_CD &&
                             obs.CONCEPT_NAME_CHAR === item.CONCEPT_NAME_CHAR
@@ -258,6 +302,11 @@ export default {
         FORBIDDEN_CATEGORY() {
             return this.$store.getters.ENV.app.env.patient_view.forbidden_categories;
         },
+
+        IS_IMAGE() {
+          return [
+            "CUSTOM: RAW_IMAGE",]
+        }
     },
 
     methods: {
@@ -266,12 +315,11 @@ export default {
         },
 
         toggleValue(val) {
-            this.$store.commit("PATIENT_VIEW_LAYOUT_CHANGED_SET", true);
-
             if (val === false) return true;
             if (val === true) return false;
             return false;
         },
+
 
         async loadData(val) {
             if (!val)

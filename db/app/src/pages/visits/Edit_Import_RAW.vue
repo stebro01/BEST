@@ -28,7 +28,10 @@
                 <q-btn v-else-if="item.show_force_btn" round flat icon="add_circle" color="red" @click="addItem(item, true)"><q-tooltip>Fügt Daten trotz Warnung ein.</q-tooltip></q-btn>
                 <q-btn v-else round flat icon="add" @click="addItem(item, false)"><q-tooltip>Fügt die Daten der DB hinzu</q-tooltip></q-btn>
               </q-td>
-              <q-td class="text-caption overflow-hidden">{{ item.value }}</q-td>
+              <q-td class="text-caption overflow-hidden">
+                <q-icon v-if="item.is_image" name="image"/>
+                {{ item.value }} <q-tooltip>Image detected</q-tooltip>
+              </q-td>
               <q-td class="text-caption cursor-pointer">{{ item.START_DATE }}
                 <q-popup-edit v-model="item.START_DATE" auto-save v-slot="scope">
                   <q-input v-model="scope.value" dense autofocus counter type="date" @keyup.enter="scope.set" />
@@ -41,7 +44,7 @@
 
            <!-- FOOTER -->
      <template v-slot:footer>
-        <BOTTOM_BUTTONS :show_back="true" @back="$router.push({name: 'VisitsView'})" />
+        <BOTTOM_BUTTONS :show_back="true" @back="$router.go(-1)" />
       </template>
     </MainSlot>
 
@@ -113,8 +116,7 @@ export default {
   mounted() {
     this.IMPORT_FN = this.prepare_IMPORT_FN();
     // get all concepts
-    this.$store.dispatch('searchDB', { query_string: {VALTYPE_CD: 'R'}, table: "CONCEPT_DIMENSION"})
-    .then(res => this.CONCEPTS_TOSHOW = res)
+    this.initData()
   },
 
   computed: {
@@ -128,6 +130,22 @@ export default {
   },
 
   methods: {
+    async initData() {
+      // LOAD RAW CONCEPTS
+      const res = await this.$store.dispatch('searchDB', { query_string: {VALTYPE_CD: 'R'}, table: "CONCEPT_DIMENSION"})
+      this.CONCEPTS_TOSHOW = res.filter(item => item.CONCEPT_PATH.includes("\\CUSTOM\\RAW"))
+
+      // CHECK IF DATA IS A IMAGE
+      this.IMPORT_FN.forEach(item => {
+        if (item.value.endsWith(".png") || item.value.endsWith(".jpg") || item.value.endsWith(".jpeg") || item.value.endsWith(".gif")) {
+          item.CONCEPT_CD = this.CONCEPTS_TOSHOW.find(item => item.CONCEPT_PATH.includes("\\CUSTOM\\RAW\\IMAGE")).CONCEPT_CD
+          // item.imported = true
+          item.is_image = true
+        }
+      })
+
+    },
+
     prepare_IMPORT_FN() {
       // simple debuging
       if (this.debugging)
@@ -153,7 +171,7 @@ export default {
           });
         });
         return DATA;
-      } 
+      }
       // return undefined, if something goes wrong
       else return undefined;
     },
@@ -166,7 +184,7 @@ export default {
         START_DATE: datenow_isostring(),
       };
     },
-    
+
     selectConcept(item) {
       this.show_concept_select = false;
       this.show_add_concept_data.CONCEPT_CD = item.CONCEPT_CD;

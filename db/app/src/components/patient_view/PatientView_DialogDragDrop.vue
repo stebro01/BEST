@@ -14,7 +14,7 @@
                 >
                     <template #item="{ element }">
                     <q-item dense clickable v-ripple class="q-mb-xs shadow-1 q-pa-xs">
-                        <q-item-section avatar><q-icon name="drag_handle"/></q-item-section>    
+                        <q-item-section avatar><q-icon name="drag_handle"/></q-item-section>
                         <q-item-section >{{ element.CONCEPT_NAME_CHAR }}</q-item-section>
                     </q-item>
                     </template>
@@ -37,12 +37,12 @@ export default {
 
     data() {
         return {
-            
+
         }
     },
 
     mounted() {
-        
+
     },
 
 
@@ -51,8 +51,8 @@ export default {
         ACTIVE: {
             get() {
                 return this.active
-                
-            }, 
+
+            },
             set(val) {
                 this.$emit('close', val)
             }
@@ -69,7 +69,7 @@ export default {
                         CONCEPT_CD: item.CONCEPT_CD
                     }
                 })
-                
+
             },
             set(val) {
                 this.$store.commit("PATIENT_VIEW_ACTIVE_LAYOUT_SET", val)
@@ -80,7 +80,7 @@ export default {
     },
 
     methods: {
-        
+
         checkMove: function(e) {
             // window.console.log("Future index: " + e.draggedContext.futureIndex);
         }

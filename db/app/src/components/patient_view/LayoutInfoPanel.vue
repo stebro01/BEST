@@ -6,13 +6,13 @@
                 <q-list>
                     <q-item v-for="(item, ind) of LAYOUTS" :key="ind + item.value" clickable v-close-popup
                         >
-                        
+
                         <q-item-section side>
                             <div class="row" v-if="item.value !== null">
                             <q-btn @click="removeLayout(item)" size="sm" dense flat rounded icon="delete"><q-tooltip>Entferne das Layout</q-tooltip></q-btn>
                             <q-btn @click="renameLayout(item)" size="sm" dense flat rounded icon="edit"><q-tooltip> Layout umbenennen</q-tooltip></q-btn>
                         </div>
-                               
+
                         </q-item-section>
                         <!-- seperator -->
                         <!-- <q-separator vertical /> -->
@@ -23,7 +23,7 @@
             </q-btn-dropdown>
             <!-- LAYOUT BTNS -->
             <span class="q-ml-x q-gutter-x-xs" v-if="LAYOUT_CHANGED">
-                
+
                 <q-btn v-if="ACTIVE_LAYOUT" size="sm" dense no-caps flat class="bg-positive" @click="btnUpdateLayout()">update</q-btn>
                 <q-btn size="sm" dense no-caps flat class="bg-positive" @click="btnSaveLayout()">neu</q-btn>
                 <q-btn size="sm" dense @click="undoLayoutChanges()" flat icon="close"><q-tooltip>Änderungen nicht
@@ -194,6 +194,9 @@ export default {
         async btnSaveLayout() {
             const answ = await my_prompt(`Bitte Bezeichnung für neues Layout eingeben`)
             if (!answ || answ.lengh === 0) return
+
+            console.log('SAVE LAYOUT', answ, this.$store.getters.PATIENT_VIEW)
+
 
             const res = await this.$store.dispatch('saveLayout', { value: answ, DATA: this.ACTIVE_LAYOUT_DATA })
 
