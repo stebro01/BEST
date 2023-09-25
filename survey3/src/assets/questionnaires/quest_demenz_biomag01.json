@@ -248,15 +248,15 @@
             "options":
             [
                 {
-                    "label": "Apfel",
+                    "label": "Blume",
                     "value": 1
                 },
                 {
-                    "label": "Fahrrad",
+                    "label": "Kerze",
                     "value": 2
                 },
                 {
-                    "label": "Pferd",
+                    "label": "Freiheit",
                     "value": 3
                 }
             ]
@@ -328,15 +328,15 @@
             "options":
             [
                 {
-                    "label": "Apfel",
+                    "label": "Blume",
                     "value": 1
                 },
                 {
-                    "label": "Fahrrad",
+                    "label": "Kerze",
                     "value": 2
                 },
                 {
-                    "label": "Pferd",
+                    "label": "Freiheit",
                     "value": 3
                 }
             ]

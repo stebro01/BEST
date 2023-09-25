@@ -1,0 +1,54 @@
+{
+  "title": "Timed-up-and-go-Test (TUG)",
+  "short_title": "timedupandgotest",
+  "description": "Einschätzung von Beweglichkeit, Gleichgewicht und Sturzrisiko",
+  "coding": {
+    "system": "SNOMED-CT",
+    "code": "SCTID: 444781002",
+    "display": "Timed up and go mobility test score (observable entity)"
+  },
+  "manual": "Messung der Zeit (in Sekunden), die benötigt wird, um aus einem Stuhl mit Armlehnen aufzustehen, 3 m weit zu gehen, sich umzudrehen und wieder in den Stuhl zu setzen (der Rücken sollte dabei die Stuhllehne berühren).  Die Nutzung von Gehhilfen beim Laufen ist möglich. Eine Demonstration durch den Untersucher ist möglich, ebenso ein einmaliges ausprobieren des Bewegungsablaufs durch den Probanden.",
+  "keywords": "Sturzrisiko, Mobilität, Gleichgewicht, ",
+  "ref": "https://www.neurologienetz.de/fachliches/skalen-scores/timed-up-and-go-test.   Amboss.de",
+  "items": [
+    {
+      "label": "Zeit in Sekunden",
+      "id": 1,
+      "coding": {
+        "display": "time_seconds",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": "2",
+      "type": "radio",
+      "inline": false,
+      "force": false,
+      "options": [
+        { "label": "< 20 Sekunden (Unabhängige Mobilität)", "value": 0 },
+        {
+          "label": "20-29 Sekunden (Geringe Mobilitätseinschränkung)",
+          "value": 1
+        },
+        {
+          "label": "> 30 Sekunden (Ausgeprägte Mobilitätseinschränkung)",
+          "value": 2
+        }
+      ],
+      "vertical": true
+      
+    }
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "system": "SNOMED-CT",
+      "code": "SCTID: 444680009",
+      "display": "Timed up and go mobility test score"
+    },
+    "evaluation": [
+        {"range": [0, 0], "label":"Unabhängige Mobilität"},
+        {"range": [1, 1], "label":"Geringe Mobilitätseinschränkung"},
+        {"range": [2, 2], "label":"Ausgeprägte Mobilitätseinschränkung"}
+    ]
+  }
+}

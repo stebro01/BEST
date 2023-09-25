@@ -261,6 +261,7 @@ class QuestMan {
   }
 
   evaluate(res, ev) {
+    // console.log('evaluate', res, ev)
     // bisher nur sum umgesetzt
     const evaluation = []
     res.forEach(r => {

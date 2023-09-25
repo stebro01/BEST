@@ -1,0 +1,343 @@
+{
+  "title": "Activities-Specific Balance Confidence-Skala (ABC-D Skala)",
+  "short_title": "abc-d",
+  "description": "Ein Test zur Erfassung der sturzassoziierten Selbstwirksamkeit",
+  "coding": {
+    "system": "SNOMED-CT",
+    "code": "SCTID: 443322002",
+    "display": "Activities specific balance confidence scale (assessment scale)                                          |"
+  },
+  "manual": "Wenn Sie bestimmte Aktivitäten z. Zt. nicht ausführen, dann versuchen Sie sich vorzustellen, wie zuversichtlich Sie wären, wenn Sie die Aktivität ausführen würden. Es geht dabei um Ihr persönliches Erleben! Wenn Sie normalerweise Hilfsmittel wie eine Gehhilfe nutzen, dann stellen Sie sich die Aktivität unter deren Zuhilfenahme vor. Die Abschätzung erfolgt von 0-100 %, dabei entspricht 0 % „überhaupt nicht zuversichtlich\" und 100 % „absolut zuversichtlich\".  „Wie zuversichtlich sind Sie, dass Sie ihr Gleichgewicht halten können bzw. nicht ins Wanken geraten, wenn Sie . . .“",
+  "keywords": "Balance, Sturz, Selbstbeurteilung, Selbstwirksamkeit, Aktivität",
+  "ref": "https://www.testarchiv.eu/de/test/9006151   https://pubmed.ncbi.nlm.nih.gov/7814786/",
+  "items": [
+    {
+      "label": "„... in der Nähe Ihrer Wohnung/Ihres Hauses draußen umher gehen?\"",
+      "id": 1,
+      "coding": {
+        "display": "walking_near_home",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 70,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„... eine Treppe hinauf- und hinunter gehen?\"",
+      "id": 2,
+      "coding": {
+        "display": "go_down_up_stairs",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 40,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„... sich bücken müssen, um einen Schuh vom Boden auf zu heben?\"",
+      "id": 3,
+      "coding": {
+        "display": "lowering_to_pick_up_shoe",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 40,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„... nach einer Konservendose greifen wollen, die sich auf einem Regal in Augenhöhe befindet?\"",
+      "id": 4,
+      "coding": {
+        "display": "get_a_can",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 80,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„... auf den Zehenspitzen stehen, um nach einem Gegenstand zu greifen, der sich über Kopfhöhe befindet?\"",
+      "id": 5,
+      "coding": {
+        "display": "standing_on_foot_tips",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„... auf einem Stuhl stehen, um nach einem Gegenstand zu greifen?\"",
+      "id": 6,
+      "coding": {
+        "display": "standing_on_a_stool",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„... den Boden wischen?\"",
+      "id": 7,
+      "coding": {
+        "display": "clean_floor",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„... nach draußen zu einem Auto gehen, dass in der Auffahrt geparkt ist?\"",
+      "id": 8,
+      "coding": {
+        "display": "go_to_car_in_driveway",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„...in ein Auto ein- bzw. aussteigen?\"",
+      "id": 9,
+      "coding": {
+        "display": "car_enter_exit",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„...vom Parkplatz/Parkhaus zu einem Kaufhaus gehen?\"",
+      "id": 10,
+      "coding": {
+        "display": "parking_lot_to_mall",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„...eine Steigung hinauf oder hinunter gehen?\"",
+      "id": 11,
+      "coding": {
+        "display": "go_down_a_slope",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„...Sie sich in einem vollen Kaufhaus fortbewegen, wo viele Menschen schnell an ihnen vorübergehen?\"",
+      "id": 12,
+      "coding": {
+        "display": "moving_in_a_crowded_mall",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„...von Personen angestoßen werden, während Sie im Kaufhaus herumgehen?\"",
+      "id": 13,
+      "coding": {
+        "display": "bumped_mall",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„...auf eine Rolltreppe bzw. von einer Rolltreppe steigen, während sie sich am Geländer festhalten?\"",
+      "id": 14,
+      "coding": {
+        "display": "enter_or_exit_escalator",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„...mit zahlreichen Einkaufstüten/Paketen auf eine Rolltreppe bzw. von einer Rolltreppe steigen ohne sich dabei am Geländer festhalten zu können?\"",
+      "id": 15,
+      "coding": {
+        "display": "roll_treppen",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    },
+    {
+      "label": "„...auf vereisten Gehwegen gehen?\"",
+      "id": 16,
+      "coding": {
+        "display": "iced_sidewalks",
+        "code": "443322002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 100,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 100, "label": "Absolut zuversichtlich" },
+        "bottom": { "value": 0, "label": "Überhaupt nicht zuversichtlich" },
+        "steps": 10
+      },
+      "ignore_for_result": false
+    }
+  ],
+  "results": 
+  { "method": "avg",
+    "coding": {
+      "display": "Activities specific balance confidence score (observable entity)",
+      "code": "SCTID: 443125007",
+      "system": "SNOMED-CT"
+    }
+    }
+}

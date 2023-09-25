@@ -1,0 +1,327 @@
+{
+  "title": "Falls Efficacy Scale - internationale Version (FES-I)",
+  "short_title": "fes-i",
+  "description": "Einschätzung der Angst vor Stürzen",
+  "coding": {
+    "system": "SNOMED-CT",
+    "code": "SCTID: 445036004",
+    "display": "Falls Efficacy Scale - internationale Version (FES-I)"
+  },
+  "manual": "Wir würden Ihnen gerne einige Fragen darüber stellen, welche Bedenken Sie haben hinzufallen, wenn Sie bestimmte Aktivitäten ausführen. Bitte denken Sie noch einmal darüber nach, wie Sie diese Aktivität normalerweise ausführen. Wenn Sie die Aktivität z. Zt. nicht ausführen (z. B. wenn jemand Ihren Einkauf erledigt), geben Sie bitte (trotzdem) eine Antwort, um anzuzeigen, ob Sie Bedenken hätten zu stürzen, wenn Sie die Aktivität ausführen würden. Markieren Sie bitte diejenige Angabe, die am ehesten Ihrem eigenen Empfinden entspricht, um anzuzeigen, welche Bedenken Sie haben zu stürzen, wenn Sie diese Aktivität ausüben. ",
+  "keywords": "Sturzangst, Sturz, Selbsteinschätzung, Alltagsaktivitäten",
+  "ref": "https://www.thieme-connect.de/products/ejournals/html/10.1055/s-0030-1248931    https://sites.manchester.ac.uk/fes-i/",
+  "items": [
+    {
+      "label": "1. Den Hausputz machen (z.B. kehren, staubsaugen oder staubwischen)",
+      "id": 1,
+      "coding": {
+        "display": "clean_home",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "2. Sich an- oder ausziehen",
+      "id": 2,
+      "coding": {
+        "display": "dressing",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "3. Einfache Mahlzeiten zubereiten",
+      "id": 3,
+      "coding": {
+        "display": "prepare_meal",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "4. Ein Bad nehmen oder duschen",
+      "id": 4,
+      "coding": {
+        "display": "bathing_showering",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "5. In einem Laden einkaufen",
+      "id": 5,
+      "coding": {
+        "display": "shopping",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "6. Von einem Stuhl aufstehen oder sich hinsetzen",
+      "id": 6,
+      "coding": {
+        "display": "use_chair",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "7. Eine Treppe hinauf- oder hinuntergehen",
+      "id": 7,
+      "coding": {
+        "display": "use_escalier",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "8. In der Nähe der Wohnung draußen umhergehen",
+      "id": 8,
+      "coding": {
+        "display": "walking",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "9. Etwas erreichen, was sich oberhalb des Kopfes oder auf dem Boden befindet",
+      "id": 9,
+      "coding": {
+        "display": "reach",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "10. Das Telefon erreichen, bevor es aufhört zu klingeln",
+      "id": 10,
+      "coding": {
+        "display": "use_telephone",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "11. Auf einer rutschigen Oberfläche gehen (z. B. wenn es nass oder vereist ist)",
+      "id": 11,
+      "coding": {
+        "display": "wet_underground",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "12. Einen Freund oder Verwandten besuchen",
+      "id": 12,
+      "coding": {
+        "display": "visit_friends",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "13. In einer Menschenmenge umhergehen",
+      "id": 13,
+      "coding": {
+        "display": "in_crowd",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "14. Auf unebenem Boden gehen (z. B. Kopfsteinpflaster, ungepflegter Gehweg)",
+      "id": 14,
+      "coding": {
+        "display": "walk_uneven_grounds",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "15. Eine Steigung hinauf- oder hinuntergehen",
+      "id": 15,
+      "coding": {
+        "display": "walk_uphill_downhill",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    },
+    {
+      "label": "16. Eine Veranstaltung besuchen (z.B. ein Familientreffen, eine Vereinsversammlung oder einen Gottesdienst)",
+      "id": 16,
+      "coding": {
+        "display": "gathering",
+        "code": "439343009",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "force": true,
+      "options": [
+        { "label": "keinerlei Bedenken", "value": 1 },
+        { "label": "einige Bedenken", "value": 2 },
+        { "label": "ziemliche Bedenken", "value": 3 },
+        { "label": "sehr große Bedenken", "value": 4 }
+      ]
+    }
+  ],
+  "results": { 
+    "method": "sum",
+    "coding": {
+      "system": "SNOMED-CT",
+      "code": "SCTID: 445035000",
+      "display": "FES-I Score"
+    }
+    }
+}

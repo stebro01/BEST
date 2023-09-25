@@ -1,6 +1,7 @@
 // angabe des Namens> quest_XXXXXX.json >> XXXXX ist der Name
 const quest = [
   "6mwt",
+  "abc",
   "badl",
   "brain_tremor",
   "bdi2",
@@ -29,6 +30,7 @@ const quest = [
   "fas",
   "feda",
   "fim",
+  "fes",
   "flei",
   "gas",
   "gds",
@@ -64,6 +66,7 @@ const quest = [
   "shapsd",
   "sus",
   "tinetti",
+  "tug",
   "twstrs",
   "updrs_1",
   "updrs_2",
