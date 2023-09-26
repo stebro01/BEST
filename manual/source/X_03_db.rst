@@ -10,3 +10,4 @@ Weitere Informationen und Anleitungen für die Forschungsdatenbank.
    db/Quickstart
    db/SQLite
    db/Entwicklerdetails
+   db/TechnicalDetails
