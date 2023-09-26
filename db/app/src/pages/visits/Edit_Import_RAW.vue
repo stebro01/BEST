@@ -29,8 +29,8 @@
                 <q-btn v-else round flat icon="add" @click="addItem(item, false)"><q-tooltip>Fügt die Daten der DB hinzu</q-tooltip></q-btn>
               </q-td>
               <q-td class="text-caption overflow-hidden">
-                <q-icon v-if="item.is_image" name="image"/>
-                {{ item.value }} <q-tooltip>Image detected</q-tooltip>
+                <q-icon v-if="item.is_image" name="image"><q-tooltip>Image detected</q-tooltip></q-icon>
+                {{ item.value }} <q-tooltip>{{ item.CONCEPT_CD }}</q-tooltip>
               </q-td>
               <q-td class="text-caption cursor-pointer">{{ item.START_DATE }}
                 <q-popup-edit v-model="item.START_DATE" auto-save v-slot="scope">
@@ -135,14 +135,42 @@ export default {
       const res = await this.$store.dispatch('searchDB', { query_string: {VALTYPE_CD: 'R'}, table: "CONCEPT_DIMENSION"})
       this.CONCEPTS_TOSHOW = res.filter(item => item.CONCEPT_PATH.includes("\\CUSTOM\\RAW"))
 
-      // CHECK IF DATA IS A IMAGE
+
       this.IMPORT_FN.forEach(item => {
+        // CHECK IF DATA IS A IMAGE
         if (item.value.endsWith(".png") || item.value.endsWith(".jpg") || item.value.endsWith(".jpeg") || item.value.endsWith(".gif")) {
           item.CONCEPT_CD = this.CONCEPTS_TOSHOW.find(item => item.CONCEPT_PATH.includes("\\CUSTOM\\RAW\\IMAGE")).CONCEPT_CD
           // item.imported = true
           item.is_image = true
         }
+
+
+        else if (item.value.endsWith(".txt") || item.value.endsWith(".csv")) {
+          // Monetary Incentive Delay (MID)
+          let path = window.electron.path
+          //split the item.value by the path seperator
+          let splitted = item.value.split(path.sep)
+          // last element should contain 'MID_Teil2' in lower case
+          if (splitted[splitted.length - 1].toLowerCase().includes('mid_teil2')) {
+            item.CONCEPT_CD = this.CONCEPTS_TOSHOW.find(item => item.CONCEPT_CD.includes("CUSTOM: RAW_MID_PART_2")).CONCEPT_CD
+            // if the last element contains something like '..._2022-01-01_...' extract the date
+            if (splitted[splitted.length - 1].includes('_')) {
+              let date = splitted[splitted.length - 1].split('_')[2]
+              //if the date is a valid date, set it as START_DATE
+              if (new Date(date) !== "Invalid Date" && !isNaN(new Date(date))) {
+                item.START_DATE = new Date(date).toISOString().split('T')[0]
+              }
+            }
+
+          } else if (splitted[splitted.length - 1].toLowerCase().includes('mid_teil1')) {
+            item.CONCEPT_CD = this.CONCEPTS_TOSHOW.find(item => item.CONCEPT_CD.includes("CUSTOM: RAW_MID_PART_1")).CONCEPT_CD
+          }
+        }
+
+        console.log(item)
       })
+
+
 
     },
 
