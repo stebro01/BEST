@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'BEST db / survey - Forschungsdatenbank und Fragenbogen-App'
+project = 'Technical Description of JCRdb (Jena Clinical Research Database) v1.0'
 copyright = '2023, sb'
 author = 'Stefan Brodoehl (sb)'
 

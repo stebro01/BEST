@@ -1,0 +1,24 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}1. Motivation:}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}2. Overview:}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}3. Architecture:}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Frontend}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Database}{5}{section.3.2}%
+\contentsline {chapter}{\numberline {4}4. Technical Details:}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {5}5. Key Features:}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Entering Data / Data Types}{11}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Data Types and definition of schemes}{11}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Scheme definition}{11}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Entering data using a scheme}{12}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Concepts}{12}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Overview}{14}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Managing Concepts}{14}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Related Concepts}{15}{subsection.5.4.3}%
+\contentsline {section}{\numberline {5.5}Export and Import of Data}{15}{section.5.5}%
+\contentsline {chapter}{\numberline {6}6. Security and Compliance:}{17}{chapter.6}%
+\contentsline {chapter}{\numberline {7}7. Integration \& Extensibility:}{19}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Integration der SQLite DB in KNIME}{19}{section.7.1}%
+\contentsline {chapter}{\numberline {8}8. Testing \& Validation:}{21}{chapter.8}%
+\contentsline {chapter}{\numberline {9}9. Conclusion \& Future Work:}{23}{chapter.9}%
+\contentsline {chapter}{\numberline {10}10. Acknowledgements:}{25}{chapter.10}%
+\contentsline {chapter}{\numberline {11}11. Appendix:}{27}{chapter.11}%
