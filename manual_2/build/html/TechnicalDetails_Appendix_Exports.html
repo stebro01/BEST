@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>exemplary export / import data in csv and hl7 json format &#8212; Technical Description of JCRdb (Jena Clinical Research Database) v1.0  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Python script to convert sqlite data to a KNIME data frame" href="TechnicalDetails_Appendix_KNIME_phyton.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="exemplary-export-import-data-in-csv-and-hl7-json-format">
+<h1>exemplary export / import data in csv and hl7 json format<a class="headerlink" href="#exemplary-export-import-data-in-csv-and-hl7-json-format" title="Link to this heading">¶</a></h1>
+<section id="csv-export-import">
+<h2>CSV export / import<a class="headerlink" href="#csv-export-import" title="Link to this heading">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FIELD_NAME;PATIENT_NUM;PATIENT_CD;ENCOUNTER_NUM;START_DATE;END_DATE;PROVIDER_ID;LOCATION_CD;CUSTOM: ANAMNESE_EDUCATION;CUSTOM: ASSESSMENT_PARK_MOVE;CUSTOM: BNT_CHANGED;CUSTOM: RAW_IMAGE;CUSTOM: RAW_MID_PART_2;CUSTOM: SCORES_DNMSQUEST;LID: 72166-2;LID: 99222-2T;LID: 63900-5;LID: 72133-2;LID: 72172-0;SCTID: 273249006;SCTID: 443322002;SCTID: 444781002;SCTID: 8319008;SCTID: 276734006;CUSTOM: 277267003_MOD_AF6B2644-F2DA-42AF-8444-400E1ADD2AA8;SCTID: 184099003;SCTID: 443125007;SCTID: 444680009;SCTID: 1153637007;SCTID: 27113001;SCTID: 298348009;SCTID: 445035000;SCTID: 165263003;SCTID: 718970003;SCTID: 513881000000106;SCTID: 443544006;SCTID: 443544006_MOD_FBCAF68A-599E-43FD-AFA8-A4B28CB1BEC9;SCTID: 78629008;SCTID: 300758009;SCTID: 298343000;SCTID: 298343000_MOD_CC982444-8E6B-43B3-9F55-1AD30B8BE728;SCTID: 445036004;SCTID: 446009008;SCTID: 717268000;SCTID: 246261001;SCTID: 263495000
+VALTYPE_CD;numeric;numeric;numeric;date;date;text;text;text;text;finding;text;text;numeric;text;text;numeric;finding;numeric;text;text;text;text;text;numeric;date;numeric;numeric;numeric;numeric;numeric;numeric;numeric;numeric;text;finding;numeric;numeric;text;text;text;text;text;numeric;text;text
+UNIT_CD;;;;;;;;;;;;;POINTS;;;years;;POINTS;;;;;;years;;POINTS;POINTS;cm;kg;last 12 month;POINTS;meter;POINTS;;;daily;POINTS;;;;;;POINTS;;
+NAME_CHAR;Patient (lfd. Nummer);Patient Code;Visten Nr.;Vistendatum;Ende Viste;Untersucher;Ort;Bildungsgrad;Fragebogen PARK_MOVE Studie;BNT wurde geändert;Bilddatei (nicht genauer spezifiziert);Monetary Incentive Delay (MID) / Part 2;DNMSQuest - Dystonia Non-Motor Symptoms Questionnaire;Tabacco Smoking status;Employment;Age;MOCA;MOCA Total Score;Assessment scales;Activities specific balance confidence scale;Timed up and go mobility test;Principal diagnosis;Hilfsmittel / Mechanical assistance;Jahr der Diagnose / year of diagnosis;Date of birth;Activities specific balance confidence score;Timed up and go mobility test score;Body height;Body weight;Number of falls;Short falls efficacy scale - international score;Walking distance;McGill Pain Questionnaire score;Current medication as reported by patient;Freezing of gait;Freezing of gait /frequency daily;Pflegegrad / Total self-care deficit;Does engage in a hobby;Finding related to falls;Sturzkomplikationen / complications of falling;Assessment using short falls efficacy - international scale;Assessment using McGill pain questionnaire;BDI II - Beck Depression Inventory II;Gruppe;Gender
+;66;DEMO;231;2022-08-30;;admin;;;;;{&quot;filename&quot;:&quot;Screenshot 2023-09-27 at 09.16.42.png&quot;,&quot;ext&quot;:&quot;.png&quot;,&quot;sizeKB&quot;:97.150390625,&quot;source_dir&quot;:&quot;/Users/ste/Desktop&quot;};{&quot;filename&quot;:&quot;MID_Teil2_2022-08-30_13-37-40.txt&quot;,&quot;ext&quot;:&quot;.txt&quot;,&quot;sizeKB&quot;:10.89453125,&quot;source_dir&quot;:&quot;/Users/ste/MyProjects/BEST/db/app/test/jest/mockups/raw&quot;};;;;;;;;Activities specific balance confidence scale;Timed up and go mobility test;;;;;0;1;;;;42;;28;;;;;;;;Assessment using short falls efficacy - international scale;Assessment using McGill pain questionnaire;;;
+;66;DEMO;232;2023-09-09;;hl7import;;;;;;;;;;;;;6MWT;;;;;;;;;;;;;;;;;;;;;;;;;;
+;66;DEMO;233;2023-09-09;;hl7import;;;Fragebogen PARK_MOVE Studie;;;;;former smoker;random;;;;;;;;random;1970;;;;77;50;84;;6;;random;Yes;41;5;random;words;random;;;;;
+;66;DEMO;239;2023-09-27;;admin;undefined;;;Yes;;;22;;;45;Yes;28;;;;Alzheimer dementia;;;2000-01-01;;;;;;;;;;;;;;;;;;22;Gruppe1;Female
+;66;DEMO;240;2023-10-18;;admin;;;;;;;;;;33;Yes;29;;;;;;;2000-01-01;;;;;;;;;;;;;;;;;;;;Female
+</pre></div>
+</div>
+</section>
+<section id="hl7-export-import">
+<h2>HL7 export / import<a class="headerlink" href="#hl7-export-import" title="Link to this heading">¶</a></h2>
+<p>The HL7 json consists of the following fields:</p>
+<ul class="simple">
+<li><p><cite>cda</cite>: the CDA document</p></li>
+<li><p><cite>hash</cite>: including a signature of the CDA document and a <cite>publicKey</cite> to verify the signature</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;cda&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;resourceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Composition&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dbBEST&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;versionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v20230926&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;lastUpdated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-09-26&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/stebro01/research_database_sqlite_i2b2.git&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;profile&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;de-DE&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;h1&gt;Export von dbBEST (v20230926) - Klinische Beobachtungen)&lt;/h1&gt;\n&lt;table id=\&quot;summary_table\&quot; &gt;\n&lt;tbody&gt;\n&lt;tr&gt;&lt;td&gt;Visiten:&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;code:&lt;/td&gt;&lt;td&gt;308335008&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;system:&lt;/td&gt;&lt;td&gt;http://snomed.info/sct&lt;/td&gt;&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;\n&lt;br&gt;\n&lt;table id=\&quot;description_table\&quot;&gt;\n&lt;tbody&gt;\n&lt;tr&gt;&lt;td&gt;Document-ID:&lt;/td&gt;&lt;td&gt;urn:uuid:895f6f22-f7d6-4feb-90d4-dbfd49b5471e&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;date:&lt;/td&gt;&lt;td&gt;2023-10-18&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;ressource:&lt;/td&gt;&lt;td&gt;https://github.com/stebro01/dbBEST.git_v20230926_2023-09-26&lt;/td&gt;&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;\n&lt;br&gt;\n&lt;table id=\&quot;subjects_table\&quot;&gt;\n&lt;tbody&gt;\n&lt;tr&gt;&lt;td&gt;Subject:&lt;/td&gt;&lt;td&gt;DEMO&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;Investigator:&lt;/td&gt;&lt;td&gt;admin&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;start time:&lt;/td&gt;&lt;td&gt;2022-08-30&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;end time:&lt;/td&gt;&lt;td&gt;undefined&lt;/td&gt;&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;\n&lt;h2&gt;Visiten&lt;/h2&gt;\n&lt;h3&gt;Visite: 1&lt;/h3&gt;\n&lt;table id=\&quot;visite_1\&quot;&gt;\n&lt;tr&gt;&lt;td&gt;start time&lt;/td&gt;&lt;td&gt;Monetary Incentive Delay (MID) / Part 2&lt;/td&gt;&lt;td&gt;Assessment using McGill pain questionnaire&lt;/td&gt;&lt;td&gt;McGill Pain Questionnaire score&lt;/td&gt;&lt;td&gt;Activities specific balance confidence scale&lt;/td&gt;&lt;td&gt;Activities specific balance confidence score&lt;/td&gt;&lt;td&gt;Assessment using short falls efficacy - international scale&lt;/td&gt;&lt;td&gt;Short falls efficacy scale - international score&lt;/td&gt;&lt;td&gt;Timed up and go mobility test&lt;/td&gt;&lt;td&gt;Timed up and go mobility test score&lt;/td&gt;&lt;td&gt;Bilddatei (nicht genauer spezifiziert)&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;2022-08-30&lt;/td&gt;&lt;td&gt;{\&quot;filename\&quot;:\&quot;MID_Teil2_2022-08-30_13-37-40.txt\&quot;,\&quot;ext\&quot;:\&quot;.txt\&quot;,\&quot;sizeKB\&quot;:10.89453125,\&quot;source_dir\&quot;:\&quot;/Users/ste/MyProjects/BEST/db/app/test/jest/mockups/raw\&quot;}&lt;/td&gt;&lt;td&gt;Assessment using McGill pain questionnaire&lt;/td&gt;&lt;td&gt;28&lt;/td&gt;&lt;td&gt;Activities specific balance confidence scale&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;Assessment using short falls efficacy - international scale&lt;/td&gt;&lt;td&gt;42&lt;/td&gt;&lt;td&gt;Timed up and go mobility test&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;{\&quot;filename\&quot;:\&quot;Screenshot 2023-09-27 at 09.16.42.png\&quot;,\&quot;ext\&quot;:\&quot;.png\&quot;,\&quot;sizeKB\&quot;:97.150390625,\&quot;source_dir\&quot;:\&quot;/Users/ste/Desktop\&quot;}&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;\n&lt;h3&gt;Visite: 2&lt;/h3&gt;\n&lt;table id=\&quot;visite_2\&quot;&gt;\n&lt;tr&gt;&lt;td&gt;start time&lt;/td&gt;&lt;td&gt;Assessment scales&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;2023-09-09&lt;/td&gt;&lt;td&gt;6MWT&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;\n&lt;h3&gt;Visite: 3&lt;/h3&gt;\n&lt;table id=\&quot;visite_3\&quot;&gt;\n&lt;tr&gt;&lt;td&gt;start time&lt;/td&gt;&lt;td&gt;Bildungsgrad&lt;/td&gt;&lt;td&gt;Body height&lt;/td&gt;&lt;td&gt;Body weight&lt;/td&gt;&lt;td&gt;Current medication as reported by patient&lt;/td&gt;&lt;td&gt;Does engage in a hobby&lt;/td&gt;&lt;td&gt;Employment&lt;/td&gt;&lt;td&gt;Finding related to falls&lt;/td&gt;&lt;td&gt;Fragebogen PARK_MOVE Studie&lt;/td&gt;&lt;td&gt;Freezing of gait&lt;/td&gt;&lt;td&gt;Freezing of gait /frequency daily&lt;/td&gt;&lt;td&gt;Hilfsmittel / Mechanical assistance&lt;/td&gt;&lt;td&gt;Jahr der Diagnose / year of diagnosis&lt;/td&gt;&lt;td&gt;Number of falls&lt;/td&gt;&lt;td&gt;Pflegegrad / Total self-care deficit&lt;/td&gt;&lt;td&gt;Sturzkomplikationen / complications of falling&lt;/td&gt;&lt;td&gt;Tabacco Smoking status&lt;/td&gt;&lt;td&gt;Walking distance&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;2023-09-09&lt;/td&gt;&lt;td&gt;null&lt;/td&gt;&lt;td&gt;77&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;random&lt;/td&gt;&lt;td&gt;random&lt;/td&gt;&lt;td&gt;random&lt;/td&gt;&lt;td&gt;words&lt;/td&gt;&lt;td&gt;Fragebogen PARK_MOVE Studie&lt;/td&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;td&gt;41&lt;/td&gt;&lt;td&gt;random&lt;/td&gt;&lt;td&gt;1970&lt;/td&gt;&lt;td&gt;84&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;random&lt;/td&gt;&lt;td&gt;former smoker&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;\n&lt;h3&gt;Visite: 4&lt;/h3&gt;\n&lt;table id=\&quot;visite_4\&quot;&gt;\n&lt;tr&gt;&lt;td&gt;start time&lt;/td&gt;&lt;td&gt;Age&lt;/td&gt;&lt;td&gt;BDI II - Beck Depression Inventory II&lt;/td&gt;&lt;td&gt;BNT wurde geändert&lt;/td&gt;&lt;td&gt;DNMSQuest - Dystonia Non-Motor Symptoms Questionnaire&lt;/td&gt;&lt;td&gt;Date of birth&lt;/td&gt;&lt;td&gt;Gender&lt;/td&gt;&lt;td&gt;Gruppe&lt;/td&gt;&lt;td&gt;MOCA&lt;/td&gt;&lt;td&gt;MOCA Total Score&lt;/td&gt;&lt;td&gt;Principal diagnosis&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;2023-09-27&lt;/td&gt;&lt;td&gt;45&lt;/td&gt;&lt;td&gt;22&lt;/td&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;td&gt;22&lt;/td&gt;&lt;td&gt;2000-01-01&lt;/td&gt;&lt;td&gt;Female&lt;/td&gt;&lt;td&gt;Gruppe1&lt;/td&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;td&gt;28&lt;/td&gt;&lt;td&gt;Alzheimer dementia&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;\n&lt;h3&gt;Visite: 5&lt;/h3&gt;\n&lt;table id=\&quot;visite_5\&quot;&gt;\n&lt;tr&gt;&lt;td&gt;start time&lt;/td&gt;&lt;td&gt;Age&lt;/td&gt;&lt;td&gt;Date of birth&lt;/td&gt;&lt;td&gt;Gender&lt;/td&gt;&lt;td&gt;MOCA&lt;/td&gt;&lt;td&gt;MOCA Total Score&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;2023-10-18&lt;/td&gt;&lt;td&gt;33&lt;/td&gt;&lt;td&gt;2000-01-01&lt;/td&gt;&lt;td&gt;Female&lt;/td&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;td&gt;29&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;\n&lt;/div&gt;&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:undefined&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:uuid:895f6f22-f7d6-4feb-90d4-dbfd49b5471e&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;preliminary&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">404684003</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Klinische Beobachtungen&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEMO&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">422549004</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patient Code&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-18&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;author&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dbBEST&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Export von dbBEST (v20230926) - Klinische Beobachtungen)&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;attester&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;legal&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-08-30&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;party&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;legal&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-09-09&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;party&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hl7import&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;custodian&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{},</span>
+<span class="w">        </span><span class="nt">&quot;event&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 1&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;period&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-08-30&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 2&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;period&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-09-09&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 3&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;period&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-09-09&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 4&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;period&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-09-27&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 5&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;period&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-18&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;section&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 1&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Visite: 1&lt;/h1&gt;&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;entry&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Monetary Incentive Delay (MID) / Part 2&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM: RAW_MID_PART_2&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Monetary Incentive Delay (MID) / Part 2&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;filename\&quot;:\&quot;MID_Teil2_2022-08-30_13-37-40.txt\&quot;,\&quot;ext\&quot;:\&quot;.txt\&quot;,\&quot;sizeKB\&quot;:10.89453125,\&quot;source_dir\&quot;:\&quot;/Users/ste/MyProjects/BEST/db/app/test/jest/mockups/raw\&quot;}&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Monetary Incentive Delay (MID) / Part 2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;{\&quot;filename\&quot;:\&quot;MID_Teil2_2022-08-30_13-37-40.txt\&quot;,\&quot;ext\&quot;:\&quot;.txt\&quot;,\&quot;sizeKB\&quot;:10.89453125,\&quot;source_dir\&quot;:\&quot;/Users/ste/MyProjects/BEST/db/app/test/jest/mockups/raw\&quot;}&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assessment using McGill pain questionnaire&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 446009008&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assessment using McGill pain questionnaire&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assessment using McGill pain questionnaire&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Assessment using McGill pain questionnaire&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Assessment using McGill pain questionnaire&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;McGill Pain Questionnaire score&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 718970003&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;McGill Pain Questionnaire score&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;McGill Pain Questionnaire score&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;28&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Activities specific balance confidence scale&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 443322002&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Activities specific balance confidence scale&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Activities specific balance confidence scale&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Activities specific balance confidence scale&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Activities specific balance confidence scale&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Activities specific balance confidence score&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 443125007&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Activities specific balance confidence score&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Activities specific balance confidence score&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assessment using short falls efficacy - international scale&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 445036004&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assessment using short falls efficacy - international scale&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assessment using short falls efficacy - international scale&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Assessment using short falls efficacy - international scale&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Assessment using short falls efficacy - international scale&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Short falls efficacy scale - international score&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 445035000&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Short falls efficacy scale - international score&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Short falls efficacy scale - international score&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;42&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Timed up and go mobility test&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 444781002&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Timed up and go mobility test&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Timed up and go mobility test&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Timed up and go mobility test&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Timed up and go mobility test&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Timed up and go mobility test score&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 444680009&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Timed up and go mobility test score&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Timed up and go mobility test score&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bilddatei (nicht genauer spezifiziert)&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM: RAW_IMAGE&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bilddatei (nicht genauer spezifiziert)&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;filename\&quot;:\&quot;Screenshot 2023-09-27 at 09.16.42.png\&quot;,\&quot;ext\&quot;:\&quot;.png\&quot;,\&quot;sizeKB\&quot;:97.150390625,\&quot;source_dir\&quot;:\&quot;/Users/ste/Desktop\&quot;}&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Bilddatei (nicht genauer spezifiziert)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;{\&quot;filename\&quot;:\&quot;Screenshot 2023-09-27 at 09.16.42.png\&quot;,\&quot;ext\&quot;:\&quot;.png\&quot;,\&quot;sizeKB\&quot;:97.150390625,\&quot;source_dir\&quot;:\&quot;/Users/ste/Desktop\&quot;}&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 2&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 2&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Visite: 2&lt;/h1&gt;&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;entry&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assessment scales&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 273249006&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Assessment scales&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6MWT&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Assessment scales&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;6MWT&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 3&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 3&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Visite: 3&lt;/h1&gt;&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;entry&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bildungsgrad&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM: ANAMNESE_EDUCATION&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bildungsgrad&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Bildungsgrad&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;null&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Body height&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 1153637007&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Body height&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">77</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Body height&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;77&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Body weight&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 27113001&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Body weight&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Body weight&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Current medication as reported by patient&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 513881000000106&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Current medication as reported by patient&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;random&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Current medication as reported by patient&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;random&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Does engage in a hobby&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 300758009&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Does engage in a hobby&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;random&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Does engage in a hobby&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;random&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Employment&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LID: 99222-2T&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Employment&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;random&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Employment&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;random&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Finding related to falls&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 298343000&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Finding related to falls&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;words&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Finding related to falls&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;words&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fragebogen PARK_MOVE Studie&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM: ASSESSMENT_PARK_MOVE&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fragebogen PARK_MOVE Studie&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fragebogen PARK_MOVE Studie&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Fragebogen PARK_MOVE Studie&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Fragebogen PARK_MOVE Studie&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Freezing of gait&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 443544006&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Freezing of gait&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Freezing of gait&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Freezing of gait /frequency daily&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 443544006_MOD_FBCAF68A-599E-43FD-AFA8-A4B28CB1BEC9&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Freezing of gait /frequency daily&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Freezing of gait /frequency daily&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;41&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hilfsmittel / Mechanical assistance&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 276734006&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hilfsmittel / Mechanical assistance&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;random&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Hilfsmittel / Mechanical assistance&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;random&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jahr der Diagnose / year of diagnosis&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM: 277267003_MOD_AF6B2644-F2DA-42AF-8444-400E1ADD2AA8&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jahr der Diagnose / year of diagnosis&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1970</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Jahr der Diagnose / year of diagnosis&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1970&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number of falls&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 298348009&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number of falls&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Number of falls&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;84&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pflegegrad / Total self-care deficit&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 78629008&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Pflegegrad / Total self-care deficit&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Pflegegrad / Total self-care deficit&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sturzkomplikationen / complications of falling&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 298343000_MOD_CC982444-8E6B-43B3-9F55-1AD30B8BE728&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sturzkomplikationen / complications of falling&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;random&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Sturzkomplikationen / complications of falling&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;random&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tabacco Smoking status&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LID: 72166-2&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tabacco Smoking status&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;former smoker&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Tabacco Smoking status&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;former smoker&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Walking distance&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 165263003&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Walking distance&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Walking distance&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 4&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 4&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Visite: 4&lt;/h1&gt;&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;entry&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LID: 63900-5&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Age&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Age&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;45&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BDI II - Beck Depression Inventory II&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 717268000&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BDI II - Beck Depression Inventory II&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;BDI II - Beck Depression Inventory II&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;22&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BNT wurde geändert&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM: BNT_CHANGED&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BNT wurde geändert&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;BNT wurde geändert&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DNMSQuest - Dystonia Non-Motor Symptoms Questionnaire&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM: SCORES_DNMSQUEST&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DNMSQuest - Dystonia Non-Motor Symptoms Questionnaire&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;DNMSQuest - Dystonia Non-Motor Symptoms Questionnaire&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;22&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of birth&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 184099003&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of birth&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Date of birth&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;2000-01-01&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gender&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 263495000&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gender&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Female&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Gender&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Female&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gruppe&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 246261001&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gruppe&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gruppe1&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Gruppe&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Gruppe1&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOCA&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LID: 72133-2&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOCA&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;MOCA&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOCA Total Score&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LID: 72172-0&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOCA Total Score&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;MOCA Total Score&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;28&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Principal diagnosis&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 8319008&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Principal diagnosis&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alzheimer dementia&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Principal diagnosis&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Alzheimer dementia&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 5&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">308335008</span><span class="p">,</span>
+<span class="w">                                </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Visite: 5&quot;</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Visite: 5&lt;/h1&gt;&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;entry&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LID: 63900-5&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Age&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Age&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;33&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of birth&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 184099003&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of birth&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Date of birth&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;2000-01-01&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gender&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCTID: 263495000&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gender&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Female&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Gender&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Female&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOCA&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LID: 72133-2&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOCA&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Yes&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;MOCA&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOCA Total Score&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;coding&quot;</span><span class="p">:</span>
+<span class="w">                                </span><span class="p">[</span>
+<span class="w">                                    </span><span class="p">{</span>
+<span class="w">                                        </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://snomed.info/sct&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LID: 72172-0&quot;</span><span class="p">,</span>
+<span class="w">                                        </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MOCA Total Score&quot;</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">]</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;div&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;MOCA Total Score&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;29&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FJp3wM+k+qrJ8V0TxkXrFEYiYuIu5TGNK0trRCr2cfejIiIOTM0mUqtkGEzXML8jhryC0Dgq7kNJ/2Hmn8+iCw==&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SHA256&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;publicKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN PUBLIC KEY-----\r\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJIh5mgzXTSMvIxB55giNK0KDEbMlUIS\r\njvDI1RN8mmmsDifvpvq499rxDy4y4hk3pDHXP4HHlnuvmw2beERg2UkCAwEAAQ==\r\n-----END PUBLIC KEY-----\r\n&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Technical Description of JCRdb (Jena Clinical Research Database) v1.0</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="TechnicalDetails.html">Technical Description of JCRdb (Jena Clinical Research Database) v1.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#motivation">1. Motivation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#overview">2. Overview:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#architecture">3. Architecture:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#technical-details">4. Technical Details:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#key-features">5. Key Features:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#security-and-compliance">6. Security and Compliance:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#integration-extensibility">7. Integration &amp; Extensibility:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#testing-validation">8. Testing &amp; Validation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#conclusion-future-work">9. Conclusion &amp; Future Work:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TechnicalDetails.html#acknowledgements">10. Acknowledgements:</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="TechnicalDetails.html#appendix">11. Appendix:</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="TechnicalDetails.html">Technical Description of JCRdb (Jena Clinical Research Database) v1.0</a><ul>
+      <li>Previous: <a href="TechnicalDetails_Appendix_KNIME_phyton.html" title="previous chapter">Python script to convert sqlite data to a KNIME data frame</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, sb.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/TechnicalDetails_Appendix_Exports.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
