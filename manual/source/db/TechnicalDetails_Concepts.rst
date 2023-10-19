@@ -27,7 +27,7 @@ Managing Concepts
 
 .. NOTE::
 
-   For SNOMED, we offer an integrated SNOMED-CT API that can be accessed directly from the user interface during concept editing.
+   For SNOMED, we offer an access to the SNOMED-CT API from the user interface during concept editing.
 
    .. figure:: ./_img/img_db_concept_api.png
       :width: 100%
