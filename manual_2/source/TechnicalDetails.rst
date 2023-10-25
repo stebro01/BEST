@@ -202,13 +202,3 @@ The following persons contributed to the development of the database
 11. Appendix:
 -------------
 
-.. toctree::
-   :maxdepth: 2
-
-   TechnicalDetails_Appendix_Concepts
-   TechnicalDetails_Appendix_SQL
-   TechnicalDetails_Appendix_CQL
-   TechnicalDetails_Appendix_KNIME_phyton
-   TechnicalDetails_Appendix_Exports
-
-
