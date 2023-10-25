@@ -19,7 +19,7 @@ The database is available to a group of staff at the University Hospital of Jena
 
 The following figure illustrates the principle architecture of the database:
 
-.. figure:: ./_img/img_db_scheme_jena.png
+.. figure:: _img/img_db_scheme_jena.png
    :width: 100%
    :align: center
 
@@ -159,6 +159,8 @@ The UI front-end is a standalone application and can connect to any SQLite datab
 There are currently no APIs available for direct interaction with the user interface. However, the database can be accessed directly via SQL queries using the suggested `DB Browser for SQLite` editor: https://sqlitebrowser.org.
 
 .. include:: TechnicalDetails_IntegrationKnime.rst
+
+.. include:: TechnicalDetails_IntegrationRDM.rst
 
 8. Testing & Validation:
 ------------------------

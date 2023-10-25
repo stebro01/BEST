@@ -160,6 +160,8 @@ There are currently no APIs available for direct interaction with the user inter
 
 .. include:: TechnicalDetails_IntegrationKnime.rst
 
+.. include:: TechnicalDetails_IntegrationRDM.rst
+
 8. Testing & Validation:
 ------------------------
 
