@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.6.17)  18 OCT 2023 14:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  26 OCT 2023 14:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -862,7 +862,7 @@ Chapter 1.
 
 ]
 Chapter 2.
-<img_db_scheme_jena.png, id=148, 1133.73563pt x 874.01532pt>
+<img_db_scheme_jena.png, id=153, 1133.73563pt x 874.01532pt>
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
 18.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/txfonts/t1txtt.fd
@@ -879,7 +879,7 @@ LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 1
 (/usr/local/texlive/2023/texmf-dist/tex/latex/tex-gyre/ts1qtm.fd
 File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 )
-<img_db_scheme.png, id=162, 1032.85875pt x 639.38875pt>
+<img_db_scheme.png, id=167, 1032.85875pt x 639.38875pt>
 File: img_db_scheme.png Graphic file (type png)
 <use img_db_scheme.png>
 Package pdftex.def Info: img_db_scheme.png  used on input line 165.
@@ -984,29 +984,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 707--707
 []\T1/qhv/m/n/10 Data
  []
 
-<img_data_input_example01.png, id=202, 791.95876pt x 193.72375pt>
+<img_data_input_example01.png, id=207, 791.95876pt x 193.72375pt>
 File: img_data_input_example01.png Graphic file (type png)
 <use img_data_input_example01.png>
 Package pdftex.def Info: img_data_input_example01.png  used on input line 718.
 (pdftex.def)             Requested size: 452.9679pt x 110.80203pt.
-<img_data_input_example02.png, id=203, 389.455pt x 380.42125pt>
+<img_data_input_example02.png, id=208, 389.455pt x 380.42125pt>
 File: img_data_input_example02.png Graphic file (type png)
 <use img_data_input_example02.png>
 Package pdftex.def Info: img_data_input_example02.png  used on input line 725.
 (pdftex.def)             Requested size: 301.12305pt x 294.15005pt.
 [11 <./img_data_input_example01.png>]
-<img_data_input_schemeindb.png, id=210, 853.1875pt x 457.71pt>
+<img_data_input_schemeindb.png, id=215, 853.1875pt x 457.71pt>
 File: img_data_input_schemeindb.png Graphic file (type png)
 <use img_data_input_schemeindb.png>
 Package pdftex.def Info: img_data_input_schemeindb.png  used on input line 757.
 
 (pdftex.def)             Requested size: 452.9679pt x 243.01117pt.
-<img_data_input_scheme.png, id=211, 803.0pt x 414.54875pt>
+<img_data_input_scheme.png, id=216, 803.0pt x 414.54875pt>
 File: img_data_input_scheme.png Graphic file (type png)
 <use img_data_input_scheme.png>
 Package pdftex.def Info: img_data_input_scheme.png  used on input line 770.
 (pdftex.def)             Requested size: 452.9679pt x 233.84727pt.
-<img_data_input_db.png, id=212, 1204.5pt x 202.7575pt>
+<img_data_input_db.png, id=217, 1204.5pt x 202.7575pt>
 File: img_data_input_db.png Graphic file (type png)
 <use img_data_input_db.png>
 Package pdftex.def Info: img_data_input_db.png  used on input line 780.
@@ -1038,7 +1038,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 869--869
 []\T1/qtm/m/n/10 [ICD10 Web-site]([][]$https : / / www . who . int /
  []
 
-<img_db_concept_api.png, id=235, 900.36375pt x 310.15875pt>
+<img_db_concept_api.png, id=240, 900.36375pt x 310.15875pt>
 File: img_db_concept_api.png Graphic file (type png)
 <use img_db_concept_api.png>
 Package pdftex.def Info: img_db_concept_api.png  used on input line 884.
@@ -1050,7 +1050,7 @@ LaTeX Font Info:    Trying to load font information for TS1+txtt on input line
 (/usr/local/texlive/2023/texmf-dist/tex/latex/txfonts/ts1txtt.fd
 File: ts1txtt.fd 2000/12/15 v3.1
 ) [14 <./img_db_concept_api.png>]
-<img_db_concept_related.png, id=248, 1186.4325pt x 200.75pt>
+<img_db_concept_related.png, id=253, 1186.4325pt x 200.75pt>
 File: img_db_concept_related.png Graphic file (type png)
 <use img_db_concept_related.png>
 Package pdftex.def Info: img_db_concept_related.png  used on input line 933.
@@ -1063,46 +1063,51 @@ Chapter 6.
 
 ]
 Chapter 7.
-<img_data_integration_knime01.png, id=270, 747.79375pt x 571.13374pt>
+<img_data_integration_knime01.png, id=275, 747.79375pt x 571.13374pt>
 File: img_data_integration_knime01.png Graphic file (type png)
 <use img_data_integration_knime01.png>
 Package pdftex.def Info: img_data_integration_knime01.png  used on input line 9
 84.
 (pdftex.def)             Requested size: 452.9679pt x 345.95966pt.
-<img_data_integration_knime02.png, id=271, 1190.4475pt x 633.36626pt>
+<img_data_integration_knime02.png, id=276, 1190.4475pt x 633.36626pt>
 File: img_data_integration_knime02.png Graphic file (type png)
 <use img_data_integration_knime02.png>
 Package pdftex.def Info: img_data_integration_knime02.png  used on input line 9
 91.
 (pdftex.def)             Requested size: 452.9679pt x 240.99094pt.
+<img_good_RDM_practices.png, id=277, 1874.00125pt x 932.48375pt>
+File: img_good_RDM_practices.png Graphic file (type png)
+<use img_good_RDM_practices.png>
+Package pdftex.def Info: img_good_RDM_practices.png  used on input line 1022.
+(pdftex.def)             Requested size: 452.9679pt x 225.39427pt.
 [19] [20 <./img_data_integration_knime01.png> <./img_data_integration_knime02.p
-ng>]
-Chapter 8.
-[21
-
-] [22
+ng>] [21 <./img_good_RDM_practices.png>] [22
 
 ]
-Chapter 9.
+Chapter 8.
 [23] [24
 
 ]
-Chapter 10.
+Chapter 9.
 [25] [26
 
 ]
+Chapter 10.
+[27] [28
+
+]
 Chapter 11.
-(./technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.ind) [27]
+(./technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.ind) [29]
 (./technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.aux)
 Package rerunfilecheck Info: File `technicaldescriptionofjcrdbjenaclinicalresea
 rchdatabasev10.out' has not changed.
-(rerunfilecheck)             Checksum: 6B4B13CA8FA40C94186404BB2E0872D4;3585.
+(rerunfilecheck)             Checksum: 88358BC478F043C383A6AAF6C0E0AB5E;3956.
  ) 
 Here is how much of TeX's memory you used:
- 16320 strings out of 476025
- 277181 string characters out of 5790017
+ 16336 strings out of 476025
+ 277608 string characters out of 5790016
  1883388 words of memory out of 5000000
- 36292 multiletter control sequences out of 15000+600000
+ 36303 multiletter control sequences out of 15000+600000
  563478 words of font info for 73 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  72i,12n,76p,617b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1117,10 +1122,10 @@ dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2023/texmf-dist/
 fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/
 type1/public/txfonts/tcxtt.pfb>
 Output written on technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.pd
-f (31 pages, 2913467 bytes).
+f (33 pages, 5257759 bytes).
 PDF statistics:
- 375 PDF objects out of 1000 (max. 8388607)
- 297 compressed objects within 3 object streams
- 73 named destinations out of 1000 (max. 500000)
- 260 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 390 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
+ 77 named destinations out of 1000 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

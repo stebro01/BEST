@@ -11,3 +11,5 @@ The following figure shows an overview on how to implement good RDM practices us
    :align: center
    :width: 100%
 
+   Overview on how to implement good RDM practices using this database solution.
+

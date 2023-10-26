@@ -18,7 +18,8 @@
 \contentsline {chapter}{\numberline {6}6. Security and Compliance:}{17}{chapter.6}%
 \contentsline {chapter}{\numberline {7}7. Integration \& Extensibility:}{19}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Integration der SQLite DB in KNIME}{19}{section.7.1}%
-\contentsline {chapter}{\numberline {8}8. Testing \& Validation:}{21}{chapter.8}%
-\contentsline {chapter}{\numberline {9}9. Conclusion \& Future Work:}{23}{chapter.9}%
-\contentsline {chapter}{\numberline {10}10. Acknowledgements:}{25}{chapter.10}%
-\contentsline {chapter}{\numberline {11}11. Appendix:}{27}{chapter.11}%
+\contentsline {section}{\numberline {7.2}Implementing Good RDM Practices with this database solution}{19}{section.7.2}%
+\contentsline {chapter}{\numberline {8}8. Testing \& Validation:}{23}{chapter.8}%
+\contentsline {chapter}{\numberline {9}9. Conclusion \& Future Work:}{25}{chapter.9}%
+\contentsline {chapter}{\numberline {10}10. Acknowledgements:}{27}{chapter.10}%
+\contentsline {chapter}{\numberline {11}11. Appendix:}{29}{chapter.11}%
