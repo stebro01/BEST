@@ -1,0 +1,173 @@
+{
+  "title": "Fugl-Mayr-Short-Version (obere Extremität)",
+  "short_title": "fuglmayrshort",
+  "description": "Beurteilung der motorischen Funktion der oberen Extremität mittels eines numerischen Bewertungssystems.",
+  "coding": {
+    "system": "CUSTOM",
+    "code": "CUSTOM: FUGL_MEYER",
+    "display": "Fugl-Mayr-Short-Version"
+  },
+  "manual": "Immer zuerst die gesunde und dann die betroffene Seite testen. Benötigte Utensilien: Blatt Papier",
+  "keywords": null,
+  "ref": "https://summer-carpenter-3d6.notion.site/Anleitungen-Assessment-b6fff9e34bcf4524b2c60d7aa1737ee5",
+  "items": [
+    {
+      "label": "a) Flexorensynergie (Hand vom kontralateralen Knie zum ipsilateralen Ohr)",
+      "id": [1],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "questions": [
+          { "label": "Schulter (Elevation)", "tag": "elevation_shoulder", "id": 1 }
+        ],
+        "answers": [
+          { "label": "keine", "value": 0 },
+          { "label": "teilweise", "value": 1 },
+          { "label": "voll", "value": 2 }
+        ]
+      }
+    },
+    {
+      "label": "b) Extensorensynergie (Hand vom ipsilateralen Ohr zum kontralateralen Knie)",
+      "id": [2],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "questions": [
+          { "label": "Ellbogen (Extension)", "tag": "extensor_synergy", "id": 2 }
+        ],
+        "answers": [
+          { "label": "keine", "value": 0 },
+          { "label": "teilweise", "value": 1 },
+          { "label": "voll", "value": 2 }
+        ]
+      }
+    },
+    {
+      "label": "c) Pro- und Supination bei angewinkeltem Ellbogen (90°), Daumen zeigt nach oben ",
+      "id": [3],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "questions": [
+          {
+            "label": "Pro- und Supination (P/S)? Ausgangsposition (AP)?",
+            "tag": "supination_elbow",
+            "id": 3
+          }
+        ],
+        "answers": [
+          { "label": "keine P/S, AP nicht einnehmbar", "value": 0 },
+          { "label": "eingeschränkte P/S, AP haltbar", "value": 1 },
+          { "label": "vollständige P/S, AP haltbar", "value": 2 }
+        ]
+      }
+    },
+    {
+      "label": "d) Schulterflexion 90-180° (Neutral-Null-Stellung Arm, Daumen nach oben)",
+      "id": [4],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "questions": [
+          {
+            "label": "Schulterabduktion oder Ellbogenflexion?",
+            "tag": "flexion_shoulder",
+            "id": 4
+          }
+        ],
+        "answers": [
+          { "label": "Zu Beginn der Bewegung", "value": 0 },
+          { "label": "Während der Bewegung", "value": 1 },
+          { "label": "Fehlerfreie Bewegung (keine Abd./Flex.)", "value": 2 }
+        ]
+      }
+    },
+    {
+      "label": "e) Handgelenksstabilität bei angewinkeltem Ellenbogen (90°); Hilfestellung bei Ausgangsposition oder Stabilisierung im Ellbogen möglich, jedoch nicht am Handgelenk",
+      "id": [5],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "answers": [
+          { "label": "Nicht ausführbar", "value": 0 },
+          { "label": "Ausführbar, eingeschr. Bewegungsausmaß", "value": 1 },
+          { "label": "Fehlerfrei ausführbar", "value": 2 }
+        ],
+        "questions": [
+          {
+            "label": "Wiederholte Handgelenksflexion und -extension",
+            "tag": "stability_wrist",
+            "id": 5
+          }
+        ]
+      }
+    },
+    {
+      "label": "f) Daumenadduktion",
+      "id": [6],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "questions": [
+          {
+            "label": "Papier zwischen Daumen und Zeigefinger halten, auch gegen Zug",
+            "tag": "paper_hold_thumb",
+            "id": 6
+          }
+        ],
+        "answers": [
+          { "label": "Position nicht erreichbar", "value": 0 },
+          {
+            "label": "Papier wird gehalten aber nicht gegen Zug",
+            "value": 1
+          },
+          { "label": "Papier wird gegen Zug gehalten", "value": 2 }
+        ]
+      }
+    }
+  ],
+  "results": { "method": "sum" }
+}

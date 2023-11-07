@@ -33,6 +33,7 @@ const quest = [
   "fim",
   "fes",
   "flei",
+  "fugl_mayr",
   "gas",
   "gds",
   "gdsrs",
