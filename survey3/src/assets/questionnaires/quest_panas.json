@@ -42,75 +42,75 @@
       }],
       "questions": [{
         "label": "aktiv",
-        "tag": "a1",
+        "tag": "active",
         "id": 1
       }, {
         "label": "bekümmert",
-        "tag": "a2",
+        "tag": "worried",
         "id": 2
       }, {
         "label": "interessiert",
-        "tag": "a3",
+        "tag": "interested",
         "id": 3
       }, {
         "label": "freudig erregt",
-        "tag": "a4",
+        "tag": "excited",
         "id": 4
       }, {
         "label": "verärgert",
-        "tag": "a5",
+        "tag": "angry",
         "id": 5
       }, {
         "label": "stark",
-        "tag": "a6",
+        "tag": "strong",
         "id": 6
       }, {
         "label": "schuldig",
-        "tag": "a7",
+        "tag": "guilty",
         "id": 7
       }, {
         "label": "erschrocken",
-        "tag": "a8",
+        "tag": "scared",
         "id": 8
       }, {
         "label": "feindselig",
-        "tag": "a9",
+        "tag": "hostile",
         "id": 9
       }, {
         "label": "angeregt",
-        "tag": "a10",
+        "tag": "excited2",
         "id": 10
       }, {
         "label": "stolz",
-        "tag": "a11",
+        "tag": "proud",
         "id": 11
       }, {
         "label": "gereizt",
-        "tag": "a12",
+        "tag": "irritable",
         "id": 12
       }, {
         "label": "begeistert",
-        "tag": "a13",
+        "tag": "enthusiastic",
         "id": 13
       }, {
         "label": "beschämt",
-        "tag": "a14",
+        "tag": "ashamed",
         "id": 14
       }, {
         "label": "wach",
-        "tag": "a15",
+        "tag": "awake",
         "id": 15
       }, {
         "label": "nervös",
-        "tag": "a16",
+        "tag": "nervous",
         "id": 16
       }, {
         "label": "entschlossen",
-        "tag": "a17",
+        "tag": "determined",
         "id": 17
       }, {
         "label": "aufmerksam",
-        "tag": "a18",
+        "tag": "attentive",
         "id": 18
       }, {
         "label": "durcheinander",
@@ -118,7 +118,7 @@
         "id": 19
       }, {
         "label": "ängstlich",
-        "tag": "a20",
+        "tag": "afraid",
         "id": 20
       }]
     }
@@ -132,11 +132,11 @@
     }],
     "domaine": [{
       "label": "positive",
-      "id": [1, 3, 5, 9, 10, 12, 14, 16, 17, 19],
+      "id": [1, 3, 4, 6, 10, 11, 13, 15, 17, 18],
       "method": "sum"
     }, {
       "label": "negative",
-      "id": [2, 4, 6, 7, 8, 11, 13, 15, 18, 20],
+      "id": [2, 5, 7, 8, 9, 12, 14, 16, 19, 20],
       "method": "sum"
     }],
     "evaluation": []
