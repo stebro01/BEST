@@ -1,81 +1,457 @@
 {
-    "title": "UPDRS I",
-    "short_title": "updrs_1",
-    "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "342061000000106",
-        "display" : "UPDRS I - Kognitive Funktionen, Verhalten und Stimmung",
-        "version": "20211028"
+  "title": "MDS-UPDRS IA/IB - nicht-motorische Aspekte",
+  "short_title": "updrs_1",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "445536008",
+    "display": "MDS-UPDRS IA/IB - nicht-motorische Aspekte",
+    "version": "202311"
+  },
+  "description": "UPDRS I - Erfahrungen des täglichen Lebens",
+  "manual": "Bitte beantworten Sie folgenden Fragen",
+  "keywords": "parkinson updrs",
+  "items": [
+    {
+      "label": "<b>Teil IA: Erfahrungen des täglichen Lebens - nicht-motorische Aspekte (nM-EDL)</b>"
     },
-    "description": "UPDRS I - Kognitive Funktionen, Verhalten und Stimmung",
-    "manual": "Bitte beantworten Sie folgenden Fragen",
-    "keywords": "parkinson updrs",
-    "items": [
-
+    {
+      "label": "1.1 Kognitive Beeinträchtigung",
+      "id": 1,
+      "coding": {
+        "display": "cognitive_impairment",
+        "code": "CUSTOM: SCORES_UPDRS_I_COGNITIVE_IMPAIRMENT",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
         {
-            "label": "1. Intellektuelle Einschränkung",
-            "id": 1,
-            "coding": { "display" : "Intellectual_limitation", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine", "value": 0},
-                {"label": "Leicht. Vergesslichkeit mit teilweiser Erinnerung an Ereignisse und keine anderweitigen Schwierigkeiten.", "value": 1},
-                {"label": "Mäßiger Gedächtnisverlust mit Desorientierung und mäßigen Schwierigkeiten beim Meistern komplexer Probleme. Leichte, aber definitive Einschränkung zu Hause mit der Notwendigkeit einer gelegentlichen Hilfe.", "value": 2},
-                {"label": "Schwerer Gedächtnisverlust mit zeitlicher und häufig örtlicher Desorientierung. Schwere Einschränkung bei der Bewältigung von Problemen.", "value": 3},
-                {"label": "Schwerer Gedächtnisverlust, Orientierung nur zur Person erhalten. Kann keine Urteile fällen und keine Probleme lösen. Benötigt bei der persönlichen Pflege viel Hilfe. Kann nicht mehr alleine gelassen werden.", "value": 4}
-            ]
+          "label": "Keine kognitive Beeinträchtigung.",
+          "value": 0
         },
         {
-            "label": "2. Denkstörungen (als Folge von Demenz oder Medikamenten-Intoxikationen)",
-            "id": 2,
-            "coding": { "display" : "Thinking_disorder", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine", "value": 0},
-                {"label": "Lebhafte Träume.", "value": 1},
-                {"label": "'Gutartige' Halluzinationen mit erhaltener Einsicht.", "value": 2},
-                {"label": "Gelegentliche bis häufige Halluzinationen und Wahnvorstellungen; keine Einsicht; könnte sich störend auf die täglichen Aktivitäten auswirken.", "value": 3},
-                {"label": "Persistierende Halluzinationen, Wahnvorstellungen oder floride Psychose. Kann sich nicht selbst versorgen.", "value": 4}
-            ]
+          "label": "Eine Beeinträchtigung der kognitiven Leistungsfähigkeit wird vom Patienten oder der Betreuungsperson wahrgenommen. Diese interferiert jedoch nicht mit der Fähigkeit des Patienten, normale Aktivitäten und soziale Interaktionen zu verrichten.",
+          "value": 1
         },
         {
-            "label": "3. Depression",
-            "id": 3,
-            "coding": { "display" : "Depression", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Nicht vorhanden.", "value": 0},
-                {"label": "Zeitweise Traurigkeit oder Schuldgefühl stärker als normal, niemals Tage oder Wochen anhaltend.", "value": 1},
-                {"label": "Anhaltende Depression (1 Woche oder länger).", "value": 2},
-                {"label": "Anhaltende Depression mit vegetativen Symptomen (Schlaflosigkeit, Appetitlosigkeit, Gewichtsabnahme, Verlust des Interesses).", "value": 3},
-                {"label": "Anhaltende Depression mit vegetativen Symptomen und Selbstmordgedanken oder -absichten.", "value": 4}
-            ]
+          "label": "Klinisch nachweisbare kognitive Dysfunktion. Diese interferiert jedoch nur gering mit der Fähigkeit des Patienten, normale Aktivitäten oder soziale Interaktionen zu verrichten.",
+          "value": 2
         },
         {
-            "label": "4. Motivation/Initiative",
-            "id": 4,
-            "coding": { "display" : "Motivation", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal.", "value": 0},
-                {"label": "Weniger energisch als sonst; stärker passiv.", "value": 1},
-                {"label": "Fehlende Initiative oder Desinteresse an nicht routinemäßigen Aktivitäten.", "value": 2},
-                {"label": "Fehlende Initiative oder Desinteresse an täglichen (routinemäßigen) Aktivitäten.", "value": 3},
-                {"label": "In sich gekehrt, völliges Fehlen von Motivation.", "value": 4}
-            ]
+          "label": "Kognitive Defizite interferieren mit der Fähigkeit des Patienten, normale Aktivitäten und soziale Interaktionen zu verrichten, ohne ihn vollständig daran zu hindern.",
+          "value": 3
+        },
+        {
+          "label": "Kognitive Dysfunktion verhindert normale Alltagsaktivitäten und soziale Interaktionen des Patienten zu verrichten.",
+          "value": 4
         }
-        
-    ],
-    "results": {
-        "method": "sum"
+      ]
+    },
+    {
+      "label": "1.2 Halluzinationen und Psychose",
+      "id": 2,
+      "coding": {
+        "display": "hallucinations_psychosis",
+        "code": "CUSTOM: SCORES_UPDRS_I_HALLUCINATIONS_PSYCHOSIS",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Halluzinationen oder psychotisches Verhalten.",
+          "value": 0
+        },
+        {
+          "label": "Illusionen oder ungeformte Halluzinationen. Der Patient erkennt dies jedoch ohne Verlust der Einsichtsfähigkeit.",
+          "value": 1
+        },
+        {
+          "label": "Geformte Halluzinationen unabhängig von Stimuli der Umgebung. Kein Verlust der Einsichtsfähigkeit.",
+          "value": 2
+        },
+        {
+          "label": "Geformte Halluzinationen einhergehend mit Verlust der Einsichtsfähigkeit.",
+          "value": 3
+        },
+        {
+          "label": "Patient hat Wahnvorstellungen oder paranoide Ideen.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.3 depressive Verstimmung",
+      "id": 3,
+      "coding": {
+        "display": "depressive_mood",
+        "code": "CUSTOM: SCORES_UPDRS_I_DEPRESSIVE_MOOD",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine depressive Stimmung.",
+          "value": 0
+        },
+        {
+          "label": "Episoden einer depressiven Stimmung, die jeweils nicht länger als einen Tag andauern. Keine Beeinträchtigung der Fähigkeiten des Patienten, normale Aktivitäten und soziale Interaktionen zu verrichten.",
+          "value": 1
+        },
+        {
+          "label": "Depressive Stimmung, über mehrere Tage andauernd, aber ohne Beeinträchtigung der normalen Aktivitäten oder sozialen Interaktionen.",
+          "value": 2
+        },
+        {
+          "label": "Depressive Stimmung interferiert mit der Fähigkeit des Patienten, normale Aktivitäten oder soziale Interaktionen zu verrichten, ohne ihn vollständig daran zu hindern.",
+          "value": 3
+        },
+        {
+          "label": "Depressive Stimmung verhindert normale Alltagsaktivitäten und soziale Interaktionen des Patienten zu verrichten.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.4 ängstliche Verstimmung",
+      "id": 4,
+      "coding": {
+        "display": "anxious_mood",
+        "code": "CUSTOM: SCORES_UPDRS_I_ANXIOUS_MOOD",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Angstgefühle.",
+          "value": 0
+        },
+        {
+          "label": "Angstgefühle vorhanden, die jeweils nicht länger als einen Tag andauern. Keine Beeinträchtigung der Fähigkeiten des Patienten, normale Aktivitäten und soziale Interaktionen zu verrichten.",
+          "value": 1
+        },
+        {
+          "label": "Angstgefühle jeweils über mehr als einen Tag andauernd, aber ohne Beeinträchtigung der normalen Aktivitäten oder sozialen Interaktionen.",
+          "value": 2
+        },
+        {
+          "label": "Angstgefühle interferieren mit der Fähigkeit des Patienten, normale Aktivitäten oder soziale Interaktionen zu verrichten, ohne ihn vollständig daran zu hindern.",
+          "value": 3
+        },
+        {
+          "label": "Angstgefühle verhindern normale Alltagsaktivitäten und soziale Interaktionen des Patienten zu verrichten.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.5 Apathie",
+      "id": 5,
+      "coding": {
+        "display": "apathy",
+        "code": "CUSTOM: SCORES_UPDRS_I_APATHY",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Apathie.",
+          "value": 0
+        },
+        {
+          "label": "Apathie wird vom Patienten oder der Betreuungsperson wahrgenommen. Keine Beeinträchtigung normaler Aktivitäten und sozialer Interaktionen zu verrichten.",
+          "value": 1
+        },
+        {
+          "label": "Apathie beeinträchtigt einzelne Aktivitäten und soziale Interaktionen.",
+          "value": 2
+        },
+        {
+          "label": "Apathie beeinträchtigt die meisten Aktivitäten und sozialen Interaktionen.",
+          "value": 3
+        },
+        {
+          "label": "Patient ist passiv und zurückgezogen, vollständiger Verlust der Eigeninitiative.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.6 Merkmale eines Dopamin-Dysregulationssyndroms",
+      "id": 6,
+      "coding": {
+        "display": "dopamine_dysregulation_syndrome",
+        "code": "CUSTOM: SCORES_UPDRS_I_DOPAMINE_DYSREGULATION_SYNDROME",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Probleme vorhanden.",
+          "value": 0
+        },
+        {
+          "label": "Probleme sind vorhanden, erzeugen aber normalerweise keine Schwierigkeiten für den Patienten oder die Betreuungsperson.",
+          "value": 1
+        },
+        {
+          "label": "Probleme sind vorhanden und verursachen wenige Schwierigkeiten im persönlichen Leben des Patienten und in seinem familiären Leben.",
+          "value": 2
+        },
+        {
+          "label": "Probleme sind vorhanden und verursachen gewöhnlich viele Probleme im persönlichen Leben des Patienten und in seinem Familienleben.",
+          "value": 3
+        },
+        {
+          "label": "Probleme sind vorhanden und machen unmöglich, dass der Patient normale Alltagsaktivitäten oder soziale Interaktionen verrichtet oder die bisherigen Standards im persönlichen oder familiären Leben aufrecht erhält.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "<b>Teil IB: Erfahrungen des täglichen Lebens (nM-EDL) – nicht-motorische Aspekte</b>"
+    },
+    {
+      "label": "1.7 Schlafstörungen",
+      "caption": "Hatten Sie in der vergangenen Woche Probleme, nachts einzuschlafen oder durchzuschlafen? Überlegen Sie, wie erholt Sie sich morgens nach dem Aufwachen gefühlt haben.",
+      "id": 7,
+      "coding": {
+        "display": "sleep_disturbances",
+        "code": "CUSTOM: SCORES_UPDRS_I_SLEEP_DISTURBANCES",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Keine Probleme.", "value": 0 },
+        {
+          "label": "Schlafprobleme sind vorhanden, erzeugen aber in der Regel keine Probleme, die Nacht durchzuschlafen.",
+          "value": 1
+        },
+        {
+          "label": "Schlafprobleme führen meist zu gewissen Schwierigkeiten, die Nacht durchzuschlafen.",
+          "value": 2
+        },
+        {
+          "label": "Schlafprobleme führen zu erheblichen Schwierigkeiten, die Nacht durchzuschlafen. Ich kann aber dennoch in der Regel für mehr als die Hälfte der Nacht schlafen.",
+          "value": 3
+        },
+        { "label": "Den Großteil der Nacht schlafe ich nicht.", "value": 4 }
+      ]
+    },
+    {
+      "label": "1.8 Tagesschläfrigkeit",
+      "caption": "Hatten Sie in der vergangenen Woche Probleme damit, tagsüber wach zu bleiben?",
+      "id": 8,
+      "coding": {
+        "display": "daytime_sleepiness",
+        "code": "CUSTOM: SCORES_UPDRS_I_DAYTIME_SLEEPINESS",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Keine Tagesschläfrigkeit.", "value": 0 },
+        {
+          "label": "Tagesschläfrigkeit kommt vor, aber ich schaffe es, wach zu bleiben.",
+          "value": 1
+        },
+        {
+          "label": "Ich schlafe manchmal ein, wenn ich alleine bin und mich entspanne, zum Beispiel beim Lesen oder Fernsehen.",
+          "value": 2
+        },
+        {
+          "label": "Ich schlafe manchmal zu unpassenden Zeitpunkten ein, zum Beispiel bei Mahlzeiten oder im Gespräch mit anderen Personen.",
+          "value": 3
+        },
+        {
+          "label": "Ich schlafe oft zu unpassenden Zeitpunkten ein, zum Beispiel bei Mahlzeiten oder im Gespräch mit anderen Menschen.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.9 Schmerz und andere Empfindungen",
+      "caption": "Hatten Sie in der vergangenen Woche unangenehme Körperempfindungen, wie Schmerzen, dumpfes Ziehen, ein kribbelndes Gefühl oder Krämpfe?",
+      "id": 9,
+      "coding": {
+        "display": "pain_and_other_sensations",
+        "code": "CUSTOM: SCORES_UPDRS_I_PAIN_AND_OTHER_SENSATIONS",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Keine unangenehmen Empfindungen.", "value": 0 },
+        {
+          "label": "Ich habe diese Empfindungen, aber ich kann ohne Schwierigkeiten meine Tätigkeiten erledigen und mit anderen Personen zusammen sein.",
+          "value": 1
+        },
+        {
+          "label": "Diese Empfindungen bereiten mir gewisse Probleme, wenn ich meine Tätigkeiten erledige oder mit anderen Menschen zusammen bin.",
+          "value": 2
+        },
+        {
+          "label": "Diese Empfindungen verursachen erhebliche Probleme, halten mich aber nicht davon ab, meine Tätigkeiten zu erledigen oder mit anderen Menschen zusammen zu sein.",
+          "value": 3
+        },
+        {
+          "label": "Diese Empfindungen halten mich davon ab, meine Tätigkeiten zu erledigen oder mit anderen Menschen zusammen zu sein.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.10 Blasenstörungen",
+      "caption": "Hatten Sie in den vergangenen Wochen Probleme mit der Harnkontrolle (z.B. starken Harndrang, zu häufigen Harndrang oder unwillkürlichen Harnverlust).",
+      "id": 10,
+      "coding": {
+        "display": "bladder_disorders",
+        "code": "CUSTOM: SCORES_UPDRS_I_BLADDER_DISORDERS",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Probleme bei der Kontrolle des Wasserlassens.",
+          "value": 0
+        },
+        {
+          "label": "Ich muss oft oder dringend Wasser lassen. Diese Probleme erzeugen aber keine Schwierigkeiten bei meinen täglichen Aktivitäten.",
+          "value": 1
+        },
+        {
+          "label": "Die Blasenstörungen erzeugen gewisse Schwierigkeiten in meinen täglichen Aktivitäten. Ich habe aber keinen unwillkürlichen Harnverlust.",
+          "value": 2
+        },
+        {
+          "label": "Die Blasenstörungen verursachen erhebliche Schwierigkeiten in meinen täglichen Aktivitäten, es kommt auch zum unwillkürlichen Harnverlust.",
+          "value": 3
+        },
+        {
+          "label": "Ich habe keine Kontrolle über meine Blase und benötige Einlagen oder trage einen Blasenkatheter.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.11 Verstopfungsprobleme",
+      "caption": "Litten Sie in der vergangenen Woche unter Verstopfung und hatten daher Schwierigkeiten mit dem Stuhlgang?",
+      "id": 11,
+      "coding": {
+        "display": "constipation_problems",
+        "code": "CUSTOM: SCORES_UPDRS_I_CONSTIPATION_PROBLEMS",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Keine Verstopfung.", "value": 0 },
+        {
+          "label": "Ich leide unter Verstopfung, der Stuhlgang erfordert besondere Anstrengungen. Dieses Problem beeinträchtigt mich aber nicht bei meinen Aktivitäten oder mein Wohlbefinden.",
+          "value": 1
+        },
+        {
+          "label": "Die Verstopfung erzeugt gewisse Beschwerden, meine Tätigkeiten zu erledigen oder bezüglich meines Wohlbefindens.",
+          "value": 2
+        },
+        {
+          "label": "Die Verstopfung erzeugt erhebliche Beschwerden, meine Tätigkeiten zu erledigen oder bezüglich meines Wohlbefindens. Insgesamt verhindert sie jedoch nicht, meine Tätigkeiten erledigen.",
+          "value": 3
+        },
+        {
+          "label": "Ich benötige meist fremde physische Hilfe bei meinem Stuhlgang.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.12. Schwindelgefühl im Stehen",
+      "caption": "Haben Sie sich in der vergangenen Woche kraftlos, benommen oder schwindelig gefühlt, nachdem Sie aus einer liegenden oder sitzenden Position aufgestanden sind?",
+      "id": 12,
+      "coding": {
+        "display": "dizziness_when_standing",
+        "code": "CUSTOM: SCORES_UPDRS_I_DIZZINESS_WHEN_STANDING",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Keine Benommenheit oder Schwindelgefühle.", "value": 0 },
+        {
+          "label": "Benommenheit oder Schwindelgefühle treten auf, sie beeinträchtigen mich aber nicht bei meinen Tätigkeiten.",
+          "value": 1
+        },
+        {
+          "label": "Bei Benommenheit oder Schwindelgefühlen muss ich mich manchmal abstützen, ich muss mich aber nicht setzen oder hinlegen.",
+          "value": 2
+        },
+        {
+          "label": "Bei Benommenheit oder Schwindelgefühlen muss ich mich setzen oder hinlegen, um einer Ohnmacht oder Stürzen vorzubeugen.",
+          "value": 3
+        },
+        {
+          "label": "Benommenheit oder Schwindelgefühle führen zu Ohnmacht oder Stürzen.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "1.13 Mattigkeit",
+      "caption": "Haben Sie sich in der vergangenen Woche meist matt gefühlt? Bitte beziehen Sie sich hier nur auf dieMattigkeit, nicht aber wenn dies im Rahmen von Schläfrigkeit oder Traurigkeit auftritt.",
+      "id": 13,
+      "coding": {
+        "display": "fatigue",
+        "code": "CUSTOM: SCORES_UPDRS_I_FATIGUE",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Keine Mattigkeit empfunden.", "value": 0 },
+        {
+          "label": "Die Mattigkeit besteht, diese verursacht aber keine Beschwerden, meine Tätigkeiten zu erledigen oder mit anderen Menschen zusammen sein.",
+          "value": 1
+        },
+        {
+          "label": "Die Mattigkeit verursacht gewisse Beschwerden, meine Tätigkeiten zu erledigen oder mit anderen Menschen zusammen sein.",
+          "value": 2
+        },
+        {
+          "label": "Die Mattigkeit verursacht erhebliche Beschwerden, meine Tätigkeiten zu erledigen oder mit anderen Menschen zusammen zu sein. Insgesamt verhindert sie jedoch nicht, meine Tätigkeiten erledigen.",
+          "value": 3
+        },
+        {
+          "label": "Die Mattigkeit verhindert es, meine Tätigkeiten zu erledigen oder mit anderen Menschen zusammen zu sein.",
+          "value": 4
+        }
+      ]
     }
-
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "display": "MDS-UPDRS IA/IB - nM-EDL",
+      "code": "LID: 77718-5",
+      "system": "LOINC"
+    }
+  }
 }

@@ -1,353 +1,589 @@
 {
-    "title": "UPDRS III",
-    "short_title": "updrs_3",
-    "coding" : {
-        "system" : "LOINC",
-        "code" : "LID: 77720-1",
-        "display" : "UPDRS III - Motorische Untersuchung",
-        "version": "20230126"
+  "title": "MDS-UPDRS III - Motorik",
+  "short_title": "updrs_3",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "445536008",
+    "display": "MDS-UPDRS III - Motorik",
+    "version": "202311"
+  },
+  "description": "UPDRS III - Motorik",
+  "manual": "Bitte beantworten Sie folgenden Fragen",
+  "keywords": "parkinson updrs",
+  "items": [
+    {
+      "label": "<b>Motorische Untersuchung</b>"
     },
-    "description": "UPDRS III - Motorische Untersuchung",
-    "manual": "Bitte beantworten Sie folgenden Fragen",
-    "keywords": "parkinson updrs",
-    "items": [
+    {
+      "label": "Klinischer Status",
+      "coding": {
+        "display": "clincial_status",
+        "code": "CUSTOM: SCORES_UPDRS_III_STATUS",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "ignore_for_result": true,
+      "options": [
+        { "label": "On", "value": "On" },
+        { "label": "Off", "value": "Off" },
+        { "label": "k.A.", "value": "k.A." }
+      ]
+    },
+    {
+      "label": "3.1 Sprache",
+      "id": 31,
+      "coding": {
+        "display": "speech",
+        "code": "CUSTOM: SCORES_UPDRS_III_SPEECH",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Keine Sprachprobleme.", "value": 0 },
+        {
+          "label": "Verlust von Modulation, Diktion oder Lautstärke, alle Wörter sind aber noch leicht zu verstehen.",
+          "value": 1
+        },
+        {
+          "label": "Verlust von Modulation, Diktion oder Lautstärke mit einigen unklaren Wörtern, aber insgesamt leicht verständlichen Sätzen.",
+          "value": 2
+        },
+        {
+          "label": "Sprache ist schwer zu verstehen, da einige, jedoch nicht die meisten Sätze schlecht zu verstehen sind.",
+          "value": 3
+        },
+        {
+          "label": "Der Großteil des Gesprochenen ist schwer zu verstehen oder unverständlich.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "3.2 Gesichtsausdruck",
+      "id": 32,
+      "coding": {
+        "display": "facial_expression",
+        "code": "CUSTOM: SCORES_UPDRS_III_FACIAL_EXPRESSION",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Normal: Normaler Gesichtsausdruck.", "value": 0 },
+        {
+          "label": "Minimaler maskenhafter Gesichtsausdruck, der sich nur durch die reduzierte Frequenz des Augenblinzeln manifestiert.",
+          "value": 1
+        },
+        {
+          "label": "Zusätzlich zu der reduzierten Frequenz des Augenblinzelns zeigt sich ein maskenhafter Gesichtsausdruck auch im unteren Teil des Gesichts mit spärlichen Bewegungen im Mundbereich, wie etwa weniger spontanes Lächeln. Der Mund steht jedoch nicht offen.",
+          "value": 2
+        },
+        {
+          "label": "Maskenhafter Gesichtsausdruck mit zeitweise geöffnetem Mund, wenn nicht gesprochen wird.",
+          "value": 3
+        },
+        {
+          "label": "Maskenhafter Gesichtsausdruck mit überwiegend geöffnetem Mund, wenn nicht gesprochen wird.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "3.3 Rigor",
+      "id": [331, 332, 333, 334, 335],
+      "caption": "0 - kein Rigor<br>1 - Rigor lässt sich nur durch ein Bahnungsmanöver feststellen<br>2 - Rigor ist ohne Bahnungsmanöver feststellbar, der volle Bewegungsumfang ist jedoch erhalten<br>3 - Rigor ist ohne Bahnungsmanöver feststellbar, voller Bewegungsumfang wird nur durch Anstrengung erreicht<br>4 - Rigor ist ohne Bahnungsmanöver feststellbar und ein voller Bewegungsumfang wird nicht erreicht",
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "options": {
+        "answers": [
+          { "label": "0", "value": 0 },
+          {
+            "label": "1",
+            "value": 1
+          },
+          {
+            "label": "2",
+            "value": 2
+          },
+          {
+            "label": "3",
+            "value": 3
+          },
+          {
+            "label": "4",
+            "value": 4
+          }
+        ],
+        "questions": [
+          { "id": 3171, "label": "Nacken", "tag": "rigor_neck" },
+          { "id": 3172, "label": "rechter Arm", "tag": "rigor_right_arm" },
+          { "id": 3173, "label": "left Arm", "tag": "rigor_left_arm" },
+          { "id": 3174, "label": "rechtes Bein", "tag": "rigor_right_leg" },
+          { "id": 3175, "label": "linkes Bein", "tag": "rigor_left_leg" }
+        ]
+      }
+    },
+    {
+      "label": "3.4 Fingertippen: rechts - links",
+      "caption": "Normal: Keine Probleme<br>angedeutet: Mindestens eine der folgenden Schwierigkeiten: a) Regulärer Rhythmus ist gestört durch eine oder zwei Unterbrechungen oder Verzögerungen während des Fingertippens; b) angedeutete Verlangsamung; c) Amplitudendekrement kurz vor dem 10ten Tippen.<br>leicht: Mindestens eine der folgenden Schwierigkeiten: a) 3 bis 5 Unterbrechungen beim Fingertippen; b) leichte Verlangsamung; c) Amplitudendekrement mitten in der 10er Tippsequenz.<br>mäßig: Mindestens eine der folgenden Schwierigkeiten: a) mehr als 5 Unterbrechungen beim Fingertippen oder mindestens eine längere Pause („Einfrieren“) in der Ausführung; b) mäßige Verlangsamung; c) Amplitudendekrement bereits nach dem ersten Tippen<br>schwer: Patient kann die Aufgabe nicht oder nur schwerlich durchführen aufgrund von Verlangsamung, Unterbrechungen oder Dekrement.",
+      "id": [341, 342],
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "normal", "value": 0 },
+          { "label": "angedeutet", "value": 1 },
+          { "label": "leicht", "value": 2 },
+          { "label": "mäßig", "value": 3 },
+          { "label": "schwer", "value": 4 }
+        ],
+        "questions": [
+          { "id": 341, "label": "rechts", "tag": "right_finger_tapping" },
+          { "id": 342, "label": "links", "tag": "left_finger_tapping" }
+        ]
+      }
+    },
+    {
+      "label": "3.5 Handbewegungen",
+      "caption": "Normal: Keine Probleme<br>angedeutet: Mindestens eine der folgenden Schwierigkeiten: a) Regulärer Rhythmus ist gestört durch eine oder zwei Unterbrechungen oder Bewegungsverzögerungen; b) angedeutete Verlangsamung; c) Amplitudendekrement zum Ende der Aufgabe.<br>leicht: Mindestens eine der folgenden Schwierigkeiten: a) 3 bis 5 Bewegungsunterbrechungen; b) leichte Verlangsamung; c) Amplitudendekrement mitten in der Durchführung.<br>mäßig: Mindestens eine der folgenden Schwierigkeiten: a) mehr als 5 Bewegungsunterbrechungen oder mindestens eine längere Pause („Einfrieren“) in der fortlaufenden Bewegung; b) mäßige Verlangsamung; c) Amplitudendekrement nach erster „Öffnen und Schließen“ - Sequenz.<br>schwer: ausgeprägt: Patient kann die Aufgabe nicht oder nur schwerlich durchführen aufgrund von Verlangsamung, Unterbrechungen oder Dekrement.",
+      "id": [341, 342],
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "normal", "value": 0 },
+          { "label": "angedeutet", "value": 1 },
+          { "label": "leicht", "value": 2 },
+          { "label": "mäßig", "value": 3 },
+          { "label": "schwer", "value": 4 }
+        ],
+        "questions": [
+          { "id": 341, "label": "rechts", "tag": "hand_movement_right" },
+          { "id": 342, "label": "links", "tag": "hand_movement_left" }
+        ]
+      }
+    },
+    {
+      "label": "3.6 Pronations-, Supinationsbewegungen der Hände",
+      "caption": "Normal: Keine Probleme<br>angedeutet: Mindestens eine der folgenden Schwierigkeiten: a) Regulärer Rhythmus ist gestört durch eine oder zwei Unterbrechungen oder Bewegungsverzögerungen; b) angedeutete Verlangsamung; c) Amplitudendekrement zum Ende der Aufgabe.<br>leicht: Mindestens eine der folgenden Schwierigkeiten: a) 3 bis 5 Bewegungsunterbrechungen; b) leichte Verlangsamung; c) Amplitudendekrement mitten in der Übung.<br>mäßig: Mindestens eine der folgenden Schwierigkeiten: a) mehr als 5 Bewegungsunterbrechungen oder mindestens eine längere Pause („Einfrieren“) in der fortlaufenden Bewegung; b) mäßige Verlangsamung; c) Amplitudendekrement nach erster „Supination-Pronation“ Sequenz<br>schwer: Patient kann die Aufgabe nicht oder nur schwerlich durchführen aufgrund von Verlangsamung, Unterbrechungen oder Dekrement.",
+      "id": [341, 342],
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "normal", "value": 0 },
+          { "label": "angedeutet", "value": 1 },
+          { "label": "leicht", "value": 2 },
+          { "label": "mäßig", "value": 3 },
+          { "label": "schwer", "value": 4 }
+        ],
+        "questions": [
+          { "id": 341, "label": "rechts", "tag": "hand_pronation_right" },
+          { "id": 342, "label": "links", "tag": "hand_pronation_left" }
+        ]
+      }
+    },
+    {
+      "label": "3.7 Vorfuß-Tippen",
+      "caption": "Normal: Keine Probleme<br>angedeutet: Mindestens eine der folgenden Schwierigkeiten: a) Regulärer Rhythmus ist gestört durch eine oder zwei Unterbrechungen oder Verzögerungen der Tippbewegungen; b) angedeutete Verlangsamung; c) Amplitudendekrement kurz vor dem 10ten Tippen.<br>leicht: Mindestens eine der folgenden Schwierigkeiten: a) 3 bis 5 Bewegungsunterbrechungen; b) leichte Verlangsamung; c) Amplitudendekrement mitten in der Übung.<br>mäßig: Mindestens eine der folgenden Schwierigkeiten: a) mehr als 5 Bewegungsunterbrechungen oder mindestens eine längere Pause („Einfrieren“) in der fortlaufenden Bewegung; b) mäßige Verlangsamung; c) Amplitudendekrement nach dem erstem Tippen.<br>schwer: Patient kann die Aufgabe nicht oder nur schwerlich durchführen aufgrund von Verlangsamung, Unterbrechungen oder Dekrement",
+      "id": [341, 342],
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "normal", "value": 0 },
+          { "label": "angedeutet", "value": 1 },
+          { "label": "leicht", "value": 2 },
+          { "label": "mäßig", "value": 3 },
+          { "label": "schwer", "value": 4 }
+        ],
+        "questions": [
+          { "id": 341, "label": "rechts", "tag": "foot_tapping_right" },
+          { "id": 342, "label": "links", "tag": "foot_tapping_left" }
+        ]
+      }
+    },
+    {
+      "label": "3.8 Beweglichkeit der Beine",
+      "caption": "Normal: Keine Probleme<br>angedeutet: Mindestens eine der folgenden Schwierigkeiten: a) Regulärer Rhythmus ist gestört durch eine oder zwei Unterbrechungen oder Bewegungsverzögerungen; b) angedeutete Verlangsamung; c) Amplitudendekrement zum Ende der Aufgabe.<br>leicht: Mindestens eine der folgenden Schwierigkeiten: a) 3 bis 5 Bewegungsunterbrechungen; b) leichte Verlangsamung; c) Amplitudendekrement mitten in der Übung.<br>mäßig: Mindestens eine der folgenden Schwierigkeiten: a) mehr als 5 Bewegungsunterbrechungen oder mindestens eine längere Pause („Einfrieren“) in der fortlaufenden Bewegung; b) mäßige Verlangsamung; c) Amplitudendekrement nach dem erstem Aufstampfen.<br>schwer: Patient kann die Aufgabe nicht oder nur schwerlich durchführen aufgrund von Verlangsamung, Unterbrechungen oder Dekrement",
+      "id": [341, 342],
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "normal", "value": 0 },
+          { "label": "angedeutet", "value": 1 },
+          { "label": "leicht", "value": 2 },
+          { "label": "mäßig", "value": 3 },
+          { "label": "schwer", "value": 4 }
+        ],
+        "questions": [
+          { "id": 341, "label": "rechts", "tag": "leg_movement_right" },
+          { "id": 342, "label": "links", "tag": "leg_movement_left" }
+        ]
+      }
+    },
+    {
+      "label": "3.9 Aufstehen vom Stuhl",
+      "id": 39,
+      "coding": {
+        "display": "rising_from_chair",
+        "code": "CUSTOM: SCORES_UPDRS_III_RISING_FROM_CHAIR",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Normal: Keine Schwierigkeiten. Patient kann schnell und ohne Verzögerung aufstehen.",
+          "value": 0
+        },
+        {
+          "label": "Das Aufstehen erfolgt langsamer als normal oder es wird mehr als ein Versuch dazu benötigt; oder eine Bewegung zum Stuhlrand ist erforderlich, um aufstehen zu können. Benutzung der Armlehnen ist jedoch nicht nötig.",
+          "value": 1
+        },
+        {
+          "label": "Patient drückt sich mit Hilfe der Armlehnen ohne Schwierigkeiten hoch.",
+          "value": 2
+        },
+        {
+          "label": "Patient drückt sich hoch, aber neigt zum Zurückfallen; oder er muss es mehrmals unter Benutzung der Armlehnen versuchen; Aufstehen ist jedoch ohne fremde Hilfe möglich.",
+          "value": 3
+        },
+        { "label": "Kann nicht ohne Hilfe aufstehen.", "value": 4 }
+      ]
+    },
+    {
+      "label": "3.10 Gehen/Gangbild",
+      "id": 310,
+      "coding": {
+        "display": "walking_gait",
+        "code": "CUSTOM: SCORES_UPDRS_III_WALKING_GAIT",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Normal: Keine Probleme.", "value": 0 },
+        {
+          "label": "Patient geht ohne Hilfe mit leichter Gangstörung.",
+          "value": 1
+        },
+        {
+          "label": "Patient geht ohne Hilfe, jedoch mit erheblicher Gangstörung.",
+          "value": 2
+        },
+        {
+          "label": "Patient benötigt eine Gehhilfe für sicheres Gehen (Gehstock, Gehwagen). Ist aber in der Lage, ohne fremde Hilfe zu gehen.",
+          "value": 3
+        },
+        {
+          "label": "Patient kann gar nicht gehen oder nur mit fremder Hilfe.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "3.11 Freezing",
+      "id": 311,
+      "coding": {
+        "display": "freezing",
+        "code": "CUSTOM: SCORES_UPDRS_III_FREEZING",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Normal: Keine Blockade beim Gehen.", "value": 0 },
+        {
+          "label": "Eine Blockade beim Gehen tritt entweder beim Starten, Umdrehen oder Gehen durch den Türeingang auf und zeigt sich als nur eine Bewegungsunterbrechung bei einer dieser Bewegungsabläufe; danach werden fortlaufende fließende Bewegungen ohne Blockade beim Geradeausgehen ausgeführt.",
+          "value": 1
+        },
+        {
+          "label": "Eine Blockade beim Gehen tritt beim Starten, Umdrehen oder Gehen durch den Türeingang auf, hierbei kommt es zu mehr als einer Bewegungsunterbrechung bei diesen Bewegungsabläufen, danach werden fortlaufende fließende Bewegungen ohne Blockaden beim Geradeausgehen ausgeführt.",
+          "value": 2
+        },
+        {
+          "label": "Eine Blockade tritt einmal beim Geradeausgehen auf.",
+          "value": 3
+        },
+        {
+          "label": "Eine Blockade tritt mehrfach beim Geradeausgehen auf.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "3.12 Posturale Stabilität",
+      "id": 312,
+      "coding": {
+        "display": "postural_stability",
+        "code": "CUSTOM: SCORES_UPDRS_III_POSTURAL_STABILITY",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Normal: Keine Probleme: Patient fängt sich nach einem oder zwei Schritten auf.",
+          "value": 0
+        },
+        {
+          "label": "3-5 Schritte, Patient fängt sich jedoch ohne Hilfe auf.",
+          "value": 1
+        },
+        {
+          "label": "Mehr als 5 Schritte, Patient fängt sich jedoch ohne Hilfe auf.",
+          "value": 2
+        },
+        {
+          "label": "Sicherer Stand, posturale Antwort ist jedoch nicht vorhanden; fällt, wenn er nicht vom Untersucher aufgefangen wird.",
+          "value": 3
+        },
+        {
+          "label": "Sehr instabil; neigt dazu, das Gleichgewicht spontan bzw. auf ein leichtes Ziehen an den Schultern hin zu verlieren.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "3.13 Körperhaltung",
+      "id": 313,
+      "coding": {
+        "display": "posture",
+        "code": "CUSTOM: SCORES_UPDRS_III_POSTURE",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Normal: Keine Probleme.", "value": 0 },
+        {
+          "label": "Nicht ganz aufrechte Haltung; die Körperhaltung könnte jedoch für eine ältere Person normal sein.",
+          "value": 1
+        },
+        {
+          "label": "Eindeutige Flexion, Skoliose oder Seitenneigung, aber der Patient kann die Haltung nach Aufforderung korrigieren.",
+          "value": 2
+        },
+        {
+          "label": "Gebückte Haltung, Skoliose oder Seitenneigung, die vom Patienten willentlich zu einer aufrechten Haltung nicht korrigiert werden kann.",
+          "value": 3
+        },
+        {
+          "label": "Flexion, Skoliose oder Seitenneigung mit ausgeprägter Haltungsstörung.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "3.14 Globale Spontanität der Bewegung (Bradykinese des Körpers)",
+      "id": 314,
+      "coding": {
+        "display": "global_spontaneity_of_movement",
+        "code": "CUSTOM: SCORES_UPDRS_III_GLOBAL_SPONTANEITY_OF_MOVEMENT",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Normal: Keine Probleme.", "value": 0 },
+        {
+          "label": "Angedeutete globale Verlangsamung und Verarmung der Spontanbewegungen.",
+          "value": 1
+        },
+        {
+          "label": "Leichte globale Verlangsamung und Verarmung der Spontanbewegungen.",
+          "value": 2
+        },
+        {
+          "label": "Mäßige globale Verlangsamung und Verarmung der Spontanbewegungen.",
+          "value": 3
+        },
+        {
+          "label": "Schwere globale Verlangsamung und Verarmung der Spontanbewegungen.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "3.15 Haltetremor der Hände",
+      "caption": "Normal: Kein Tremor.<br>Angedeutet: Tremor ist vorhanden, die Amplitude ist jedoch geringer als 1 cm<br>Leicht: Tremor mit einer Amplitude von mehr als 1 cm, aber geringer als 3 cm<br>Mäßig: Tremor mit einer Amplitude von mindestens 3 cm, jedoch geringer als 10 cm.<br>Schwer: Tremor mit einer Amplitude von mindestens 10 cm.",
+      "id": [341, 342],
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "normal", "value": 0 },
+          { "label": "angedeutet", "value": 1 },
+          { "label": "leicht", "value": 2 },
+          { "label": "mäßig", "value": 3 },
+          { "label": "schwer", "value": 4 }
+        ],
+        "questions": [
+          { "id": 341, "label": "rechts", "tag": "tremor_hand_right" },
+          { "id": 342, "label": "links", "tag": "tremor_hand_left" }
+        ]
+      }
+    },
+    {
+      "label": "3.16 Bewegungstremor der Hände",
+      "caption": "Normal: Kein Tremor.<br>Angedeutet: Tremor ist vorhanden, die Amplitude ist jedoch geringer als 1 cm<br>Leicht: Tremor mit einer Amplitude von mehr als 1 cm, aber geringer als 3 cm<br>Mäßig: Tremor mit einer Amplitude von mindestens 3 cm, jedoch geringer als 10 cm.<br>Schwer: Tremor mit einer Amplitude von mindestens 10 cm.",
+      "id": [341, 342],
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "normal", "value": 0 },
+          { "label": "angedeutet", "value": 1 },
+          { "label": "leicht", "value": 2 },
+          { "label": "mäßig", "value": 3 },
+          { "label": "schwer", "value": 4 }
+        ],
+        "questions": [
+          { "id": 341, "label": "rechts", "tag": "int_tremor_hand_right" },
+          { "id": 342, "label": "links", "tag": "int_tremor_hand_left" }
+        ]
+      }
+    },
+    {
+      "label": "3.17a Amplitude des Ruhetremors - Bewertung der Extremitäten",
+      "id": [3171, 3172, 3173, 3174, 3175],
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "Kein Tremor", "value": 0 },
+          { "label": "<1cm maximale Amplitude", "value": 1 },
+          { "label": ">1cm, aber <3cm maximale Amplitude", "value": 2 },
+          { "label": "3-10cm maximale Amplitude", "value": 3 },
+          { "label": ">10cm maximale Amplitude", "value": 4 }
+        ],
+        "questions": [
+          {
+            "id": 3171,
+            "label": "Gesicht",
+            "tag": "rest_tremor_amplitude_face"
+          },
+          {
+            "id": 3172,
+            "label": "rechter Arm",
+            "tag": "rest_tremor_amplitude_right_arm"
+          },
+          {
+            "id": 3173,
+            "label": "left Arm",
+            "tag": "rest_tremor_amplitude_left_arm"
+          },
+          {
+            "id": 3174,
+            "label": "rechtes Bein",
+            "tag": "rest_tremor_amplitude_right_leg"
+          },
+          {
+            "id": 3175,
+            "label": "linkes Bein",
+            "tag": "rest_tremor_amplitude_left_leg"
+          }
+        ]
+      }
+    },
+    {
+      "label": "3.17b Amplitude des Ruhetremors - Bewertung der Lippen/des Kiefers",
+      "id": 3176,
+      "coding": {
+        "display": "rest_tremor_amplitude_mouth",
+        "code": "CUSTOM: SCORES_UPDRS_III_REST_TREMOR_AMPLITUDE",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Normal: Kein Tremor.",
+          "value": 0
+        },
+        {
+          "label": "< 1 cm maximale Amplitude.",
+          "value": 1
+        },
+        {
+          "label": "> 1 cm, aber < 2 cm maximale Amplitude.",
+          "value": 2
+        },
+        {
+          "label": "> 2 cm, aber < 3 cm maximale Amplitude.",
+          "value": 3
+        },
+        {
+          "label": "> 3 cm maximale Amplitude.",
+          "value": 4
+        }
+      ]
+    },
 
+    {
+      "label": "3.18 Konstanz des Ruhetremors",
+      "id": 318,
+      "coding": {
+        "display": "rest_tremor_constancy",
+        "code": "CUSTOM: SCORES_UPDRS_III_REST_TREMOR_CONSTANCY",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
         {
-            "label": "18. Sprache",
-            "id": 18,
-            "coding": { "display" : "language", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine Sprachprobleme.", "value": 0},
-                {"label": "Verlust von Modulation, Diktion oder Lautstärke, alle Wörter sind aber noch leicht zu verstehen", "value": 1},
-                {"label": "Verlust von Modulation, Diktion oder Lautstärke mit einigen unklaren Wörtern, aber insgesamt leicht verständlichen Sätzen.", "value": 2},
-                {"label": "Sprache ist schwer zu verstehen, da einige, jedoch nicht die meisten Sätze schlecht zu verstehen sind.", "value": 3},
-                {"label": "Der Grossteil des Gesprochenen ist schwer zu verstehen oder unverständlich.", "value": 4}
-            ]
+          "label": "Normal: Kein Tremor.",
+          "value": 0
         },
         {
-            "label": "19. Gesichtsausdruck",
-            "id": 19,
-            "coding": { "display" : "facial_expression", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normaler Gesichtsausdruck.", "value": 0},
-                {"label": "Minimaler maskenhafter Gesichtsausdruck, das sich nur durch die reduzierte Frequenz des Augenblinzeln manifestiert.", "value": 1},
-                {"label": "Zusätzlich zu der reduzierten Frequenz des Augenblinzelns zeigt sich ein maskenhafter Gesichtsausdruck auch im unteren Teil des Gesichts mit spärlichen Bewegungen im Mundbereich, wie etwa weniger spontanes Lächeln. Der Mund steht jedoch nicht offen.", "value": 2},
-                {"label": "Maskenhalfter Gesichtsausdruck mit zeitweise geöffnetem Mund, wenn nicht gesprochen wird.", "value": 3},
-                {"label": "Maskenhafter Gesichtsausdruck mit überwiegend geöffnetem Mund, wenn nicht gesprochen wird.", "value": 4}
-            ]
+          "label": "Ruhetremor ist bei < 25% der gesamten Untersuchungszeit vorhanden.",
+          "value": 1
         },
         {
-            "label": "20. Haltung- und Bewegungstremor der Hände",
-            "id": [201, 202, 203, 204],
-            "coding": { "display" : "tremor_action_hand", "code" : "0", "system" : "http://snomed.info/sct"},
-            "tag": "tremor_action_hand",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": false,
-            "verylonganswers": true,
-            "rotate": false,
-            "options": {
-                "answers": [
-                    {"label": "Fehlt", "value": 0},
-                    {"label": "Leicht; bei Bewegung vorhanden.", "value": 1},
-                    {"label": "Mäßige Amplitude, bei Bewegung vorhanden.", "value": 2},
-                    {"label": "Mäßige Amplitude, bei Beibehalten der Haltung und bei Bewegung vorhanden.", "value": 3},
-                    {"label": "Ausgeprägte Amplitude; beim Essen störend.", "value": 4}
-                ],
-                "questions": [
-                    {"id": 201, "label": "Haltetremor rechts", "tag": "rechts1"},
-                    {"id": 202, "label": "Haltetremor links", "tag": "links1"},
-                    {"id": 203, "label": "Bewegungstremor rechts", "tag": "rechts2"},
-                    {"id": 204, "label": "Bewegungstremor links", "tag": "links2"}
-                ]
-            }
-        }
-        ,
-        {
-            "label": "21a. Amplitude des Ruhetremor",
-            "id": [211, 212, 213, 214, 215],
-            "coding": { "display" : "tremor_rest", "code" : "0", "system" : "http://snomed.info/sct"},
-            "tag": "tremor_rest",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": false,
-            "verylonganswers": true,
-            "rotate": false,
-            "options": {
-                "answers": [
-                    {"label": "Keine", "value": 0},
-                    {"label": "Leicht und selten vorhanden.", "value": 1},
-                    {"label": "Geringe Amplitude persistierend; oder mäßige Amplitude, aber nur intermittierend auftretend.", "value": 2},
-                    {"label": "Mäßige Amplitude, die meiste Zeit vorhanden.", "value": 3},
-                    {"label": "Ausgeprägte Amplitude, die meiste Zeit vorhanden.", "value": 4}
-                ],
-                "questions": [
-                    {"id": 211, "label": "Gesicht", "tag": "face"},
-                    {"id": 212, "label": "rechte Hand", "tag": "right_hand"},
-                    {"id": 213, "label": "linke Hand", "tag": "left_hand"},
-                    {"id": 214, "label": "rechter Fuß", "tag": "right_foot"},
-                    {"id": 215, "label": "linker Fuß", "tag": "left_foot"}
-                ]
-            }
+          "label": "Ruhetremor ist bei 26-50% der gesamten Untersuchungszeit vorhanden.",
+          "value": 2
         },
         {
-            "label": "21b. Konstanz des Ruhetremor",
-            "id": 216,
-            "coding": { "display" : "tremor_rest_b", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal. Kein Tremor", "value": 0},
-                {"label": "angedeutet: Ruhe Tremor ist bei < 25 % der gesamten Untersuchungszeit vorhanden.", "value": 1},
-                {"label": "leicht: Ruhe Tremor ist bei 26-50 % der gesamten Untersuchungszeit vorhanden.", "value": 2},
-                {"label": "mäßig: Ruhe Tremor ist bei 51-75 % der gesamten Untersuchungszeit vorhanden.", "value": 3},
-                {"label": "schwer: Ruhe Tremor ist bei > 75 % der gesamten Untersuchungszeit vorhanden.", "value": 4}
-            ]
+          "label": "Ruhetremor ist bei 51-75% der gesamten Untersuchungszeit vorhanden.",
+          "value": 3
         },
         {
-            "label": "22. Rigidität (Geprüft bei passiver Bewegung der großen Gelenke am sitzenden Patienten. Zahnradphänomen kann ignoriert werden).",
-            "id": [221, 222,223,224, 225],
-            "coding": { "display" : "rigitiy", "code" : "0", "system" : "http://snomed.info/sct"},
-            "tag": "rigitiy",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": false,
-            "verylonganswers": true,
-            "rotate": false,
-            "options": {
-                "answers": [
-                    {"label": "Fehlt.", "value": 0},
-                    {"label": "Leicht oder nur erkennbar bei Aktivierung durch spiegelbildliche oder andere Bewegungen.", "value": 1},
-                    {"label": "Leicht bis mäßig.", "value": 2},
-                    {"label": "Ausgeprägt, jedoch voller Bewegungsumfang bleibt erreicht.", "value": 3},
-                    {"label": "Stark; Schwierigkeit beim Ausführen aller Bewegungen.", "value": 4}
-                ],
-                "questions": [
-                    {"id": 221, "label": "Nacken", "tag": "neck"},
-                    {"id": 222, "label": "rechte obere Extremität", "tag": "right_upper"},
-                    {"id": 223, "label": "linke obere Extremität", "tag": "left_upper"},
-                    {"id": 224, "label": "rechte untere Extremität", "tag": "right_lower"},
-                    {"id": 225, "label": "linke untere Extremität", "tag": "left_lower"}
-                ]
-            }
+          "label": "Ruhetremor ist bei > 75% der gesamten Untersuchungszeit vorhanden.",
+          "value": 4
         }
-        ,
-        {
-            "label": "23. Fingertippen (Patient berührt in rascher Reihenfolge und bei größtmöglicher Amplitude und mit jeder Hand gesondert den Daumen mit dem Zeigefinger).",
-            "id": [231, 232],
-            "coding": { "display" : "fingertapping", "code" : "0", "system" : "http://snomed.info/sct"},
-            "tag": "fingertapping",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": false,
-            "verylonganswers": true,
-            "rotate": false,
-            "options": {
-                "answers": [
-                    {"label": "Normal", "value": 0},
-                    {"label": "Leichte Verlangsamung und/oder Verringerung der Amplitude", "value": 1},
-                    {"label": "Mäßig eingeschränkt. Eindeutige und frühzeitige Ermüdung. Bewegung kann gelegentlich unterbrochen werden.", "value": 2},
-                    {"label": "Stark eingeschränkt. Verzögerter Start der Bewegungen oder Unterbrechung fortlaufender Bewegungen.", "value": 3},
-                    {"label": "Kann die Aufgabe kaum ausführen.", "value": 4}
-                ],
-                "questions": [
-                    {"id": 231, "label": "rechts", "tag": "right"},
-                    {"id": 232, "label": "links", "tag": "left"}
-                ]
-            }
-        }
-        ,
-        {
-            "label": "24. Handbewegungen (Patient öffnet und schließt die Hände in rascher Reihenfolge bei größtmöglicher Amplitude und mit jeder Hand gesondert)",
-            "id": [241, 242],
-            "coding": { "display" : "movement_hand", "code" : "0", "system" : "http://snomed.info/sct"},
-            "tag": "movement_hand",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": false,
-            "verylonganswers": true,
-            "rotate": false,
-            "options": {
-                "answers": [
-                    {"label": "Normal", "value": 0},
-                    {"label": "Leichte Verlangsamung und/oder Verringerung der Amplitude", "value": 1},
-                    {"label": "Mäßig eingeschränkt. Eindeutige und frühzeitige Ermüdung. Bewegung kann gelegentlich unterbrochen werden.", "value": 2},
-                    {"label": "Stark eingeschränkt. Verzögerter Start der Bewegungen oder Unterbrechung fortlaufender Bewegungen.", "value": 3},
-                    {"label": "Kann die Aufgabe kaum ausführen.", "value": 4}
-                ],
-                "questions": [
-                    {"id": 241, "label": "rechts", "tag": "right"},
-                    {"id": 242, "label": "links", "tag": "left"}
-                ]
-            }
-        }
-        ,
-        {
-            "label": "25. Rasch wechselnde Bewegungen der Hände (Pronation-Supinationsbewegungen der Hände, vertikal oder horizontal, mit größtmöglicher Amplitude, beide Hände gleichzeitig)",
-            "id": [251, 252],
-            "coding": { "display" : "movement_changing", "code" : "0", "system" : "http://snomed.info/sct"},
-            "tag": "movement_changing",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": false,
-            "verylonganswers": true,
-            "rotate": false,
-            "options": {
-                "answers": [
-                    {"label": "Normal", "value": 0},
-                    {"label": "Leichte Verlangsamung und/oder Verringerung der Amplitude", "value": 1},
-                    {"label": "Mäßig eingeschränkt. Eindeutige und frühzeitige Ermüdung. Bewegung kann gelegentlich unterbrochen werden.", "value": 2},
-                    {"label": "Stark eingeschränkt. Verzögerter Start der Bewegungen oder Unterbrechung fortlaufender Bewegungen.", "value": 3},
-                    {"label": "Kann die Aufgabe kaum ausführen.", "value": 4}
-                ],
-                "questions": [
-                    {"id": 251, "label": "rechts", "tag": "right"},
-                    {"id": 252, "label": "links", "tag": "left"}
-                ]
-            }
-        }
-        ,
-        {
-            "label": "26. <b>Vorfuß-Tippen</b>: Agilität der Füße (Der Patient klopft in rascher Reihenfolge mit der Ferse auf den Boden und hebt dabei das ganze Bein an. Die Amplitude soll mindestens 7,5 cm betragen.)",
-            "id": [261, 262],
-            "coding": { "display" : "agility_foot", "code" : "0", "system" : "http://snomed.info/sct"},
-            "tag": "agility_foot",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": false,
-            "verylonganswers": true,
-            "rotate": false,
-            "options": {
-                "answers": [
-                    {"label": "Normal", "value": 0},
-                    {"label": "Leichte Verlangsamung und/oder Verringerung der Amplitude", "value": 1},
-                    {"label": "Mäßig eingeschränkt. Eindeutige und frühzeitige Ermüdung. Bewegung kann gelegentlich unterbrochen werden.", "value": 2},
-                    {"label": "Stark eingeschränkt. Verzögerter Start der Bewegungen oder Unterbrechung fortlaufender Bewegungen.", "value": 3},
-                    {"label": "Kann die Aufgabe kaum ausführen.", "value": 4}
-                ],
-                "questions": [
-                    {"id": 261, "label": "rechts", "tag": "right"},
-                    {"id": 262, "label": "links", "tag": "left"}
-                ]
-            }
-        },
-        {
-            "label": "27. <b>Beweglichkeit der Beine</b>: Agilität der Beine (Der Patient klopft in rascher Reihenfolge mit der Ferse auf den Boden und hebt dabei das ganze Bein an. Die Amplitude soll mindestens 7,5 cm betragen.)",
-            "id": [271, 272],
-            "coding": { "display" : "agility_leg", "code" : "0", "system" : "http://snomed.info/sct"},
-            "tag": "agility_leg",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": false,
-            "verylonganswers": true,
-            "rotate": false,
-            "options": {
-                "answers": [
-                    {"label": "Normal", "value": 0},
-                    {"label": "Leichte Verlangsamung und/oder Verringerung der Amplitude", "value": 1},
-                    {"label": "Mäßig eingeschränkt. Eindeutige und frühzeitige Ermüdung. Bewegung kann gelegentlich unterbrochen werden.", "value": 2},
-                    {"label": "Stark eingeschränkt. Verzögerter Start der Bewegungen oder Unterbrechung fortlaufender Bewegungen.", "value": 3},
-                    {"label": "Kann die Aufgabe kaum ausführen.", "value": 4}
-                ],
-                "questions": [
-                    {"id": 271, "label": "rechts", "tag": "right"},
-                    {"id": 272, "label": "links", "tag": "left"}
-                ]
-            }
-        }
-
-        ,
-        {
-            "label": "28. Aufstehen vom Stuhl (Patient versucht mit vor der Brust verschränkten Armen von einem geradelehnigen Holz- oder Metallstuhl aufzustehen).",
-            "id": 28,
-            "coding": { "display" : "getting_up", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal.", "value": 0},
-                {"label": "Langsam; kann mehr als einen Versuch benötigen.", "value": 1},
-                {"label": "Stößt sich an den Armlehnen hoch.", "value": 2},
-                {"label": "Neigt zum Zurückfallen und muss es eventuell mehrmals versuchen, kann jedoch ohne Hilfe aufstehen", "value": 3},
-                {"label": "Kann ohne Hilfe nicht aufstehen.", "value": 4}
-            ]
-        }
-        ,
-        {
-            "label": "29. Haltung",
-            "id": 29,
-            "coding": { "display" : "posture", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal aufrecht.", "value": 0},
-                {"label": "Nicht ganz aufrecht, leicht vorgebeugte Haltung; könnte bei einem älteren Menschen normal sein", "value": 1},
-                {"label": "Mäßig vorgebeugte Haltung; eindeutig abnorm, kann leicht zu einer Seite geneigt sein", "value": 2},
-                {"label": "Stark vorgebeugte Haltung mit Kyphose; kann mäßig zu einer Seite geneigt sein", "value": 3},
-                {"label": "Ausgeprägte Beugung mit extrem abnormer Haltung.", "value": 4}
-            ]
-        }
-        ,
-        {
-            "label": "30. Gang",
-            "id": 30,
-            "coding": { "display" : "gait", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal.", "value": 0},
-                {"label": "Geht langsam, kann einige kurze Schritte schlurfen, jedoch keine Festination oder Propulsion", "value": 1},
-                {"label": "Gehen schwierig, benötigt aber wenig oder keine Hilfe; eventuell leichtes Trippeln, kurze Schritte oder Propulsion.", "value": 2},
-                {"label": "Starke Gehstörung, benötigt Hilfe.", "value": 3},
-                {"label": "Kann überhaupt nicht gehen, auch nicht mit Hilfe.", "value": 4}
-            ]
-        }
-        ,
-        {
-            "label": "31. Haltungsstabilität (Reaktion auf plötzliches Verlagern nach hinten durch Ziehen an den Schultern des Patienten; der mit geöffneten Augen und leicht auseinanderstehenden Füßen geradesteht. Der Patient ist darauf vorbereitet).",
-            "id": 31,
-            "coding": { "display" : "stability", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal.", "value": 0},
-                {"label": "Retropulsion, gleicht aber ohne Hilfe aus.", "value": 1},
-                {"label": "Fehlen einer Haltungsreaktion; würde fallen, wenn er nicht vom Untersucher aufgefangen würde.", "value": 2},
-                {"label": "Sehr instabil; neigt dazu, spontan das Gleichgewicht zu verlieren.", "value": 3},
-                {"label": "Kann nicht ohne Unterstützung stehen.", "value": 4}
-            ]
-        }
-        ,
-        {
-            "label": "32. Bradykinesie und Hypokinesie des Körpers (Kombination aus Langsamkeit, Zögern, verminderten Mitbewegungen der Arme, geringe Bewegungsamplitude und allgemeine Bewegungsarmut)",
-            "id": 32,
-            "coding": { "display" : "bradykinesia", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine.", "value": 0},
-                {"label": "Minimale Verlangsamung, Bewegung wirkt beabsichtigt; könnte bei manchen Menschen normal sein. Möglicherweise herabgesetzte Amplitude.", "value": 1},
-                {"label": "Leichte Verlangsamung und Bewegungsarmut, die eindeutig abnorm sind. Alternativ auch herabgesetzte Amplitude", "value": 2},
-                {"label": "Mäßige Verlangsamung und Bewegungsarmut oder Herabsetzung der Amplitude", "value": 3},
-                {"label": "Ausgeprägte Verlangsamung, Bewegungsarmut oder Herabsetzung der Amplitude.", "value": 4}
-            ]
-        }
-        
-    ],
-    "results": {
-        "method": "sum",
-        "coding": { "display" : "UPDRS III - Motor", "code" : "LID: 77720-1", "system" : "LOINC"}
+      ]
     }
-
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "display": "MDS-UPDRS III - Motorik",
+      "code": "LID: 77720-1",
+      "system": "LOINC"
+    }
+  }
 }

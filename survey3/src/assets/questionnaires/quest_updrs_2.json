@@ -1,216 +1,481 @@
 {
-    "title": "UPDRS II",
-    "short_title": "updrs_2",
-    "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "342061000000106",
-        "display" : "UPDRS II - Aktivitäten des täglichen Lebens (jeweils getrennt in on/off-Perioden ermitteln)",
-        "version": "20211028"
+  "title": "MDS-UPDRS II - M-EDL",
+  "short_title": "updrs_2",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "445536008",
+    "display": "MDS-UPDRS II - M-EDL",
+    "version": "202311"
+  },
+  "description": "UPDRS II - Erfahrungen des täglichen Lebens",
+  "manual": "Bitte beantworten Sie folgenden Fragen",
+  "keywords": "parkinson updrs",
+  "items": [
+    {
+      "label": "<b>Teil 2: Motorische Aspekte bei Erfahrungen des täglichen Lebens (M-EDL)</b>"
     },
-    "description": "UPDRS II - Aktivitäten des täglichen Lebens (jeweils getrennt in on/off-Perioden ermitteln)",
-    "manual": "Bitte beantworten Sie folgenden Fragen",
-    "keywords": "parkinson updrs",
-    "items": [
-
+    {
+      "label": "2.1 Sprechen",
+      "caption": "Hatten Sie in der vergangenen Woche Probleme mit dem Sprechen?",
+      "id": 21,
+      "coding": {
+        "display": "speaking",
+        "code": "CUSTOM: SCORES_UPDRS_II_SPEAKING",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
         {
-            "label": "5. Sprache",
-            "id": 5,
-            "coding": { "display" : "language", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Leicht beeinträchtigt. Keine Verständigungsschwierigkeiten.", "value": 1},
-                {"label": "Mäßig beeinträchtigt. Wird bisweilen gebeten, etwas zu wiederholen.", "value": 2},
-                {"label": "Stark beeinträchtigt. Wird häufig gebeten, etwas zu wiederholen.", "value": 3},
-                {"label": "Meistens unverständlich.", "value": 4}
-            ]
+          "label": "Überhaupt nicht (Keine Probleme).",
+          "value": 0
         },
         {
-            "label": "6. Speichelsekretion",
-            "id": 6,
-            "coding": { "display" : "salvia", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Gering, aber eindeutig vermehrter Speichel im Mund; nachts gelegentlich Speichelaustritt.", "value": 1},
-                {"label": "Mäßig vermehrte Speichelsekretion; eventuell minimaler Speichelaustritt", "value": 2},
-                {"label": "Deutlich vermehrte Speichelsekretion mit leichtem Speichelaustritt", "value": 3},
-                {"label": "Ausgeprägter Speichelaustritt, muss ständig Papiertuch oder Taschentuch benutzen", "value": 4}
-            ]
+          "label": "Meine Sprache ist leise, undeutlich oder ungleichmäßig, andere Personen müssen mich jedoch nicht um eine Wiederholung bitten.",
+          "value": 1
         },
         {
-            "label": "7. Schlucken",
-            "id": 7,
-            "coding": { "display" : "swallow", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Seltenes Würgen/Verschlucken.", "value": 1},
-                {"label": "Gelegentliches Würgen/Verschlucken.", "value": 2},
-                {"label": "Weiche Nahrung erforderlich.", "value": 3},
-                {"label": "Ernährung über Magensonde oder Gastrostomie erforderlich.", "value": 4}
-            ]
+          "label": "Meine Sprache veranlasst andere Personen, mich gelegentlich, aber nicht täglich, um eine Wiederholung zu bitten.",
+          "value": 2
         },
         {
-            "label": "8. Handschrift",
-            "id": 8,
-            "coding": { "display" : "Handwriting", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Etwas langsam oder klein.", "value": 1},
-                {"label": "Mäßig langsam oder klein; sämtliche Wörter leserlich", "value": 2},
-                {"label": "Stark beeinträchtigt; nicht alle Wörter leserlich", "value": 3},
-                {"label": "Die Mehrzahl der Wörter ist unleserlich.", "value": 4}
-            ]
+          "label": "Meine Sprache ist so unverständlich, dass andere Personen mich jeden Tag bitten müssen, das Gesagte noch einmal zu wiederholen, obwohl das meiste verstanden wird.",
+          "value": 3
         },
         {
-            "label": "9. Speisen schneiden und mit Utensilien umgehen",
-            "id": 9,
-            "coding": { "display" : "food_handeling", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Etwas langsam und unbeholfen, aber keine Hilfe erforderlich", "value": 1},
-                {"label": "Kann die meisten Speisen schneiden, jedoch unbeholfen und langsam; etwas Hilfe erforderlich.", "value": 2},
-                {"label": "Speisen müssen von jemandem geschnitten werden, kann aber noch langsam essen.", "value": 3},
-                {"label": "Muss gefüttert werden.", "value": 4}
-            ]
-        },
-        {
-            "label": "10. Anziehen",
-            "id": 10,
-            "coding": { "display" : "dressing", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Etwas langsam, aber keine Hilfe erforderlich.", "value": 1},
-                {"label": "Gelegentliche Hilfe beim Knöpfen, beim Schlüpfen in die Ärmel.", "value": 2},
-                {"label": "Beträchtliche Hilfe erforderlich, kann aber manches alleine schaffen", "value": 3},
-                {"label": "Hilflos", "value": 4}
-            ]
-        },
-        {
-            "label": "11. Hygiene",
-            "id": 11,
-            "coding": { "display" : "hygiene", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Etwas langsam, aber keine Hilfe erforderlich.", "value": 1},
-                {"label": "Braucht beim Duschen und Baden Hilfe; oder bei Körperpflege sehr langsam.", "value": 2},
-                {"label": "Braucht beim Waschen, Zähnebürsten, Haarekämmen und beim Gang auf die Toilette Hilfe.", "value": 3},
-                {"label": "Foley-Katheter oder andere mechanische Hilfsmittel.", "value": 4}
-            ]
-        },
-        {
-            "label": "12. Umdrehen im Bett und Bettwäsche zurechtziehen",
-            "id": 12,
-            "coding": { "display" : "turning_bed", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Etwas langsam und unbeholfen, benötigt aber keine Hilfe.", "value": 1},
-                {"label": "Kann sich alleine, jedoch unter großen Schwierigkeiten, herumdrehen und die Bettwäsche zurechtziehen.", "value": 2},
-                {"label": "  Beginnt, kann sich aber nicht alleine im Bett umdrehen oder die Bettwäsche zurechtziehen.", "value": 3},
-                {"label": "Hilflos", "value": 4}
-            ]
-        },
-        {
-            "label": "13. Fallen (unabhängig von Starre)",
-            "id": 13,
-            "coding": { "display" : "falling", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Kein", "value": 0},
-                {"label": "Seltenes Fallen", "value": 1},
-                {"label": "Gelegentliches Fallen, weniger als einmal pro Tag.", "value": 2},
-                {"label": "Fällt durchschnittlich einmal pro Tag.", "value": 3},
-                {"label": "Fällt häufiger als einmal pro Tag.", "value": 4}
-            ]
-        },
-        {
-            "label": "14. Erstarren beim Gehen",
-            "id": 14,
-            "coding": { "display" : "freezing", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Kein", "value": 0},
-                {"label": "Seltenes Erstarren beim Gehen; eventuell verzögerter Start", "value": 1},
-                {"label": "Gelegentliches Erstarren beim Gehen.", "value": 2},
-                {"label": "Regelmäßiges Erstarren. Gelegentliches Fallen nach Erstarren.", "value": 3},
-                {"label": "Häufiges Fallen nach Erstarren.", "value": 4}
-            ]
-        },
-        {
-            "label": "15. Laufen",
-            "id": 15,
-            "coding": { "display" : "walking", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Normal", "value": 0},
-                {"label": "Leichte Schwierigkeiten. Eventuell fehlendes Mitschwingen der Arme, eventuell Neigung das Bein nachzuziehen.", "value": 1},
-                {"label": "Mäßige Schwierigkeiten, benötigt jedoch wenig oder keine Hilfe.", "value": 2},
-                {"label": "Schwere Gehstörung, benötigt Hilfe.", "value": 3},
-                {"label": "Kann selbst mit Hilfe nicht mehr gehen.", "value": 4}
-            ]
-        },
-        {
-            "label": "16. Tremor",
-            "id": 16,
-            "coding": { "display" : "tremor", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keiner.", "value": 0},
-                {"label": "Leicht und selten auftretend.", "value": 1},
-                {"label": "Mäßig; für den Patienten lästig.", "value": 2},
-                {"label": "Stark, bei zahlreichen Aktivitäten hinderlich.", "value": 3},
-                {"label": "Ausgeprägt; bei den meisten Aktivitäten hinderlich.", "value": 4}
-            ]
-        },
-        {
-            "label": "17 Sensorische Beschwerden infolge von Parkinsonismus",
-            "id": 17,
-            "coding": { "display" : "sensory_deficits", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine.", "value": 0},
-                {"label": "Gelegentliches Taubheitsgefühl, Kribbeln oder leichte Schmerzen.", "value": 1},
-                {"label": "Häufiges Taubheitsgefühl, Kribbeln oder Schmerzen, nicht störend.", "value": 2},
-                {"label": "Häufig schmerzhafte Empfindungen.", "value": 3},
-                {"label": "Unerträgliche Schmerzen.", "value": 4}
-            ]
+          "label": "Ich spreche meistens bzw. immer so undeutlich, dass ich nicht verstanden werde.",
+          "value": 4
         }
-        
-    ],
-    "results": {
-        "method": "sum"
+      ]
+    },
+    {
+      "label": "2.2. Speichel",
+      "caption": "Hatten Sie in der vergangenen Woche meist zuviel Speichelfluss während Sie wach waren oder beim Schlafen?",
+      "id": 22,
+      "coding": {
+        "display": "saliva",
+        "code": "CUSTOM: SCORES_UPDRS_II_SALIVA",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Keine Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich habe zuviel Speichel, aber der Speichel fließt nicht aus dem Mund.",
+          "value": 1
+        },
+        {
+          "label": "Der Speichel fließt manchmal während des Schlafens aus dem Mund, aber nicht während ich wach bin.",
+          "value": 2
+        },
+        {
+          "label": "Der Speichel fließt manchmal während ich wach bin aus dem Mund, aber ich benötige üblicherweise kein Taschentuch.",
+          "value": 3
+        },
+        {
+          "label": "Ich verliere soviel Speichel, dass ich regelmäßig ein Tuch oder Taschentuch benutze, um meine Kleidung zu schützen.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.3 Kauen und Schlucken",
+      "caption": "Hatten Sie in der vergangenen Woche regelmäßig Probleme beim Schlucken von Tabletten oder beim Essen Ihrer Mahlzeiten? Müssen Sie Ihre Tabletten teilen oder zerstoßen oder Ihre Mahlzeiten zerkleinern oder zerdrücken, um ein Verschlucken zu vermeiden?",
+      "id": 23,
+      "coding": {
+        "display": "chewing_swallowing",
+        "code": "CUSTOM: SCORES_UPDRS_II_CHEWING_SWALLOWING",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Probleme.",
+          "value": 0
+        },
+        {
+          "label": "Ich bin mir bewusst, dass ich langsam kaue und mich beim Schlucken anstrengen muss, aber ich verschlucke mich nicht und muss mir meine Mahlzeiten nicht besonders vorbereiten lassen.",
+          "value": 1
+        },
+        {
+          "label": "Ich muss meine Tabletten zerkleinern und meine Mahlzeiten besonders zubereiten lassen, da ich mit dem Schlucken und Kauen Probleme habe, aber ich habe mich während der vergangenen Woche nicht verschluckt.",
+          "value": 2
+        },
+        {
+          "label": "Ich habe mich mindestens einmal in der vergangenen Woche verschluckt.",
+          "value": 3
+        },
+        {
+          "label": "Aufgrund der Kau- und Schluckprobleme benötige ich eine Magensonde.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.4 Essen",
+      "caption": "Hatten Sie in der letzten Woche häufig Schwierigkeiten mit der Einnahme Ihrer Mahlzeiten oder mit dem Gebrauch Ihres Bestecks? Haben Sie zum Beispiel Schwierigkeiten beim Umgang mit Fingerfood oder im Gebrauch von Gabel, Messer, Löffel oder Stäbchen?",
+      "id": 24,
+      "coding": {
+        "display": "eating",
+        "code": "CUSTOM: SCORES_UPDRS_II_EATING",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Keine Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich bin langsam, aber ich esse selbstständig ohne Hilfe und verschütte nichts beim Essen.",
+          "value": 1
+        },
+        {
+          "label": "Ich bin langsam beim Essen und verschütte gelegentlich etwas. Bei manchen Dingen, wie zum Beispiel dem Schneiden von Fleisch, benötige ich Hilfe.",
+          "value": 2
+        },
+        {
+          "label": "Ich benötige in vielen Bereichen der Essensaufnahme Hilfe, kann jedoch Einiges noch alleine machen.",
+          "value": 3
+        },
+        {
+          "label": "Ich benötige Hilfe in den meisten oder allen Bereichen der Essensaufnahme.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.5 Ankleiden",
+      "caption": "Hatten Sie in der letzten Woche häufig Probleme beim Ankleiden? Waren Sie zum Beispiel langsam oder benötigten Sie Hilfe beim Knöpfen, bei Reißverschlüssen, beim An- und Ausziehen Ihrer Kleidung oder Ihres Schmucks?",
+      "id": 25,
+      "coding": {
+        "display": "dressing",
+        "code": "CUSTOM: SCORES_UPDRS_II_DRESSING",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Keine Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich bin langsam, ich benötige jedoch keine Hilfe.",
+          "value": 1
+        },
+        {
+          "label": "Ich bin langsam und benötige bei manchen Tätigkeiten Hilfe (Knöpfen, Armbändern).",
+          "value": 2
+        },
+        {
+          "label": "Ich benötige in vielen Bereichen des An- und Auskleidens Hilfe.",
+          "value": 3
+        },
+        {
+          "label": "Ich benötige in den meisten oder allen Bereichen des An- und Auskleidens Hilfe.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.6 Körperpflege",
+      "caption": "Waren Sie in der vergangenen Woche bei der Körperpflege langsam oder benötigten Sie Hilfe beim Waschen, Baden, Rasieren, Zähneputzen, Kämmen Ihrer Haare oder anderen Verrichtungen?",
+      "id": 26,
+      "coding": {
+        "display": "personal_hygiene",
+        "code": "CUSTOM: SCORES_UPDRS_II_PERSONAL_HYGIENE",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Keine Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich bin langsam, aber ich benötige keine Hilfe.",
+          "value": 1
+        },
+        {
+          "label": "Ich benötige eine andere Person, die mir bei verschiedenen Aspekten der Körperpflege hilft.",
+          "value": 2
+        },
+        {
+          "label": "Ich benötige bei vielen Aspekten der Körperpflege Hilfe.",
+          "value": 3
+        },
+        {
+          "label": "Ich brauche für die meisten oder alle Verrichtungen der Körperpflege Hilfe.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.7 Handschrift",
+      "caption": "Hatten andere Personen im Verlauf der letzten Woche Schwierigkeiten beim Lesen Ihrer Handschrift?",
+      "id": 27,
+      "coding": {
+        "display": "handwriting",
+        "code": "CUSTOM: SCORES_UPDRS_II_HANDWRITING",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Keine Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich schreibe langsam, schwerfällig oder ungleichmäßig, aber alle Wörter sind lesbar.",
+          "value": 1
+        },
+        {
+          "label": "Einige Wörter sind unklar und schwierig zu lesen.",
+          "value": 2
+        },
+        {
+          "label": "Viele Wörter sind unklar und schwierig zu lesen.",
+          "value": 3
+        },
+        {
+          "label": "Die meisten oder alle Wörter sind unleserlich.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.8 Hobbies und andere Aktivitäten",
+      "caption": "Hatten Sie in der vergangenen Woche Probleme beim Ausüben Ihrer Hobbies oder sonstigen Tätigkeiten, die Sie gerne tun?",
+      "id": 28,
+      "coding": {
+        "display": "hobbies_activities",
+        "code": "CUSTOM: SCORES_UPDRS_II_HOBBIES_ACTIVITIES",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Keine Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich bin etwas langsam, kann diese Tätigkeiten aber leicht ausüben.",
+          "value": 1
+        },
+        {
+          "label": "Das Ausüben dieser Tätigkeiten bereitet mir gewisse Schwierigkeiten.",
+          "value": 2
+        },
+        {
+          "label": "Ich habe erhebliche Probleme beim Ausüben dieser Tätigkeiten, übe die meisten Tätigkeiten aber dennoch aus.",
+          "value": 3
+        },
+        {
+          "label": "Ich bin nicht in der Lage, die meisten oder alle dieser Tätigkeiten auszuüben.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.9 Drehen im Bett",
+      "caption": "Hatten Sie im Laufe der vergangenen Woche Schwierigkeiten sich im Bett umzudrehen?",
+      "id": 29,
+      "coding": {
+        "display": "turning_in_bed",
+        "code": "CUSTOM: SCORES_UPDRS_II_TURNING_IN_BED",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Keine Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich habe leichte Probleme mich im Bett umzudrehen, benötige aber keine Hilfe.",
+          "value": 1
+        },
+        {
+          "label": "Ich habe große Schwierigkeiten beim Umdrehen im Bett und benötige gelegentlich die Hilfe anderer Personen.",
+          "value": 2
+        },
+        {
+          "label": "Beim Umdrehen benötige ich oft die Hilfe von anderen Personen.",
+          "value": 3
+        },
+        {
+          "label": "Ich bin nicht in der Lage, mich ohne fremde Hilfe umzudrehen.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.10. Tremor",
+      "caption": "Litten Sie im Laufe der vergangenen Woche meist unter Zittern oder Tremor?",
+      "id": 210,
+      "coding": {
+        "display": "tremor",
+        "code": "CUSTOM: SCORES_UPDRS_II_TREMOR",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht. Ich habe kein Zittern oder Tremor.",
+          "value": 0
+        },
+        {
+          "label": "Zittern oder Tremor treten zwar auf, führen aber nicht zu Problemen bei irgendwelchen Aktivitäten.",
+          "value": 1
+        },
+        {
+          "label": "Zittern oder Tremor verursachen bei vereinzelten Aktivitäten Probleme.",
+          "value": 2
+        },
+        {
+          "label": "Zittern oder Tremor verursachen bei vielen meiner Aktivitäten des täglichen Lebens Probleme.",
+          "value": 3
+        },
+        {
+          "label": "Zittern oder Tremor verursachen bei den meisten oder allen Aktivitäten Probleme.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.11 Aufstehen aus dem Bett oder tiefen Sessel, Aussteigen aus dem Auto",
+      "caption": "Hatten Sie im Laufe der letzten Woche Schwierigkeiten, aus dem Bett, aus einem Autositz oder einem Sessel aufzustehen?",
+      "id": 211,
+      "coding": {
+        "display": "getting_up",
+        "code": "CUSTOM: SCORES_UPDRS_II_GETTING_UP",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Kein Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich bin zwar langsam, schaffe es aber in der Regel beim ersten Versuch.",
+          "value": 1
+        },
+        {
+          "label": "Ich benötige mehr als einen Versuch, um aufzustehen oder brauche gelegentlich Hilfe.",
+          "value": 2
+        },
+        {
+          "label": "Ich benötige manchmal Hilfe beim Aufstehen, aber meistens kann ich es alleine.",
+          "value": 3
+        },
+        {
+          "label": "Ich benötige meistens oder immer Hilfe.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.12 Gehen und Gleichgewicht",
+      "caption": "Hatten Sie im Laufe der letzten Woche, Schwierigkeiten mit dem Gleichgewicht und dem Gehen?",
+      "id": 212,
+      "coding": {
+        "display": "walking_balance",
+        "code": "CUSTOM: SCORES_UPDRS_II_WALKING_BALANCE",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Kein Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Ich bin etwas langsam und ziehe eventuell ein Bein nach. Ich benötige keine Gehhilfe",
+          "value": 1
+        },
+        {
+          "label": "Ich benutze gelegentlich eine Gehhilfe, aber ich benötige keine fremde Hilfe.",
+          "value": 2
+        },
+        {
+          "label": "Ich benutze in der Regel eine Gehhilfe (Stock oder Gehwagen), um sicher zu gehen und nicht zu fallen. Ich benötige aber meist keine fremde Hilfe.",
+          "value": 3
+        },
+        {
+          "label": "Ich benötige normalerweise fremde Hilfe, um sicher zu gehen ohne zu fallen.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "2.13 „Freezing“ (Blockaden beim Gehen)",
+      "caption": "Mussten Sie während der vergangenen Woche im Laufe eines gewöhnlichen Tages beim Gehen plötzlich stehen bleiben oder konnten nicht mehr weiter gehen, so als ob Ihre Füße auf dem Boden festkleben würden?",
+      "id": 213,
+      "coding": {
+        "display": "freezing",
+        "code": "CUSTOM: SCORES_UPDRS_II_FREEZING",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Überhaupt nicht (Kein Probleme).",
+          "value": 0
+        },
+        {
+          "label": "Es treten Blockaden beim Gehen auf, aber ich kann direkt weitergehen. Ich benötige wegen der Bewegungs-Blockaden weder fremde Hilfe noch eine Gehhilfe (Stock, Gehwagen).",
+          "value": 1
+        },
+        {
+          "label": "Es treten Blockaden beim Gehen auf, danach habe ich Schwierigkeiten, wieder weiterzugehen. Ich benötige aber wegen der Blockaden beim Gehen weder fremde Hilfe noch eine Gehhilfe (Stock, Gehwagen).",
+          "value": 2
+        },
+        {
+          "label": "Wenn eine Blockade beim Gehen auftritt, habe ich große Schwierigkeiten, wieder weiterzugehen. Ich benötige wegen der Blockaden beim Gehen manchmal eine Gehhilfe oder fremde Hilfe.",
+          "value": 3
+        },
+        {
+          "label": "Wegen einer Blockade beim Gehen benötige ich meist oder immer eine Gehhilfe oder fremde Hilfe.",
+          "value": 4
+        }
+      ]
     }
-
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "display": "MDS-UPDRS II - M-EDL",
+      "code": "LID: 77719-3",
+      "system": "LOINC"
+    }
+  }
 }

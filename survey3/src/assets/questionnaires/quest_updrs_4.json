@@ -1,174 +1,236 @@
 {
-    "title": "UPDRS IV",
-    "short_title": "updrs_4",
-    "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "342061000000106",
-        "display" : "UPDRS IV - Komplikationen der Behandlung (in der vergangenen Woche)",
-        "version": "20211028"
+  "title": "MDS-UPDRS IV - Motorische Komplikationen",
+  "short_title": "updrs_4",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "445536008",
+    "display": "MDS-UPDRS IV - Motorische Komplikationen",
+    "version": "202311"
+  },
+  "description": "UPDRS IV - Motorische Komplikationen",
+  "manual": "Bitte beantworten Sie folgenden Fragen",
+  "keywords": "parkinson updrs",
+  "items": [
+    {
+      "label": "<b>A. Dyskinesien [ohne OFF-Stadium Dystonie]</b>"
     },
-    "description": "UPDRS IV - Komplikationen der Behandlung (in der vergangenen Woche)",
-    "manual": "Bitte beantworten Sie folgenden Fragen",
-    "keywords": "parkinson updrs",
-    "items": [
+    {
+      "label": "4.1 Dauer von Dyskinesien",
+      "id": 41,
+      "coding": {
+        "display": "duration_dyskinesia",
+        "code": "CUSTOM: SCORES_UPDRS_IV_DURATION_DYSKINESIA",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
         {
-            "label": "Dyskinesien"
-        },
-
-        {
-            "label": "32. Dauer: Zu welcher Tageszeit treten die Dyskinesien auf? (Anamnestische Angaben)",
-            "id": 32,
-            "coding": { "display" : "dyskinesia_duration", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine", "value": 0},
-                {"label": "1 - 25% des Tages.", "value": 1},
-                {"label": "26 - 50% des Tages.", "value": 2},
-                {"label": "51 - 75% des Tages.", "value": 3},
-                {"label": "76 - 100% des Tages.", "value": 4}
-            ]
+          "label": "Keine Dyskinesien.",
+          "value": 0
         },
         {
-            "label": "33. Behinderung: Wie hinderlich sind die Dyskinesien? (Anamnestische Angaben; können durch Untersuchung in der Sprechstunde modifiziert werden.)",
-            "id": 34,
-            "coding": { "display" : "dyskinesia_limitations", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine Behinderung", "value": 0},
-                {"label": "Leichte Behinderung.", "value": 1},
-                {"label": "Mäßige Behinderung.", "value": 2},
-                {"label": "Starke Behinderung.", "value": 3},
-                {"label": "Vollständige Behinderung", "value": 4}
-            ]
+          "label": "≤25% der Wachzeit tagsüber.",
+          "value": 1
         },
         {
-            "label": "34. Schmerzhafte Dyskinesien: Wie schmerzhaft sind die Dyskinesien?",
-            "id": 34,
-            "coding": { "display" : "dyskinesia_pain", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine schmerzhaften Dyskinesien.", "value": 0},
-                {"label": "Leicht.", "value": 1},
-                {"label": "Mäßig.", "value": 2},
-                {"label": "Stark.", "value": 3},
-                {"label": "Ausgeprägt.", "value": 4}
-            ]
+          "label": "26-50% der Wachzeit tagsüber.",
+          "value": 2
         },
         {
-            "label": "35. Auftreten von Dystonie am frühen Morgen: (Anamnestische Angaben)",
-            "id": 35,
-            "coding": { "display" : "dyskinesia_morning", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Nein.", "value": 0},
-                {"label": "Ja.", "value": 1}
-            ]
-        },
-
-        {
-            "label": "Klinische Fluktuationen"
+          "label": "51-75% der Wachzeit tagsüber.",
+          "value": 3
         },
         {
-            "label": "36. Gibt es nach einer Medikamenteneinnahme zeitlich vorhersagbare „Off“-Perioden?",
-            "id": 36,
-            "coding": { "display" : "off_predictible", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Nein.", "value": 0},
-                {"label": "Ja.", "value": 1}
-            ]
-        },
-        {
-            "label": "37. Gibt es zeitlich nicht vorhersagbare „Off“-Perioden ?",
-            "id": 37,
-            "coding": { "display" : "off_unpredictible", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Nein.", "value": 0},
-                {"label": "Ja.", "value": 1}
-            ]
-        },
-        {
-            "label": "38. Treten „Off“-Perioden plötzlich auf, z. B. innerhalb von wenigen Sekunden?",
-            "id": 38,
-            "coding": { "display" : "off_sudden", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Nein.", "value": 0},
-                {"label": "Ja.", "value": 1}
-            ]
-        },
-        {
-            "label": "39. Für welche Dauer befindet sich der Patient tagsüber durchschnittlich im „Off“-Stadium?",
-            "id": 39,
-            "coding": { "display" : "off_duration", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Keine.", "value": 0},
-                {"label": "1 - 25% des Tages..", "value": 1},
-                {"label": "26 - 50% des Tages.", "value": 2},
-                {"label": "51 - 75% des Tages.", "value": 3},
-                {"label": "76 - 100% des Tages.", "value": 4}
-            ]
-        },
-
-        {
-            "label": "Anderweitige Komplikationen"
-        },
-        {
-            "label": "40. Leidet der Patient an Appetitlosigkeit, Übelkeit oder Erbrechen?",
-            "id": 40,
-            "coding": { "display" : "other_1", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Nein.", "value": 0},
-                {"label": "Ja.", "value": 1}
-            ]
-        }, {
-            "label": "41. Leidet der Patient an Schlafstörungen, z. B. Schlaflosigkeit oder Schläfrigkeit?",
-            "id": 41,
-            "coding": { "display" : "other_sleep", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Nein.", "value": 0},
-                {"label": "Ja.", "value": 1}
-            ]
-        }, {
-            "label": "42. Hat der Patient orthostatische Symptome?",
-            "id": 42,
-            "coding": { "display" : "other_orthostase", "code" : "0", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Nein.", "value": 0},
-                {"label": "Ja.", "value": 1}
-            ]
+          "label": "> 75% der Wachzeit tagsüber.",
+          "value": 4
         }
-        
-    ],
-    "results": {
-        "method": "sum"
+      ]
+    },
+    {
+      "label": "4.2 Funktionelle Beeinträchtigung durch Dyskinesien",
+      "id": 42,
+      "coding": {
+        "display": "functional_impairement_dyskinesia",
+        "code": "CUSTOM: SCORES_UPDRS_IV_FUNCTIONAL_IMPAIREMENT_DYSKINESIA",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Dyskinesien oder keine Beeinträchtigung der Aktivitäten oder sozialen Interaktionen durch Dyskinesien.",
+          "value": 0
+        },
+        {
+          "label": "Dyskinesien beeinträchtigen wenige Aktivitäten, aber der Patient führt normalerweise alle Aktivitäten während der Dyskinesie-Perioden durch und nimmt an allen sozialen Interaktionen teil.",
+          "value": 1
+        },
+        {
+          "label": "Dyskinesien beeinträchtigen mehrere Aktivitäten, aber der Patient führt normalerweise alle Aktivitäten während der Dyskinesie-Perioden durch und nimmt an allen sozialen Interaktionen teil.",
+          "value": 2
+        },
+        {
+          "label": "Dyskinesien beeinträchtigen die Aktivitäten soweit, dass der Patient während der Dyskinesie-Perioden gewisse Aktivitäten nicht durchführt oder nicht an sozialen Aktivitäten teilnimmt.",
+          "value": 3
+        },
+        {
+          "label": "Dyskinesien beeinträchtigen die Funktion soweit, dass der Patient während der Dyskinesie- Perioden die meisten Aktivitäten nicht durchführt oder an den meisten sozialen Interaktionen nicht teilnimmt.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "<b>B. Motorische Fluktuationen</b>"
+    },
+    {
+      "label": "4.3 Dauer der OFF-Phase",
+      "id": 43,
+      "coding": {
+        "display": "duration_off",
+        "code": "CUSTOM: SCORES_UPDRS_IV_DURATION_OFF",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine OFF-Zeit.",
+          "value": 0
+        },
+        {
+          "label": "≤25% der Wachzeit tagsüber.",
+          "value": 1
+        },
+        {
+          "label": "26-50% der Wachzeit tagsüber.",
+          "value": 2
+        },
+        {
+          "label": "51-75% der Wachzeit tagsüber.",
+          "value": 3
+        },
+        {
+          "label": "> 75% der Wachzeit tagsüber.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "4.4 Funktionelle Beeinträchtigung durch Fluktuationen",
+      "id": 44,
+      "coding": {
+        "display": "fluctuations_functional_impairment",
+        "code": "CUSTOM: SCORES_UPDRS_IV_FUNCTIONAL_IMPAIRMENT_FLUCTUATIONS",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Fluktuationen oder keine Beeinträchtigung der Aktivitäten oder sozialen Interaktionen durch Fluktuationen.",
+          "value": 0
+        },
+        {
+          "label": "Fluktuationen beeinträchtigen einzelne Aktivitäten, aber der Patient führt trotzdem alle Aktivitäten während der OFF - Phase durch und nimmt an allen sozialen Interaktionen teil, die typischerweise in der ON - Phase stattfinden.",
+          "value": 1
+        },
+        {
+          "label": "Fluktuationen beeinträchtigen mehrere Aktivitäten, aber der Patient führt normalerweise alle Aktivitäten während der OFF-Phase durch und nimmt an allen sozialen Interaktionen teil, die typischerweise in der ON - Phase stattfinden.",
+          "value": 2
+        },
+        {
+          "label": "Fluktuationen beeinträchtigen die Durchführung der Aktivitäten während der OFF-Phase soweit, dass der Patient gewisse Aktivitäten nicht durchführt und an gewissen sozialen Interaktionen nicht teilnimmt, die typischerweise in der ON - Phase stattfinden.",
+          "value": 3
+        },
+        {
+          "label": "Fluktuationen beeinträchtigen die Funktion soweit, dass der Patient während der OFF- Phase die meisten Aktivitäten nicht durchführt oder an den meisten sozialen Interaktionen nicht teilnimmt, die typischerweise in der ON - Phase stattfinden.",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "4.5 Komplexität der motorischen Fluktuationen",
+      "id": 45,
+      "coding": {
+        "display": "fluctuations_functional_impairment",
+        "code": "CUSTOM: SCORES_UPDRS_IV_FUNCTIONAL_IMPAIRMENT_FLUCTUATIONS",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine motorischen Fluktuationen.",
+          "value": 0
+        },
+        {
+          "label": "OFF - Phasen sind immer oder fast immer vorhersehbar (>75%)",
+          "value": 1
+        },
+        {
+          "label": "OFF - Phasen sind meistens vorhersehbar (51-75%)",
+          "value": 2
+        },
+        {
+          "label": "OFF - Phasen sind manchmal vorhersehbar (26-50%)",
+          "value": 3
+        },
+        {
+          "label": "OFF - Phasen sind selten vorhersehbar (≤25%)",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "<b>C. „OFF“-Dystonie</b>"
+    },
+    {
+      "label": "4.6 Schmerzhafte OFF-Stadium Dystonie",
+      "id": 46,
+      "coding": {
+        "display": "pain_off_dystonia",
+        "code": "CUSTOM: SCORES_UPDRS_IV_PAIN_OFF_DYSTONIA",
+        "system": "CUSTOM"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Keine Dystonie oder keine OFF-Phase.",
+          "value": 0
+        },
+        {
+          "label": "<25% der Zeit im OFF-Stadium.",
+          "value": 1
+        },
+        {
+          "label": "26-50% der Zeit im OFF-Stadium.",
+          "value": 2
+        },
+        {
+          "label": "51-75% der Zeit im OFF-Stadium.",
+          "value": 3
+        },
+        {
+          "label": "> 75% der Zeit im OFF-Stadium.",
+          "value": 4
+        }
+      ]
     }
-
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "display": "MDS-UPDRS IV - Motorische Komplikationen",
+      "code": "LID: 77721-9",
+      "system": "LOINC"
+    }
+  }
 }
