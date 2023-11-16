@@ -158,6 +158,8 @@ The UI front-end is a standalone application and can connect to any SQLite datab
 
 There are currently no APIs available for direct interaction with the user interface. However, the database can be accessed directly via SQL queries using the suggested `DB Browser for SQLite` editor: https://sqlitebrowser.org.
 
+.. include:: TechnicalDetails_IntegrationHL7.rst
+
 .. include:: TechnicalDetails_IntegrationKnime.rst
 
 .. include:: TechnicalDetails_IntegrationRDM.rst

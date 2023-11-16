@@ -1,11 +1,20 @@
 # Fdb version 4
+<<<<<<< HEAD
 ["makeindex technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.idx"] 1698324356 "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.idx" "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.ind" "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10" 1698324680 0
   "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.idx" 1698324676 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+=======
+["makeindex technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.idx"] 1697631426 "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.idx" "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.ind" "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10" 1697986983 0
+  "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.idx" 1697986980 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+>>>>>>> 42d0ee6 (hi)
   (generated)
   "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.ilg"
   "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.ind"
   (rewritten before read)
+<<<<<<< HEAD
 ["pdflatex"] 1698324675 "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.tex" "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.pdf" "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10" 1698324680 0
+=======
+["pdflatex"] 1697986980 "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.tex" "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.pdf" "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10" 1697986983 0
+>>>>>>> 42d0ee6 (hi)
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc" 1529098226 2457 aaabbccba4df2a7f7371410ee4e075a3 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc" 1529098226 3124 3813fd4c981d99822890a2861b0d274c ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -149,6 +158,7 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1698324268 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1698324245 7883458 8eb089335ba61e3440e627cbaca13e32 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
+<<<<<<< HEAD
   "img_data_input_db.png" 1697698273 129848 32ce61788b86d88743c738132420e74d ""
   "img_data_input_example01.png" 1697698273 79744 e7ed411d0c9c530296a99ef07298a5aa ""
   "img_data_input_example02.png" 1697698273 72383 4b1af4a93f0c7fac50908d32404e0499 ""
@@ -187,6 +197,46 @@
   "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.out" 1698324680 3956 88358bc478f043c383a6aaf6c0e0ab5e "pdflatex"
   "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.tex" 1698324670 32225 41ea4140f4cc3f71cbae0e920d713f28 ""
   "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.toc" 1698324680 2003 dc791d1dc7e406d8042458c703b65c24 "pdflatex"
+=======
+  "img_data_input_db.png" 1697631077 129848 32ce61788b86d88743c738132420e74d ""
+  "img_data_input_example01.png" 1697631077 79744 e7ed411d0c9c530296a99ef07298a5aa ""
+  "img_data_input_example02.png" 1697631077 72383 4b1af4a93f0c7fac50908d32404e0499 ""
+  "img_data_input_scheme.png" 1697631077 116884 c0387e34250705e13b12ead6830f335b ""
+  "img_data_input_schemeindb.png" 1697631077 233007 1ebac36162ae6e8d61fb815c0fc65dd8 ""
+  "img_data_integration_hl7.png" 1697986883 179267 74988efaaca9cc79335b352fcd76323b ""
+  "img_data_integration_knime01.png" 1697631077 658050 759cf91f95c6eb956e0a4be9851e601e ""
+  "img_data_integration_knime02.png" 1697631077 391500 8a6f12d578a5bb4aa00b59d401501278 ""
+  "img_db_concept_api.png" 1697631077 222702 4a20f0bddb6f0a9ce1be58ac8be879b2 ""
+  "img_db_concept_related.png" 1697631077 135043 18aee610759a0f42b0797cdc66395bf6 ""
+  "img_db_scheme.png" 1697631077 1996991 500c2e616822a18a8ce9c098d24a0cf3 ""
+  "img_db_scheme_jena.png" 1697631077 153451 a39f0bdf64238b1d33e8435c8aca1269 ""
+  "sphinx.sty" 1690941936 44560 f9fbf51072c954d129c9bd5284cc4ccf ""
+  "sphinxhighlight.sty" 1697986977 7553 83fb52292c17957d9f4aadcb28c57a87 ""
+  "sphinxlatexadmonitions.sty" 1690941936 10989 c38302e64c2bb47779f086869b246760 ""
+  "sphinxlatexcontainers.sty" 1690941936 901 d3a3a1b7b2547f47ade2499350b5c420 ""
+  "sphinxlatexgraphics.sty" 1690941936 4840 a9578332b6f3b35e198751fb632c9b79 ""
+  "sphinxlatexindbibtoc.sty" 1690941936 2066 b93f8504d02f6337fde3074b179de55e ""
+  "sphinxlatexlists.sty" 1690941936 5139 c2de2a1d98d3c6ceedfe46505abd3c07 ""
+  "sphinxlatexliterals.sty" 1690941936 46048 2b66269d0ecf11768a14b5de4ddf9051 ""
+  "sphinxlatexnumfig.sty" 1690941936 4532 3633caf84afa1a98e1a060b7868202bb ""
+  "sphinxlatexobjects.sty" 1694646778 14354 7db81294dd9bf70f65d5cc34221a0b86 ""
+  "sphinxlatexshadowbox.sty" 1690941936 5066 97a2be0d1dfdc98548b7461f1949b95f ""
+  "sphinxlatexstyleheadings.sty" 1690941936 3445 a1582a5f3b336dcffa71b5ca3d8fc31f ""
+  "sphinxlatexstylepage.sty" 1690941936 3064 abce6c3018a84afee0afb08a431944ea ""
+  "sphinxlatexstyletext.sty" 1690941936 8589 a7e8f95eb4fef6c1cd2623cd417d6467 ""
+  "sphinxlatextables.sty" 1690941936 57830 16f2773b765508003aec5d08680f39b9 ""
+  "sphinxmanual.cls" 1690941936 4241 7b0d7a37df7b5715fb0dbd585c52ecdb ""
+  "sphinxmessages.sty" 1697986977 745 3f5fcd6cdd7964ed608767954a8ced6f ""
+  "sphinxoptionsgeometry.sty" 1690941936 2061 47bb34b8ed8a78823eb0c886abfb9f4d ""
+  "sphinxoptionshyperref.sty" 1690941936 1094 79beb8b8a3f10784f8cce804e0f9d3aa ""
+  "sphinxpackageboxes.sty" 1690941936 36615 1d74c63e665ede6c648fa08c42ea70fb ""
+  "sphinxpackagefootnote.sty" 1690941936 15254 d93f70cf000a9adb198015bf1b2f136c ""
+  "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.aux" 1697986983 12106 d8e59276a5f468425e7421fccc9765a1 "pdflatex"
+  "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.ind" 1697631426 0 d41d8cd98f00b204e9800998ecf8427e "makeindex technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.idx"
+  "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.out" 1697986983 3746 a7d60aec8c78f01b15f8a1e8621deb1d "pdflatex"
+  "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.tex" 1697986977 33587 85951b2b7e798d933e6de39ddb906f4f ""
+  "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.toc" 1697986983 1979 3499d6379effc8b2c7b7a05c45f162a1 "pdflatex"
+>>>>>>> 42d0ee6 (hi)
   (generated)
   "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.aux"
   "technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.idx"

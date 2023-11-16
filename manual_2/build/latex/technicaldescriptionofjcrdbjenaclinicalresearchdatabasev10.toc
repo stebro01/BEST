@@ -17,8 +17,13 @@
 \contentsline {section}{\numberline {5.5}Export and Import of Data}{15}{section.5.5}%
 \contentsline {chapter}{\numberline {6}6. Security and Compliance:}{17}{chapter.6}%
 \contentsline {chapter}{\numberline {7}7. Integration \& Extensibility:}{19}{chapter.7}%
+<<<<<<< HEAD
 \contentsline {section}{\numberline {7.1}Integration der SQLite DB in KNIME}{19}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Implementing Good RDM Practices with this database solution}{19}{section.7.2}%
+=======
+\contentsline {section}{\numberline {7.1}HL7\sphinxhyphen {}CDA JSON details}{19}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Integration der SQLite DB in KNIME}{19}{section.7.2}%
+>>>>>>> 42d0ee6 (hi)
 \contentsline {chapter}{\numberline {8}8. Testing \& Validation:}{23}{chapter.8}%
 \contentsline {chapter}{\numberline {9}9. Conclusion \& Future Work:}{25}{chapter.9}%
 \contentsline {chapter}{\numberline {10}10. Acknowledgements:}{27}{chapter.10}%

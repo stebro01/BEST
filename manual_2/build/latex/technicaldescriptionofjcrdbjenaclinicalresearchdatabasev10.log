@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.26)  26 OCT 2023 14:51
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.6.17)  22 OCT 2023 17:03
+>>>>>>> 42d0ee6 (hi)
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1063,18 +1067,33 @@ Chapter 6.
 
 ]
 Chapter 7.
+<<<<<<< HEAD
 <img_data_integration_knime01.png, id=275, 747.79375pt x 571.13374pt>
+=======
+<img_data_integration_hl7.png, id=274, 694.595pt x 808.01875pt>
+File: img_data_integration_hl7.png Graphic file (type png)
+<use img_data_integration_hl7.png>
+Package pdftex.def Info: img_data_integration_hl7.png  used on input line 1009.
+
+(pdftex.def)             Requested size: 452.9864pt x 526.94441pt.
+<img_data_integration_knime01.png, id=276, 747.79375pt x 571.13374pt>
+>>>>>>> 42d0ee6 (hi)
 File: img_data_integration_knime01.png Graphic file (type png)
 <use img_data_integration_knime01.png>
-Package pdftex.def Info: img_data_integration_knime01.png  used on input line 9
-84.
+Package pdftex.def Info: img_data_integration_knime01.png  used on input line 1
+025.
 (pdftex.def)             Requested size: 452.9679pt x 345.95966pt.
+<<<<<<< HEAD
 <img_data_integration_knime02.png, id=276, 1190.4475pt x 633.36626pt>
+=======
+<img_data_integration_knime02.png, id=277, 1190.4475pt x 633.36626pt>
+>>>>>>> 42d0ee6 (hi)
 File: img_data_integration_knime02.png Graphic file (type png)
 <use img_data_integration_knime02.png>
-Package pdftex.def Info: img_data_integration_knime02.png  used on input line 9
-91.
+Package pdftex.def Info: img_data_integration_knime02.png  used on input line 1
+032.
 (pdftex.def)             Requested size: 452.9679pt x 240.99094pt.
+<<<<<<< HEAD
 <img_good_RDM_practices.png, id=277, 1874.00125pt x 932.48375pt>
 File: img_good_RDM_practices.png Graphic file (type png)
 <use img_good_RDM_practices.png>
@@ -1088,6 +1107,16 @@ Chapter 8.
 [23] [24
 
 ]
+=======
+[19] [20 <./img_data_integration_hl7.png>] [21 <./img_data_integration_knime01.
+png> <./img_data_integration_knime02.png>] [22]
+Chapter 8.
+[23
+
+] [24
+
+]
+>>>>>>> 42d0ee6 (hi)
 Chapter 9.
 [25] [26
 
@@ -1101,12 +1130,21 @@ Chapter 11.
 (./technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.aux)
 Package rerunfilecheck Info: File `technicaldescriptionofjcrdbjenaclinicalresea
 rchdatabasev10.out' has not changed.
+<<<<<<< HEAD
 (rerunfilecheck)             Checksum: 88358BC478F043C383A6AAF6C0E0AB5E;3956.
  ) 
 Here is how much of TeX's memory you used:
  16336 strings out of 476025
  277608 string characters out of 5790016
  1883388 words of memory out of 5000000
+=======
+(rerunfilecheck)             Checksum: A7D60AEC8C78F01B15F8A1E8621DEB1D;3746.
+ ) 
+Here is how much of TeX's memory you used:
+ 16336 strings out of 476025
+ 277585 string characters out of 5790017
+ 1882388 words of memory out of 5000000
+>>>>>>> 42d0ee6 (hi)
  36303 multiletter control sequences out of 15000+600000
  563478 words of font info for 73 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -1122,9 +1160,15 @@ dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2023/texmf-dist/
 fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/
 type1/public/txfonts/tcxtt.pfb>
 Output written on technicaldescriptionofjcrdbjenaclinicalresearchdatabasev10.pd
+<<<<<<< HEAD
 f (33 pages, 5257759 bytes).
 PDF statistics:
  390 PDF objects out of 1000 (max. 8388607)
+=======
+f (33 pages, 3005466 bytes).
+PDF statistics:
+ 391 PDF objects out of 1000 (max. 8388607)
+>>>>>>> 42d0ee6 (hi)
  308 compressed objects within 4 object streams
  77 named destinations out of 1000 (max. 500000)
  273 words of extra memory for PDF output out of 10000 (max. 10000000)
