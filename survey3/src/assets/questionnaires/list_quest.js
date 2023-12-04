@@ -65,6 +65,7 @@ const quest = [
   "fact",
   "ptss14", "ptss14_cov2",
   "sf36",
+  "sf36_mod",
   "shapsd",
   "sus",
   "tinetti",

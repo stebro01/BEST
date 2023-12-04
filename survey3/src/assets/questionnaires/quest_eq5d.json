@@ -20,7 +20,7 @@
             "options": {
                 "top": {"value": 100, "label": "Bester denkbarer Gesundheitszustand"},
                 "bottom": {"value": 0, "label": "Schlechtest denkbarer Gesundheitszustand"},
-                "steps": 10
+                "steps": 5
             }
         }
     ],

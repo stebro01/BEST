@@ -1,288 +1,413 @@
 {
-    "title": "Fragebogen - Standard BIOMAG 1",
-    "short_title": "biomag_fw",
-    "coding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "444061006",
-        "display" : "Standard BIOMAG 1",
-        "version": "20230124"
+  "title": "Fragebogen - Standard BIOMAG 1",
+  "short_title": "biomag_fw",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "444061006",
+    "display": "Standard BIOMAG 1",
+    "version": "20230124"
+  },
+  "description": "Standardfragebogen v1 fw",
+  "manual": "<b>Sehr geehrte*r Studienteilnehmer*in,</b>: Wir danken Ihnen für die Teilnahme an unserer Untersuchung. Wir bitten Sie zunächst einige Fragen zu ihrem aktuellen Gesundheitsstand, beziehungsweise Vorerkrankungen zu beantworten. Gerne werden Sie bei unklar halten bei den Fragen durch unser Team unterstützt.",
+  "keywords": "biomag general",
+  "items": [
+    {
+      "label": "Alter",
+      "id": 1,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
     },
-    "description": "Standardfragebogen v1 fw",
-    "manual": "<b>Sehr geehrte*r Studienteilnehmer*in,</b>: Wir danken Ihnen für die Teilnahme an unserer Untersuchung. Wir bitten Sie zunächst einige Fragen zu ihrem aktuellen Gesundheitsstand, beziehungsweise Vorerkrankungen zu beantworten. Gerne werden Sie bei unklar halten bei den Fragen durch unser Team unterstützt.",
-    "keywords": "biomag general",
-    "items": [
+    {
+      "label": "Geschlecht",
+      "coding": {
+        "display": "gender",
+        "code": "SCTID: 263495000",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "m", "value": "Male" },
+        { "label": "w", "value": "Female" },
+        { "label": "d", "value": "Intersex" }
+      ],
+      "id": 2
+    },
+    {
+      "label": "Gewicht (kg)",
+      "coding": {
+        "display": "weight",
+        "code": "SCTID: 27113001",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": true,
+      "id": 3
+    },
+    {
+      "label": "Körpergröße (cm)",
+      "coding": {
+        "display": "height",
+        "code": "SCTID: 1153637007",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": true,
+      "id": 4
+    },
+    {
+      "label": "Haben Sie Sehstörungen?",
+      "tag": "seeing_problems",
+      "value": null,
+      "coding": {
+        "display": "History of disorder of vision",
+        "code": "SCTID: 180301000119102",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Nein", "value": 0 },
+        { "label": "Ja", "value": 1 }
+      ],
+      "id": 5
+    },
+    {
+      "label": "Benötigen Sie eine Brille?",
+      "tag": "glasses",
+      "value": null,
+      "type": "radio",
+      "coding": {
+        "display": "Wears glasses (finding)",
+        "code": "SCTID: 225582009",
+        "system": "http://snomed.info/sct"
+      },
+      "inline": true,
+      "options": [
+        { "label": "Nein", "value": 0 },
+        { "label": "Ja", "value": 1 }
+      ],
+      "id": 6
+    },
+    {
+      "label": "Sind Sie",
+      "coding": {
+        "display": "smoker",
+        "code": "LID: 72166-2",
+        "system": "LOINC"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "options": [
         {
-            "label": "Geschlecht",
-            "coding": { "display" : "gender", "code" : "SCTID: 263495000", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": true,
-            "force": true,
-            "options": [
-                {"label": "m", "value": "Male"},
-                {"label": "w", "value": "Female"},
-                {"label": "d", "value": "Intersex"}
-            ]
+          "label": "gegenwärtiger Raucher?",
+          "value": "current every day smoker"
         },
-        {
-            "label": "Gewicht (kg)",
-            "coding": { "display" : "weight", "code" : "SCTID: 27113001", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "number",
-            "inline": false,
-            "force": true
-        },
-        {
-            "label": "Körpergröße (cm)",
-            "coding": { "display" : "height", "code" : "SCTID: 1153637007", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "number",
-            "inline": false,
-            "force": true
-        },
-        {
-            "label": "Haben Sie Sehstörungen?",
-            "tag": "seeing_problems",
-            "value": null,
-            "coding": { "display" : "History of disorder of vision", "code" : "SCTID: 180301000119102", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Nein", "value": 0},
-                {"label": "Ja", "value": 1}
-            ]
-        },
-        {
-            "label": "Benötigen Sie eine Brille?",
-            "tag": "glasses",
-            "value": null,
-            "type": "radio",
-            "coding": { "display" : "Wears glasses (finding)", "code" : "SCTID: 225582009", "system" : "http://snomed.info/sct"},
-            "inline": true,
-            "options": [
-                {"label": "Nein", "value": 0},
-                {"label": "Ja", "value": 1}
-            ]
-        },
-        {
-            "label": "Sind Sie",
-            "coding": { "display" : "smoker", "code" : "LID: 72166-2", "system" : "LOINC"},
-            "value": null,
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "gegenwärtiger Raucher?", "value": "current every day smoker"},
-                {"label": "ehemaliger Raucher?", "value": "former smoker"},
-                {"label": "noch nie Raucher gewesen?", "value": "never smoker"}
-            ]
-        },
-        {
-            "label": "Wie oft trinken Sie Alkohol?",
-            "tag": "alcohol_freq",
-            "value": null,
-            "coding": { "display" : "Finding relating to alcohol drinking behavior (finding)", "code" : "SCTID: 228273003", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Nie", "value": "never alcohol"},
-                {"label": "1/Monat", "value": "1_month"},
-                {"label": "2-3/Woche", "value": "2-3_week"},
-                {"label": "4 oder mehr als 4/Woche", "value": ">3_week"}
-            ]
-        },
-        {
-            "label": "Wenn Sie an einem Tag Alkohol trinken, wie viel Glas Akohol trinken Sie dann typischerweise?",
-            "caption": "Ein Glas Alkohol entspricht: 0,33 l Bier, 0,5 l Wein/Sekt oder 0,02 l Spirituosen",
-            "tag": "alcohol_amount",
-            "coding": { "display" : "number of alcohol units consumed on typical drinking day (observable entity)", "code" : "SCTID: 443315005", "system" : "http://snomed.info/sct"},
-            "value": null,
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "0", "value": "0"},
-                {"label": "1", "value": "1"},
-                {"label": "2-3", "value": "2-3"},
-                {"label": "4-5", "value": "4-5"},
-                {"label": "6-7", "value": "6-7"},
-                {"label": ">7", "value": ">7"}
-            ]
-        },
-        {
-            "label": "Nehmen Sie Drogen (einschl. Cannabis)?",
-            "tag": "drugs",
-            "value": null,
-            "coding": { "display" : "Misuses drugs (finding)", "code" : "SCTID: 361055000", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Nein", "value": 0},
-                {"label": "Ja", "value": 1}
-            ]
-        },
-        {
-            "label": "Wie häufig nutzen Sie Computer –, Konsolen – und Onlinespiele?",
-            "tag": "gaming",
-            "value": null,
-            "coding": { "display" : "Misuses drugs (finding)", "code" : "SCTID: 2801000175104T", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": false,
-            "options": [
-                {"label": "Jeden / fast jeden Tag", "value": "daily"},
-                {"label": "Ein / mehrmals pro Woche", "value": "weekly"},
-                {"label": "seltener", "value": "rarely"},
-                {"label": "nie", "value": "never"}
-            ]
-        },
-        {
-            "label": "Hatten Sie schon einmal den Eindruck ein Problem mit Videospielen, Glücksspielen, Geldwetten oder Geldspielen zu haben?",
-            "tag": "gaming_2",
-            "value": null,
-            "type": "radio",
-            "coding": { "display" : "Gambling (finding)", "code" : "SCTID: 105523009", "system" : "http://snomed.info/sct"},
-            "inline": true,
-            "options": [
-                {"label": "Nein", "value": 0},
-                {"label": "Ja", "value": 1}
-            ]
-        },
-        {
-            "label": "Sind bei Ihnen Gedächtnisstörungen bekannt?",
-            "tag": "memory_problems",
-            "value": null,
-            "coding": { "display" : "Memory impairment (finding)", "code" : "SCTID: 386807006", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Nein", "value": 0},
-                {"label": "Ja", "value": 1}
-            ]
-        },
-        {
-            "label": "Ist bei ihnen eine Depression bekannt?",
-            "tag": "depression",
-            "value": null,
-            "coding": { "display" : "History of depression", "code" : "SCTID: 161469008", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Ja, aktuell bestehend", "value": "yes_active"},
-                {"label": "Depression in der Vergangenheit", "value": "yes_history"},
-                {"label": "Nein, nie", "value": "no"}
-            ]
-        },
-        {
-            "label": "Sind bei Ihnen andere psychische Erkrankungen bekannt?",
-            "tag": "psychic_history",
-            "value": null,
-            "coding": { "display" : "History of psychiatric disorder", "code" : "SCTID: 161464003", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Nein", "value": 0},
-                {"label": "Ja", "value": 1}
-            ]
-        },
-        {
-            "label": "Leben Sie alleine?",
-            "tag": "live_alone",
-            "value": null,
-            "coding": { "display" : "Lives alone (finding)", "code" : "SCTID: 105529008", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Nein", "value": 0},
-                {"label": "Ja", "value": 1}
-            ]
-        },
-        {
-            "label": "Sind Sie",
-            "tag": "partnership",
-            "value": null,
-            "coding": { "display" : "Maritual status", "code" : "LID: 45404-1", "system" : "LOINC"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Single", "value": "single"},
-                {"label": "In Partnerschaft", "value": "cohabitating"},
-                {"label": "Verheiratet", "value": "married"},
-                {"label": "Verwitwet", "value": "widowed"}
-            ]
-        },
-        {
-            "label": "Treiben Sie Sport?",
-            "tag": "sport",
-            "value": null,
-            "coding": { "display" : "Sports activity", "code" : "SCTID: 14468000", "system" : "http://snomed.info/sct"},
-            "type": "radio",
-            "inline": true,
-            "options": [
-                {"label": "Nie", "value": "no"},
-                {"label": "1h/Woche", "value": "1h_week"},
-                {"label": "1-3h/Woche", "value": "1-3h_week"},
-                {"label": ">3h/Woche", "value": ">3h_week"}
-            ]
-        },
-        {
-            "label": "Kennen Sie folgende Sorgen?",
-            "tag": "sorrow",
-            "value": [],
-            "type": "checkbox",
-            "coding": { "display" : "Emotional state finding (finding)", "code" : "SCTID: 106126000", "system" : "http://snomed.info/sct"},
-            "inline": true,
-            "options": [
-                {"label": "Angst vor Verarmung", "value": "fear_poverty"},
-                {"label": "Geldsorgen", "value": "money_worries"},
-                {"label": "Einsamkeit", "value": "loneliness"},
-                {"label": "Keine Angaben", "value": "no_details"},
-                {"label": "Keine Sorgen", "value": "no"}
-            ]
-        },
-        {
-            "label": "Sind Sie aktuell berufstätig?",
-            "tag": "employed",
-            "value": null,
-            "type": "radio",
-            "coding": { "display" : "Employed", "code" : "LID: 99222-2", "system" : "LOINC"},
-            "inline": true,
-            "options": [
-                {"label": "Nein", "value": 0},
-                {"label": "Ja", "value": 1}
-            ]
-        },
-        {
-            "label": "Wenn nicht (berufsfähig), sind Sie",
-            "tag": "not_employed",
-            "value": null,
-            "type": "radio",
-            "coding": { "display" : "Employment Situations", "code" : "LID: LL6006-2", "system" : "LOINC"},
-            "inline": false,
-            "force": false,
-            "options": [
-                {"label": "Im Ruhestand", "value": "retired"},
-                {"label": "Erwerbsunfähig", "value": "permanently unable to work"},
-                {"label": "Arbeitssuchend", "value": "other"}
-            ]
-        },
-        {
-            "label": "Welchen Schulabschluss/welche Berufsqualifikationen haben Sie?",
-            "caption": "Bitte den höchsten Abschluss angeben",
-            "tag": "graduation",
-            "value": [],
-            "coding": { "display" : "Bildungsgrad", "code" : "CUSTOM: Anamnese\\Education", "system" : "CUSTOM"},
-            "type": "checkbox",
-            "inline": true,
-            "options": [
-                {"label": "8. Klasse", "value": "8. Klasse"},
-                {"label": "9. Klasse", "value": "9. Klasse"},
-                {"label": "10. Klasse", "value": "10. Klasse"},
-                {"label": "Abitur / Fachabitur", "value": "Abitur"},
-                {"label": "abgeschl. Ausbildung", "value": "education"},
-                {"label": "Hochschulabschluss", "value": "studium"}
-            ]
-        }
-    
-    ],
-    "results": {
-    }
+        { "label": "ehemaliger Raucher?", "value": "former smoker" },
+        { "label": "noch nie Raucher gewesen?", "value": "never smoker" }
+      ],
+      "id": 7
+    },
+    {
+      "label": "Falls ja: Wie viele Zigaretten rauchen Sie am Tag?",
+      "id": 24,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Falls ja: Seit wie vielen Jahren rauchen Sie?",
+      "id": 25,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Wie oft trinken Sie Alkohol?",
+      "tag": "alcohol_freq",
+      "value": null,
+      "coding": {
+        "display": "Finding relating to alcohol drinking behavior (finding)",
+        "code": "SCTID: 228273003",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Nie", "value": "never alcohol" },
+        { "label": "1/Monat", "value": "1_month" },
+        { "label": "2-4/Monat", "value": "2-4_month" },
+        { "label": "2-3/Woche", "value": "2-3_week" },
+        { "label": "4 oder mehr als 4/Woche", "value": ">3_week" }
+      ],
+      "id": 8
+    },
+    {
+      "label": "Wenn Sie an einem Tag Alkohol trinken, wie viel Glas Akohol trinken Sie dann typischerweise?",
+      "caption": "Ein Glas Alkohol entspricht: 0,33 l Bier, 0,5 l Wein/Sekt oder 0,02 l Spirituosen",
+      "tag": "alcohol_amount",
+      "coding": {
+        "display": "number of alcohol units consumed on typical drinking day (observable entity)",
+        "code": "SCTID: 443315005",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "0", "value": "0" },
+        { "label": "1", "value": "1" },
+        { "label": "2-3", "value": "2-3" },
+        { "label": "4-5", "value": "4-5" },
+        { "label": "6-7", "value": "6-7" },
+        { "label": ">7", "value": ">7" }
+      ],
+      "id": 9
+    },
+    {
+      "label": "Nehmen Sie Drogen (einschl. Cannabis)?",
+      "tag": "drugs",
+      "value": null,
+      "coding": {
+        "display": "Misuses drugs (finding)",
+        "code": "SCTID: 361055000",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Nein", "value": 0 },
+        { "label": "Ja", "value": 1 }
+      ],
+      "id": 10
+    },
+    {
+      "label": "Wie oft nutzen Sie Computer–, Konsolen–, Handy- oder Onlinespiele?",
+      "tag": "gaming",
+      "value": null,
+      "coding": {
+        "display": "Misuses drugs (finding)",
+        "code": "SCTID: 2801000175104T",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        { "label": "Jeden / fast jeden Tag", "value": "daily" },
+        { "label": "Ein / mehrmals pro Woche", "value": "weekly" },
+        { "label": "seltener", "value": "rarely" },
+        { "label": "nie", "value": "never" }
+      ],
+      "id": 11
+    },
+    {
+      "label": "Hatten Sie schon einmal den Eindruck ein Problem mit Videospielen, Glücksspielen, Geldwetten oder Geldspielen zu haben?",
+      "tag": "gaming_2",
+      "value": null,
+      "type": "radio",
+      "coding": {
+        "display": "Gambling (finding)",
+        "code": "SCTID: 105523009",
+        "system": "http://snomed.info/sct"
+      },
+      "inline": true,
+      "options": [
+        { "label": "Nein", "value": 0 },
+        { "label": "Ja", "value": 1 }
+      ],
+      "id": 12
+    },
+    {
+      "label": "Sind bei Ihnen Gedächtnisstörungen bekannt?",
+      "tag": "memory_problems",
+      "value": null,
+      "coding": {
+        "display": "Memory impairment (finding)",
+        "code": "SCTID: 386807006",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Nein", "value": 0 },
+        { "label": "Ja", "value": 1 }
+      ],
+      "id": 14
+    },
+    {
+      "label": "Ist bei ihnen eine Depression bekannt?",
+      "tag": "depression",
+      "value": null,
+      "coding": {
+        "display": "History of depression",
+        "code": "SCTID: 161469008",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Ja, aktuell bestehend", "value": "yes_active" },
+        { "label": "Depression in der Vergangenheit", "value": "yes_history" },
+        { "label": "Nein, nie", "value": "no" }
+      ],
+      "id": 15
+    },
+    {
+      "label": "Sind bei Ihnen andere psychische Erkrankungen bekannt?",
+      "tag": "psychic_history",
+      "value": null,
+      "coding": {
+        "display": "History of psychiatric disorder",
+        "code": "SCTID: 161464003",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Nein", "value": 0 },
+        { "label": "Ja", "value": 1 }
+      ],
+      "id": 16
+    },
+    {
+      "label": "Leben Sie allein?",
+      "tag": "live_alone",
+      "value": null,
+      "coding": {
+        "display": "Lives alone (finding)",
+        "code": "SCTID: 105529008",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Nein", "value": 0 },
+        { "label": "Ja", "value": 1 }
+      ],
+      "id": 17
+    },
+    {
+      "label": "Sind Sie",
+      "tag": "partnership",
+      "value": null,
+      "coding": {
+        "display": "Maritual status",
+        "code": "LID: 45404-1",
+        "system": "LOINC"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Single", "value": "single" },
+        { "label": "In Partnerschaft", "value": "cohabitating" },
+        { "label": "Verheiratet", "value": "married" },
+        { "label": "Verwitwet", "value": "widowed" }
+      ],
+      "id": 18
+    },
+    {
+      "label": "Treiben Sie Sport?",
+      "tag": "sport",
+      "value": null,
+      "coding": {
+        "display": "Sports activity",
+        "code": "SCTID: 14468000",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Nie", "value": "no" },
+        { "label": "1h/Woche", "value": "1h_week" },
+        { "label": "1-3h/Woche", "value": "1-3h_week" },
+        { "label": ">3h/Woche", "value": ">3h_week" }
+      ],
+      "id": 19
+    },
+    {
+      "label": "Kennen Sie folgende Sorgen?",
+      "tag": "sorrow",
+      "value": [],
+      "type": "checkbox",
+      "coding": {
+        "display": "Emotional state finding (finding)",
+        "code": "SCTID: 106126000",
+        "system": "http://snomed.info/sct"
+      },
+      "inline": true,
+      "options": [
+        { "label": "Angst vor Verarmung", "value": "fear_poverty" },
+        { "label": "Geldsorgen", "value": "money_worries" },
+        { "label": "Einsamkeit", "value": "loneliness" },
+        { "label": "Keine Angabe", "value": "no_details" },
+        { "label": "Keine Sorgen", "value": "no" }
+      ],
+      "id": 20
+    },
+    {
+      "label": "Sind Sie aktuell berufstätig bzw. sind Sie in einer Ausbildung oder studieren Sie?",
+      "tag": "employed",
+      "value": null,
+      "type": "radio",
+      "coding": {
+        "display": "Employed",
+        "code": "LID: 99222-2",
+        "system": "LOINC"
+      },
+      "inline": true,
+      "options": [
+        { "label": "Nein", "value": 0 },
+        { "label": "Ja", "value": 1 }
+      ],
+      "id": 21
+    },
 
+    {
+      "label": "Wie lautet Ihr höchster Bildungsabschluss?",
+      "caption": "Bitte den höchsten Abschluss angeben",
+      "tag": "graduation",
+      "value": null,
+      "coding": {
+        "display": "Bildungsgrad",
+        "code": "CUSTOM: Anamnese\\Education",
+        "system": "CUSTOM"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Abschluss 8-10. Klasse", "value": "8-10. Klasse" },
+        { "label": "Abitur / Fachabitur", "value": "Abitur" },
+        { "label": "abgeschl. Ausbildung", "value": "Ausbildung" },
+        { "label": "abgeschl. Studium", "value": "Studium" }
+      ],
+      "id": 22
+    }
+  ],
+  "results": {}
 }
