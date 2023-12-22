@@ -23,6 +23,10 @@ npm run build
 - ```npm run build_sign```   (dafuer muss XCODE installiert sein und ein Develp. Account angemeldet)
 - ```npm run build_dmg```
 
+#### for windows:
+- quasar.conf.js >> muss auf "builder" gestellt sein!!
+- appdmg muss deinstalliert sein (```npm remove appdmg```)
+- ```npm run build4win```
 
 ### Cypress starten
 ```bash
