@@ -55,6 +55,8 @@ export default {
     this.visit = {
       PATIENT_NUM: this.PATIENT_PINNED.PATIENT_NUM,
       START_DATE: datenow_isostring(),
+      ACTIVE_STATUS_CD: {label: "Active", value: "SCTID: 55561003"},
+      _create_new: true
     };
   },
 

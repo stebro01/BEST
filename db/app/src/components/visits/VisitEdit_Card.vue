@@ -157,7 +157,8 @@ export default {
         .then((res) => {
           this.options_status = res;
         });
-      this.data_changed = false;
+        
+      this.data_changed = this.visit._create_new === true;
     },
 
     saveData() {

@@ -36,12 +36,7 @@
                   <q-input  v-model="scope.value" dense autofocus counter type="text" @keyup.enter="scope.set" @change="dataChanged()"/>
                 </q-popup-edit>
               </span>
-              <!-- NUMBER -->
-              <span v-if="['AGE_IN_YEARS'].includes(el)" class="cursor-pointer"><q-icon size="xs" name="edit" />
-                 <q-popup-edit v-model="this.patient[el]" buttons v-slot="scope">
-                  <q-input v-model="scope.value" dense autofocus counter type="number" @keyup.enter="scope.set" @change="dataChanged()"/>
-                </q-popup-edit>
-              </span>
+
               <!-- DATE -->
               <span v-if="['BIRTH_DATE', 'DEATH_DATE'].includes(el)" class="cursor-pointer"><q-icon size="xs" name="edit" />
                  <q-popup-edit v-model="this.patient[el]" buttons v-slot="scope">
@@ -161,7 +156,7 @@ export default {
       if (!this.patient) return undefined
       const ptemp = {}
       Object.keys(this.patient).forEach(p => {
-        if (p !== 'PATIENT_NUM' && !this.SCHEME_PATIENT_DIMENSION._PRIVATE.includes(p)) ptemp[p] = this.patient[p]
+        if (p !== 'PATIENT_NUM' && !this.SCHEME_PATIENT_DIMENSION._PRIVATE.includes(p) && p!=='AGE_IN_YEARS') ptemp[p] = this.patient[p]
       })
       return ptemp
     }

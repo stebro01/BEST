@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       filter: null,
-      public_id: this.$store.getters.ENV.app.env.public_id,
+      public_id: this.$store.getters.PUBLIC_ID,
       selected: {},
       results: [],
       columns: [
@@ -301,7 +301,7 @@ export default {
         if(item.selected) {
           await this.$store.dispatch("changePatientVisibility", {
             PATIENT_NUM: item.PATIENT_NUM,
-            USER_ID: this.$store.getters.ENV.app.env.public_id
+            USER_ID: this.$store.getters.PUBLIC_ID
           })
         }
       }

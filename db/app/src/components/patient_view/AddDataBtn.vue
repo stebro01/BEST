@@ -13,7 +13,7 @@
 </template>
 
 <script>
-
+import { my_prompt } from 'src/tools/my_dialog'
 export default {
     name: 'AddDataBtn',
 
@@ -69,6 +69,7 @@ export default {
         },
 
         onAddObservation() {
+            // get the patient ID
             this.$router.push({name: 'Observation_New'})
             
         },
@@ -77,8 +78,19 @@ export default {
             this.$router.push({name: 'Visits_New'})
         },
 
-        onClickPatient() {
-            this.$router.push({name: 'Patients'})
+        async onClickPatient() {
+            const answ = await my_prompt(`Bitte ID für neuen Patienten eingeben`)
+            if (answ === false) return
+            const res =  await this.$store.dispatch("addDB", {
+                query_string: { SOURCESYSTEM_CD: "LOINC", PATIENT_CD: answ },
+                table: "PATIENT_DIMENSION",
+            })
+            if (res && res.PATIENT_NUM) {
+                this.$store.commit('VISIT_PINNED_SET', undefined)
+                this.$router.push({ name: "Patients_Edit", params: { PATIENT_NUM: res.PATIENT_NUM }}) 
+            }
+            else this.$q.notify({ type: 'negative', message: 'Patient konnte nicht angelegt werden' })
+            
         },
 
         onImportClick() {

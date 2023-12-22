@@ -13,7 +13,7 @@
 import {now, createUUID} from '../tools/mydate'
 import { stringify } from './sqltools'
 import { hri } from 'src/tools/db_tools'
-
+import {public_id} from 'src/tools/my_env'
 
 export class Scheme_X {
     _TABLE_NAME = 'TEMPLATE'
@@ -118,7 +118,7 @@ export class Scheme_X {
         var TABLE_NAME = this._TABLE_NAME
         if (this._VIEW_NAME && payload._view) {
             TABLE_NAME = this._VIEW_NAME
-            if (payload.USER_ID) EL += ` AND \"USER_ID\" = ${payload.USER_ID} OR "USER_ID" = 999999` //ADDED FOR USER_MANAGEMENT (only current user but all public)
+            if (payload.USER_ID) EL += ` AND \"USER_ID\" = ${payload.USER_ID} OR "USER_ID" = ${public_id()}` //ADDED FOR USER_MANAGEMENT (only current user but all public)
         }
 
         if (payload._sort) EL += ` ORDER BY \"${payload._sort}\"`

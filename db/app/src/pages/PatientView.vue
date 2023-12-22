@@ -94,7 +94,6 @@ import ADD_DATA_BTN from 'src/components/patient_view/AddDataBtn.vue'
 import GLOBAL_OBSERVATIONS from 'src/components/patient_view/GlobalObservations.vue'
 import POPUP_DATA from 'src/components/patient_view/PopupData.vue'
 
-
 export default {
   name: 'DBQueries_PatientView',
 
@@ -168,7 +167,16 @@ export default {
     async runSQLStatement(sql_query) {
       const res = await this.$store.dispatch('runQuery', sql_query)
       if (res.status) {
-        this.localData.PATIENTS = res.data
+        // remove doubles, this might occure if a patient has more than one user assigned
+        let uniqueByPatientCD = res.data.reduce((acc, item) => {
+        delete item.USER_ID;
+        if (!acc.some(accItem => accItem.PATIENT_CD === item.PATIENT_CD)) {
+            acc.push(item);
+        }
+        return acc;
+        }, []);
+        // success
+        this.localData.PATIENTS = uniqueByPatientCD
         this.$q.notify({ type: 'positive', message: 'Daten erfolgreich geladen' })
       } else {
         this.$q.notify({ type: 'negative', message: 'Daten konnten nicht geladen werden' })
@@ -178,9 +186,9 @@ export default {
     // QUERY FUNCTIONS
     resetSQLQuery() {
       var sql = undefined
-      if (this.query_obs_elements.length === 0) sql = `${this.$store.getters.ENV.app.env.patient_view.sql_statement} WHERE USER_ID=${this.$store.getters.USER.USER_ID} OR USER_ID=${this.$store.getters.ENV.app.env.public_id}`
+      if (this.query_obs_elements.length === 0) sql = `${this.$store.getters.ENV.app.env.patient_view.sql_statement} WHERE USER_ID=${this.$store.getters.USER.USER_ID} OR USER_ID=${this.$store.getters.PUBLIC_ID}`
       else {
-        // SELECT * FROM patient_list pl WHERE (pl.USER_ID = 14 OR pl.USER_ID = 999999) AND EXISTS (SELECT 1 FROM OBSERVATION_FACT of WHERE pl.PATIENT_NUM = of.PATIENT_NUM AND of.CONCEPT_CD = 'age');
+        // SELECT * FROM patient_list pl WHERE (pl.USER_ID = 14 OR pl.USER_ID = 0) AND EXISTS (SELECT 1 FROM OBSERVATION_FACT of WHERE pl.PATIENT_NUM = of.PATIENT_NUM AND of.CONCEPT_CD = 'age');
         const CONCEPTS = this.query_obs_elements.map(el => {
           if (el.VALTYPE_CD === 'N') {
             return `(of.CONCEPT_CD = '${el.CONCEPT_CD}' AND of.NUM_VAL=${el.NVAL_NUM})`;
@@ -190,7 +198,7 @@ export default {
         }).join(' OR ');
 
         const and = ` AND EXISTS (SELECT 1 FROM OBSERVATION_FACT of WHERE pl.PATIENT_NUM = of.PATIENT_NUM AND (${CONCEPTS})`
-        sql = `${this.$store.getters.ENV.app.env.patient_view.sql_statement} pl WHERE (pl.USER_ID = ${this.$store.getters.USER.USER_ID} OR pl.USER_ID = ${this.$store.getters.ENV.app.env.public_id}) ${and} )`
+        sql = `${this.$store.getters.ENV.app.env.patient_view.sql_statement} pl WHERE (pl.USER_ID = ${this.$store.getters.USER.USER_ID} OR pl.USER_ID = ${this.$store.getters.PUBLIC_ID}) ${and} )`
 
       }
 

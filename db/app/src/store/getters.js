@@ -1,3 +1,9 @@
+import {public_id} from 'src/tools/my_env'
+
+export function PUBLIC_ID() {
+    return public_id()
+}
+
 export function ENV(state) {
     return state.ENV
 }
@@ -96,9 +102,6 @@ export function PATIENT_VIEW_SQL_STATEMENT(state) {
     return state.PATIENT_VIEW.SQL_STATEMENT
 }
 
-export function PUBLIC_ID(state) {
-    return state.ENV.app.env.public_id
-}
 
 export function ANSWER_ABSENT() { 
     return { value: 'SCTID: 2667000', label: 'k.A.' }
