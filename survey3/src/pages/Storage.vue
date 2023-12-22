@@ -134,7 +134,9 @@ export default {
         case "pid_down":
           LISTE.sort((a, b) => (a.info.PID < b.info.PID ? 1 : -1));
           break;
-
+        case "export_open":
+          LISTE.sort((a, b) => (a.exported > b.exported ? 1 : -1));
+          break;
         default:
           // console.log(ORDERING)
           break;

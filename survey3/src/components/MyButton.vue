@@ -48,7 +48,9 @@ export default {
 
   methods: {
     clicked() {
+      // console.log('click')
       this.$emit("click");
+      this.$emit("clicked");
     },
   },
 };

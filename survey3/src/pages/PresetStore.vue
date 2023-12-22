@@ -30,12 +30,19 @@
                   <q-btn size="12px" flat dense round icon="more_vert" data-cy="btn_options" >
                     <q-menu cover auto-close>
                       <q-list>
+                        <q-item  class="my-btn text-center" data-cy="back_root" clickable @click="edit_preset(index)">
+                          <q-item-section avatar>
+                            <q-icon :name="TEXT.btn.edit_new.icon" />
+                          </q-item-section>
+                          <q-item-section >{{TEXT.btn.edit_new.label}}</q-item-section>
+                        </q-item>
                         <q-item  class="my-btn text-center" data-cy="back_root" clickable @click="delete_preset(index)">
                           <q-item-section avatar>
                             <q-icon :name="TEXT.btn.delete.icon" />
                           </q-item-section>
                           <q-item-section >{{TEXT.btn.delete.label}}</q-item-section>
                         </q-item>
+                        
                       </q-list>
                     </q-menu>
                 </q-btn>
@@ -56,6 +63,14 @@
     <!-- BACKBUTTON -->
     <BACKBUTTON />
 
+    <!-- MODALS -->
+    <q-dialog v-model="PresetStoreEdit_show" >
+        <PRESET_STORE_EDIT 
+          :item="PresetStoreEdit_item"
+          @save="updateItem($event)"
+          @close="PresetStoreEdit_show = false; PresetStoreEdit_item = undefined" />
+    </q-dialog>
+    
   </q-page>
 </template>
 
@@ -64,20 +79,22 @@
   import myMixins from 'src/mixins/modes'
   import BACKBUTTON from 'src/components/BackButton.vue'
   import MYBUTTON from 'src/components/MyButton.vue'
-
+  import PRESET_STORE_EDIT from 'src/components/PresetStore_Edit.vue'
   export default {
     name: 'PRESETSTORE',
     mixins: [myMixins],
     data() {
       return {
         TEXT: this.$store.state.TEXT,
-        needToSave: []
+        needToSave: [],
+        PresetStoreEdit_item: undefined,
+        PresetStoreEdit_show: false,
       }
     },
     mounted() {
       this.$store.dispatch('setProtectedMode', true);
     },
-    components: {BACKBUTTON, MYBUTTON},
+    components: {BACKBUTTON, MYBUTTON, PRESET_STORE_EDIT},
     methods: {
       actionStr(ev, index) {
         var text = ev.target.innerText.replace(/[\n\r]/g, '')
@@ -99,6 +116,12 @@
       //    var answer = window.confirm(this.TEXT.btn.confirm_delete);
       //   if (answer) this.$store.dispatch('clearPreset');
       // },
+
+      edit_preset(index) {
+        this.PresetStoreEdit_show = true
+        this.PresetStoreEdit_item = this.$store.getters.PRESET_STORE[index]
+      },
+
       save_item(index) {
         this.needToSave[index] = false
         this.$store.dispatch('updatePreset', {
@@ -106,6 +129,13 @@
           value: this.$store.getters.PRESET_STORE[index]
         });
       },
+
+      updateItem(item) {
+        var index = this.$store.getters.PRESET_STORE.findIndex((el) => el.label === item.label)
+        this.$store.dispatch('updatePreset', {index: index, value: item});
+        this.PresetStoreEdit_show = false
+        this.PresetStoreEdit_item = undefined
+      }
       // onInputLabel(event, index) {
       //   this.$store.getters.PRESET_STORE[index].label = event.target.innerText      
       //   Vue.set(this.needToSave, index,  true)

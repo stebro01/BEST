@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  const filter_options = [{label: 'Datum↑', value: 'date_up'}, {label: 'Datum↓', value: 'date_down'}, {label: 'PID↑', value: 'pid_up'}, {label: 'PID↓', value: 'pid_down'}]
+  const filter_options = [{label: 'Datum↑', value: 'date_up'}, {label: 'Datum↓', value: 'date_down'}, {label: 'PID↑', value: 'pid_up'}, {label: 'PID↓', value: 'pid_down'}, {label: 'export open', value: 'export_open'}]
   export default {
     name: 'FilterStorage',
     data() {

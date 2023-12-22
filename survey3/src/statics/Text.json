@@ -2,7 +2,7 @@
   "ENV": {
     "APP_NAME": "surveyBEST",
     "APP_VERSION": "v1.7.1",
-    "APP_UPDATED": "2023-12-04"
+    "APP_UPDATED": "2023-12-22"
   },
   "title": "Willkommen",
   "label": "bestQUEST",
@@ -138,6 +138,10 @@
     },
     "import": "importieren",
     "edit": "bearbeiten",
+    "edit_new": {
+      "label": "bearbeiten",
+      "icon": "edit"
+    },
     "create": "erzeugen",
     "preview": {
       "label": "Vorschau",

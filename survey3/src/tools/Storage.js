@@ -52,8 +52,9 @@ class Storage {
   }
 
   update_presets(payload) {
-    this._PRESET[payload.index] = payload.value
-    this.save_presets()
+    console.log(payload.value)
+    this._PRESETS[payload.index] = payload.value
+    // this.save_presets()
   }
 
   delete_presets(payload) {
@@ -293,7 +294,7 @@ function prepare_filename(DOCUMENT, suffix) {
   if (DOCUMENT === undefined) return undefined
   var nice_date = dateFormat(DOCUMENT.info.date, 'yyyymmddhhMMss')
   // splite date by DATA_TIME
-  return `quest_${check_text(DOCUMENT.info.label)}_PID_${check_text(DOCUMENT.info.PID)}_UID_${DOCUMENT.info.uid}.${suffix}`
+  return `PID_${check_text(DOCUMENT.info.PID)}_quest_${check_text(DOCUMENT.info.label)}_UID_${DOCUMENT.info.uid}.${suffix}`
 }
 
 function prepare_export_data(DOCUMENT, export_format) {

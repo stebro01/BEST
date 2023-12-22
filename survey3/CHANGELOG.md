@@ -7,17 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
-v1.7.1 - 2023-09-09
+### v1.7.2 - 2023-12-22
 
-### Added
+#### Added
+
+- Added a new questionnaire: MDS-UPDRS I - IV
+- Presets can be edited and deleted
+- Filter for stored questionnaires includes an option for filtering by export status
+
+#### Changed
+
+- export fileformat is now: `PID_quest_UID.html/json`
+
+
+
+### v1.7.1 - 2023-09-09
+
+#### Added
 
 - Added a new questionnaire: FIM, TINETTI, 6MWT, McGill, ParkMove
 
-### Changed
+#### Changed
 
 - Numeric values will be checked for validity (not string) and will be converted to numbers if nessesary
 - switched from emailjs to a custom email service on http://178.254.43.96:3000/sendEmail via POST request and nodemailer
 
-### Fixed
+#### Fixed
 
 - Fixed a bug, that if different questionnaires were stored from within different tabs, some data got lost
