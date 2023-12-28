@@ -291,12 +291,13 @@ export default {
       if (!this.SORT_LIST) return [];
       return this.SORT_LIST.filter(
         (item) =>
-          item._check === true && !this.OBSERVATIONS.some(
+          !this.OBSERVATIONS.some(
             (obs) =>
               obs.CONCEPT_CD === item.CONCEPT_CD &&
               obs.CONCEPT_NAME_CHAR === item.CONCEPT_NAME_CHAR
           )
       );
+
     },
 
     HIDE_MODE() {

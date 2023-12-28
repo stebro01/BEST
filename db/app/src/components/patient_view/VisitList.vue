@@ -27,8 +27,8 @@
 
             <q-tabs v-model="ACTIVE_VISIT_TAB" dense no-caps :breakpoint="0" align="justify"
                 class="bg-grey-4 text-black shadow-1">
-                <q-tab v-for="(item, index) in VISITEN" :key="index + 'tab'" :name="item.START_DATE"
-                    :label="item.START_DATE"
+                <q-tab v-for="(item, index) in VISITEN" :key="index + 'tab'" :name="item.ENCOUNTER_NUM"
+                    :label="`(${index + 1}) ${item.START_DATE}`"
                 />
                 
             </q-tabs>
@@ -79,11 +79,11 @@ export default {
         ACTIVE_VISIT_TAB: {
             get() {
                 if (!this.$store.getters.VISIT_PINNED) return undefined;
-                return this.$store.getters.VISIT_PINNED.START_DATE;
+                return this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM;
             },
             set(val) {
                 if (!this.$store.getters.VISIT_PINNED) return;
-                this.$store.commit('VISIT_PINNED_SET', this.localData.VISITS.find(item => item.START_DATE === val))
+                this.$store.commit('VISIT_PINNED_SET', this.localData.VISITS.find(item => item.ENCOUNTER_NUM === val))
             }
         }
     },

@@ -26,7 +26,7 @@
                 " :item="item" :index="index" :selected="selected.indexOf(item.info.uid) > -1"
                 @change_selection="select_item($event, item.info.uid)" @export_cloud="export_cloud(item.info.uid)"
                 @export_item="export_item(item.info.uid)" @export_item_encrypted="export_item_encrypted(item.info.uid)"
-                @remove="remove(item.info.uid)" @view_item="view_item(item.info.uid)" />
+                @remove="deleteselection([item.info.uid])" @view_item="view_item(item.info.uid)" />
             </div>
           </div>
         </q-scroll-area>
@@ -44,10 +44,10 @@
           :label="TEXT.btn.deselect.label" />
         <!-- EXPORT SELECTION -->
         <MYBUTTON v-if="QUEST_LIST.length > 0 && somethingselected" :icon="TEXT.btn.selection_export.icon"
-          @click="exportselection" data-cy="btn_export_all" :label="TEXT.btn.selection_export.label" />
+          @clicked="exportselection" data-cy="btn_export_all" :label="TEXT.btn.selection_export.label" />
         <!-- DELETE SELCTON -->
         <MYBUTTON v-if="QUEST_LIST.length > 0 && somethingselected" :icon="TEXT.btn.selection_delete.icon"
-          @click="deleteselection" :label="TEXT.btn.selection_delete.label" />
+          @clicked="deleteselection(selected)" :label="TEXT.btn.selection_delete.label" />
         <!-- DEBUG PRINT  -->
         <MYBUTTON v-if="$store.state.debug" @click="printStorageToConsole" />
       </div>
@@ -219,24 +219,17 @@ export default {
         color: "green",
       });
     },
-    deleteselection() {
+    deleteselection(SELECTED_ITEMS) {
+      if (SELECTED_ITEMS.length < 1) return false;
       const answ = confirm(this.TEXT.btn.confirm_delete);
       if (!answ) return;
-
-      this.selected.forEach((uid) => {
-        console.log(uid);
-        this.remove(uid, true);
+      SELECTED_ITEMS.forEach((uid) => {
+        this.$store.commit("STORAGE_REMOVE", uid);
+        
       });
+      this.selected = [];
     },
 
-    remove(uid, no_dialog) {
-      if (no_dialog !== true) {
-        if (!confirm(`Wirklich löschen? uid = ${uid}`)) return;
-      }
-
-      this.$store.commit("STORAGE_REMOVE", uid);
-      this.select_item(false, uid);
-    },
 
     selectall(val) {
       this.QUEST_LIST.forEach((q) => {

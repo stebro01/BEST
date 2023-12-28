@@ -165,6 +165,8 @@ export default {
 
     // LOAD THE DATA
     async runSQLStatement(sql_query) {
+      this.$store.commit('VISIT_PINNED_SET', undefined)
+      this.$store.commit('PATIENT_PINNED_SET', undefined)
       const res = await this.$store.dispatch('runQuery', sql_query)
       if (res.status) {
         // remove doubles, this might occure if a patient has more than one user assigned
@@ -232,7 +234,9 @@ export default {
 
     // PATIENT CLICKED
     patientClicked(patient) {
-      // lade die Visiten
+      // check if patient is already pinned
+      if (this.$store.getters.PATIENT_PINNED && this.$store.getters.PATIENT_PINNED.PATIENT_NUM === patient.PATIENT_NUM) return
+      // set patient pinned
       this.$store.commit('PATIENT_PINNED_SET', patient)
       this.$store.commit('VISIT_PINNED_SET', undefined)
     },
