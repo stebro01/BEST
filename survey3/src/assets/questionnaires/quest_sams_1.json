@@ -1,0 +1,184 @@
+{
+  "title": "Stendal Adherence with Medication Score: Teil 1 Angaben zur Person ",
+  "short_title": "sams_1",
+  "description": "Fragen zum Umgang mit Medikamenten",
+  "coding" : {
+    "system" : "SNOMED-CT",
+    "code" : "445536008",
+    "display" : "SAMS (Stendal Adherence with Medication Score) / Teil 1",
+    "version": "20231228"
+  },
+  "manual": "Angaben zur Person angeben und im Anschluss die Fragen zur Medikamenteneinnahme bearbeiten",
+  "keywords": "Adherence, medication, sams",
+  "ref": "DOI: 10.1016/j.dib.2019.103855",
+  "items": [
+    {
+      "label": "Wie alt sind Sie?",
+      "id": 1,
+      "coding": { "display" : "age", "code" : "397669002", "system" : "http://snomed.info/sct"},
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "force": true
+    },
+    {
+      "label": "Geschlecht",
+      "id": 2,
+      "coding": { "display" : "gender", "code" : "263495000", "system" : "http://snomed.info/sct"},
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "Männlich", "value": 1 },
+        { "label": "Weiblich", "value": 2 },
+        { "label": "Divers", "value": 3 }
+      ]
+    },
+    {
+      "label": "Familienstand",
+      "id": 3,
+      "coding": { "display": "maritual_status", "code": "LID: 45404-1", "system": "LOINC" },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "Ledig", "value": 1 },
+        { "label": "Verheiratet", "value": 2 },
+        { "label": "Verwitwet/ geschieden/ getrennt lebend", "value": 3 }
+      ],
+      "ignore_for_result": false,
+      "vertical": true
+    },
+    {
+      "label": "Wohnsituation (z.B. allein, mit (Ehe-)Partner/-in, mit in der Familie)",
+      "id": 4,
+      "coding": { "display": "living_situation", "code": "", "system": "" },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "Wo werden Sie aktuell behandelt?",
+      "id": 5,
+      "coding": { "display": "current_treatment", "code": "", "system": "" },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "Stationär", "value": 1 },
+        { "label": "Ambulant", "value": 2 },
+        { "label": "Teilstationär (z.B. Tagesklinik)", "value": 3 }
+      ]
+    },
+    {
+      "label": "Schulabschluss",
+      "id": 6,
+      "coding": { "display": "eductation", "code": "CUSTOM: ANAMNESE_EDUCATION", "system": "CUSTOM" },
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "Kein Schulabschluss", "value": 1 },
+        { "label": "Haupt-, Volksschule", "value": 2 },
+        { "label": "Realschule, Handelsschule, mittlere Reife", "value": 3 },
+        { "label": "Abitur, Fachabitur", "value": 4 },
+        { "label": "Studium (Universität, FH)", "value": 5 }
+      ]
+    },
+    {
+      "label": "Berufstätigkeit",
+      "id": 7,
+      "coding": { "display" : "occupation", "code" : "14679004", "system" : "SNOMED-CT"},
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Voll berufstätig (mehr als 35 Std. pro Woche)",
+          "value": 1
+        },
+        { "label": "Teilweise berufstätig", "value": 2 },
+        { "label": "Krankgeschrieben", "value": 3 },
+        { "label": "Rentner/Rentnerin", "value": 4 },
+        { "label": "Arbeitssuchend", "value": 5 }
+      ]
+    },
+    {
+      "label": "Unter welcher Erkrankung leiden Sie?",
+      "id": 8,
+      "coding": { "display": "disease", "code": "", "system": "" },
+      "value": null,
+      "type": "text",
+      "inline": true,
+      "force": true
+    },
+    {
+      "label": "Wer bereitet Ihre Tabletten vor?",
+      "id": 9,
+      "coding": { "display": "caretaker_medication", "code": "", "system": "" },
+      "value": [],
+      "type": "checkbox",
+      "inline": true,
+      "force": true,
+      "options": [
+        { "label": "Sie selbst", "value": 1 },
+        { "label": "(Ehe-) Partner/-in ", "value": 2 },
+        { "label": "Sozialstation", "value": 3 },
+        { "label": "Apotheker/-in", "value": 4 },
+        { "label": "Andere, wer?", "value": 5 }
+      ]
+    },
+    {
+      "label": "Wie viele Tabletten nehmen Sie am Tag? MORGENS: ",
+      "id": 10,
+      "coding": { "display": "medication_morning", "code": "", "system": "" },
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "force": true
+    },
+    {
+      "label": "Wie viele Tabletten nehmen Sie am Tag? MITTAGS:",
+      "id": 11,
+      "coding": { "display": "medication_midday", "code": "", "system": "" },
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "force": true
+    },
+    {
+      "label": "Wie viele Tabletten nehmen Sie am Tag? ABENDS:",
+      "id": 12,
+      "coding": { "display": "medication_evening", "code": "", "system": "" },
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "force": true
+    },
+    {
+      "label": "Wie viele Tabletten nehmen Sie zusätzlich pro Woche ein?",
+      "id": 13,
+      "coding": { "display": "medication_extra_weekly", "code": "", "system": "" },
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "force": true
+    },
+    {
+      "label": "Wie viele verschiedenen Medikamente nehmen Sie insgesamt jeden Tag ein?",
+      "id": 14,
+      "coding": { "display": "medication_different_types", "code": "", "system": "" },
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "force": true
+    }
+  ],
+  "results": {}
+}

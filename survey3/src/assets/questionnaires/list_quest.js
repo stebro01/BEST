@@ -66,6 +66,8 @@ const quest = [
   "ptss14", "ptss14_cov2",
   "sf36",
   "sf36_mod",
+  "sams_1",
+  "sams_2",
   "shapsd",
   "sus",
   "tinetti",

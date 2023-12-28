@@ -1,0 +1,217 @@
+{
+  "title": "Stendal Adherence with Medication Score: Teil 2 Fragen zur Medikamenteneinnahme",
+  "short_title": "sams_2",
+  "description": "Fragen zum Umgang mit Medikamenten",
+  "coding" : {
+    "system" : "SNOMED-CT",
+    "code" : "445536008",
+    "display" : "SAMS (Stendal Adherence with Medication Score) / Teil 2",
+    "version": "20231228"
+  },
+  "manual": "SAMS Teil 1 Angaben zur Person und Teil 2 Fragen zur Medikamenteneinnahme bearbeiten",
+  "keywords": "adherence, medication, sams",
+  "ref": "DOI: 10.1016/j.dib.2019.103855",
+  "items": [
+    {
+      "label": "",
+      "id": [1,2,3],
+      "coding": { "display": "", "code": "", "system": "" },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "force": true,
+      "options": {
+        "answers": [
+          { "label": "Bei allen ", "value": 0 },
+          { "label": "Bei den meisten", "value": 1 },
+          { "label": "Bei der Hälfte", "value": 2 },
+          { "label": "Bei einigen", "value": 3 },
+          { "label": "Bei keinem", "value": 4 }
+        ],
+        "questions": [
+          {
+            "label": "Kennen Sie den Grund für die Einnahme Ihrer Medikamente?",
+            "tag": "know_reason_for_medication",
+            "id": 1
+          },
+          {
+            "label": "Kennen Sie die Dosierungen Ihrer Medikamente?",
+            "tag": "know_dosage_of_medication",
+            "id": 2
+          },
+          {
+            "label": "Sind Sie mit dem Zeitpunkt der Medikamenteneinnahme vertraut?",
+            "tag": "know_time_of_medication",
+            "id": 3
+          }
+        ]
+      },
+      "vertical": true
+    },
+    {
+      "label": "",
+      "id": [4,5],
+      "coding": { "display": "", "code": "", "system": "" },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "force": true,
+      "options": {
+        "answers": [
+          { "label": "Alle", "value": 0 },
+          { "label": "Die meisten", "value": 1 },
+          { "label": "Die Hälfte", "value": 2 },
+          { "label": "Einige", "value": 3 },
+          { "label": "Keine", "value": 4 }
+        ],
+        "questions": [
+          {
+            "label": "Nehmen Sie die Medikamente regelmäßig ein?",
+            "tag": "take_medication_regularly",
+            "id": 4
+          },
+          {
+            "label": "Kennen Sie die Medikamente, die Sie einnehmen?",
+            "tag": "know_medications",
+            "id": 5
+          }
+        ]
+      },
+      "longanswers": false
+    },
+    {
+      "label": "",
+      "id": [6,7,8,9,10,11,12,13,14,15,16,17,18],
+      "coding": { "display": "", "code": "", "system": "" },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "force": true,
+      "options": {
+        "answers": [
+          { "label": "Nie", "value": 0 },
+          { "label": "Selten", "value": 1 },
+          { "label": "Manchmal", "value": 2 },
+          { "label": "Oft", "value": 3 },
+          { "label": "Meistens", "value": 4 }
+        ],
+        "questions": [
+          {
+            "label": "Vergessen Sie, Ihre Medikamente zu nehmen?",
+            "tag": "forget_medication",
+            "id": 6
+          },
+          {
+            "label": "Sind Sie nachlässig beim Einnehmen der Medikamente?",
+            "tag": "negligent_medication",
+            "id": 7
+          },
+          {
+            "label": "Wenn Sie sich besser fühlen, nehmen Sie dann keine Medikamente?",
+            "tag": "ignore_medication_because_of_better_feeling",
+            "id": 8
+          },
+          {
+            "label": "Wenn Sie sich manchmal nach der Einnahme der Medikamente schlechter fühlen, hören Sie dann auf diese einzunehmen?",
+            "tag": "ignore_medication_because_of_worse_feeling",
+            "id": 9
+          },
+          {
+            "label": "Nehmen Sie falsche/andere Medikamente ein (z.B. die Ihres (Ehe-)Partners)?",
+            "tag": "take_wrong_medication",
+            "id": 10
+          },
+          {
+            "label": "Wenn Sie glauben, Nebenwirkungen der Medikamente zu haben (z.B. Zittern, Übelkeit, o.ä.), reduzieren Sie dann die Dosis ohne Rücksprache mit einem Arzt?",
+            "tag": "reduce_dosage_without_consultation",
+            "id": 11
+          },
+          {
+            "label": "Wenn Sie glauben, Nebenwirkungen der Medikamente zu haben (z.B. Zittern, Übelkeit, o.ä.), nehmen Sie es nicht mehr ein, d.h. machen Sie eine Pause?",
+            "tag": "pause_medication_without_consultation",
+            "id": 12
+          },
+          {
+            "label": "Wenn Sie das Gefühl haben, zu viele Medikamente nehmen zu müssen, lassen Sie ohne Rücksprache Medikamente weg, die Ihnen nicht so wichtig erscheinen?",
+            "tag": "chancel_medication_without_consultation",
+            "id": 13
+          },
+          {
+            "label": "Falls Sie Ihre Tablette vergessen/weglassen, vergessen Sie diese eher... MORGENS?",
+            "tag": "forget_medication_morning",
+            "id": 14
+          },
+          {
+            "label": "Falls Sie Ihre Tablette vergessen/weglassen, vergessen Sie diese eher... MITTAGS?",
+            "tag": "forget_medication_noon",
+            "id": 15
+          },
+          {
+            "label": "Falls Sie Ihre Tablette vergessen/weglassen, vergessen Sie diese eher... ABENDS?",
+            "tag": "forget_medication_evening",
+            "id": 16
+          },
+          {
+            "label": "Lassen Sie gezielt die Medikamente weg, die Sie für nicht so wichtig halten, nehmen aber dafür den Rest?",
+            "tag": "chancel_medication_if_not_important",
+            "id": 17
+          },
+          {
+            "label": "Falls Sie Medikamente als Spritze oder Tablette wöchentlich einnehmen, haben Sie diese schon einmal vergessen?",
+            "tag": "forget_medication_weekly",
+            "id": 18
+          }
+        ]
+      }
+    },
+    {
+      "label": "",
+      "id": [19,20,21,22,23],
+      "coding": { "display": "", "code": "", "system": "" },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "force": true,
+      "options": {
+        "answers": [
+          { "label": "Überhaupt nicht", "value": 0 },
+          { "label": "Ein wenig", "value": 1 },
+          { "label": "Ziemlich", "value": 2 },
+          { "label": "Stark", "value": 3 },
+          { "label": "Sehr stark", "value": 4 }
+        ],
+        "questions": [
+          {
+            "label": "Ich halte mit dem Stationspersonal getroffene Absprachen ein.",
+            "tag": "agreement_with_staff",
+            "id": 19
+          },
+          {
+            "label": "Ich halte mit Ärzten und Therapeuten vereinbarte Termine ein.",
+            "tag": "agreement_with_doctors",
+            "id": 20
+          },
+          {
+            "label": "Ich nehme meine Medikamente genau nach ärztlicher Verordnung ein.",
+            "tag": "take_medication_as_prescribed",
+            "id": 21
+          },
+          {
+            "label": "Ich nehme aktiv an weiteren Therapien (z.B. Sport- oder Beschäftigungstherapie) teil.",
+            "tag": "participate_in_therapy",
+            "id": 22
+          },
+          {
+            "label": "Ich bin in Therapiesitzungen kooperativ.",
+            "tag": "cooperative_in_therapy",
+            "id": 23
+          }
+        ]
+      }
+    }
+  ],
+  "results": { 
+    "method": "sum",
+    "coding": { "display" : "SAMS 2 - Score", "code" : "SCTID: SAMS_2_SCORE", "system" : "http://snomed.info/sct"}
+  }
+}
