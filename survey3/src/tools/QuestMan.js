@@ -408,6 +408,11 @@ function calc_simple_sum(items, methods) {
   items.forEach(item => {
     if (typeof item.value === 'number' && item.ignore_for_result !== true) {
       sum += item.value
+    } //added 20231229: if array, then sum all values
+    else if (Array.isArray(item.value) && item.ignore_for_result !== true) {
+      item.value.forEach(val => {
+        if (typeof val === 'number') sum += val
+      })
     }
   })
   const RESULT = { 'label': 'sum', 'value': sum }

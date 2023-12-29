@@ -1,0 +1,56 @@
+{
+  "title": "Stanford Sleepiness Scale",
+  "short_title": "sss",
+  "description": "Erfassung der aktuellen Müdigkeit",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "225398001",
+    "display": "stanford sleepiness scale"
+  },
+  "manual": "Bitte kreuzen Sie an, wie müde Sie sich gerade fühlen",
+  "keywords": "Müdigkeit, Sleepiness, sss",
+  "ref": "https://www.webofscience.com/wos/woscc/full-record/WOS:A1972M317100233?SID=EUW1ED0F78n9kyAHZcgzN7cUHdWfS",
+  "items": [
+    {
+      "label": "Welche Beschreibung trifft momentan auf Sie zu?",
+      "id": 1,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "checkbox",
+      "inline": false,
+      "force": false,
+      "options": [
+        { "label": "aktiv, vital, hellwach, sehr aufmerksam", "value": 1 },
+        {
+          "label": "auf hohem, aber nicht höchstem Level funktionsfähig; konzentrationsfähig",
+          "value": 2
+        },
+        {
+          "label": "wach, aber entspannt; anwesend, aber nicht sehr aufmerksam",
+          "value": 3
+        },
+        { "label": "etwas benebelt; heruntergefahren", "value": 4 },
+        {
+          "label": "benebelt, verlangsamt; Interesse am Wachbleiben sinkt",
+          "value": 5
+        },
+        {
+          "label": "schläfrig, duselig; Kampf gegen das Einschlafen",
+          "value": 6
+        },
+        {
+          "label": "Kein Kampf mehr gegen das Einschlafen, Schlaf setzt bald ein; traumähnliche Gedanken",
+          "value": 7
+        }
+      ]
+    }
+  ],
+  "results": {
+    "method": "sum",
+    "coding": { "display" : "stanford sleepiness scale (score)", "code" : "CUSTOM: STANFORD_SLEEP_SCALE", "system" : "CUSTOM"}
+  }
+}

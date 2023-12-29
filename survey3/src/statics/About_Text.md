@@ -18,6 +18,10 @@ Diese App sendet keine Daten zu einem Server, alle erhobenen Daten bleiben auf d
   - RSA signature mit private und publicKey
 - FHIR-HL7 ready (bereit für Kommunikation mit einer FHIR-HL7 kompatiblen REST-API)
 
+**CHANGELOG**:
+
+- 2023-12-29: minor bugfixes and new quests
+
 **PRIVACY**:
 
 - Diese Web-App **sendet keinerlei Daten** an Dritte.

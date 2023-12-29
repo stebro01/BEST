@@ -69,6 +69,7 @@ const quest = [
   "sams_1",
   "sams_2",
   "shapsd",
+  "sss",
   "sus",
   "tinetti",
   "tug",
