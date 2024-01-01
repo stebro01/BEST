@@ -15,23 +15,27 @@
       <!-- MAIN -->
       <template v-slot:main>
         <q-table class="my-table" :rows="QUESTS" row-key="CODE_CD" :columns="columns" dense
-          :rows-per-page-options="[10, 25, 50, 100]" :filter="filter">
+          :rows-per-page-options="[10, 25, 50, 100]" :filter="filter"
+          v-model:selected="selected_SB"
+          selection="single"
+          >
         </q-table>
-
       </template>
 
       <!-- FOOTER -->
       <template v-slot:footer>
         <!-- LOCATOIN_CD -->
         <BOTTOM_BUTTONS
-          :show_delete="true" :show_add="true"
-          
-          @delete="comming_soon()"
-          
+          :show_delete="selected_SB.length > 0" :show_add="selected_SB.length === 0"
+          @add="show_add_quest = true"
+          @delete="deleteItem(selected_SB[0])"
         />
       </template>
 
     </MainSlot>
+
+    <!-- ADD -->
+    <ADD_QUEST_TEMPLATE v-if="show_add_quest" :active="show_add_quest" @close="closeAndupdate()" />
   </q-page>
 </template>
 
@@ -40,6 +44,7 @@ import HEADING from 'src/components/elements/Heading.vue'
 import MainSlot from 'src/components/MainSlot.vue'
 import FILTER_BOX from 'src/components/elements/FilterBox.vue'
 import BOTTOM_BUTTONS from 'src/components/elements/BottomButtons.vue'
+import ADD_QUEST_TEMPLATE from 'src/components/sB_Integration/Add_QuestTemplate.vue'
 
 import { unstringify } from 'src/classes/sqltools'
 import { my_confirm } from "src/tools/my_dialog";
@@ -51,14 +56,16 @@ export default {
     return {
       QUESTS: [],
       filter: undefined,
+      selected_SB: [],
       columns: [
         { name: 'CODE_CD', required: true, label: 'ID', align: 'center', field: 'CODE_CD', sortable: true },
         { name: 'NAME_CHAR', required: true, label: 'Bez.', align: 'left', field: 'NAME_CHAR', sortable: true },
       ],
+      show_add_quest: false,
     }
   },
 
-  components: { HEADING, MainSlot,FILTER_BOX, BOTTOM_BUTTONS },
+  components: { HEADING, MainSlot,FILTER_BOX, BOTTOM_BUTTONS, ADD_QUEST_TEMPLATE },
   // mixins: [myMixins], //imports: searchPatient & deleteItem
 
   mounted() {
@@ -75,16 +82,9 @@ export default {
   },
 
   methods: {
-    comming_soon() {
-      this.$q.notify({
-        message: 'Coming Soon',
-        color: 'warning',
-        icon: 'warning',
-        position: 'bottom',
-        timeout: 1000
-      })
-    },
-
+    /**
+     * Load all data from DB
+     */
     loadLocalData() {
       this.$store.dispatch('searchDB', { query_string: { COLUMN_CD: 'SURVEY_BEST' }, table: "CODE_LOOKUP" })
         .then(res => this.formatResult(res))
@@ -93,10 +93,32 @@ export default {
     formatResult(res) {
       this.QUESTS = res
       this.QUESTS.forEach(s => {
-        s.LOOKUP_JSON = JSON.parse(unstringify(s.LOOKUP_BLOB))
+        try {
+          s.LOOKUP_JSON = JSON.parse(unstringify(s.LOOKUP_BLOB))
+        } catch (error) {
+          s.LOOKUP_JSON = {}
+        }
       })
-      console.log(this.QUESTS)
     },
+
+    /**
+     * Delete selected item from DB
+     * @param {object} item 
+     */
+    async deleteItem(item) {
+      if (!await my_confirm(this.$store.getters.TEXT.msg.confirm_delete)) return
+      await this.$store.dispatch('deleteDB', {query_string: {CODE_CD: item.CODE_CD, COLUMN_CD: 'SURVEY_BEST'}, table: 'CODE_LOOKUP'})
+      this.selected_SB = []
+
+      // finally reload
+      this.loadLocalData()
+    },
+
+    closeAndupdate() {
+      this.show_add_quest = false
+      this.loadLocalData()
+    }
+    
 
   }
 
