@@ -58,8 +58,10 @@ const routes = [
       { path: 'db_functions/datatransfer', name: 'DBFunctions_DataTransfer', component: () => import('src/pages/db_functions/DBFunctions_DataTransfer.vue'), beforeEnter: beforeEnterFuncAll_ADMIN_ONLY },
       { path: 'db_functions/cql', name: 'DBFunctions_CQL_Edit', component: () => import('src/pages/db_functions/DBFunctions_CQL_Edit.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'db_functions/update_db', name: 'DBFunctions_Update', component: () => import('src/pages/db_functions/DBFunctions_Update.vue'), beforeEnter: beforeEnterFuncAll },
+      { path: 'surveyBEST_Integration', name: 'surveyBEST_Integration', component: () => import('src/pages/surveyBEST_Integration/sB_Integration_Main.vue'), beforeEnter: beforeEnterFuncAll },
+      { path: 'surveyBEST_Integration/manage', name: 'surveyBEST_Integration_Manage', component: () => import('src/pages/surveyBEST_Integration/sB_Integration_Manage.vue'), beforeEnter: beforeEnterFuncAll },
+      { path: 'surveyBEST_Integration/fill', name: 'surveyBEST_Integration_Fill', component: () => import('src/pages/surveyBEST_Integration/sB_Integration_Fill.vue'), beforeEnter: beforeEnterFuncAll },
       { path: 'notes', name: 'Notes', component: () => import('src/pages/Notes.vue'), beforeEnter: beforeEnterFuncAll },
-
       { path: 'selectdb', name: 'selectDB', component: () => import('pages/SelectDB.vue') },
       { path: 'about', name: 'About', component: () => import('pages/About.vue') }
     ]
