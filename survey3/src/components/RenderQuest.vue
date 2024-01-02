@@ -126,12 +126,12 @@
 
 
 <script>
-import RenderSlider from 'components/RenderQuest_slider.vue'
-import RenderMultipleRadio from 'components/RenderQuest_multipleradio.vue'
-import RenderDate from 'components/RenderQuest_date.vue'
-import RenderTime from 'components/RenderQuest_time.vue'
-import RenderText from 'components/RenderQuest_text.vue'
-import RenderRadio from 'components/RenderQuest_radio.vue'
+import RenderSlider from './RenderQuest_slider.vue'
+import RenderMultipleRadio from './RenderQuest_multipleradio.vue'
+import RenderDate from './RenderQuest_date.vue'
+import RenderTime from './RenderQuest_time.vue'
+import RenderText from './RenderQuest_text.vue'
+import RenderRadio from './RenderQuest_radio.vue'
 
 export default {
   name: 'RenderQuest',

@@ -17,7 +17,7 @@
       <div>
         <q-list bordered separator>
           <q-item v-ripple clickable @click="$router.push({name: 'surveyBEST_Integration_Manage'})">Manage Quests </q-item>
-          <q-item v-ripple clickable @click="$router.push({name: 'surveyBEST_Integration_Fill'})">Select and Fill a Quest </q-item>
+          <q-item v-ripple clickable @click="$router.push({name: 'surveyBEST_Integration_Search'})">Select and Fill a Quest </q-item>
         </q-list>
       </div>
     </div>

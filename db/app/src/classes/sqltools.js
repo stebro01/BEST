@@ -76,3 +76,11 @@ export function unstringify_json(str) {
     str = str.replace(/'/g, '"')
     return str
   }
+
+export function blob_to_json(val) {
+  val = val.replace(/'/g, '"')
+  val = val.replace(/\\"/g, '\'')
+  val = val.replace(/\\/g, '_')
+  val = JSON.parse(val)
+  return val
+}

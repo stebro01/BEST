@@ -26,9 +26,10 @@
       <template v-slot:footer>
         <!-- LOCATOIN_CD -->
         <BOTTOM_BUTTONS
-          :show_delete="selected_SB.length > 0" :show_add="selected_SB.length === 0"
+          :show_delete="selected_SB.length > 0" :show_add="selected_SB.length === 0" :show_execute="selected_SB.length > 0"
           @add="show_add_quest = true"
           @delete="deleteItem(selected_SB[0])"
+          @execute="fillQuest(selected_SB[0].CODE_CD)"
         />
       </template>
 
@@ -117,6 +118,10 @@ export default {
     closeAndupdate() {
       this.show_add_quest = false
       this.loadLocalData()
+    },
+
+    fillQuest(quest) {
+      this.$router.push({name: 'surveyBEST_Integration_Fill', params: {id: quest}})
     }
     
 
