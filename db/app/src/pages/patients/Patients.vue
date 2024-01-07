@@ -49,8 +49,7 @@
               selected[props.row.PATIENT_NUM].selected =
               !selected[props.row.PATIENT_NUM].selected
               " class="cursor-pointer">
-                            <q-td><q-btn icon="event" flat dense @click="visitePatient(props.row)"> <q-tooltip>Visten
-                    öffnen</q-tooltip> </q-btn>
+                            <q-td><q-btn icon="app_registration" flat dense @click="visitePatient(props.row)"> <q-tooltip>Datenviewer öffnen</q-tooltip> </q-btn>
               </q-td>
               <q-td>
                 <q-checkbox v-model="selected[props.row.PATIENT_NUM].selected" />

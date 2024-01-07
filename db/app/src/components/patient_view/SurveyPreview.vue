@@ -106,7 +106,12 @@
     mounted() {
         if (!this.input_data) return
         if (this.input_data) this.preview_survey_best_show = true
+        if (this.mode === 'buffer_surveybest') {
+          //special mode to paste the data as a JSON object
+          return this.previewSurveyBest(this.input_data.cda)
 
+        }
+        //else
         this.$store.dispatch('searchDB', {table: 'OBSERVATION_FACT', query_string: {OBSERVATION_ID: this.input_data.OBSERVATION_ID, _columns: ['OBSERVATION_BLOB', 'CATEGORY_CHAR', 'TVAL_CHAR']}})
         .then(res => {
             if (res.length > 0) {
@@ -139,10 +144,13 @@
 
       previewSurveyBest(val) {
           // this.preview_survey_best_show = true
-          val = val.replace(/'/g, '"')
-          val = val.replace(/\\"/g, '\'')
-          val = val.replace(/\\/g, '_')
-          val = JSON.parse(val)
+          if (typeof(val) !== 'object') {
+            val = val.replace(/'/g, '"')
+            val = val.replace(/\\"/g, '\'')
+            val = val.replace(/\\/g, '_')
+            val = JSON.parse(val)
+          }
+          
           if (val.text)this.preview_survey_best_item = this.prepare_data_survey(val.text.div)
           else this.preview_survey_best_item = undefined
         },

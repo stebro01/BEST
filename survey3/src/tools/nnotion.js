@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {log} from 'src/tools/Logger'
+import {log} from '../../../db/app/src/tools/logger.js'
 // KLASSE FUER API NOTION
 // ICH verwende hier meine eigene REST-API für die Kommunikation mit Notion: http://www.jenai.de/api/notion <= Authentifizierung mit api_token
 // Verwendung:

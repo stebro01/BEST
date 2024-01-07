@@ -30,19 +30,34 @@
 export default {
     name: 'PatientView_PatientList',
 
-    props: ['patients', 'size'],
+    props: ['patients', 'size', 'auto_load'],
 
     data() {
         return {
             filter_patient: null,
+            local_patients: undefined
         }
     },
 
     // mixins: [myMixins], //imports: searchPatient & deleteItem
 
+    mounted() {
+        if (this.auto_load) {
+            // load data at mount
+            this.$store.dispatch("searchDB", { query_string: { PATIENT_NUM: 0, _greater: true, _view: true}, table: "PATIENT_DIMENSION"
+            }).then(res => {
+                this.local_patients = res
+            })
+        }
+    },
 
     computed: {
         PATIENTS() {
+            if (this.local_patients) return this.local_patients.filter(item => {
+                if (!this.filter_patient) return true
+                return item.PATIENT_CD.includes(this.filter_patient)
+            })
+            // else
             if (!this.patients) return []
             return this.patients.filter(item => {
                 if (!this.filter_patient) return true

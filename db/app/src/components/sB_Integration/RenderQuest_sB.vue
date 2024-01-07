@@ -18,7 +18,20 @@
       <!-- MANUAL -->
       <!-- <q-card-section v-html="QUEST.manual"></q-card-section> -->
   
-  
+      <!-- PID -->
+      <q-card-section>
+      <q-input data-cy="PID" filled v-model="subject_pid" label="PID" :disable="true"
+        :rules="[ val => val && val.length > 0 || 'Gültige PID eingeben']"  />
+        <!-- INVISIBLE ELEMENT TO DO THE AUTOFOCUS -->
+        <q-input style="height: 0px; width: 0px" autofocus />
+        <q-item-label v-if="submit_clicked && CHECK_PID === false" 
+                class="text-red"
+              >
+                Bitte vervollständigen
+              </q-item-label>
+
+    </q-card-section>
+
       <!-- ITEMS -->
       <q-card-section>
   
@@ -78,15 +91,12 @@
       <!-- FORM BUTTON -->
       <q-card-section >
         <div class="text-center q-pb-xl">
-            <q-btn rounded label="speichern" type="submit" color="primary" @click="emitEvent()" data-cy="submitquest" class="my-btn" />
+            <q-btn rounded label="abschließen" type="submit" color="primary" @click="emitEvent()" data-cy="submitquest" class="my-btn" />
         </div>
       </q-card-section>
-  
-      <!-- CHECK ERROR -->
-      <span v-if="submit_clicked && (CHECK_FORM !== true || CHECK_PID !== true)" data-cy="check_error_banner"></span>
-      <!-- CHECK SUCCESS -->
-      <span v-if="CHECK_PID && CHECK_FORM" data-cy="check_sucess"></span>
+      
     </q-card>
+
     <div v-else class="q-ma-xl text-center">
       QUEST: undefined
     </div>
@@ -104,37 +114,55 @@
   import RenderText from './RenderQuest_text.vue'
   import RenderRadio from './RenderQuest_radio.vue'
   
+  import {QuestMan} from 'src/classes/QuestMan_class'
+  import * as CDA from "../../../../../survey3/src/tools/CDA_H7_JSON"
+  import {uuidv4, generateKeys} from '../../../EXTERN/hhash'
+
+  import myMixins from 'src/mixins/modes_msg'
+
   export default {
     name: 'RenderQuest',
     components: { RenderSlider, RenderMultipleRadio, RenderDate, RenderTime, RenderText, RenderRadio },
-    props: ["PREVIEWQUEST"],
+    props: ["PREVIEWQUEST", "PID"],
+    mixins: [myMixins],
   
     data() {
       return {
         submit_clicked: false,
-        key_suffix: Date.now()
+        check_form: null,
+        key_suffix: Date.now(),
+        QUESTMAN: undefined,
+        CDA: undefined
       }
     },
   
     mounted() {
       console.log('QUEST mounted')
-      
+      const QUESTMAN = new QuestMan({init: false})
+      QUESTMAN._activeQuest = {value: this.PREVIEWQUEST, date_start: Date.now(), label: this.PREVIEWQUEST.short_title}
+      this.QUESTMAN = QUESTMAN
     },
   
     computed: {
 
       QUEST() {
+        if (this.CDA !== undefined) return undefined
         if (this.PREVIEWQUEST !== undefined) return this.PREVIEWQUEST
         // else
         return undefined
       },
 
       CHECK_PID() {
-        return true
+        if (this.subject_pid === null) return false
+        return (this.subject_pid.length > 0)
       },
 
       CHECK_FORM() {
-        return true
+        return this.check_form
+      },
+
+      subject_pid() {
+        return this.PID
       }
 
     },
@@ -152,8 +180,29 @@
       },
 
       emitEvent(){
-        console.log('clicked')
-      }
+        this.submit_clicked = true;
+        this.key_suffix = Date.now()
+        this.check_form = this.QUESTMAN.check_activeQuest()
+        var str = ''
+        if (this.CHECK_PID === false) str += 'PID fehlt. ';
+        if (this.check_form !== true) str += 'Fragebogen nicht komplett. ';
+        if (str.length > 0) return this._error_msg(str)
+
+        // ELSE STORE THE DATA
+        const document = CDA.import_quest({
+          data: {
+            PID: this.subject_pid,
+            quest: this.QUESTMAN.summary
+          },
+          investigator: {
+            uid: `${this.$store.getters.USER.USER_CD}-${uuidv4()}`,
+            keyPair: generateKeys() // to sign the document
+          }
+        })
+        this.$emit('emitValue', document)
+      },
+
+      
   
      
   
