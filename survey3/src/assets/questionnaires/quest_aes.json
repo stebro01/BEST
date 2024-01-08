@@ -13,7 +13,7 @@
   "items": [
     {
       "label": "Assessment",
-      "id": "[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]",
+      "id": "[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]",
       "coding": {
         "display": "Untersuchung",
         "code": "302199004",
@@ -25,26 +25,78 @@
       "force": false,
       "options": {
         "questions": [
-            { "label": "Ich interessiere mich für Dinge.", "tag": "interested_in_things", "id": 1 },
-            { "label": "Ich erledige Dinge während des Tages.", "tag": "do_things_day", "id": 2 },
-            { "label": "Mir ist es wichtig Dinge selbst zu beginnen.", "tag": "start_things_self", "id": 3 },
-            { "label": "Ich bin daran interessiert, neue Erfahrungen zu machen.", "tag": "interested_new_experiences", "id": 4 },
-            { "label": "Ich bin am Lernen neuer Dinge interessiert.", "tag": "interested_learning_new", "id": 5 },
-            { "label": "Ich gebe mir bei allem wenig Mühe.", "tag": "little_effort_everything", "id": 6 },
-            { "label": "Ich begegne dem Leben mit Vitalität.", "tag": "approach_life_vitality", "id": 7 },
-            { "label": "Mir ist es wichtig, Tätigkeiten bis zum Ende durchzuhalten.", "tag": "important_finish_activities", "id": 8 },
-            { "label": "Ich verbringe Zeit damit, Dinge zu tun, die mich interessieren.", "tag": "spend_time_interesting_things", "id": 9 },
-            { "label": "Jemand muss mir sagen, was ich täglich tun soll.", "tag": "someone_tell_daily_tasks", "id": 10 },
-            { "label": "Ich bin weniger besorgt über meine Probleme als ich es sollte.", "tag": "less_concerned_problems", "id": 11 },
-            { "label": "Ich habe Freunde.", "tag": "have_friends", "id": 12 },
-            { "label": "Das Zusammenkommen mit Freunden ist mir wichtig.", "tag": "meeting_friends_important", "id": 13 },
-            { "label": "Wenn etwas Gutes passiert, bin ich begeistert.", "tag": "excited_good_happens", "id": 14 },
-            { "label": "Ich habe ein genaues Verständnis meiner Probleme.", "tag": "understand_problems_well", "id": 15 },
-            { "label": "Während des Tages Dinge zu erledigen ist mir wichtig.", "tag": "important_do_things_day", "id": 16 },
-            { "label": "Ich habe Eigeninitiative.", "tag": "have_initiative", "id": 17 },
-            { "label": "Ich habe Motivation.", "tag": "have_motivation", "id": 18 }
-        ]
-        ,
+          {
+            "label": "Ich interessiere mich für Dinge.",
+            "tag": "interested_in_things",
+            "id": 1
+          },
+          {
+            "label": "Ich erledige Dinge während des Tages.",
+            "tag": "do_things_day",
+            "id": 2
+          },
+          {
+            "label": "Mir ist es wichtig Dinge selbst zu beginnen.",
+            "tag": "start_things_self",
+            "id": 3
+          },
+          {
+            "label": "Ich bin daran interessiert, neue Erfahrungen zu machen.",
+            "tag": "interested_new_experiences",
+            "id": 4
+          },
+          {
+            "label": "Ich bin am Lernen neuer Dinge interessiert.",
+            "tag": "interested_learning_new",
+            "id": 5
+          },
+          {
+            "label": "Ich begegne dem Leben mit Vitalität.",
+            "tag": "approach_life_vitality",
+            "id": 6
+          },
+          {
+            "label": "Mir ist es wichtig, Tätigkeiten bis zum Ende durchzuhalten.",
+            "tag": "important_finish_activities",
+            "id": 7
+          },
+          {
+            "label": "Ich verbringe Zeit damit, Dinge zu tun, die mich interessieren.",
+            "tag": "spend_time_interesting_things",
+            "id": 8
+          },
+          { "label": "Ich habe Freunde.", "tag": "have_friends", "id": 9 },
+          {
+            "label": "Das Zusammenkommen mit Freunden ist mir wichtig.",
+            "tag": "meeting_friends_important",
+            "id": 10
+          },
+          {
+            "label": "Wenn etwas Gutes passiert, bin ich begeistert.",
+            "tag": "excited_good_happens",
+            "id": 11
+          },
+          {
+            "label": "Ich habe ein genaues Verständnis meiner Probleme.",
+            "tag": "understand_problems_well",
+            "id": 12
+          },
+          {
+            "label": "Während des Tages Dinge zu erledigen ist mir wichtig.",
+            "tag": "important_do_things_day",
+            "id": 13
+          },
+          {
+            "label": "Ich habe Eigeninitiative.",
+            "tag": "have_initiative",
+            "id": 14
+          },
+          {
+            "label": "Ich habe Motivation.",
+            "tag": "have_motivation",
+            "id": 15
+          }
+        ],
         "answers": [
           { "label": "trifft gar nicht zu", "value": 3 },
           { "label": "trifft etwas zu", "value": 2 },
@@ -52,10 +104,52 @@
           { "label": "trifft sehr zu", "value": 0 }
         ]
       }
+    },
+    {
+      "label": "",
+      "id": "[16,17,18]",
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "answers": [
+          { "label": "trifft gar nicht zu", "value": "0" },
+          { "label": "trifft etwas zu", "value": "1" },
+          { "label": "trifft ziemlich zu", "value": "2" },
+          { "label": "trifft sehr zu", "value": "3" }
+        ],
+        "questions": [
+          {
+            "label": "Ich gebe mir bei allem wenig Mühe.",
+            "tag": "a1",
+            "id": 16
+          },
+          {
+            "label": "Jemand muss mir sagen, was ich täglich tun soll.",
+            "tag": "a2",
+            "id": 17
+          },
+          {
+            "label": "Ich bin weniger besorgt über meine Probleme, als ich es sollte.",
+            "tag": "a3",
+            "id": 18
+          }
+        ]
+      }
     }
   ],
-  "results": { 
+  "results": {
     "method": "sum",
-    "coding": { "display" : "AES (Apathie Score)", "code" : "CUSTOM: AES_APATHIE_SCORE", "system" : "CUSTOM"}
+    "coding": {
+      "display": "AES (Apathie Score)",
+      "code": "CUSTOM: AES_APATHIE_SCORE",
+      "system": "CUSTOM"
     }
+  }
 }

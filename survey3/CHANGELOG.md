@@ -7,8 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
-
-### v1.7.2 
+### v1.7.2
 
 #### Added
 
@@ -18,10 +17,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 
+- [2024-01-11] Changed: AES, PNAS
 - [2024-01-02] QuestMan class is now a singleton to avoid multiple instances and be usable in dbBEST, Logger.js is now a reference to the logger.js from dbBEST to avoid multiple software versions
 - [2024-01-02] minor bugfixes and new quests
 - [2023-12-24] export fileformat is now: `PID_quest_UID.html/json`
 
+#### Fixed
+
+- [2024-01-11] Fixed a bug, that the export button was not working
 
 ### v1.7.1
 

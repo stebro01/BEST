@@ -11,134 +11,170 @@
   "manual": "Dieser Fragebogen enhält eine Reihe von Wörtern, die unterschiedliche Gefühle und Empfindungen beschreiben. <br>Lesen Sie jedes Wort und tragen Sie dann in die Skala neben jedem Wort die Intensität ein. Sie haben die Möglichkeit, zwischen fünf Abstufungen zu wählen. <br><br>Geben Sie bitte an, wie Sie sich in den letzten 2 Wochen gefühlt haben.",
   "keywords": "PANAS",
   "ref": "https://zis.gesis.org/pdfFiles/Dokumentation/Janke_%2B_Deutsche_Version_der_Positive_and_Negative_Affect_Schedule_(PANAS)_c.pdf",
-  "items": [{
-    "label": "PANAS",
-    "id": "[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]",
-    "coding": {
-      "display": "Untersuchung",
-      "code": "302199004",
-      "system": "http://snomed.info/sct"
-    },
-    "value": [],
-    "type": "multiple_radio",
-    "inline": false,
-    "force": false,
-    "options": {
-      "answers": [{
-        "label": "garnicht",
-        "value": 1
-      }, {
-        "label": "ein bisschen",
-        "value": 2
-      }, {
-        "label": "einigermaßen",
-        "value": 3
-      }, {
-        "label": "erheblich",
-        "value": 4
-      }, {
-        "label": "äußerst",
-        "value": 5
-      }],
-      "questions": [{
-        "label": "aktiv",
-        "tag": "active",
-        "id": 1
-      }, {
-        "label": "bekümmert",
-        "tag": "worried",
-        "id": 2
-      }, {
-        "label": "interessiert",
-        "tag": "interested",
-        "id": 3
-      }, {
-        "label": "freudig erregt",
-        "tag": "excited",
-        "id": 4
-      }, {
-        "label": "verärgert",
-        "tag": "angry",
-        "id": 5
-      }, {
-        "label": "stark",
-        "tag": "strong",
-        "id": 6
-      }, {
-        "label": "schuldig",
-        "tag": "guilty",
-        "id": 7
-      }, {
-        "label": "erschrocken",
-        "tag": "scared",
-        "id": 8
-      }, {
-        "label": "feindselig",
-        "tag": "hostile",
-        "id": 9
-      }, {
-        "label": "angeregt",
-        "tag": "excited2",
-        "id": 10
-      }, {
-        "label": "stolz",
-        "tag": "proud",
-        "id": 11
-      }, {
-        "label": "gereizt",
-        "tag": "irritable",
-        "id": 12
-      }, {
-        "label": "begeistert",
-        "tag": "enthusiastic",
-        "id": 13
-      }, {
-        "label": "beschämt",
-        "tag": "ashamed",
-        "id": 14
-      }, {
-        "label": "wach",
-        "tag": "awake",
-        "id": 15
-      }, {
-        "label": "nervös",
-        "tag": "nervous",
-        "id": 16
-      }, {
-        "label": "entschlossen",
-        "tag": "determined",
-        "id": 17
-      }, {
-        "label": "aufmerksam",
-        "tag": "attentive",
-        "id": 18
-      }, {
-        "label": "durcheinander",
-        "tag": "a19",
-        "id": 19
-      }, {
-        "label": "ängstlich",
-        "tag": "afraid",
-        "id": 20
-      }]
+  "items": [
+    {
+      "label": "PANAS",
+      "id": "[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]",
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "options": {
+        "answers": [
+          {
+            "label": "garnicht",
+            "value": 1
+          },
+          {
+            "label": "ein bisschen",
+            "value": 2
+          },
+          {
+            "label": "einigermaßen",
+            "value": 3
+          },
+          {
+            "label": "erheblich",
+            "value": 4
+          },
+          {
+            "label": "äußerst",
+            "value": 5
+          }
+        ],
+        "questions": [
+          {
+            "label": "aktiv",
+            "tag": "active",
+            "id": 1
+          },
+          {
+            "label": "bekümmert",
+            "tag": "worried",
+            "id": 2
+          },
+          {
+            "label": "interessiert",
+            "tag": "interested",
+            "id": 3
+          },
+          {
+            "label": "freudig erregt",
+            "tag": "excited",
+            "id": 4
+          },
+          {
+            "label": "verärgert",
+            "tag": "angry",
+            "id": 5
+          },
+          {
+            "label": "stark",
+            "tag": "strong",
+            "id": 6
+          },
+          {
+            "label": "schuldig",
+            "tag": "guilty",
+            "id": 7
+          },
+          {
+            "label": "erschrocken",
+            "tag": "scared",
+            "id": 8
+          },
+          {
+            "label": "feindselig",
+            "tag": "hostile",
+            "id": 9
+          },
+          {
+            "label": "angeregt",
+            "tag": "excited2",
+            "id": 10
+          },
+          {
+            "label": "stolz",
+            "tag": "proud",
+            "id": 11
+          },
+          {
+            "label": "gereizt",
+            "tag": "irritable",
+            "id": 12
+          },
+          {
+            "label": "begeistert",
+            "tag": "enthusiastic",
+            "id": 13
+          },
+          {
+            "label": "beschämt",
+            "tag": "ashamed",
+            "id": 14
+          },
+          {
+            "label": "wach",
+            "tag": "awake",
+            "id": 15
+          },
+          {
+            "label": "nervös",
+            "tag": "nervous",
+            "id": 16
+          },
+          {
+            "label": "entschlossen",
+            "tag": "determined",
+            "id": 17
+          },
+          {
+            "label": "aufmerksam",
+            "tag": "attentive",
+            "id": 18
+          },
+          {
+            "label": "durcheinander",
+            "tag": "a19",
+            "id": 19
+          },
+          {
+            "label": "ängstlich",
+            "tag": "afraid",
+            "id": 20
+          }
+        ]
+      }
     }
-  }],
+  ],
   "results": {
     "method": "ids",
-    "scoring": [{
-      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-      "value": [1, 2, 3, 4, 5],
-      "score": [1, 2, 3, 4, 5]
-    }],
-    "domaine": [{
-      "label": "positive",
-      "id": [1, 3, 4, 6, 10, 11, 13, 15, 17, 18],
-      "method": "sum"
-    }, {
-      "label": "negative",
-      "id": [2, 5, 7, 8, 9, 12, 14, 16, 19, 20],
-      "method": "sum"
-    }],
+    "scoring": [
+      {
+        "id": [
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+        ],
+        "value": [1, 2, 3, 4, 5],
+        "score": [1, 2, 3, 4, 5]
+      }
+    ],
+    "domaine": [
+      {
+        "label": "positive",
+        "id": [1, 3, 4, 6, 10, 11, 13, 15, 17, 18],
+        "method": "avg"
+      },
+      {
+        "label": "negative",
+        "id": [2, 5, 7, 8, 9, 12, 14, 16, 19, 20],
+        "method": "avg"
+      }
+    ],
     "evaluation": []
   }
 }

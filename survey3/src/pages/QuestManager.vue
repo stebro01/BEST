@@ -2,7 +2,7 @@
   <q-page data-cy="questman" class="page-size">
     <div class="column items-center" style="height: 100%">
       <div class="col-1 q-pt-md text-h6">
-       {{TEXT.settings.questman.label}}
+        {{ TEXT.settings.questman.label }}
       </div>
 
       <div class="col q-py-md">
@@ -10,12 +10,12 @@
         <q-scroll-area class="shadow-1 my-form">
           <q-list bordered separator class="quest_list" data-cy="questlistRoot">
             <div v-for="(item, index) in QUEST_LIST" :key="item + index">
-              <q-item :class="{ 'bg-grey-4': INDEX[index] }" clickable v-ripple
-                :data-cy="'questlist'+index" @click="set_index(index)">
+              <q-item :class="{ 'bg-grey-4': INDEX[index] }" clickable v-ripple :data-cy="'questlist' + index"
+                @click="set_index(index)">
                 <q-item-section side top>
                   <q-checkbox v-model="INDEX[index]" />
                 </q-item-section>
-                <q-item-section :data-cy="'quest_'+index">
+                <q-item-section :data-cy="'quest_' + index">
                   <q-item-label>{{ QUESTMAN.get(item).title }}</q-item-label>
                   <q-item-label caption>{{ QUESTMAN.get(item).description }}</q-item-label>
                 </q-item-section>
@@ -29,17 +29,17 @@
       <!-- ACTIONBTTNS -->
       <div class="col-2 text-center q-gutter-md  justify-around" style="width: 100%">
         <!-- deleteSelected -->
-        <MYBUTTON v-if="count_selected > 0" @click="deleteSelected()" :label="TEXT.btn.delete.label" />
+        <MYBUTTON v-if="count_selected > 0" @clicked="deleteSelected()" :label="TEXT.btn.delete.label" />
         <!-- deselectAll -->
-        <MYBUTTON v-if="count_selected > 0" @click="deselectAll()" :label="TEXT.btn.deselect2" />
+        <MYBUTTON v-if="count_selected > 0" @clicked="deselectAll()" :label="TEXT.btn.deselect2" />
         <!-- editSelected -->
-        <MYBUTTON v-if="count_selected === 1" @click="editSelected()" :label="TEXT.btn.edit" />
+        <MYBUTTON v-if="count_selected === 1" @clicked="editSelected()" :label="TEXT.btn.edit" />
         <!-- importQuest -->
-        <MYBUTTON v-if="count_selected === 0" @click="importQuest()" :label="TEXT.btn.import" />
+        <MYBUTTON v-if="count_selected === 0" @clicked="importQuest()" :label="TEXT.btn.import" />
         <!-- createQuest -->
-        <MYBUTTON v-if="count_selected === 0" @click="createQuest()" :label="TEXT.btn.create" />
+        <MYBUTTON v-if="count_selected === 0" @clicked="createQuest()" :label="TEXT.btn.create" />
         <!-- resetQuest -->
-        <MYBUTTON v-if="count_selected === 0" @click="resetQuest()" :label="TEXT.btn.reset" />
+        <MYBUTTON v-if="count_selected === 0" @clicked="resetQuest()" :label="TEXT.btn.reset" />
       </div>
       <!-- END COLUMN -->
     </div>
@@ -58,17 +58,17 @@ import MYBUTTON from 'src/components/MyButton.vue'
 export default {
   name: 'QuestManager',
   mixins: [myMixins],
-  components: {BACKBUTTON, MYBUTTON},
+  components: { BACKBUTTON, MYBUTTON },
   props: ["MODE"],
-  data () {
+  data() {
     return {
       TEXT: this.$store.getters.TEXT,
       INDEX: []
     }
   },
-  mounted(){
+  mounted() {
     this.$store.dispatch('setProtectedMode', true);
-    for (let i=0; i<this.QUEST_LIST.length; i++) {
+    for (let i = 0; i < this.QUEST_LIST.length; i++) {
       this.INDEX[i] = false
     }
   },
@@ -89,13 +89,13 @@ export default {
   },
 
   methods: {
-    set_index(index){
+    set_index(index) {
       this.INDEX[index] = !this.INDEX[index]
     },
     deselectAll() {
       for (let i = 0; i < this.INDEX.length; i++) {
         this.INDEX[i] = false
-        }
+      }
     },
     deleteSelected() {
       const answ = confirm(this.TEXT.btn.confirm_delete)
@@ -109,16 +109,16 @@ export default {
       }
     },
     importQuest() {
-      this.$router.push({name: "questmanagerimport"})
+      this.$router.push({ name: "questmanagerimport" })
     },
     createQuest() {
       this.$store.state.editquest = undefined
-      this.$router.push({name: "questmanagercreate"})
+      this.$router.push({ name: "questmanagercreate" })
     },
     editSelected() {
       var idx = this.INDEX.indexOf(true)
       this.$store.state.editquest = JSON.parse(JSON.stringify(this.QUESTMAN.get(this.QUEST_LIST[idx])))
-      this.$router.push({name: "questmanagercreate"})
+      this.$router.push({ name: "questmanagercreate" })
     },
     resetQuest() {
       const answ = confirm(this.TEXT.btn.reset_confirm)
