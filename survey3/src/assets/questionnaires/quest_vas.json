@@ -1,0 +1,43 @@
+{
+  "title": "Visuelle Analogskala",
+  "short_title": "VAS",
+  "description": null,
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "225398001",
+    "display": "Visuelle Analogskala",
+    "version": "20240126"
+  },
+  "manual": null,
+  "keywords": "VAS, Schmerz, Schmerzintensität, Schmerzstärke, Schmerzskala, Schmerzskalen, Schmerz",
+  "ref": null,
+  "items": [
+    {
+      "label": "Visuelle Analogskala",
+      "id": 1,
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": 10,
+      "type": "slider",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "top": { "value": 10, "label": "stärkster vorstellbarer Schmerz" },
+        "bottom": { "value": 0, "label": "kein Schmerz" },
+        "steps": 1
+      }
+    }
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "display": "VAS (score)",
+      "code": "SCTID: 273903006",
+      "system": "SNOMED-CT"
+    }
+  }
+}

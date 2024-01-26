@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 
+- [2024-01-26] Added a new questionnaire: VAS
 - [2023-12-21] Added a new questionnaire: MDS-UPDRS I - IV
 - [2023-12-21] Presets can be edited and deleted
 - [2023-12-21] Filter for stored questionnaires includes an option for filtering by export status
