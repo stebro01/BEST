@@ -17,7 +17,7 @@ WebAPI und Email-Server in einem Docker-Container
 
 #### Changed
 
-none
+- [2024-01-30]: `ssl/cert.pem` updated
 
 #### Removed
 
