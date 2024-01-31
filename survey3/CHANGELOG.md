@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Fixed
 
+- [2024-01-31] Fixed: AES (some value were changed from string to number)
 - [2024-01-11] Fixed a bug, that the export button was not working
 
 ### v1.7.1

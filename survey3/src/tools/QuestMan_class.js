@@ -209,7 +209,7 @@ export class QuestMan {
 
   // RESULTS
   get summary() {
-    console.log('get summary')
+    log({ message: 'summary: start' })
     if (this.activeQuest === undefined) return undefined
 
     const result = {}
@@ -248,7 +248,7 @@ export class QuestMan {
     // dates
     result.date_start = this.activeQuest.date_start
     result.date_end = Date.now()
-    console.log('get summary: finished')
+    log({ message: 'summary: finished' })
     return result
   }
 
@@ -375,6 +375,7 @@ function RANDOMWORD() {
 
 // CALC RESULTS
 function calc_results(data, methods) {
+  // console.log('calc_results: ', data)
   if (methods.method === undefined) return {}
   switch (methods.method) {
     case 'sum':

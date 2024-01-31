@@ -5,7 +5,8 @@
   "coding": {
     "system": "http: //snomed.info/sct",
     "code": "SCTID: 20602000",
-    "display": "AES (Apathie-Skala)"
+    "display": "AES (Apathie-Skala)",
+    "version": "20240131"
   },
   "manual": "Kreuzen Sie bitte die Antwort an, die Ihre Verhaltensweisen während der letzten 4 Wochen am besten beschreibt. Schätzen Sie sich selbst ein.",
   "keywords": null,
@@ -13,7 +14,7 @@
   "items": [
     {
       "label": "Assessment",
-      "id": "[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]",
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       "coding": {
         "display": "Untersuchung",
         "code": "302199004",
@@ -107,7 +108,7 @@
     },
     {
       "label": "",
-      "id": "[16,17,18]",
+      "id": [16, 17, 18],
       "coding": {
         "display": "Untersuchung",
         "code": "302199004",
@@ -119,10 +120,10 @@
       "force": false,
       "options": {
         "answers": [
-          { "label": "trifft gar nicht zu", "value": "0" },
-          { "label": "trifft etwas zu", "value": "1" },
-          { "label": "trifft ziemlich zu", "value": "2" },
-          { "label": "trifft sehr zu", "value": "3" }
+          { "label": "trifft gar nicht zu", "value": 0 },
+          { "label": "trifft etwas zu", "value": 1 },
+          { "label": "trifft ziemlich zu", "value": 2 },
+          { "label": "trifft sehr zu", "value": 3 }
         ],
         "questions": [
           {
