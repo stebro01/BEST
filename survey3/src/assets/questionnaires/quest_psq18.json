@@ -1,0 +1,135 @@
+{
+  "title": "Short-Form Patient Satisfaction Questionnaire (PSQ-18)",
+  "short_title": "psq18",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "868186005",
+    "display": "Short-Form Patient Satisfaction Questionnaire (PSQ-18)",
+    "version": "20240206"
+  },
+  "description": "Short-Form Patient Satisfaction Questionnaire (PSQ-18)",
+  "manual": "Unten sehen Sie eine Liste mit Aussagen zur medizinischen Versorgung. Bitte lesen Sie jede Aussage sorgfältig durch. Denken Sie dabei an die Behandlung, die Sie zurzeit erhalten bzw. die Ihr Kind zurzeit erhält. Wir interessieren uns dafür, wie Sie Ihre medizinische Behandlung empfinden, egal ob gut oder schlecht. „Medizinisches Personal“ bezieht sich dabei auf Ärzte und Ärztinnen, Arzthelferinnen und Krankenpfleger und –schwestern.",
+  "keywords": "Patientenzufriedenheit patient satisfaction",
+  "ref": "https://doi.org/10.3402/meo.v18i0.21747",
+  "items": [
+    {
+      "label": "Wie stark stimmen Sie den Aussagen zu? (Kreisen Sie in jeder Zeile die entsprechende Zahl ein).",
+      "tag": "Q1",
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+      "caption": "",
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "Stimme voll zu", "value": 1 },
+          { "label": "Ein wenig", "value": 2 },
+          { "label": "Ziemlich", "value": 3 },
+          { "label": "Stark", "value": 4 },
+          { "label": "Sehr stark", "value": 5 }
+        ],
+        "questions": [
+          {
+            "id": 1,
+            "label": "Das medizinische Personal kann die Notwendigkeit medizinischer Tests gut erklären.",
+            "tag": "personal_can_explain_medical_tests"
+          },
+          {
+            "id": 2,
+            "label": "Ich glaube, dass die Praxis / die Ambulanz mit allem ausgerüstet ist, was für eine umfassende medizinische Versorgung erforderlich ist.",
+            "tag": "practice_is_equipped_for_comprehensive_care"
+          },
+          {
+            "id": 3,
+            "label": "Die Gesundheitsversorgung, die ich erhalte, ist nahezu perfekt.",
+            "tag": "health_care_is_almost_perfect"
+          },
+          {
+            "id": 4,
+            "label": "Manchmal zweifle ich an der Richtigkeit der Diagnose meines Arztes / Therapeuten.",
+            "tag": "doubt_diagnosis_of_doctor_therapist"
+          },
+          {
+            "id": 5,
+            "label": "Ich bin zuversichtlich, die nötige medizinische Versorgung erhalten zu können, ohne viel dafür bezahlen zu müssen.",
+            "tag": "confident_to_get_medical_care_without_paying_much"
+          },
+          {
+            "id": 6,
+            "label": "Bei einer Untersuchung oder Behandlung geht das medizinische Personal sorgfältig und gründlich vor.",
+            "tag": "medical_staff_is_careful_and_thorough"
+          },
+          {
+            "id": 7,
+            "label": "Meine Gesundheitsversorgung kostet mehr als ich mir leisten kann.",
+            "tag": "health_care_costs_more_than_i_can_afford"
+          },
+          {
+            "id": 8,
+            "label": "Ich habe einfachen Zugang zu den Spezialisten, die ich brauche.",
+            "tag": "easy_access_to_specialists"
+          },
+          {
+            "id": 9,
+            "label": "In meiner Praxis / meiner Krankenhausambulanz müssen Notfälle zu lange auf Behandlung warten.",
+            "tag": "emergencies_wait_too_long_for_treatment"
+          },
+          {
+            "id": 10,
+            "label": "Das medizinische Personal verhält sich mir gegenüber zu geschäftsmäßig und zu unpersönlich.",
+            "tag": "medical_staff_behaves_too_businesslike_and_impersonal"
+          },
+          {
+            "id": 11,
+            "label": "Das medizinische Personal verhält sich mir gegenüber sehr freundlich und höflich.",
+            "tag": "medical_staff_behaves_very_friendly_and_polite"
+          },
+          {
+            "id": 12,
+            "label": "Mein behandelnder Arzt / Therapeut ist bei meiner Behandlung manchmal zu sehr in Eile.",
+            "tag": "my_doctor_therapist_is_sometimes_too_rushed"
+          },
+          {
+            "id": 13,
+            "label": "Das medizinische Personal ignoriert manchmal das, was ich ihnen sage.",
+            "tag": "medical_staff_sometimes_ignores_what_i_say"
+          },
+          {
+            "id": 14,
+            "label": "Ich habe gelegentlich Zweifel an den Fähigkeiten des medizinischen Personals, das mich behandelt.",
+            "tag": "i_sometimes_doubt_the_skills_of_the_medical_staff_treating_me"
+          },
+          {
+            "id": 15,
+            "label": "Das medizinische Personal nimmt sich normalerweise viel Zeit für mich.",
+            "tag": "medical_staff_usually_takes_a_lot_of_time_for_me"
+          },
+          {
+            "id": 16,
+            "label": "Ich muss lange auf einen Termin warten.",
+            "tag": "i_have_to_wait_a_long_time_for_an_appointment"
+          },
+          {
+            "id": 17,
+            "label": "Ich bin unzufrieden mit Teilen der Gesundheitsversorgung, die ich erhalte.",
+            "tag": "i_am_dissatisfied_with_parts_of_the_health_care_i_receive"
+          },
+          {
+            "id": 18,
+            "label": "Ich erhalte medizinische Versorgung, wann immer ich sie brauche.",
+            "tag": "i_receive_medical_care_whenever_i_need_it"
+          }
+        ]
+      }
+    }
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "system": "http://snomed.info/sct",
+      "code": "868186005",
+      "display": "Short-Form Patient Satisfaction Questionnaire (PSQ-18)",
+      "version": "20240206"
+    }
+  }
+}

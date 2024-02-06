@@ -1,0 +1,109 @@
+{
+  "title": "QoL-AD",
+  "short_title": "qol_ad",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "868186005",
+    "display": "Qol-AD (Quality of Life in Alzheimer's Disease)",
+    "version": "20240206"
+  },
+  "description": "Quality of Life in Alzheimer's Disease",
+  "manual": "Der QoL-AD ist ein Fragebogen zur Lebensqualität bei Alzheimer-Patienten. Er besteht aus 13 Fragen, die in vier Kategorien unterteilt sind: körperliche Gesundheit, Energie, Stimmung und geistige Fähigkeiten. Die Fragen werden auf einer Skala von 1 bis 4 beantwortet, wobei 1 „gar nicht“ und 4 „sehr“ bedeutet. Der Fragebogen wurde entwickelt, um die Lebensqualität von Alzheimer-Patienten zu messen und um die Auswirkungen der Krankheit auf die Lebensqualität zu erfassen. <B>Bitte getrennt für Patienten / Angehörige ausfüllen.</B>",
+  "keywords": "alzheimer dementia quality of life",
+  "ref": "https://doi.org/10.1097/00006842-200205000-00016",
+  "items": [
+    {
+      "label": "Wie stark stimmen Sie den Aussagen zu? (Kreisen Sie in jeder Zeile die entsprechende Zahl ein).",
+      "tag": "Q1",
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      "caption": "",
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "schlecht", "value": 1 },
+          { "label": "mittel", "value": 2 },
+          { "label": "gut", "value": 3 },
+          { "label": "ausgezeichnet", "value": 4 }
+        ],
+        "questions": [
+          {
+            "id": 1,
+            "label": "Wie fühlen Sie sich in Bezug auf Ihre körperliche Gesundheit? Würden Sie sagen, sie ist schlecht, mittelmäßig, gut oder ausgezeichnet?",
+            "tag": "physical_health"
+          },
+          {
+            "id": 2,
+            "label": "Wie empfinden Sie Ihr Energieniveau?",
+            "tag": "energy"
+          },
+          {
+            "id": 3,
+            "label": "Wie war Ihre Stimmung in letzter Zeit?",
+            "tag": "mood"
+          },
+          {
+            "id": 4,
+            "label": "Wie sieht es mit Ihrer Wohnsituation aus? Wie gefällt Ihnen der Ort, an dem Sie jetzt leben?",
+            "tag": "living_situation"
+          },
+          {
+            "id": 5,
+            "label": "Was ist mit Ihrem Gedächtnis?",
+            "tag": "memory"
+          },
+          {
+            "id": 6,
+            "label": "Wie sieht es mit Ihrer Familie und Ihren Beziehungen zu Familienmitgliedern aus?",
+            "tag": "family_relationships"
+          },
+          {
+            "id": 7,
+            "label": "Wie denken Sie über Ihre Ehe?",
+            "tag": "marriage"
+          },
+          {
+            "id": 8,
+            "label": "Wie würden Sie Ihr derzeitiges Verhältnis zu Ihren Freunden beschreiben?",
+            "tag": "friendships"
+          },
+          {
+            "id": 9,
+            "label": "Wie fühlen Sie sich, wenn Sie an Ihr ganzes Ich denken, an all die verschiedenen Dinge, die Sie ausmachen?",
+            "tag": "self"
+          },
+          {
+            "id": 10,
+            "label": "Wie fühlen Sie sich in Bezug auf Ihre Fähigkeit, Dinge wie Hausarbeit oder andere Dinge, die Sie tun müssen, zu erledigen?",
+            "tag": "ability_to_do_things"
+          },
+          {
+            "id": 11,
+            "label": "Wie sieht es mit Ihrer Fähigkeit aus, Dinge zu tun, die Ihnen Spaß machen, die Sie genießen?",
+            "tag": "ability_to_do_things_you_enjoy"
+          },
+          {
+            "id": 12,
+            "label": "Wie fühlen Sie sich in Bezug auf Ihre derzeitige finanzielle Situation?",
+            "tag": "financial_situation"
+          },
+          {
+            "id": 13,
+            "label": "Wie würden Sie Ihr Leben als Ganzes beschreiben? Wenn Sie an Ihr Leben als Ganzes denken, an alles zusammen, was empfinden Sie dann für Ihr Leben?",
+            "tag": "life_as_a_whole"
+          }
+        ]
+      }
+    }
+  ],
+  "results": {
+    "method": "sum",
+    "coding": {
+      "system": "http://snomed.info/sct",
+      "code": "868186005",
+      "display": "Qol-AD (Sum Score)",
+      "version": "20240206"
+    }
+  }
+}
