@@ -360,7 +360,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: Physical functioning",
-          "code": "SCTID: 770636004/pf",
+          "code": "SCTID: 770636004_PF",
           "system": "CUSTOM"
         }
       },
@@ -370,7 +370,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: limitations/health",
-          "code": "SCTID: 770636004/lh",
+          "code": "SCTID: 770636004_LH",
           "system": "CUSTOM"
         }
       },
@@ -380,7 +380,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: limitations/emotional problems",
-          "code": "SCTID: 770636004/le",
+          "code": "SCTID: 770636004_LE",
           "system": "CUSTOM"
         }
       },
@@ -390,7 +390,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: energy/fatigue",
-          "code": "SCTID: 770636004/ef",
+          "code": "SCTID: 770636004_EF",
           "system": "CUSTOM"
         }
       },
@@ -400,7 +400,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: Emotional well-beeing",
-          "code": "SCTID: 770636004/ewb",
+          "code": "SCTID: 770636004_EWB",
           "system": "CUSTOM"
         }
       },
@@ -410,7 +410,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: social functioning",
-          "code": "SCTID: 770636004/sf",
+          "code": "SCTID: 770636004_SF",
           "system": "CUSTOM"
         }
       },
@@ -420,7 +420,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: Pain",
-          "code": "SCTID: 770636004/pain",
+          "code": "SCTID: 770636004_PAIN",
           "system": "CUSTOM"
         }
       },
@@ -430,7 +430,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: General health",
-          "code": "SCTID: 770636004/gh",
+          "code": "SCTID: 770636004_GH",
           "system": "CUSTOM"
         }
       },
@@ -440,7 +440,7 @@
         "method": "avg",
         "coding": {
           "display": "SF-36 Subscore: Health change",
-          "code": "SCTID: 770636004/hc",
+          "code": "SCTID: 770636004_HC",
           "system": "CUSTOM"
         }
       }
