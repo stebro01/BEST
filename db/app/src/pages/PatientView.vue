@@ -71,6 +71,14 @@
             </div>
           </div>
         </div>
+
+              <!-- TESTING -->
+              <div class="fixed-bottom-center">
+                <q-btn class="my-btn" rounded @click="$router.push({name: 'Observations_View_XLS'})">NEW XLS VIEW</q-btn>
+              </div>
+              <!-- ENDE TESTING -->
+
+
       </template>
 
       <!-- FOOTER -->

@@ -10,7 +10,7 @@
     </div>
         <!-- OPTIONS -->
         <div class="col-1 bg-grey-1" v-if="no_options !== true">
-            
+
             <div class="row" >
                 <div class="col-6 text-left">
                     <slot name="options_left">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- MAIN -->
         <div class="col-8 bg-grey-1" :class="COL_MAIN">
             <q-scroll-area style="height: 100%; width: 100%">
