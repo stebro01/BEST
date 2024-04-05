@@ -16,7 +16,7 @@
             <!-- BUTTONS -->
             <BOTTOM_DROPDOWN :show_add="true" @add="newPatient()" :show_edit="SELECTION === 1" @edit="editPatient()"
               @make_private="makePrivate()" @make_public="makePublic()"
-              :show_remove="SELECTION > 0" @remove="deletePatient()" :show_make_public="SELECTION > 0" :show_make_private="SELECTION > 0" 
+              :show_remove="SELECTION > 0" @remove="deletePatient()" :show_make_public="SELECTION > 0" :show_make_private="SELECTION > 0"
             />
             <q-space />
             <!-- FILTERBOX -->
@@ -298,10 +298,12 @@ export default {
       for (let ind in this.selected) {
         let item = this.selected[ind]
         if(item.selected) {
-          await this.$store.dispatch("changePatientVisibility", {
+          let res = await this.$store.dispatch("changePatientVisibility", {
             PATIENT_NUM: item.PATIENT_NUM,
             USER_ID: this.$store.getters.PUBLIC_ID
           })
+          // remove all other visibility
+          if (res.status) await this.$store.dispatch("cleanPatientVisibility", { PATIENT_NUM: item.PATIENT_NUM, USER_ID: this.$store.getters.PUBLIC_ID})
         }
       }
 
@@ -320,17 +322,19 @@ export default {
       for (let ind in this.selected) {
         let item = this.selected[ind]
         if(item.selected) {
-          await this.$store.dispatch("changePatientVisibility", {
+          let res = await this.$store.dispatch("changePatientVisibility", {
             PATIENT_NUM: item.PATIENT_NUM,
             USER_ID: USER_ID
           })
+          // remove all other visibility
+          if (res.status) await this.$store.dispatch("cleanPatientVisibility", { PATIENT_NUM: item.PATIENT_NUM, USER_ID: USER_ID})
         }
       }
 
       this.loadPatient();
       this.$q.notify(this.$store.getters.TEXT.msg.action_successful)
     },
-    
+
   },
 };
 </script>

@@ -331,6 +331,25 @@ export const  changePatientVisibility = async ({commit, state}, payload) => {
     }
 }
 
+// function to clean up the USER_PATIENT_LOOKUP table by finding all Lookups for a given PATIENT_NUM and deleting all entries with USER_ID not matching the payload
+export const  cleanPatientVisibility = async ({commit, state}, payload) => {
+    commit('LOG', {method: 'action -> cleanPatientVisibility', data: payload})
+    // get the table USER_PATIENT_LOOKUP
+    if (!payload) return {status: false, data: 'Ungültige Daten'}
+    const USER_PATIENT_LOOKUP = new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
+    // first check, if the patient is already in the table
+    const query = await USER_PATIENT_LOOKUP.read({PATIENT_NUM: payload.PATIENT_NUM})
+    if (query.status && query.data.length > 0) {
+        // update the patient
+        query.data.forEach(async entry => {
+            if (entry.USER_ID !== payload.USER_ID) {
+                await USER_PATIENT_LOOKUP.delete({USER_PATIENT_ID: entry.USER_PATIENT_ID})
+            }
+        })
+    }
+    return {status: true, data: 'Patienten erfolgreich bereinigt'}
+}
+
 // LAYOUTS FOR THE VIEWS
 
 import {stringify} from 'src/classes/sqltools'
