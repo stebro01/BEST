@@ -102,7 +102,12 @@ export function PATIENT_VIEW_SQL_STATEMENT(state) {
     return state.PATIENT_VIEW.SQL_STATEMENT
 }
 
+export function PATIENT_VIEW_SQL_STATEMENT_RAW(state) {
+  const statement = `${state.ENV.app.env.patient_view.sql_statement} WHERE USER_ID=${USER(state).USER_ID} OR USER_ID=${PUBLIC_ID(state)}`
+  return statement
+}
 
-export function ANSWER_ABSENT() { 
+
+export function ANSWER_ABSENT() {
     return { value: 'SCTID: 2667000', label: 'k.A.' }
 }

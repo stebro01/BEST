@@ -34,7 +34,7 @@
                     <!-- POP CHANGE VALUE -->
                     <POPUP_DATA  :item="q_el" @update="updateSQL_El_value($event, q_ind)" />
                   </q-chip>
-                  
+
                 </div>
               </div>
               <div class="col"><q-btn class="q-ml-md my-btn" @click="runSQLStatement(SQL_QUERY)">laden</q-btn></div>
@@ -59,7 +59,7 @@
                 <!-- OBSErVATION_LIST -->
                 <div class="col-12" :style="`min-height: calc(100% - ${SIZE_VISIT})`" >
                   <OBSERVATION_LIST :param="param" v-if="$store.getters.VISIT_PINNED"/>
-                  <div v-else class="fit flex flex-center"> 
+                  <div v-else class="fit flex flex-center">
                     <q-banner class="bg-info">Keine Visite gefunden</q-banner>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export default {
     // LOAD THE DATA
     async runSQLStatement(sql_query) {
       this.$store.commit('VISIT_PINNED_SET', undefined)
-      this.$store.commit('PATIENT_PINNED_SET', undefined)
+      // this.$store.commit('PATIENT_PINNED_SET', undefined)
       const res = await this.$store.dispatch('runQuery', sql_query)
       if (res.status) {
         // remove doubles, this might occure if a patient has more than one user assigned
@@ -187,6 +187,7 @@ export default {
 
     // QUERY FUNCTIONS
     resetSQLQuery() {
+      this.$store.commit('PATIENT_PINNED_SET', undefined)
       var sql = undefined
       if (this.query_obs_elements.length === 0) sql = `${this.$store.getters.ENV.app.env.patient_view.sql_statement} WHERE USER_ID=${this.$store.getters.USER.USER_ID} OR USER_ID=${this.$store.getters.PUBLIC_ID}`
       else {

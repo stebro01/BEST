@@ -11,10 +11,10 @@
       <SELECT_FILE :accept="ACCEPT_FILETYPE" :label="`${TEXT.select_file} (${ACCEPT_FILETYPE})`"
         @save="importData($event, selected_import_method)" :multiple="true"/>
 
-      <div v-if="selected_import_method === 'csv' && !show_spinner">
+      <div v-if="selected_import_method === 'csv' && !$store.getters.SHOW_SPINNER">
         <q-icon name="info" class="q-mt-sm cursor-pointer" size="md" @click="show_csv_help = true" />
       </div>
-      <div v-if="show_spinner">
+      <div v-if="$store.getters.SHOW_SPINNER">
         <q-spinner size="md"></q-spinner>
       </div>
     </div>
@@ -66,18 +66,16 @@ export default {
       fileArr.forEach(f => FILE_PATH.push(f.path))
 
       this.$store.commit("LOG", {
-        method: "ImportObservation->importData",
+        method: "SelectImport.vue / ImportObservation->importData",
         data: { file: FILE_PATH, method: method },
       });
 
       // WHICH METHOD?
-      this.show_spinner = true
       if (method === "hl7") return this.importSURVEY(FILE_PATH);
       else if (method === "csv") return this.importCSVFile(FILE_PATH);
       else if (method === "raw") return this.importRAWdata(FILE_PATH);
       else {
         this.$q.notify("Comming soong ...")
-        this.show_spinner = false
       }
     },
 
@@ -91,8 +89,8 @@ export default {
         .then((patients) => {
           if (!patients) return this.$q.notify("Daten sind nicht kompatible");
           const keys = Object.keys(patients);
-          
-          
+
+
           if (this.mode !== 'multiple') {
             this.$q.notify('Mehr als ein Patient wurde gefunden, verwende nur den ersten ... ')
             let DATA = this._csv_data(patients[keys[0]])
@@ -105,7 +103,6 @@ export default {
           }
 
         });
-        this.show_spinner = false
       return;
     },
 
@@ -137,10 +134,10 @@ export default {
           }
         }
       }
+
       //prepare the preview
       if (this.mode === 'multiple') this.previewData([DATA])
       else this.previewData(DATA)
-      this.show_spinner = false
     },
 
     async _readSURVEY(filePath) {

@@ -15,7 +15,6 @@ import { raw_read, raw_write } from "src/tools/raw_import";
 
 export const importSurveyBEST = async ({commit, state}, payload ) => {
   commit('LOG', {method: 'importSurveyBEST'})
-  commit('SPINNER_SET', true)
   if (!payload || typeof(payload) !== 'string') return RETURN_DATA({status: false, error: error_codes.invalid_payload}, commit)
   var CDA_FROM_JSON = extract_cda(payload)
   if (!CDA_FROM_JSON.status) return CDA_FROM_JSON
@@ -24,13 +23,13 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
   if (!valid) return RETURN_DATA({status: false, error: error_codes.h7cda_not_valid}, commit)
 
   // now import the data using the CONCEPT_DIMENSION Table and crate a atandard output format
-  const VIEW_CONCEPT = new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+  const VIEW_CONCEPT = new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
   var DATA = undefined
   if (CDA_FROM_JSON.data.cda.id === "QUESTIONNAIRE-surveyBEST") DATA = await importCDAtoObject(CDA_FROM_JSON.data, VIEW_CONCEPT)
   else DATA = await importHL7toObject(CDA_FROM_JSON.data.cda, VIEW_CONCEPT)
-  
-  if (!DATA || !DATA.PATIENT) return RETURN_DATA({status: false, error: error_codes.invalid_json_object}, commit)
 
+  // RETURN
+  if (!DATA || !DATA.PATIENT) return RETURN_DATA({status: false, error: error_codes.invalid_json_object}, commit)
   return RETURN_DATA(DATA, commit)
 }
 
@@ -43,13 +42,13 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
     const valid = verifyCDA(hl7json)
     if (!valid) return RETURN_DATA({status: false, error: error_codes.h7cda_not_valid}, commit)
 
-    const VIEW_CONCEPT = new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+    const VIEW_CONCEPT = new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     var res = undefined
-    if (hl7json.cda.id === "QUESTIONNAIRE-surveyBEST") res = await importCDAtoObject(hl7json, VIEW_CONCEPT) 
+    if (hl7json.cda.id === "QUESTIONNAIRE-surveyBEST") res = await importCDAtoObject(hl7json, VIEW_CONCEPT)
     else res = await importHL7toObject(hl7json.cda, VIEW_CONCEPT)
 
+    // RETURN
     if (!res.PATIENT) return RETURN_DATA({status: false, error: error_codes.invalid_json_object}, commit)
-    
     return RETURN_DATA(res, commit)
  }
 
@@ -57,15 +56,15 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
     commit('LOG', {method: 'saveHL7ObjectsToDB', data: payload.PATIENT})
     commit('SPINNER_SET', true)
     if (!payload || !payload.PATIENT || !payload.VISITS || !payload.OBSERVATIONS) return RETURN_DATA({status: false, error: error_codes.invalid_payload}, commit)
-    const VIEW_PATIENT = new View_Patient(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
-    const VIEW_VISIT = new View_Visit(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
-    const VIEW_OBSERVATION = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+    const VIEW_PATIENT = new View_Patient(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
+    const VIEW_VISIT = new View_Visit(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
+    const VIEW_OBSERVATION = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     const res = await addHL7ObjectToDB(payload, VIEW_PATIENT, VIEW_VISIT, VIEW_OBSERVATION)
     if (res.status) {
         const res_patient = await VIEW_PATIENT.read({PATIENT_CD: payload.PATIENT.PATIENT_CD})
         if (res_patient.data && state.USER) {
             const PATIENT_NUM = res_patient.data[0].PATIENT_NUM
-            const TABLE_USER_PATIENT_LOOKUP = new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+            const TABLE_USER_PATIENT_LOOKUP = new View_user_patient_lookup(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
             const res_lookup = await TABLE_USER_PATIENT_LOOKUP.read({USER_ID: state.USER.USER_ID, PATIENT_NUM: PATIENT_NUM})
             if (res_lookup.data.length < 1) TABLE_USER_PATIENT_LOOKUP.create({USER_ID: state.USER.USER_ID, PATIENT_NUM: PATIENT_NUM})
         }
@@ -74,20 +73,20 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
  }
 
 /**
- * 
- * @param {*} param0 
- * @param {*} filePath 
- * @returns 
+ *
+ * @param {*} param0
+ * @param {*} filePath
+ * @returns
  * @example
  * this.$store.dispatch('importObjectsFromCSVFile', file.path) //called by DBFunctions_CSVImport.vue
  */
  export const  importObjectsFromCSVFile = async ({commit, state}, filePath) => {
-    commit('LOG', {method: 'ImportObservation->importData', data: filePath})
+    commit('LOG', {method: 'importObjectsFromCSVFile->importData', data: filePath})
     commit('SPINNER_SET', true)
-    
+
     const txt = window.electron.readFile(filePath, 'utf8')
     var OBS = importCSV(txt)
-    const CONCEPT = new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+    const CONCEPT = new View_Concept(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
     OBS = await Process_Observations(OBS, CONCEPT)
 
     if (OBS === undefined || OBS.length < 1) return RETURN_DATA(false, commit)
@@ -112,7 +111,7 @@ export const importSurveyBEST = async ({commit, state}, payload ) => {
 /**
  * @description Importiere eine komplette Datei mit RAW Daten
  * @param {*} param0 - {commit, state}
- * @param {*} payload 
+ * @param {*} payload
  */
 export const  importRAWdata_from_file = async ({commit, state}, payload) => {
   commit('LOG', {method: 'action->importRAWdata_from_file', data: payload.raw_fn})
@@ -138,9 +137,9 @@ export const  importRAWdata_from_file = async ({commit, state}, payload) => {
     VALTYPE_CD: 'R'
   }
   // CREATE THE VIEW OBSERVATION
-  const VIEW_OBSERVATION = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID) 
+  const VIEW_OBSERVATION = new View_Observation(window.electron.dbman, state.SETTINGS.data.filename.path, state.UPLOAD_ID)
   // CHECK IF THE DATA ALREADY EXISTS
-  if (!payload._force) {  
+  if (!payload._force) {
     const res_exist = await VIEW_OBSERVATION.read({VALUEFLAG_CD: OBSERVATION_DATA.VALUEFLAG_CD})
     console.log(OBSERVATION_DATA.VALUEFLAG_CD, res_exist)
     if (res_exist.data.length > 0) return RETURN_DATA({status: false, error: error_codes.data_already_exists}, commit)
@@ -156,14 +155,14 @@ export const exportRAWdata_to_file = async ({commit, state}, payload) => {
   commit('SPINNER_SET', true)
   // WRITE DATA
   const status_write = await raw_write(payload, {writeFileSync: window.electron.writeFile}, window.electron.path)
-
+  commit('SPINNER_SET', false)
   return RETURN_DATA(status_write, commit)
 }
 
 /**
  * Importiert ein JSON Objekt mit tables f. die DB => verwendet von DataTransfer_Import.vue
  * !siehe Test: DataTransfer.test.js
- * @param {object} param0 
+ * @param {object} param0
  * @param {object} payload - {JSON_DATA}
  * @returns Promise with result of importJSON
  */

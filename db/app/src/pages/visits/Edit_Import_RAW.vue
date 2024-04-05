@@ -20,13 +20,18 @@
             <q-chip dense class="my-visit-color">Visite {{ $store.getters.VISIT_PINNED.ENCOUNTER_NUM }}</q-chip>
             <span>by <q-chip dense class="my-provider-color"> {{ $store.getters.PROVIDER_PINNED.NAME_CHAR }}</q-chip></span>
           </div>
-          <q-markup-table v-if="FILE_PATH">
+          <!-- BANNER -->
+          <div v-if="SOME_CONCEPT_STILL_UNDEFINED" class="text-center q-pa-md">
+            <q-banner class="bg-warning" dense>Bitte jede Datei einem RAW-Concept zuordnen.</q-banner>
+          </div>
+          <q-markup-table v-if="FILE_PATH" class="q-mt-sm">
             <q-tr v-for="(item, ind) of FILE_PATH" :key="ind + 'file'">
               <q-td>
-                <q-icon name="done" color="green" v-if="item.imported" />
-                <q-btn v-else-if="item.CONCEPT_CD === undefined" round flat icon="list" @click="show_concept_select = true; show_add_concept_data = item"><q-tooltip>Ordne die Datei einem Konzept zu</q-tooltip></q-btn>
-                <q-btn v-else-if="item.show_force_btn" round flat icon="add_circle" color="red" @click="addItem(item, true)"><q-tooltip>Fügt Daten trotz Warnung ein.</q-tooltip></q-btn>
-                <q-btn v-else round flat icon="add" @click="addItem(item, false)"><q-tooltip>Fügt die Daten der DB hinzu</q-tooltip></q-btn>
+                <q-icon name="done_all" color="green" v-if="item.imported" />
+                <q-btn v-else-if="item.CONCEPT_CD === undefined" round flat icon="info" class="text-warning" @click="show_concept_select = true; show_add_concept_data = item"><q-tooltip>Ordne die Datei einem Konzept zu</q-tooltip></q-btn>
+                <q-btn v-else round flat icon="check" class="text-positive" @click="show_concept_select = true; show_add_concept_data = item"><q-tooltip>Aktuelles Konzept: {{ item.CONCEPT_CD }}</q-tooltip></q-btn>
+                <!-- <q-btn v-else-if="item.show_force_btn" round flat icon="add_circle" color="red" @click="addItem(item, true)"><q-tooltip>Fügt Daten trotz Warnung ein.</q-tooltip></q-btn> -->
+                <!-- <q-btn v-else round flat icon="add" @click="addItem(item, false)"><q-tooltip>Fügt die Daten der DB hinzu</q-tooltip></q-btn> -->
               </q-td>
               <q-td class="text-caption overflow-hidden">
                 <q-icon v-if="item.is_image" name="image"><q-tooltip>Image detected</q-tooltip></q-icon>
@@ -39,6 +44,13 @@
               </q-td>
             </q-tr>
           </q-markup-table>
+          <div class="text-center q-mt-md" v-if="!SOME_CONCEPT_STILL_UNDEFINED && FILE_PATH &&!ALL_CONCEPTS_ARE_IMPORTED">
+            <q-btn class="my-btn" rounded @click="addItems()">Hinzufügen</q-btn>
+          </div>
+          <div class="text-center q-mt-md" v-else-if="ALL_CONCEPTS_ARE_IMPORTED">
+            <q-banner class="bg-positive" dense>Alle Daten wurden erfolgreich hinzugefügt</q-banner>
+          </div>
+
         </div>
       </template>
 
@@ -127,6 +139,16 @@ export default {
     FILE_PATH() {
       return this.IMPORT_FN;
     },
+
+    SOME_CONCEPT_STILL_UNDEFINED() {
+      if (!this.IMPORT_FN) return false
+      return this.IMPORT_FN.some(item => item.CONCEPT_CD === undefined)
+    },
+
+    ALL_CONCEPTS_ARE_IMPORTED() {
+      if (!this.IMPORT_FN) return false
+      return this.IMPORT_FN.every(item => item.imported)
+    }
   },
 
   methods: {
@@ -216,6 +238,16 @@ export default {
     selectConcept(item) {
       this.show_concept_select = false;
       this.show_add_concept_data.CONCEPT_CD = item.CONCEPT_CD;
+    },
+
+    async addItems() {
+      for (let item of this.IMPORT_FN) {
+        if (item.CONCEPT_CD === undefined) {
+          this.$q.notify("Bitte ordne alle Dateien einem Konzept zu");
+          return;
+        }
+        await this.addItem(item, false);
+      }
     },
 
     async addItem(item, force) {
