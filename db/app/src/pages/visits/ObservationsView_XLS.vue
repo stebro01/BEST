@@ -11,15 +11,17 @@
       <template v-slot:main>
         <div class="column" :style="STYLE_DIV">
           <!-- HEADER -->
-          <div class="col-1 flex flex-center bg-grey-3 q-my-xs">HEADER
+          <div class="col-1 ">
+            <div class="q-mt-xs fit bg-grey-3 flex flex-center ">HEADER</div>
             <!-- CHANGE FONTSIZE -->
             <div class="absolute-top-right q-mt-md">
               <q-btn size="md" dense icon="zoom_in" flat @click="font_size++" />
               <q-btn size="md" dense icon="zoom_out" flat @click="font_size--" />
             </div>
           </div>
-          <div class="col-9 flex flex-center bg-white">
-            <q-scroll-area :style="STYLE_CONTENT" class="bg-grey-9">
+          <!-- CONTENT -->
+          <div class="col-10 flex flex-center bg-white">
+            <q-scroll-area :style="STYLE_CONTENT" class=" q-mt-xs">
               <q-markup-table dense>
                 <thead class="bg-grey-2">
                   <tr >
@@ -80,7 +82,11 @@
 
             </q-scroll-area>
           </div>
-          <div class="col-1 flex flex-center bg-grey-3 q-my-xs">FOOTER</div>
+          <!-- FOOTER -->
+          <div class="col-1">
+            <div class="q-mt-xs fit flex flex-center bg-grey-3">FOOTER</div>
+
+          </div>
         </div>
       </template>
 
@@ -117,11 +123,11 @@ export default {
     },
 
     STYLE_DIV() {
-      return "width: 100%; height: 70vh"
+      return `width: 100%; height: ${this.$q.screen.height - 280*((this.$q.screen.height/this.$q.screen.height*0.90))}px`
     },
 
     STYLE_CONTENT() {
-      return "width: 100%; height: 400px"
+      return "width: 100%; height: 100%"
     },
 
     TD_STYLE() {
