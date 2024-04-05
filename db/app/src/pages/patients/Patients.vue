@@ -1,6 +1,6 @@
 <template>
   <q-page class="">
-    <MainSlot :no_options="true" :no_footer="true">
+    <MainSlot :no_options="true" :no_footer="false">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="'Patienten'" :description="'verwalten und anzeigen'" :img="'patient-color-logo.png'"
@@ -9,26 +9,24 @@
 
       <!-- MAIN -->
       <template v-slot:main>
-        <q-table class="my-table" :rows="results" :columns="columns" :filter="filter" selection="single" dense
-          row-key="PATIENT_NUM">
+        <div class="row full-width">
+          <!-- FILTER -->
+          <div class="col-12 row bg-white q-py-sm items-center justify-center">
 
-          <template v-slot:top>
-            <!-- BUTTONS -->
-            <BOTTOM_DROPDOWN :show_add="true" @add="newPatient()" :show_edit="SELECTION === 1" @edit="editPatient()"
-              @make_private="makePrivate()" @make_public="makePublic()"
-              :show_remove="SELECTION > 0" @remove="deletePatient()" :show_make_public="SELECTION > 0" :show_make_private="SELECTION > 0"
-            />
-            <q-space />
-            <!-- FILTERBOX -->
-            <FILTER_BOX :filter="filter" @update="filter = $event" />
-          </template>
+            <div class="col-5">
+              <FILTER_BOX :filter="filter" @update="filter = $event" class="q-px-md" />
+            </div>
+            <div class="col-2"><q-btn class="my-btn" rounded no-caps>Suchen</q-btn></div>
+          </div>
+        </div>
+
+        <q-table class="my-table q-mt-sm q-pa-md" :rows="results" :columns="columns" :filter="filter" selection="single" dense
+          row-key="PATIENT_NUM">
 
           <!-- PROPS -->
           <template v-slot:header="props">
             <q-tr :props="props">
-              <q-th>
-                <!-- empty -->
-              </q-th>
+
               <q-th auto-width class="cursor-pointer">
                 <q-icon v-if="SELECTION === 0" name="check_box_outline_blank" size="sm" @click="setSelection(true)" />
                 <q-icon v-else name="indeterminate_check_box" size="sm" @click="setSelection(false)" />
@@ -38,8 +36,8 @@
               </q-th>
 
 
-              <q-th class="text-center">
-                <q-icon class="q-ml-xs" size="xs" name="preview"><q-tooltip>Sichtbarkeit</q-tooltip></q-icon>
+              <q-th auto-width>
+                  <!-- empty -->
               </q-th>
             </q-tr>
           </template>
@@ -49,9 +47,8 @@
               selected[props.row.PATIENT_NUM].selected =
               !selected[props.row.PATIENT_NUM].selected
               " class="cursor-pointer">
-                            <q-td><q-btn icon="app_registration" flat dense @click="visitePatient(props.row)"> <q-tooltip>Datenviewer öffnen</q-tooltip> </q-btn>
-              </q-td>
-              <q-td>
+
+              <q-td class="text-center">
                 <q-checkbox v-model="selected[props.row.PATIENT_NUM].selected" />
               </q-td>
               <q-td v-for="el in Object.keys(results[0])" :key="el" :props="props" class="text-center"
@@ -69,15 +66,39 @@
                 </q-tooltip>
               </q-td>
               <q-td class="text-center">
-                <q-icon v-if="props.row.USER_ID === public_id" name="visibility"><q-tooltip>Public (jeder kann diesen
-                    Patienten sehen)</q-tooltip></q-icon>
-                <q-icon v-else name="visibility_off"><q-tooltip>Privat (nur der Ersteller kann diesen Patienten sehen)
-                  </q-tooltip></q-icon>
-
+                <div class="q-gutter-md">
+                  <!-- PUBLIC? -->
+                    <q-icon v-if="props.row.USER_ID === public_id"  class="text-grey" name="visibility"><q-tooltip>Public (jeder kann diesen
+                        Patienten sehen)</q-tooltip></q-icon>
+                    <q-icon v-else  class="text-grey" name="visibility_off"><q-tooltip>Privat (nur der Ersteller kann diesen Patienten sehen)
+                      </q-tooltip></q-icon>
+                  <!-- EDIT -->
+                    <q-icon class="text-black" name="edit_note" size="xs" flat dense @click="editPatient(props.row)"> <q-tooltip>Bearbeiten</q-tooltip>
+                    </q-icon>
+                  <!-- OPEN DATA -->
+                    <q-icon name="folder" size="sm" flat dense @click="visitePatient(props.row)"> <q-tooltip>Datenviewer
+                      öffnen</q-tooltip> </q-icon>
+                  </div>
               </q-td>
+
             </q-tr>
           </template>
         </q-table>
+      </template>
+
+      <!-- FOOTER -->
+      <template v-slot:footer>
+        <div class="row full-width text-center">
+          <div v-if="SELECTION === 0" class="col-12 full-width text-right">
+            <q-btn icon="add" class="my-btn-220 q-ma-sm" no-caps rounded @click="newPatient()" >Neuen Patienten anlegen</q-btn>
+          </div>
+          <div v-else class="col-12 row justify-center">
+            <q-btn icon="delete" class="q-ma-sm bg-black text-white" no-caps rounded @click="deletePatient()" ><q-tooltip>Ausgewählte Patienten löschen</q-tooltip></q-btn>
+            <q-separator class="q-mx-xl" vertical inset />
+            <q-btn icon="visibility" class="q-ma-sm bg-black text-white" size="sm" rounded @click="makePublic()"><q-tooltip>Ausgewählte Patienten für alle sichtbar machen</q-tooltip></q-btn>
+            <q-btn icon="visibility_off" class="q-ma-sm bg-black text-white" size="sm" rounded @click="makePrivate()"><q-tooltip>Ausgewählte Patienten nur für aktuellen Nutzer sichtbar machen</q-tooltip></q-btn>
+          </div>
+        </div>
       </template>
 
     </MainSlot>
@@ -88,12 +109,11 @@
 import HEADING from "src/components/elements/Heading.vue";
 import FILTER_BOX from "src/components/elements/FilterBox.vue";
 import MainSlot from "src/components/MainSlot.vue";
-import BOTTOM_DROPDOWN from 'src/components/elements/BottomDropDown.vue'
 import { my_confirm } from "src/tools/my_dialog";
 
 export default {
   name: "PatientsPage",
-  components: { HEADING, FILTER_BOX, MainSlot, BOTTOM_DROPDOWN },
+  components: { HEADING, FILTER_BOX, MainSlot },
   data() {
     return {
       filter: null,
@@ -232,10 +252,10 @@ export default {
         });
     },
 
-    editPatient() {
+    editPatient(item) {
       return this.$router.push({
         name: "Patients_Edit",
-        params: { PATIENT_NUM: this.getSelected_PATIENT_NUM() },
+        params: { PATIENT_NUM: item.PATIENT_NUM },
       });
     },
 
@@ -295,13 +315,13 @@ export default {
     async makePublic() {
       for (let ind in this.selected) {
         let item = this.selected[ind]
-        if(item.selected) {
+        if (item.selected) {
           let res = await this.$store.dispatch("changePatientVisibility", {
             PATIENT_NUM: item.PATIENT_NUM,
             USER_ID: this.$store.getters.PUBLIC_ID
           })
           // remove all other visibility
-          if (res.status) await this.$store.dispatch("cleanPatientVisibility", { PATIENT_NUM: item.PATIENT_NUM, USER_ID: this.$store.getters.PUBLIC_ID})
+          if (res.status) await this.$store.dispatch("cleanPatientVisibility", { PATIENT_NUM: item.PATIENT_NUM, USER_ID: this.$store.getters.PUBLIC_ID })
         }
       }
 
@@ -312,20 +332,20 @@ export default {
     async makePrivate() {
       // get the USER_ID first
       let PROVIDER = this.$store.getters.PROVIDER_PINNED
-      let  USER =  await this.$store.dispatch("searchDB", {
+      let USER = await this.$store.dispatch("searchDB", {
         query_string: { USER_CD: PROVIDER.PROVIDER_ID },
         table: "USER_MANAGEMENT",
       })
       let USER_ID = USER[0].USER_ID
       for (let ind in this.selected) {
         let item = this.selected[ind]
-        if(item.selected) {
+        if (item.selected) {
           let res = await this.$store.dispatch("changePatientVisibility", {
             PATIENT_NUM: item.PATIENT_NUM,
             USER_ID: USER_ID
           })
           // remove all other visibility
-          if (res.status) await this.$store.dispatch("cleanPatientVisibility", { PATIENT_NUM: item.PATIENT_NUM, USER_ID: USER_ID})
+          if (res.status) await this.$store.dispatch("cleanPatientVisibility", { PATIENT_NUM: item.PATIENT_NUM, USER_ID: USER_ID })
         }
       }
 
