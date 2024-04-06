@@ -1,7 +1,8 @@
-<template>
+<template
+  template>
   <q-page class="">
 
-    <MainSlot :no_options="true" :no_footer="true">
+    <MainSlot :no_options="true" :no_footer="true" @resize="main_slot_size = $event">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="'XLS View'" :img="'db-queries-logo.png'" :icon="'wysiwyg'" />
@@ -11,109 +12,137 @@
       <template v-slot:main>
         <div class="column" :style="STYLE_DIV">
           <!-- HEADER -->
-          <div class="col-1 ">
-            <div class="q-mt-xs fit bg-grey-3 flex flex-center ">HEADER</div>
+          <div class="col-1 row items-center">
+            <div class="col-4">
+              <!-- empty -->
+            </div>
+            <div class="col-4 text-center">HEADER</div>
             <!-- CHANGE FONTSIZE -->
-            <div class="absolute-top-right q-mt-md">
-              <q-btn size="md" dense icon="zoom_in" flat @click="font_size++" />
-              <q-btn size="md" dense icon="zoom_out" flat @click="font_size--" />
+            <div class="col-4 text-right">
+              <q-btn size="md" dense icon="zoom_in" flat @click="font_size++; max_char_header=+max_char_header+5" />
+              <q-btn size="md" dense icon="zoom_out" flat @click="font_size--; max_char_header=max_char_header-5" />
             </div>
           </div>
           <!-- CONTENT -->
           <div class="col-10 flex flex-center bg-white">
             <q-scroll-area :style="STYLE_CONTENT" class=" q-mt-xs">
-              <q-markup-table dense>
-                <thead class="bg-grey-2">
-                  <tr >
-                    <th class="text-left" :style="TD_STYLE" >ID</th>
-                    <th class="text-right" :style="TD_STYLE">Calories</th>
-                    <th class="text-right" :style="TD_STYLE">Fat (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Carbs (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Protein (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Sodium (mg)</th>
-                    <th class="text-right" :style="TD_STYLE">Calories</th>
-                    <th class="text-right" :style="TD_STYLE">Fat (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Carbs (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Protein (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Sodium (mg)</th>
-                    <th class="text-right" :style="TD_STYLE">Calories</th>
-                    <th class="text-right" :style="TD_STYLE">Fat (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Carbs (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Protein (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Sodium (mg)</th>
-                    <th class="text-right" :style="TD_STYLE">Calories</th>
-                    <th class="text-right" :style="TD_STYLE">Fat (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Carbs (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Protein (g)</th>
-                    <th class="text-right" :style="TD_STYLE">Sodium (mg)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- LOOP -->
-                  <tr v-for="(item, ind) in [1,2,3,4,5,7,8,9,10,11,12]" :key="ind+'row'">
-                    <td class="text-left" :style="TD_STYLE">Frozen Yogurt {{ item }}</td>
-                    <td class="text-right" :style="TD_STYLE">159</td>
-                    <td class="text-right" :style="TD_STYLE">6</td>
-                    <td class="text-right" :style="TD_STYLE">24lkfsdf sdfedsfesajlkdfjalekjflaekjflkaejfelk</td>
-                    <td class="text-right" :style="TD_STYLE">4</td>
-                    <td class="text-right" :style="TD_STYLE">87</td>
-                    <td class="text-right" :style="TD_STYLE">159</td>
-                    <td class="text-right" :style="TD_STYLE">6</td>
-                    <td class="text-right" :style="TD_STYLE">24</td>
-                    <td class="text-right" :style="TD_STYLE">4</td>
-                    <td class="text-right" :style="TD_STYLE">87</td>
-                    <td class="text-right" :style="TD_STYLE">159</td>
-                    <td class="text-right" :style="TD_STYLE">6</td>
-                    <td class="text-right" :style="TD_STYLE">24lkfsdf sdfedsfesajlkdfjalekjflaekjflkaejfelk</td>
-                    <td class="text-right" :style="TD_STYLE">4</td>
-                    <td class="text-right" :style="TD_STYLE">87</td>
-                    <td class="text-right" :style="TD_STYLE">159</td>
-                    <td class="text-right" :style="TD_STYLE">6</td>
-                    <td class="text-right" :style="TD_STYLE">24</td>
-                    <td class="text-right" :style="TD_STYLE">4</td>
-                    <td class="text-right" :style="TD_STYLE">87</td>
-                  </tr>
-                </tbody>
+              <q-table dense 
+                :rows="ROWS"
+                :columns="COLS"
+                virtual-scroll
+                :rows-per-page-options="[0]"
+              >
+
+              <template v-slot:header-cell="props">
+                <q-th :props="props" >
+                  {{ props.col.label }}
+                  <q-icon v-if="props.col.label !== 'PATIENT_CD'" name="visibility_off" size="1.2em" class="cursor-pointer" @click="hideColKey(props.col.label_long)" />
+                </q-th>
+              </template>
+              
+              <template v-slot:body-cell="props">
+                <q-td :props="props" :class="{'bg-green-1': props.row.PATIENT_CD && $store.getters.PATIENT_PINNED && props.row.PATIENT_CD.value === $store.getters.PATIENT_PINNED.PATIENT_CD}">
+                  <span v-if="props.row[props.col.name]">
+                    <span v-if="props.col.name === 'PATIENT_CD'" @click="selectPatient(props.row[props.col.name].value)">
+                      {{ props.row[props.col.name].value }}
+                      <!-- <q-tooltip>{{ props.row }}</q-tooltip> -->
+                    </span>
+                    <span v-else-if="props.row[props.col.name].value">
+                      {{ props.row[props.col.name].value }}
+                    </span>
+                    <span v-else-if="MAP_OBSERVATIONS && props.row[props.col.name].id">
+                      <!-- GET THE OBSERVATION_ID -->
+                      <span v-if="Array.isArray(props.row[props.col.name].id)">
+                        <span v-for="(obs_item, obs_ind) in props.row[props.col.name].id" :key="obs_ind+'item'">
+                          <XLS_VIEW_OBS  :item="MAP_OBSERVATIONS[obs_item]" @loadObservation="showObservation($event)" @editObservation="editObservation($event)"/>
+                        </span>
+                      </span>
+                      <XLS_VIEW_OBS v-else  :item="MAP_OBSERVATIONS[props.row[props.col.name].id]" @loadObservation="showObservation($event)" @editObservation="editObservation($event)"/>
+                    </span>
+                    <span v-else @click="addObservation(props.col, props.row)">...</span>
+                  </span>
+                  <span v-else @click="addObservation(props.col, props.row)">
+                    ...
+                  </span>                  
+                </q-td>
+              </template>
 
 
-
-              </q-markup-table>
-
-
+              </q-table>
             </q-scroll-area>
           </div>
           <!-- FOOTER -->
-          <div class="col-1">
-            <div class="q-mt-xs fit flex flex-center bg-grey-3">FOOTER</div>
+          <div class="col-1 row items-center q-pt-sm">
+              <div class="col-4 text-left">
+              <div class="text-caption text-grey-8" style="line-height: 5px;">
+                Patients: {{ localData ? localData.length : 0 }} | Visits: {{ localData ? localData.reduce((acc, item) => acc + item.VISITS.length, 0) : 0 }} | Observations: {{ localData ? localData.reduce((acc, item) => acc + item.VISITS.reduce((acc, item) => acc + item.OBSERVATIONS.length, 0), 0) : 0 }}
+                <div v-if="hide_col_keys.length > 0">
+                  | Versteckt: {{ hide_col_keys.length }}
+                  <q-btn class="text-black" size="xs" dense icon="visibility" flat @click="hide_col_keys = []"><q-tooltip>Zeige alle Spalten an</q-tooltip></q-btn>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 text-center">
+              FOOTER
+              </div>  
+              <div class="col-4">
+                
+              </div>  
+            </div>
 
           </div>
-        </div>
       </template>
-
-
 
     </MainSlot>
 
+    <!-- SURVEY BEST PREVIEW -->
+    <SURVEY_PREVIEW v-if="survey_best_show" :input_data="survey_best_data" @close="survey_best_show=false; survey_best_data = undefined"/>
+
+    <!-- EDIT_OBS -->
+    <EDIT_OBS v-if="edit_observation_show" :observation_id="edit_observation_data" @close="edit_observation_show=false; edit_observation_data = undefined" @save="updateObservation($event)"/>
+
+    <!-- ADD_OBS -->
+    <ADD_OBS v-if="add_observation_show" :data="add_observation_data" @close="add_observation_show=false; add_observation_data = undefined" @save="newObservation($event)"/>
+
   </q-page>
-</template>
+</template> 
 
 <script>
 import HEADING from 'src/components/elements/Heading.vue'
 import MainSlot from 'src/components/MainSlot.vue'
+import XLS_VIEW_OBS from 'src/components/elements/XLS_ViewObs.vue'
+
+import SURVEY_PREVIEW from 'src/components/patient_view/SurveyPreview.vue'
+import EDIT_OBS from 'src/components/patient_view/EditObs.vue'
+import ADD_OBS from 'src/components/patient_view/AddObs.vue'
 
 export default {
   name: 'ObservationsView_XLS',
 
-  components: { HEADING, MainSlot },
+  components: { HEADING, MainSlot, XLS_VIEW_OBS, SURVEY_PREVIEW, EDIT_OBS, ADD_OBS },
 
   data() {
     return {
-      font_size: 10
+      font_size: 10,
+      max_char_header: 20,
+      main_slot_size: undefined,
+      localData: undefined,
+      col_keys: undefined,
+      hide_col_keys: [],
+      // for survey best preview
+      survey_best_show: false,
+      survey_best_data: undefined,
+      // for edit observation
+      edit_observation_show: false,
+      edit_observation_data: undefined,
+      // for add observation
+      add_observation_show: false,
+      add_observation_data: undefined
     }
   },
 
   mounted() {
-
+    this.loadLocalData()
   },
 
 
@@ -123,7 +152,9 @@ export default {
     },
 
     STYLE_DIV() {
-      return `width: 100%; height: ${this.$q.screen.height - 280*((this.$q.screen.height/this.$q.screen.height*0.90))}px`
+      if (!this.main_slot_size) return `width: 100%; height: ${this.$q.screen.height - 280*((this.$q.screen.height/this.$q.screen.height*0.90))}px`
+      // else
+      return `width: 100%; height: ${(this.main_slot_size.height / 12 * 10) - 12}px`
     },
 
     STYLE_CONTENT() {
@@ -132,6 +163,83 @@ export default {
 
     TD_STYLE() {
       return `font-size: ${this.font_size}pt; padding: 5px; border: 0.1px solid #ccc;overflow: hidden;max-width: 100px`
+    },
+
+    ROWS() {
+      const data = []
+      if (!this.localData || !Array.isArray(this.localData)) return data
+      
+      // first build an array with all the columns
+      const tmp = {}
+      this.col_keys.forEach(item => {
+        tmp[item.value] = null
+      })
+      this.localData.forEach(patient => {
+        let row_p = JSON.parse(JSON.stringify(tmp))
+        row_p.PATIENT_CD = {value: patient.PATIENT_CD}
+        row_p.BIRTH_DATE = {value: patient.BIRTH_DATE}
+        if (patient.VISITS) {
+          patient.VISITS.forEach(visit => {
+            row_p.ENCOUNTER_NUM = {value: visit.ENCOUNTER_NUM}
+            row_p.START_DATE = {value: visit.START_DATE}
+            
+            if (visit.OBSERVATIONS) {
+              let row_v = JSON.parse(JSON.stringify(row_p))
+              visit.OBSERVATIONS.forEach(observation => {
+                if (!row_v[observation.CONCEPT_NAME_CHAR]) row_v[observation.CONCEPT_NAME_CHAR] = {id: observation.OBSERVATION_ID}
+                else row_v[observation.CONCEPT_NAME_CHAR] = {id: [row_v[observation.CONCEPT_NAME_CHAR].id, observation.OBSERVATION_ID]}
+              })
+              data.push(JSON.parse(JSON.stringify(row_v)))
+
+            }
+          })
+        }
+      })
+    
+      return data
+    },
+
+    COLS() {
+      const max_width = this.max_char_header
+      if (!this.localData || !Array.isArray(this.localData)) return []
+      // use the filtered col_keys to build the columns => only the ones that are not hidden (hide_col_keys)
+      const local_col_keys = this.col_keys.filter(item => !this.hide_col_keys.includes(item.label))
+
+      return local_col_keys.map(item => {
+        return {
+          name: item.label,
+          required: true,
+          //make sure the label is not longer then max_width characters
+
+          label: item.label.length > max_width ? item.label.substring(0, max_width) + '...' : item.label,
+          label_long: item.label,
+          label_cd: item.value,
+          align: 'center',
+          field: row => row[item.label],
+          format: val => `${val}`,
+          style: this.TD_STYLE
+        }
+      })
+    
+    },
+
+    // return a map of all observations: 
+    MAP_OBSERVATIONS() {
+      const data = {}
+      if (!this.localData || !Array.isArray(this.localData)) return undefined
+      this.localData.forEach(patient => {
+        if (patient.VISITS) {
+          patient.VISITS.forEach(visit => {
+            if (visit.OBSERVATIONS) {
+              visit.OBSERVATIONS.forEach(observation => {
+
+                data[observation.OBSERVATION_ID] = observation
+              })
+            }
+          })
+        }
+      })
+      return data
     }
 
 
@@ -139,9 +247,157 @@ export default {
 
 
   methods: {
+    // METHODS
+    async loadLocalData() {      
+      let res_p = await this.loadPatientData()
+      // now load the visits
+      let res_v = await this.loadVisitsAndObservations(res_p)
+      this.localData = res_v
+      this.col_keys = this.buildColKeys(res_v)
+    },
+
+    // load the patients
+    async loadPatientData(data) {
+      data = undefined
+      const query = this.$store.getters.PATIENT_VIEW_SQL_STATEMENT
+      const patients = await this.$store.dispatch('runQuery', query)
+      let unique_patients = patients.data.reduce((acc, item) => {
+        delete item.USER_ID;
+        if (!acc.some(accItem => accItem.PATIENT_CD === item.PATIENT_CD)) {
+            acc.push({PATIENT_CD: item.PATIENT_CD, PATIENT_NUM: item.PATIENT_NUM, VITAL_STATUS_CD: item.VITAL_STATUS_CD, BIRTH_DATE: item.BIRTH_DATE, SEX_CD: item.SEX_CD});
+        }
+        return acc;
+        }, []);
+      return unique_patients
+    },
+
+    // load the visits
+    async loadVisitsAndObservations(patients) {
+      for (let i = 0; i < patients.length; i++) {
+        patients[i].VISITS = await this.$store.dispatch('searchDB', {query_string: {PATIENT_NUM: patients[i].PATIENT_NUM, _columns: ['ENCOUNTER_NUM', 'START_DATE', 'LOCATION_CD', 'ACTIVE_STATUS_CD']}, table: 'VISIT_DIMENSION'})
+        for (let j = 0; j < patients[i].VISITS.length; j++) {
+          patients[i].VISITS[j].OBSERVATIONS = await this.$store.dispatch('searchDB', {query_string: {ENCOUNTER_NUM: patients[i].VISITS[j].ENCOUNTER_NUM, _view: true, _columns: ['OBSERVATION_ID', 'START_DATE', 'CONCEPT_CD', 'CONCEPT_NAME_CHAR', 'VALTYPE_CD','NVAL_NUM', 'UNIT_CD', 'UNIT_RESOLVED', 'TVAL_CHAR', 'TVAL_RESOLVED']}, table: 'OBSERVATION_FACT'})
+        }
+      }
+      return patients
+    },
+
+    // BUILD COL KEYS
+    buildColKeys(data) {
+      const COL_KEY = [{label: "PATIENT_CD", value: "PATIENT_CD"}, {label: "BIRTH_DATE", value: "BIRTH_DATE"}]
+      COL_KEY.push({label: "ENCOUNTER_NUM", value: "ENCOUNTER_NUM"})
+      COL_KEY.push({label: "START_DATE", value: "START_DATE"})
+      data.forEach(patient => {
+        if (patient.VISITS) {
+          patient.VISITS.forEach(visit => {
+            if (visit.OBSERVATIONS) {
+              visit.OBSERVATIONS.forEach(observation => {
+                if (!COL_KEY.some(item => item.label === observation.CONCEPT_NAME_CHAR)) {
+                  COL_KEY.push({label: observation.CONCEPT_NAME_CHAR, value: observation.CONCEPT_CD})
+                }
+              })
+            }
+          })
+        }
+
+      })
+      return COL_KEY
+    },
+
+    hideColKey(key) {
+      if (!this.hide_col_keys.includes(key)) this.hide_col_keys.push(key)        
+    },
 
 
+    showObservation(observation_id) {
+      this.survey_best_show = true
+      this.survey_best_data = {OBSERVATION_ID: observation_id}
+    },
 
+    editObservation(data) {
+      this.edit_observation_show = true
+      this.edit_observation_data = data
+    },
+
+    async updateObservation(data) {
+      this.edit_observation_show = false
+      this.edit_observation_data = undefined
+      const WHERE = {OBSERVATION_ID: data.OBSERVATION_ID}
+      const SET = {}
+      if (data.VALTYPE_CD === 'N') SET.NVAL_NUM = data.NVAL_NUM
+      else SET.TVAL_CHAR = data.TVAL_CHAR
+      if (!Object.keys(SET).length) return this.$q.notify({message: 'No changes made', color: 'warning'})
+      const res = await this.$store.dispatch('updateDB', {table: 'OBSERVATION_FACT', query_string: {where: WHERE, set: SET}})
+      if (res) {
+        const res_new = await this.$store.dispatch('searchDB', {table: 'OBSERVATION_FACT', query_string: {...WHERE, _view: true}})
+        this.updateLocalData(res_new[0])
+        this.check_if_patient_data_is_set(res_new[0])
+      }      
+    },
+
+    addObservation(col, row) {
+      this.add_observation_show = true
+      const patient = this.localData.find(item => item.PATIENT_CD === row.PATIENT_CD.value)
+      this.add_observation_data = {CONCEPT_CD: col.label_cd, ENCOUNTER_NUM: row.ENCOUNTER_NUM.value, PATIENT_CD: row.PATIENT_CD.value, PATIENT_ID: patient.PATIENT_NUM}
+    },
+
+    async newObservation(data) {
+      console.log('newObservation', data)
+      this.add_observation_show = false
+      this.add_observation_data = undefined
+      const res = await this.$store.dispatch('addDB', {table: 'OBSERVATION_FACT', query_string: data})
+      if (res) {
+        const res_new = await this.$store.dispatch('searchDB', {table: 'OBSERVATION_FACT', query_string: {OBSERVATION_ID: res.OBSERVATION_ID, _view: true}})
+        this.updateLocalData(res_new[0])
+        this.check_if_patient_data_is_set(res_new[0])
+      
+      }
+    },
+
+
+    updateLocalData(data) {
+      if (!this.localData || !Array.isArray(this.localData)) return
+      const OBSERVATION_ID = data.OBSERVATION_ID
+      const PATIENT_CD = data.PATIENT_CD
+      const ENCOUNTER_NUM = data.ENCOUNTER_NUM
+      // find the patient
+      const patient = this.localData.find(item => item.PATIENT_CD === PATIENT_CD)
+      // find the encounter
+      const visit = patient.VISITS.find(item => item.ENCOUNTER_NUM === ENCOUNTER_NUM)
+      // find the observation
+      const observation = visit.OBSERVATIONS.find(item => item.OBSERVATION_ID === OBSERVATION_ID)
+      // update the observation
+      if (observation) {
+        if (data.NVAL_NUM) observation.NVAL_NUM = data.NVAL_NUM
+        if (data.TVAL_CHAR) observation.TVAL_CHAR = data.TVAL_CHAR
+        if (data.TVAL_RESOLVED) observation.TVAL_RESOLVED = data.TVAL_RESOLVED
+      } else {
+        visit.OBSERVATIONS.push(data)
+      }
+    },
+
+    selectPatient(patient_cd) {
+      if (!this.localData || !Array.isArray(this.localData)) return
+      // get the patient
+      const patient = this.localData.find(item => item.PATIENT_CD === patient_cd)
+      // is the patient already pinned?
+      if (this.$store.getters.PATIENT_PINNED && this.$store.getters.PATIENT_PINNED.PATIENT_CD === patient_cd) {
+        this.$store.commit('PATIENT_PINNED_SET', undefined)
+      } else this.$store.commit('PATIENT_PINNED_SET', patient)
+    },
+
+    check_if_patient_data_is_set(obs) {
+      if (obs.CONCEPT_CD !== 'SCTID: 184099003') return //do nothing
+      // get the patient
+      const patient = this.localData.find(item => item.PATIENT_CD === obs.PATIENT_CD)
+      console.log(patient)
+      if (!patient || (patient.BIRTH_DATE !== undefined && patient.BIRTH_DATE !== null)) return
+      const WHERE = {PATIENT_NUM: obs.PATIENT_NUM}
+      const SET = {BIRTH_DATE: obs.TVAL_CHAR}
+      this.$store.dispatch('updateDB', {table: 'PATIENT_DIMENSION', query_string: {where: WHERE, set: SET}})
+      patient.BIRTH_DATE = obs.TVAL_CHAR
+
+    }
 
 
     // ENDE METHODS

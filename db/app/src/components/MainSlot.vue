@@ -1,5 +1,7 @@
 <template>
     <div class="column my-column">
+        <q-resize-observer @resize="onResize" />
+
         <!-- HEADING -->
         <div class="col-2 bg-accent" >
             <div class="row justify-center" >
@@ -62,6 +64,13 @@ export default {
 
         SHOW_SPINNER() {
             return this.$store.getters.SHOW_SPINNER
+        }
+    },
+
+    methods: {
+        // methods hier
+        onResize(size) {
+            this.$emit('resize', size)
         }
     }
 }

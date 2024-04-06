@@ -1,7 +1,7 @@
 <template>
-  <q-page class="">
+  <q-page>
 
-    <MainSlot :no_options="true" :no_footer="true">
+    <MainSlot :no_options="true" :no_footer="true" @resize="main_slot_size = $event">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="'Patienten bearbeiten / Modern View'" :img="'db-queries-logo.png'" :icon="'wysiwyg'" />
@@ -9,7 +9,7 @@
 
       <!-- MAIN -->
       <template v-slot:main>
-        <div class="row" style="width: 100%; height: 70vh">
+        <div class="row" :style="STYLE_DIV">
           <!-- HEADER -->
           <div class="col-12 q-pa-sm" :style="`height: ${SIZE_TOP}`">
             <div class="row ">
@@ -109,6 +109,7 @@ export default {
 
   data() {
     return {
+      main_slot_size: undefined,
       options: this.$store.getters.ENV.options_db_queries,
       param: {
         filter_patient: undefined,
@@ -134,6 +135,11 @@ export default {
   computed: {
     TEXT() {
       return this.$store.getters.TEXT.page.db_queries
+    },
+    STYLE_DIV() {
+      if (!this.main_slot_size) return `width: 100%; height: ${this.$q.screen.height - 300*((this.$q.screen.height/this.$q.screen.height*0.90))}px`
+      // else
+      return `width: 100%; height: ${(this.main_slot_size.height / 12 * 10) - 50}px`
     },
 
     SIZE_TOP() {
