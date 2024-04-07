@@ -12,17 +12,8 @@
       <template v-slot:main>
         <div class="column" :style="STYLE_DIV">
           <!-- HEADER -->
-          <div class="col-1 row items-center">
-            <div class="col-4">
-              <!-- empty -->
-            </div>
-            <div class="col-4 text-center">HEADER</div>
-            <!-- CHANGE FONTSIZE -->
-            <div class="col-4 text-right">
-              <q-btn size="md" dense icon="zoom_in" flat @click="font_size++; max_char_header=+max_char_header+5" />
-              <q-btn size="md" dense icon="zoom_out" flat @click="font_size--; max_char_header=max_char_header-5" />
-            </div>
-          </div>
+          <HEADER_FOR_XLS_VIEW @zoom_in="font_size++; max_char_header=+max_char_header+5" @zoom_out="font_size--; max_char_header=max_char_header-5"/>
+
           <!-- CONTENT -->
           <div class="col-10 flex flex-center bg-white">
             <q-scroll-area :style="STYLE_CONTENT" class=" q-mt-xs">
@@ -36,7 +27,8 @@
               <template v-slot:header-cell="props">
                 <q-th :props="props" >
                   {{ props.col.label }}
-                  <q-icon v-if="props.col.label !== 'PATIENT_CD'" name="visibility_off" size="1.2em" class="cursor-pointer" @click="hideColKey(props.col.label_long)" />
+                  <q-tooltip>{{ props.col.label_long }} <span v-if="props.col.label_long !== props.col.label_cd">({{ props.col.label_cd }})</span></q-tooltip>
+                  <q-icon v-if="props.col.label_long !== 'PATIENT_CD'" name="visibility_off" size="1.2em" class="cursor-pointer" @click="hideColKey(props.col.label_long)" />
                 </q-th>
               </template>
               
@@ -72,24 +64,8 @@
             </q-scroll-area>
           </div>
           <!-- FOOTER -->
-          <div class="col-1 row items-center q-pt-sm">
-              <div class="col-4 text-left">
-              <div class="text-caption text-grey-8" style="line-height: 5px;">
-                Patients: {{ localData ? localData.length : 0 }} | Visits: {{ localData ? localData.reduce((acc, item) => acc + item.VISITS.length, 0) : 0 }} | Observations: {{ localData ? localData.reduce((acc, item) => acc + item.VISITS.reduce((acc, item) => acc + item.OBSERVATIONS.length, 0), 0) : 0 }}
-                <div v-if="hide_col_keys.length > 0">
-                  | Versteckt: {{ hide_col_keys.length }}
-                  <q-btn class="text-black" size="xs" dense icon="visibility" flat @click="hide_col_keys = []"><q-tooltip>Zeige alle Spalten an</q-tooltip></q-btn>
-                </div>
-              </div>
-            </div>
-            <div class="col-4 text-center">
-              FOOTER
-              </div>  
-              <div class="col-4">
-                
-              </div>  
-            </div>
-
+            <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" @clear_hide_cols="hide_col_keys = []"/>
+          
           </div>
       </template>
 
@@ -120,10 +96,13 @@ import RAW_DATA_PREVIEW from 'src/components/patient_view/RawDataPreview.vue'
 import EDIT_OBS from 'src/components/patient_view/EditObs.vue'
 import ADD_OBS from 'src/components/patient_view/AddObs.vue'
 
+import FOOTER_FOR_XLS_VIEW from 'src/components/patient_view/Footer_for_XLS_View.vue'
+import HEADER_FOR_XLS_VIEW from 'src/components/patient_view/Header_for_XLS_View.vue'
+
 export default {
   name: 'ObservationsView_XLS',
 
-  components: { HEADING, MainSlot, XLS_VIEW_OBS, SURVEY_PREVIEW, RAW_DATA_PREVIEW, EDIT_OBS, ADD_OBS },
+  components: { HEADING, MainSlot, XLS_VIEW_OBS, SURVEY_PREVIEW, RAW_DATA_PREVIEW, EDIT_OBS, ADD_OBS, FOOTER_FOR_XLS_VIEW, HEADER_FOR_XLS_VIEW },
 
   data() {
     return {
@@ -212,7 +191,7 @@ export default {
       // use the filtered col_keys to build the columns => only the ones that are not hidden (hide_col_keys)
       const local_col_keys = this.col_keys.filter(item => !this.hide_col_keys.includes(item.label))
 
-      return local_col_keys.map(item => {
+      const RES =  local_col_keys.map(item => {
         return {
           name: item.label,
           required: true,
@@ -227,6 +206,18 @@ export default {
           style: this.TD_STYLE
         }
       })
+      // relabel some items
+      const ENCOUNTER_NUM = RES.find(item => item.name === 'ENCOUNTER_NUM')
+      if (ENCOUNTER_NUM) ENCOUNTER_NUM.label = 'Visite'
+      const START_DATE = RES.find(item => item.name === 'START_DATE')
+      if (START_DATE) START_DATE.label = 'Datum'
+      const BIRTH_DATE = RES.find(item => item.name === 'BIRTH_DATE')
+      if (BIRTH_DATE) BIRTH_DATE.label = 'Geb.Datum'
+      const PATIENT_CD = RES.find(item => item.name === 'PATIENT_CD')
+      if (PATIENT_CD) PATIENT_CD.label = 'ID'
+      
+
+      return RES
     
     },
 
