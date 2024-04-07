@@ -1,6 +1,6 @@
 <template>
 
-  <q-dialog v-model="show_dialog">
+  <q-dialog v-model="show_dialog" persistent>
     <q-card class="q-ma-md no-shadow my-card" v-if="show_dialog">
       <q-icon class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close"
         size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>

@@ -86,7 +86,6 @@ export default {
 
   data() {
     return {
-
       // for survey best preview
       survey_best_show: false,
       survey_best_data: undefined,
@@ -101,11 +100,6 @@ export default {
       add_observation_data: undefined
     }
   },
-
-  mounted() {
-
-  },
-
 
   computed: {
     TEXT() {
@@ -184,10 +178,8 @@ export default {
       if (BIRTH_DATE) BIRTH_DATE.label = 'Geb.Datum'
       const PATIENT_CD = RES.find(item => item.name === 'PATIENT_CD')
       if (PATIENT_CD) PATIENT_CD.label = 'ID'
-
-
+      
       return RES
-
     },
 
     // return a map of all observations: 
@@ -258,7 +250,6 @@ export default {
     },
 
     async newObservation(data) {
-      console.log('newObservation', data)
       this.add_observation_show = false
       this.add_observation_data = undefined
       const res = await this.$store.dispatch('addDB', { table: 'OBSERVATION_FACT', query_string: data })

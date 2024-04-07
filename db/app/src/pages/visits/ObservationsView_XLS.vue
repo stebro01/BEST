@@ -1,7 +1,7 @@
 <template template>
-  <q-page class="">
+  <q-page >
 
-    <MainSlot :no_options="true" :no_footer="true" @resize="main_slot_size = $event">
+    <MainSlot v-if="!full_mode" :no_options="true" :no_footer="true" @resize="main_slot_size = $event">
       <!-- HEADING -->
       <template v-slot:header>
         <HEADING :title="'XLS View'" :img="'db-queries-logo.png'" :icon="'wysiwyg'" />
@@ -20,13 +20,30 @@
             @update_observation="updateLocalData($event)" />
 
           <!-- FOOTER -->
-          <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys"
-            @clear_hide_cols="hide_col_keys = []" />
-
+          <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" :col_count="COL_COUNT"
+            @clear_hide_cols="hide_col_keys = []" @addColumn="addColumnWithObservation($event)" @refresh="loadLocalData()" :full_mode="full_mode" @toggleFullScreen="toggleFullScreen($event)"/>
         </div>
       </template>
 
     </MainSlot>
+
+    <q-dialog v-else  maximized v-model="full_mode" :style="STYLE_DIV">
+      <!-- MAKE SURE TO COPY THE CODE ABOVE!!! -->
+      <div class="column fit">
+          <!-- HEADER -->
+          <HEADER_FOR_XLS_VIEW @zoom_in="font_size++; max_char_header = +max_char_header + 5"
+            @zoom_out="font_size--; max_char_header = max_char_header - 5" />
+
+          <!-- CONTENT -->
+          <MAIN_FOR_XLS_VIEW :localData="localData" :col_keys="col_keys" :font_size="font_size"
+            :max_char_header="max_char_header" :hide_col_keys="hide_col_keys" @hide_col_key="hide_col_keys.push($event)"
+            @update_observation="updateLocalData($event)" />
+
+          <!-- FOOTER -->
+          <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" :col_count="COL_COUNT"
+            @clear_hide_cols="hide_col_keys = []" @addColumn="addColumnWithObservation($event)" @refresh="loadLocalData()" :full_mode="full_mode" @toggleFullScreen="toggleFullScreen($event)"/>
+          </div>
+        </q-dialog>
 
 
   </q-page>
@@ -53,6 +70,7 @@ export default {
       localData: undefined,
       col_keys: undefined,
       hide_col_keys: [],
+      full_mode: false
     }
   },
 
@@ -67,10 +85,17 @@ export default {
     },
 
     STYLE_DIV() {
+      if (this.full_mode) return 'background-color: white;width: 100vw; height: 100vh'
       if (!this.main_slot_size) return `width: 100%; height: ${this.$q.screen.height - 280 * ((this.$q.screen.height / this.$q.screen.height * 0.90))}px`
       // else
       return `width: 100%; height: ${(this.main_slot_size.height / 12 * 10) - 12}px`
     },
+
+    COL_COUNT() {
+      if (!this.col_keys) return 0
+      //
+      return this.col_keys.length
+    }
 
   },
 
@@ -168,6 +193,23 @@ export default {
       this.$store.dispatch('updateDB', { table: 'PATIENT_DIMENSION', query_string: { where: WHERE, set: SET } })
       patient.BIRTH_DATE = obs.TVAL_CHAR
 
+    },
+
+    addColumnWithObservation(item) {
+      // if the item is already in the col_keys array, return
+      if (this.col_keys.find(el => el.value === item.value)) {
+        this.$q.notify({ type: 'warning', message: 'Spalte bereits vorhanden!' })
+
+      } else {
+        this.col_keys.push(item)
+      }
+    },
+
+    toggleFullScreen(mode) {
+      
+      this.full_mode = mode
+      // if (mode) this.$q.fullscreen.request()
+      // else this.$q.fullscreen.exit()
     }
 
 

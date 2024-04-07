@@ -9,6 +9,7 @@ import { error, error_codes } from 'src/tools/logger'
 import { View_Visit } from 'src/classes/View_Visit'
 import { View_Observation } from 'src/classes/View_Observation'
 
+import {ANSWER_ABSENT} from 'src/store/getters'
 
 /**
  * @param NONE
@@ -49,6 +50,7 @@ export const getGender = async ({commit, state}) => {
             if (query.status) {
                 const d = []
                 query.data.forEach(r => d.push({label: r.NAME_CHAR, value: r.CONCEPT_CD}))
+                d.push(ANSWER_ABSENT())
                 res(d)
             }
             else rej(query.error)
