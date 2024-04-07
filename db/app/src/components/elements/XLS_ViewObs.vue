@@ -35,7 +35,7 @@ export default {
       },
 
       CHIP() {
-        if (this.item.VALTYPE_CD) return undefined
+        if (this.item.VALTYPE_CD && this.item.VALTYPE_CD !== 'R') return undefined
         // else
         const out_str = this.item.TVAL_RESOLVED || this.item.TVAL_CHAR
         return out_str.length > 10 ? out_str.slice(0, 10) + '...' : out_str
@@ -54,7 +54,7 @@ export default {
 
     methods: {
       loadObservation(item) {
-        this.$emit('loadObservation', item.OBSERVATION_ID)
+        this.$emit('loadObservation', {OBSERVATION_ID: item.OBSERVATION_ID, TVAL_CHAR: item.TVAL_CHAR, VALTYPE_CD: item.VALTYPE_CD})
       }
     }
 

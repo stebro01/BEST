@@ -98,6 +98,9 @@
     <!-- SURVEY BEST PREVIEW -->
     <SURVEY_PREVIEW v-if="survey_best_show" :input_data="survey_best_data" @close="survey_best_show=false; survey_best_data = undefined"/>
 
+    <!-- RAW DATA PREVIEW -->
+    <RAW_DATA_PREVIEW v-if="raw_data_show" :input_data="raw_data_data" @close="raw_data_show=false; raw_data_data = undefined"/>
+
     <!-- EDIT_OBS -->
     <EDIT_OBS v-if="edit_observation_show" :observation_id="edit_observation_data" @close="edit_observation_show=false; edit_observation_data = undefined" @save="updateObservation($event)"/>
 
@@ -113,13 +116,14 @@ import MainSlot from 'src/components/MainSlot.vue'
 import XLS_VIEW_OBS from 'src/components/elements/XLS_ViewObs.vue'
 
 import SURVEY_PREVIEW from 'src/components/patient_view/SurveyPreview.vue'
+import RAW_DATA_PREVIEW from 'src/components/patient_view/RawDataPreview.vue'
 import EDIT_OBS from 'src/components/patient_view/EditObs.vue'
 import ADD_OBS from 'src/components/patient_view/AddObs.vue'
 
 export default {
   name: 'ObservationsView_XLS',
 
-  components: { HEADING, MainSlot, XLS_VIEW_OBS, SURVEY_PREVIEW, EDIT_OBS, ADD_OBS },
+  components: { HEADING, MainSlot, XLS_VIEW_OBS, SURVEY_PREVIEW, RAW_DATA_PREVIEW, EDIT_OBS, ADD_OBS },
 
   data() {
     return {
@@ -132,6 +136,9 @@ export default {
       // for survey best preview
       survey_best_show: false,
       survey_best_data: undefined,
+      // for raw data
+      raw_data_show: false,
+      raw_data_data: undefined,
       // for edit observation
       edit_observation_show: false,
       edit_observation_data: undefined,
@@ -309,9 +316,16 @@ export default {
     },
 
 
-    showObservation(observation_id) {
-      this.survey_best_show = true
-      this.survey_best_data = {OBSERVATION_ID: observation_id}
+    showObservation(payload) {
+      console.log('showObservation', payload)
+      if (payload.VALTYPE_CD === 'R') {
+        this.raw_data_show = true
+        this.raw_data_data = {OBSERVATION_ID: payload.OBSERVATION_ID}
+      } else {
+        this.survey_best_show = true
+        this.survey_best_data = {OBSERVATION_ID: payload.OBSERVATION_ID}
+      }
+      
     },
 
     editObservation(data) {
