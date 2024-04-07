@@ -9,10 +9,19 @@
       </q-card-section>
 
       <q-card-section>
-        Dateiinformationen: <span v-if="FILE_INFO">{{ FILE_INFO }}</span>
+        <span v-if="FILE_INFO">Dateiinformationen: {{ FILE_INFO }}</span>
       </q-card-section>
 
-      <q-card-section>
+      <!-- IMAGE DATA -->
+      <q-card-section v-if="IS_IMAGE_DATA">
+        <img :src="image_src" @load="revokeURL(image_src)" style="width: 100%; height: 100%;" />
+      </q-card-section>
+      <!-- PDF DATA -->
+      <q-card-section v-else-if="IS_PDF_DATA" class="text-center">
+        <q-btn @click="openPDF()" class="my-btn" rounded>PDF öffnen</q-btn>
+      </q-card-section>
+      <!-- RANDOM RAW DATA -->
+      <q-card-section v-else>
         Content:
         <q-scroll-area style="width: 100%; height: 300px; font-size: 0.8em;font-family: 'Courier New', Courier, monospace;">
         <div v-if="BLOB" class="bg-grey-2">
@@ -42,7 +51,9 @@ export default {
     return {
       show_dialog: false,
       localData: undefined,
-      preview_raw_item: undefined
+      preview_raw_item: undefined,
+      image_src: undefined,
+      pdf_src: undefined
     }
   },
 
@@ -62,6 +73,16 @@ export default {
     BLOB() {
       if (!this.localData || !this.preview_raw_item) return undefined
       else return this.preview_raw_item
+    },
+
+    IS_IMAGE_DATA() {
+      if (!this.localData) return false
+      return this.localData.CONCEPT_CD === 'CUSTOM: RAW_IMAGE' && this.image_src
+    },
+
+    IS_PDF_DATA() {
+      if (!this.localData) return false
+      return this.localData.CONCEPT_CD === 'CUSTOM: RAW_IMAGE' && this.pdf_src
     }
   },
 
@@ -78,7 +99,10 @@ export default {
         OBSERVATION_ID: payload.OBSERVATION_ID
       }
 
-      this.previewRAW(this.localData)
+      // console.log(this.localData)
+
+      if (this.localData.CONCEPT_CD === 'CUSTOM: RAW_IMAGE') this.previewImage(this.localData)
+      else this.previewRAW(this.localData)
     },
 
 
@@ -95,7 +119,44 @@ export default {
 
       } else this.$q.notify({ type: 'negative', message: 'Keine Vorschau verfügbar' })
     },
+    
+    // LOAD IMAGE DATA
+    previewImage(val) {
+      if (val) {
+        // OBJECT DATA
+        const image_data = JSON.parse(val.TVAL_CHAR)
+        // PNG DATA
+        if (image_data.ext === '.png') {
+          //  BLOB DATA
+          let blob = new Blob([val.OBSERVATION_BLOB], { type: 'image/png' });
 
+          let imageUrl = URL.createObjectURL(blob);
+          this.image_src = imageUrl
+        }
+        // PDF
+        else if (image_data.ext === '.pdf') {
+            // PDF BLOB DATA
+            let blob = new Blob([val.OBSERVATION_BLOB], { type: 'application/pdf' });
+
+            let pdfUrl = URL.createObjectURL(blob);
+            // Zum Anzeigen des PDFs kannst du entweder ein <iframe>, <embed> oder <object> HTML-Element verwenden,
+            // oder den Benutzer veranlassen, das PDF direkt herunterzuladen bzw. in einem neuen Tab zu öffnen.
+            this.pdf_src = pdfUrl;
+            
+            
+        }
+        else return this.$q.notify({ type: 'negative', message: 'Keine Vorschau verfügbar' })
+
+      }
+    },
+
+    revokeURL(url) {
+      URL.revokeObjectURL(url);
+    },
+
+    openPDF() {
+      window.open(this.pdf_src, '_blank')
+    }
 
 
   }
