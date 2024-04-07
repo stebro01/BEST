@@ -18,8 +18,12 @@
           <q-td :props="props"
             :class="{ 'bg-green-1': props.row.PATIENT_CD && $store.getters.PATIENT_PINNED && props.row.PATIENT_CD.value === $store.getters.PATIENT_PINNED.PATIENT_CD }">
             <span v-if="props.row[props.col.name]">
-              <span v-if="props.col.name === 'PATIENT_CD'" @click="selectPatient(props.row[props.col.name].value)">
+              <span v-if="props.col.name === 'PATIENT_CD'" @click="selectPatient(props.row[props.col.name].value)" class="cursor-pointer">
                 {{ props.row[props.col.name].value }}
+                <!-- <q-tooltip>{{ props.row }}</q-tooltip> -->
+              </span>
+              <span v-if="props.col.name === 'ENCOUNTER_NUM'" @click="selectVisit(props.row[props.col.name].value)" class="cursor-pointer">
+                <span :class="{'text-bold': props.row.ENCOUNTER_NUM && $store.getters.VISIT_PINNED && props.row.ENCOUNTER_NUM.value === $store.getters.VISIT_PINNED.ENCOUNTER_NUM}">{{ props.row[props.col.name].value }}</span>
                 <!-- <q-tooltip>{{ props.row }}</q-tooltip> -->
               </span>
               <span v-else-if="props.row[props.col.name].value">
@@ -145,6 +149,7 @@ export default {
         }
       })
 
+      this.$emit('rows', {rows: data, cols: this.col_keys})
       return data
     },
 
@@ -269,6 +274,16 @@ export default {
         this.$store.commit('PATIENT_PINNED_SET', undefined)
       } else this.$store.commit('PATIENT_PINNED_SET', patient)
     },
+
+    async selectVisit(visit) {
+      if (!this.localData || !Array.isArray(this.localData)) return
+      // get the patient
+      const res = await this.$store.dispatch('searchDB', { table: 'VISIT_DIMENSION', query_string: { ENCOUNTER_NUM: visit } })
+      if (!res || !res[0]) return
+      this.$store.commit('VISIT_PINNED_SET', res[0])
+      const patient = this.localData.find(item => item.PATIENT_NUM === res[0].PATIENT_NUM)
+      if (patient) this.$store.commit('PATIENT_PINNED_SET', patient)
+    }
 
     // ENDE METHODS
   }

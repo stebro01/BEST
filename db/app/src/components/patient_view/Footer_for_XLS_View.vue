@@ -26,13 +26,13 @@
             <q-separator />
 
             <!-- VISITE LÖSCHEN -->
-            <q-item clickable v-close-popup @click="commingSoon()">
+            <q-item clickable v-close-popup @click="removeVisit()">
               <q-item-section side><q-icon name="delete"/></q-item-section>
               <q-item-section>Visite löschen</q-item-section>
             </q-item>
 
             <!-- Patienten LÖSCHEN -->
-            <q-item clickable v-close-popup @click="commingSoon()">
+            <q-item clickable v-close-popup @click="removePatient()">
               <q-item-section side><q-icon name="delete"/></q-item-section>
               <q-item-section>Patienten löschen</q-item-section>
             </q-item>
@@ -40,7 +40,7 @@
             <q-separator />
 
             <!-- DATEN HERUNTERLADEN -->
-            <q-item clickable v-close-popup @click="commingSoon()">
+            <q-item clickable v-close-popup @click="$emit('export_data')">
               <q-item-section side><q-icon name="download"/></q-item-section>
               <q-item-section>Export in CSV</q-item-section>
             </q-item>
@@ -85,6 +85,8 @@
 import ADD_PERSON_DIALOG from 'src/components/patient_view/AddPerson_Dialog.vue'
 import ADD_COL_DIALOG from 'src/components/patient_view/AddCol_Dialog.vue'
 import ADD_VISIT_DIALOG from 'src/components/patient_view/AddVisit_Dialog.vue'
+
+import { my_confirm } from 'src/tools/my_dialog'
 
 export default {
   name: 'Footer_for_XLS_View',
@@ -139,6 +141,25 @@ export default {
         position: 'bottom',
         timeout: 1000
       })
+    },
+
+    // REMOVE PATIENT
+    async removePatient() {
+      if (!this.$store.getters.PATIENT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Patienten aus! (Klicken Sie auf die ID des Patienten in der Tabelle)'})
+      if (!await my_confirm('Möchten Sie den Patienten wirklich löschen?', 'Patient löschen')) return 
+      const res = await this.$store.dispatch('deleteDB', {table: 'PATIENT_DIMENSION', query_string: {PATIENT_NUM: this.$store.getters.PATIENT_PINNED.PATIENT_NUM}})
+      this.$store.commit('PATIENT_PINNED_SET', undefined)
+      this.$emit('refresh')      
+    },
+
+    // REMOVE VISIT
+    async removeVisit() {
+      if (!this.$store.getters.VISIT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Visite aus! (Klicken Sie auf die Visiten-ID in der 3. Spalte der Tabelle)'})
+      if (!await my_confirm('Möchten Sie die Visite wirklich löschen?', 'Visite löschen')) return 
+      
+      const res = await this.$store.dispatch('deleteDB', {table: 'VISIT_DIMENSION', query_string: {ENCOUNTER_NUM: this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM}})
+      this.$store.commit('VISIT_PINNED_SET', undefined)
+      this.$emit('refresh')      
     }
 
     // ENDE METHODS

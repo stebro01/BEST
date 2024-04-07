@@ -17,11 +17,11 @@
           <!-- CONTENT -->
           <MAIN_FOR_XLS_VIEW :localData="localData" :col_keys="col_keys" :font_size="font_size"
             :max_char_header="max_char_header" :hide_col_keys="hide_col_keys" @hide_col_key="hide_col_keys.push($event)"
-            @update_observation="updateLocalData($event)" />
+            @update_observation="updateLocalData($event)" @rows="rows_to_export = $event"/>
 
           <!-- FOOTER -->
           <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" :col_count="COL_COUNT"
-            @clear_hide_cols="hide_col_keys = []" @addColumn="addColumnWithObservation($event)" @refresh="loadLocalData()" :full_mode="full_mode" @toggleFullScreen="toggleFullScreen($event)"/>
+            @clear_hide_cols="hide_col_keys = []" @addColumn="addColumnWithObservation($event)" @refresh="loadLocalData()" :full_mode="full_mode" @toggleFullScreen="toggleFullScreen($event)" @export_data="exportData()"/>
         </div>
       </template>
 
@@ -37,11 +37,11 @@
           <!-- CONTENT -->
           <MAIN_FOR_XLS_VIEW :localData="localData" :col_keys="col_keys" :font_size="font_size"
             :max_char_header="max_char_header" :hide_col_keys="hide_col_keys" @hide_col_key="hide_col_keys.push($event)"
-            @update_observation="updateLocalData($event)" />
+            @update_observation="updateLocalData($event)" @rows="rows_to_export = $event"/>
 
           <!-- FOOTER -->
           <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" :col_count="COL_COUNT"
-            @clear_hide_cols="hide_col_keys = []" @addColumn="addColumnWithObservation($event)" @refresh="loadLocalData()" :full_mode="full_mode" @toggleFullScreen="toggleFullScreen($event)"/>
+            @clear_hide_cols="hide_col_keys = []" @addColumn="addColumnWithObservation($event)" @refresh="loadLocalData()" :full_mode="full_mode" @toggleFullScreen="toggleFullScreen($event)" @export_data="exportData()"/>
           </div>
         </q-dialog>
 
@@ -57,6 +57,9 @@ import FOOTER_FOR_XLS_VIEW from 'src/components/patient_view/Footer_for_XLS_View
 import HEADER_FOR_XLS_VIEW from 'src/components/patient_view/Header_for_XLS_View.vue'
 import MAIN_FOR_XLS_VIEW from 'src/components/patient_view/Main_for_XLS_View.vue'
 
+import { exportFile } from 'quasar'
+import { type } from 'quasar/dist/icon-set/material-icons.umd.prod'
+
 export default {
   name: 'ObservationsView_XLS',
 
@@ -70,7 +73,8 @@ export default {
       localData: undefined,
       col_keys: undefined,
       hide_col_keys: [],
-      full_mode: false
+      full_mode: false,
+      rows_to_export: undefined
     }
   },
 
@@ -203,6 +207,47 @@ export default {
       } else {
         this.col_keys.push(item)
       }
+    },
+
+    async exportData() {
+      console.log(this.rows_to_export)
+      const SEP_STR = ','
+      const col_keys = this.rows_to_export.cols
+      const rows = this.rows_to_export.rows
+
+      var content = col_keys.map(item => item.label).join(SEP_STR) + '\n'
+      content += col_keys.map(item => item.value).join(SEP_STR) + '\n'
+      // now add the rows
+      for (let i = 0; i < rows.length; i++) {
+        let tmp = []
+        for (let j = 0; j < col_keys.length; j++) {
+          let col = col_keys[j]
+          let val = rows[i][col.label]
+          if (val === undefined || val === null) val = ''
+          else if (val.value) val = val.value
+          else if (val.id) {
+            if (typeof(val.id) === 'object') val = 'object'
+            else {
+              let res = await this.$store.dispatch('searchDB', { query_string: { OBSERVATION_ID: val.id, _view: true }, table: 'OBSERVATION_FACT' })
+              if (res[0].VALTYPE_CD === 'N') val = res[0].NVAL_NUM
+              else if (res[0].VALTYPE_CD === 'T') val = res[0].TVAL_CHAR
+              else if (res[0].VALTYPE_CD === 'S' || res[0].VALTYPE_CD === 'F') val = res[0].TVAL_RESOLVED
+              else val = ''
+            }
+          }
+          else val = ''
+          tmp.push(val)
+        }
+        content += tmp.join(SEP_STR) + '\n'
+      }
+      
+      const status = exportFile(
+          'table-export.csv',
+          content,
+          'text/csv'
+        )
+
+
     },
 
     toggleFullScreen(mode) {
