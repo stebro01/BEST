@@ -75,8 +75,8 @@
 <script>
 import XLS_VIEW_OBS from 'src/components/elements/XLS_ViewObs.vue'
 
-import EDIT_OBS from 'src/components/patient_view/EditObs.vue'
-import ADD_OBS from 'src/components/patient_view/AddObs.vue'
+import EDIT_OBS from 'src/components/patient_view/ObsEdit.vue'
+import ADD_OBS from 'src/components/patient_view/ObsAdd.vue'
 
 import SURVEY_PREVIEW from 'src/components/patient_view/SurveyPreview.vue'
 import RAW_DATA_PREVIEW from 'src/components/patient_view/RawDataPreview.vue'
@@ -183,11 +183,11 @@ export default {
       if (BIRTH_DATE) BIRTH_DATE.label = 'Geb.Datum'
       const PATIENT_CD = RES.find(item => item.name === 'PATIENT_CD')
       if (PATIENT_CD) PATIENT_CD.label = 'ID'
-      
+
       return RES
     },
 
-    // return a map of all observations: 
+    // return a map of all observations:
     MAP_OBSERVATIONS() {
       const data = {}
       if (!this.localData || !Array.isArray(this.localData)) return undefined

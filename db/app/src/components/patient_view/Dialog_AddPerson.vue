@@ -26,9 +26,9 @@
           <q-select class="col-6" dense outlined v-model="localData.LANGUAGE_CD" :options="options.LANGUAGE_CD" label="Sprache" />
           </div>
 
-          
+
         </q-form>
-       
+
       </q-card-section>
       <q-card-actions align="between">
         <q-btn label="Abbrechen" no-caps  rounded @click="$emit('close')"/>
@@ -46,7 +46,7 @@ import { hri } from 'src/tools/db_tools'
 import { datenow_isostring } from 'src/tools/mydate'
 
 export default {
-  name: 'AddPerson_Dialog',
+  name: 'Dialog_AddPerson',
 
   props: ['data'],
 
@@ -88,7 +88,7 @@ export default {
       this.options.RACE_CD = await this.$store.dispatch('getConceptList', '\\LOINC\\ADMIN.DEMOG\\Patient\\46463-6\\LA')
       this.options.LANGUAGE_CD = await this.$store.dispatch('getConceptList', '\\LOINC\\ADMIN.DEMOG\\Patient\\54505-3\\LA\\')
       this.options.VITAL_STATUS_CD = await this.$store.dispatch('getConceptList', '\\SNOMED-CT\\365860008\\LA')
-    
+
       this.data_loaded = true
     },
 
@@ -108,7 +108,7 @@ export default {
       if (this.localData.VITAL_STATUS_CD) payload.VITAL_STATUS_CD = this.localData.VITAL_STATUS_CD.value
       if (this.localData.RACE_CD) payload.RACE_CD = this.localData.RACE_CD.value
       if (this.localData.LANGUAGE_CD) payload.LANGUAGE_CD = this.localData.LANGUAGE_CD.value
-      
+
       const res = await this.$store.dispatch('addDB', {table: 'PATIENT_DIMENSION', query_string: payload})
       if (res.PATIENT_NUM) {
         // also add an encounter

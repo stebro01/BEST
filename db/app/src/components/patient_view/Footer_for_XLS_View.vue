@@ -2,7 +2,7 @@
 
   <!-- FOOTER -->
   <div class="col-1 row items-center q-pt-sm">
-    <div class="col-4 q-gutter-x-md">
+    <div class="col-5 q-gutter-x-md">
       <q-btn icon="person_add" rounded color="dark" @click="show_add_person = true"><q-tooltip>Neuen Patienten hinzufügen</q-tooltip></q-btn>
       <q-btn icon="create_new_folder" rounded color="dark" @click="addVisit()"><q-tooltip>Neue Visite hinzufügen</q-tooltip></q-btn>
       <q-btn icon="post_add" rounded color="dark" @click="show_add_column = true"><q-tooltip>Neue Spalte hinzufügen</q-tooltip></q-btn>
@@ -10,15 +10,15 @@
       <q-btn icon="more_vert" rounded color="dark" class="q-ml-xl">
         <q-menu fit>
           <q-list style="min-width: 100px">
-            
+
             <!-- VISITE BEARBEITEN -->
-            <q-item clickable v-close-popup @click="commingSoon()">
+            <q-item clickable v-close-popup @click="editVisit()">
               <q-item-section side><q-icon name="edit"/></q-item-section>
               <q-item-section>Aktive Visite bearbeiten</q-item-section>
             </q-item>
 
             <!-- Patienten BEARBEITEN -->
-            <q-item clickable v-close-popup @click="commingSoon()">
+            <q-item clickable v-close-popup @click="editPatient()">
               <q-item-section side><q-icon name="edit"/></q-item-section>
               <q-item-section>Aktiven Patienten bearbeiten</q-item-section>
             </q-item>
@@ -44,17 +44,17 @@
               <q-item-section side><q-icon name="download"/></q-item-section>
               <q-item-section>Export in CSV</q-item-section>
             </q-item>
-          </q-list> 
+          </q-list>
         </q-menu>
       </q-btn>
 
     </div>
 
-    <div class="col-4 text-center">
+    <div class="col-2 text-center">
       <q-btn :icon="FULL_MODE ? 'fullscreen' : 'fullscreen_exit'" color="dark" rounded @click="FULL_MODE = !FULL_MODE"><q-tooltip>Vollbild umschalten</q-tooltip></q-btn>
     </div>
 
-    <div class="col-4 text-left">
+    <div class="col-5 text-right">
       <div class="text-caption text-grey-8" style="line-height: 10px;">
         Patients: {{ localData ? localData.length : 0 }} | Visits: {{ localData ? localData.reduce((acc, item) => acc +
           item.VISITS.length, 0) : 0 }} | Observations: {{ localData ? localData.reduce((acc, item) => acc +
@@ -82,9 +82,9 @@
 
 <script>
 
-import ADD_PERSON_DIALOG from 'src/components/patient_view/AddPerson_Dialog.vue'
-import ADD_COL_DIALOG from 'src/components/patient_view/AddCol_Dialog.vue'
-import ADD_VISIT_DIALOG from 'src/components/patient_view/AddVisit_Dialog.vue'
+import ADD_PERSON_DIALOG from 'src/components/patient_view/Dialog_AddPerson.vue'
+import ADD_COL_DIALOG from 'src/components/patient_view/Dialog_AddCol.vue'
+import ADD_VISIT_DIALOG from 'src/components/patient_view/Dialog_AddVisit.vue'
 
 import { my_confirm } from 'src/tools/my_dialog'
 
@@ -99,7 +99,7 @@ export default {
       show_add_person: false,
       show_add_visit: false,
       show_add_column: false
-      
+
     }
   },
 
@@ -122,7 +122,7 @@ export default {
     colSelected(item) {
       if (!item) return
       this.$emit('addColumn', {label: item.NAME_CHAR, value: item.CONCEPT_CD})
-      this.show_add_column = false; 
+      this.show_add_column = false;
     },
 
     addVisit() {
@@ -146,20 +146,36 @@ export default {
     // REMOVE PATIENT
     async removePatient() {
       if (!this.$store.getters.PATIENT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Patienten aus! (Klicken Sie auf die ID des Patienten in der Tabelle)'})
-      if (!await my_confirm('Möchten Sie den Patienten wirklich löschen?', 'Patient löschen')) return 
+      if (!await my_confirm('Möchten Sie den Patienten wirklich löschen?', 'Patient löschen')) return
       const res = await this.$store.dispatch('deleteDB', {table: 'PATIENT_DIMENSION', query_string: {PATIENT_NUM: this.$store.getters.PATIENT_PINNED.PATIENT_NUM}})
       this.$store.commit('PATIENT_PINNED_SET', undefined)
-      this.$emit('refresh')      
+      this.$emit('refresh')
     },
 
     // REMOVE VISIT
     async removeVisit() {
       if (!this.$store.getters.VISIT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Visite aus! (Klicken Sie auf die Visiten-ID in der 3. Spalte der Tabelle)'})
-      if (!await my_confirm('Möchten Sie die Visite wirklich löschen?', 'Visite löschen')) return 
-      
+      if (!await my_confirm('Möchten Sie die Visite wirklich löschen?', 'Visite löschen')) return
+
       const res = await this.$store.dispatch('deleteDB', {table: 'VISIT_DIMENSION', query_string: {ENCOUNTER_NUM: this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM}})
       this.$store.commit('VISIT_PINNED_SET', undefined)
-      this.$emit('refresh')      
+      this.$emit('refresh')
+    },
+
+    // EDIT PATIENT
+    editPatient() {
+      if (!this.$store.getters.PATIENT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Patienten aus! (Klicken Sie auf die ID des Patienten in der Tabelle)'})
+      const patient = this.$store.getters.PATIENT_PINNED
+
+      this.commingSoon()
+    },
+
+    // EDIT VISIT
+    editVisit() {
+      if (!this.$store.getters.VISIT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Visite aus! (Klicken Sie auf die Visiten-ID in der 3. Spalte der Tabelle)'})
+      const visit = this.$store.getters.VISIT_PINNED
+
+      this.commingSoon()
     }
 
     // ENDE METHODS
