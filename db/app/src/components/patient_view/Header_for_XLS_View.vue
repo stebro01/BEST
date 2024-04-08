@@ -2,42 +2,51 @@
 
   <!-- HEADER -->
   <div class="col-1 row items-center">
-            <div class="col-4 q-gutter-x-md">
-              <q-btn rounded color="dark" icon="filter_alt" @click="commingSoon()"><q-tooltip>Filter / Suchen</q-tooltip></q-btn>
-              <q-btn rounded color="dark" icon="tune" @click="commingSoon()"><q-tooltip>Spalten ein-/ausblenden</q-tooltip></q-btn>
-            </div>
-            <div class="col-4 text-center">
-              <!-- NO LABEL -->
-            </div>
-            <!-- CHANGE FONTSIZE -->
-            <div class="col-4 text-right">
-              <q-btn size="md" dense icon="restart_alt" flat class="q-mr-md" @click="$emit('reset')"><q-tooltip>Lade Daten neu und stelle Standardsichten wieder her</q-tooltip></q-btn>
-              <q-btn size="md" dense icon="zoom_in" flat @click="$emit('zoom_in')" />
-              <q-btn size="md" dense icon="zoom_out" flat @click="$emit('zoom_out')" />
-            </div>
-          </div>
+    <div class="col-4 q-gutter-x-md">
+      <q-btn rounded color="dark" icon="filter_alt" @click="filterData()"><q-tooltip>Filter /
+          Suchen</q-tooltip></q-btn>
+      <q-btn rounded color="dark" icon="tune" @click="editView()"><q-tooltip>Spalten ein-/ausblenden</q-tooltip></q-btn>
+    </div>
+    <div class="col-4 text-center">
+      <!-- NO LABEL -->
+    </div>
+    <!-- CHANGE FONTSIZE -->
+    <div class="col-4 text-right">
+      <q-btn size="md" dense icon="restart_alt" flat class="q-mr-md" @click="$emit('reset')"><q-tooltip>Lade Daten neu
+          und stelle Standardsichten wieder her</q-tooltip></q-btn>
+      <q-btn size="md" dense icon="zoom_in" flat @click="$emit('zoom_in')" />
+      <q-btn size="md" dense icon="zoom_out" flat @click="$emit('zoom_out')" />
+    </div>
+
+    <!-- DIALOGS  -->
+    <DIALOG_EDIT_VIEW v-if="show_edit_view" @close="show_edit_view = false" :data="localData" />
+
+
+  </div>
   <!-- HEADER -->
 
 </template>
 
 <script>
 
+import DIALOG_EDIT_VIEW from 'src/components/patient_view/Dialog_EditView.vue'
 
 export default {
   name: 'Header_for_XLS_View',
 
-  props: [],
-  components: {},
+  props: ['col_keys', 'hide_col_keys'],
+  components: { DIALOG_EDIT_VIEW },
 
   data() {
     return {
-
+      localData: {},
+      show_edit_view: false
     }
   },
 
   mounted() {
+    this.loadData()
   },
-
 
   computed: {
 
@@ -53,6 +62,24 @@ export default {
         position: 'bottom',
         timeout: 1000
       })
+    },
+
+    async loadData() {
+
+
+    },
+
+    editView() {
+      this.localData = {
+        col_keys: this.col_keys,
+        hide_col_keys: this.hide_col_keys
+      }
+      this.show_edit_view = true
+    },
+
+    filterData() {
+      console.log(this.$store.getters.PATIENT_VIEW.SQL_STATEMENT)
+      this.commingSoon()
     }
 
     // ENDE METHODS

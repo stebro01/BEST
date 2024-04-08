@@ -51,7 +51,7 @@
     </div>
 
     <div class="col-2 text-center">
-      <q-btn :icon="FULL_MODE ? 'fullscreen' : 'fullscreen_exit'" color="dark" rounded @click="FULL_MODE = !FULL_MODE"><q-tooltip>Vollbild umschalten</q-tooltip></q-btn>
+      <q-btn disable :icon="FULL_MODE ? 'fullscreen' : 'fullscreen_exit'" color="dark" rounded @click="FULL_MODE = !FULL_MODE"><q-tooltip>Vollbild umschalten</q-tooltip></q-btn>
     </div>
 
     <div class="col-5 text-right">

@@ -11,11 +11,11 @@
       <template v-slot:main>
         <div class="column" :style="STYLE_DIV">
           <!-- HEADER -->
-          <HEADER_FOR_XLS_VIEW @zoom_in="font_size++; max_char_header = +max_char_header + 5"
-            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" />
+          <HEADER_FOR_XLS_VIEW v-if="col_keys" @zoom_in="font_size++; max_char_header = +max_char_header + 5"
+            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" :col_keys="col_keys" :hide_col_keys="hide_col_keys"/>
 
           <!-- CONTENT -->
-          <MAIN_FOR_XLS_VIEW :localData="localData" :col_keys="col_keys" :font_size="font_size"
+          <MAIN_FOR_XLS_VIEW v-if="col_keys" :localData="localData" :col_keys="col_keys" :font_size="font_size"
             :max_char_header="max_char_header" :hide_col_keys="hide_col_keys" @hide_col_key="hide_col_keys.push($event)"
             @update_observation="updateLocalData($event)" @rows="rows_to_export = $event"/>
 
@@ -26,24 +26,6 @@
       </template>
 
     </MainSlot>
-
-    <q-dialog v-else  maximized v-model="full_mode" :style="STYLE_DIV">
-      <!-- MAKE SURE TO COPY THE CODE ABOVE!!! -->
-      <div class="column fit">
-          <!-- HEADER -->
-          <HEADER_FOR_XLS_VIEW @zoom_in="font_size++; max_char_header = +max_char_header + 5"
-            @zoom_out="font_size--; max_char_header = max_char_header - 5" />
-
-          <!-- CONTENT -->
-          <MAIN_FOR_XLS_VIEW :localData="localData" :col_keys="col_keys" :font_size="font_size"
-            :max_char_header="max_char_header" :hide_col_keys="hide_col_keys" @hide_col_key="hide_col_keys.push($event)"
-            @update_observation="updateLocalData($event)" @rows="rows_to_export = $event"/>
-
-          <!-- FOOTER -->
-          <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" :col_count="COL_COUNT"
-            @clear_hide_cols="hide_col_keys = []" @addColumn="addColumnWithObservation($event)" @refresh="loadLocalData()" :full_mode="full_mode" @toggleFullScreen="toggleFullScreen($event)" @export_data="exportData()"/>
-          </div>
-        </q-dialog>
 
 
   </q-page>
@@ -58,7 +40,6 @@ import HEADER_FOR_XLS_VIEW from 'src/components/patient_view/Header_for_XLS_View
 import MAIN_FOR_XLS_VIEW from 'src/components/patient_view/Main_for_XLS_View.vue'
 
 import { exportFile } from 'quasar'
-import { type } from 'quasar/dist/icon-set/material-icons.umd.prod'
 
 export default {
   name: 'ObservationsView_XLS',

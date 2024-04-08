@@ -355,6 +355,19 @@ export const  cleanPatientVisibility = async ({commit, state}, payload) => {
 import {stringify} from 'src/classes/sqltools'
 import { my_uid } from 'src/tools/db_tools'
 
+export const initLayout = async ({commit, state}) => {
+    commit('LOG', {method: 'action -> initLayout'})
+    var res = await searchDB({commit, state}, {table: 'CODE_LOOKUP', query_string: {COLUMN_CD: 'VIEW_LAYOUT'}})
+    if (res && res.length > 0) {
+      res = res.map(item => {
+          return { value: item.CODE_CD, label: item.NAME_CHAR }
+      })
+      res.unshift({ value: null, label: 'Alles anzeigen' })
+      commit('PATIENT_VIEW_LAYOUTS_SET', res)
+    }
+
+}
+
 export const  updateLayout = async ({commit, state}, payload) => {
     commit('LOG', {method: 'action -> updateLayout', data: payload})
     if (!payload) return {status: false, data: 'Ungültige Daten'}
