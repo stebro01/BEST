@@ -111,3 +111,6 @@ export function PATIENT_VIEW_SQL_STATEMENT_RAW(state) {
 export function ANSWER_ABSENT() {
     return { value: 'SCTID: 2667000', label: 'k.A.' }
 }
+ export function STANDARD_XLS_VIEW() {
+  return {font_size: 10, max_char_header: 20}
+ }

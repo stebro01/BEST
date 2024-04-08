@@ -12,7 +12,7 @@
         <div class="column" :style="STYLE_DIV">
           <!-- HEADER -->
           <HEADER_FOR_XLS_VIEW @zoom_in="font_size++; max_char_header = +max_char_header + 5"
-            @zoom_out="font_size--; max_char_header = max_char_header - 5" />
+            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" />
 
           <!-- CONTENT -->
           <MAIN_FOR_XLS_VIEW :localData="localData" :col_keys="col_keys" :font_size="font_size"
@@ -67,8 +67,8 @@ export default {
 
   data() {
     return {
-      font_size: 10,
-      max_char_header: 20,
+      font_size: this.$store.getters.STANDARD_XLS_VIEW.font_size,
+      max_char_header: this.$store.getters.STANDARD_XLS_VIEW.max_char_header,
       main_slot_size: undefined,
       localData: undefined,
       col_keys: undefined,
@@ -240,7 +240,7 @@ export default {
         }
         content += tmp.join(SEP_STR) + '\n'
       }
-      
+
       const status = exportFile(
           'table-export.csv',
           content,
@@ -250,8 +250,14 @@ export default {
 
     },
 
+    resetData() {
+      this.loadLocalData()
+      this.font_size = this.$store.getters.STANDARD_XLS_VIEW.font_size
+      this.max_char_header = this.$store.getters.STANDARD_XLS_VIEW.max_char_header
+    },
+
     toggleFullScreen(mode) {
-      
+
       this.full_mode = mode
       // if (mode) this.$q.fullscreen.request()
       // else this.$q.fullscreen.exit()

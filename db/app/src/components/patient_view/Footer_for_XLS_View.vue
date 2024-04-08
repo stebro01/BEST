@@ -76,6 +76,10 @@
     <ADD_COL_DIALOG v-if="show_add_column" :data="show_add_column" @close="show_add_column = false" @col_selected="colSelected($event)"/>
 
     <ADD_VISIT_DIALOG v-if="show_add_visit" :data="show_add_visit" @close="show_add_visit = false" @refresh="show_add_visit = false; this.$emit('refresh')"/>
+
+    <DIALOG_PERSON_EDIT v-if="show_edit_person" @close="show_edit_person = false" @refresh="show_edit_person = false; this.$emit('refresh')"/>
+
+    <DIALOG_VISIT_EDIT v-if="show_edit_visit" @close="show_edit_visit = false" @refresh="show_edit_visit = false; this.$emit('refresh')"/>
   </div>
 
 </template>
@@ -86,20 +90,24 @@ import ADD_PERSON_DIALOG from 'src/components/patient_view/Dialog_AddPerson.vue'
 import ADD_COL_DIALOG from 'src/components/patient_view/Dialog_AddCol.vue'
 import ADD_VISIT_DIALOG from 'src/components/patient_view/Dialog_AddVisit.vue'
 
+import DIALOG_PERSON_EDIT from 'src/components/patient_view/Dialog_EditPerson.vue'
+import DIALOG_VISIT_EDIT from 'src/components/patient_view/Dialog_EditVisit.vue'
+
 import { my_confirm } from 'src/tools/my_dialog'
 
 export default {
   name: 'Footer_for_XLS_View',
 
   props: ['localData', 'hide_col_keys', 'col_count', 'full_mode'],
-  components: { ADD_PERSON_DIALOG, ADD_COL_DIALOG, ADD_VISIT_DIALOG },
+  components: { ADD_PERSON_DIALOG, ADD_COL_DIALOG, ADD_VISIT_DIALOG, DIALOG_PERSON_EDIT, DIALOG_VISIT_EDIT },
 
   data() {
     return {
       show_add_person: false,
       show_add_visit: false,
-      show_add_column: false
-
+      show_add_column: false,
+      show_edit_person: false,
+      show_edit_visit: false
     }
   },
 
@@ -134,15 +142,6 @@ export default {
       this.show_add_visit = true
     },
 
-    commingSoon() {
-      this.$q.notify({
-        message: 'In Kürze verfügbar',
-        type: 'warning',
-        position: 'bottom',
-        timeout: 1000
-      })
-    },
-
     // REMOVE PATIENT
     async removePatient() {
       if (!this.$store.getters.PATIENT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Patienten aus! (Klicken Sie auf die ID des Patienten in der Tabelle)'})
@@ -165,17 +164,13 @@ export default {
     // EDIT PATIENT
     editPatient() {
       if (!this.$store.getters.PATIENT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Patienten aus! (Klicken Sie auf die ID des Patienten in der Tabelle)'})
-      const patient = this.$store.getters.PATIENT_PINNED
-
-      this.commingSoon()
+      this.show_edit_person = true
     },
 
     // EDIT VISIT
     editVisit() {
       if (!this.$store.getters.VISIT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Visite aus! (Klicken Sie auf die Visiten-ID in der 3. Spalte der Tabelle)'})
-      const visit = this.$store.getters.VISIT_PINNED
-
-      this.commingSoon()
+      this.show_edit_visit = true
     }
 
     // ENDE METHODS

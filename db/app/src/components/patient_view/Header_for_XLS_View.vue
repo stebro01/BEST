@@ -11,6 +11,7 @@
             </div>
             <!-- CHANGE FONTSIZE -->
             <div class="col-4 text-right">
+              <q-btn size="md" dense icon="restart_alt" flat class="q-mr-md" @click="$emit('reset')"><q-tooltip>Lade Daten neu und stelle Standardsichten wieder her</q-tooltip></q-btn>
               <q-btn size="md" dense icon="zoom_in" flat @click="$emit('zoom_in')" />
               <q-btn size="md" dense icon="zoom_out" flat @click="$emit('zoom_out')" />
             </div>
