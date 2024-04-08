@@ -12,10 +12,10 @@
         <div class="column" :style="STYLE_DIV">
           <!-- HEADER -->
           <HEADER_FOR_XLS_VIEW v-if="col_keys" @zoom_in="font_size++; max_char_header = +max_char_header + 5"
-            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" :col_keys="col_keys" :hide_col_keys="hide_col_keys"/>
+            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" :col_keys="col_keys" :hide_col_keys="hide_col_keys" @updateView="updateViewLayout($event)"/>
 
           <!-- CONTENT -->
-          <MAIN_FOR_XLS_VIEW v-if="col_keys" :localData="localData" :col_keys="col_keys" :font_size="font_size"
+          <MAIN_FOR_XLS_VIEW v-if="col_keys" :localData="localData" :col_keys="COL_KEYS_FILTERED" :font_size="font_size"
             :max_char_header="max_char_header" :hide_col_keys="hide_col_keys" @hide_col_key="hide_col_keys.push($event)"
             @update_observation="updateLocalData($event)" @rows="rows_to_export = $event"/>
 
@@ -53,6 +53,7 @@ export default {
       main_slot_size: undefined,
       localData: undefined,
       col_keys: undefined,
+      col_keys_filtered: undefined,
       hide_col_keys: [],
       full_mode: false,
       rows_to_export: undefined
@@ -77,9 +78,14 @@ export default {
     },
 
     COL_COUNT() {
-      if (!this.col_keys) return 0
+      if (!this.COL_KEYS_FILTERED) return 0
       //
-      return this.col_keys.length
+      return this.COL_KEYS_FILTERED.length
+    },
+
+    COL_KEYS_FILTERED() {
+      if (!this.col_keys_filtered) return this.col_keys
+      return this.col_keys_filtered
     }
 
   },
@@ -123,9 +129,7 @@ export default {
 
     // BUILD COL KEYS
     buildColKeys(data) {
-      const COL_KEY = [{ label: "PATIENT_CD", value: "PATIENT_CD" }, { label: "BIRTH_DATE", value: "BIRTH_DATE" }]
-      COL_KEY.push({ label: "ENCOUNTER_NUM", value: "ENCOUNTER_NUM" })
-      COL_KEY.push({ label: "START_DATE", value: "START_DATE" })
+      const COL_KEY = JSON.parse(JSON.stringify(this.$store.getters.PATIENT_VIEW_COLUMNS))
       data.forEach(patient => {
         if (patient.VISITS) {
           patient.VISITS.forEach(visit => {
@@ -235,6 +239,13 @@ export default {
       this.loadLocalData()
       this.font_size = this.$store.getters.STANDARD_XLS_VIEW.font_size
       this.max_char_header = this.$store.getters.STANDARD_XLS_VIEW.max_char_header
+      this.col_keys_filtered = undefined
+      this.$store.commit('PATIENT_VIEW_ACTIVE_LAYOUT_VALUE_SET', undefined)
+      this.$store.commit('PATIENT_VIEW_ACTIVE_LAYOUT_SET', [])
+    },
+
+    updateViewLayout(layout) {
+      this.col_keys_filtered = layout
     },
 
     toggleFullScreen(mode) {

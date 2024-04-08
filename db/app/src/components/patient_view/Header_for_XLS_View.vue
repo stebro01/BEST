@@ -19,7 +19,7 @@
     </div>
 
     <!-- DIALOGS  -->
-    <DIALOG_EDIT_VIEW v-if="show_edit_view" @close="show_edit_view = false" :data="localData" />
+    <DIALOG_EDIT_VIEW v-if="show_edit_view" @close="show_edit_view = false" :data="localData" @updateView="updateView($event)"/>
 
 
   </div>
@@ -75,6 +75,11 @@ export default {
         hide_col_keys: this.hide_col_keys
       }
       this.show_edit_view = true
+    },
+
+    updateView(layout) {
+      this.show_edit_view = false
+      this.$emit('updateView', layout)
     },
 
     filterData() {

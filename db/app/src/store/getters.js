@@ -97,6 +97,16 @@ export function PATIENT_VIEW(state) {
     return state.PATIENT_VIEW
 }
 
+export function PATIENT_VIEW_COLUMNS() {
+
+    return [
+        { label: "PATIENT_CD", value: "PATIENT_CD" },
+        { label: "BIRTH_DATE", value: "BIRTH_DATE" },
+        { label: "ENCOUNTER_NUM", value: "ENCOUNTER_NUM" },
+        { label: "START_DATE", value: "START_DATE" }
+    ]
+}
+
 //  SOME OPTIONS FOR PATIENT_VIEW
 export function PATIENT_VIEW_SQL_STATEMENT(state) {
     return state.PATIENT_VIEW.SQL_STATEMENT

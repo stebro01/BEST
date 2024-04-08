@@ -12,11 +12,13 @@
         <div class="row items-center">
 
           <div class="col-11">
+            <q-form @submit="saveObs()">
             <q-input v-if="TYPE_OF_DATA === 'N'" v-model.number="localData.NVAL_NUM" label="Wert" type="number" @update:model-value="check_cql_status()" />
             <q-input v-else-if="TYPE_OF_DATA === 'T'" v-model="localData.TVAL_CHAR" label="Wert" type="string" @update:model-value="check_cql_status()" />
             <q-input v-else-if="TYPE_OF_DATA === 'D'" v-model="localData.TVAL_CHAR" label="Wert" type="date" @update:model-value="check_cql_status()"/>
             <q-option-group v-else-if="(TYPE_OF_DATA === 'S' || TYPE_OF_DATA === 'F') && localData.ANSWERS"
               v-model="localData.TVAL_CHAR" label="Wert" :options="localData.ANSWERS" />
+            </q-form>
           </div>
           <div class="col-1 text-right" v-if="CHECK_CQL">
             <q-icon v-if="CHECK_CQL.status" name="check" color="green"><q-tooltip>{{CHECK_CQL.data}}</q-tooltip></q-icon>
