@@ -12,7 +12,7 @@
         <div class="column" :style="STYLE_DIV">
           <!-- HEADER -->
           <HEADER_FOR_XLS_VIEW v-if="col_keys" @zoom_in="font_size++; max_char_header = +max_char_header + 5"
-            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" :col_keys="col_keys" :hide_col_keys="hide_col_keys" @updateView="updateViewLayout($event)"/>
+            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" :col_keys="col_keys" :hide_col_keys="hide_col_keys" @updateView="updateViewLayout($event)" @update_sql="loadLocalData()"/>
 
           <!-- CONTENT -->
           <MAIN_FOR_XLS_VIEW v-if="col_keys" :localData="localData" :col_keys="COL_KEYS_FILTERED" :font_size="font_size"
@@ -79,13 +79,18 @@ export default {
 
     COL_COUNT() {
       if (!this.COL_KEYS_FILTERED) return 0
-      //
       return this.COL_KEYS_FILTERED.length
     },
 
-    COL_KEYS_FILTERED() {
+    COL_KEYS_FILTERED:  {
+      get() {
       if (!this.col_keys_filtered) return this.col_keys
       return this.col_keys_filtered
+      }, 
+      set(val) {
+        console.log('COL_KEYS_FILTERED>set', val)
+      }
+
     }
 
   },
@@ -119,7 +124,7 @@ export default {
     // load the visits
     async loadVisitsAndObservations(patients) {
       for (let i = 0; i < patients.length; i++) {
-        patients[i].VISITS = await this.$store.dispatch('searchDB', { query_string: { PATIENT_NUM: patients[i].PATIENT_NUM, _columns: ['ENCOUNTER_NUM', 'START_DATE', 'LOCATION_CD', 'ACTIVE_STATUS_CD'] }, table: 'VISIT_DIMENSION' })
+        patients[i].VISITS = await this.$store.dispatch('searchDB', { query_string: { PATIENT_NUM: patients[i].PATIENT_NUM, _columns: ['ENCOUNTER_NUM', 'START_DATE', 'VISIT_BLOB', 'LOCATION_CD', 'ACTIVE_STATUS_CD'] }, table: 'VISIT_DIMENSION' })
         for (let j = 0; j < patients[i].VISITS.length; j++) {
           patients[i].VISITS[j].OBSERVATIONS = await this.$store.dispatch('searchDB', { query_string: { ENCOUNTER_NUM: patients[i].VISITS[j].ENCOUNTER_NUM, _view: true, _columns: ['OBSERVATION_ID', 'START_DATE', 'CONCEPT_CD', 'CONCEPT_NAME_CHAR', 'VALTYPE_CD', 'NVAL_NUM', 'UNIT_CD', 'UNIT_RESOLVED', 'TVAL_CHAR', 'TVAL_RESOLVED'] }, table: 'OBSERVATION_FACT' })
         }
@@ -175,7 +180,6 @@ export default {
       if (obs.CONCEPT_CD !== 'SCTID: 184099003') return //do nothing
       // get the patient
       const patient = this.localData.find(item => item.PATIENT_CD === obs.PATIENT_CD)
-      console.log(patient)
       if (!patient || (patient.BIRTH_DATE !== undefined && patient.BIRTH_DATE !== null)) return
       const WHERE = { PATIENT_NUM: obs.PATIENT_NUM }
       const SET = { BIRTH_DATE: obs.TVAL_CHAR }
@@ -186,16 +190,22 @@ export default {
 
     addColumnWithObservation(item) {
       // if the item is already in the col_keys array, return
-      if (this.col_keys.find(el => el.value === item.value)) {
+      if (this.COL_KEYS_FILTERED.find(el => el.value === item.value)) {
         this.$q.notify({ type: 'warning', message: 'Spalte bereits vorhanden!' })
 
       } else {
-        this.col_keys.push(item)
+        //update the corresponding structures
+        if (!this.col_keys_filtered) this.col_keys.push(item)
+        else {
+          
+          this.$store.getters.PATIENT_VIEW.active_layout.push({CONCEPT_NAME_CHAR: item.label, CONCEPT_CD: item.value})
+          this.col_keys_filtered.push(item)}
+          this.$store.commit("PATIENT_VIEW_LAYOUT_CHANGED_SET", true)
+
       }
     },
 
     async exportData() {
-      console.log(this.rows_to_export)
       const SEP_STR = ','
       const col_keys = this.rows_to_export.cols
       const rows = this.rows_to_export.rows

@@ -103,7 +103,8 @@ export function PATIENT_VIEW_COLUMNS() {
         { label: "PATIENT_CD", value: "PATIENT_CD" },
         { label: "BIRTH_DATE", value: "BIRTH_DATE" },
         { label: "ENCOUNTER_NUM", value: "ENCOUNTER_NUM" },
-        { label: "START_DATE", value: "START_DATE" }
+        { label: "START_DATE", value: "START_DATE" },
+        { label: "VISIT_BLOB", value: "VISIT_BLOB" }
     ]
 }
 

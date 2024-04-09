@@ -5,23 +5,35 @@
       <q-icon class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close"
         size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
       <q-card-section>
-        Neue Observation: <span v-if="localData && localData.CONCEPT_DIMENSION"><b>{{ localData.CONCEPT_DIMENSION.NAME_CHAR }} </b> ({{ localData.CONCEPT_DIMENSION.CONCEPT_CD }})</span>
+        Neue Observation: <span v-if="localData && localData.CONCEPT_DIMENSION"><b>{{
+    localData.CONCEPT_DIMENSION.NAME_CHAR }} </b> ({{ localData.CONCEPT_DIMENSION.CONCEPT_CD }})</span>
       </q-card-section>
       <q-card-section>
         <div class="row items-center">
 
           <div class="col-11">
             <q-form @submit="saveObs()">
-            <q-input v-if="TYPE_OF_DATA === 'N'" v-model.number="localData.NVAL_NUM" label="Wert" type="number" @update:model-value="check_cql_status()" />
-            <q-input v-else-if="TYPE_OF_DATA === 'T'" v-model="localData.TVAL_CHAR" label="Wert" type="string" @update:model-value="check_cql_status()" />
-            <q-input v-else-if="TYPE_OF_DATA === 'D'" v-model="localData.TVAL_CHAR" label="Wert" type="date" @update:model-value="check_cql_status()"/>
-            <q-option-group v-else-if="(TYPE_OF_DATA === 'S' || TYPE_OF_DATA === 'F') && localData.ANSWERS"
-              v-model="localData.TVAL_CHAR" label="Wert" :options="localData.ANSWERS" />
+              <q-input v-if="TYPE_OF_DATA === 'N'" v-model.number="localData.NVAL_NUM" label="Wert" type="number"
+                @update:model-value="check_cql_status()" />
+              <q-input v-else-if="TYPE_OF_DATA === 'T'" v-model="localData.TVAL_CHAR" label="Wert" type="string"
+                @update:model-value="check_cql_status()" />
+              <q-input v-else-if="TYPE_OF_DATA === 'D'" v-model="localData.TVAL_CHAR" label="Wert" type="date"
+                @update:model-value="check_cql_status()" />
+              <q-option-group v-else-if="(TYPE_OF_DATA === 'S' || TYPE_OF_DATA === 'F') && localData.ANSWERS"
+                v-model="localData.TVAL_CHAR" label="Wert" :options="localData.ANSWERS" />
+
+              <q-file v-else-if="TYPE_OF_DATA === 'R'" v-model="localData.RAW_FILE">
+                <template v-slot:prepend>
+                  <q-icon name="attach_file" />
+                </template>
+              </q-file>
+
             </q-form>
           </div>
           <div class="col-1 text-right" v-if="CHECK_CQL">
-            <q-icon v-if="CHECK_CQL.status" name="check" color="green"><q-tooltip>{{CHECK_CQL.data}}</q-tooltip></q-icon>
-            <q-icon v-else name="close" color="red"><q-tooltip>{{CHECK_CQL.data}}</q-tooltip></q-icon>
+            <q-icon v-if="CHECK_CQL.status" name="check" color="green"><q-tooltip>{{ CHECK_CQL.data
+                }}</q-tooltip></q-icon>
+            <q-icon v-else name="close" color="red"><q-tooltip>{{ CHECK_CQL.data }}</q-tooltip></q-icon>
           </div>
         </div>
       </q-card-section>
@@ -75,6 +87,7 @@ export default {
     NEW_DATA_ADDED() {
       if (!this.localData) return false
       if (this.localData.NVAL_NUM || this.localData.TVAL_CHAR) return true
+      if (this.localData.RAW_FILE) return true
       else return false
     }
 
@@ -104,8 +117,8 @@ export default {
 
     async check_cql_status() {
       if (!this.localData) return
-      if (this.localData.CONCEPT_DIMENSION.VALTYPE_CD === 'N' && this.localData.NVAL_NUM === null) { this.cql_status = { status: false, data: 'no value' }; return}
-      if (this.localData.CONCEPT_DIMENSION.VALTYPE_CD === 'S' && this.localData.TVAL_CHAR === null) { this.cql_status = { status: false, data: 'no value' }; return}
+      if (this.localData.CONCEPT_DIMENSION.VALTYPE_CD === 'N' && this.localData.NVAL_NUM === null) { this.cql_status = { status: false, data: 'no value' }; return }
+      if (this.localData.CONCEPT_DIMENSION.VALTYPE_CD === 'S' && this.localData.TVAL_CHAR === null) { this.cql_status = { status: false, data: 'no value' }; return }
       const data = this.localData
       if (data.CONCEPT_DIMENSION.VALTYPE_CD !== 'N' && data.CONCEPT_DIMENSION.VALTYPE_CD !== 'T' && data.CONCEPT_DIMENSION.VALTYPE_CD !== 'D') return
       const res = await this.$store.dispatch('checkCQLRule', { CONCEPT_CD: data.CONCEPT_DIMENSION.CONCEPT_CD, VALTYPE_CD: data.CONCEPT_DIMENSION.VALTYPE_CD, TVAL_CHAR: data.TVAL_CHAR, NVAL_NUM: data.NVAL_NUM })
@@ -122,6 +135,7 @@ export default {
         PROVIDER_ID: this.$store.getters.PROVIDER_PINNED.PROVIDER_ID,
       }
       if (this.localData.CONCEPT_DIMENSION.VALTYPE_CD === 'N') data.NVAL_NUM = this.localData.NVAL_NUM
+      if (this.localData.CONCEPT_DIMENSION.VALTYPE_CD === 'R') data.RAW_FILE = this.localData.RAW_FILE
       else data.TVAL_CHAR = this.localData.TVAL_CHAR
       this.$emit('save', data)
     }

@@ -138,7 +138,7 @@ export default {
         },
 
     BLOCKED_ITEMS() {
-      return ['PATIENT_CD', 'BIRTH_DATE', 'ENCOUNTER_NUM', 'START_DATE']
+      return ['PATIENT_CD', 'BIRTH_DATE', 'ENCOUNTER_NUM', 'START_DATE', 'VISIT_BLOB']
     }
 
   },
@@ -164,8 +164,14 @@ export default {
         //finde im array mit werten {label, value} den index des aktiven layouts
         const val = this.options_view.find(item => item.value === this.$store.getters.PATIENT_VIEW.active_layout_value)
         this.selected_view = val
-        await this.loadViewFromDB(this.selected_view)
-        await this.selectLayout(this.selected_view)
+        if (!this.$store.getters.PATIENT_VIEW.active_layout || this.$store.getters.PATIENT_VIEW.active_layout.length < 1) await this.selectLayout(this.selected_view)
+        else {
+          this.selected_view_cols = JSON.parse(JSON.stringify(this.$store.getters.PATIENT_VIEW_COLUMNS))
+          const ACTIVE_LAYOUT_REMAPPED = this.$store.getters.PATIENT_VIEW.active_layout.map(item => {
+            return { label: item.CONCEPT_NAME_CHAR, value: item.CONCEPT_CD }
+          })
+          this.selected_view_cols = [...this.selected_view_cols, ...ACTIVE_LAYOUT_REMAPPED]
+        }
       }
       this.show_dialog = true
     },

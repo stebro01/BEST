@@ -18,8 +18,11 @@
         <div class="shadow-1">
         <div class="text-caption text-center text-grey-7">Ergebnisse: {{ COUNT_RESULTS }}</div>
           <q-scroll-area style="width: 100%; height: 200px" >
-            <q-list v-if="SEARCH_RESULTS" dense>
-              <q-item v-for="item in SEARCH_RESULTS" :key="item.CONCEPT_CD" clickable @click="this.selected_item = item" :class="{'bg-grey-4': selected_item && item.CONCEPT_CD === selected_item.CONCEPT_CD}">
+            <q-list v-if="SEARCH_RESULTS" dense class="non-selectable">
+              <q-item v-for="item in SEARCH_RESULTS" :key="item.CONCEPT_CD" clickable 
+                @click="this.selected_item = item" 
+                v-on:dblclick="$emit('col_selected', item)"
+                :class="{'bg-grey-4': selected_item && item.CONCEPT_CD === selected_item.CONCEPT_CD}" >
                 <q-item-section>
                   <q-item-label>{{ item.NAME_CHAR }}</q-item-label>
                   <q-item-label caption>{{ item.CONCEPT_CD }}</q-item-label>

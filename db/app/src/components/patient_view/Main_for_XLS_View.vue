@@ -5,7 +5,7 @@
       <q-table dense :rows="ROWS" :columns="COLS" virtual-scroll :rows-per-page-options="[0]">
 
         <template v-slot:header-cell="props">
-          <q-th :props="props">
+          <q-th :props="props" :class="{'bg-orange-2': ['ENCOUNTER_NUM','START_DATE','VISIT_BLOB'].includes(props.col.name), 'bg-green-2': ['PATIENT_CD','BIRTH_DATE'].includes(props.col.name)}">
             {{ props.col.label }}
             <q-tooltip>{{ props.col.label_long }} <span v-if="props.col.label_long !== props.col.label_cd">({{
       props.col.label_cd }})</span></q-tooltip>
@@ -15,14 +15,13 @@
         </template>
 
         <template v-slot:body-cell="props">
-          <q-td :props="props"
-            :class="{ 'bg-green-1': props.row.PATIENT_CD && $store.getters.PATIENT_PINNED && props.row.PATIENT_CD.value === $store.getters.PATIENT_PINNED.PATIENT_CD }">
+          <q-td :props="props" :class="computeClass(props)">
             <span v-if="props.row[props.col.name]">
               <span v-if="props.col.name === 'PATIENT_CD'" @click="selectPatient(props.row[props.col.name].value)" class="cursor-pointer">
                 {{ props.row[props.col.name].value }}
                 <!-- <q-tooltip>{{ props.row }}</q-tooltip> -->
               </span>
-              <span v-if="props.col.name === 'ENCOUNTER_NUM'" @click="selectVisit(props.row[props.col.name].value)" class="cursor-pointer">
+              <span v-else-if="props.col.name === 'ENCOUNTER_NUM'" @click="selectVisit(props.row[props.col.name].value)" class="cursor-pointer">
                 <span :class="{'text-bold': props.row.ENCOUNTER_NUM && $store.getters.VISIT_PINNED && props.row.ENCOUNTER_NUM.value === $store.getters.VISIT_PINNED.ENCOUNTER_NUM}">{{ props.row[props.col.name].value }}</span>
                 <!-- <q-tooltip>{{ props.row }}</q-tooltip> -->
               </span>
@@ -135,6 +134,7 @@ export default {
           patient.VISITS.forEach(visit => {
             row_p.ENCOUNTER_NUM = { value: visit.ENCOUNTER_NUM }
             row_p.START_DATE = { value: visit.START_DATE }
+            row_p.VISIT_BLOB = { value: visit.VISIT_BLOB }
 
             if (visit.OBSERVATIONS) {
               let row_v = JSON.parse(JSON.stringify(row_p))
@@ -183,6 +183,8 @@ export default {
       if (BIRTH_DATE) BIRTH_DATE.label = 'Geb.Datum'
       const PATIENT_CD = RES.find(item => item.name === 'PATIENT_CD')
       if (PATIENT_CD) PATIENT_CD.label = 'ID'
+      const VISIT_BLOB = RES.find(item => item.name === 'VISIT_BLOB')
+      if (VISIT_BLOB) VISIT_BLOB.label = 'Beschr. Visite'
 
       return RES
     },
@@ -212,6 +214,21 @@ export default {
 
   methods: {
     // METHODS
+    computeClass(props) {
+    // Überprüfe zuerst die Bedingung für 'bg-blue-1'
+    if (props.row.PATIENT_CD && this.$store.getters.PATIENT_PINNED && props.row.PATIENT_CD.value === this.$store.getters.PATIENT_PINNED.PATIENT_CD) {
+      return 'bg-blue-1';
+    }
+    // Wenn 'bg-blue-1' nicht zutrifft, überprüfe die anderen Bedingungen
+    if (['PATIENT_CD', 'BIRTH_DATE'].includes(props.col.name)) {
+      return 'bg-green-1';
+    }
+    if (['ENCOUNTER_NUM', 'START_DATE', 'VISIT_BLOB'].includes(props.col.name)) {
+      return 'bg-orange-1';
+    }
+    // Standardfall, wenn keine der Bedingungen zutrifft
+    return '';
+  },
 
     hideColKey(key) {
       if (!this.hide_col_keys.includes(key)) this.$emit('hide_col_key', key)
@@ -257,10 +274,15 @@ export default {
     async newObservation(data) {
       this.add_observation_show = false
       this.add_observation_data = undefined
-      const res = await this.$store.dispatch('addDB', { table: 'OBSERVATION_FACT', query_string: data })
-      if (res) {
-        const res_new = await this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { OBSERVATION_ID: res.OBSERVATION_ID, _view: true } })
-        this.$emit('update_observation', res_new[0])
+      if (data.VALTYPE_CD !== 'R') {
+        const res = await this.$store.dispatch('addDB', { table: 'OBSERVATION_FACT', query_string: data })
+        if (res) {
+          const res_new = await this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { OBSERVATION_ID: res.OBSERVATION_ID, _view: true } })
+          this.$emit('update_observation', res_new[0])
+        }
+      } else {
+        this.$q.notify({ message: 'Raw data not yet implemented', color: 'warning' })
+      
       }
     },
 

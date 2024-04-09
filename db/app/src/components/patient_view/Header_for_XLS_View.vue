@@ -24,6 +24,7 @@
     <!-- DIALOGS  -->
     <DIALOG_EDIT_VIEW v-if="show_edit_view" @close="show_edit_view = false" :data="localData" @updateView="updateView($event)"/>
 
+    <DIALOG_EDIT_SQL v-if="show_edit_sql" @close="show_edit_sql = false" @update_sql="$emit('update_sql')"/>
 
   </div>
   <!-- HEADER -->
@@ -33,17 +34,19 @@
 <script>
 
 import DIALOG_EDIT_VIEW from 'src/components/patient_view/Dialog_EditView.vue'
+import DIALOG_EDIT_SQL from 'src/components/patient_view/Dialog_EditSQL.vue'
 
 export default {
   name: 'Header_for_XLS_View',
 
   props: ['col_keys', 'hide_col_keys'],
-  components: { DIALOG_EDIT_VIEW },
+  components: { DIALOG_EDIT_VIEW, DIALOG_EDIT_SQL },
 
   data() {
     return {
       localData: {},
-      show_edit_view: false
+      show_edit_view: false,
+      show_edit_sql: false
     }
   },
 
@@ -94,8 +97,7 @@ export default {
     },
 
     filterData() {
-      console.log(this.$store.getters.PATIENT_VIEW.SQL_STATEMENT)
-      this.commingSoon()
+      this.show_edit_sql = true
     }
 
     // ENDE METHODS
