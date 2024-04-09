@@ -1,6 +1,6 @@
 <template>
 
-  <q-dialog v-model="show_dialog">
+  <q-dialog v-model="show_dialog" persistent>
     <q-card class="q-ma-md no-shadow my-card">
       <q-icon class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close"
         size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
@@ -9,7 +9,11 @@
       </q-card-section>
 
       <q-card-section>
-        <span v-if="FILE_INFO">Dateiinformationen: {{ FILE_INFO }}</span>
+        <div v-if="FILE_INFO">Dateiinformationen: {{ FILE_INFO }}</div>
+        <div class="row q-gutter-lg">
+          <div><q-btn icon="download" flat dense @click="downloadRaw()"></q-btn></div>
+          <div><q-btn icon="delete" flat dense @click="removeRaw()"></q-btn></div>
+        </div>
       </q-card-section>
 
       <!-- IMAGE DATA -->
@@ -82,7 +86,7 @@ export default {
 
     IS_PDF_DATA() {
       if (!this.localData) return false
-      return this.localData.CONCEPT_CD === 'CUSTOM: RAW_IMAGE' && this.pdf_src
+      return  this.pdf_src
     }
   },
 
@@ -116,8 +120,9 @@ export default {
           title: val.filename,
           text: text
         }
-
-      } else this.$q.notify({ type: 'negative', message: 'Keine Vorschau verfügbar' })
+      } 
+      else if (val.ext === '.pdf') this.previewImage(item)
+      else this.$q.notify({ type: 'negative', message: 'Keine Vorschau verfügbar' })
     },
     
     // LOAD IMAGE DATA
@@ -156,6 +161,16 @@ export default {
 
     openPDF() {
       window.open(this.pdf_src, '_blank')
+    },
+
+    // DOWNLOAD
+    downloadRaw() {
+      this.$q.notify({ type: 'warning', message: 'Diese Funktion wurde noch nicht implementiert.' })
+    },
+
+    // REMOVE 
+    removeRaw() {
+      this.$q.notify({ type: 'warning', message: 'Diese Funktion wurde noch nicht implementiert.' })
     }
 
 

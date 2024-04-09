@@ -37,8 +37,14 @@ export default {
       CHIP() {
         if (this.item.VALTYPE_CD && this.item.VALTYPE_CD !== 'R') return undefined
         // else
-        const out_str = this.item.TVAL_RESOLVED || this.item.TVAL_CHAR
-        return out_str.length > 10 ? out_str.slice(0, 10) + '...' : out_str
+        var out_str = this.item.TVAL_RESOLVED || this.item.TVAL_CHAR
+        try {
+          out_str =  JSON.parse(out_str).filename
+        } catch (e) {
+          out_str = out_str
+        }
+
+        return out_str.length > 10 ? out_str.slice(0, 15) + '...' : out_str
       },
 
       TOOLTIP() {

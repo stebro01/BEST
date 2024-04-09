@@ -80,6 +80,8 @@ import ADD_OBS from 'src/components/patient_view/ObsAdd.vue'
 import SURVEY_PREVIEW from 'src/components/patient_view/SurveyPreview.vue'
 import RAW_DATA_PREVIEW from 'src/components/patient_view/RawDataPreview.vue'
 
+import { datenow_isostring } from 'src/tools/mydate'
+
 export default {
   name: 'Main_for_XLS_View',
 
@@ -281,7 +283,18 @@ export default {
           this.$emit('update_observation', res_new[0])
         }
       } else {
-        this.$q.notify({ message: 'Raw data not yet implemented', color: 'warning' })
+        data.PROVIDER_ID = this.$store.getters.PROVIDER_PINNED.PATIENT_ID
+        data.START_DATE = datenow_isostring()
+        data._force = true
+        data.raw_fn = data.RAW_FILE.path
+        const res_raw = await this.$store.dispatch('importRAWdata_from_file', data)
+        if (res_raw) {
+          const res_new = await this.$store.dispatch('searchDB', { table: 'OBSERVATION_FACT', query_string: { OBSERVATION_ID: res_raw.data.OBSERVATION_ID, _view: true , _columns: ['OBSERVATION_ID', 'START_DATE', 'CONCEPT_CD', 'PATIENT_CD', 'PATIENT_NUM', 'ENCOUNTER_NUM', 'CONCEPT_NAME_CHAR', 'VALTYPE_CD', 'NVAL_NUM', 'UNIT_CD', 'UNIT_RESOLVED', 'TVAL_CHAR', 'TVAL_RESOLVED']} })
+          this.$emit('update_observation', res_new[0])
+        } else {
+          this.$q.notify({ message: 'Error importing raw data', color: 'negative' })
+        }
+        
       
       }
     },
