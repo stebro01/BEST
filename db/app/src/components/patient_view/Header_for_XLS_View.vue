@@ -2,16 +2,19 @@
 
   <!-- HEADER -->
   <div class="col-1 row items-center">
-    <div class="col-4 q-gutter-x-md">
+    <div class="col-6 q-gutter-x-md row items-center">
       <q-btn rounded color="dark" icon="filter_alt" @click="filterData()"><q-tooltip>Filter /
           Suchen</q-tooltip></q-btn>
       <q-btn rounded color="dark" icon="tune" @click="editView()"><q-tooltip>Spalten ein-/ausblenden</q-tooltip></q-btn>
+      <div class="text-grey-7">
+        {{ACTIVE_LAYOUT}}
+      </div>
     </div>
-    <div class="col-4 text-center">
+    <div class="col-1 text-center">
       <!-- NO LABEL -->
     </div>
     <!-- CHANGE FONTSIZE -->
-    <div class="col-4 text-right">
+    <div class="col-5 text-right">
       <q-btn size="md" dense icon="restart_alt" flat class="q-mr-md" @click="$emit('reset')"><q-tooltip>Lade Daten neu
           und stelle Standardsichten wieder her</q-tooltip></q-btn>
       <q-btn size="md" dense icon="zoom_in" flat @click="$emit('zoom_in')" />
@@ -49,6 +52,14 @@ export default {
   },
 
   computed: {
+    ACTIVE_LAYOUT() {
+      if (!this.$store.getters.PATIENT_VIEW.active_layout_value) return 'alle Spalten aktiv'
+      //
+      //find the entry in the LAYOUTS
+      let layout = this.$store.getters.PATIENT_VIEW.LAYOUTS.find(l => l.value === this.$store.getters.PATIENT_VIEW.active_layout_value)
+      if (layout) return `Layout: ${layout.label}`
+      return ''
+    }
 
   },
 
@@ -78,7 +89,7 @@ export default {
     },
 
     updateView(layout) {
-      this.show_edit_view = false
+      // this.show_edit_view = false
       this.$emit('updateView', layout)
     },
 
