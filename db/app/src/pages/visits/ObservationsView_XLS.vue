@@ -104,6 +104,13 @@ export default {
       let res_v = await this.loadVisitsAndObservations(res_p)
       this.localData = res_v
       this.col_keys = this.buildColKeys(res_v)
+
+      //also set the active layout
+      if (this.$store.getters.PATIENT_VIEW.active_layout && this.$store.getters.PATIENT_VIEW.active_layout.length > 0) {
+        const REMAPPED = this.$store.getters.PATIENT_VIEW.active_layout.map(item => {return {label: item.CONCEPT_NAME_CHAR, value: item.CONCEPT_CD}})
+        this.col_keys_filtered = [...JSON.parse(JSON.stringify(this.$store.getters.PATIENT_VIEW_COLUMNS)), ...REMAPPED]
+
+      }
     },
 
     // load the patients
