@@ -11,8 +11,8 @@
       <q-card-section>
         <div v-if="FILE_INFO">Dateiinformationen: {{ FILE_INFO }}</div>
         <div class="row q-gutter-lg">
-          <div><q-btn icon="download" flat dense @click="downloadRaw()"></q-btn></div>
-          <div><q-btn icon="delete" flat dense @click="removeRaw()"></q-btn></div>
+          <div><q-btn icon="download"  color="dark" rounded  @click="downloadRaw()"></q-btn></div>
+          <div><q-btn icon="delete" color="dark" rounded @click="removeRaw()"></q-btn></div>
         </div>
       </q-card-section>
 
@@ -43,6 +43,8 @@
 
 <script>
 
+import { my_confirm } from 'src/tools/my_dialog'
+import {downloadBlob} from 'src/tools/db_tools'
 
 export default {
   name: 'RawDataPreview',
@@ -120,11 +122,11 @@ export default {
           title: val.filename,
           text: text
         }
-      } 
+      }
       else if (val.ext === '.pdf') this.previewImage(item)
       else this.$q.notify({ type: 'negative', message: 'Keine Vorschau verfügbar' })
     },
-    
+
     // LOAD IMAGE DATA
     previewImage(val) {
       if (val) {
@@ -147,8 +149,8 @@ export default {
             // Zum Anzeigen des PDFs kannst du entweder ein <iframe>, <embed> oder <object> HTML-Element verwenden,
             // oder den Benutzer veranlassen, das PDF direkt herunterzuladen bzw. in einem neuen Tab zu öffnen.
             this.pdf_src = pdfUrl;
-            
-            
+
+
         }
         else return this.$q.notify({ type: 'negative', message: 'Keine Vorschau verfügbar' })
 
@@ -165,12 +167,23 @@ export default {
 
     // DOWNLOAD
     downloadRaw() {
-      this.$q.notify({ type: 'warning', message: 'Diese Funktion wurde noch nicht implementiert.' })
+      // get the object data
+      const data = this.localData.OBSERVATION_BLOB;
+      const fileName = JSON.parse(this.localData.TVAL_CHAR).filename;
+      downloadBlob(data, fileName);
+
     },
 
-    // REMOVE 
-    removeRaw() {
-      this.$q.notify({ type: 'warning', message: 'Diese Funktion wurde noch nicht implementiert.' })
+    // REMOVE
+    async removeRaw() {
+      if (!await my_confirm('Möchten Sie die Datei wirklich löschen?')) return
+      const res = await this.$store.dispatch('deleteDB', {table: 'OBSERVATION_FACT', query_string: {OBSERVATION_ID: this.localData.OBSERVATION_ID}})
+      if (res) {
+        this.$q.notify({ type: 'positive', message: 'Datei wurde gelöscht' })
+        this.$emit('close')
+        this.$emit('removed', this.localData.OBSERVATION_ID)
+      }
+
     }
 
 

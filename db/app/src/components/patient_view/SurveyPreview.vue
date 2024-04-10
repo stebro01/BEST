@@ -17,6 +17,7 @@
         <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close" size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
         <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer q-ml-md" @click="printDiv('mySurveyDIV')" name="picture_as_pdf" size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.pdf }}</q-tooltip></q-icon>
         <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer q-ml-md" @click="save_to_disk()" name="download" size="md"><q-tooltip>Speichere lokal</q-tooltip></q-icon>
+        <q-icon v-if="mode!=='multiple'" class="float-right z-top cursor-pointer q-mr-xl" @click="remove_item()" name="delete" size="md"><q-tooltip>Lösche aus der DB</q-tooltip></q-icon>
         <q-card class="q-ma-md no-shadow" v-if="preview_survey_best_item">
           <!-- SUMMARY -->
           <q-card-section v-if="preview_survey_best_item.SUMMARY">
@@ -87,6 +88,7 @@
   <script>
   import html2pdf from "html2pdf.js"
   import { exportFile } from 'quasar'
+  import {my_confirm} from 'src/tools/my_dialog'
 
   export default {
     name: 'SurveyBestPreview',
@@ -150,7 +152,7 @@
             val = val.replace(/\\/g, '_')
             val = JSON.parse(val)
           }
-          
+
           if (val.text)this.preview_survey_best_item = this.prepare_data_survey(val.text.div)
           else this.preview_survey_best_item = undefined
         },
@@ -223,6 +225,17 @@
           const status = exportFile(filename, this.item, 'application/json')
           if (!status === true)this.$q.notify({type: 'negative', message: 'Datei konnte nicht gespeichert werden'})
 
+        },
+
+        // REMOVE
+        async remove_item() {
+          if (!await my_confirm('Möchten Sie die Datei wirklich löschen?')) return
+          const res = await this.$store.dispatch('deleteDB', {table: 'OBSERVATION_FACT', query_string: {OBSERVATION_ID: this.input_data.OBSERVATION_ID}})
+          if (res) {
+            this.$q.notify({ type: 'positive', message: 'Datei wurde gelöscht' })
+            this.$emit('close')
+            this.$emit('removed', this.input_data.OBSERVATION_ID)
+          }
         }
 
 

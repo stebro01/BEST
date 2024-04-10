@@ -17,7 +17,7 @@
           <!-- CONTENT -->
           <MAIN_FOR_XLS_VIEW v-if="col_keys" :localData="localData" :col_keys="COL_KEYS_FILTERED" :font_size="font_size"
             :max_char_header="max_char_header" :hide_col_keys="hide_col_keys" @hide_col_key="hide_col_keys.push($event)"
-            @update_observation="updateLocalData($event)" @rows="rows_to_export = $event"/>
+            @update_observation="updateLocalData($event)" @rows="rows_to_export = $event" @refresh_removed_item="resetData()" />
 
           <!-- FOOTER -->
           <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" :col_count="COL_COUNT"
@@ -86,7 +86,7 @@ export default {
       get() {
       if (!this.col_keys_filtered) return this.col_keys
       return this.col_keys_filtered
-      }, 
+      },
       set(val) {
         console.log('COL_KEYS_FILTERED>set', val)
       }
@@ -197,7 +197,7 @@ export default {
         //update the corresponding structures
         if (!this.col_keys_filtered) this.col_keys.push(item)
         else {
-          
+
           this.$store.getters.PATIENT_VIEW.active_layout.push({CONCEPT_NAME_CHAR: item.label, CONCEPT_CD: item.value})
           this.col_keys_filtered.push(item)}
           this.$store.commit("PATIENT_VIEW_LAYOUT_CHANGED_SET", true)

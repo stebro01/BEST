@@ -61,11 +61,11 @@
 
     <!-- SURVEY BEST PREVIEW -->
     <SURVEY_PREVIEW v-if="survey_best_show" :input_data="survey_best_data"
-      @close="survey_best_show = false; survey_best_data = undefined" />
+      @close="survey_best_show = false; survey_best_data = undefined" @removed="$emit('refresh_removed_item', $event)" />
 
     <!-- RAW DATA PREVIEW -->
     <RAW_DATA_PREVIEW v-if="raw_data_show" :input_data="raw_data_data"
-      @close="raw_data_show = false; raw_data_data = undefined" />
+      @close="raw_data_show = false; raw_data_data = undefined" @removed="$emit('refresh_removed_item', $event)"/>
 
   </div>
 
@@ -294,8 +294,8 @@ export default {
         } else {
           this.$q.notify({ message: 'Error importing raw data', color: 'negative' })
         }
-        
-      
+
+
       }
     },
 
