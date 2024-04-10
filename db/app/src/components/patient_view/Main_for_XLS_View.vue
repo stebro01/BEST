@@ -25,6 +25,11 @@
                 <span :class="{'text-bold': props.row.ENCOUNTER_NUM && $store.getters.VISIT_PINNED && props.row.ENCOUNTER_NUM.value === $store.getters.VISIT_PINNED.ENCOUNTER_NUM}">{{ props.row[props.col.name].value }}</span>
                 <!-- <q-tooltip>{{ props.row }}</q-tooltip> -->
               </span>
+              <span v-else-if="props.col.name === 'VISIT_BLOB'" @click="editVisit(props.row)" class="cursor-pointer">
+                <span v-if="props.row[props.col.name].value">{{ props.row[props.col.name].value }}</span>
+                <span v-else>...</span>
+                <!-- <q-tooltip>{{ props.row }}</q-tooltip> -->
+              </span>
               <span v-else-if="props.row[props.col.name].value">
                 {{ props.row[props.col.name].value }}
               </span>
@@ -57,7 +62,7 @@
 
     <!-- ADD_OBS -->
     <ADD_OBS v-if="add_observation_show" :data="add_observation_data"
-      @close="add_observation_show = false; add_observation_data = undefined" @save="newObservation($event)" />
+      @close="add_observation_show = false; add_observation_data = undefined" @save="newObservation($event)" @refresh="refreshAll()" />
 
     <!-- SURVEY BEST PREVIEW -->
     <SURVEY_PREVIEW v-if="survey_best_show" :input_data="survey_best_data"
@@ -156,12 +161,17 @@ export default {
     },
 
     COLS() {
+       []
       const max_width = this.max_char_header
       if (!this.localData || !Array.isArray(this.localData)) return []
       // use the filtered col_keys to build the columns => only the ones that are not hidden (hide_col_keys)
       const local_col_keys = this.col_keys.filter(item => !this.hide_col_keys.includes(item.label))
 
+
       const RES = local_col_keys.map(item => {
+        if (!item.value) return {}
+        if (!item.label) item.label = item.value
+
         return {
           name: item.label,
           required: true,
@@ -175,7 +185,9 @@ export default {
           format: val => `${val}`,
           style: this.TD_STYLE
         }
+
       })
+
       // relabel some items
       const ENCOUNTER_NUM = RES.find(item => item.name === 'ENCOUNTER_NUM')
       if (ENCOUNTER_NUM) ENCOUNTER_NUM.label = 'Visite'
@@ -217,6 +229,9 @@ export default {
   methods: {
     // METHODS
     computeClass(props) {
+      if (props.row.ENCOUNTER_NUM && this.$store.getters.VISIT_PINNED && props.row.ENCOUNTER_NUM.value === this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM) {
+      return 'bg-blue-2';
+    }
     // Überprüfe zuerst die Bedingung für 'bg-blue-1'
     if (props.row.PATIENT_CD && this.$store.getters.PATIENT_PINNED && props.row.PATIENT_CD.value === this.$store.getters.PATIENT_PINNED.PATIENT_CD) {
       return 'bg-blue-1';
@@ -267,10 +282,20 @@ export default {
       }
     },
 
+    editVisit(row) {
+      this.$emit('edit_visit', { ENCOUNTER_NUM: row.ENCOUNTER_NUM.value})
+    },
+
     addObservation(col, row) {
       this.add_observation_show = true
       const patient = this.localData.find(item => item.PATIENT_CD === row.PATIENT_CD.value)
       this.add_observation_data = { CONCEPT_CD: col.label_cd, ENCOUNTER_NUM: row.ENCOUNTER_NUM.value, PATIENT_CD: row.PATIENT_CD.value, PATIENT_ID: patient.PATIENT_NUM }
+    },
+
+    refreshAll() {
+      this.add_observation_show = false
+      this.add_observation_data = undefined
+      this.$emit('refresh_all')
     },
 
     async newObservation(data) {
@@ -295,7 +320,6 @@ export default {
           this.$q.notify({ message: 'Error importing raw data', color: 'negative' })
         }
 
-
       }
     },
 
@@ -312,6 +336,11 @@ export default {
 
     async selectVisit(visit) {
       if (!this.localData || !Array.isArray(this.localData)) return
+      // already pinned?
+      if (this.$store.getters.VISIT_PINNED && this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM === visit) {
+        this.$store.commit('VISIT_PINNED_SET', undefined)
+        return
+      }
       // get the patient
       const res = await this.$store.dispatch('searchDB', { table: 'VISIT_DIMENSION', query_string: { ENCOUNTER_NUM: visit } })
       if (!res || !res[0]) return

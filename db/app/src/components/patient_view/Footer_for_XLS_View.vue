@@ -98,7 +98,7 @@ import { my_confirm } from 'src/tools/my_dialog'
 export default {
   name: 'Footer_for_XLS_View',
 
-  props: ['localData', 'hide_col_keys', 'col_count', 'full_mode'],
+  props: ['localData', 'hide_col_keys', 'col_count', 'full_mode', 'event_edit_visit'],
   components: { ADD_PERSON_DIALOG, ADD_COL_DIALOG, ADD_VISIT_DIALOG, DIALOG_PERSON_EDIT, DIALOG_VISIT_EDIT },
 
   data() {
@@ -112,6 +112,14 @@ export default {
   },
 
   mounted() {
+  },
+
+  watch: {
+    event_edit_visit(val) {
+      if (!val) return
+      this.editVisit()
+      this.$emit('event_edit_visit_update', false)
+    }
   },
 
   computed: {
@@ -168,7 +176,7 @@ export default {
     },
 
     // EDIT VISIT
-    editVisit() {
+    async editVisit() {
       if (!this.$store.getters.VISIT_PINNED) return this.$q.notify({type: 'warning', message: 'Bitte wählen Sie einen Visite aus! (Klicken Sie auf die Visiten-ID in der 3. Spalte der Tabelle)'})
       this.show_edit_visit = true
     }

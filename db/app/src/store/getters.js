@@ -125,3 +125,10 @@ export function ANSWER_ABSENT() {
  export function STANDARD_XLS_VIEW() {
   return {font_size: 10, max_char_header: 20}
  }
+
+ export function FAVORITE_CONCEPTS() {
+  return [
+    {CONCEPT_CD: 'SCTID: 273249006', NAME_CHAR: 'Assessment scales', VALTYPE_CD: 'T', SOURCESYSTEM_CD: 'SNOMED-CT'},
+    {CONCEPT_CD: 'LID: 63900-5', NAME_CHAR: 'Age', VALTYPE_CD: 'N', UNITS_CD: 'years', SOURCESYSTEM_CD: 'LOINC'},
+  ]
+ }

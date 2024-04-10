@@ -17,10 +17,9 @@
           <!-- CONTENT -->
           <MAIN_FOR_XLS_VIEW v-if="col_keys" :localData="localData" :col_keys="COL_KEYS_FILTERED" :font_size="font_size"
             :max_char_header="max_char_header" :hide_col_keys="hide_col_keys" @hide_col_key="hide_col_keys.push($event)"
-            @update_observation="updateLocalData($event)" @rows="rows_to_export = $event" @refresh_removed_item="resetData()" />
-
+            @update_observation="updateLocalData($event)" @rows="rows_to_export = $event" @refresh_removed_item="resetData()" @refresh_all="resetData()" @edit_visit="eventEditVisit($event)"/>
           <!-- FOOTER -->
-          <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" :col_count="COL_COUNT"
+          <FOOTER_FOR_XLS_VIEW :localData="localData" :hide_col_keys="hide_col_keys" :col_count="COL_COUNT" :event_edit_visit="event_edit_visit" @event_edit_visit_update="event_edit_visit = $event" @add_person="show_add_person = true"
             @clear_hide_cols="hide_col_keys = []" @addColumn="addColumnWithObservation($event)" @refresh="loadLocalData()" :full_mode="full_mode" @toggleFullScreen="toggleFullScreen($event)" @export_data="exportData()"/>
         </div>
       </template>
@@ -56,7 +55,8 @@ export default {
       col_keys_filtered: undefined,
       hide_col_keys: [],
       full_mode: false,
-      rows_to_export: undefined
+      rows_to_export: undefined,
+      event_edit_visit: false
     }
   },
 
@@ -241,8 +241,6 @@ export default {
           content,
           'text/csv'
         )
-
-
     },
 
     resetData() {
@@ -252,6 +250,17 @@ export default {
       this.col_keys_filtered = undefined
       this.$store.commit('PATIENT_VIEW_ACTIVE_LAYOUT_VALUE_SET', undefined)
       this.$store.commit('PATIENT_VIEW_ACTIVE_LAYOUT_SET', [])
+    },
+
+    async eventEditVisit(payload) {
+      // is the payload.ENCOUNTER_NUM alread pinned?
+      this.$store.commit('PATIENT_PINNED_SET', undefined)
+      if (this.$store.getters.VISIT_PINNED && this.$store.getters.VISIT_PINNED.ENCOUNTER_NUM === payload.ENCOUNTER_NUM)  {this.event_edit_visit = true; return}
+      // else load the visit
+      const res = await this.$store.dispatch('searchDB', { table: 'VISIT_DIMENSION', query_string: { ENCOUNTER_NUM: payload.ENCOUNTER_NUM } })
+      if (!res || res.length === 0) return
+      this.$store.commit('VISIT_PINNED_SET', res[0])
+      this.event_edit_visit = true
     },
 
     updateViewLayout(layout) {

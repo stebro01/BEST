@@ -37,3 +37,15 @@ export function downloadBlob(data, fileName) {
   document.body.removeChild(a); // Entferne den Link nach dem Klicken
   URL.revokeObjectURL(url); // Bereinige die URL
 }
+
+/**
+ * @param {string} filePath - The path to the file
+ * @returns {Promise} - The data from the file
+ * @description This function reads the file from the filePath and returns the data as a promise.
+ * @example called by: SurveyAdd.vue/importSurvey
+ */
+export async function  readSurveyFile(filePath, store) {
+  const txt = window.electron.readFile(filePath, "utf8");
+  const DATA = await store.dispatch("importSurveyBEST", txt);
+  return DATA
+}

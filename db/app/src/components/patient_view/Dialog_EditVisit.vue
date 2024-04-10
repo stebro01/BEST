@@ -5,7 +5,7 @@
       <q-icon class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close"
         size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
       <q-card-section>
-        Neue Visite hinzufügen für: {{ $store.getters.PATIENT_PINNED.PATIENT_CD }}
+        Neue Visite hinzufügen
       </q-card-section>
       <q-card-section >
         <q-banner v-if="!data_loaded">Bereite Maske vor</q-banner>
@@ -32,8 +32,6 @@
 </template>
 
 <script>
-
-import { datenow_isostring } from 'src/tools/mydate'
 
 export default {
   name: 'Dialog_EditVisit',

@@ -8,8 +8,11 @@
         Neue Observation: <span v-if="localData && localData.CONCEPT_DIMENSION"><b>{{
     localData.CONCEPT_DIMENSION.NAME_CHAR }} </b> ({{ localData.CONCEPT_DIMENSION.CONCEPT_CD }})</span>
       </q-card-section>
-      <q-card-section>
-        <div class="row items-center">
+      <q-card-section v-if="localData">
+        <!-- SURVEY? -->
+        <SURVEY_ADD v-if="localData.CONCEPT_DIMENSION.CONCEPT_CD === 'SCTID: 273249006'" :data="localData" @refresh="$emit('refresh')"/>
+       <!-- ANYTHIN ELSE -->
+        <div v-else class="row items-center" >
 
           <div class="col-11">
             <q-form @submit="saveObs()">
@@ -49,12 +52,14 @@
 
 <script>
 
+import SURVEY_ADD from './SurveyAdd.vue'
+
 export default {
   name: 'AddObs',
 
   props: ['data'],
 
-  components: {},
+  components: {SURVEY_ADD},
 
   data() {
     return {

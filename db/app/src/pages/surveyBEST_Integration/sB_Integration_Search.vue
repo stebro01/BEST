@@ -11,7 +11,7 @@
         <div>
         <FILTER_BOX @update="searchQuest($event)" />
       </div>
-      
+
       <div>
         <q-list class="my-card">
           <q-item v-for="(items, index) in listQuest" :key="index + 'el'">
@@ -25,7 +25,7 @@
         </q-list>
       </div>
       </div>
-      
+
 
      </template>
 
@@ -51,7 +51,7 @@ export default {
   // mixins: [myMixins], //imports: searchPatient & deleteItem
 
   mounted() {
-
+    this.searchQuest('')
   },
 
   watch: {
@@ -74,7 +74,7 @@ export default {
     fillQuest(quest) {
       this.$router.push({name: 'surveyBEST_Integration_Fill', params: {id: quest}})
     }
-   
+
   }
 
 }
