@@ -3,15 +3,14 @@
   <!-- HEADER -->
   <div class="col-1 row items-center">
     <div class="col-6 q-gutter-x-md row items-center">
-      <q-btn rounded color="dark" icon="filter_alt" @click="filterData()"><q-tooltip>Filter /
-          Suchen</q-tooltip></q-btn>
+
       <q-btn rounded color="dark" icon="tune" @click="editView()"><q-tooltip>Spalten ein-/ausblenden</q-tooltip></q-btn>
       <div class="text-grey-7">
         {{ACTIVE_LAYOUT}}
       </div>
     </div>
     <div class="col-1 text-center">
-      <!-- NO LABEL -->
+      <q-btn rounded color="dark" icon="filter_alt" @click="filterData()"><q-tooltip>Filter / Suchen</q-tooltip></q-btn>
     </div>
     <!-- CHANGE FONTSIZE -->
     <div class="col-5 text-right">
