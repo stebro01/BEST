@@ -4,7 +4,7 @@
     <q-card class="q-ma-md no-shadow my-card" v-if="show_dialog">
       <q-icon class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close"
         size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
-      <q-card-section>
+      <q-card-section class="text-bold">
         Neue Spalten (Observations) hinzufügen
       </q-card-section>
       <q-card-section >

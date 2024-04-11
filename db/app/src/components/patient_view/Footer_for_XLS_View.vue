@@ -56,8 +56,8 @@
 
     <div class="col-5 text-right">
       <div class="text-caption text-grey-8" style="line-height: 10px;">
-        Patients: {{ localData ? localData.length : 0 }} | Visits: {{ localData ? localData.reduce((acc, item) => acc +
-          item.VISITS.length, 0) : 0 }} | Observations: {{ localData ? localData.reduce((acc, item) => acc +
+        <div>Patients: {{ PATIENT_COUNT_INFO }} (gesamt: {{ $store.getters.PATIENT_XLS_VIEWS.count }}) </div>
+        Observations: {{ localData ? localData.reduce((acc, item) => acc +
           item.VISITS.reduce((acc, item) => acc + item.OBSERVATIONS.length, 0), 0) : 0 }}
           | Spalten: {{ col_count }}
         <div v-if="hide_col_keys.length > 0">
@@ -130,7 +130,12 @@ export default {
       set(val) {
         this.$emit('toggleFullScreen', val)
       }
-    }
+    },
+
+    PATIENT_COUNT_INFO() {
+      return `${this.$store.getters.PATIENT_XLS_VIEWS.offset_min+1} - ${this.$store.getters.PATIENT_XLS_VIEWS.offset_max}`
+    },
+
   },
 
   methods: {

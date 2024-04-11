@@ -5,7 +5,11 @@
       <q-icon class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close"
         size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
       <q-card-section>
-        Bearbeite Observation {{ observation_id }}: <span v-if="localData && localData.OBSERVATION"><b>{{ localData.OBSERVATION.CONCEPT_NAME_CHAR }}</b> ({{ localData.OBSERVATION.CONCEPT_CD }})</span>
+        <div class="text-bold">Bearbeite Observation</div>
+        <div class="text-center text-caption">ID: {{ observation_id }}</div>
+        <div v-if="localData && localData.OBSERVATION" class="text-center">
+          {{ localData.OBSERVATION.CONCEPT_NAME_CHAR }}({{ localData.OBSERVATION.CONCEPT_CD }})
+        </div>
         <q-tooltip> {{ localData }}</q-tooltip>
       </q-card-section>
       <q-card-section>

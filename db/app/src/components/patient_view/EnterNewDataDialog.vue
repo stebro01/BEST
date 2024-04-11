@@ -1,7 +1,7 @@
 <template>
         <q-card style="min-width: 300px; min-height: 300px" v-if="localData">
             <q-btn class="absolute-top-right z-top" icon="close" flat round @click="$emit('close')" v-close-popup />
-            <q-card-section>
+            <q-card-section class="text-bold">
                 Neuer Wert
             </q-card-section>
             <!--  VALUES -->
@@ -73,7 +73,7 @@ export default {
     mounted() {
         if (!this.item) this.$emit('close')
         this.localData = JSON.parse(JSON.stringify(this.item))
-        // 
+        //
         if (this.localData.VALTYPE_CD === 'N') {
             // this.value = this.localData.NVAL_NUM
         }

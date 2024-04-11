@@ -9,15 +9,26 @@
         {{ACTIVE_LAYOUT}}
       </div>
     </div>
-    <div class="col-1 text-center">
+    <div class="col-4 text-center row q-gutter-md">
       <q-btn rounded color="dark" icon="filter_alt" @click="filterData()"><q-tooltip>Filter / Suchen</q-tooltip></q-btn>
+      <div class="row">
+        <q-btn icon="arrow_left" flat dense @click="PATIENTS_INDEX--" />
+        <q-input :disable="$store.getters.SHOW_SPINNER" v-model.number.lazy="PATIENTS_INDEX" dense type="text" style="max-width: 60px" input-class="text-center" label="Page" />
+        <q-btn icon="arrow_right" flat dense @click="PATIENTS_INDEX++" />
+      </div>
+      <q-input :disable="$store.getters.SHOW_SPINNER" v-model.number.lazy="PATIENTS_LIMIT" dense type="number" style="max-width: 80px" input-class="text-center" label="Pat./Page">
+        <template v-slot:prepend>
+          <q-icon name="info" size="xs"><q-tooltip>Große Werte beeinflussen die Ladezeit negativ </q-tooltip></q-icon>
+        </template>
+      </q-input>
     </div>
     <!-- CHANGE FONTSIZE -->
-    <div class="col-5 text-right">
+    <div class="col-2 text-right">
       <q-btn size="md" dense icon="restart_alt" flat class="q-mr-md" @click="$emit('reset')"><q-tooltip>Lade Daten neu
           und stelle Standardsichten wieder her</q-tooltip></q-btn>
       <q-btn size="md" dense icon="zoom_in" flat @click="$emit('zoom_in')" />
       <q-btn size="md" dense icon="zoom_out" flat @click="$emit('zoom_out')" />
+
     </div>
 
     <!-- DIALOGS  -->
@@ -61,25 +72,39 @@ export default {
       let layout = this.$store.getters.PATIENT_VIEW.LAYOUTS.find(l => l.value === this.$store.getters.PATIENT_VIEW.active_layout_value)
       if (layout) return `Layout: ${layout.label}`
       return ''
+    },
+
+    PATIENTS_LIMIT: {
+      get() {
+        return this.$store.getters.PATIENT_XLS_VIEWS.offset
+      },
+      set(val) {
+        val = parseInt(val)
+        if (val < 1 || val > this.$store.getters.PATIENT_XLS_VIEWS.count) return
+        this.$store.getters.PATIENT_XLS_VIEWS.offset = val
+        this.$store.getters.PATIENT_XLS_VIEWS.index = 0
+        this.$emit('update_patients_info')
+      }
+    },
+
+    PATIENTS_INDEX: {
+      get() {
+        return this.$store.getters.PATIENT_XLS_VIEWS.index + 1
+      },
+      set(val) {
+        val = parseInt(val)
+        if (val < 1 || (val * this.$store.getters.PATIENT_XLS_VIEWS.offset)> this.$store.getters.PATIENT_XLS_VIEWS.count) return
+        this.$store.getters.PATIENT_XLS_VIEWS.index = val - 1
+        this.$emit('update_patients_info')
+      }
     }
 
   },
 
-
   methods: {
     // METHODS
-    commingSoon() {
-      this.$q.notify({
-        message: 'In Kürze verfügbar',
-        type: 'warning',
-        position: 'bottom',
-        timeout: 1000
-      })
-    },
 
     async loadData() {
-
-
     },
 
     editView() {

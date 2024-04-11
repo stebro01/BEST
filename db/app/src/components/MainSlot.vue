@@ -1,9 +1,15 @@
 <template>
     <div class="column my-column">
+      <div v-if="SHOW_SPINNER" class="absolute-top-right q-mr-md">
+        <q-spinner color="primary" size="4em"/>
+        lade ...
+
+      </div>
         <q-resize-observer @resize="onResize" />
 
         <!-- HEADING -->
         <div class="col-2 bg-accent" >
+
             <div class="row justify-center" >
             <slot name="header">
                 <!-- text hier -->
@@ -44,7 +50,7 @@
             </slot>
         </div>
 
-        <q-spinner v-if="SHOW_SPINNER" class="absolute-bottom-right z-max" size="lg"/>
+
     </div>
 </template>
 

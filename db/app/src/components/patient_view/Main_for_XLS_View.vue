@@ -181,6 +181,7 @@ export default {
           label_long: item.label,
           label_cd: item.value,
           align: 'center',
+          value: item.value,
           field: row => row[item.label],
           format: val => `${val}`,
           style: this.TD_STYLE

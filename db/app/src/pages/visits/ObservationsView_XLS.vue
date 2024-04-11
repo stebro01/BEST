@@ -12,7 +12,7 @@
         <div class="column" :style="STYLE_DIV">
           <!-- HEADER -->
           <HEADER_FOR_XLS_VIEW v-if="col_keys" @zoom_in="font_size++; max_char_header = +max_char_header + 5"
-            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" :col_keys="col_keys" :hide_col_keys="hide_col_keys" @updateView="updateViewLayout($event)" @update_sql="loadLocalData()"/>
+            @zoom_out="font_size--; max_char_header = max_char_header - 5" @reset="resetData()" :col_keys="col_keys" :hide_col_keys="hide_col_keys" @updateView="updateViewLayout($event)" @update_sql="loadLocalData()"  @update_patients_info="loadLocalData()"/>
 
           <!-- CONTENT -->
           <MAIN_FOR_XLS_VIEW v-if="col_keys" :localData="localData" :col_keys="COL_KEYS_FILTERED" :font_size="font_size"
@@ -56,7 +56,8 @@ export default {
       hide_col_keys: [],
       full_mode: false,
       rows_to_export: undefined,
-      event_edit_visit: false
+      event_edit_visit: false,
+
     }
   },
 
@@ -90,6 +91,30 @@ export default {
       set(val) {
         console.log('COL_KEYS_FILTERED>set', val)
       }
+    },
+
+    PATIENT_INFO() {
+      return this.$store.getters.PATIENT_XLS_VIEWS
+    },
+
+    CALC_OFFSET() {
+      let start = this.PATIENT_INFO.index * this.PATIENT_INFO.offset
+      if (start < 0) start = 0
+      if (start > this.PATIENT_INFO.count) start = this.PATIENT_INFO.count
+
+      let end = start + this.PATIENT_INFO.offset
+      if (end > this.PATIENT_INFO.count) end = this.PATIENT_INFO.count
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.PATIENT_INFO.current_count = end - start
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.PATIENT_INFO.offset_min = start
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.PATIENT_INFO.offset_max = end
+
+      console.log(this.PATIENT_INFO)
+      console.log('CALC_OFFSET', start, end)
+
+      return [start, end]
 
     }
 
@@ -99,9 +124,12 @@ export default {
   methods: {
     // METHODS
     async loadLocalData() {
+      this.$store.commit('SPINNER_SET', true)
+
       let res_p = await this.loadPatientData()
+      this.PATIENT_INFO.count = res_p.length
       // now load the visits
-      let res_v = await this.loadVisitsAndObservations(res_p)
+      let res_v = await this.loadVisitsAndObservations(res_p.slice(this.CALC_OFFSET[0], this.CALC_OFFSET[1]))
       this.localData = res_v
       this.col_keys = this.buildColKeys(res_v)
 
@@ -109,8 +137,8 @@ export default {
       if (this.$store.getters.PATIENT_VIEW.active_layout && this.$store.getters.PATIENT_VIEW.active_layout.length > 0) {
         const REMAPPED = this.$store.getters.PATIENT_VIEW.active_layout.map(item => {return {label: item.CONCEPT_NAME_CHAR, value: item.CONCEPT_CD}})
         this.col_keys_filtered = [...JSON.parse(JSON.stringify(this.$store.getters.PATIENT_VIEW_COLUMNS)), ...REMAPPED]
-
       }
+      this.$store.commit('SPINNER_SET', false)
     },
 
     // load the patients

@@ -4,9 +4,11 @@
     <q-card class="q-ma-md no-shadow my-card" v-if="show_dialog">
       <q-icon class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close"
         size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
-      <q-card-section>
-        Neue Observation: <span v-if="localData && localData.CONCEPT_DIMENSION"><b>{{
-    localData.CONCEPT_DIMENSION.NAME_CHAR }} </b> ({{ localData.CONCEPT_DIMENSION.CONCEPT_CD }})</span>
+      <q-card-section >
+        <div class="text-bold">Neue Observation</div>
+         <div v-if="localData && localData.CONCEPT_DIMENSION" class="text-center">
+         {{localData.CONCEPT_DIMENSION.NAME_CHAR }} ({{ localData.CONCEPT_DIMENSION.CONCEPT_CD }})
+        </div>
       </q-card-section>
       <q-card-section v-if="localData">
         <!-- SURVEY? -->

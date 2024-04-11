@@ -4,7 +4,7 @@
     <q-card class="q-ma-md no-shadow my-card" v-if="show_dialog">
       <q-icon class="float-right z-top cursor-pointer q-ml-md" @click="$emit('close')" name="close"
         size="md"><q-tooltip>{{ $store.getters.TEXT.btn.tooltip.close }}</q-tooltip></q-icon>
-      <q-card-section>
+      <q-card-section class="text-bold">
         Neue Visite hinzufügen für: {{ $store.getters.PATIENT_PINNED.PATIENT_CD }}
       </q-card-section>
       <q-card-section >
@@ -18,9 +18,9 @@
           <q-select class="col-12" dense outlined v-model="localData.LOCATION_CD" :options="options.LOCATION_CD" label="Ort"/>
 
           <q-select class="col-6" dense outlined v-model="localData.ACTIVE_STATUS_CD" :options="options.ACTIVE_STATUS_CD" label="Status"/>
-          
+
         </q-form>
-       
+
       </q-card-section>
       <q-card-actions align="between">
         <q-btn label="Abbrechen" no-caps  rounded @click="$emit('close')"/>
@@ -112,7 +112,7 @@ export default {
       if (this.localData.LOCATION_CD) payload.LOCATION_CD = this.localData.LOCATION_CD.value
 
       const res = await this.$store.dispatch('addDB', {table: 'VISIT_DIMENSION', query_string: payload})
-      
+
       if (res) {
         this.$q.notify({type: 'positive', message: 'Viste erfolgreich hinzugefügt'})
         this.$emit('refresh')
@@ -120,7 +120,7 @@ export default {
         this.$q.notify({type: 'warning', message: 'Viste konnte nicht hinzugefügt werden'})
         this.$emit('close')
       }
-       
+
     }
 
   }

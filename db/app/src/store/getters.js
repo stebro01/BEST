@@ -97,6 +97,10 @@ export function PATIENT_VIEW(state) {
     return state.PATIENT_VIEW
 }
 
+export function PATIENT_XLS_VIEWS(state) {
+  return state.PATIENT_VIEW.XLS_VIEWS
+}
+
 export function PATIENT_VIEW_COLUMNS() {
 
     return [
@@ -114,9 +118,19 @@ export function PATIENT_VIEW_SQL_STATEMENT(state) {
 }
 
 export function PATIENT_VIEW_SQL_STATEMENT_RAW(state) {
-  const statement = `${state.ENV.app.env.patient_view.sql_statement} WHERE USER_ID=${USER(state).USER_ID} OR USER_ID=${PUBLIC_ID(state)}`
+  const statement = `${state.ENV.app.env.patient_view.sql_statement} WHERE (USER_ID=${USER(state).USER_ID} OR USER_ID=${PUBLIC_ID(state)})`
   return statement
 }
+
+export function PATIENT_VIEW_SQL_STATEMENT_RAW_JOIN(state) {
+  const statement = `SELECT pl.* FROM patient_list pl JOIN visit_dimension vd ON pl.PATIENT_NUM = vd.PATIENT_NUM WHERE (pl.USER_ID=${USER(state).USER_ID} OR pl.USER_ID=${PUBLIC_ID(state)})`
+  return statement
+}
+
+export function PATIENT_VIEW_SQL_OPTIONS(state) {
+    return state.PATIENT_VIEW.SQL_OPTIONS
+}
+
 
 
 export function ANSWER_ABSENT() {

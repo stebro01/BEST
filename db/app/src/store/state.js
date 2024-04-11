@@ -1,5 +1,6 @@
 import ENV from '../../public/env.json'
 import { SETTINGS } from 'src/classes/Settings'
+import {datenow_isostring} from 'src/tools/mydate'
 
 SETTINGS.init()
 export default function () {
@@ -28,8 +29,44 @@ export default function () {
       EDIT: {
         CATEGORIES: undefined, //expect an array
         UNIT_CD: undefined, //expect an array of objects
-      }, 
+      },
       SQL_STATEMENT: undefined, //expect a string
+      SQL_OPTIONS: {
+        patient: {
+          PATIENT_CD: {
+            check: false,
+            value: null
+          },
+          SEX_CD: {
+            check: false,
+            value: null
+          },
+          BIRTH_DATE: {
+            check: false,
+            start: '1900-01-01',
+            end: datenow_isostring()
+          }
+        },
+        visit: {
+          START_DATE: {
+            check: false,
+            start: '1900-01-01',
+            end: datenow_isostring()
+          },
+          VISIT_BLOB: {
+            check: false,
+            value: null
+          }
+        }
+      },
+      XLS_VIEWS: {
+        count: 0, //number of patients to load in total
+        offset: 2, //number of patients to load at once
+        index: 0, //
+        current_count: 0,
+        offset_min: 0,
+        offset_max: 2
+      }
     }
   }
 }
