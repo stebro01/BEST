@@ -2,14 +2,15 @@
 
   <!-- HEADER -->
   <div class="col-1 row items-center">
-    <div class="col-6 q-gutter-x-md row items-center">
-
-      <q-btn rounded color="dark" icon="tune" @click="editView()"><q-tooltip>Spalten ein-/ausblenden</q-tooltip></q-btn>
-      <div class="text-grey-7">
+    <div class="col-6 row items-center">
+      <div class="col-4">
+        <q-btn rounded color="dark" icon="tune" @click="editView()"><q-tooltip>Spalten ein-/ausblenden</q-tooltip></q-btn>
+      </div>
+      <div class=" col text-grey-7">
         {{ACTIVE_LAYOUT}}
       </div>
     </div>
-    <div class="col-4 text-center row q-gutter-md">
+    <div class="col-4 text-center row">
       <q-btn rounded color="dark" icon="filter_alt" @click="filterData()"><q-tooltip>Filter / Suchen</q-tooltip></q-btn>
       <div class="row">
         <q-btn icon="arrow_left" flat dense @click="PATIENTS_INDEX--" />

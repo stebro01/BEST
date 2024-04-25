@@ -172,6 +172,8 @@ export default {
       console.log(sql)
 
       this.$store.commit('PATIENT_VIEW_SQLSTATEMENT_SET', sql)
+      this.$store.getters.PATIENT_XLS_VIEWS.index = 0
+
       this.$emit('update_sql')
     }
 
