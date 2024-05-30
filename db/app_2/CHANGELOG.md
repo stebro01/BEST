@@ -1,0 +1,12 @@
+# CHANGELOG
+
+## Changes to the db_template.db
+
+// 2021-07-11 15:27:45
+INSERT INTO "main"."CODE_LOOKUP" ("TABLE_CD", "COLUMN_CD", "CODE_CD", "NAME_CHAR", "LOOKUP_BLOB", "UPDATE_DATE", "DOWNLOAD_DATE", "IMPORT_DATE", "SOURCESYSTEM_CD", "UPLOAD_ID") 
+SELECT 'ONCEPT_DIMENSION', 'VALTYPE_CD', 'R', 'Rohdaten', 'Kompletter Dump einer Datei', '', '', '2023-07-11 15:27:45', '', '7912'
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM "main"."CODE_LOOKUP" 
+    WHERE "CODE_CD" = 'R' AND "COLUMN_CD" = 'VALTYPE_CD'
+);
