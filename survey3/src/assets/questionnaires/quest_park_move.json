@@ -68,6 +68,19 @@
       "force": false
     },
     {
+      "label": "Dauer der Ausbildung (in Jahren)",
+      "id": 2.1,
+      "coding": {
+        "display": "Duration of formal education (in years)",
+        "code": "SCTID: 224288002",
+        "system": "http://snomed.info/sct"
+      },
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "force": false
+    },
+    {
       "label": "Beruf",
       "id": 3,
       "coding": {
@@ -86,7 +99,7 @@
       "coding": {
         "display": "Hobbies",
         "code": "SCTID: 300758009",
-        "system": "SNOMNED-CD"
+        "system": "SNOMNED-CT"
       },
       "value": null,
       "type": "text",
@@ -111,6 +124,19 @@
         { "label": "ehemaliger Raucher?", "value": "former smoker" },
         { "label": "noch nie Raucher gewesen?", "value": "never smoker" }
       ]
+    },
+    {
+      "label": "Relevante Vorerkrankungen",
+      "id": 5,
+      "coding": {
+        "display": "History of clinical findings in subject",
+        "code": "SCTID: 417662000",
+        "system": "SNOMNED-CT"
+      },
+      "value": null,
+      "type": "text",
+      "inline": false,
+      "force": false
     },
     {
       "label": "Pflegegrad",

@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 
+- [2024-05-30] Changes: Parkinson/Anamnese
 - [2024-02-05] Changed: AES
 - [2024-01-11] Changed: AES, PNAS
 - [2024-01-02] QuestMan class is now a singleton to avoid multiple instances and be usable in dbBEST, Logger.js is now a reference to the logger.js from dbBEST to avoid multiple software versions
