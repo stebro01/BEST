@@ -28,7 +28,7 @@
     "jsencrypt": "^3.3.2",
     "jsrsasign": "^11.1.0",
     "quasar": "^2.16.0",
-    "sqlite3": "^5.1.7",
+    "sqlite3": "^5.1.4",
     "vue": "^3.4.18",
     "vue-router": "^4.0.12",
     "vuedraggable": "^2.24.3",
