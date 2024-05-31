@@ -1,9 +1,9 @@
 const { contextBridge } = require("electron");
-
+console.log("electron-preload.js geladen");
 const path = require("path");
 const fs = require("fs");
-const dbman = require('../src/tools/dbman')
-const os = require('os');
+const dbman = require("../src/tools/dbman");
+const os = require("os");
 
 contextBridge.exposeInMainWorld("electron", {
   doAThing: () => {},
@@ -14,5 +14,5 @@ contextBridge.exposeInMainWorld("electron", {
   path: path,
   dbman: dbman,
   homedir: os.homedir(),
-  publicFolder: path.resolve(__dirname, process.env.QUASAR_PUBLIC_FOLDER)
+  publicFolder: path.resolve(__dirname, process.env.QUASAR_PUBLIC_FOLDER),
 });

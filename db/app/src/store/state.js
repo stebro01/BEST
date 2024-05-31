@@ -1,8 +1,8 @@
-import ENV from '../../public/env.json'
-import { SETTINGS } from 'src/classes/Settings'
-import {datenow_isostring} from 'src/tools/mydate'
+import ENV from "../../public/env.json";
+import { SETTINGS } from "src/classes/Settings";
+import { datenow_isostring } from "src/tools/mydate";
 
-SETTINGS.init()
+SETTINGS.init();
 export default function () {
   return {
     ENV,
@@ -15,7 +15,7 @@ export default function () {
     PROVIDER_LIST: undefined,
     PROVIDER_PINNED: undefined,
     OBSERVATION_PINNED: undefined,
-    UPLOAD_ID: '79190712',
+    UPLOAD_ID: "79190712",
     IS_ELECTRON: false,
     SESSION_MULTIEDIT: undefined,
     SHOW_SPINNER: true,
@@ -35,29 +35,29 @@ export default function () {
         patient: {
           PATIENT_CD: {
             check: false,
-            value: null
+            value: null,
           },
           SEX_CD: {
             check: false,
-            value: null
+            value: null,
           },
           BIRTH_DATE: {
             check: false,
-            start: '1900-01-01',
-            end: datenow_isostring()
-          }
+            start: "1900-01-01",
+            end: datenow_isostring(),
+          },
         },
         visit: {
           START_DATE: {
             check: false,
-            start: '1900-01-01',
-            end: datenow_isostring()
+            start: "1900-01-01",
+            end: datenow_isostring(),
           },
           VISIT_BLOB: {
             check: false,
-            value: null
-          }
-        }
+            value: null,
+          },
+        },
       },
       XLS_VIEWS: {
         count: 0, //number of patients to load in total
@@ -65,8 +65,8 @@ export default function () {
         index: 0, //
         current_count: 0,
         offset_min: 0,
-        offset_max: 2
-      }
-    }
-  }
+        offset_max: 2,
+      },
+    },
+  };
 }
