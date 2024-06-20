@@ -172,9 +172,9 @@
 </template>
 
 <script>
-import html2pdf from "html2pdf";
 import { exportFile } from "quasar";
 import { my_confirm } from "src/tools/my_dialog";
+import html2pdf from "html2pdf.js";
 
 export default {
   name: "SurveyBestPreview",

@@ -26,7 +26,7 @@
               <q-input  v-model="content.keywords" dense label="Schlüsselworte / Suchworte" />
               <q-input  v-model="content.ref" dense label="Verweis auf Literatur: i.e. Pubmed-Link" />
               <q-input readonly dense label="Coding System">
-                <template v-slot:append>          
+                <template v-slot:append>
               <q-btn-dropdown no-caps color="dark" flat :label="content.coding.system">
                 <q-list>
                   <q-item clickable v-close-popup @click="content.coding.system = 'http://snomed.info/sct'">
@@ -118,7 +118,7 @@
       </div>
 
       <!-- ACTIONBTTNS -->
-      <div class="col-2 text-center q-gutter-md justify-around" style="width: 100%">        
+      <div class="col-2 text-center q-gutter-md justify-around" style="width: 100%">
           <MYBUTTON data-cy="btn_preview" :icon="TEXT.btn.preview.icon"  @click="preview" :label="TEXT.btn.preview.label" />
           <br>
           <MYBUTTON @click="saveQuest()" :label="TEXT.btn.save.label" />
@@ -142,7 +142,7 @@
         <div class="col-1">
            <MYBUTTON :label="TEXT.btn.close.label" @click="show_preview = false" />
         </div>
-        
+
       </div>
     </q-dialog>
 
@@ -154,9 +154,10 @@
       maximized
     >
       <q-card>
-        <q-card-section>
+        <q-card-section class="relative">
           <div class="text-h6">Fragebogen export</div>
           <div class="text-caption">zum Exportieren in die Zwischenablage kopieren</div>
+          <q-btn icon="save" @click="saveJson()" class="absolute-top-right q-mt-md q-mr-md"><q-tooltip>Speichere als JSON ab.</q-tooltip></q-btn>
         </q-card-section>
         <q-card-section>
           <q-input filled autogrow v-model="content_export" readonly />
@@ -344,6 +345,18 @@ export default {
           break
       }
       this.date_str = Date.now() //this triggers an update of the v-for
+    },
+
+    saveJson() {
+      // save the JSON to the local file system
+      const jsonContent = JSON.stringify(this.content, null, 2); // Das zweite Argument `null` ist der replacer und das dritte Argument `2` gibt die Anzahl der Leerzeichen an, die für die Einrückung verwendet werden.
+      const blob = new Blob([jsonContent], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `quest_${this.content.short_title}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
     }
   }
 }

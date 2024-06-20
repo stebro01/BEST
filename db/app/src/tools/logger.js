@@ -38,7 +38,8 @@ export const error_codes = {
   invalid_html_object: "HTML file is not valid -> essential data is missing",
   could_not_resolve_concept:
     "a CONCEPT_CD or MODIFIER_CD could not be resolved in the DB",
-  primary_key_already_used: "Primary Key is already in use",
+  primary_key_already_used:
+    "Der Wert ist bereits in der Datenbank: Primary Key is already in use",
   could_not_add_visit: "neue Visite konnte nicht angelegt werden",
   invalid_concept_cd: "Invalid CONCEPT_CD",
   could_not_add_observation: "Observation konnte nicht hinzugefügt werden",
