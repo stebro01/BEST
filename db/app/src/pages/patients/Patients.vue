@@ -131,6 +131,15 @@ export default {
           style: "width: 20px",
         },
         {
+          name: "IMPORT_DATE",
+          required: true,
+          label: "Erstellt",
+          align: "center",
+          field: "IMPORT_DATE",
+          sortable: true,
+          style: "width: 60px; font-size: 0.8em",
+        },
+        {
           name: "VITAL_STATUS_RESOLVED",
           required: true,
           label: "Status",
@@ -166,15 +175,7 @@ export default {
           sortable: true,
           style: "width: 20px",
         },
-        // {
-        //   name: "PATIENT_BLOB",
-        //   required: true,
-        //   label: "BLOB",
-        //   align: "center",
-        //   field: "PATIENT_BLOB",
-        //   sortable: true,
-        //   style: "width: 120px",
-        // }
+
       ],
       options_gender: [],
     };
