@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import html2pdf from "html2pdf";
+import html2pdf from "html2pdf.js";
 import SURVEY_BEST_PREVIEW from "src/components/visits/SurveyBestPreview.vue";
 
 export default {

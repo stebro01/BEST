@@ -143,7 +143,7 @@
 </template>
 
 <script>
-import html2pdf from "html2pdf";
+import html2pdf from "html2pdf.js";
 import { exportFile } from "quasar";
 
 export default {

@@ -32,7 +32,7 @@ function createWindow() {
   } else {
     // we're on production; no access to devtools pls
     mainWindow.webContents.on("devtools-opened", () => {
-      mainWindow.webContents.closeDevTools();
+      // mainWindow.webContents.closeDevTools();
     });
   }
 
