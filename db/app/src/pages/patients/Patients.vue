@@ -51,7 +51,7 @@
               <q-td class="text-center">
                 <q-checkbox v-model="selected[props.row.PATIENT_NUM].selected" />
               </q-td>
-              <q-td v-for="el in Object.keys(results[0])" :key="el" :props="props" class="text-center"
+              <q-td v-for="el in FIELDS" :key="el" :props="props" class="text-center"
                 style="overflow: hidden; white-space: nowrap">
                 <!-- ANZEIGE IM TABLE -->
                 {{ props.row[el] }}
@@ -120,6 +120,14 @@ export default {
       public_id: this.$store.getters.PUBLIC_ID,
       selected: {},
       results: [],
+      FIELDS: [
+        "PATIENT_CD",
+        "IMPORT_DATE",
+        "VITAL_STATUS_RESOLVED",
+        "BIRTH_DATE",
+        "SEX_RESOLVED",
+        "AGE_IN_YEARS",
+      ],
       columns: [
         {
           name: "PATIENT_CD",

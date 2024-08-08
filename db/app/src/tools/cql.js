@@ -1,4 +1,4 @@
-import cql from "cql-execution";
+import cql from "cql-execution"; //make sure to install cql-execution@2.4.0
 import axios from "axios";
 import { dtypes } from "src/classes/more/dtypes";
 import { error_codes } from "src/tools/logger";
@@ -15,6 +15,7 @@ import { unstringify_json } from "src/classes/sqltools";
  *  ie: {"status":true,"data":{"check":true,"data":{"STRING":true,"SPLIT":true,"SPLIT_1":true,"SPLIT_2":true,"SPLIT_3":true}}}
  */
 export function exec(payload) {
+  // console.log('exec cql', payload)
   if (!payload || !payload.lib || !payload.parameters)
     return { status: false, error: "invalid payload" };
   if (typeof payload.lib !== "object")
@@ -85,6 +86,7 @@ export async function query_api(payload) {
  * @returns {object} - {status: true | false, data: [] | error: ''}
  */
 export async function checkRule(payload) {
+  // console.log("checkRule", payload);
   if (
     !payload ||
     !payload.VIEW_CQL ||
@@ -117,7 +119,8 @@ export async function checkRule(payload) {
 
   // collect results
   CHECKS.check = CHECKS.data.find((el) => el.check === false) === undefined;
-  return { status: CHECKS.check, data: CHECKS.data };
+  const results = { status: CHECKS.check, data: CHECKS.data };
+  return results
 }
 
 /**

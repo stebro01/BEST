@@ -1,20 +1,20 @@
 <template>
   <div class="row justify-center q-mb-lg">
     <!-- PREVIEW PATIENT -->
-    <PREVIEW_IMPORT_INFO v-if="mode_visits" :data_checked="data_checked" :patient_data="patient_data" :mode_visits="mode_visits" 
+    <PREVIEW_IMPORT_INFO v-if="mode_visits" :data_checked="data_checked" :patient_data="patient_data" :mode_visits="mode_visits"
       @updateMode="mode_visits = $event" @close="$emit('close')"
       @save="saveToDB()"
     />
     <!-- PREVIEW CONTENT -->
-    <PREVIEW_IMPORT_DATA v-if="data_checked" 
-      :patient_data="patient_data" :total_errors_found="total_errors_found" 
+    <PREVIEW_IMPORT_DATA v-if="data_checked"
+      :patient_data="patient_data" :total_errors_found="total_errors_found"
       @remove="removeItem($event)"
     />
     <div v-if="!data_checked" class="col-12 q-mb-lg text-center">
       <div  v-if="doing_check === false" >
         <q-btn no-caps rounded class="q-mt-md" @click="checkCQL_single(patient_data)">Daten mit CQL überprüfen</q-btn>
       </div>
-      
+
     </div>
   </div>
 </template>

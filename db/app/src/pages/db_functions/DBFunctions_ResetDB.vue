@@ -8,11 +8,16 @@
 
       <!-- MAIN -->
       <template v-slot:main>
-        <div class="absolute-center text-center">
+        <div class=" text-center absolute-center q-gutter-lg">
+        <div >
           <q-btn class="my-btn" no-caps rounded color="black" @click="resetDB()">{{ TEXT.btn_reset }}</q-btn>
 
           <q-banner class="bg-grey-3 q-mt-lg"><span v-html="TEXT.info_reset"></span></q-banner>
         </div>
+        <div>
+          <q-btn class="my-btn" no-caps rounded color="black" @click="resetViews()">Views aktualisieren</q-btn>
+        </div>
+      </div>
       </template>
 
     </MainSlot>
@@ -55,7 +60,18 @@ export default {
       .then(() => this.$q.notify(this.TEXT.msg_reset_complete))
       .catch(err => this.$q.notify({message: `${this.$store.getters.TEXT.alerts.some_sql_error}: ${err}`, timeout: 5000}))
 
+    },
+
+    // RESET VIEWS
+    async resetViews() {
+      if (!await my_confirm("Sind Sie sicher? Dieser Schritt laesst sich nicht rückgängig machen.")) return
+
+      this.$store.dispatch('resetViews')
+      .then(() => this.$q.notify(this.TEXT.msg_reset_complete))
+      .catch(err => this.$q.notify({message: `${this.$store.getters.TEXT.alerts.some_sql_error}: ${err}`, timeout: 5000}))
     }
+
+
   }
 
 }

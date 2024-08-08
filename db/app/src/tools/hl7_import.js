@@ -339,7 +339,7 @@ async function _db_resolve_selections(observation, CONCEPT_LIST, VIEW_CONCEPT) {
   if (VALUE === undefined || VALUE === null) return null;
   if (typeof(VALUE) === 'number') return VALUE;
   //first find entry in the CONCEPT_LIST
-  console.log(VALUE, typeof(VALUE))
+  // console.log(VALUE, typeof(VALUE))
   let obj = CONCEPT_LIST.find(
     (el) => el.NAME_CHAR && el.NAME_CHAR.toLowerCase() === VALUE.toLowerCase()
   );

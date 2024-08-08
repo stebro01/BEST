@@ -140,3 +140,27 @@ export async function resetDatabase(dbman, readFile, PATH) {
 
   return true;
 }
+
+export async function resetDatabase_Views(dbman, readFile, PATH) {
+  info({ method: "db_tools/resetViews" });
+
+  // VIEW patient_observations
+  await dbman.run("DROP VIEW IF EXISTS patient_observations");
+  const VIEW_patient_observations = readFile(
+    PATH.VIEW_patient_observations,
+    "utf-8"
+  );
+  await dbman.run(VIEW_patient_observations);
+
+  // VIEW patient_list
+  await dbman.run("DROP VIEW IF EXISTS patient_list");
+  const VIEW_patient_list = readFile(PATH.VIEW_patient_list, "utf-8");
+  await dbman.run(VIEW_patient_list);
+
+  // VIEW cql_concept_list
+  await dbman.run("DROP VIEW IF EXISTS cql_concept_list");
+  const VIEW_cql_concept_list = readFile(PATH.VIEW_cql_concept_list, "utf-8");
+  await dbman.run(VIEW_cql_concept_list);
+
+  return {status: true, data: "Views resetted"};
+}

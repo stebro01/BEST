@@ -5,7 +5,7 @@ const exp = require('constants');
 let database = undefined
 
 /**
- * 
+ *
  * @returns {boolean} true - wenn DB verbunden, false / wenn nicht
  * @example const status = dbman.status()
  */
@@ -63,10 +63,10 @@ const close = () => {
 
 /**
  * @description Gibt alle Einträge einer Query als Promise zurück
- * @param {string} sql_query 
+ * @param {string} sql_query
  * @returns {async} Array mit Ergebnis der Anfrage: {status: true, data: ROWS, error: undefined}
  * @example const result = await dbman.get_all(`SELECT * FROM patients`)
- * 
+ *
  */
 const get_all = async (sql_query) => {
   info({
@@ -128,7 +128,7 @@ const run = async (sql_query) => {
     message: 'run',
     sql_query
   })
- 
+
   return new Promise((resolve, reject) => {
     database.run(sql_query, function (err) {
       if (err) {
@@ -170,7 +170,19 @@ const removeAllTables = async () => {
   return true
 }
 
+const removeAllViews = async () => {
+  log({method: 'dbman -> removeAllViews'})
+  //connection must be done
+  const QUERY = "SELECT * FROM sqlite_schema WHERE type = 'view' AND name NOT LIKE 'sqlite_%'"
+  const result = await get_all(QUERY)
+  // remove all tables
+  for (let i = 0; i < result.data.length; i++) {
+    console.log(`DROP VIEW IF EXISTS ${result.data[i].name}`)
+    let res = await run(`DROP VIEW IF EXISTS ${result.data[i].name}`)
+  }
 
+  return true
+}
 
 
 // EXPORT THE MODULES
@@ -181,4 +193,5 @@ exports.run = run;
 exports.status = status;
 exports.create = create;
 exports.removeAllTables = removeAllTables;
+exports.removeAllViews = removeAllViews;
 exports.run_with_data = run_with_data;

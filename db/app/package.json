@@ -20,7 +20,7 @@
   "dependencies": {
     "@quasar/extras": "^1.16.4",
     "axios": "^1.7.2",
-    "cql-execution": "^3.0.1",
+    "cql-execution": "^2.4.0",
     "crypto-js": "^4.2.0",
     "dateformat": "^5.0.3",
     "html2pdf.js": "^0.10.1",
