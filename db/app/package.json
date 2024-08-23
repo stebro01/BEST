@@ -18,7 +18,7 @@
     "doc": "jsdoc -r -c jsdoc.conf.json"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.4",
+    "@quasar/extras": "^1.16.12",
     "axios": "^1.7.2",
     "cql-execution": "^3.1.0",
     "crypto-js": "^4.2.0",
@@ -27,7 +27,7 @@
     "human-readable-ids": "^1.0.4",
     "jsencrypt": "^3.3.2",
     "jsrsasign": "^11.1.0",
-    "quasar": "^2.16.0",
+    "quasar": "^2.16.8",
     "sqlite3": "^5.1.4",
     "vue": "^3.4.18",
     "vue-router": "^4.0.12",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@electron/packager": "^18.3.2",
-    "@quasar/app-vite": "^1.9.0",
+    "@quasar/app-vite": "^1.9.4",
     "autoprefixer": "^10.4.2",
     "electron": "^30.0.9",
     "electron-builder": "^24.13.3",

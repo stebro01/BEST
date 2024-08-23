@@ -6,6 +6,7 @@ const quest = [
   "badl",
   "brain_tremor",
   "bdi2",
+  "bewegungsprotokoll",
   "bfi",
   "bfi10",
   "biomag_fw",
