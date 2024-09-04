@@ -1,0 +1,82 @@
+[
+  {
+    "CONCEPT_CD": "CUSTOM: RAW_DATA",
+    "CONCEPT_NAME_CHAR": "Rohdaten ohne genaue Angaben",
+    "UNIT_CD": null,
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "R",
+    "CONCEPT_PATH": "\\CUSTOM\\RAW\\RAW_DATA"
+  },
+  {
+    "CONCEPT_CD": "LID: 46463-6",
+    "CONCEPT_NAME_CHAR": "Race or Ethnicity",
+    "UNIT_CD": null,
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "S",
+    "CONCEPT_PATH": "\\LOINC\\ADMIN.DEMOG\\Patient\\46463-6"
+  },
+  {
+    "CONCEPT_CD": "LID: 63900-5",
+    "CONCEPT_NAME_CHAR": "Age",
+    "UNIT_CD": "years",
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "N",
+    "CONCEPT_PATH": "\\LOINC\\PHENX\\Patient\\63900-5"
+  },
+  {
+    "CONCEPT_CD": "LID: 72133-2",
+    "CONCEPT_NAME_CHAR": "MOCA",
+    "UNIT_CD": null,
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "F",
+    "CONCEPT_PATH": "\\LOINC\\SURVEY\\72133-2"
+  },
+  {
+    "CONCEPT_CD": "LID: 72172-0",
+    "CONCEPT_NAME_CHAR": "MOCA Total Score",
+    "UNIT_CD": null,
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "N",
+    "CONCEPT_PATH": "\\LOINC\\SURVEY\\72133-2\\72172-0"
+  },
+  {
+    "CONCEPT_CD": "SCTID: 273249006",
+    "CONCEPT_NAME_CHAR": "Assessment scales",
+    "UNIT_CD": null,
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": null,
+    "CONCEPT_PATH": "\\SNOMED-CT\\138875005\\254291000\\273249006"
+  },
+  {
+    "CONCEPT_CD": "SCTID: 184099003",
+    "CONCEPT_NAME_CHAR": "Date of birth",
+    "UNIT_CD": null,
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "D",
+    "CONCEPT_PATH": "\\SNOMED-CT\\138875005\\363787002\\160476009\\184099003"
+  },
+  {
+    "CONCEPT_CD": "SCTID: 105529008",
+    "CONCEPT_NAME_CHAR": "Lives alone",
+    "UNIT_CD": null,
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "F",
+    "CONCEPT_PATH": "\\SNOMED-CT\\138875005\\404684003\\118240005\\365854008\\365448001\\365469004\\365470003\\365481000\\105529008\\105529008"
+  },
+  {
+    "CONCEPT_CD": "SCTID: 717268000",
+    "CONCEPT_NAME_CHAR": "BDI II - Beck Depression Inventory II",
+    "UNIT_CD": "POINTS",
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "N",
+    "CONCEPT_PATH": "\\SNOMED-CT\\138875005\\71388002\\128927009\\386053000\\445536008\\717268000"
+  },
+  {
+    "CONCEPT_CD": "SCTID: 263495000",
+    "CONCEPT_NAME_CHAR": "Gender",
+    "UNIT_CD": null,
+    "UNIT_RESOLVED": null,
+    "VALTYPE_CD": "S",
+    "CONCEPT_PATH": "\\SNOMED-CT\\363787003\\278844005\\263495000"
+  }
+]

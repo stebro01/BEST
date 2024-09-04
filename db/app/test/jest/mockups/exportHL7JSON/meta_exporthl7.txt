@@ -1,0 +1,144 @@
+{
+  "title": "dbBEST",
+  "version": "v20240807",
+  "lastUpdated": "2024-08-08",
+  "db_version": "v20240807",
+  "db_upgrade": [
+    {
+      "version": "v20240807",
+      "views_to_upgrade": [
+        "patient_observations, patient_list"
+      ]
+    }
+  ],
+  "source": "https://github.com/stebro01/dbBEST.git",
+  "author": "sb",
+  "uuid": "uuid:895f6f22-f7d6-4feb-90d4-dbfd49b5471e",
+  "debug": true,
+  "templates": {
+    "VIEW_patient_observations": "table_templates/VIEW_patient_observations.sql",
+    "VIEW_patient_list": "table_templates/VIEW_patient_list.sql",
+    "VIEW_cql_concept_list": "table_templates/VIEW_cql_concept_list.sql",
+    "TRIGGER_delete_patient_cascade": "table_templates/TRIGGER_delete_patient_cascade.sql",
+    "TRIGGER_delete_visit_cascade": "table_templates/TRIGGER_delete_visit_cascade.sql",
+    "TRIGGER_delete_concept_cql_lookup": "table_templates/TRIGGER_delete_concept_cql_lookup.sql",
+    "TEMPLATE_JSON": "table_templates/export_dbBEST_20230712.json"
+  },
+  "autologin": true,
+  "autologin_data": {
+    "name": "stefan",
+    "password": "12345"
+  },
+  "env": {
+    "public_id": 0,
+    "patient_view": {
+      "sql_statement": "SELECT * FROM patient_list",
+      "forbidden_categories": [
+        "RAW",
+        "surveyBEST"
+      ]
+    }
+  },
+  "changelog": [
+    {
+      "value": "v20240807",
+      "label": "IMPORT_DATE ist jetzt in der View 'patient_list'"
+    },
+    {
+      "value": "v20240530",
+      "label": "New Project with VITE"
+    },
+    {
+      "value": "v20240412",
+      "label": "Major update with new XLS like View."
+    },
+    {
+      "value": "v20240107",
+      "label": "SurveyBEST Integration - erste Version / SurveyBEST Fragebögen werden importiert und können dann direkt über die App ausgefüllt werden."
+    },
+    {
+      "value": "v20231228",
+      "label": "Some Bugfixes: 2 x gleichen Patienten anklicken korrigiert, Quest Import mit fehlherhaftem Konzept kann trotzdem importiert werden"
+    },
+    {
+      "value": "v20231222",
+      "label": "Neuer Patient kann direkt vom Viewer aus angelegt werden. Public-ID ist jetzt der Wert 0. DB_UPGRADE: VIEW patient_observation"
+    },
+    {
+      "value": "v20230818",
+      "label": "BUGFIX: Download von Roh-Daten jetzt mit korrekten Dateinamen."
+    },
+    {
+      "value": "v20230817",
+      "label": "Neuer PatientenViewer mit verbessertem Layout; BUG FIXES"
+    },
+    {
+      "value": "v20230811",
+      "label": "BUG: Anzige von aufgeloesten Konzepten geht wieder, Concepte/Answers erstellen mit korrektem Pfad; NEU: Nutzer/Provider-Management erfolgreich zusammengeführt."
+    },
+    {
+      "value": "v20230712",
+      "label": "Die Import- und Exportfunktion für Rohdaten wurde implementiert und ein Dateiexplorer hinzugefügt. Die Datenbank zeigt nun an, ob sie auf dem neuesten Stand ist, indem sie ihre Version mit der der Anwendung vergleicht."
+    },
+    {
+      "value": "v20230709",
+      "label": "Beim Datenimport ist 'add' nun standardmäßig ausgewählt. Mehrere HTML/JSON-Dateien können zu einem Besuch hinzugefügt werden."
+    },
+    {
+      "value": "v20230606",
+      "label": "Die Datenbankzurücksetzung verwendet nun die neue Funktion von DB_DataTransfer und nutzt '/public/export_dbBEST_...json' zur Initialisierung. Beim Bearbeiten von Beobachtungen kann nun auch das Datum geändert werden."
+    },
+    {
+      "value": "v20230605",
+      "label": "DataTransfer erlaubt nun den Export und Import aller Tabellen in einem einheitlichen Format, einschließlich Lookups, z.B. für CQL_FACT."
+    },
+    {
+      "value": "v20230602",
+      "label": "Mit EditConcept können nun Modifikationen und Auswahlen bearbeitet werden. Beginn von DB_Functions_DataTransfer: Export ist möglich, Import noch in Arbeit."
+    },
+    {
+      "value": "v20230524",
+      "label": "Fehler behoben: confirm-Dialog verliert unter Windows-Electron den Fokus. Alle confirm()-Aufrufe wurden durch my_confirm() ersetzt. Bemerkung: Bekannter Elektron-Bug https://github.com/electron/electron/issues/19977"
+    },
+    {
+      "value": "v20230516",
+      "label": "Fehler behoben: SchemeBearbeiten kann nun auch RELATED_CONCEPTS auflösen. Scheme STROKE hinzugefügt, Concepts NIHS modifiziert."
+    },
+    {
+      "value": "v20230512",
+      "label": "Abgeschlossene Issues: Schemata werden nun korrekt ohne vollständige Daten gespeichert. Erstellung neuer Datenbanken in WIN32-Umgebung möglich."
+    },
+    {
+      "value": "v20230505",
+      "label": "Abgeschlossene Issues: Bei der Bearbeitung von Besuchen wird nun eine Fehlermeldung angezeigt, wenn das END_DATE vor dem START_DATE liegt. SCHEMES_EDIT: Schemata können nun als JSON exportiert und importiert werden."
+    },
+    {
+      "value": "v20230324",
+      "label": "Einige Fehler wurden behoben. Globaler Spinner bei Datenbankzugriff hinzugefügt. Neuer User kann nun Passwort erstellen."
+    },
+    {
+      "value": "v20230316",
+      "label": "SNOMED API implementiert."
+    },
+    {
+      "value": "v20230309",
+      "label": "Beim Import wird nun auf doppelte Werte geprüft. Neue CQL-Regel: Geburtsdatum."
+    },
+    {
+      "value": "v20230301",
+      "label": "Kleiner Fehler behoben: Befunde werden nun auch als solche exportiert."
+    },
+    {
+      "value": "v20230227",
+      "label": "CQL-Check für neue Einträge und Importe verfügbar. Importfunktionen wurden standardisiert."
+    },
+    {
+      "value": "v20230222",
+      "label": "SurveyBEST Fragebögen können nun als PDF exportiert werden."
+    },
+    {
+      "value": "v20230221",
+      "label": "Patientenexport kann nun die Maßeinheiten korrekt auflösen."
+    }
+  ]
+}

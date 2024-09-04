@@ -1,0 +1,416 @@
+[
+  {
+    "cda": {
+      "resourceType": "Composition",
+      "id": "dbBEST",
+      "meta": {
+        "versionId": "v20240807",
+        "lastUpdated": "2024-08-08",
+        "source": "https://github.com/stebro01/dbBEST.git",
+        "profile": []
+      },
+      "language": "de-DE",
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n<h1>Export von dbBEST (v20240807) - Klinische Beobachtungen)</h1>\n<table id=\"summary_table\" >\n<tbody>\n<tr><td>Visiten:</td><td></td></tr>\n<tr><td>code:</td><td>308335008</td></tr>\n<tr><td>system:</td><td>http://snomed.info/sct</td></tr>\n</tbody>\n</table>\n<br>\n<table id=\"description_table\">\n<tbody>\n<tr><td>Document-ID:</td><td>urn:uuid:895f6f22-f7d6-4feb-90d4-dbfd49b5471e</td></tr>\n<tr><td>date:</td><td>2024-09-04</td></tr>\n<tr><td>ressource:</td><td>https://github.com/stebro01/dbBEST.git_v20240807_2024-08-08</td></tr>\n</tbody>\n</table>\n<br>\n<table id=\"subjects_table\">\n<tbody>\n<tr><td>Subject:</td><td>sdfjlke</td></tr>\n<tr><td>Investigator:</td><td>stefan</td></tr>\n<tr><td>start time:</td><td>null</td></tr>\n<tr><td>end time:</td><td>undefined</td></tr>\n</tbody>\n</table>\n<h2>Visiten</h2>\n<h3>Visite: 1</h3>\n<table id=\"visite_1\">\n<tr><td>start time</td><td>Date of birth</td><td>Gender</td><td>Lives alone</td><td>MOCA Total Score</td><td>Race or Ethnicity</td><td>Assessment scales</td><td>BDI II - Beck Depression Inventory II</td><td>Rohdaten ohne genaue Angaben</td></tr>\n<tr><td>null</td><td>2024-04-07</td><td>Male</td><td>No</td><td>21</td><td>White</td><td>EQ-5D</td><td>24</td><td>{\"filename\":\"output222.json\",\"ext\":\".json\",\"sizeKB\":130.3330078125,\"source_dir\":\"/Users/ste/MyProjects/BEST/db/app/test/jest/mockups/hl7\"}</td></tr>\n</table>\n<h3>Visite: 2</h3>\n<table id=\"visite_2\">\n<tr><td>start time</td><td>Lives alone</td><td>Age</td><td>Date of birth</td><td>Gender</td><td>MOCA</td><td>MOCA Total Score</td></tr>\n<tr><td>null</td><td>k.A.</td><td>55</td><td>1980-04-03</td><td>Female</td><td>Yes</td><td>24</td></tr>\n</table>\n</div>"
+      },
+      "identifier": {
+        "system": "urn:undefined",
+        "value": "urn:uuid:895f6f22-f7d6-4feb-90d4-dbfd49b5471e"
+      },
+      "status": "preliminary",
+      "type": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": 404684003,
+            "display": "Klinische Beobachtungen"
+          }
+        ]
+      },
+      "subject": {
+        "display": "sdfjlke",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": 422549004,
+              "display": "Patient Code"
+            }
+          ]
+        }
+      },
+      "date": "2024-09-04",
+      "author": [
+        {
+          "display": "dbBEST"
+        }
+      ],
+      "title": "Export von dbBEST (v20240807) - Klinische Beobachtungen)",
+      "attester": [
+        {
+          "mode": "legal",
+          "time": null,
+          "party": {
+            "display": "stefan"
+          }
+        },
+        {
+          "mode": "legal",
+          "time": "2024-01-04",
+          "party": {
+            "display": "hl7import"
+          }
+        }
+      ],
+      "custodian": {},
+      "event": [
+        {
+          "code": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": 308335008,
+                  "display": "Visite: 1"
+                }
+              ]
+            }
+          ],
+          "period": {
+            "start": null
+          }
+        },
+        {
+          "code": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": 308335008,
+                  "display": "Visite: 2"
+                }
+              ]
+            }
+          ],
+          "period": {
+            "start": null
+          }
+        }
+      ],
+      "section": [
+        {
+          "title": "Visite: 1",
+          "code": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": 308335008,
+                  "display": "Visite: 1"
+                }
+              ]
+            }
+          ],
+          "text": {
+            "status": "generated",
+            "div": "<h1>Visite: 1</h1>"
+          },
+          "entry": [
+            {
+              "title": "Date of birth",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "SCTID: 184099003",
+                      "display": "Date of birth"
+                    }
+                  ]
+                }
+              ],
+              "value": "2024-04-07",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Date of birth</td></tr><tr><td>2024-04-07</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "Gender",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "SCTID: 263495000",
+                      "display": "Gender"
+                    }
+                  ]
+                }
+              ],
+              "value": "Male",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Gender</td></tr><tr><td>Male</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "Lives alone",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "SCTID: 105529008",
+                      "display": "Lives alone"
+                    }
+                  ]
+                }
+              ],
+              "value": "No",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Lives alone</td></tr><tr><td>No</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "MOCA Total Score",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "LID: 72172-0",
+                      "display": "MOCA Total Score"
+                    }
+                  ]
+                }
+              ],
+              "value": 21,
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>MOCA Total Score</td></tr><tr><td>21</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "Race or Ethnicity",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "LID: 46463-6",
+                      "display": "Race or Ethnicity"
+                    }
+                  ]
+                }
+              ],
+              "value": "White",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Race or Ethnicity</td></tr><tr><td>White</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "Assessment scales",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "SCTID: 273249006",
+                      "display": "Assessment scales"
+                    }
+                  ]
+                }
+              ],
+              "value": "EQ-5D",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Assessment scales</td></tr><tr><td>EQ-5D</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "BDI II - Beck Depression Inventory II",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "SCTID: 717268000",
+                      "display": "BDI II - Beck Depression Inventory II"
+                    }
+                  ]
+                }
+              ],
+              "value": 24,
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>BDI II - Beck Depression Inventory II</td></tr><tr><td>24</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "Rohdaten ohne genaue Angaben",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "CUSTOM: RAW_DATA",
+                      "display": "Rohdaten ohne genaue Angaben"
+                    }
+                  ]
+                }
+              ],
+              "value": "{\"filename\":\"output222.json\",\"ext\":\".json\",\"sizeKB\":130.3330078125,\"source_dir\":\"/Users/ste/MyProjects/BEST/db/app/test/jest/mockups/hl7\"}",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Rohdaten ohne genaue Angaben</td></tr><tr><td>{\"filename\":\"output222.json\",\"ext\":\".json\",\"sizeKB\":130.3330078125,\"source_dir\":\"/Users/ste/MyProjects/BEST/db/app/test/jest/mockups/hl7\"}</td></tr></tbody></table>"
+              }
+            }
+          ]
+        },
+        {
+          "title": "Visite: 2",
+          "code": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": 308335008,
+                  "display": "Visite: 2"
+                }
+              ]
+            }
+          ],
+          "text": {
+            "status": "generated",
+            "div": "<h1>Visite: 2</h1>"
+          },
+          "entry": [
+            {
+              "title": "Lives alone",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "SCTID: 105529008",
+                      "display": "Lives alone"
+                    }
+                  ]
+                }
+              ],
+              "value": "k.A.",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Lives alone</td></tr><tr><td>k.A.</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "Age",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "LID: 63900-5",
+                      "display": "Age"
+                    }
+                  ]
+                }
+              ],
+              "value": 55,
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Age</td></tr><tr><td>55</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "Date of birth",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "SCTID: 184099003",
+                      "display": "Date of birth"
+                    }
+                  ]
+                }
+              ],
+              "value": "1980-04-03",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Date of birth</td></tr><tr><td>1980-04-03</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "Gender",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "SCTID: 263495000",
+                      "display": "Gender"
+                    }
+                  ]
+                }
+              ],
+              "value": "Female",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>Gender</td></tr><tr><td>Female</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "MOCA",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "LID: 72133-2",
+                      "display": "MOCA"
+                    }
+                  ]
+                }
+              ],
+              "value": "Yes",
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>MOCA</td></tr><tr><td>Yes</td></tr></tbody></table>"
+              }
+            },
+            {
+              "title": "MOCA Total Score",
+              "code": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "LID: 72172-0",
+                      "display": "MOCA Total Score"
+                    }
+                  ]
+                }
+              ],
+              "value": 24,
+              "text": {
+                "status": "generated",
+                "div": "<table><tbody><tr><td>MOCA Total Score</td></tr><tr><td>24</td></tr></tbody></table>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "hash": {
+      "signature": "BWuI0Ap+pLjgfvqXrRRNKaUXGZdbpPHk6YtwExpKoV5QSYvKhlOZA3iHpkjDPPU1rpRnO83d4IMejPcOQQc/sQ==",
+      "method": "SHA256",
+      "publicKey": "-----BEGIN PUBLIC KEY-----\r\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAILsiGloPL1Ju57f9yGP27wB9U4YvWmz\r\n+4XGbUqE47N5t5KhShfBLCbcrnr/lhv4G3EykXNUI3wOjo7EzUPFelcCAwEAAQ==\r\n-----END PUBLIC KEY-----\r\n"
+    }
+  }
+]
