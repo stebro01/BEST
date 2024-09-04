@@ -10,3 +10,4 @@
 /src
 quasar*
 /test
+vitest.config.mjs

@@ -349,6 +349,19 @@ function _hl7_prepare_section(visit, id, concepts) {
       if (v.VALTYPE_CD === "N") val.value = v.NVAL_NUM;
       else if (v.VALTYPE_CD === "S" || v.VALTYPE_CD === "F")
         val.value = v.TVAL_RESOLVED;
+      else if (v.VALTYPE_CD === "R")
+        val.value = {
+          meta: v.TVAL_CHAR,
+          blob: _compress_raw_data(v.OBSERVATION_BLOB),
+        };
+      else if (
+        v.CATEGORY_CHAR === "surveyBEST" &&
+        (v.OBSERVATION_BLOB !== null || v.OBSERVATION_BLOB !== undefined)
+      )
+        val.value = {
+          meta: v.TVAL_CHAR,
+          blob: v.OBSERVATION_BLOB,
+        };
       else val.value = v.TVAL_CHAR;
       val.text = {
         status: "generated",
@@ -420,4 +433,44 @@ function _hl7_prepare_attester(data) {
 function _numToCSV(val) {
   if (val) val = val.toString().replace(".", ",");
   return val;
+}
+
+function _compress_raw_data(blobString) {
+  var local_blobString = blobString;
+  if (typeof blobString === "object")
+    local_blobString = JSON.stringify(blobString);
+  // Step 1: Convert the stringified blob data to a byte array
+  const byteArray = [];
+  const regex = /"(\d+)":\s*(\d+)/g;
+  let match;
+
+  while ((match = regex.exec(local_blobString)) !== null) {
+    byteArray[match[1]] = parseInt(match[2], 10);
+  }
+
+  // Step 2: Convert the byte array to a binary string
+  let binaryString = "";
+  for (const byte of byteArray) {
+    binaryString += String.fromCharCode(byte);
+  }
+
+  // Step 3: Encode the binary string to base64 to compress
+  const base64String = btoa(binaryString);
+
+  return base64String;
+}
+
+function _decompress_raw_data(base64String) {
+  // Step 1: Decode the base64 string to binary
+  const binaryString = atob(base64String);
+
+  // Step 2: Convert the binary string to a JSON object string
+  let local_blobString = "";
+  for (let i = 0; i < binaryString.length; i++) {
+    local_blobString += `"${i}": ${binaryString.charCodeAt(i)}, `;
+  }
+
+  // Step 3: Convert the string back to an object
+  // Remove the trailing comma and space, then wrap with braces
+  return JSON.parse(`{${local_blobString.slice(0, -2)}}`);
 }
