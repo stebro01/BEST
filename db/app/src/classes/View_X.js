@@ -179,13 +179,15 @@ export class View_X {
     VALUE_QUESTION_MARK = VALUE_QUESTION_MARK.slice(0, -2);
     // prepare the inseart statement
     const sql = `INSERT INTO ${this._SCHEME._TABLE_NAME} (${COL}) VALUES (${VALUE_QUESTION_MARK})`;
+    // connect to db
     this._DB_MAN.connect(this._DB_FILENAME);
     const result = await this._DB_MAN.run_with_data(sql, VALUES);
+
     this._DB_MAN.close();
     // return the result
     return {
-      status: true,
-      error: undefined,
+      status: result.status,
+      error: result.error,
       data: { [this._SCHEME._PRIMARY_KEY]: result.data },
     };
   }

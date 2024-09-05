@@ -89,7 +89,7 @@ describe("Teste HL7 import und verify Funktion", () => {
   it(`Teste addHL7ObjectToDB funktion mit gültigen Daten`, async () => {
     //lösche Patienten (wenn vorhanden)
     const res_delete = await VIEW_PATIENT.delete({
-      PATIENT_CD: "10019815",
+      PATIENT_CD: "sdfjlke",
       _force: true,
     });
     //import

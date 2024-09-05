@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="preview_survey_best_show">
+  <q-dialog v-model="preview_survey_best_show" persistent>
     <div
       class="row justify-center bg-white"
       style="max-width: 90%"

@@ -256,7 +256,6 @@ async function addObservation(obs, VIEW_OBSERVATION) {
  */
 export async function CheckObservationsForDoubles(OBSERVATIONS, VIEW_INSTANCE) {
   for (let obs of OBSERVATIONS) {
-    console.log(obs);
     let query = `SELECT COUNT(*)  FROM patient_observations WHERE`;
     if (obs.PATIENT_CD) query += ` PATIENT_CD = '${obs.PATIENT_CD}' AND`;
     if (obs.CONCEPT_CD) query += ` CONCEPT_CD = '${obs.CONCEPT_CD}' AND`;

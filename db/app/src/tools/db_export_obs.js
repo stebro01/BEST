@@ -156,7 +156,7 @@ export function exportHL7JSON(data, concepts, meta) {
       visit_counter++;
       // console.log('bearbeite: ENCOUNTER_NUM = ', ENCOUNTER_NUM)
       let DATA_VISIT = data.filter((el) => el.ENCOUNTER_NUM === ENCOUNTER_NUM);
-      EVENT.push(_hl7_prepare_event(DATA_VISIT[0], visit_counter));
+      EVENT.push(_hl7_prepare_event(DATA_VISIT, visit_counter));
       SECTION.push(_hl7_prepare_section(DATA_VISIT, visit_counter, concepts));
     }
 
@@ -293,8 +293,8 @@ function _hl7_prepare_textdiv(cda) {
     div += "<tr>";
     div += `<td>${cda.event[i].period.start}</td>`;
     for (let item of cda.section[i].entry) {
-      if (typeof item.value === "object") {
-        div += `<td>${item.value.meta || "Object"}</td>`;
+      if (typeof item.value === "object" && item.value !== null) {
+        div += `<td>${item.value.TVAL_CHAR}</td>`;
       } else div += `<td>${item.value}</td>`;
     }
     div += "</tr>\n";
@@ -363,7 +363,8 @@ function _hl7_prepare_section(visit, id, concepts) {
         };
       else val.value = v.TVAL_CHAR;
       let tmp_value = val.value;
-      if (typeof tmp_value === "object") tmp_value = tmp_value.meta || "Object";
+      if (typeof tmp_value === "object" && tmp_value !== null)
+        tmp_value = tmp_value.TVAL_CHAR || "Object";
       val.text = {
         status: "generated",
         div: `<table><tbody><tr><td>${v.CONCEPT_NAME_CHAR}</td></tr><tr><td>${tmp_value}</td></tr></tbody></table>`,
@@ -374,7 +375,11 @@ function _hl7_prepare_section(visit, id, concepts) {
   return section;
 }
 
-function _hl7_prepare_event(data, id) {
+function _hl7_prepare_event(DATA, id) {
+  // finde DATA mit Property: START_DATE, sonst nimm das erste
+  var data = DATA.find((el) => el.START_DATE);
+  if (!data) data = DATA[0];
+
   const event = {
     code: [
       {

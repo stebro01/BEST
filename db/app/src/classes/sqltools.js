@@ -25,62 +25,61 @@
 //         else condition = `${key}='${val}'`
 //     }
 //     else condition = `${key}=${val}`
-    
+
 //     return condition
 // }
 
-
 /**
- * @param {object} obj 
+ * @param {object} obj
  * @returns the stringified String but compatible with SQL queries, ie. " => '
  */
 export function stringify(obj) {
-    var str = JSON.stringify(obj)
-    str = str.replace(/"/g, "'")
-    str = str.replace(/\\\\/g, '\\')
-    return str
+  var str = JSON.stringify(obj);
+  str = str.replace(/"/g, "'");
+  str = str.replace(/\\\\/g, "\\");
+  return str;
 }
 
 /**
- * a string stored as STRING BLOB in SQL >> make compatible for JSON.parse again 
+ * a string stored as STRING BLOB in SQL >> make compatible for JSON.parse again
  * >> undoes function stringify:
- * JSON_OBJ -> JSON.stringify -> stringify -> write to sql 
+ * JSON_OBJ -> JSON.stringify -> stringify -> write to sql
  * read from sql -> unstringify -> JSON.parse -> JSON_OBJ
- * @param {object} obj 
+ * @param {object} obj
  * @returns {string}
- * 
+ *
  */
- export function unstringify(obj) {
-    var str = JSON.stringify(obj)
-    str = str.replace(/'/g, '"')
-    return str.substring(1, str.length -1)
+export function unstringify(obj) {
+  var str = JSON.stringify(obj);
+  str = str.replace(/'/g, '"');
+  return str.substring(1, str.length - 1);
 }
 
-
 export function stringify_char(str) {
-    str = str.replace(/\n/g, '\\n')
-    return str
-  }
+  str = str.replace(/\n/g, "\\n");
+  return str;
+}
 
 export function unstringify_char(str) {
-    str = str.replace(/\\n/g, '\n')
-    return str
-  }
+  str = str.replace(/\\n/g, "\n");
+  return str;
+}
 
 export function stringify_json(str) {
-    str = str.replace(/"/g, "'")
-    return str
-  }
+  str = str.replace(/"/g, "'");
+  return str;
+}
 
 export function unstringify_json(str) {
-    str = str.replace(/'/g, '"')
-    return str
-  }
+  if (str === null) return null;
+  str = str.replace(/'/g, '"');
+  return str;
+}
 
 export function blob_to_json(val) {
-  val = val.replace(/'/g, '"')
-  val = val.replace(/\\"/g, '\'')
-  val = val.replace(/\\/g, '_')
-  val = JSON.parse(val)
-  return val
+  val = val.replace(/'/g, '"');
+  val = val.replace(/\\"/g, "'");
+  val = val.replace(/\\/g, "_");
+  val = JSON.parse(val);
+  return val;
 }

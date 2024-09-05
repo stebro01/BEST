@@ -2,7 +2,7 @@ import { verify } from "../../EXTERN/hhash";
 import { error_codes } from "./logger";
 import { parse_date } from "./formatdata";
 import { _decompress_raw_data } from "./db_export_obs";
-import { stringify_json } from "src/classes/sqltools";
+import { stringify_json, unstringify_json } from "src/classes/sqltools";
 /**
  * Testet, ob Daten in json.cda modifiziert wurden anhand der in json.signiture hinterlegten Signatur
  * @param {object} json - {cda, hash} => schould be the import of an HL7 cda json dokument
@@ -119,9 +119,31 @@ export async function addHL7ObjectToDB(
           PATIENT_NUM: PATIENT_NUM,
         };
         // console.log('OBSTOADD: ', OBSTOADD)
-        let res_obs = await VIEW_OBSERVATION.create(OBSTOADD);
+        let res_obs = {};
+        if (OBSTOADD.VALTYPE_CD !== "R")
+          res_obs = await VIEW_OBSERVATION.create(OBSTOADD);
+        else {
+          // Create a Buffer from the byte array
+          const byteArray = Object.values(OBSTOADD.OBSERVATION_BLOB);
+          const uint8Array = new Uint8Array(byteArray);
+          const OBS_RAW = {
+            OBSERVATION_BLOB: uint8Array,
+            PATIENT_NUM: OBSTOADD.PATIENT_NUM,
+            ENCOUNTER_NUM: OBSTOADD.ENCOUNTER_NUM,
+            CONCEPT_CD: OBSTOADD.CONCEPT_CD,
+            VALTYPE_CD: OBSTOADD.VALTYPE_CD,
+            SOURCESYSTEM_CD: OBSTOADD.SOURCESYSTEM_CD,
+            PROVIDER_ID: OBSTOADD.PROVIDER_ID,
+            CATEGORY_CHAR: OBSTOADD.CATEGORY_CHAR,
+            TVAL_CHAR: unstringify_json(OBSTOADD.TVAL_CHAR),
+            START_DATE: OBSTOADD.START_DATE,
+          };
+
+          res_obs = await VIEW_OBSERVATION.prepare_create(OBS_RAW);
+        }
+
         // console.log('OBS: ', res_obs)
-        if (res_obs.data) i_obs_added++;
+        if (res_obs.status) i_obs_added++;
       }
     }
   }
