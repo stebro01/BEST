@@ -1,6 +1,8 @@
 import { verify } from "../../EXTERN/hhash";
 import { error_codes } from "./logger";
 import { parse_date } from "./formatdata";
+import { _decompress_raw_data } from "./db_export_obs";
+import { stringify_json } from "src/classes/sqltools";
 /**
  * Testet, ob Daten in json.cda modifiziert wurden anhand der in json.signiture hinterlegten Signatur
  * @param {object} json - {cda, hash} => schould be the import of an HL7 cda json dokument
@@ -299,9 +301,25 @@ async function _db_resolve_observations(
         if (obj.UNIT_CD) observation.UNIT_CD = obj.UNIT_CD;
         //jetzt zuordnen der korrekten Werte
         if (obj.VALTYPE_CD === "N") observation.NVAL_NUM = observation.VALUE;
-        else if (obj.VALTYPE_CD === "T" || obj.VALTYPE_CD === "D")
-          observation.TVAL_CHAR = observation.VALUE;
-        else if (obj.VALTYPE_CD === "F") {
+        else if (
+          obj.VALTYPE_CD === "T" ||
+          obj.VALTYPE_CD === "D" ||
+          obj.VALTYPE_CD === "R"
+        ) {
+          if (typeof observation.VALUE === "object") {
+            observation.VALTYPE_CD = observation.VALUE.VALTYPE_CD;
+            observation.CATEGORY_CHAR = observation.VALUE.CATEGORY_CHAR;
+            observation.TVAL_CHAR =
+              observation.VALTYPE_CD === "R"
+                ? stringify_json(observation.VALUE.TVAL_CHAR)
+                : observation.VALUE.TVAL_CHAR;
+            observation.OBSERVATION_BLOB =
+              observation.VALTYPE_CD === "R"
+                ? _decompress_raw_data(observation.VALUE.OBSERVATION_BLOB)
+                : observation.VALUE.OBSERVATION_BLOB;
+          } else observation.TVAL_CHAR = observation.VALUE;
+          // console.log(tmp_value);
+        } else if (obj.VALTYPE_CD === "F") {
           if (observation.VALUE) {
             if (observation.VALUE === 1)
               observation.TVAL_CHAR = "SCTID: 373066001";
@@ -337,7 +355,7 @@ async function _db_resolve_observations(
 async function _db_resolve_selections(observation, CONCEPT_LIST, VIEW_CONCEPT) {
   var VALUE = observation.VALUE;
   if (VALUE === undefined || VALUE === null) return null;
-  if (typeof(VALUE) === 'number') return VALUE;
+  if (typeof VALUE === "number") return VALUE;
   //first find entry in the CONCEPT_LIST
   // console.log(VALUE, typeof(VALUE))
   let obj = CONCEPT_LIST.find(

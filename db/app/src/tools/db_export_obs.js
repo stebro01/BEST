@@ -293,7 +293,9 @@ function _hl7_prepare_textdiv(cda) {
     div += "<tr>";
     div += `<td>${cda.event[i].period.start}</td>`;
     for (let item of cda.section[i].entry) {
-      div += `<td>${item.value}</td>`;
+      if (typeof item.value === "object") {
+        div += `<td>${item.value.meta || "Object"}</td>`;
+      } else div += `<td>${item.value}</td>`;
     }
     div += "</tr>\n";
 
@@ -349,23 +351,22 @@ function _hl7_prepare_section(visit, id, concepts) {
       if (v.VALTYPE_CD === "N") val.value = v.NVAL_NUM;
       else if (v.VALTYPE_CD === "S" || v.VALTYPE_CD === "F")
         val.value = v.TVAL_RESOLVED;
-      else if (v.VALTYPE_CD === "R")
+      else if (v.VALTYPE_CD === "R" || v.CATEGORY_CHAR === "surveyBEST")
         val.value = {
-          meta: v.TVAL_CHAR,
-          blob: _compress_raw_data(v.OBSERVATION_BLOB),
-        };
-      else if (
-        v.CATEGORY_CHAR === "surveyBEST" &&
-        (v.OBSERVATION_BLOB !== null || v.OBSERVATION_BLOB !== undefined)
-      )
-        val.value = {
-          meta: v.TVAL_CHAR,
-          blob: v.OBSERVATION_BLOB,
+          TVAL_CHAR: v.TVAL_CHAR,
+          OBSERVATION_BLOB:
+            v.VALTYPE_CD === "R"
+              ? _compress_raw_data(v.OBSERVATION_BLOB)
+              : v.OBSERVATION_BLOB,
+          VALTYPE_CD: v.VALTYPE_CD,
+          CATEGORY_CHAR: v.CATEGORY_CHAR,
         };
       else val.value = v.TVAL_CHAR;
+      let tmp_value = val.value;
+      if (typeof tmp_value === "object") tmp_value = tmp_value.meta || "Object";
       val.text = {
         status: "generated",
-        div: `<table><tbody><tr><td>${v.CONCEPT_NAME_CHAR}</td></tr><tr><td>${val.value}</td></tr></tbody></table>`,
+        div: `<table><tbody><tr><td>${v.CONCEPT_NAME_CHAR}</td></tr><tr><td>${tmp_value}</td></tr></tbody></table>`,
       };
       section.entry.push(val);
     }
@@ -460,7 +461,7 @@ function _compress_raw_data(blobString) {
   return base64String;
 }
 
-function _decompress_raw_data(base64String) {
+export function _decompress_raw_data(base64String) {
   // Step 1: Decode the base64 string to binary
   const binaryString = atob(base64String);
 

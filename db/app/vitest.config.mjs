@@ -15,6 +15,9 @@ export default defineConfig({
       "test/vitest/__tests__/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
     ],
   },
+  define: {
+    global: "window",
+  },
   plugins: [
     vue({
       template: { transformAssetUrls },

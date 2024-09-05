@@ -1,5 +1,5 @@
 /**
- * @jest-environment node
+ * @jest-environment jsdom
  */
 
 /* eslint-disable */
@@ -11,31 +11,6 @@
  */
 // Import Vitest and other necessary modules
 import { describe, expect, it, beforeAll, vi } from "vitest";
-
-// Mock the jsencrypt module
-vi.mock("jsencrypt", () => {
-  return {
-    default: vi.fn().mockImplementation(() => ({
-      sign: vi.fn().mockReturnValue("mocked-signature"), // Mock the sign function
-      setPrivateKey: vi.fn(), // Mock setPrivateKey
-      setPublicKey: vi.fn(), // Mock setPublicKey
-      encrypt: vi.fn().mockReturnValue("mocked-encrypted-key"), // Mock encrypt if needed
-      decrypt: vi.fn().mockReturnValue("mocked-decrypted-key"), // Mock decrypt if needed
-    })),
-  };
-});
-
-// Mock the generateKeys function in your module
-vi.mock("src/tools/db_export_obs", async () => {
-  const actual = await vi.importActual("src/tools/db_export_obs");
-  return {
-    ...actual,
-    generateKeys: vi.fn().mockReturnValue({
-      privateKey: "mocked-private-key",
-      publicKey: "mocked-public-key",
-    }),
-  };
-});
 
 import { exportHL7JSON } from "src/tools/db_export_obs";
 

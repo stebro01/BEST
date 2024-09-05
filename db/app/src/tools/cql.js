@@ -15,7 +15,7 @@ import { unstringify_json } from "src/classes/sqltools";
  *  ie: {"status":true,"data":{"check":true,"data":{"STRING":true,"SPLIT":true,"SPLIT_1":true,"SPLIT_2":true,"SPLIT_3":true}}}
  */
 export async function exec(payload) {
-  console.log('exec cql', payload)
+  // console.log('exec cql', payload)
   if (!payload || !payload.lib || !payload.parameters)
     return { status: false, error: "invalid payload" };
   if (typeof payload.lib !== "object")
@@ -24,15 +24,14 @@ export async function exec(payload) {
     return { status: false, error: "invalid payload" };
   // INIT THE LIB
   var lib = null;
-  try
-  {
-    console.log('init lib', JSON.stringify(payload.lib))
-    console.log(cql.Library)
+  try {
+    // console.log('init lib', JSON.stringify(payload.lib))
+    // console.log(cql.Library)
     lib = new cql.Library(payload.lib);
-    console.log('init lib done')
-    console.log(lib)
+    // console.log('init lib done')
+    // console.log(lib)
   } catch (err) {
-    console.log('init lib error', err)
+    // console.log('init lib error', err)
     return { status: false, error: err };
   }
 
@@ -44,7 +43,7 @@ export async function exec(payload) {
   const executor = new cql.Executor(lib, codeService, payload.parameters);
   try {
     const res = await executor.exec(patientSource, executionDateTime);
-    console.log('exec cql done', res)
+    // console.log('exec cql done', res)
     if (res && Object.keys(res.unfilteredResults).length > 0) {
       var data = res.unfilteredResults;
       var check = true;
@@ -133,7 +132,7 @@ export async function checkRule(payload) {
   // collect results
   CHECKS.check = CHECKS.data.find((el) => el.check === false) === undefined;
   const results = { status: CHECKS.check, data: CHECKS.data };
-  return results
+  return results;
 }
 
 /**
@@ -161,7 +160,10 @@ async function _check_concept_cql(data, VIEW_CQL, VIEW_CONCEPT_CQL_LOOKUP) {
       let res_cql = await VIEW_CQL.read({ CQL_ID: rule.CQL_ID });
       if (res_cql.status && res_cql.data.length > 0) {
         let JSON_CHAR = JSON.parse(unstringify_json(res_cql.data[0].JSON_CHAR));
-        let res = await exec({ lib: JSON_CHAR, parameters: { VALUE: data.value } });
+        let res = await exec({
+          lib: JSON_CHAR,
+          parameters: { VALUE: data.value },
+        });
         if (res.status) CHECK.push(res.data);
       }
     }
@@ -189,7 +191,10 @@ async function _check_type_cql(data, VIEW_CQL) {
     return { status: false, error: error_codes.ivalid_type };
   let JSON_CHAR = JSON.parse(unstringify_json(res.data[0].JSON_CHAR));
   // exec
-  let res_cql = await exec({ lib: JSON_CHAR, parameters: { VALUE: data.value } });
+  let res_cql = await exec({
+    lib: JSON_CHAR,
+    parameters: { VALUE: data.value },
+  });
   return res_cql;
 }
 
