@@ -1,0 +1,560 @@
+{
+  "title": "Screening auf Post-Exertionelle-Malaise (PEM)",
+  "short_title": "PEM_Screening",
+  "description": "PEM_Screening für Erwachsene",
+  "manual": "",
+  "keywords": "malaise, exertion, ",
+  "items": [
+    {
+      "label": "<b>Während der letzten 6 Monate</b>"
+    },
+
+    {
+      "label": "<b>1</b> Ein schweres, erschlagenes Gefühl nach Beginn körperlicher Betätigung",
+      "id": 1,
+      "tag": "scoring_malaise_1",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie häufig tritt dies auf (Häufigkeit)?",
+      "id": 101,
+      "tag": "scoring_malaise_101",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "manchmal",
+          "value": 1
+        },
+        {
+          "label": "etwas 1/2 der Zeit",
+          "value": 2
+        },
+        {
+          "label": "meistens",
+          "value": 3
+        },
+        {
+          "label": "immer",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie stark tritt dies auf (Schwere)?",
+      "id": 102,
+      "tag": "scoring_malaise_102",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "mild",
+          "value": 1
+        },
+        {
+          "label": "moderat",
+          "value": 2
+        },
+        {
+          "label": "schwer",
+          "value": 3
+        },
+        {
+          "label": "sehr schwer",
+          "value": 4
+        }
+      ]
+    },
+
+    {
+      "label": ""
+    },
+
+    {
+      "label": "<b>2</b> Nach alltäglichen Aktivitäten: am nächsten Tag Schmerzen oder Erschöpfung",
+      "id": 2,
+      "tag": "scoring_malaise_2",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    },
+
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie häufig tritt dies auf (Häufigkeit)?",
+      "id": 201,
+      "tag": "scoring_malaise_201",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "manchmal",
+          "value": 1
+        },
+        {
+          "label": "etwas 1/2 der Zeit",
+          "value": 2
+        },
+        {
+          "label": "meistens",
+          "value": 3
+        },
+        {
+          "label": "immer",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie stark tritt dies auf (Schwere)?",
+      "id": 202,
+      "tag": "scoring_malaise_202",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "mild",
+          "value": 1
+        },
+        {
+          "label": "moderat",
+          "value": 2
+        },
+        {
+          "label": "schwer",
+          "value": 3
+        },
+        {
+          "label": "sehr schwer",
+          "value": 4
+        }
+      ]
+    },
+
+    {
+      "label": ""
+    },
+
+
+    {
+      "label": "<b>3</b> Geistig ermüdet nach geringster (körperlicher oder mentaler) Anstrengung",
+      "id": 3,
+      "tag": "scoring_malaise_3",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    },
+
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie häufig tritt dies auf (Häufigkeit)?",
+      "id": 301,
+      "tag": "scoring_malaise_301",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "manchmal",
+          "value": 1
+        },
+        {
+          "label": "etwas 1/2 der Zeit",
+          "value": 2
+        },
+        {
+          "label": "meistens",
+          "value": 3
+        },
+        {
+          "label": "immer",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie stark tritt dies auf (Schwere)?",
+      "id": 302,
+      "tag": "scoring_malaise_302",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "mild",
+          "value": 1
+        },
+        {
+          "label": "moderat",
+          "value": 2
+        },
+        {
+          "label": "schwer",
+          "value": 3
+        },
+        {
+          "label": "sehr schwer",
+          "value": 4
+        }
+      ]
+    },
+
+    {
+      "label": ""
+    },
+
+    {
+      "label": "<b>4</b> Körperlich ermüdet nach geringster körperlicher Betätigung",
+      "id": 4,
+      "tag": "scoring_malaise_4",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    },
+
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie häufig tritt dies auf (Häufigkeit)?",
+      "id": 401,
+      "tag": "scoring_malaise_401",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "manchmal",
+          "value": 1
+        },
+        {
+          "label": "etwas 1/2 der Zeit",
+          "value": 2
+        },
+        {
+          "label": "meistens",
+          "value": 3
+        },
+        {
+          "label": "immer",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie stark tritt dies auf (Schwere)?",
+      "id": 402,
+      "tag": "scoring_malaise_402",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "mild",
+          "value": 1
+        },
+        {
+          "label": "moderat",
+          "value": 2
+        },
+        {
+          "label": "schwer",
+          "value": 3
+        },
+        {
+          "label": "sehr schwer",
+          "value": 4
+        }
+      ]
+    },
+
+    {
+      "label": ""
+
+    },
+
+    {
+      "label": "<b>5</b> Körperlich ausgelaugt oder Krankheitsgefühl nach alltäglichen Aktivitäten",
+      "id": 5,
+      "tag": "scoring_malaise_5",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    },
+
+
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie häufig tritt dies auf (Häufigkeit)?",
+      "id": 501,
+      "tag": "scoring_malaise_501",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "manchmal",
+          "value": 1
+        },
+        {
+          "label": "etwas 1/2 der Zeit",
+          "value": 2
+        },
+        {
+          "label": "meistens",
+          "value": 3
+        },
+        {
+          "label": "immer",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "label": "... wenn Sie die vorherige Frage mit Ja beantwortet haben, wie stark tritt dies auf (Schwere)?",
+      "id": 502,
+      "tag": "scoring_malaise_502",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": false,
+      "options": [
+        {
+          "label": "mild",
+          "value": 1
+        },
+        {
+          "label": "moderat",
+          "value": 2
+        },
+        {
+          "label": "schwer",
+          "value": 3
+        },
+        {
+          "label": "sehr schwer",
+          "value": 4
+        }
+      ]
+    },
+
+    {
+      "label": ""
+    },
+
+
+    {
+      "label": "<b>6</b> Angenommen die Teilnahme an Freizeitaktitäten, Sport oder Ausflügen hätte Sie erschöpft, würden Sie sich innerhalb einer oder zwei Stunden nach Ende der Aktivität erholen?",
+      "id": 6,
+      "tag": "Freizeit",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": "y"
+        },
+        {
+          "label": "Nein",
+          "value": "n"
+        }
+      ]
+    },
+    {
+      "label": "<b>7</b> Nehmen Sie eine Zunahme Ihrer Erschöpfung / Ihres Energiemangels wahr, nachdem Sie sich minimal körperlich angestrengt haben?",
+      "id": 7,
+      "tag": "minimal_physical",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "label": "<b>8</b> Nehmen Sie eine Zunahme Ihrer Erschöpfung / Ihres Energiemangels wahr, nachdem Sie sich minimal geistig angestrengt haben?",
+      "id": 8,
+      "tag": "minimal_mental",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "label": "<b>9</b> Falls Sie sich nach Aktivitäten schlechter fühlen, wie lange dauert es, bis die vermehrten Beschwerden wieder abgeklungen sind?",
+      "id": 9,
+      "tag": "regeneration",
+      "value": null,
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "< 1 Std.",
+          "value": 0
+        },
+        {
+          "label": "2-3 Std.",
+          "value": 0
+        },
+        {
+          "label": "4-10 Std.",
+          "value": 0
+        },
+        {
+          "label": "11-13 Std..",
+          "value": 0
+        },
+        {
+          "label": "14-23 Std.",
+          "value": 1
+        },
+        {
+          "label": "> 24 Std.",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "label": "<b>10</b> Vermeiden Sie Anstrengungen, weil diese Ihre Symptome verschlechtern?",
+      "id": 10,
+      "tag": "Vermeidung",
+      "value": null,
+      "type": "radio",
+      "inline": true,
+      "force": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": "y"
+        },
+        {
+          "label": "Nein",
+          "value": "n"
+        }
+      ]
+    }
+  ],
+  "results": {
+        "method": "ids",
+        "scoring": [
+            {"id": [101,102,201,202,301,302,401,402,501,502], "value": [1,2,3,4], "score": [0,1,1,1]}
+        ],
+        "domaine":[
+            {"label": "Frage 1", "id": [101,102], "method": "sum_range", "sum_range": [
+              {"value": [0,1], "score": 0},
+              {"value": [2,99], "score": 1}
+            ]},
+            {"label": "Frage 2", "id": [201,202], "method": "sum_range", "sum_range": [
+              {"value": [0,1], "score": 0},
+              {"value": [2,99], "score": 1}
+            ]},
+            {"label": "Frage 3", "id": [301,302], "method": "sum_range", "sum_range": [
+              {"value": [0,1], "score": 0},
+              {"value": [2,99], "score": 1}
+            ]},
+            {"label": "Frage 4", "id": [401,402], "method": "sum_range", "sum_range": [
+              {"value": [0,1], "score": 0},
+              {"value": [2,99], "score": 1}
+            ]},
+            {"label": "Frage 5", "id": [501,502], "method": "sum_range", "sum_range": [
+              {"value": [0,1], "score": 0},
+              {"value": [2,99], "score": 1}
+            ]},
+            {"label": "sum", "id": ["Frage 1", "Frage 2", "Frage 3", "Frage 4", "Frage 5"], "method": "sum_range", "sum_range": [
+              {"value": [-1,0], "score": 0},
+              {"value": [1,99], "score": 1}
+            ]}
+
+
+        ],
+        "evaluation": [
+            {"range": [-1,0], "label": "PEM Screening negativ"},
+            {"range": [1,99], "label": "PEM Screening positiv"}
+        ]
+
+    }
+}

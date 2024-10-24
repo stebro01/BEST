@@ -1,7 +1,7 @@
 <template>
 
   <div :data-cy="'quest_'+QUEST.short_title">
-  
+
   <!-- PROTECTED -->
   <q-chip v-if="PARAMS.mode === 'encrypted'" icon="lock" class="absolute-top-left z-top" />
   <!-- TITLE -->
@@ -40,7 +40,7 @@
 
     <!-- PID -->
     <q-card-section>
-      <q-input data-cy="PID" filled v-model="subject_pid" :label="TEXT.quest.pid" :hint="PID_HINT_TEXT" 
+      <q-input data-cy="PID" filled v-model="subject_pid" :label="TEXT.quest.pid" :hint="PID_HINT_TEXT"
         :rules="[ val => val && val.length > 0 || TEXT.quest.pid_hint]" :disable="PARAMS.PID !== undefined" />
         <!-- INVISIBLE ELEMENT TO DO THE AUTOFOCUS -->
         <q-input style="height: 0px; width: 0px" autofocus />
@@ -57,7 +57,7 @@
             <!-- DESCRIPTION -->
             <q-item-label title><span v-html="item.label"/></q-item-label>
             <q-item-label v-if="item.caption !== null || item.type === 'separator'" caption><span v-html="item.caption"/></q-item-label>
-            
+
 <!-- ITEM -->
             <!-- RADIO OR CHECKBOX -->
             <q-item-label v-if="(item.type === 'radio') || (item.type === 'checkbox')">
@@ -89,10 +89,11 @@
               <img :src="`img/${img}`" alt="" :style="`width: ${item.width}px`">
               </span>
             </q-item-label>
+
 <!-- ENDE ITEM -->
 
             <!-- COMPLETE? -->
-            <q-item-label v-if="submit_clicked && CHECK_FORM !== true && CHECK_FORM[indQ] === false" 
+            <q-item-label v-if="submit_clicked && CHECK_FORM !== true && CHECK_FORM[indQ] === false"
               class="text-red"
             >
               {{TEXT.quest.please_complete}}
@@ -187,14 +188,14 @@ export default {
           console.log(`updateData: ${action} not found!`)
           return
       }
-      
+
     },
 
     randomFill() {
       this.$store.state.QuestMan.random_fill()
-      // refresh 
+      // refresh
       this.subject_pid = this.subject_pid || Date.now().toString()
-      this.key_suffix = this.subject_pid 
+      this.key_suffix = this.subject_pid
     },
     rebuildQuests() {
       const answ = confirm(this.TEXT.btn.reset_confirm)
