@@ -9,180 +9,175 @@
       "label": "Wir sind daran interessiert herauszufinden, welche Arten von körperlichen Aktivitäten Menschen in ihrem alltäglichen Leben vollziehen. Die Befragung bezieht sich auf die Zeit die Sie während der <b>letzten 7 Tage</b> in körperlicher Aktivität verbracht haben. Bitte beantworten Sie alle Fragen (auch wenn Sie sich selbst nicht als aktive Person ansehen). Bitte berücksichten Sie die Aktivitäten im Rahmen Ihrer Arbeit, in Haus und Garten, um von einem Ort zum anderen zu kommen und in Ihrer Freizeit für Erholung, Leibesübungen und Sport. \n Denken Sie an all Ihre <b>anstrengenden</b> und <b>moderaten</b> Aktivitäten in den <b>vergangenen 7 Tagen</b>. <b>Anstrengende</b> Aktivitäten bezeichnen Aktivitäten, die starke körperliche Anstrengungen erfordern und bei denen Sie deutlich stärker atmen als normal. <b>Moderate</b> Aktivitäten bezeichnen Aktivitäten mit moderater körperlicher Anstrengung bei denen Sie ein wenig stärker atmen als normal."
     },
     {
-      "label": "1. Denken Sie an die körperlichen Aktivitäten die Sie für mindestens <i>10 Minuten</i> ohne Unterbrechung verrichtet haben. An wie vielen der <b>vergangenen 7 Tage</b> haben Sie <b>anstrengende</b> körperliche Aktivitäten wie Aerobic, Laufen, schnelles Fahrradfahren oder schnelles Schwimmen verrichtet?",
+      "label": ""
+    },
+    {
+      "label": "<b>1.</b> Denken Sie an die körperlichen Aktivitäten die Sie für mindestens <i>10 Minuten</i> ohne Unterbrechung verrichtet haben. An wie vielen der <b>vergangenen 7 Tage</b> haben Sie <b>anstrengende</b> körperliche Aktivitäten wie Aerobic, Laufen, schnelles Fahrradfahren oder schnelles Schwimmen verrichtet?",
       "tag": "days_per_week_exhausting",
       "hint": "Tage pro Woche:",
       "value": null,
       "type": "number",
       "inline": true,
-      "ignore_for_result": true,
       "id": 1
     },
     {
-      "label": "2. Sofern bei Frage 1 nicht 0 angegeben wurde: Wie viel Zeit haben Sie für gewöhnlich an <i>einem</i> dieser Tage mir <b>anstrengender</b> körperlicher Aktivität verbracht ",
-      "type": "group",
-      "fields": [
-        {
-          "label": "in Stunden",
-          "tag": "hours_per_week_exhausting",
-          "hint": "Stunden pro Woche:",
-          "value": null,
-          "type": "number",
-          "inline": true,
-          "ignore_for_result": true,
-          "id": 2.1
-        },
-        {
-          "label": "in Minuten",
-          "tag": "minutes_per_week_exhausting",
-          "hint": "Minuten pro Woche:",
-          "value": null,
-          "type": "number",
-          "inline": true,
-          "ignore_for_result": true,
-          "id": 2.2
-        },
-        {
-          "label": "Ich weiß nicht/ bin nicht sicher",
-          "tag": "no_duration_exhausting",
-          "value": false,
-          "type": "checkbox",
-          "inline": false,
-          "ignore_for_result": true,
-          "id": 2.3
-        }
-      ]
+      "label": "<b>2.</b> Sofern Sie bei der vorherigen Frage nicht '0' angegeben haben, wie viel Zeit aben Sie für gewöhnlich an <i>einem</i> dieser Tage mit <b>anstrengender</b> körperlicher Aktivität verbracht?",
+      "description": "in Stunden",
+      "tag": "hours_intense",
+      "hint": "Stunden pro Tag:",
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "id": 101
     },
     {
-      "label": "3. Denken Sie erneut nur an die körperlichen Aktivitäten die Sie für <i>mindestens 10 Minuten</i> ohne Unterbrechung verrichtet haben. An wie vielen der <b>vergangenen 7 Tage</b> haben Sie <b>moderate</b> körperliche Aktivitäten wie das Tragen leichter Lasten, Fahrradfahren bei gewöhnlicher Geschwindigkeit oder Schwimmen bei gewöhnlicher Geschwindigkeit verrichtet? Hierzu zählt nicht zu Fuß gehen.",
+      "label": "in Minuten",
+      "tag": "minutes_intense",
+      "hint": "Minuten pro Tag:",
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "id": 102
+    },
+    {
+      "label": "",
+      "tag": "no_duration_intense",
+      "value": [],
+      "type": "checkbox",
+      "options": [{ "label": "Ich weiß nicht/ bin nicht sicher", "value": 0 }],
+      "inline": false,
+      "ignore_for_result": true,
+      "id": 103
+    },
+    {
+      "label": "---",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
+    },
+    {
+      "label": "<b>3.</b> Denken Sie erneut nur an die körperlichen Aktivitäten die Sie für <i>mindestens 10 Minuten</i> ohne Unterbrechung verrichtet haben. An wie vielen der <b>vergangenen 7 Tage</b> haben Sie <b>moderate</b> körperliche Aktivitäten wie das Tragen leichter Lasten, Fahrradfahren bei gewöhnlicher Geschwindigkeit oder Schwimmen bei gewöhnlicher Geschwindigkeit verrichtet? Hierzu zählt nicht zu Fuß gehen.",
       "tag": "days_per_week_moderate",
       "hint": "Tage pro Woche:",
       "value": null,
       "type": "number",
       "inline": true,
+      "id": 2
+    },
+    {
+      "label": "<b>4.</b> Sofern Sie bei der vorherigen Frage nicht '0' angegeben haben, wie viel Zeit haben Sie für gewöhnlich an <i>einem</i> dieser Tage mit <b>moderater</b> körperlicher Aktivität verbracht?",
+      "description": "in Stunden",
+      "tag": "hours_moderate",
+      "hint": "Stunden pro Tag:",
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "id": 201
+    },
+    {
+      "label": "",
+      "description": "in Minuten",
+      "tag": "minutes_moderate",
+      "hint": "Minuten pro Tag:",
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "id": 202
+    },
+    {
+      "label": "",
+      "tag": "no_duration_moderate",
+      "value": [],
+      "type": "checkbox",
+      "options": [{ "label": "Ich weiß nicht/ bin nicht sicher", "value": 0 }],
+      "inline": false,
       "ignore_for_result": true,
-      "id": 3
+      "id": 203
     },
     {
-      "label": "4. Sofern bei Frage 3 nicht 0 angegeben wurde: Wie viel Zeit haben Sie für gewöhnlich an <i>einem</i> dieser Tage mir <b>moderater</b> körperlicher Aktivität verbracht ",
-      "type": "group",
-      "fields": [
-        {
-          "label": "in Stunden",
-          "tag": "hours_per_week_moderate",
-          "hint": "Stunden pro Woche:",
-          "value": null,
-          "type": "number",
-          "inline": true,
-          "ignore_for_result": true,
-          "id": 4.1
-        },
-        {
-          "label": "in Minuten",
-          "tag": "minutes_per_week_moderate",
-          "hint": "Minuten pro Woche:",
-          "value": null,
-          "type": "number",
-          "inline": true,
-          "ignore_for_result": true,
-          "id": 4.2
-        },
-        {
-          "label": "Ich weiß nicht/ bin nicht sicher",
-          "tag": "no_duration_moderate",
-          "value": false,
-          "type": "checkbox",
-          "inline": false,
-          "ignore_for_result": true,
-          "id": 4.3
-        }
-      ]
+      "label": "---",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
     },
     {
-      "label": "5. An wie vielen der <b>vergangenen 7 Tage</b> sind Sie <i>mindestens 10 Minuten</i> ohne Unterbrechung <b>zu Fuß>/b> gegangen? Dieses beinhaltet Gehstrecken daheim oder in der Arbeit, gehen um von einem Ort zu einem anderen zu gelangen, sowie alles andere Gehen zur Erholung, Bewegung oder Freizeit.",
+      "label": "<b>5.</b> An wie vielen der <b>vergangenen 7 Tage</b> sind Sie <i>mindestens 10 Minuten</i> ohne Unterbrechung <b>zu Fuß</b> gegangen? Dieses beinhaltet Gehstrecken daheim oder in der Arbeit, gehen um von einem Ort zu einem anderen zu gelangen, sowie alles andere Gehen zur Erholung, Bewegung oder Freizeit.",
       "tag": "days_per_week_walking",
       "hint": "Tage pro Woche:",
       "value": null,
       "type": "number",
       "inline": true,
+      "id": 3
+    },
+    {
+      "label": "<b>6.</b> Sofern Sie bei der vorherigen Frage nicht '0' angegeben haben, wie viel Zeit aben Sie für gewöhnlich an <i>einem</i> dieser Tage mit <b>Gehen</b> verbracht?",
+      "description": "in Stunden",
+      "tag": "hours_walking",
+      "hint": "Stunden pro Tag:",
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "id": 301
+    },
+    {
+      "label": "",
+      "description": "in Minuten",
+      "tag": "minutes_walking",
+      "hint": "Minuten pro Tag:",
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "id": 302
+    },
+    {
+      "label": "",
+      "tag": "no_duration_walking",
+      "value": [],
+      "type": "checkbox",
+      "options": [{ "label": "Ich weiß nicht/ bin nicht sicher", "value": 0 }],
+      "inline": false,
       "ignore_for_result": true,
-      "id": 5
+      "id": 303
     },
     {
-      "label": "6. Sofern bei Frage 5 nicht 0 angegeben wurde: Wie viel Zeit haben Sie für gewöhnlich an <i>einem</i> dieser Tage mir <b>Gehen</b> verbracht ",
-      "type": "group",
-      "fields": [
-        {
-          "label": "in Stunden",
-          "tag": "hours_per_week_walking",
-          "hint": "Stunden pro Woche:",
-          "value": null,
-          "type": "number",
-          "inline": true,
-          "ignore_for_result": true,
-          "id": 6.1
-        },
-        {
-          "label": "in Minuten",
-          "tag": "minutes_per_week_walking",
-          "hint": "Minuten pro Woche:",
-          "value": null,
-          "type": "number",
-          "inline": true,
-          "ignore_for_result": true,
-          "id": 6.2
-        },
-        {
-          "label": "Ich weiß nicht/ bin nicht sicher",
-          "tag": "no_duration_walking",
-          "value": false,
-          "type": "checkbox",
-          "inline": false,
-          "ignore_for_result": true,
-          "id": 6.3
-        }
-      ]
+      "label": "---",
+      "value": null,
+      "type": "separator",
+      "inline": false,
+      "force": false
     },
     {
-      "label": "7. Wie viel Zeit haben Sie in den <b>vergangenen 7 Tage</b> an <b>einem Wochentag>/b> mit <b>Sitzen</b> verbracht? Dies kann Zeit beinhalten wie Sitzen am Schreibtisch, Besuchen von Freunden, vor dem Fernseher sitzen oder liegen und auch sitzen in einem öffentlichen Verkehrsmittel.",
-      "type": "group",
-      "fields": [
-        {
-          "label": "in Stunden",
-          "tag": "hours_per_week_sitting",
-          "hint": "Stunden pro Woche:",
-          "value": null,
-          "type": "number",
-          "inline": true,
-          "ignore_for_result": true,
-          "id": 7.1
-        },
-        {
-          "label": "in Minuten",
-          "tag": "minutes_per_week_sitting",
-          "hint": "Minuten pro Woche:",
-          "value": null,
-          "type": "number",
-          "inline": true,
-          "ignore_for_result": true,
-          "id": 7.2
-        },
-        {
-          "label": "Ich weiß nicht/ bin nicht sicher",
-          "tag": "no_duration_sitting",
-          "value": false,
-          "type": "checkbox",
-          "inline": false,
-          "ignore_for_result": true,
-          "id": 7.3
-        }
-      ]
+      "label": "7. Wie viel Zeit haben Sie in den <b>vergangenen 7 Tage</b> an <b>einem Wochentag</b> mit <b>Sitzen</b> verbracht? Dies kann Zeit beinhalten wie Sitzen am Schreibtisch, Besuchen von Freunden, vor dem Fernseher sitzen oder liegen und auch sitzen in einem öffentlichen Verkehrsmittel.",
+      "description": "in Stunden",
+      "tag": "hours_per_week_sitting",
+      "hint": "Stunden pro Woche:",
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "id": 401
     },
     {
-      "label": "Das ist das Ende der Befragung, danke für Ihre Teilnahme."
+      "label": "in Minuten",
+      "tag": "minutes_per_week_sitting",
+      "hint": "Minuten pro Woche:",
+      "value": null,
+      "type": "number",
+      "inline": true,
+      "ignore_for_result": true,
+      "id": 402
+    },
+    {
+      "label": "",
+      "tag": "no_duration_sitting",
+      "value": [],
+      "type": "checkbox",
+      "options": [{ "label": "Ich weiß nicht/ bin nicht sicher", "value": 0 }],
+      "inline": false,
+      "ignore_for_result": true,
+      "id": 403
     }
   ],
-  "results": {
-    "method": ""
-  }
+  "results": {}
 }
