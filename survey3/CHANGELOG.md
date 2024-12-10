@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### v1.7.2
 
 #### Added
-
+- [2024-12-10] Added a new questionnaire: AEB
 - [2024-06-30] Added a new button to export a json file.
 - [2024-02-06] Added a new questionnaire: BSI, CBI, PSQ18, QOL-AD
 - [2024-01-26] Added a new questionnaire: VAS

@@ -2,6 +2,7 @@
 const quest = [
   "6mwt",
   "abc",
+  "aeb",
   "aes",
   "badl",
   "brain_tremor",
