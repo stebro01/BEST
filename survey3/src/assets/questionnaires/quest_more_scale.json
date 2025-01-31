@@ -1,0 +1,170 @@
+{
+  "title": "MORE Scale - Motivation in stroke patients for Rehabilitation",
+  "short_title": "More-scale",
+  "description": "Motivation in stroke patients for Rehabilitation ",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "CUSTOM: MORE_SCALE_STROKE",
+    "display": "Motivation in stroke patients for Rehabilitation Scale"
+  },
+  "manual": null,
+  "keywords": "MORE, more",
+  "ref": "https://doi.org/10.1371/journal.pone.0265214",
+  "items": [
+    {
+      "label": "Bitte beantworten Sie die nachfolgenden Fragen",
+      "id": "[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]",
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": false,
+      "vertical": true,
+      "options": {
+        "answers": [
+          {
+            "label": "Stimme überhaupt nicht zu ",
+            "value": 1
+          },
+          {
+            "label": "Stimme nicht zu",
+            "value": 2
+          },
+          {
+            "label": "Stimme eher nicht zu ",
+            "value": 3
+          },
+          {
+            "label": "Weder noch ",
+            "value": 4
+          },
+          {
+            "label": "Stimme eher zu",
+            "value": 5
+          },
+          {
+            "label": "Stimme zu",
+            "value": 6
+          },
+          {
+            "label": "Stimme voll und ganz zu ",
+            "value": 7
+          }
+        ],
+        "questions": [
+          {
+            "label": "Ich möchte an der Rehabilitation teilnehmen, um meine Ziele zu erreichen",
+            "tag": "want_reha",
+            "id": 1
+          },
+          {
+            "label": "Ich möchte nicht entlassen werden, bevor ich meine Genesungsziele erreiche",
+            "tag": "stay_until_goal",
+            "id": 2
+          },
+          {
+            "label": "Ich möchte üben, um meine Rolle in meinem Zuhause und in der Gesellschaft wiederzuerlangen",
+            "tag": "train_role",
+            "id": 3
+          },
+          {
+            "label": "Ich bin in der Lage, Anstrengungen zu unternehmen, um mein Ziel zu erreichen",
+            "tag": "effort_goal",
+            "id": 4
+          },
+          {
+            "label": "Ich möchte hart arbeiten, um die Erwartungen meiner Therapeuten zu erfüllen",
+            "tag": "meet_expect",
+            "id": 5
+          },
+          {
+            "label": "Ich möchte die Fähigkeiten, die ich durch die Rehabilitation wiedererlangt habe, im Alltag nutzen",
+            "tag": "use_skills",
+            "id": 6
+          },
+          {
+            "label": "Ich teile mein tägliches Trainingsziel täglich mit meinem Therapeuten",
+            "tag": "share_goal",
+            "id": 7
+          },
+          {
+            "label": "Änderungen in den täglichen Rehabilitationsplänen motivieren mich zur Teilnahme",
+            "tag": "change_motivate",
+            "id": 8
+          },
+          {
+            "label": "Ich wurde durch die Bemühungen anderer Patienten ermutigt",
+            "tag": "encourage_others",
+            "id": 9
+          },
+          {
+            "label": "Ich möchte meiner Familie und meinen Freunden zuliebe an der Rehabilitation teilnehmen",
+            "tag": "family_motivate",
+            "id": 10
+          },
+          {
+            "label": "Ich spüre täglich Verbesserungen meiner Körperfunktionen (z.B. Beweglichkeit)",
+            "tag": "feel_better",
+            "id": 11
+          },
+          {
+            "label": "Ich möchte weiter üben, um meine Fähigkeit zur Durchführung täglicher Aktivitäten wiederzuerlangen",
+            "tag": "train_daily",
+            "id": 12
+          },
+          {
+            "label": "Ich möchte verschiedene Übungen/Trainingsmethoden ausprobieren",
+            "tag": "try_methods",
+            "id": 13
+          },
+          {
+            "label": "Ich möchte die Rehabilitation durchlaufen, selbst wenn ich Schmerzen und/oder Taubheitsgefühle empfinde",
+            "tag": "persist_pain",
+            "id": 14
+          },
+          {
+            "label": "Ich möchte zusätzlich zum üblichen überwachten Training selbstständig trainieren",
+            "tag": "self_train",
+            "id": 15
+          },
+          {
+            "label": "Ich denke, ich muss aktiv an der Rehabilitation teilnehmen",
+            "tag": "active_reha",
+            "id": 16
+          },
+          {
+            "label": "Ich denke, Rehabilitation ist wesentlich für die Genesung von Krankheiten und Behinderungen",
+            "tag": "reha_essential",
+            "id": 17
+          }
+        ]
+      },
+      "longanswers": true
+    }
+  ],
+  "results": {
+    "method": "sum"
+  }
+}

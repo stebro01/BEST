@@ -51,6 +51,7 @@ const quest = [
   "mcgill",
   "mfq",
   "moca",
+  "more_scale",
   "mrs",
   "mwtb",
   "mymop2_pre",
