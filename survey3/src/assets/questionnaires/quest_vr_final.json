@@ -1,0 +1,139 @@
+{
+  "title": "VR Studie: Abschlussfragebogen Tag 5",
+  "short_title": "AbschlussVRTag5",
+  "description": null,
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "225398001",
+    "display": "VR Studie: Abschlussfragebogen Tag 5",
+    "version": "20250306"
+  },
+  "manual": "Wie war ihr Befinden während und direkt nach dem Virtual-Reallity-Spiel",
+  "keywords": "VR, Virtual Reality, Abschlussfragebogen, Tag 5",
+  "ref": null,
+  "items": [
+    {
+      "label": "Wie war Ihr Befinden während und direkt nach dem Virtual-Reallity-Spiel?",
+      "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": true,
+      "options": {
+        "answers": [
+          {
+            "label": "Gar nicht",
+            "value": 1
+          },
+          {
+            "label": "Etwas",
+            "value": 2
+          },
+          {
+            "label": "Mittel",
+            "value": 3
+          },
+          {
+            "label": "Stark",
+            "value": 4
+          },
+          {
+            "label": "Sehr stark",
+            "value": 5
+          }
+        ],
+        "questions": [
+            {
+            "label": "Allgemeines Unwohlsein",
+            "tag": "general_discomfort",
+            "id": 1
+            },
+            {
+            "label": "Ermüdung",
+            "tag": "fatigue",
+            "id": 2
+            },
+            {
+            "label": "Kopfschmerzen",
+            "tag": "headache",
+            "id": 3
+            },
+            {
+            "label": "Anstrengende Augen",
+            "tag": "eye_strain",
+            "id": 4
+            },
+            {
+            "label": "Schwierigkeiten scharf zu sehen",
+            "tag": "difficulty_focusing",
+            "id": 5
+            },
+            {
+            "label": "Erhöhter Speichelfluss",
+            "tag": "increased_salivation",
+            "id": 6
+            },
+            {
+            "label": "Schwitzen",
+            "tag": "sweating",
+            "id": 7
+            },
+            {
+            "label": "Übelkeit",
+            "tag": "nausea",
+            "id": 8
+            },
+            {
+            "label": "Konzentrationsschwierigkeiten",
+            "tag": "difficulty_concentrating",
+            "id": 9
+            },
+            {
+            "label": "Kopfdruck",
+            "tag": "head_pressure",
+            "id": 10
+            },
+            {
+            "label": "Verschwommenes Sehen",
+            "tag": "blurred_vision",
+            "id": 11
+            },
+            {
+            "label": "Schwindel (Augen auf)",
+            "tag": "dizziness_eyes_open",
+            "id": 12
+            },
+            {
+            "label": "Schwindel (Augen zu)",
+            "tag": "dizziness_eyes_closed",
+            "id": 13
+            },
+            {
+            "label": "Gleichgewichtsstörungen",
+            "tag": "balance_disorder",
+            "id": 14
+            },
+            {
+            "label": "Magen macht sich bemerkbar",
+            "tag": "stomach_awareness",
+            "id": 15
+            },
+            {
+            "label": "Aufstoßen",
+            "tag": "belching",
+            "id": 16
+            }
+        ]
+      },
+      "ignore_for_result": true
+    }
+  ],
+  "results": {
+    "method": "count"
+  }
+}

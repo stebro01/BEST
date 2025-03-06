@@ -1,0 +1,123 @@
+{
+  "title": "VR Studie: Bewertung VR-Spiel",
+  "short_title": "BewertungSpielVR",
+  "description": null,
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "225398001",
+    "display": "VR Studie: Bewertung VR-Spiel",
+    "version": "20250306"
+  },
+  "manual": "Wie fanden Sie das VR-Spiel? Bitte ankreuzen",
+  "keywords": "VR, Virtual Reality, Bewertung, VR-Spiel",
+  "ref": null,
+  "items": [
+    {
+      "label": "Wie fanden sie das VR-Spiel?",
+      "id": [1,2,3,4,5,6,7,8,9,10,11,12,13],
+      "coding": {
+        "display": "Untersuchung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "value": [],
+      "type": "multiple_radio",
+      "inline": false,
+      "force": true,
+      "options": {
+        "answers": [
+          {
+            "label": "Gar nicht",
+            "value": 1
+          },
+          {
+            "label": "Etwas",
+            "value": 2
+          },
+          {
+            "label": "Mittel",
+            "value": 3
+          },
+          {
+            "label": "Stark",
+            "value": 4
+          },
+          {
+            "label": "Sehr stark",
+            "value": 5
+          }
+        ],
+        "questions": [
+            {
+            "label": "Das VR-Spiel hat Spaß gemacht",
+            "tag": "fun",
+            "id": 1
+            },
+            {
+            "label": "Das VR-Spiel war anstrengend",
+            "tag": "tiring",
+            "id": 2
+            },
+            {
+            "label": "Das VR-Spiel war frustrierend",
+            "tag": "frustrating",
+            "id": 3
+            },
+            {
+            "label": "Das VR-Spiel war leicht zu spielen",
+            "tag": "easy",
+            "id": 4
+            },
+            {
+            "label": "Das VR-Spiel war langweilig",
+            "tag": "boring",
+            "id": 5
+            },
+            {
+            "label": "Das VR-Spiel ist technisch ausgereift",
+            "tag": "mature",
+            "id": 6
+            },
+            {
+            "label": "Das VR-Spiel war motivierend",
+            "tag": "motivating",
+            "id": 7
+            },
+            {
+            "label": "Die Brille war angenehm zu tragen",
+            "tag": "comfortable",
+            "id": 8
+            },
+            {
+            "label": "Das Bild der VR-Brille war scharf",
+            "tag": "sharp",
+            "id": 9
+            },
+            {
+            "label": "Die Handerkennung war gut",
+            "tag": "hand_tracking",
+            "id": 10
+            },
+            {
+            "label": "Ich möchte wieder spielen",
+            "tag": "replay",
+            "id": 11
+            },
+            {
+            "label": "VR ist eine gute Möglichkeit für regelmäßiges Training/Rehabilitation",
+            "tag": "training",
+            "id": 12
+            },
+            {
+            "label": "Ich kenne mich gut mit Computern und Computerspielen aus",
+            "tag": "computer_savvy",
+            "id": 13
+            }
+        ]
+      }
+    }
+  ],
+  "results": {
+    "method": "sum"
+  }
+}

@@ -87,6 +87,8 @@ const quest = [
   "updrs_3",
   "updrs_4",
   "vas",
+  "vr_final",
+  "vr_evaluation",
   "whoqol",
   "test"
 ]
