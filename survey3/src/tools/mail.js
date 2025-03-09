@@ -2,7 +2,7 @@ import { log } from "src/tools/Logger"
 
 // sendgrid key
 const api_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJqMzMyMTg0XzAtc3VydmV5IiwiaWF0IjoxNjI0NjU0NjQyLCJleHAiO'
-const api_url = 'https://www.jenai.de:3000/sendEmail'
+const api_url = 'https://www.surveybest.de/mail/sendEmail'
 const axios = require('axios');
 
 
