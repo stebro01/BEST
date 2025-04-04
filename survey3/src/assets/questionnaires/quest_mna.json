@@ -1,0 +1,516 @@
+{
+  "title": "Mini Nutritional Assessment (MNA)",
+  "short_title": "mna",
+  "description": "Erfassung des Ernährungszustands älterer Personen mittels MNA-Fragebogen",
+  "manual": "<b>Hinweis:</b> Bitte beantworten Sie die folgenden Fragen ehrlich. Die Ergebnisse helfen, den Ernährungszustand besser einzuschätzen.",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "895537006",
+    "display": "Mini Nutritional Assessment",
+    "version": "2009"
+  },
+  "keywords": "mna, ernährung, geriatrie, screening, assessment, mangelernährung",
+  "items": [
+    {
+      "label": "<b>Screening</b>",
+      "id": 0
+    },
+    {
+      "label": "A. Hat der Patient während der letzten 3 Monate wegen Appetitverlust, Verdauungsproblemen, Schwierigkeiten beim Kauen oder Schlucken weniger gegessen?",
+      "id": 1,
+      "coding": {
+        "display": "nahrungsaufnahme_abnahme",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "starke Abnahme der Nahrungsaufnahme",
+          "value": 0
+        },
+        {
+          "label": "leichte Abnahme der Nahrungsaufnahme",
+          "value": 1
+        },
+        {
+          "label": "keine Abnahme der Nahrungsaufnahme",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "B. Gewichtsverlust in den letzten 3 Monaten",
+      "id": 2,
+      "coding": {
+        "display": "gewichtsverlust",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "Gewichtsverlust > 3 kg",
+          "value": 0
+        },
+        {
+          "label": "nicht bekannt",
+          "value": 1
+        },
+        {
+          "label": "Gewichtsverlust zwischen 1 und 3 kg",
+          "value": 2
+        },
+        {
+          "label": "kein Gewichtsverlust",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "label": "C. Mobilität",
+      "id": 3,
+      "coding": {
+        "display": "mobilitaet",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "bettlägerig oder in einem Stuhl mobilisiert",
+          "value": 0
+        },
+        {
+          "label": "in der Lage, sich in der Wohnung zu bewegen",
+          "value": 1
+        },
+        {
+          "label": "verlässt die Wohnung",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "D. Akute Krankheit oder psychischer Stress während der letzten 3 Monate?",
+      "id": 4,
+      "coding": {
+        "display": "akute_krankheit_stress",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        {
+          "label": "ja",
+          "value": 0
+        },
+        {
+          "label": "nein",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "E. Neuropsychologische Probleme",
+      "id": 5,
+      "coding": {
+        "display": "neuropsychologische_probleme",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "schwere Demenz oder Depression",
+          "value": 0
+        },
+        {
+          "label": "leichte Demenz",
+          "value": 1
+        },
+        {
+          "label": "keine psychologischen Probleme",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "F. Body Mass Index (BMI): Körpergewicht in kg / (Körpergröße in m)²",
+      "id": 6,
+      "coding": {
+        "display": "bmi",
+        "code": "60621009",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "BMI < 19",
+          "value": 0
+        },
+        {
+          "label": "19 ≤ BMI < 21",
+          "value": 1
+        },
+        {
+          "label": "21 ≤ BMI < 23",
+          "value": 2
+        },
+        {
+          "label": "BMI ≥ 23",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "label": "<b>ASSESSMENT</b>"
+    },
+    {
+      "label": "G. Lebt der Patient eigenständig zu Hause?",
+      "id": 7,
+      "coding": {
+        "display": "selbstständig_wohnen",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 1
+        },
+        {
+          "label": "Nein",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "label": "H. Nimmt der Patient mehr als 3 verschreibungspflichtige Medikamente pro Tag?",
+      "id": 8,
+      "coding": {
+        "display": "medikamentenanzahl",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 0
+        },
+        {
+          "label": "Nein",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "label": "I. Hat der Patient Druck- oder Hautgeschwüre?",
+      "id": 9,
+      "coding": {
+        "display": "druckgeschwuer",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        {
+          "label": "Ja",
+          "value": 0
+        },
+        {
+          "label": "Nein",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "label": "J. Wie viele Hauptmahlzeiten isst der Patient pro Tag?",
+      "id": 10,
+      "coding": {
+        "display": "anzahl_mahlzeiten",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "1 Mahlzeit",
+          "value": 0
+        },
+        {
+          "label": "2 Mahlzeiten",
+          "value": 1
+        },
+        {
+          "label": "3 Mahlzeiten",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "K. Eiweißzufuhr: Isst der Patient regelmäßig … (Milchprodukte, Hülsenfrüchte/Eier, Fleisch/Fisch/Geflügel)?",
+      "id": 11,
+      "coding": {
+        "display": "eiweisszufuhr",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "0 oder 1 mal 'ja'",
+          "value": 0.0
+        },
+        {
+          "label": "2 mal 'ja'",
+          "value": 0.5
+        },
+        {
+          "label": "3 mal 'ja'",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "label": "L. Isst der Patient mindestens zweimal pro Tag Obst oder Gemüse?",
+      "id": 12,
+      "coding": {
+        "display": "obst_gemuese",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        {
+          "label": "Nein",
+          "value": 0
+        },
+        {
+          "label": "Ja",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "label": "M. Wie viel trinkt der Patient pro Tag? (Wasser, Saft, Kaffee, Tee, Milch …)",
+      "id": 13,
+      "coding": {
+        "display": "fluessigkeitszufuhr",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "weniger als 3 Gläser/Tassen",
+          "value": 0.0
+        },
+        {
+          "label": "3 bis 5 Gläser/Tassen",
+          "value": 0.5
+        },
+        {
+          "label": "mehr als 5 Gläser/Tassen",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "label": "N. Essensaufnahme mit / ohne Hilfe",
+      "id": 14,
+      "coding": {
+        "display": "essensaufnahme_hilfe",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "braucht Hilfe beim Essen",
+          "value": 0
+        },
+        {
+          "label": "isst ohne Hilfe, aber mit Schwierigkeiten",
+          "value": 1
+        },
+        {
+          "label": "isst ohne Hilfe, keine Schwierigkeiten",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "O. Wie schätzt der Patient seinen Ernährungszustand ein?",
+      "id": 15,
+      "coding": {
+        "display": "selbsteinschaetzung_ernaehrung",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "mangelernährt",
+          "value": 0
+        },
+        {
+          "label": "unsicher",
+          "value": 1
+        },
+        {
+          "label": "gut ernährt",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "label": "P. Vergleich des Gesundheitszustands mit Gleichaltrigen",
+      "id": 16,
+      "coding": {
+        "display": "vergleich_gesundheit",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "schlechter",
+          "value": 0.0
+        },
+        {
+          "label": "weiß es nicht",
+          "value": 0.5
+        },
+        {
+          "label": "gleich gut",
+          "value": 1.0
+        },
+        {
+          "label": "besser",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "label": "Q. Oberarmumfang (OAU in cm)",
+      "id": 17,
+      "coding": {
+        "display": "oberarmumfang",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": false,
+      "options": [
+        {
+          "label": "OAU < 21 cm",
+          "value": 0.0
+        },
+        {
+          "label": "21 ≤ OAU ≤ 22 cm",
+          "value": 0.5
+        },
+        {
+          "label": "OAU > 22 cm",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "label": "R. Wadenumfang (WU in cm)",
+      "id": 18,
+      "coding": {
+        "display": "wadenumfang",
+        "code": "302199004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        {
+          "label": "WU < 31 cm",
+          "value": 0
+        },
+        {
+          "label": "WU ≥ 31 cm",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "results": {
+    "method": "ids",
+    "scoring": [
+      {
+        "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        "value": [0, 0.5, 1, 1.5, 2, 3, 4, 5],
+        "score": [0, 0.5, 1, 1.5, 2, 3, 4, 5]
+      }
+    ],
+    "domaine": [
+      {
+        "label": "Screening",
+        "id": [1, 2, 3, 4, 5, 6],
+        "method": "sum",
+        "coding": {
+          "display": "MNA Screening",
+          "code": "CUSTOM: MNA/MNA_SCREENING",
+          "system": "CUSTOM"
+        }
+      },
+      {
+        "label": "Assessment",
+        "id": [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        "method": "sum",
+        "coding": {
+          "display": "MNA Assessment",
+          "code": "CUSTOM: MNA/MNA_ASSESSMENT",
+          "system": "CUSTOM"
+        }
+      },
+      {
+        "label": "sum",
+        "id": ["Screening", "Assessment"],
+        "method": "sum",
+        "coding": {
+          "display": "MNA Total Score",
+          "code": "895533005",
+          "system": "http://snomed.info/sct"
+        }
+      }
+    ],
+    "evaluation": [
+      {
+        "range": [0, 16],
+        "label": "Mangelernährung"
+      },
+      {
+        "range": [16.5, 23.5],
+        "label": "Risiko für Mangelernährung"
+      },
+      {
+        "range": [24, 30],
+        "label": "Normaler Ernährungszustand"
+      }
+    ]
+  }
+}

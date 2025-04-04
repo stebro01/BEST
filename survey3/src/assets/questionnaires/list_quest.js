@@ -50,6 +50,7 @@ const quest = [
   "klein",
   "mcgill",
   "mfq",
+  "mna",
   "moca",
   "more_scale",
   "mrs",
