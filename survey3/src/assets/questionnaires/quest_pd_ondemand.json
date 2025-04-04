@@ -14,7 +14,7 @@
     {
       "id": 1,
       "value": null,
-      "label": "Hatte die Patientin/der Patient in der nahen Vergangenheit Phasen, in denen Parkinson-Symptome teilweise oder vollständig wieder aufgetreten sind (OFF-Zustand), obwohl die Parkinson-Medikamente nach Vorgabe eingenommen wurden?",
+      "label": "1. Hatte die Patientin/der Patient in der nahen Vergangenheit Phasen, in denen Parkinson-Symptome teilweise oder vollständig wieder aufgetreten sind (OFF-Zustand), obwohl die Parkinson-Medikamente nach Vorgabe eingenommen wurden?",
       "coding": {
         "display": "off_symptoms_recently",
         "code": "1001",
@@ -30,7 +30,7 @@
     {
       "id": 2,
       "value": null,
-      "label": "War die OFF-Phase im Alltag relevant beeinträchtigend?",
+      "label": "2. War die OFF-Phase im Alltag relevant beeinträchtigend?",
       "coding": {
         "display": "off_impact_daily_life",
         "code": "1002",
@@ -46,7 +46,7 @@
     {
       "id": 3,
       "value": null,
-      "label": "Wird die Notwendigkeit gesehen, die Basistherapie anzupassen?",
+      "label": "3. Wird die Notwendigkeit gesehen, die Basistherapie anzupassen?",
       "coding": {
         "display": "adjust_base_therapy_needed",
         "code": "1003",
@@ -62,7 +62,7 @@
     {
       "id": 4,
       "value": [],
-      "label": "Wurde bereits eine Bedarfstherapie angewendet?",
+      "label": "4. Wurde bereits eine Bedarfstherapie angewendet?",
       "coding": {
         "display": "rescue_therapy_applied",
         "code": "1004",
@@ -81,7 +81,7 @@
     {
       "id": 5,
       "value": [],
-      "label": "Wie hat die aktuelle Bedarfstherapie gewirkt?",
+      "label": "5. Wie hat die aktuelle Bedarfstherapie gewirkt?",
       "coding": {
         "display": "rescue_therapy_effectiveness",
         "code": "1005",
@@ -99,7 +99,7 @@
     {
       "id": 6,
       "value": [],
-      "label": "Was präferiert die Patientin/der Patient?",
+      "label": "6. Was präferiert die Patientin/der Patient?",
       "coding": {
         "display": "patient_preference",
         "code": "1006",
