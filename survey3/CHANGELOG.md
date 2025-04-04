@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 
+- [2025-04-04] Added a new questionnaire: PD On/Demand for documenting on-demand therapy in Parkinson's disease
 - [2025-03-06] Added a new questionnaire: VR Study for Max Schulze
 - [2025-01-31] Added a new questionnaire: more scale
 - [2024-12-10] Added a new questionnaire: AEB

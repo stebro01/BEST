@@ -1,0 +1,135 @@
+{
+  "title": "Start von On-Demand Therapien bei Parkinson",
+  "short_title": "pd_ondemand",
+  "description": "Dokumentationsguide zum Start von On-Demand Therapien bei Parkinson",
+  "coding": {
+    "system": "http://snomed.info/sct",
+    "code": "225398001",
+    "display": "Start von On-Demand Therapien bei Parkinson"
+  },
+  "manual": null,
+  "keywords": "parkinson, bedarfstherapie, off-phase, pd, therapie",
+  "ref": null,
+  "items": [
+    {
+      "id": 1,
+      "value": null,
+      "label": "Hatte die Patientin/der Patient in der nahen Vergangenheit Phasen, in denen Parkinson-Symptome teilweise oder vollständig wieder aufgetreten sind (OFF-Zustand), obwohl die Parkinson-Medikamente nach Vorgabe eingenommen wurden?",
+      "coding": {
+        "display": "off_symptoms_recently",
+        "code": "1001",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Ja", "value": 1 },
+        { "label": "Nein", "value": 0 }
+      ]
+    },
+    {
+      "id": 2,
+      "value": null,
+      "label": "War die OFF-Phase im Alltag relevant beeinträchtigend?",
+      "coding": {
+        "display": "off_impact_daily_life",
+        "code": "1002",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Ja", "value": 1 },
+        { "label": "Nein", "value": 0 }
+      ]
+    },
+    {
+      "id": 3,
+      "value": null,
+      "label": "Wird die Notwendigkeit gesehen, die Basistherapie anzupassen?",
+      "coding": {
+        "display": "adjust_base_therapy_needed",
+        "code": "1003",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "radio",
+      "inline": true,
+      "options": [
+        { "label": "Ja – Basisschema anpassen", "value": 1 },
+        { "label": "Nein – Weiter mit Frage 4", "value": 0 }
+      ]
+    },
+    {
+      "id": 4,
+      "value": [],
+      "label": "Wurde bereits eine Bedarfstherapie angewendet?",
+      "coding": {
+        "display": "rescue_therapy_applied",
+        "code": "1004",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "checkbox",
+      "inline": false,
+      "options": [
+        { "label": "In Wasser lösliches L-Dopa", "value": "l_dopa_wasser" },
+        { "label": "Apomorphin Sublingual", "value": "apomorphin_sublingual" },
+        { "label": "Apomorphin Subkutan", "value": "apomorphin_subkutan" },
+        { "label": "Inhalatives L-Dopa", "value": "l_dopa_inhalativ" },
+        { "label": "Keine Angabe", "value": "keine_angabe" }
+      ]
+    },
+    {
+      "id": 5,
+      "value": [],
+      "label": "Wie hat die aktuelle Bedarfstherapie gewirkt?",
+      "coding": {
+        "display": "rescue_therapy_effectiveness",
+        "code": "1005",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "checkbox",
+      "inline": false,
+      "options": [
+        { "label": "Ausreichende Wirkung", "value": "wirksamkeit" },
+        { "label": "Gute Verträglichkeit", "value": "vertraeglichkeit" },
+        { "label": "Schnelle Wirkung", "value": "schnell" },
+        { "label": "Keine Angabe", "value": "keine_angabe" }
+      ]
+    },
+    {
+      "id": 6,
+      "value": [],
+      "label": "Was präferiert die Patientin/der Patient?",
+      "coding": {
+        "display": "patient_preference",
+        "code": "1006",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "checkbox",
+      "inline": false,
+      "options": [
+        { "label": "In Wasser lösliches L-Dopa", "value": "l_dopa_wasser" },
+        { "label": "Apomorphin Sublingual", "value": "apomorphin_sublingual" },
+        { "label": "Apomorphin Subkutan", "value": "apomorphin_subkutan" },
+        { "label": "Inhalatives L-Dopa", "value": "l_dopa_inhalativ" },
+        { "label": "Keine Angabe", "value": "keine_angabe" }
+      ]
+    },
+    {
+      "id": 7,
+      "value": null,
+      "force": false,
+      "label": "Kommentare der Behandlerin/des Behandlers:",
+      "coding": {
+        "display": "comments_physician",
+        "code": "1007",
+        "system": "http://snomed.info/sct"
+      },
+      "type": "text",
+      "inline": false
+    }
+  ],
+  "results": {
+
+  }
+}
