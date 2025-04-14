@@ -1,16 +1,14 @@
 {
   "name": "survey3",
   "version": "0.0.1",
-  "description": "A Quasar Project",
+  "description": "Fragebogenapp für Wissenschaftler",
   "productName": "surveyBEST",
   "author": "ste <ste>",
   "private": true,
   "scripts": {
-    "dev": "quasar dev",
-    "build": "quasar build",
+    "dev": "quasar dev -m pwa",
+    "build": "quasar build -m pwa",
     "build_app": "quasar build --mode electron",
-    "build_dmg": "electron-installer-dmg ./dist/electron/surveyBEST-darwin-arm64/surveyBEST.app surveyBEST --out=./dist --overwrite",
-    "build4win": "quasar build --mode electron --target win32 ",
     "icons": "icongenie generate -i ./public/icons/surveyBest_icon1024.png",
     "upload": "sh upload_to_server.sh",
     "lint": "eslint --ext .js,.vue ./",
@@ -49,7 +47,8 @@
     "eslint-plugin-vue": "^9.0.0",
     "eslint-webpack-plugin": "^3.1.1",
     "jest": "^29.2.2",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "workbox-webpack-plugin": "^6.0.0"
   },
   "browserslist": [
     "last 10 Chrome versions",
