@@ -1,0 +1,147 @@
+{
+  "title": "Parkinson Disease Sleep Scale-2",
+  "short_title": "pdss2",
+  "coding": {
+    "system": "CUSTOM",
+    "code": "\\CUSTOM\\SCORES\\PDSS2",
+    "display": "Parkinson Disease Sleep Scale-2",
+    "version": "2017"
+  },
+  "description": "Selbstbeurteilungsfragebogen zur Quantifizierung von Schlafstörungen bei Morbus Parkinson.",
+  "manual": "<p>Bitte beurteilen Sie den Schweregrad der folgenden Beschwerden, so wie Sie sie in der vergangenen Woche (die letzten 7 Tage) erlebt haben.</p><p>Setzen Sie jeweils ein Kreuz in das zutreffende Antwortfeld.</p><br><h4>Antwortkategorien</h4><ul><li>sehr oft = 6–7 Tage/Woche (4 Punkte)</li><li>oft = 4–5 Tage/Woche (3 Punkte)</li><li>manchmal = 2–3 Tage/Woche (2 Punkte)</li><li>selten = 1 Tag/Woche (1 Punkt)</li><li>niemals = 0 Punkte</li></ul>",
+  "keywords": "parkinson, sleep, disturbance, assessment, questionnaire, PDSS-2, non-motor, nocturnal",
+  "ref": "https://pubmed.ncbi.nlm.nih.gov/21312275/",
+  "items": [
+    {
+      "label": "Schlafbezogene Beschwerden in der vergangenen Woche:",
+      "tag": "",
+      "caption": "",
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      "options": {
+        "answers": [
+          {
+            "label": "sehr oft",
+            "value": 4
+          },
+          {
+            "label": "oft",
+            "value": 3
+          },
+          {
+            "label": "manchmal",
+            "value": 2
+          },
+          {
+            "label": "selten",
+            "value": 1
+          },
+          {
+            "label": "niemals",
+            "value": 0
+          }
+        ],
+        "questions": [
+          {
+            "label": "1. Haben Sie insgesamt gut geschlafen?",
+            "tag": "gut_geschlafen",
+            "id": 1
+          },
+          {
+            "label": "2. Fiel es Ihnen schwer, nachts einzuschlafen?",
+            "tag": "einschlafen",
+            "id": 2
+          },
+          {
+            "label": "3. Fiel es Ihnen schwer, durchzuschlafen?",
+            "tag": "durchschlafen",
+            "id": 3
+          },
+          {
+            "label": "4. Sind Sie wegen Unruhe in Beinen und Armen nachts aufgewacht?",
+            "tag": "unruhe_glieder",
+            "id": 4
+          },
+          {
+            "label": "5. War Ihr Schlaf gestört durch einen Drang, Ihre Beine oder Arme bewegen zu müssen?",
+            "tag": "bewegungsdrang",
+            "id": 5
+          },
+          {
+            "label": "6. Haben Sie nachts unter quälenden Träumen gelitten?",
+            "tag": "albtraeume",
+            "id": 6
+          },
+          {
+            "label": "7. Haben Sie nachts unter quälenden Sinnestäuschungen gelitten (Dinge gesehen/gehört, die es nicht gibt)?",
+            "tag": "halluzinationen",
+            "id": 7
+          },
+          {
+            "label": "8. Sind Sie nachts aufgestanden, weil Sie zur Toilette mussten?",
+            "tag": "nykturie",
+            "id": 8
+          },
+          {
+            "label": "9. Haben Sie sich nachts unwohl gefühlt, weil Sie unbeweglich waren und sich nicht im Bett umdrehen konnten?",
+            "tag": "bett_unbeweglich",
+            "id": 9
+          },
+          {
+            "label": "10. Haben Sie Schmerzen in Ihren Armen oder Beinen gespürt, von denen Sie nachts aufgewacht sind?",
+            "tag": "schmerzen_glieder",
+            "id": 10
+          },
+          {
+            "label": "11. Hatten Sie nachts Muskelkrämpfe in Ihren Armen oder Beinen, von denen Sie aufgewacht sind?",
+            "tag": "muskelkraempfe",
+            "id": 11
+          },
+          {
+            "label": "12. Sind Sie früh am Morgen aufgewacht, weil die Körperlage Ihrer Arme und Beine Schmerzen verursacht hat?",
+            "tag": "lage_schmerz",
+            "id": 12
+          },
+          {
+            "label": "13. Hatten Sie Zittern (Tremor) beim Aufwachen?",
+            "tag": "tremor",
+            "id": 13
+          },
+          {
+            "label": "14. Fühlten Sie sich müde und schläfrig nach dem Aufwachen am Morgen?",
+            "tag": "muedigkeit_morgen",
+            "id": 14
+          },
+          {
+            "label": "15. Sind Sie nachts aufgewacht, weil Sie geschnarcht haben oder Probleme beim Atmen hatten?",
+            "tag": "schnarchen_atmung",
+            "id": 15
+          }
+        ]
+      }
+    }
+  ],
+  "results": {
+    "method": "ids",
+    "scoring": [
+      {
+        "id": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        "method": "raw"
+      },
+      {
+        "id": [1],
+        "value": [0, 1, 2, 3, 4],
+        "score": [4, 3, 2, 1, 0]
+      }
+    ],
+    "domaine": [
+      {
+        "label": "Total Score",
+        "id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        "method": "sum"
+      }
+    ]
+  }
+}

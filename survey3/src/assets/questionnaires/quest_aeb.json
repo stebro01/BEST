@@ -1,88 +1,133 @@
 {
-    "title": "AEB - Akutmaß Erholung und Beanspruchung",
-    "short_title": "AEB",
-    "description": "Akutmaß Erholung und Beanspruchung",
-    "manual": "Hier finden Sie eine Reihe von Aussagen, die sich auf <b>Ihr körperliches und seelisches Befinden</b> beziehen. Bitte überlegen Sie bei jeder Aussage, in welchem Maße diese auf Sie zutrifft. Bitte denken Sie nicht zu lange über eine Aussage nach, sondern treffen Sie möglichst spontan eine Wahl. Überlegen Sie bitte nicht, welche Beantwortung möglicherweise auf den ersten Blick einen bestimmten Eindruck vermittelt, sondern stufen Sie die Aussagen so ein, wie es für Sie persönlich am ehesten zutrifft. Es gibt dabei keine richtigen oder falschen Antworten. <br><b>Wichtig ist nur, dass Sie keine Frage unbeantwortet lassen.</b>",
-    "keywords": "Erholung, Beanspruchung, Leistungsfähigkeit, körperlich, mental",
-    "coding" : {
-        "system" : "CUSTOM",
-        "code" : "CUSTOM: NP\\AEB",
-        "display" : "AEB - Akutmaß Erholung und Beanspruchung)",
-        "version": "20241210"
-    },
-    "items": [
-        {
-            "label": "Im Augenblick fühle ich mich...",
-            "tag": "questions",
-            "id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,2,7,28,29,30,31,32],
-            "caption": "Auf einer Skala von \"0\" = trifft gar nicht zu bis \"6\" = trifft voll zu",
-            "value": [],
-            "type": "multiple_radio",
-            "inline": true,
-            "options": {
-                "answers": [
-                    {"label": "0", "value": 0},
-                    {"label": "1", "value": 1},
-                    {"label": "2", "value": 2},
-                    {"label": "3", "value": 3},
-                    {"label": "4", "value": 4},
-                    {"label": "5", "value": 5},
-                    {"label": "6", "value": 6}
-                ],
-                "questions": [
-                    {"id": 1, "label": "erholt", "tag": "1"},
-                    {"id": 2, "label": "muskulär überanstrengt", "tag": "2"},
-                    {"id": 3, "label": "zufrieden", "tag": "3"},
-                    {"id": 4, "label": "unmotiviert", "tag": "4"},
-                    {"id": 5, "label": "aufmerksam", "tag": "5"},
-                    {"id": 6, "label": "bedrückt", "tag": "6"},
-                    {"id": 7, "label": "kraftvoll", "tag": "7"},
-                    {"id": 8, "label": "geschafft", "tag": "8"},
-                    {"id": 9, "label": "ausgeruht", "tag": "9"},
-                    {"id": 10, "label": "muskulär ermüdet", "tag": "10"},
-                    {"id": 11, "label": "ausgeglichen", "tag": "11"},
-                    {"id": 12, "label": "antriebslos", "tag": "12"},
-                    {"id": 13, "label": "aufnahmefähig", "tag": "13"},
-                    {"id": 14, "label": "gestresst", "tag": "14"},
-                    {"id": 15, "label": "leistungsfähig", "tag": "15"},
-                    {"id": 16, "label": "entkräftet", "tag": "16"},
-                    {"id": 17, "label": "muskulär locker", "tag": "17"},
-                    {"id": 18, "label": "lustlos", "tag": "18"},
-                    {"id": 19, "label": "gut gelaunt", "tag": "19"},
-                    {"id": 20, "label": "genervt", "tag": "20"},
-                    {"id": 21, "label": "mental hellwach", "tag": "21"},
-                    {"id": 22, "label": "muskulär übersäuert", "tag": "22"},
-                    {"id": 23, "label": "energiegeladen", "tag": "23"},
-                    {"id": 24, "label": "überlastet", "tag": "24"},
-                    {"id": 25, "label": "körperlich angespannt", "tag": "25"},
-                    {"id": 26, "label": "muskulär verhärtet", "tag": "26"},
-                    {"id": 27, "label": "alles im Griff habend", "tag": "27"},
-                    {"id": 28, "label": "energielos", "tag": "28"},
-                    {"id": 29, "label": "konzentriert", "tag": "29"},
-                    {"id": 30, "label": "leicht reizbar", "tag": "30"},
-                    {"id": 31, "label": "voller Power", "tag": "31"},
-                    {"id": 32, "label": "körperlich platt", "tag": "32"}
-                ]
-            }
-        }
-    ],
-    "results": {
-        "method": "ids",
-        "scoring": [
-            {"id": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32], "value": [0,1,2,3,4,5,6], "score": [0,1,2,3,4,5,6]}
+  "title": "AEB - Akutmaß Erholung und Beanspruchung",
+  "short_title": "AEB",
+  "description": "Akutmaß Erholung und Beanspruchung",
+  "manual": "Hier finden Sie eine Reihe von Aussagen, die sich auf <b>Ihr körperliches und seelisches Befinden</b> beziehen. Bitte überlegen Sie bei jeder Aussage, in welchem Maße diese auf Sie zutrifft. Bitte denken Sie nicht zu lange über eine Aussage nach, sondern treffen Sie möglichst spontan eine Wahl. Überlegen Sie bitte nicht, welche Beantwortung möglicherweise auf den ersten Blick einen bestimmten Eindruck vermittelt, sondern stufen Sie die Aussagen so ein, wie es für Sie persönlich am ehesten zutrifft. Es gibt dabei keine richtigen oder falschen Antworten. <br><b>Wichtig ist nur, dass Sie keine Frage unbeantwortet lassen.</b>",
+  "keywords": "Erholung, Beanspruchung, Leistungsfähigkeit, körperlich, mental",
+  "coding": {
+    "system": "CUSTOM",
+    "code": "CUSTOM: NP\\AEB",
+    "display": "AEB - Akutmaß Erholung und Beanspruchung)",
+    "version": "20241210"
+  },
+  "items": [
+    {
+      "label": "Im Augenblick fühle ich mich...",
+      "tag": "questions",
+      "id": [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24, 25, 26, 2, 7, 28, 29, 30, 31, 32
+      ],
+      "caption": "Auf einer Skala von \"0\" = trifft gar nicht zu bis \"6\" = trifft voll zu",
+      "value": [],
+      "type": "multiple_radio",
+      "inline": true,
+      "options": {
+        "answers": [
+          { "label": "0", "value": 0 },
+          { "label": "1", "value": 1 },
+          { "label": "2", "value": 2 },
+          { "label": "3", "value": 3 },
+          { "label": "4", "value": 4 },
+          { "label": "5", "value": 5 },
+          { "label": "6", "value": 6 }
         ],
-        "domaine":[
-            {"label": "Mean_Erholung", "id": [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31], "method": "avg"},
-            {"label": "Mean_Beanspruchung", "id": [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32], "method": "avg"},
-            {"label": "Körperliche Leistungsfähigkeit", "id": [7,15,23,31], "method": "avg"},
-            {"label": "Mentale Leistungsfähigkeit", "id": [5,13,21,29], "method": "avg"},
-            {"label": "Emotionale Ausgeglichenheit", "id": [3,11,19,27], "method": "avg"},
-            {"label": "Allgemeiner Erholungszustand", "id": [1,9,17,25], "method": "avg"},
-            {"label": "Muskuläre Beanspruchung", "id": [2,10,22,26], "method": "avg"},
-            {"label": "Aktivierungsmangel", "id": [4,12,18,28], "method": "avg"},
-            {"label": "Emotionale Unausgeglichenheit", "id": [6,14,20,30], "method": "avg"},
-            {"label": "Allgemeiner Beanspruchungszustand", "id": [8,16,24,32], "method": "avg"}
+        "questions": [
+          { "id": 1, "label": "erholt", "tag": "1" },
+          { "id": 2, "label": "muskulär überanstrengt", "tag": "2" },
+          { "id": 3, "label": "zufrieden", "tag": "3" },
+          { "id": 4, "label": "unmotiviert", "tag": "4" },
+          { "id": 5, "label": "aufmerksam", "tag": "5" },
+          { "id": 6, "label": "bedrückt", "tag": "6" },
+          { "id": 7, "label": "kraftvoll", "tag": "7" },
+          { "id": 8, "label": "geschafft", "tag": "8" },
+          { "id": 9, "label": "ausgeruht", "tag": "9" },
+          { "id": 10, "label": "muskulär ermüdet", "tag": "10" },
+          { "id": 11, "label": "ausgeglichen", "tag": "11" },
+          { "id": 12, "label": "antriebslos", "tag": "12" },
+          { "id": 13, "label": "aufnahmefähig", "tag": "13" },
+          { "id": 14, "label": "gestresst", "tag": "14" },
+          { "id": 15, "label": "leistungsfähig", "tag": "15" },
+          { "id": 16, "label": "entkräftet", "tag": "16" },
+          { "id": 17, "label": "muskulär locker", "tag": "17" },
+          { "id": 18, "label": "lustlos", "tag": "18" },
+          { "id": 19, "label": "gut gelaunt", "tag": "19" },
+          { "id": 20, "label": "genervt", "tag": "20" },
+          { "id": 21, "label": "mental hellwach", "tag": "21" },
+          { "id": 22, "label": "muskulär übersäuert", "tag": "22" },
+          { "id": 23, "label": "energiegeladen", "tag": "23" },
+          { "id": 24, "label": "überlastet", "tag": "24" },
+          { "id": 25, "label": "körperlich angespannt", "tag": "25" },
+          { "id": 26, "label": "muskulär verhärtet", "tag": "26" },
+          { "id": 27, "label": "alles im Griff habend", "tag": "27" },
+          { "id": 28, "label": "energielos", "tag": "28" },
+          { "id": 29, "label": "konzentriert", "tag": "29" },
+          { "id": 30, "label": "leicht reizbar", "tag": "30" },
+          { "id": 31, "label": "voller Power", "tag": "31" },
+          { "id": 32, "label": "körperlich platt", "tag": "32" }
         ]
+      }
     }
-
+  ],
+  "results": {
+    "method": "ids",
+    "scoring": [
+      {
+        "id": [
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+          21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
+        ],
+        "value": [0, 1, 2, 3, 4, 5, 6],
+        "score": [0, 1, 2, 3, 4, 5, 6]
+      }
+    ],
+    "domaine": [
+      {
+        "label": "Mean_Erholung",
+        "id": [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31],
+        "method": "avg"
+      },
+      {
+        "label": "Mean_Beanspruchung",
+        "id": [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32],
+        "method": "avg"
+      },
+      {
+        "label": "Körperliche Leistungsfähigkeit",
+        "id": [7, 15, 23, 31],
+        "method": "avg"
+      },
+      {
+        "label": "Mentale Leistungsfähigkeit",
+        "id": [5, 13, 21, 29],
+        "method": "avg"
+      },
+      {
+        "label": "Emotionale Ausgeglichenheit",
+        "id": [3, 11, 19, 27],
+        "method": "avg"
+      },
+      {
+        "label": "Allgemeiner Erholungszustand",
+        "id": [1, 9, 17, 25],
+        "method": "avg"
+      },
+      {
+        "label": "Muskuläre Beanspruchung",
+        "id": [2, 10, 22, 26],
+        "method": "avg"
+      },
+      { "label": "Aktivierungsmangel", "id": [4, 12, 18, 28], "method": "avg" },
+      {
+        "label": "Emotionale Unausgeglichenheit",
+        "id": [6, 14, 20, 30],
+        "method": "avg"
+      },
+      {
+        "label": "Allgemeiner Beanspruchungszustand",
+        "id": [8, 16, 24, 32],
+        "method": "avg"
+      }
+    ]
+  }
 }
