@@ -1,23 +1,21 @@
 #!/bin/bash
 
-# FTP-Verbindungsinformationen
-FTP_HOST="webhosting17.1blu.de"
-FTP_USER="ftp332184-2755677"
-FTP_PASS="E1NJyzbsi@p9Zgl"
+# SSH connection details
+SSH_USER="ubuntu"
+SSH_HOST="138.2.147.185"
+SSH_KEY="~/.ssh/ssh-key-2025-03-08.key"
 
-# Pfad zur lokalen Quellendatei
-LOCAL_DIR="./dist/spa"
+# Local source directory
+LOCAL_DIR="./dist/pwa"
 
-# Pfad zum entfernten Zielordner
-REMOTE_DIR="www"
+# Remote target directory
+REMOTE_DIR="/home/ubuntu/MyProjects/SERVER_STE_2025/www/surveybest"
 
-# FTP-Verbindung aufbauen
-ncftp -u $FTP_USER -p $FTP_PASS $FTP_HOST <<EOF
-cd $REMOTE_DIR
-lcd $LOCAL_DIR
-put -DD -R *
-quit
-EOF
+# Create remote directory if it doesn't exist
+ssh -C -i $SSH_KEY $SSH_USER@$SSH_HOST "mkdir -p $REMOTE_DIR"
 
-echo 'upload erfolgreich'
+# Copy files using SCP with compression
+scp -C -i $SSH_KEY -r $LOCAL_DIR/* $SSH_USER@$SSH_HOST:$REMOTE_DIR/
+
+echo 'Upload erfolgreich'
 exit 0
